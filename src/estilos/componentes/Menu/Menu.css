@@ -1,0 +1,90 @@
+.Menu {
+  height: 100vh;
+  background-color: var(--ColorSecundario);
+  border-right: 1px solid var(--ColorBlanco);
+  padding: 0 10px 10px 10px;
+  overflow: auto;
+  grid-area: MenuHamburguesa;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+}
+.Menu::-webkit-scrollbar {
+  display: none;
+}
+.Menu__Encabezado {
+  position: relative;
+  width: 100%;
+  min-height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.Menu__Encabezado::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--ColorGrisClaro);
+  border-radius: 50%;
+}
+.Menu__Encabezado img {
+  width: 35px;
+  height: 35px;
+}
+.Menu__Encabezado h1 {
+  font-size: 20px;
+}
+.Menu__Cuerpo {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Menu__Cuerpo__Contenido {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Menu__Cuerpo__Contenido.Activo {
+  height: auto;
+}
+.Menu__CerrarSesion {
+  margin-top: auto;
+  width: 100%;
+  min-height: 50px;
+  border-radius: 50px;
+  outline: none;
+  background-color: var(--ColorPrincipal);
+  border: 2px solid var(--ColorPrincipal);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.Menu__CerrarSesion ion-icon {
+  font-size: 20px;
+}
+.Menu__CerrarSesion:hover {
+  background-color: var(--ColorSecundario);
+  color: var(--ColorPrincipal);
+}

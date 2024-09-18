@@ -1,0 +1,76 @@
+/* IMPORTAMOS LA FUENTE */
+@font-face {
+  font-family: "NotoSans";
+  src: url("../public/NotoSans.ttf") format("truetype");
+}
+
+/* CONFIGURACIÓN GENERAL */
+:root {
+  --ColorPrincipal: #171616;
+  --ColorSecundario: #e7e8ed;
+  --ColorNegro: #171616;
+  --ColorBlanco: #ffffff;
+  --ColorNaranja: #f7bd56;
+  --ColorAzul: #4d82bc;
+  --ColorVerde: #408a15;
+  --ColorRojo: #ff5f56;
+  --ColorGris: gray;
+  --ColorGrisClaro: #d4d5da;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "NotoSans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+  color: var(--ColorNegro);
+}
+body {
+  background: var(--ColorBlanco);
+}
+input {
+  /* accent-color: var(--MainYellow); */
+  outline: none;
+}
+input[type="file"] {
+  display: none;
+}
+::-webkit-scrollbar {
+  width: 12px; /* Ancho del scroll */
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--ColorPrincipal); /* Color del scroll thumb */
+}
+::-webkit-scrollbar-track {
+  background-color: var(--ColorBlanco); /* Color del track */
+}
+.Main {
+  position: relative;
+
+  display: grid;
+  grid-template-areas:
+    "MenuHamburguesa Encabezado Encabezado"
+    "MenuHamburguesa Cuerpo Cuerpo";
+  grid-template-columns: 300px 1fr 1fr;
+  grid-template-rows: 75px 1fr;
+}
+@media (width >= 1920px) {
+  .Main {
+    width: 1920px;
+    margin: 0 auto;
+  }
+}
+@media (width <= 768px) {
+  .Main {
+    grid-template-areas:
+      "Encabezado Encabezado Encabezado"
+      "Cuerpo Cuerpo Cuerpo";
+  }
+  .Menu {
+    display: none;
+  }
+}

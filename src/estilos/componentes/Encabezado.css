@@ -1,0 +1,23 @@
+.Encabezado {
+  min-height: 75px;
+  max-height: 75px;
+  padding: 0 10px;
+  background-color: var(--ColorSecundario);
+  grid-area: Encabezado;
+  border-bottom: 1px solid var(--ColorBlanco);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.Encabezado__Icono {
+  font-size: 25px;
+}
+.Encabezado__Seccion {
+  color: var(--ColorGris);
+}
+.Encabezado__Subseccion {
+  color: var(--ColorNegro);
+  font-weight: normal;
+}

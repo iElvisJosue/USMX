@@ -1,0 +1,228 @@
+.ListaDeProductosDeLaAgencia {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+.ListaDeProductosDeLaAgencia__Regresar {
+  grid-column: span 5;
+  margin-top: 20px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.ListaDeProductosDeLaAgencia__Regresar__Boton {
+  width: 150px;
+  height: 50px;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaDeProductosDeLaAgencia__Regresar__Boton ion-icon {
+  font-size: 20px;
+}
+.ListaDeProductosDeLaAgencia__Regresar__Boton:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.ListaDeProductosDeLaAgencia__Regresar__Usuario {
+  font-style: italic;
+  font-weight: bold;
+  color: var(--ColorNegro);
+}
+.ListaDeProductosDeLaAgencia__Regresar__Usuario b {
+  font-style: italic;
+  color: var(--ColorVerde);
+}
+.ListaDeProductosDeLaAgencia__Titulo {
+  grid-column: span 5;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.ListaDeProductosDeLaAgencia__Buscar {
+  grid-column: 4/6;
+  display: flex;
+}
+.ListaDeProductosDeLaAgencia__Buscar input {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 15px 0 0 15px;
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.ListaDeProductosDeLaAgencia__Buscar__Lupa {
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 0 15px 15px 0;
+  border-left: 2px solid var(--ColorBlanco);
+  background-color: var(--ColorSecundario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ColorGris);
+  font-size: 20px;
+}
+.ListaDeProductosDeLaAgencia__TextoResultados {
+  grid-column: span 5;
+  color: var(--ColorVerde);
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.ListaDeProductosDeLaAgencia__TextoResultados ion-icon {
+  font-size: 20px;
+}
+.ListaDeProductosDeLaAgencia__BotonesDePaginacion {
+  grid-column: span 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.ListaDeProductosDeLaAgencia__BotonesDePaginacion--Boton {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaDeProductosDeLaAgencia__BotonesDePaginacion--Boton ion-icon {
+  font-size: 15px;
+}
+.ListaDeProductosDeLaAgencia__BotonesDePaginacion--Boton.Anterior {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.ListaDeProductosDeLaAgencia__BotonesDePaginacion--Boton.Siguiente {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.ListaDeProductosDeLaAgencia__BotonesDePaginacion--Boton.Anterior:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorRojo);
+}
+.ListaDeProductosDeLaAgencia__BotonesDePaginacion--Boton.Siguiente:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+}
+.ListaDeProductosDeLaAgencia__Agencia {
+  grid-column: span 1;
+  color: var(--ColorNegro);
+  background-color: var(--ColorSecundario);
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  min-height: 100px;
+  height: auto;
+  border: 2px solid var(--ColorSecundario);
+  border-radius: 20px;
+  transition: 0.3s ease-in-out all;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaDeProductosDeLaAgencia__Agencia.Asignadas {
+  position: relative;
+  border: 2px solid var(--ColorVerde);
+  background-color: var(--ColorVerde);
+  color: var(--ColorSecundario);
+}
+.ListaDeProductosDeLaAgencia__Agencia.Asignadas:hover {
+  transform: scale(1);
+}
+.ListaDeProductosDeLaAgencia__Agencia__Eliminar {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -10px;
+  right: -10px;
+  border-radius: 50%;
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+  font-size: 10px;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ListaDeProductosDeLaAgencia__Agencia__Eliminar:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.ListaDeProductosDeLaAgencia__Agencia__Detalles {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: -12.5px;
+  right: calc(50% - 12.5px);
+  border-radius: 50%;
+  border: 2px solid var(--ColorNaranja);
+  background-color: var(--ColorNaranja);
+  color: var(--ColorNegro);
+  font-size: 10px;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ListaDeProductosDeLaAgencia__Agencia__Detalles:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.ListaDeProductosDeLaAgencia__Agencia ion-icon {
+  font-size: 25px;
+}
+
+.ListaDeProductosDeLaAgencia__Agencia:hover {
+  border: 2px solid var(--ColorVerde);
+  background-color: var(--ColorVerde);
+  color: var(--ColorSecundario);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.ListaDeProductosDeLaAgencia__TextoPaginas {
+  grid-column: span 5;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-weight: bold;
+}

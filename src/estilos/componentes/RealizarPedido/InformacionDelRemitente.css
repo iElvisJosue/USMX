@@ -1,0 +1,92 @@
+.InformacionDelRemitente {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+.InformacionDelRemitente__Titulo {
+  grid-column: span 3;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.InformacionDelRemitente__Campo {
+  grid-column: span 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.InformacionDelRemitente__Campo.Dos {
+  grid-column: span 2;
+}
+.InformacionDelRemitente__Campo.Tres {
+  grid-column: span 3;
+}
+.InformacionDelRemitente__Campo p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  gap: 5px;
+}
+.InformacionDelRemitente__Campo p ion-icon {
+  font-size: 20px;
+}
+.InformacionDelRemitente__Campo input,
+.InformacionDelRemitente__Campo select {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 5px;
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.InformacionDelRemitente__Campo input:focus {
+  border: 2px solid var(--ColorNegro);
+}
+.InformacionDelRemitente__Footer {
+  padding: 10px;
+  grid-column: span 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.InformacionDelRemitente__Footer__Boton {
+  width: 150px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  border-radius: 25px;
+}
+.InformacionDelRemitente__Footer__Boton.Regresar {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.InformacionDelRemitente__Footer__Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.InformacionDelRemitente__Footer__Boton.Siguiente {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.InformacionDelRemitente__Footer__Boton.Siguiente:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}

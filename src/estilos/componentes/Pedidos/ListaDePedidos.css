@@ -1,0 +1,128 @@
+.ListaDePedidos {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+.ListaDePedidos__Buscar {
+  grid-column: 3/5;
+  display: flex;
+}
+.ListaDePedidos__Buscar input {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 15px 0 0 15px;
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.ListaDePedidos__Buscar__Lupa {
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 0 15px 15px 0;
+  border-left: 2px solid var(--ColorBlanco);
+  background-color: var(--ColorSecundario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ColorGris);
+  font-size: 20px;
+}
+.ListaDePedidos__Titulo {
+  grid-column: span 4;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+.ListaDePedidos__TextoResultados {
+  grid-column: span 4;
+  color: var(--ColorVerde);
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.ListaDePedidos__TextoResultados ion-icon {
+  font-size: 20px;
+}
+.ListaDePedidos__Cuerpo {
+  grid-column: span 4;
+  overflow-x: auto;
+}
+.ListaDePedidos__Cuerpo__Tabla {
+  width: 100%;
+  table-layout: auto;
+}
+.ListaDePedidos__Cuerpo__Tabla__Encabezado tr th {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  min-width: 200px;
+}
+.ListaDePedidos__Cuerpo__Tabla__Encabezado tr th ion-icon {
+  font-size: 20px;
+}
+.ListaDePedidos__Cuerpo__Tabla__Cuerpo tr:nth-child(odd) {
+  background-color: var(--ColorSecundario);
+}
+.ListaDePedidos__Cuerpo__Tabla__Cuerpo {
+  background-color: var(--ColorBlanco);
+  text-align: center;
+}
+.ListaDePedidos__Cuerpo__Tabla__Cuerpo tr td {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+.ListaDePedidos__Cuerpo__Tabla__Cuerpo hr {
+  height: 2px;
+  background-color: var(--ColorSecundario);
+  border: none;
+}
+.ListaDePedidos__Cuerpo__Tabla__Cuerpo__VerDetalles {
+  cursor: pointer;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 12px;
+  width: 50px;
+  height: 35px;
+  transition: 0.3s ease-in-out all;
+}
+.ListaDePedidos__Cuerpo__Tabla__Cuerpo__VerDetalles:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorPrincipal);
+}
+@media (max-width: 1000px) {
+  .ListaDePedidos__Buscar {
+    grid-column: span 4;
+  }
+}
+@media (max-width: 500px) {
+  .ListaDePedidos__Cuerpo__Tabla__Encabezado tr th {
+    font-size: 14px;
+  }
+  .ListaDePedidos__Cuerpo__Tabla__Encabezado tr th ion-icon {
+    font-size: 18px;
+  }
+  .ListaDePedidos__Cuerpo__Tabla__Cuerpo tr td {
+    font-size: 12px;
+  }
+}
