@@ -60,7 +60,7 @@ export default function ListaDeUsuarios({
     }
   };
 
-  if (cargandoUsuarios) return <Cargando colSpan={"Cinco"} />;
+  if (cargandoUsuarios) return <Cargando />;
 
   return (
     <div className="ListaDeUsuarios">

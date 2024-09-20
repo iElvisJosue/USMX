@@ -12,7 +12,7 @@ import useBuscarAgenciasPorFiltroYTipoDeUsuario from "../hooks/useBuscarAgencias
 import usePaginacion from "../hooks/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
-import "../estilos/componentes/RealizarPedido/SeleccionarAgencia.css";
+import "../estilos/componentes/SeleccionarAgencia.css";
 
 export default function SeleccionarAgencia({
   establecerAgencia,

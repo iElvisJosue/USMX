@@ -1,4 +1,6 @@
 .Menu {
+  position: relative;
+  width: 300px;
   height: 100vh;
   background-color: var(--ColorSecundario);
   border-right: 1px solid var(--ColorBlanco);
@@ -12,6 +14,12 @@
   justify-content: flex-start;
   gap: 40px;
 }
+.Menu.Activo {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
 .Menu::-webkit-scrollbar {
   display: none;
 }
@@ -24,6 +32,11 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
+}
+.Menu__Encabezado--MostrarMenu {
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
 }
 .Menu__Encabezado::before {
   content: "";
@@ -87,4 +100,34 @@
 .Menu__CerrarSesion:hover {
   background-color: var(--ColorSecundario);
   color: var(--ColorPrincipal);
+}
+.Menu__MostrarMenu {
+  position: fixed;
+  top: 20px;
+  right: 10px;
+  color: var(--ColorPrincipal);
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+
+  display: none;
+}
+.Menu.Activo .Menu__MostrarMenu {
+  display: none;
+}
+@media (width <= 768px) {
+  .Menu {
+    position: absolute;
+    top: 0;
+    left: -300px;
+  }
+  .Menu__MostrarMenu {
+    display: block;
+  }
+  .Menu__Encabezado {
+    justify-content: space-between;
+  }
+  .Menu__Encabezado--MostrarMenu {
+    display: block;
+  }
 }

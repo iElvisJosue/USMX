@@ -6,7 +6,7 @@
   gap: 50px;
 }
 .InformacionDelDestinatario__Titulo {
-  grid-column: span 3;
+  grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
   font-size: 25px;
@@ -24,7 +24,7 @@
   grid-column: span 2;
 }
 .InformacionDelDestinatario__Campo.Tres {
-  grid-column: span 3;
+  grid-column: 1 / -1;
 }
 .InformacionDelDestinatario__Campo p {
   display: flex;
@@ -55,8 +55,7 @@
   border: 2px solid var(--ColorNegro);
 }
 .InformacionDelDestinatario__Footer {
-  padding: 10px;
-  grid-column: span 3;
+  grid-column: 1 / -1;
 
   display: flex;
   align-items: center;
@@ -89,4 +88,31 @@
 .InformacionDelDestinatario__Footer__Boton.Siguiente:hover {
   background-color: transparent;
   color: var(--ColorAzul);
+}
+@media (width <= 900px) {
+  .InformacionDelDestinatario {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .InformacionDelDestinatario__Campo.Dos {
+    grid-column: span 1;
+  }
+}
+@media (width <= 500px) {
+  .InformacionDelDestinatario {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .InformacionDelDestinatario__Titulo {
+    font-size: 20px;
+  }
+  .InformacionDelDestinatario__Campo {
+    font-size: 16px;
+  }
+  .InformacionDelDestinatario__Footer {
+    padding: 0;
+  }
+  .InformacionDelDestinatario__Footer__Boton {
+    width: 100%;
+    height: 50px;
+  }
 }

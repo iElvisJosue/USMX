@@ -7,7 +7,7 @@
 }
 .DetallesDelPedido__Seccion,
 .DetallesDelPedido__Opciones {
-  grid-column: span 4;
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -173,4 +173,27 @@
 .DetallesDelPedido__Detalles.Total {
   background-color: var(--ColorVerde);
   color: var(--ColorBlanco);
+}
+@media (width <= 850px) {
+  .DetallesDelPedido {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .DetallesDelPedido__Seccion,
+  .DetallesDelPedido__Opciones {
+    font-size: 14px;
+  }
+  .DetallesDelPedido__Seccion img {
+    width: 40px;
+    height: 40px;
+  }
+  .DetallesDelPedido__Detalles {
+    font-size: 14px;
+  }
+  .DetallesDelPedido__Opciones--Boton {
+    font-size: 14px;
+  }
+  .DetallesDelPedido__Opciones--Boton ion-icon {
+    font-size: 16px;
+  }
 }

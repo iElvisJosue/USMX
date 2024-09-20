@@ -4,6 +4,7 @@
   height: 100vh;
   background-color: var(--ColorBlanco);
   font-size: 12px;
+  grid-column: 1 / -1;
 
   display: flex;
   flex-direction: column;
@@ -11,24 +12,6 @@
   justify-content: center;
   color: var(--ColorPrincipal);
   gap: 10px;
-}
-.Main__Cargando.Uno {
-  grid-column: span 1;
-}
-.Main__Cargando.Dos {
-  grid-column: span 2;
-}
-.Main__Cargando.Tres {
-  grid-column: span 3;
-}
-.Main__Cargando.Cuatro {
-  grid-column: span 4;
-}
-.Main__Cargando.Cinco {
-  grid-column: span 5;
-}
-.Main__Cargando.Seis {
-  grid-column: span 6;
 }
 .Main__Cargando h1 {
   font-size: var(--NormalFontSize);

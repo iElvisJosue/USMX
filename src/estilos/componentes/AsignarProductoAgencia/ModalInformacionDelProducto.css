@@ -110,3 +110,15 @@
   background-color: var(--ColorBlanco);
   color: var(--ColorVerde);
 }
+@media (width <= 550px) {
+  .ModalInformacionDelProducto__Contenido {
+    width: 100%;
+  }
+  .ModalInformacionDelProducto__Contenido--CerrarModal {
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+  }
+}

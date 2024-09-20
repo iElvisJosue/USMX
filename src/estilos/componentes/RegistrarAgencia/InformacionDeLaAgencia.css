@@ -6,7 +6,7 @@
   gap: 50px;
 }
 .InformacionDeLaAgencia__Titulo {
-  grid-column: span 4;
+  grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
   font-size: 25px;
@@ -28,7 +28,7 @@
   grid-column: span 3;
 }
 .InformacionDeLaAgencia__Titulo__Campo.Cuatro {
-  grid-column: span 4;
+  grid-column: 1 / -1;
 }
 .InformacionDeLaAgencia__Titulo__Campo p {
   display: flex;
@@ -59,8 +59,7 @@
   border: 2px solid var(--ColorNegro);
 }
 .InformacionDeLaAgencia__Footer {
-  padding: 10px;
-  grid-column: span 4;
+  grid-column: 1 / -1;
 
   display: flex;
   align-items: center;
@@ -105,20 +104,21 @@
 @media (max-width: 500px) {
   .InformacionDeLaAgencia__Titulo {
     margin-top: 20px;
+    font-size: 20px;
   }
   .InformacionDeLaAgencia {
     gap: 25px;
   }
   .InformacionDeLaAgencia__Titulo__Campo {
-    grid-column: span 4;
+    grid-column: 1 / -1;
   }
   .InformacionDeLaAgencia__Titulo__Campo.Tres {
-    grid-column: span 4;
+    grid-column: 1 / -1;
   }
   .InformacionDeLaAgencia__Titulo__Campo.Dos {
-    grid-column: span 4;
+    grid-column: 1 / -1;
   }
-  .InformacionDeLaAgencia__Footer {
-    justify-content: space-between;
+  .InformacionDeLaAgencia__Footer__Boton {
+    width: 100%;
   }
 }

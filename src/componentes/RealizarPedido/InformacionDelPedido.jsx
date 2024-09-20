@@ -547,57 +547,60 @@ export default function InformacionDelPedido({
               >
                 <span className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles">
                   <p>
-                    <ion-icon name="basket"></ion-icon> Producto: {Producto}
+                    <ion-icon name="basket"></ion-icon> <b>Producto:</b>{" "}
+                    {Producto}
                   </p>
                   <p>
-                    <ion-icon name="expand"></ion-icon> Medidas: {Ancho}x{Largo}
-                    x{Alto}
+                    <ion-icon name="expand"></ion-icon> <b>Medidas:</b> {Ancho}x
+                    {Largo}x{Alto}
                   </p>
                   <p>
-                    <ion-icon name="document-text"></ion-icon> Contenido:{" "}
+                    <ion-icon name="document-text"></ion-icon> <b>Envío:</b>{" "}
                     {ContenidoDeEnvio}
                   </p>
                   <p>
-                    <ion-icon name="scale"></ion-icon> Peso: {Peso}
+                    <ion-icon name="scale"></ion-icon> <b>Peso:</b> {Peso}
                   </p>
                   <p>
-                    <ion-icon name="cube"></ion-icon> FT³:{PieCubico}
+                    <ion-icon name="cube"></ion-icon> <b>FT³:</b>
+                    {PieCubico}
                   </p>
                 </span>
                 <span className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles">
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto">
-                    <ion-icon name="cash"></ion-icon> Declarado:{" "}
+                    <ion-icon name="cash"></ion-icon> <b>Declarado:</b>{" "}
                     {Number(ValorDeclarado).toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                     })}
                   </p>
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto Rojo">
-                    <ion-icon name="shield-checkmark"></ion-icon> Asegurado:{" "}
+                    <ion-icon name="shield-checkmark"></ion-icon>{" "}
+                    <b>Asegurado:</b>{" "}
                     {Number(ValorAsegurado).toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                     })}
                   </p>
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto">
-                    <ion-icon name="cash"></ion-icon> TCF: $0.00
+                    <ion-icon name="cash"></ion-icon> <b>TCF:</b> $0.00
                   </p>
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto Verde">
-                    <ion-icon name="airplane"></ion-icon> Envío:{" "}
+                    <ion-icon name="airplane"></ion-icon> <b>Envío:</b>{" "}
                     {CostoEnvio.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                     })}
                   </p>
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto Verde">
-                    <ion-icon name="shield"></ion-icon> Costo seguro:{" "}
+                    <ion-icon name="shield"></ion-icon> <b>Costo seguro:</b>{" "}
                     {CostoSeguro.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                     })}
                   </p>
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto Verde">
-                    <ion-icon name="scale"></ion-icon> Cargo sobrepeso:{" "}
+                    <ion-icon name="scale"></ion-icon> <b>Cargo sobrepeso:</b>{" "}
                     {CostoSobrePeso.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",

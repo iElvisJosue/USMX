@@ -35,7 +35,7 @@
   font-size: 20px;
 }
 .ListaDePedidos__Titulo {
-  grid-column: span 4;
+  grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
   font-size: 25px;
@@ -43,7 +43,7 @@
   margin-top: 15px;
 }
 .ListaDePedidos__TextoResultados {
-  grid-column: span 4;
+  grid-column: 1 / -1;
   color: var(--ColorVerde);
   text-align: right;
   font-style: italic;
@@ -57,7 +57,7 @@
   font-size: 20px;
 }
 .ListaDePedidos__Cuerpo {
-  grid-column: span 4;
+  grid-column: 1 / -1;
   overflow-x: auto;
 }
 .ListaDePedidos__Cuerpo__Tabla {
@@ -112,17 +112,29 @@
 }
 @media (max-width: 1000px) {
   .ListaDePedidos__Buscar {
-    grid-column: span 4;
+    grid-column: 1 / -1;
   }
 }
 @media (max-width: 500px) {
+  .ListaDePedidos__Titulo {
+    font-size: 20px;
+  }
+  .ListaDePedidos__Cuerpo__Tabla__Encabezado tr th ion-icon {
+    font-size: 16px;
+  }
   .ListaDePedidos__Cuerpo__Tabla__Encabezado tr th {
     font-size: 14px;
   }
-  .ListaDePedidos__Cuerpo__Tabla__Encabezado tr th ion-icon {
-    font-size: 18px;
-  }
   .ListaDePedidos__Cuerpo__Tabla__Cuerpo tr td {
     font-size: 12px;
+  }
+  .ListaDePedidos__Cuerpo__Tabla__Cuerpo tr td {
+    padding: 5px;
+  }
+  .ListaDePedidos__TextoResultados {
+    font-size: 12px;
+  }
+  .ListaDePedidos__TextoResultados ion-icon {
+    font-size: 16px;
   }
 }

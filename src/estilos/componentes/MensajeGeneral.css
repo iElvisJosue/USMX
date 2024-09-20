@@ -68,3 +68,12 @@
 .MensajeGeneral__Boton:hover {
   background-color: transparent;
 }
+@media (width <= 1000px) {
+  .MensajeGeneral__Imagen {
+    width: 200px;
+    height: 200px;
+  }
+  .MensajeGeneral__Texto {
+    font-size: 20px;
+  }
+}

@@ -7,7 +7,7 @@
   gap: 30px;
 }
 .ListaDeUsuarios__Titulo {
-  grid-column: span 5;
+  grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
   font-size: 25px;
@@ -44,7 +44,7 @@
   font-size: 20px;
 }
 .ListaDeUsuarios__TextoResultados {
-  grid-column: span 5;
+  grid-column: 1 / -1;
   color: var(--ColorVerde);
   text-align: right;
   font-style: italic;
@@ -58,7 +58,7 @@
   font-size: 20px;
 }
 .ListaDeUsuarios__BotonesDePaginacion {
-  grid-column: span 5;
+  grid-column: 1 / -1;
 
   display: flex;
   align-items: center;
@@ -130,8 +130,41 @@
   transform: scale(1.05);
 }
 .ListaDeUsuarios__TextoPaginas {
-  grid-column: span 5;
+  grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
   font-weight: bold;
+}
+@media (width <= 1120px) {
+  .ListaDeUsuarios {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+  .ListaDeUsuarios__Buscar {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (width <= 500px) {
+  .ListaDeUsuarios {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ListaDeUsuarios__Titulo {
+    font-size: 20px;
+  }
+  .ListaDeUsuarios__TextoResultados {
+    font-size: 12px;
+  }
+
+  .ListaDeUsuarios__Usuario {
+    font-size: 12px;
+  }
+  .SeleccionarAgencia__TextoResultados {
+    font-size: 12px;
+  }
+}
+@media (width <= 368px) {
+  .ListaDeUsuarios {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

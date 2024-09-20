@@ -101,8 +101,7 @@ export default function ListaDeAgenciasPorUsuario({
     }
   };
 
-  if (cargandoAgenciasAsignadasYNoAsignadasDelUsuario)
-    return <Cargando colSpan={"Cinco"} />;
+  if (cargandoAgenciasAsignadasYNoAsignadasDelUsuario) return <Cargando />;
 
   const { AgenciasAsignadas, AgenciasNoAsignadas } =
     agenciasAsignadasYNoAsignadasDelUsuario;
