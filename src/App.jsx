@@ -15,7 +15,7 @@ import RegistrarAgencia from "./vistas/RegistrarAgencia";
 import RegistrarUsuario from "./vistas/RegistrarUsuario";
 import RegistrarProducto from "./vistas/RegistrarProducto";
 import Pedidos from "./vistas/Pedidos";
-import DetallesDelPedido from "./vistas/DetallesDelPedido";
+import NumeroDeGuia from "./vistas/NumeroDeGuia";
 import AsignarAgenciaUsuario from "./vistas/AsignarAgenciaUsuario";
 import AsignarProductoAgencia from "./vistas/AsignarProductoAgencia";
 
@@ -37,8 +37,8 @@ export default function App() {
                     <Route path="/" element={<IniciarSesion />} />
                     {/* TERMINAN LAS RUTAS SIN PROTECCIÓN */}
                     <Route
-                      path="/Detalles-Del-Pedido/:idPedido"
-                      element={<DetallesDelPedido />}
+                      path="/NumeroDeGuia/:idPedido"
+                      element={<NumeroDeGuia />}
                     />
                     {/* RUTAS PROTEGIDAS PARA USUARIOS LOGUEADOS */}
                     <Route element={<ProteccionPorCookies />}>

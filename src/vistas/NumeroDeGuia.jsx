@@ -10,11 +10,11 @@ import InformacionDelProducto from "../componentes/RegistrarProducto/Informacion
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/RegistrarProducto.css";
 
-export default function DetallesDelPedido() {
+export default function NumeroDeGuia() {
   const { idPedido } = useParams();
 
   return (
-    <h1>Tu pedido es: {idPedido}</h1>
+    <h1>Tu guía es: {idPedido}</h1>
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
     // <main className="Main">
     //   <Menu />

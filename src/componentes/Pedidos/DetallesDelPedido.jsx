@@ -27,8 +27,6 @@ export default function DetallesDelPedido({
     GuiaPedido,
   });
 
-  console.log(paquete);
-
   const SiguientePedido = () => {
     if (indicePedido < paquete.length - 1) {
       establecerIndicePedido(indicePedido + 1);
