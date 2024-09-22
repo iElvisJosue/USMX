@@ -1,12 +1,12 @@
 export const CamposRemitente = [
   {
-    idCampo: "Nombre",
+    idCampo: "NombreRemitente",
     iconoCampo: "person",
     tituloCampo: "Nombre",
-    nombreCampo: "Nombre",
+    nombreCampo: "NombreRemitente",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -20,13 +20,13 @@ export const CamposRemitente = [
     },
   },
   {
-    idCampo: "Apellidos",
+    idCampo: "ApellidosRemitente",
     iconoCampo: "person",
     tituloCampo: "Apellidos",
-    nombreCampo: "Apellidos",
+    nombreCampo: "ApellidosRemitente",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -40,13 +40,13 @@ export const CamposRemitente = [
     },
   },
   {
-    idCampo: "Telefono",
+    idCampo: "TelefonoCasaRemitente",
     iconoCampo: "call",
     tituloCampo: "Teléfono casa",
-    nombreCampo: "Telefono",
+    nombreCampo: "TelefonoCasaRemitente",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
@@ -64,13 +64,13 @@ export const CamposRemitente = [
     },
   },
   {
-    idCampo: "Celular",
+    idCampo: "CelularRemitente",
     iconoCampo: "phone-portrait",
     tituloCampo: "Celular",
-    nombreCampo: "Celular",
+    nombreCampo: "CelularRemitente",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
@@ -88,13 +88,13 @@ export const CamposRemitente = [
     },
   },
   {
-    idCampo: "Correo",
+    idCampo: "CorreoRemitente",
     iconoCampo: "mail",
     tituloCampo: "Correo electrónico",
-    nombreCampo: "Correo",
+    nombreCampo: "CorreoRemitente",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelRemitente__Campo Dos",
+    claseCampo: "RegistrarNuevoRemitente__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
@@ -108,13 +108,13 @@ export const CamposRemitente = [
     },
   },
   {
-    idCampo: "CodigoPostal",
+    idCampo: "CodigoPostalRemitente",
     iconoCampo: "pin",
     tituloCampo: "Código Postal",
-    nombreCampo: "CodigoPostal",
+    nombreCampo: "CodigoPostalRemitente",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
@@ -128,14 +128,14 @@ export const CamposRemitente = [
     },
   },
   {
-    idCampo: "Ciudad",
+    idCampo: "CiudadRemitente",
     iconoCampo: "locate",
     tituloCampo: "Ciudad",
-    nombreCampo: "Ciudad",
+    nombreCampo: "CiudadRemitente",
     placeholderCampo: "Escriba aquí...",
     // tipoCampo: "select
     tipoCampo: "text",
-    claseCampo: "InformacionDelRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -145,14 +145,14 @@ export const CamposRemitente = [
     },
   },
   {
-    idCampo: "Estado",
+    idCampo: "EstadoRemitente",
     iconoCampo: "location",
     tituloCampo: "Estado",
-    nombreCampo: "Estado",
+    nombreCampo: "EstadoRemitente",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     // tipoCampo: "select",
-    claseCampo: "InformacionDelRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -162,13 +162,13 @@ export const CamposRemitente = [
     },
   },
   {
-    idCampo: "Direccion",
+    idCampo: "DireccionRemitente",
     iconoCampo: "trail-sign",
     tituloCampo: "Dirección",
-    nombreCampo: "Direccion",
+    nombreCampo: "DireccionRemitente",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelRemitente__Campo Dos",
+    claseCampo: "RegistrarNuevoRemitente__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -178,13 +178,13 @@ export const CamposRemitente = [
     },
   },
   {
-    idCampo: "Referencia",
+    idCampo: "ReferenciaRemitente",
     iconoCampo: "document-text",
     tituloCampo: "Referencia",
-    nombreCampo: "Referencia",
+    nombreCampo: "ReferenciaRemitente",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       maxLength: {
         value: 1000,

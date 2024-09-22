@@ -33,6 +33,12 @@
   justify-content: flex-start;
   gap: 10px;
 }
+.Menu__Encabezado a {
+  text-decoration: none;
+  color: var(--ColorNegro);
+  font-size: 20px;
+  font-weight: bold;
+}
 .Menu__Encabezado--MostrarMenu {
   display: none;
   cursor: pointer;

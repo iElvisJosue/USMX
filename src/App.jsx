@@ -13,7 +13,9 @@ import Bienvenida from "./vistas/Bienvenida";
 import RealizarPedido from "./vistas/RealizarPedido";
 import RegistrarAgencia from "./vistas/RegistrarAgencia";
 import RegistrarUsuario from "./vistas/RegistrarUsuario";
+import RegistrarProducto from "./vistas/RegistrarProducto";
 import Pedidos from "./vistas/Pedidos";
+import DetallesDelPedido from "./vistas/DetallesDelPedido";
 import AsignarAgenciaUsuario from "./vistas/AsignarAgenciaUsuario";
 import AsignarProductoAgencia from "./vistas/AsignarProductoAgencia";
 
@@ -31,7 +33,13 @@ export default function App() {
               <ProveedorProductos>
                 <BrowserRouter>
                   <Routes>
+                    {/* RUTAS SIN PROTECCIÓN */}
                     <Route path="/" element={<IniciarSesion />} />
+                    {/* TERMINAN LAS RUTAS SIN PROTECCIÓN */}
+                    <Route
+                      path="/Detalles-Del-Pedido/:idPedido"
+                      element={<DetallesDelPedido />}
+                    />
                     {/* RUTAS PROTEGIDAS PARA USUARIOS LOGUEADOS */}
                     <Route element={<ProteccionPorCookies />}>
                       {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
@@ -45,6 +53,10 @@ export default function App() {
                           element={<RegistrarUsuario />}
                         />
                         <Route
+                          path="/Registrar-Producto"
+                          element={<RegistrarProducto />}
+                        />
+                        <Route
                           path="/Asignar-Agencia-Usuario"
                           element={<AsignarAgenciaUsuario />}
                         />
@@ -53,6 +65,7 @@ export default function App() {
                           element={<AsignarProductoAgencia />}
                         />
                       </Route>
+                      {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
                       <Route
                         path="/Realizar-Pedido"
                         element={<RealizarPedido />}
@@ -61,6 +74,7 @@ export default function App() {
                       <Route path="/Bienvenida" element={<Bienvenida />} />
                     </Route>
                   </Routes>
+                  {/* TERMINAN LAS RUTAS PROTEGIDAS PARA USUARIOS LOGUEADOS */}
                 </BrowserRouter>
               </ProveedorProductos>
             </ProveedorPedidos>

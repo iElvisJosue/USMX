@@ -1,12 +1,8 @@
 /* eslint-disable react/prop-types */
 // LOS ESTILOS ESTÁN EN RealizarPedido.css
-export default function AgenciaSeleccionada({
-  NombreAgencia,
-  colSpan = "Uno",
-}) {
-  const ClaseAgenciaSeleccionada = `RealizarPedido__AgenciaSeleccionada ${colSpan}`;
+export default function AgenciaSeleccionada({ NombreAgencia }) {
   return (
-    <small className={ClaseAgenciaSeleccionada}>
+    <small className="RealizarPedido__AgenciaSeleccionada">
       Pedido para la agencia: <b>{NombreAgencia}</b>
     </small>
   );

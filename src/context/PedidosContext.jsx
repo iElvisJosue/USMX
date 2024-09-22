@@ -4,6 +4,8 @@ import {
   SolicitudGuardarTodaLaInformacion,
   SolicitudBuscarPedidosPorFiltro,
   SolicitudBuscarPedidosPorPaquete,
+  SolicitudBuscarRemitentesPorAgencia,
+  SolicitudBuscarDestinatariosPorAgencia,
 } from "../api/authPedidos";
 
 export const PedidosContext = createContext();
@@ -41,6 +43,22 @@ export const ProveedorPedidos = ({ children }) => {
       return error;
     }
   };
+  const BuscarRemitentesPorAgencia = async (data) => {
+    try {
+      const res = await SolicitudBuscarRemitentesPorAgencia(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarDestinatariosPorAgencia = async (data) => {
+    try {
+      const res = await SolicitudBuscarDestinatariosPorAgencia(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <PedidosContext.Provider
@@ -48,6 +66,8 @@ export const ProveedorPedidos = ({ children }) => {
         GuardarTodaLaInformacion,
         BuscarPedidosPorFiltro,
         BuscarPedidosPorPaquete,
+        BuscarRemitentesPorAgencia,
+        BuscarDestinatariosPorAgencia,
       }}
     >
       {children}

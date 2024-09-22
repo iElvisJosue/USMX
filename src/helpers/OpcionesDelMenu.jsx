@@ -59,8 +59,8 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "add-circle",
-          nombre: "Registrar Producto",
-          url: "#",
+          nombre: "Registrar Producto (F)",
+          url: `${HOST}Registrar-Producto`,
         },
         {
           icono: "cog",

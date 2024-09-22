@@ -40,6 +40,7 @@ export default function InformacionDelPedido({
   establecerPaso,
   pedido,
   establecerPedido,
+  establecerDetallesPedido,
 }) {
   // OBTENEMOS LOS PRODUCTOS, TIPOS DE CARGA Y TIPOS DE ENVIO
   const { productos } = useObtenerProductosPorAgencia(agencia.idAgencia);
@@ -144,6 +145,7 @@ export default function InformacionDelPedido({
           )
         ),
         idAgencia: agencia.idAgencia,
+        NombreAgencia: agencia.NombreAgencia,
       };
       nuevoPedido.push(nuevoProducto); // Añadir el nuevo producto al pedido
     }
@@ -206,8 +208,9 @@ export default function InformacionDelPedido({
         const { status, data } = res.response;
         ManejarMensajesDeRespuesta({ status, data });
       } else {
-        const { status, data } = res;
-        ManejarMensajesDeRespuesta({ status, data });
+        toast.success("El pedido fue creado con éxito ✨");
+        establecerDetallesPedido(res.data);
+        establecerPaso(4);
       }
     } catch (error) {
       const { status, data } = error.response;
@@ -238,10 +241,6 @@ export default function InformacionDelPedido({
         className="InformacionDelPedido"
         onSubmit={GuardarInformacionDelProducto}
       >
-        <AgenciaSeleccionada
-          NombreAgencia={agencia?.NombreAgencia}
-          colSpan="Cuatro"
-        />
         <h1 className="InformacionDelPedido__Titulo">Información del pedido</h1>
         <span
           className="InformacionDelPedido__Campo"
@@ -505,6 +504,7 @@ export default function InformacionDelPedido({
         <div className="InformacionDelPedido__BotonPedido">
           <button>Agregar producto</button>
         </div>
+        <AgenciaSeleccionada NombreAgencia={agencia?.NombreAgencia} />
       </form>
       {pedido.length > 0 && (
         <section className="InformacionDelPedido__ListaProductos">

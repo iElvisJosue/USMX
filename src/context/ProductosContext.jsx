@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext } from "react";
-import { SolicitudObtenerProductosPorAgencia } from "../api/authProductos";
+import {
+  SolicitudRegistrarProducto,
+  SolicitudObtenerProductosPorAgencia,
+} from "../api/authProductos";
 
 export const ProductosContext = createContext();
 
@@ -15,6 +18,15 @@ export const useProductos = () => {
   return context;
 };
 export const ProveedorProductos = ({ children }) => {
+  const RegistrarProducto = async (data) => {
+    try {
+      const res = await SolicitudRegistrarProducto(data);
+      return res;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  };
   const ObtenerProductosPorAgencia = async (data) => {
     try {
       const res = await SolicitudObtenerProductosPorAgencia(data);
@@ -28,6 +40,7 @@ export const ProveedorProductos = ({ children }) => {
   return (
     <ProductosContext.Provider
       value={{
+        RegistrarProducto,
         ObtenerProductosPorAgencia,
       }}
     >

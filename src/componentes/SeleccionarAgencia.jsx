@@ -65,7 +65,7 @@ export default function SeleccionarAgencia({
     }
   };
 
-  if (cargandoAgencias) return <Cargando colSpan={"Seis"} />;
+  if (cargandoAgencias) return <Cargando />;
 
   return (
     <div className="SeleccionarAgencia">

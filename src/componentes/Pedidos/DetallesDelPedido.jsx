@@ -10,17 +10,24 @@ import useBuscarPedidosPorPaquete from "../../hooks/useBuscarPedidosPorPaquete";
 
 // IMPORTAMOS LAS AYUDAS
 import { FormatearFecha } from "../../helpers/FuncionesGenerales";
+import { HOST_PDF } from "../../helpers/Urls";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Pedidos/DetallesDelPedido.css";
 
-export default function DetallesDelPedido({ detallesPedido, establecerVista }) {
+export default function DetallesDelPedido({
+  detallesPedido,
+  establecerVista,
+  ReiniciarRealizarPedido,
+}) {
   const { CodigoRastreo, GuiaPedido } = detallesPedido;
   const [indicePedido, establecerIndicePedido] = useState(0);
   const { paquete, cargandoPaquete } = useBuscarPedidosPorPaquete({
     CodigoRastreo,
     GuiaPedido,
   });
+
+  console.log(paquete);
 
   const SiguientePedido = () => {
     if (indicePedido < paquete.length - 1) {
@@ -38,15 +45,28 @@ export default function DetallesDelPedido({ detallesPedido, establecerVista }) {
   return (
     <div className="DetallesDelPedido">
       <section className="DetallesDelPedido__Opciones">
-        <button
-          className="DetallesDelPedido__Opciones--Boton Regresar"
-          onClick={() => establecerVista(0)}
+        {ReiniciarRealizarPedido ? (
+          <button
+            className="DetallesDelPedido__Opciones--Boton Regresar"
+            onClick={() => ReiniciarRealizarPedido()}
+          >
+            <ion-icon name="repeat"></ion-icon>Realizar otro pedido
+          </button>
+        ) : (
+          <button
+            className="DetallesDelPedido__Opciones--Boton Regresar"
+            onClick={() => establecerVista(0)}
+          >
+            <ion-icon name="arrow-back"></ion-icon>Regresar
+          </button>
+        )}
+        <a
+          className="DetallesDelPedido__Opciones--Boton Imprimir"
+          href={`${HOST_PDF}/${paquete[indicePedido].TicketPedido}`}
+          target="_blank"
         >
-          <ion-icon name="arrow-back"></ion-icon>Regresar
-        </button>
-        <button className="DetallesDelPedido__Opciones--Boton Imprimir">
           <ion-icon name="print"></ion-icon>Imprimir
-        </button>
+        </a>
       </section>
       {paquete.length > 1 && (
         <section className="DetallesDelPedido__OtrosPedidos">

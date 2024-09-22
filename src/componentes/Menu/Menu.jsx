@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERías A USAR
 import { useState } from "react";
 
@@ -13,6 +12,7 @@ import useCerrarSesion from "../../hooks/useCerrarSesion";
 
 // IMPORTAMOS LAS AYUDAS
 import { OpcionesDelMenu } from "../../helpers/OpcionesDelMenu";
+import { HOST } from "../../helpers/Urls";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Menu/Menu.css";
@@ -27,8 +27,12 @@ export default function Menu() {
   return (
     <aside className={ClaseMenu}>
       <span className="Menu__Encabezado">
-        <img src="Logo-USMX.png" alt="Logo del menu" />
-        <h1>USMX</h1>
+        <img
+          src="Logo-USMX.png"
+          alt="Logo del menu"
+          onClick={() => (window.location.href = `${HOST}Bienvenida`)}
+        />
+        <a href={`${HOST}Bienvenida`}>USMX</a>
         <ion-icon
           name="close-circle"
           class="Menu__Encabezado--MostrarMenu"

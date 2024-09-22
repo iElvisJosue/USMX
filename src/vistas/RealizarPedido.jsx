@@ -14,6 +14,7 @@ import SeleccionarAgencia from "../componentes/SeleccionarAgencia";
 import InformacionDelRemitente from "../componentes/RealizarPedido/InformacionDelRemitente";
 import InformacionDelDestinatario from "../componentes/RealizarPedido/InformacionDelDestinatario";
 import InformacionDelPedido from "../componentes/RealizarPedido/InformacionDelPedido";
+import DetallesDelPedido from "../componentes/Pedidos/DetallesDelPedido";
 
 // IMPORTAMOS LAS AYUDAS
 import { LISTA_DE_PROGRESOS } from "../helpers/RealizarPedido/ListaDeProgreso";
@@ -28,6 +29,7 @@ export default function RealizarPedido() {
   const [remitente, establecerRemitente] = useState(null);
   const [destinatario, establecerDestinatario] = useState(null);
   const [pedido, establecerPedido] = useState([]);
+  const [detallesPedido, establecerDetallesPedido] = useState(null);
   const { usuario } = useGlobal();
 
   useEffect(() => {
@@ -40,6 +42,15 @@ export default function RealizarPedido() {
     );
     establecerAgencia(agencia);
     establecerPaso(1);
+  };
+
+  const ReiniciarRealizarPedido = () => {
+    establecerPaso(0);
+    establecerAgencia(null);
+    establecerRemitente(null);
+    establecerDestinatario(null);
+    establecerPedido([]);
+    establecerDetallesPedido(null);
   };
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
@@ -57,6 +68,9 @@ export default function RealizarPedido() {
     establecerProgreso,
     usuario,
     FuncionParaRealizar: EstablecerInformacionDeLaAgencia,
+    detallesPedido,
+    establecerDetallesPedido,
+    ReiniciarRealizarPedido,
   };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
@@ -65,6 +79,7 @@ export default function RealizarPedido() {
     1: InformacionDelRemitente,
     2: InformacionDelDestinatario,
     3: InformacionDelPedido,
+    4: DetallesDelPedido,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS

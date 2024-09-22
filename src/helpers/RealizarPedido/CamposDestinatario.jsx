@@ -1,12 +1,12 @@
 export const CamposDestinatario = [
   {
-    idCampo: "Nombre",
+    idCampo: "NombreDestinatario",
     iconoCampo: "person",
     tituloCampo: "Nombre",
-    nombreCampo: "Nombre",
+    nombreCampo: "NombreDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -20,13 +20,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "ApellidoPaterno",
+    idCampo: "ApellidoPaternoDestinatario",
     iconoCampo: "man",
     tituloCampo: "Apellido paterno",
-    nombreCampo: "ApellidoPaterno",
+    nombreCampo: "ApellidoPaternoDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -40,13 +40,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "ApellidoMaterno",
+    idCampo: "ApellidoMaternoDestinatario",
     iconoCampo: "woman",
     tituloCampo: "Apellido materno",
-    nombreCampo: "ApellidoMaterno",
+    nombreCampo: "ApellidoMaternoDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -60,13 +60,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "Telefono",
+    idCampo: "TelefonoCasaDestinatario",
     iconoCampo: "call",
     tituloCampo: "Teléfono casa",
-    nombreCampo: "Telefono",
+    nombreCampo: "TelefonoCasaDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
@@ -84,13 +84,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "Celular",
+    idCampo: "CelularDestinatario",
     iconoCampo: "phone-portrait",
     tituloCampo: "Celular",
-    nombreCampo: "Celular",
+    nombreCampo: "CelularDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
@@ -108,13 +108,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "Correo",
+    idCampo: "CorreoDestinatario",
     iconoCampo: "mail",
     tituloCampo: "Correo electrónico",
-    nombreCampo: "Correo",
+    nombreCampo: "CorreoDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
@@ -128,13 +128,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "Colonia",
+    idCampo: "ColoniaDestinatario",
     iconoCampo: "golf",
     tituloCampo: "Colonia",
-    nombreCampo: "Colonia",
+    nombreCampo: "ColoniaDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo Dos",
+    claseCampo: "RegistrarNuevoDestinatario__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -144,13 +144,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "MunicipioDelegacion",
+    idCampo: "MunicipioDelegacionDestinatario",
     iconoCampo: "navigate",
     tituloCampo: "Municipio o delegación",
-    nombreCampo: "MunicipioDelegacion",
+    nombreCampo: "MunicipioDelegacionDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       maxLength: {
         value: 100,
@@ -159,13 +159,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "CodigoPostal",
+    idCampo: "CodigoPostalDestinatario",
     iconoCampo: "pin",
     tituloCampo: "Código Postal",
-    nombreCampo: "CodigoPostal",
+    nombreCampo: "CodigoPostalDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
@@ -179,14 +179,14 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "Ciudad",
+    idCampo: "CiudadDestinatario",
     iconoCampo: "locate",
     tituloCampo: "Ciudad",
-    nombreCampo: "Ciudad",
+    nombreCampo: "CiudadDestinatario",
     placeholderCampo: "Escriba aquí...",
     // tipoCampo: "select",
     tipoCampo: "text",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -196,14 +196,14 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "Estado",
+    idCampo: "EstadoDestinatario",
     iconoCampo: "location",
     tituloCampo: "Estado",
-    nombreCampo: "Estado",
+    nombreCampo: "EstadoDestinatario",
     placeholderCampo: "Escriba aquí...",
     // tipoCampo: "select",
     tipoCampo: "text",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -213,13 +213,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "Direccion",
+    idCampo: "DireccionDestinatario",
     iconoCampo: "trail-sign",
     tituloCampo: "Dirección",
-    nombreCampo: "Direccion",
+    nombreCampo: "DireccionDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo Dos",
+    claseCampo: "RegistrarNuevoDestinatario__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -229,13 +229,13 @@ export const CamposDestinatario = [
     },
   },
   {
-    idCampo: "Referencia",
+    idCampo: "ReferenciaDestinatario",
     iconoCampo: "document-text",
     tituloCampo: "Referencia",
-    nombreCampo: "Referencia",
+    nombreCampo: "ReferenciaDestinatario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelDestinatario__Campo",
+    claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       maxLength: {
         value: 1000,
