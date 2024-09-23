@@ -13,6 +13,10 @@
   justify-content: flex-start;
   gap: 10px;
 }
+.DetallesDelPedido__Opciones--Botones {
+  display: flex;
+  gap: 5px;
+}
 .DetallesDelPedido__OtrosPedidos {
   grid-column: 1 / -1;
 
@@ -92,13 +96,21 @@
   background-color: transparent;
   color: var(--ColorRojo);
 }
-.DetallesDelPedido__Opciones--Boton.Imprimir:hover {
+.DetallesDelPedido__Opciones--Boton.Ticket,
+.DetallesDelPedido__Opciones--Boton.PaqueteTickets {
+  border: 2px solid var(--ColorAzul);
+  background-color: var(--ColorAzul);
+}
+.DetallesDelPedido__Opciones--Boton.Ticket:hover,
+.DetallesDelPedido__Opciones--Boton.PaqueteTickets:hover {
   background-color: transparent;
   color: var(--ColorAzul);
 }
-.DetallesDelPedido__Opciones--Boton.Imprimir {
-  border: 2px solid var(--ColorAzul);
-  background-color: var(--ColorAzul);
+.DetallesDelPedido__Opciones--Boton.Ticket:hover::after {
+  content: "Ticket";
+}
+.DetallesDelPedido__Opciones--Boton.PaqueteTickets:hover::after {
+  content: "Paquete de tickets";
 }
 .DetallesDelPedido__Opciones__Titulo {
   display: flex;

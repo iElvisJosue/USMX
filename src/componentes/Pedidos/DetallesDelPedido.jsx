@@ -58,13 +58,24 @@ export default function DetallesDelPedido({
             <ion-icon name="arrow-back"></ion-icon>Regresar
           </button>
         )}
-        <a
-          className="DetallesDelPedido__Opciones--Boton Imprimir"
-          href={`${HOST_PDF}/${paquete[indicePedido].TicketPedido}`}
-          target="_blank"
-        >
-          <ion-icon name="print"></ion-icon>Imprimir
-        </a>
+        <span className="DetallesDelPedido__Opciones--Botones">
+          <a
+            className="DetallesDelPedido__Opciones--Boton Ticket"
+            href={`${HOST_PDF}/${paquete[indicePedido].TicketPedido}`}
+            target="_blank"
+          >
+            <ion-icon name="ticket"></ion-icon>
+          </a>
+          {paquete.length > 1 && (
+            <a
+              className="DetallesDelPedido__Opciones--Boton PaqueteTickets"
+              href={`${HOST_PDF}/${paquete[indicePedido].PaqueteTicketsPedido}`}
+              target="_blank"
+            >
+              <ion-icon name="cube"></ion-icon>
+            </a>
+          )}
+        </span>
       </section>
       {paquete.length > 1 && (
         <section className="DetallesDelPedido__OtrosPedidos">
