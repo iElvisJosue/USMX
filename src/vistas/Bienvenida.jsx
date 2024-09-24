@@ -41,6 +41,7 @@ export default function Bienvenida() {
           <p>Gestiona tus envíos de paquetería de manera rápida y sencilla.</p>
           <p>¡Comienza ahora a rastrear y administrar tus paquetes!</p>
         </section>
+        <hr className="Bienvenida__Separador" />
         <section className="Bienvenida__UltimasGuias">
           <h1 className="Bienvenida__UltimasGuias--Titulo">
             Últimos 10 pedidos realizados
@@ -84,6 +85,7 @@ export default function Bienvenida() {
                         .split("-")
                         .reverse()
                         .join("/")}{" "}
+                      <br />
                       {HoraCreacionPedido}
                     </small>
                   </div>
