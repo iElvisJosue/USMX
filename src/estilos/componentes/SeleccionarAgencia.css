@@ -129,7 +129,7 @@
   background-color: var(--ColorPrincipal);
   color: var(--ColorSecundario);
   cursor: pointer;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 .SeleccionarAgencia__TextoPaginas {
   grid-column: 1 / -1;

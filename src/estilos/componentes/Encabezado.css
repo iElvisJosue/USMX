@@ -4,7 +4,7 @@
   padding: 0 10px;
   background-color: var(--ColorSecundario);
   grid-area: Encabezado;
-  border-bottom: 1px solid var(--ColorBlanco);
+  /* border-bottom: 1px solid var(--ColorBlanco); */
 
   display: flex;
   align-items: center;

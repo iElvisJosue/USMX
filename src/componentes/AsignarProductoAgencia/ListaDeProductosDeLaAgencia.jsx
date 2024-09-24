@@ -128,7 +128,7 @@ export default function ListaDeProductosDeLaAgencia({
           className="ListaDeProductosDeLaAgencia__Regresar__Boton"
           onClick={() => establecerPaso(0)}
         >
-          <ion-icon name="arrow-back"></ion-icon> Regresar
+          <ion-icon name="arrow-back"></ion-icon>
         </button>
         <small className="ListaDeProductosDeLaAgencia__Regresar__Usuario">
           Agencia seleccionada: <b>{agencia.NombreAgencia.toUpperCase()}</b>

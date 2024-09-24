@@ -63,6 +63,7 @@
 .ListaDePedidos__Cuerpo__Tabla {
   width: 100%;
   table-layout: auto;
+  border-collapse: collapse;
 }
 .ListaDePedidos__Cuerpo__Tabla__Encabezado tr th {
   background-color: var(--ColorAzul);
@@ -88,6 +89,9 @@
   font-size: 14px;
   font-weight: bold;
   text-align: center;
+  border-right: 2px solid var(--ColorSecundario);
+  border-bottom: 2px solid var(--ColorSecundario);
+  border-left: 2px solid var(--ColorSecundario);
 }
 .ListaDePedidos__Cuerpo__Tabla__Cuerpo hr {
   height: 2px;
@@ -107,8 +111,8 @@
   transition: 0.3s ease-in-out all;
 }
 .ListaDePedidos__Cuerpo__Tabla__Cuerpo__VerDetalles:hover {
-  background-color: var(--ColorBlanco);
-  color: var(--ColorPrincipal);
+  background-color: transparent;
+  color: var(--ColorAzul);
 }
 @media (max-width: 1000px) {
   .ListaDePedidos__Buscar {

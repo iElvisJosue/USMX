@@ -1,13 +1,13 @@
 export const IniciarSesionCampos = [
   {
-    iconoCampo: "person-outline",
+    iconoCampo: "person",
     tipoCampo: "text",
     nombreCampo: "Usuario",
     placeholderCampo: "Usuario",
     mensajeCampo: "¡Este campo es obligatorio! ⚠️",
   },
   {
-    iconoCampo: "lock-closed-outline",
+    iconoCampo: "lock-closed",
     tipoCampo: "password",
     nombreCampo: "Contraseña",
     placeholderCampo: "Contraseña",

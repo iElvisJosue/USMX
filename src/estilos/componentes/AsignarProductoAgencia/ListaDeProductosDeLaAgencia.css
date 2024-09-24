@@ -15,7 +15,6 @@
   gap: 10px;
 }
 .ListaDeProductosDeLaAgencia__Regresar__Boton {
-  width: 150px;
   height: 50px;
   border-radius: 15px;
   font-size: 17px;
@@ -25,6 +24,7 @@
   border: 2px solid var(--ColorRojo);
   background-color: var(--ColorRojo);
   cursor: pointer;
+  padding: 0 10px;
 
   display: flex;
   align-items: center;
@@ -37,6 +37,9 @@
 .ListaDeProductosDeLaAgencia__Regresar__Boton:hover {
   background-color: transparent;
   color: var(--ColorRojo);
+}
+.ListaDeProductosDeLaAgencia__Regresar__Boton:hover::after {
+  content: "Regresar";
 }
 .ListaDeProductosDeLaAgencia__Regresar__Usuario {
   font-style: italic;
@@ -164,10 +167,11 @@
   position: relative;
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
-  color: var(--ColorSecundario);
+  color: var(--ColorBlanco);
 }
 .ListaDeProductosDeLaAgencia__Agencia.Asignadas:hover {
   transform: scale(1);
+  cursor: initial;
 }
 .ListaDeProductosDeLaAgencia__Agencia__Eliminar {
   position: absolute;
@@ -218,9 +222,9 @@
 .ListaDeProductosDeLaAgencia__Agencia:hover {
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
-  color: var(--ColorSecundario);
+  color: var(--ColorBlanco);
   cursor: pointer;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 .ListaDeProductosDeLaAgencia__TextoPaginas {
   grid-column: 1 / -1;

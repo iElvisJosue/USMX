@@ -3,9 +3,7 @@ import { useState } from "react";
 export default function useContraseña() {
   const [mostrarContraseña, establecerMostrarContraseña] = useState(false);
 
-  const iconInputPassword = mostrarContraseña
-    ? "eye-off-outline"
-    : "eye-outline";
+  const iconInputPassword = mostrarContraseña ? "eye-off" : "eye";
 
   const cambiarCampoDeContraseña = () => {
     establecerMostrarContraseña(!mostrarContraseña);

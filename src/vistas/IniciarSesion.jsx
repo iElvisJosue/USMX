@@ -98,7 +98,7 @@ export default function IniciarSesion() {
           )
         )}
         <button type="submit" className="IniciarSesion__Form--BotonEnviar">
-          Iniciar Sesión
+          Iniciar Sesión <ion-icon name="log-in"></ion-icon>
         </button>
       </form>
       <Toaster richColors position="top-right" closeButton />

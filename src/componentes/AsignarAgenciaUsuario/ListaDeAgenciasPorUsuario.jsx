@@ -126,7 +126,7 @@ export default function ListaDeAgenciasPorUsuario({
           className="ListaDeAgenciasPorUsuario__Regresar__Boton"
           onClick={() => establecerVista(0)}
         >
-          <ion-icon name="arrow-back"></ion-icon> Regresar
+          <ion-icon name="arrow-back"></ion-icon>
         </button>
         <small className="ListaDeAgenciasPorUsuario__Regresar__Usuario">
           Usuario seleccionado:{" "}

@@ -93,6 +93,13 @@
   color: var(--ColorBlanco);
   font-weight: bold;
   transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.IniciarSesion__Form--BotonEnviar ion-icon {
+  font-size: 20px;
 }
 .IniciarSesion__Form--BotonEnviar:hover {
   cursor: pointer;
@@ -105,6 +112,7 @@
     display: initial;
   }
   .IniciarSesion__Form {
+    border-radius: 0;
     width: 100%;
     min-height: 100vh;
     height: auto;

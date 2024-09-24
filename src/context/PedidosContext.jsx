@@ -6,6 +6,7 @@ import {
   SolicitudBuscarPedidosPorPaquete,
   SolicitudBuscarRemitentesPorAgencia,
   SolicitudBuscarDestinatariosPorAgencia,
+  SolicitudBuscarUltimosDiezPedidos,
 } from "../api/authPedidos";
 
 export const PedidosContext = createContext();
@@ -59,6 +60,14 @@ export const ProveedorPedidos = ({ children }) => {
       return error;
     }
   };
+  const BuscarUltimosDiezPedidos = async () => {
+    try {
+      const res = await SolicitudBuscarUltimosDiezPedidos();
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <PedidosContext.Provider
@@ -68,6 +77,7 @@ export const ProveedorPedidos = ({ children }) => {
         BuscarPedidosPorPaquete,
         BuscarRemitentesPorAgencia,
         BuscarDestinatariosPorAgencia,
+        BuscarUltimosDiezPedidos,
       }}
     >
       {children}

@@ -15,7 +15,6 @@
   gap: 10px;
 }
 .ListaDeAgenciasPorUsuario__Regresar__Boton {
-  width: 150px;
   height: 50px;
   border-radius: 15px;
   font-size: 17px;
@@ -25,6 +24,7 @@
   border: 2px solid var(--ColorRojo);
   background-color: var(--ColorRojo);
   cursor: pointer;
+  padding: 0 10px;
 
   display: flex;
   align-items: center;
@@ -37,6 +37,9 @@
 .ListaDeAgenciasPorUsuario__Regresar__Boton:hover {
   background-color: transparent;
   color: var(--ColorRojo);
+}
+.ListaDeAgenciasPorUsuario__Regresar__Boton:hover::after {
+  content: "Regresar";
 }
 .ListaDeAgenciasPorUsuario__Regresar__Usuario {
   font-style: italic;
@@ -171,6 +174,7 @@
   background-color: var(--ColorVerde);
   color: var(--ColorSecundario);
   transform: scale(1);
+  cursor: initial;
 }
 .ListaDeAgenciasPorUsuario__Agencia__Eliminar {
   position: absolute;
@@ -223,7 +227,7 @@
   background-color: var(--ColorVerde);
   color: var(--ColorSecundario);
   cursor: pointer;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 .ListaDeAgenciasPorUsuario__TextoPaginas {
   grid-column: 1 / -1;

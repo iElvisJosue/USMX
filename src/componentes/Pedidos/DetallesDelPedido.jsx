@@ -45,17 +45,17 @@ export default function DetallesDelPedido({
       <section className="DetallesDelPedido__Opciones">
         {ReiniciarRealizarPedido ? (
           <button
-            className="DetallesDelPedido__Opciones--Boton Regresar"
+            className="DetallesDelPedido__Opciones--Boton OtroPedido"
             onClick={() => ReiniciarRealizarPedido()}
           >
-            <ion-icon name="repeat"></ion-icon>Realizar otro pedido
+            <ion-icon name="repeat"></ion-icon>
           </button>
         ) : (
           <button
             className="DetallesDelPedido__Opciones--Boton Regresar"
             onClick={() => establecerVista(0)}
           >
-            <ion-icon name="arrow-back"></ion-icon>Regresar
+            <ion-icon name="arrow-back"></ion-icon>
           </button>
         )}
         <span className="DetallesDelPedido__Opciones--Botones">

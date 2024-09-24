@@ -13,6 +13,9 @@
   justify-content: flex-start;
   gap: 10px;
 }
+.DetallesDelPedido__Opciones {
+  margin-top: 30px;
+}
 .DetallesDelPedido__Opciones--Botones {
   display: flex;
   gap: 5px;
@@ -88,13 +91,21 @@
 .DetallesDelPedido__Opciones--Boton ion-icon {
   font-size: 20px;
 }
-.DetallesDelPedido__Opciones--Boton.Regresar {
+.DetallesDelPedido__Opciones--Boton.Regresar,
+.DetallesDelPedido__Opciones--Boton.OtroPedido {
   border: 2px solid var(--ColorRojo);
   background-color: var(--ColorRojo);
 }
-.DetallesDelPedido__Opciones--Boton.Regresar:hover {
+.DetallesDelPedido__Opciones--Boton.Regresar:hover,
+.DetallesDelPedido__Opciones--Boton.OtroPedido:hover {
   background-color: transparent;
   color: var(--ColorRojo);
+}
+.DetallesDelPedido__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.DetallesDelPedido__Opciones--Boton.OtroPedido:hover::after {
+  content: "Realizar otro pedido";
 }
 .DetallesDelPedido__Opciones--Boton.Ticket,
 .DetallesDelPedido__Opciones--Boton.PaqueteTickets {

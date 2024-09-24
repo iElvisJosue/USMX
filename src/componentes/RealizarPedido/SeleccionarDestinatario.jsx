@@ -108,7 +108,7 @@ export default function SeleccionarDestinatario({
                 className="SeleccionarDestinatario__BotonesDePaginacion--Boton Anterior"
                 onClick={MostrarVeinticincoMenos}
               >
-                <ion-icon name="arrow-back-outline"></ion-icon>
+                <ion-icon name="arrow-back"></ion-icon>
               </button>
             )}
             {indiceFinal < destinatarios.length && (
@@ -116,7 +116,7 @@ export default function SeleccionarDestinatario({
                 className="SeleccionarDestinatario__BotonesDePaginacion--Boton Siguiente"
                 onClick={MostrarVeinticincoMas}
               >
-                <ion-icon name="arrow-forward-outline"></ion-icon>
+                <ion-icon name="arrow-forward"></ion-icon>
               </button>
             )}
           </div>
@@ -130,7 +130,7 @@ export default function SeleccionarDestinatario({
                   EstablecerElDestinatarioSeleccionado(destinatario)
                 }
               >
-                <ion-icon name="person-circle-outline"></ion-icon>
+                <ion-icon name="person-circle"></ion-icon>
                 <p>
                   {destinatario.NombreDestinatario}{" "}
                   {destinatario.ApellidoPaternoDestinatario}{" "}
