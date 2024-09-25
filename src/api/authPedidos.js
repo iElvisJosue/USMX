@@ -18,3 +18,6 @@ export const SolicitudBuscarDestinatariosPorAgencia = (data) =>
 // PETICIÓN PARA BUSCAR LOS ÚLTIMOS 10 PEDIDOS REALIZADO
 export const SolicitudBuscarUltimosDiezPedidos = () =>
   axios.get("/pedidos/BuscarUltimosDiezPedidos");
+// PETICIÓN PARA BUSCAR LOS MOVIMIENTOS DE UN PEDIDO
+export const SolicitudBuscarMovimientosDeUnPedido = (data) =>
+  axios.post("/pedidos/BuscarMovimientosDeUnPedido", data);

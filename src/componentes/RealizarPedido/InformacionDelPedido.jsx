@@ -100,11 +100,11 @@ export default function InformacionDelPedido({
       );
     }
     if (Number(ValorAsegurado) > 500) {
-      return toast.error("El valor asegurado no puede ser mayor a $500 ❌");
+      return toast.error("El valor asegurado no puede ser mayor a $500.00 ❌");
     }
     if (Number(Peso) > Number(productoSeleccionado.PesoMaximoProducto)) {
       return toast.error(
-        "El peso no puede ser mayor al máximo permitido para esta agencia ❌"
+        `El peso no puede ser mayor a ${productoSeleccionado.PesoMaximoProducto} ❌`
       );
     }
     const cantidadDeProductos = Number(data.Cantidad);

@@ -181,6 +181,53 @@
   justify-content: flex-start;
   gap: 10px;
 }
+.DetallesDelPedido__Detalles.Movimiento {
+  grid-column: 1 / -1;
+  background-color: var(--ColorBlanco);
+  padding: 0;
+
+  flex-direction: column;
+  gap: 10px;
+}
+.DetallesDelPedido__Detalles__Movimiento--Encabezado {
+  width: 100%;
+  border-radius: 15px;
+  background-color: var(--ColorSecundario);
+  padding: 0;
+
+  display: flex;
+}
+
+.DetallesDelPedido__Detalles__Movimiento--Encabezado.Creado,
+.DetallesDelPedido__Detalles__Movimiento--Encabezado.Pagado,
+.DetallesDelPedido__Detalles__Movimiento--Encabezado.Entregado {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.DetallesDelPedido__Detalles__Movimiento--Encabezado.Pendiente {
+  background-color: var(--ColorNaranja);
+  color: var(--ColorBlanco);
+}
+.DetallesDelPedido__Detalles__Movimiento--Encabezado.Cancelado {
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+}
+.DetallesDelPedido__Detalles__Movimiento--Encabezado.Camino {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+}
+.DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion {
+  width: 100%;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.DetallesDelPedido__Detalles__Movimiento--Encabezado ion-icon {
+  font-size: 25px;
+}
 .DetallesDelPedido__Detalles__Encabezado {
   display: flex;
   flex-direction: column;
@@ -218,5 +265,13 @@
   }
   .DetallesDelPedido__Opciones--Boton ion-icon {
     font-size: 16px;
+  }
+}
+@media (width <= 450px) {
+  .DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion {
+    font-size: 12px;
+  }
+  .DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion ion-icon {
+    font-size: 20px;
   }
 }

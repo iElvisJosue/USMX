@@ -7,6 +7,7 @@ import Cargando from "../Cargando";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarPedidosPorPaquete from "../../hooks/useBuscarPedidosPorPaquete";
+import useBuscarMovimientosDeUnPedido from "../../hooks/useBuscarMovimientosDeUnPedido";
 
 // IMPORTAMOS LAS AYUDAS
 import { FormatearFecha } from "../../helpers/FuncionesGenerales";
@@ -27,6 +28,12 @@ export default function DetallesDelPedido({
     GuiaPedido,
   });
 
+  const { movimientos, cargandoMovimientos } = useBuscarMovimientosDeUnPedido(
+    paquete?.[indicePedido]?.GuiaPedido // Usa acceso condicional por si el paquete o el índice son indefinidos
+  );
+
+  console.log(movimientos);
+
   const SiguientePedido = () => {
     if (indicePedido < paquete.length - 1) {
       establecerIndicePedido(indicePedido + 1);
@@ -40,6 +47,7 @@ export default function DetallesDelPedido({
 
   if (cargandoPaquete) return <Cargando />;
 
+  // LA FUNCIÓN DE ReiniciarRealizarPedido ES PARA EL COMPONENTE DE "REALIZAR PEDIDO"
   return (
     <div className="DetallesDelPedido">
       <section className="DetallesDelPedido__Opciones">
@@ -107,7 +115,7 @@ export default function DetallesDelPedido({
         </section>
       )}
       <section className="DetallesDelPedido__Seccion">
-        <img src="LogoEnvio.png" alt="" />
+        <img src="LogoEnvio.png" alt="Logo Envio" />
         <h1>Detalles de envío</h1>
       </section>
       <div className="DetallesDelPedido__Detalles Folio">
@@ -218,7 +226,7 @@ export default function DetallesDelPedido({
         )}
       </div>
       <section className="DetallesDelPedido__Seccion">
-        <img src="LogoPaquete.png" alt="" />
+        <img src="LogoPaquete.png" alt="Logo Paquete" />
         <h1>Detalles del paquete</h1>
       </section>
       <div className="DetallesDelPedido__Detalles Largo">
@@ -251,7 +259,7 @@ export default function DetallesDelPedido({
         {paquete[indicePedido].ContenidoPedido}
       </div>
       <section className="DetallesDelPedido__Seccion">
-        <img src="LogoImportes.png" alt="" />
+        <img src="LogoImportes.png" alt="Logo Importes" />
         <h1>Importes</h1>
       </section>
       <div className="DetallesDelPedido__Detalles ValorDeclarado">
@@ -302,6 +310,56 @@ export default function DetallesDelPedido({
           style: "currency",
           currency: "USD",
         })}
+      </div>
+      <section className="DetallesDelPedido__Seccion">
+        <img src="LogoRastreo.png" alt="Logo Rastreo" />
+        <h1>Movimientos del pedido</h1>
+      </section>
+      <div className="DetallesDelPedido__Detalles Movimiento">
+        {cargandoMovimientos ? (
+          <Cargando />
+        ) : (
+          <>
+            <span className="DetallesDelPedido__Detalles__Movimiento--Encabezado">
+              <p className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
+                <ion-icon name="bag-handle"></ion-icon> <b>Estado del pedido</b>
+              </p>
+              <p className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
+                <ion-icon name="car"></ion-icon> <b>Movimiento</b>
+              </p>
+              <p className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
+                <ion-icon name="calendar"></ion-icon> <b>Fecha y hora</b>
+              </p>
+              <p className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
+                <ion-icon name="locate"></ion-icon> <b>Origen</b>
+              </p>
+            </span>
+
+            {movimientos.map((movimiento, index) => (
+              <span
+                key={index}
+                className={`DetallesDelPedido__Detalles__Movimiento--Encabezado ${movimiento.EstadoMovimiento}`}
+              >
+                <b className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
+                  {movimiento.EstadoMovimiento.toUpperCase()}
+                </b>
+                <b className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
+                  {movimiento.DetallesMovimiento}
+                </b>
+                <b className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
+                  {movimiento.FechaCreacionMovimiento.slice(0, 10)
+                    .split("-")
+                    .reverse()
+                    .join("/")}{" "}
+                  {movimiento.HoraCreacionMovimiento}
+                </b>
+                <b className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
+                  {movimiento.OrigenMovimiento}
+                </b>
+              </span>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
