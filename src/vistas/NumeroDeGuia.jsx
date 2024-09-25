@@ -37,7 +37,7 @@ export default function NumeroDeGuia() {
             <hr className="NumeroDeGuia__Separador" />
             <p className="NumeroDeGuia__Ticket--Detalles">
               <ion-icon name="paper-plane"></ion-icon> <br />
-              Remitetente <br />{" "}
+              Remitente <br />{" "}
               <b>
                 {informacionGuia[0].NombreRemitente}{" "}
                 {informacionGuia[0].ApellidosRemitente}
