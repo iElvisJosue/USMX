@@ -32,6 +32,12 @@ a {
 }
 body {
   background: var(--ColorBlanco);
+}
+body,
+input,
+select,
+button,
+a {
   font-family: "NotoSans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
