@@ -9,6 +9,7 @@ import {
   SolicitudBuscarUltimosDiezPedidos,
   SolicitudBuscarMovimientosDeUnPedido,
   SolicitudBuscarPedidoPorNumeroDeGuia,
+  SolicitudBuscarPedidosPorFecha,
 } from "../api/authPedidos";
 
 export const PedidosContext = createContext();
@@ -87,6 +88,15 @@ export const ProveedorPedidos = ({ children }) => {
     }
   };
 
+  const BuscarPedidosPorFecha = async (data) => {
+    try {
+      const res = await SolicitudBuscarPedidosPorFecha(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+
   return (
     <PedidosContext.Provider
       value={{
@@ -98,6 +108,7 @@ export const ProveedorPedidos = ({ children }) => {
         BuscarUltimosDiezPedidos,
         BuscarMovimientosDeUnPedido,
         BuscarPedidoPorNumeroDeGuia,
+        BuscarPedidosPorFecha,
       }}
     >
       {children}
