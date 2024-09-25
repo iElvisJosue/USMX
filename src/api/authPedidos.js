@@ -21,3 +21,6 @@ export const SolicitudBuscarUltimosDiezPedidos = () =>
 // PETICIÓN PARA BUSCAR LOS MOVIMIENTOS DE UN PEDIDO
 export const SolicitudBuscarMovimientosDeUnPedido = (data) =>
   axios.post("/pedidos/BuscarMovimientosDeUnPedido", data);
+// PETICIÓN PARA BUSCAR PEDIDOS POR NUMERO DE GUIA
+export const SolicitudBuscarPedidoPorNumeroDeGuia = (GuiaPedido) =>
+  axios.get(`/pedidos/BuscarPedidoPorNumeroDeGuia/${GuiaPedido}`);

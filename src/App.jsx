@@ -37,7 +37,7 @@ export default function App() {
                     <Route path="/" element={<IniciarSesion />} />
                     {/* TERMINAN LAS RUTAS SIN PROTECCIÓN */}
                     <Route
-                      path="/NumeroDeGuia/:idPedido"
+                      path="/NumeroDeGuia/:GuiaPedido"
                       element={<NumeroDeGuia />}
                     />
                     {/* RUTAS PROTEGIDAS PARA USUARIOS LOGUEADOS */}

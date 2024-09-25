@@ -3,6 +3,10 @@
   font-family: "NotoSans";
   src: url("../public/NotoSans.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Ticketing";
+  src: url("../public/Ticketing.ttf") format("truetype");
+}
 
 /* CONFIGURACIÓN GENERAL */
 :root {
@@ -21,9 +25,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "NotoSans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
 }
 a {
   text-decoration: none;
@@ -31,6 +32,9 @@ a {
 }
 body {
   background: var(--ColorBlanco);
+  font-family: "NotoSans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 input {
   /* accent-color: var(--MainYellow); */
