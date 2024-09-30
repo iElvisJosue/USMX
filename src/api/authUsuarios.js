@@ -24,3 +24,6 @@ export const SolicitudBuscarUsuariosParaAdministrarPorFiltro = (data) =>
 // SOLICITUD PARA ACTIVAR O DESACTIVAR UN USUARIO
 export const SolicitudActualizarEstadoUsuario = (data) =>
   axios.put("/usuarios/ActualizarEstadoUsuario", data);
+// SOLICITUD PARA ACTUALIZAR LA INFORMACION DE UN USUARIO
+export const SolicitudActualizarInformacionDeUnUsuario = (data) =>
+  axios.put("/usuarios/ActualizarInformacionDeUnUsuario", data);

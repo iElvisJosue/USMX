@@ -28,7 +28,6 @@ export default function ModalConfirmacion({
   const ClaseTextoModal = Activar
     ? "ModalConfirmacion__Contenido--Texto Activar"
     : "ModalConfirmacion__Contenido--Texto Desactivar";
-  const TextoMensaje = Activar ? "activado" : "desactivado";
   const EstadoUsuarioParaBD = Activar ? "Activo" : "Desactivado";
 
   const ActivarDesactivarUsuario = async () => {
@@ -69,8 +68,9 @@ export default function ModalConfirmacion({
           <br />
           <br />
           <i>
-            En caso de ser {TextoMensaje} por error, no tienes porque
-            preocuparte, esta acción puede ser revertida en cualquier momento.
+            {Activar
+              ? `El usuario se activara una vez confirmada esta acción, por lo cual, el usuario ${infUsuario.Usuario} tendrá acceso al sistema nuevamente.`
+              : `El usuario se desactivara una vez confirmada esta opción, por lo cual, el usuario ${infUsuario.Usuario} no tendrá acceso al sistema hasta que vuelva a ser activado.`}
           </i>
         </small>
         <button

@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import MensajeGeneral from "../MensajeGeneral";
 import Cargando from "../Cargando";
+import MensajeGeneral from "../MensajeGeneral";
 import ModalConfirmacion from "./ModalConfirmacion";
 
 // IMPORTAMOS LOS HOOKS A USAR
@@ -13,9 +13,9 @@ import useBuscarUsuariosParaAdministrarPorFiltro from "../../hooks/useBuscarUsua
 import usePaginacion from "../../hooks/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/AdministrarUsuarios/ListaAdministrarUsuarios.css";
+import "../../estilos/componentes/AdministrarUsuarios/ListaDeUsuarios.css";
 
-export default function ListaAdministrarUsuarios({
+export default function ListaDeUsuarios({
   establecerVista,
   establecerInformacionDelUsuario,
 }) {
@@ -88,11 +88,18 @@ export default function ListaAdministrarUsuarios({
       `El usuario ${infUsuario.Usuario.toUpperCase()} fue seleccionado con éxito ✨`
     );
   };
+  const EstablecerInformacionDelUsuarioAEditar = (infUsuario) => {
+    establecerInformacionDelUsuario(infUsuario);
+    establecerVista(2);
+    toast.success(
+      `El usuario ${infUsuario.Usuario.toUpperCase()} fue seleccionado con éxito ✨`
+    );
+  };
 
   if (cargandoUsuarios) return <Cargando />;
 
   return (
-    <div className="ListaAdministrarUsuarios">
+    <div className="ListaDeUsuarios">
       {mostrarModalConfirmacion && (
         <ModalConfirmacion
           Activar={activar}
@@ -106,44 +113,44 @@ export default function ListaAdministrarUsuarios({
           }
         />
       )}
-      <h1 className="ListaAdministrarUsuarios__Titulo">Administrar Usuarios</h1>
-      <span className="ListaAdministrarUsuarios__Buscar">
+      <h1 className="ListaDeUsuarios__Titulo">Administrar Usuarios</h1>
+      <span className="ListaDeUsuarios__Buscar">
         <input
           type="text"
           placeholder="Buscar usuario"
           onChange={obtenerUsuarios}
         />
-        <span className="ListaAdministrarUsuarios__Buscar__Lupa">
+        <span className="ListaDeUsuarios__Buscar__Lupa">
           <ion-icon name="search"></ion-icon>
         </span>
       </span>
       {usuarios.length > 0 ? (
         <>
-          <small className="ListaAdministrarUsuarios__TextoResultados">
+          <small className="ListaDeUsuarios__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
             {usuarios.length} resultados{" "}
           </small>
-          <h2 className="ListaAdministrarUsuarios__Clasificacion">
+          <h2 className="ListaDeUsuarios__Clasificacion">
             Clasificación de perfiles por colores:
           </h2>
-          <span className="ListaAdministrarUsuarios__Colores">
-            <p className="ListaAdministrarUsuarios__Clasificacion--Texto Usuario">
+          <span className="ListaDeUsuarios__Colores">
+            <p className="ListaDeUsuarios__Clasificacion--Texto Usuario">
               <ion-icon name="person-circle"></ion-icon> Usuario
             </p>
-            <p className="ListaAdministrarUsuarios__Clasificacion--Texto Moderador">
+            <p className="ListaDeUsuarios__Clasificacion--Texto Moderador">
               <ion-icon name="glasses"></ion-icon> Moderador
             </p>
-            <p className="ListaAdministrarUsuarios__Clasificacion--Texto Administrador">
+            <p className="ListaDeUsuarios__Clasificacion--Texto Administrador">
               <ion-icon name="shield-checkmark"></ion-icon> Administrador
             </p>
-            <p className="ListaAdministrarUsuarios__Clasificacion--Texto Desactivado">
+            <p className="ListaDeUsuarios__Clasificacion--Texto Desactivado">
               <ion-icon name="ban"></ion-icon> Desactivado
             </p>
           </span>
-          <div className="ListaAdministrarUsuarios__BotonesDePaginacion">
+          <div className="ListaDeUsuarios__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
               <button
-                className="ListaAdministrarUsuarios__BotonesDePaginacion--Boton Anterior"
+                className="ListaDeUsuarios__BotonesDePaginacion--Boton Anterior"
                 onClick={MostrarVeinticincoMenos}
               >
                 <ion-icon name="arrow-back-outline"></ion-icon>
@@ -151,7 +158,7 @@ export default function ListaAdministrarUsuarios({
             )}
             {indiceFinal < usuarios.length && (
               <button
-                className="ListaAdministrarUsuarios__BotonesDePaginacion--Boton Siguiente"
+                className="ListaDeUsuarios__BotonesDePaginacion--Boton Siguiente"
                 onClick={MostrarVeinticincoMas}
               >
                 <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -161,15 +168,15 @@ export default function ListaAdministrarUsuarios({
           {usuarios.slice(indiceInicial, indiceFinal).map((infUsuario) =>
             infUsuario.EstadoUsuario === "Activo" ? (
               <section
-                className={`ListaAdministrarUsuarios__Usuario ${infUsuario.Permisos}`}
+                className={`ListaDeUsuarios__Usuario ${infUsuario.Permisos}`}
                 key={infUsuario.id}
               >
                 {IconosPorTipoDeUsuario[infUsuario.Permisos]}
                 <p>{infUsuario.Usuario}</p>
                 {infUsuario.Permisos !== "Administrador" && (
-                  <span className="ListaAdministrarUsuarios__Usuario__Opciones">
+                  <span className="ListaDeUsuarios__Usuario__Opciones">
                     <button
-                      className={`ListaAdministrarUsuarios__Usuario__Opciones--Boton ${infUsuario.Permisos}`}
+                      className={`ListaDeUsuarios__Usuario__Opciones--Boton ${infUsuario.Permisos}`}
                       title="Administrar Agencias"
                       onClick={() =>
                         EstablecerInformacionDelUsuarioSeleccionado(infUsuario)
@@ -180,15 +187,18 @@ export default function ListaAdministrarUsuarios({
                       </p>
                     </button>
                     <button
-                      className={`ListaAdministrarUsuarios__Usuario__Opciones--Boton ${infUsuario.Permisos}`}
+                      className={`ListaDeUsuarios__Usuario__Opciones--Boton ${infUsuario.Permisos}`}
                       title="Editar usuario"
+                      onClick={() =>
+                        EstablecerInformacionDelUsuarioAEditar(infUsuario)
+                      }
                     >
                       <p>
                         <ion-icon name="create"></ion-icon>
                       </p>
                     </button>
                     <button
-                      className={`ListaAdministrarUsuarios__Usuario__Opciones--Boton ${infUsuario.Permisos}`}
+                      className={`ListaDeUsuarios__Usuario__Opciones--Boton ${infUsuario.Permisos}`}
                       onClick={() => MostrarModalDesactivar(infUsuario)}
                       title="Desactivar usuario"
                     >
@@ -201,14 +211,14 @@ export default function ListaAdministrarUsuarios({
               </section>
             ) : (
               <section
-                className="ListaAdministrarUsuarios__Usuario Desactivado"
+                className="ListaDeUsuarios__Usuario Desactivado"
                 key={infUsuario.id}
               >
                 {IconosPorTipoDeUsuario.Desactivado}
                 <p>{infUsuario.Usuario}</p>
-                <span className="ListaAdministrarUsuarios__Usuario__Opciones">
+                <span className="ListaDeUsuarios__Usuario__Opciones">
                   <button
-                    className="ListaAdministrarUsuarios__Usuario__Opciones--Boton Activar"
+                    className="ListaDeUsuarios__Usuario__Opciones--Boton Activar"
                     onClick={() => MostrarModalActivar(infUsuario)}
                     title="Activar usuario"
                   >
@@ -221,7 +231,7 @@ export default function ListaAdministrarUsuarios({
             )
           )}
 
-          <small className="ListaAdministrarUsuarios__TextoPaginas">
+          <small className="ListaDeUsuarios__TextoPaginas">
             Página {paginaParaMostrar} de {cantidadDePaginas}
           </small>
         </>

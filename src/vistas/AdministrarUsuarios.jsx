@@ -5,8 +5,9 @@ import { Toaster } from "sonner";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
-import ListaAdministrarUsuarios from "../componentes/AdministrarUsuarios/ListaAdministrarUsuarios";
-import ListaDeAgenciasPorUsuario from "../componentes/AsignarAgenciaUsuario/ListaDeAgenciasPorUsuario";
+import ListaDeUsuarios from "../componentes/AdministrarUsuarios/ListaDeUsuarios";
+import AdministrarAgenciasDelUsuario from "../componentes/AdministrarUsuarios/AdministrarAgenciasDelUsuario";
+import EditarUsuario from "../componentes/AdministrarUsuarios/EditarUsuario";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/AdministrarUsuarios.css";
@@ -29,14 +30,15 @@ export default function AdministrarUsuarios() {
   };
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
-    0: ListaAdministrarUsuarios,
-    1: ListaDeAgenciasPorUsuario,
+    0: ListaDeUsuarios,
+    1: AdministrarAgenciasDelUsuario,
+    2: EditarUsuario,
   };
 
   const TituloSubseccion = {
-    0: "Administrar usuarios",
-    1: "Administrar usuarios / Administrar Agencias",
-    2: "Administrar usuarios / Editar Usuario",
+    0: "Administrar Usuarios",
+    1: "Administrar Usuarios / Administrar Agencias",
+    2: "Administrar Usuarios / Editar Usuario",
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS

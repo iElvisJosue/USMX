@@ -7,7 +7,7 @@ import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/AsignarAgenciaUsuario/ModalInformacionDeLaAgencia.css";
+import "../../estilos/componentes/AdministrarUsuarios/ModalInformacionDeLaAgencia.css";
 
 export default function ModalInformacionDeLaAgencia({
   informacionDelUsuario,

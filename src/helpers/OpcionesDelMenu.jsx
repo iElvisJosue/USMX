@@ -75,15 +75,10 @@ export const OpcionesDelMenu = {
           url: `${HOST}Registrar-Usuario`,
         },
         {
-          icono: "create",
+          icono: "cog",
           nombre: "Administrar Usuarios (F)",
           url: `${HOST}Administrar-Usuarios`,
         },
-        // {
-        //   icono: "business",
-        //   nombre: "Asignar Agencia (F)",
-        //   url: `${HOST}Asignar-Agencia-Usuario`,
-        // },
       ],
     },
     {

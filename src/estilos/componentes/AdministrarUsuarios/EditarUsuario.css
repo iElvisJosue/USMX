@@ -1,19 +1,19 @@
-.InformacionDelUsuario {
+.EditarUsuario {
   padding: 10px;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 50px;
 }
-.InformacionDelUsuario__Opciones {
+.EditarUsuario__Opciones {
   grid-column: 1 / -1;
   margin-top: 20px;
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
-.InformacionDelUsuario__Opciones--Boton {
+.EditarUsuario__Opciones--Boton {
   height: 50px;
   border-radius: 15px;
   font-size: 17px;
@@ -28,25 +28,36 @@
   justify-content: center;
   gap: 5px;
 }
-.InformacionDelUsuario__Opciones--Boton ion-icon {
+.EditarUsuario__Opciones--Boton ion-icon {
   font-size: 20px;
 }
-.InformacionDelUsuario__Opciones--Boton.Contraseña {
+.EditarUsuario__Opciones--Boton.Regresar {
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+}
+.EditarUsuario__Opciones--Boton.Contraseña {
   border: 2px solid var(--ColorAzul);
   background-color: var(--ColorAzul);
 }
-.InformacionDelUsuario__Opciones--Boton.Contraseña:hover {
+.EditarUsuario__Opciones--Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.EditarUsuario__Opciones--Boton.Contraseña:hover {
   background-color: transparent;
   color: var(--ColorAzul);
 }
-.InformacionDelUsuario__Titulo {
+.EditarUsuario__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.EditarUsuario__Titulo {
   grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
   font-size: 25px;
   text-transform: uppercase;
 }
-.InformacionDelUsuario__Titulo__Campo {
+.EditarUsuario__Titulo__Campo {
   grid-column: span 1;
 
   display: flex;
@@ -54,16 +65,16 @@
   justify-content: flex-start;
   gap: 10px;
 }
-.InformacionDelUsuario__Titulo__Campo.Dos {
+.EditarUsuario__Titulo__Campo.Dos {
   grid-column: span 2;
 }
-.InformacionDelUsuario__Titulo__Campo.Tres {
+.EditarUsuario__Titulo__Campo.Tres {
   grid-column: span 3;
 }
-.InformacionDelUsuario__Titulo__Campo.Cuatro {
+.EditarUsuario__Titulo__Campo.Cuatro {
   grid-column: 1 / -1;
 }
-.InformacionDelUsuario__Titulo__Campo p {
+.EditarUsuario__Titulo__Campo p {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -71,11 +82,11 @@
   font-weight: bold;
   gap: 5px;
 }
-.InformacionDelUsuario__Titulo__Campo p ion-icon {
+.EditarUsuario__Titulo__Campo p ion-icon {
   font-size: 20px;
 }
-.InformacionDelUsuario__Titulo__Campo input,
-.InformacionDelUsuario__Titulo__Campo select {
+.EditarUsuario__Titulo__Campo input,
+.EditarUsuario__Titulo__Campo select {
   width: 100%;
   min-height: 50px;
   height: 50px;
@@ -88,10 +99,10 @@
   font-size: 16px;
   font-weight: bold;
 }
-.InformacionDelUsuario__Titulo__Campo input:focus {
+.EditarUsuario__Titulo__Campo input:focus {
   border: 2px solid var(--ColorNegro);
 }
-.InformacionDelUsuario__Footer {
+.EditarUsuario__Footer {
   grid-column: 1 / -1;
 
   display: flex;
@@ -99,7 +110,7 @@
   justify-content: flex-end;
   gap: 10px;
 }
-.InformacionDelUsuario__Footer__Boton {
+.EditarUsuario__Footer__Boton {
   width: 150px;
   height: 50px;
   max-height: 50px;
@@ -110,51 +121,51 @@
   cursor: pointer;
   border-radius: 25px;
 }
-.InformacionDelUsuario__Footer__Boton.Cancelar {
+.EditarUsuario__Footer__Boton.Cancelar {
   background-color: var(--ColorRojo);
   border: 2px solid var(--ColorRojo);
 }
-.InformacionDelUsuario__Footer__Boton.Cancelar:hover {
+.EditarUsuario__Footer__Boton.Cancelar:hover {
   background-color: transparent;
   color: var(--ColorRojo);
 }
-.InformacionDelUsuario__Footer__Boton.Guardar {
+.EditarUsuario__Footer__Boton.Guardar {
   background-color: var(--ColorVerde);
   border: 2px solid var(--ColorVerde);
 }
-.InformacionDelUsuario__Footer__Boton.Guardar:hover {
+.EditarUsuario__Footer__Boton.Guardar:hover {
   background-color: transparent;
   color: var(--ColorVerde);
 }
 @media (max-width: 1000px) {
-  .InformacionDelUsuario__Titulo__Campo {
+  .EditarUsuario__Titulo__Campo {
     grid-column: span 2;
   }
-  .InformacionDelUsuario__Titulo__Campo.Tres {
+  .EditarUsuario__Titulo__Campo.Tres {
     grid-column: span 2;
   }
 }
 @media (max-width: 500px) {
-  .InformacionDelUsuario {
+  .EditarUsuario {
     gap: 25px;
   }
-  .InformacionDelUsuario__Titulo {
+  .EditarUsuario__Titulo {
     margin-top: 20px;
     font-size: 20px;
   }
-  .InformacionDelUsuario__Footer {
+  .EditarUsuario__Footer {
     flex-direction: column;
   }
-  .InformacionDelUsuario__Footer__Boton {
+  .EditarUsuario__Footer__Boton {
     width: 100%;
   }
-  .InformacionDelUsuario__Titulo__Campo {
+  .EditarUsuario__Titulo__Campo {
     grid-column: 1 / -1;
   }
-  .InformacionDelUsuario__Titulo__Campo.Tres {
+  .EditarUsuario__Titulo__Campo.Tres {
     grid-column: 1 / -1;
   }
-  .InformacionDelUsuario__Titulo__Campo.Dos {
+  .EditarUsuario__Titulo__Campo.Dos {
     grid-column: 1 / -1;
   }
 }

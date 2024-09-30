@@ -1,11 +1,11 @@
-.ListaDeAgenciasPorUsuario {
+.AdministrarAgenciasDelUsuario {
   padding: 10px;
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
 }
-.ListaDeAgenciasPorUsuario__Regresar {
+.AdministrarAgenciasDelUsuario__Regresar {
   grid-column: 1 / -1;
   margin-top: 20px;
 
@@ -14,7 +14,7 @@
   justify-content: space-between;
   gap: 10px;
 }
-.ListaDeAgenciasPorUsuario__Regresar__Boton {
+.AdministrarAgenciasDelUsuario__Regresar__Boton {
   height: 50px;
   border-radius: 15px;
   font-size: 17px;
@@ -31,38 +31,38 @@
   justify-content: center;
   gap: 5px;
 }
-.ListaDeAgenciasPorUsuario__Regresar__Boton ion-icon {
+.AdministrarAgenciasDelUsuario__Regresar__Boton ion-icon {
   font-size: 20px;
 }
-.ListaDeAgenciasPorUsuario__Regresar__Boton:hover {
+.AdministrarAgenciasDelUsuario__Regresar__Boton:hover {
   background-color: transparent;
   color: var(--ColorRojo);
 }
-.ListaDeAgenciasPorUsuario__Regresar__Boton:hover::after {
+.AdministrarAgenciasDelUsuario__Regresar__Boton:hover::after {
   content: "Regresar";
 }
-.ListaDeAgenciasPorUsuario__Regresar__Usuario {
+.AdministrarAgenciasDelUsuario__Regresar__Usuario {
   font-style: italic;
   font-weight: bold;
   color: var(--ColorNegro);
   text-align: center;
 }
-.ListaDeAgenciasPorUsuario__Regresar__Usuario b {
+.AdministrarAgenciasDelUsuario__Regresar__Usuario b {
   font-style: italic;
   color: var(--ColorVerde);
 }
-.ListaDeAgenciasPorUsuario__Titulo {
+.AdministrarAgenciasDelUsuario__Titulo {
   grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
   font-size: 25px;
   text-transform: uppercase;
 }
-.ListaDeAgenciasPorUsuario__Buscar {
+.AdministrarAgenciasDelUsuario__Buscar {
   grid-column: 4/6;
   display: flex;
 }
-.ListaDeAgenciasPorUsuario__Buscar input {
+.AdministrarAgenciasDelUsuario__Buscar input {
   width: 100%;
   min-height: 50px;
   height: 50px;
@@ -75,7 +75,7 @@
   font-size: 16px;
   font-weight: bold;
 }
-.ListaDeAgenciasPorUsuario__Buscar__Lupa {
+.AdministrarAgenciasDelUsuario__Buscar__Lupa {
   min-width: 50px;
   min-height: 50px;
   border-radius: 0 15px 15px 0;
@@ -87,7 +87,7 @@
   color: var(--ColorGris);
   font-size: 20px;
 }
-.ListaDeAgenciasPorUsuario__TextoResultados {
+.AdministrarAgenciasDelUsuario__TextoResultados {
   grid-column: 1 / -1;
   color: var(--ColorVerde);
   text-align: right;
@@ -98,10 +98,10 @@
   align-items: center;
   justify-content: right;
 }
-.ListaDeAgenciasPorUsuario__TextoResultados ion-icon {
+.AdministrarAgenciasDelUsuario__TextoResultados ion-icon {
   font-size: 20px;
 }
-.ListaDeAgenciasPorUsuario__BotonesDePaginacion {
+.AdministrarAgenciasDelUsuario__BotonesDePaginacion {
   grid-column: 1 / -1;
 
   display: flex;
@@ -109,7 +109,7 @@
   justify-content: center;
   gap: 10px;
 }
-.ListaDeAgenciasPorUsuario__BotonesDePaginacion--Boton {
+.AdministrarAgenciasDelUsuario__BotonesDePaginacion--Boton {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -124,26 +124,26 @@
   justify-content: center;
   gap: 5px;
 }
-.ListaDeAgenciasPorUsuario__BotonesDePaginacion--Boton ion-icon {
+.AdministrarAgenciasDelUsuario__BotonesDePaginacion--Boton ion-icon {
   font-size: 15px;
 }
-.ListaDeAgenciasPorUsuario__BotonesDePaginacion--Boton.Anterior {
+.AdministrarAgenciasDelUsuario__BotonesDePaginacion--Boton.Anterior {
   background-color: var(--ColorRojo);
   border: 2px solid var(--ColorRojo);
 }
-.ListaDeAgenciasPorUsuario__BotonesDePaginacion--Boton.Siguiente {
+.AdministrarAgenciasDelUsuario__BotonesDePaginacion--Boton.Siguiente {
   background-color: var(--ColorAzul);
   border: 2px solid var(--ColorAzul);
 }
-.ListaDeAgenciasPorUsuario__BotonesDePaginacion--Boton.Anterior:hover {
+.AdministrarAgenciasDelUsuario__BotonesDePaginacion--Boton.Anterior:hover {
   background-color: var(--ColorBlanco);
   color: var(--ColorRojo);
 }
-.ListaDeAgenciasPorUsuario__BotonesDePaginacion--Boton.Siguiente:hover {
+.AdministrarAgenciasDelUsuario__BotonesDePaginacion--Boton.Siguiente:hover {
   background-color: var(--ColorBlanco);
   color: var(--ColorAzul);
 }
-.ListaDeAgenciasPorUsuario__Agencia {
+.AdministrarAgenciasDelUsuario__Agencia {
   grid-column: span 1;
   color: var(--ColorNegro);
   background-color: var(--ColorSecundario);
@@ -163,20 +163,20 @@
   justify-content: center;
   gap: 5px;
 }
-.ListaDeAgenciasPorUsuario__Agencia.Asignadas {
+.AdministrarAgenciasDelUsuario__Agencia.Asignadas {
   position: relative;
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
   color: var(--ColorSecundario);
 }
-.ListaDeAgenciasPorUsuario__Agencia.Asignadas:hover {
+.AdministrarAgenciasDelUsuario__Agencia.Asignadas:hover {
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
   color: var(--ColorSecundario);
   transform: scale(1);
   cursor: initial;
 }
-.ListaDeAgenciasPorUsuario__Agencia__Eliminar {
+.AdministrarAgenciasDelUsuario__Agencia__Eliminar {
   position: absolute;
   width: 25px;
   height: 25px;
@@ -193,11 +193,11 @@
   align-items: center;
   justify-content: center;
 }
-.ListaDeAgenciasPorUsuario__Agencia__Eliminar:hover {
+.AdministrarAgenciasDelUsuario__Agencia__Eliminar:hover {
   transform: scale(1.2);
   cursor: pointer;
 }
-.ListaDeAgenciasPorUsuario__Agencia__Detalles {
+.AdministrarAgenciasDelUsuario__Agencia__Detalles {
   position: absolute;
   width: 25px;
   height: 25px;
@@ -214,55 +214,58 @@
   align-items: center;
   justify-content: center;
 }
-.ListaDeAgenciasPorUsuario__Agencia__Detalles:hover {
+.AdministrarAgenciasDelUsuario__Agencia__Detalles:hover {
   transform: scale(1.2);
   cursor: pointer;
 }
-.ListaDeAgenciasPorUsuario__Agencia ion-icon {
+.AdministrarAgenciasDelUsuario__Agencia ion-icon {
   font-size: 25px;
 }
 
-.ListaDeAgenciasPorUsuario__Agencia:hover {
+.AdministrarAgenciasDelUsuario__Agencia:hover {
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
   color: var(--ColorSecundario);
   cursor: pointer;
   transform: scale(1.02);
 }
-.ListaDeAgenciasPorUsuario__TextoPaginas {
+.AdministrarAgenciasDelUsuario__TextoPaginas {
   grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
   font-weight: bold;
 }
 @media (width <= 1100px) {
-  .ListaDeAgenciasPorUsuario {
+  .AdministrarAgenciasDelUsuario {
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
   }
-  .ListaDeAgenciasPorUsuario__Buscar {
+  .AdministrarAgenciasDelUsuario__Buscar {
     grid-column: 1 / -1;
   }
-  .ListaDeAgenciasPorUsuario__Titulo {
+  .AdministrarAgenciasDelUsuario__Titulo {
     font-size: 20px;
   }
 }
 @media (width <= 880px) {
-  .ListaDeAgenciasPorUsuario {
+  .AdministrarAgenciasDelUsuario {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (width <= 500px) {
-  .ListaDeAgenciasPorUsuario {
+  .AdministrarAgenciasDelUsuario {
     grid-template-columns: repeat(2, 1fr);
   }
-  .ListaDeAgenciasPorUsuario__Regresar__Boton {
+  .AdministrarAgenciasDelUsuario__Agencia {
     font-size: 14px;
   }
-  .ListaDeAgenciasPorUsuario__TextoResultados {
+  .AdministrarAgenciasDelUsuario__Regresar__Boton {
+    font-size: 14px;
+  }
+  .AdministrarAgenciasDelUsuario__TextoResultados {
     font-size: 12px;
   }
-  .ListaDeAgenciasPorUsuario__TextoResultados ion-icon {
+  .AdministrarAgenciasDelUsuario__TextoResultados ion-icon {
     font-size: 18px;
   }
 }

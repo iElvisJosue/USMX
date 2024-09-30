@@ -6,7 +6,7 @@ export const CamposUsuario = [
     nombreCampo: "Usuario",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelUsuario__Titulo__Campo Dos",
+    claseCampo: "EditarUsuario__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -25,7 +25,7 @@ export const CamposUsuario = [
     tituloCampo: "Permisos",
     nombreCampo: "Permisos",
     tipoCampo: "select",
-    claseCampo: "InformacionDelUsuario__Titulo__Campo Dos",
+    claseCampo: "EditarUsuario__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
     },
@@ -37,7 +37,7 @@ export const CamposUsuario = [
     nombreCampo: "Contraseña",
     tipoCampo: "password",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelUsuario__Titulo__Campo Dos",
+    claseCampo: "EditarUsuario__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {
@@ -57,7 +57,7 @@ export const CamposUsuario = [
     nombreCampo: "ContraseñaConfirmar",
     tipoCampo: "password",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelUsuario__Titulo__Campo Dos",
+    claseCampo: "EditarUsuario__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       maxLength: {

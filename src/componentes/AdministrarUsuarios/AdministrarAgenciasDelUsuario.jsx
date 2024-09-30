@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import MensajeGeneral from "../MensajeGeneral";
 import Cargando from "../Cargando";
-import ModalInformacionDeLaAgencia from "../AsignarAgenciaUsuario/ModalInformacionDeLaAgencia";
+import ModalInformacionDeLaAgencia from "./ModalInformacionDeLaAgencia";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useUsuarios } from "../../context/UsuariosContext";
@@ -20,9 +20,9 @@ import useBuscarAgenciasAsignadasYNoAsignadasPorUsuario from "../../hooks/useBus
 import usePaginacion from "../../hooks/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/AsignarAgenciaUsuario/ListaDeAgenciasPorUsuario.css";
+import "../../estilos/componentes/AdministrarUsuarios/AdministrarAgenciasDelUsuario.css";
 
-export default function ListaDeAgenciasPorUsuario({
+export default function AdministrarAgenciasDelUsuario({
   establecerVista,
   informacionDelUsuario,
   informacionDeLaAgencia,
@@ -107,7 +107,7 @@ export default function ListaDeAgenciasPorUsuario({
     agenciasAsignadasYNoAsignadasDelUsuario;
 
   return (
-    <div className="ListaDeAgenciasPorUsuario">
+    <div className="AdministrarAgenciasDelUsuario">
       {mostrarModal && (
         <ModalInformacionDeLaAgencia
           informacionDelUsuario={informacionDelUsuario}
@@ -121,33 +121,33 @@ export default function ListaDeAgenciasPorUsuario({
           }
         />
       )}
-      <span className="ListaDeAgenciasPorUsuario__Regresar">
+      <span className="AdministrarAgenciasDelUsuario__Regresar">
         <button
-          className="ListaDeAgenciasPorUsuario__Regresar__Boton"
+          className="AdministrarAgenciasDelUsuario__Regresar__Boton"
           onClick={() => establecerVista(0)}
         >
           <ion-icon name="arrow-back"></ion-icon>
         </button>
-        <small className="ListaDeAgenciasPorUsuario__Regresar__Usuario">
+        <small className="AdministrarAgenciasDelUsuario__Regresar__Usuario">
           Usuario seleccionado:{" "}
           <b>{informacionDelUsuario.Usuario.toUpperCase()}</b>
         </small>
       </span>
       {AgenciasAsignadas.length > 0 && (
         <>
-          <h1 className="ListaDeAgenciasPorUsuario__Titulo">
+          <h1 className="AdministrarAgenciasDelUsuario__Titulo">
             Agencias asignadas
           </h1>
           {AgenciasAsignadas.map((infAgencia, index) => (
             <section
-              className="ListaDeAgenciasPorUsuario__Agencia Asignadas"
+              className="AdministrarAgenciasDelUsuario__Agencia Asignadas"
               key={index}
             >
               <ion-icon name="business"></ion-icon>
               <p>{infAgencia.NombreAgencia}</p>
 
               <button
-                className="ListaDeAgenciasPorUsuario__Agencia__Eliminar"
+                className="AdministrarAgenciasDelUsuario__Agencia__Eliminar"
                 onClick={() =>
                   PeticionDesasignarAgenciaAlUsuario(
                     infAgencia.idUnionUsuariosAgencias
@@ -157,7 +157,7 @@ export default function ListaDeAgenciasPorUsuario({
                 <ion-icon name="close"></ion-icon>
               </button>
               <button
-                className="ListaDeAgenciasPorUsuario__Agencia__Detalles"
+                className="AdministrarAgenciasDelUsuario__Agencia__Detalles"
                 onClick={() => MostrarModalYAsignarAgencia(infAgencia, false)}
               >
                 <ion-icon name="information"></ion-icon>
@@ -166,29 +166,29 @@ export default function ListaDeAgenciasPorUsuario({
           ))}
         </>
       )}
-      <h1 className="ListaDeAgenciasPorUsuario__Titulo">
+      <h1 className="AdministrarAgenciasDelUsuario__Titulo">
         Asignar nueva agencia
       </h1>
-      <span className="ListaDeAgenciasPorUsuario__Buscar">
+      <span className="AdministrarAgenciasDelUsuario__Buscar">
         <input
           type="text"
           placeholder="Buscar agencia"
           onChange={obtenerAgencias}
         />
-        <span className="ListaDeAgenciasPorUsuario__Buscar__Lupa">
+        <span className="AdministrarAgenciasDelUsuario__Buscar__Lupa">
           <ion-icon name="search"></ion-icon>
         </span>
       </span>
       {AgenciasNoAsignadas.length > 0 ? (
         <>
-          <small className="ListaDeAgenciasPorUsuario__TextoResultados">
+          <small className="AdministrarAgenciasDelUsuario__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
             {AgenciasNoAsignadas.length} resultados{" "}
           </small>
-          <div className="ListaDeAgenciasPorUsuario__BotonesDePaginacion">
+          <div className="AdministrarAgenciasDelUsuario__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
               <button
-                className="ListaDeAgenciasPorUsuario__BotonesDePaginacion--Boton Anterior"
+                className="AdministrarAgenciasDelUsuario__BotonesDePaginacion--Boton Anterior"
                 onClick={MostrarVeinticincoMenos}
               >
                 <ion-icon name="arrow-back-outline"></ion-icon>
@@ -196,7 +196,7 @@ export default function ListaDeAgenciasPorUsuario({
             )}
             {indiceFinal < AgenciasNoAsignadas.length && (
               <button
-                className="ListaDeAgenciasPorUsuario__BotonesDePaginacion--Boton Siguiente"
+                className="AdministrarAgenciasDelUsuario__BotonesDePaginacion--Boton Siguiente"
                 onClick={MostrarVeinticincoMas}
               >
                 <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -206,7 +206,7 @@ export default function ListaDeAgenciasPorUsuario({
           {AgenciasNoAsignadas.slice(indiceInicial, indiceFinal).map(
             (infAgencia, index) => (
               <section
-                className="ListaDeAgenciasPorUsuario__Agencia"
+                className="AdministrarAgenciasDelUsuario__Agencia"
                 key={index}
                 onClick={() => MostrarModalYAsignarAgencia(infAgencia, true)}
               >
@@ -221,7 +221,7 @@ export default function ListaDeAgenciasPorUsuario({
               </section>
             )
           )}
-          <small className="ListaDeAgenciasPorUsuario__TextoPaginas">
+          <small className="AdministrarAgenciasDelUsuario__TextoPaginas">
             Página {paginaParaMostrar} de {cantidadDePaginas}
           </small>
         </>

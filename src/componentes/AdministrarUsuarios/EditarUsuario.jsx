@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "sonner";
@@ -13,10 +14,13 @@ import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 
 // IMPORTAMOS LOS ESTILOS A USAR
-import "../../estilos/componentes/RegistrarUsuario/InformacionDelUsuario.css";
+import "../../estilos/componentes/AdministrarUsuarios/EditarUsuario.css";
 
-export default function InformacionDelUsuario() {
-  const { RegistrarUsuario } = useUsuarios();
+export default function EditarUsuario({
+  informacionDelUsuario,
+  establecerVista,
+}) {
+  const { ActualizarInformacionDeUnUsuario } = useUsuarios();
   const [mostrarContraseña, establecerMostrarContraseña] = useState(false);
 
   const {
@@ -24,17 +28,26 @@ export default function InformacionDelUsuario() {
     register,
     reset,
     formState: { errors },
+    setValue,
   } = useForm({
     criteriaMode: "all",
   });
 
-  const GuardaInformacionDelUsuario = handleSubmit(async (info) => {
+  useEffect(() => {
+    setValue("Usuario", informacionDelUsuario?.Usuario);
+    setValue("Permisos", informacionDelUsuario?.Permisos);
+    setValue("Contraseña", informacionDelUsuario?.Contraseña);
+    setValue("ContraseñaConfirmar", informacionDelUsuario?.Contraseña);
+  }, []);
+
+  const ActualizarInformacionDelUsuario = handleSubmit(async (info) => {
     if (info.Contraseña !== info.ContraseñaConfirmar) {
       return toast.error("Las contraseñas no coinciden, intente nuevamente 🔒");
     }
     try {
+      info.idUsuario = informacionDelUsuario?.idUsuario;
       info.CookieConToken = COOKIE_CON_TOKEN;
-      const res = await RegistrarUsuario(info);
+      const res = await ActualizarInformacionDeUnUsuario(info);
       if (res.response) {
         const { status, data } = res.response;
         ManejarMensajesDeRespuesta({ status, data });
@@ -42,16 +55,13 @@ export default function InformacionDelUsuario() {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
         reset();
+        establecerVista(0);
       }
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
     }
   });
-
-  const ReiniciarFormulario = () => {
-    reset();
-  };
 
   const MostrarOcultarContraseña = () => {
     establecerMostrarContraseña(!mostrarContraseña);
@@ -86,20 +96,24 @@ export default function InformacionDelUsuario() {
   };
 
   return (
-    <form
-      className="InformacionDelUsuario"
-      onSubmit={GuardaInformacionDelUsuario}
-    >
-      <div className="InformacionDelUsuario__Opciones">
+    <form className="EditarUsuario" onSubmit={ActualizarInformacionDelUsuario}>
+      <div className="EditarUsuario__Opciones">
         <button
-          className="InformacionDelUsuario__Opciones--Boton Contraseña"
+          className="EditarUsuario__Opciones--Boton Regresar"
+          type="button"
+          onClick={() => establecerVista(0)}
+        >
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        <button
+          className="EditarUsuario__Opciones--Boton Contraseña"
           type="button"
           onClick={() => MostrarOcultarContraseña()}
         >
           <ion-icon name={mostrarContraseña ? "eye-off" : "eye"}></ion-icon>
         </button>
       </div>
-      <h1 className="InformacionDelUsuario__Titulo">Registrar Usuario</h1>
+      <h1 className="EditarUsuario__Titulo">Editar Usuario</h1>
       {CamposUsuario.map(
         (
           {
@@ -146,19 +160,9 @@ export default function InformacionDelUsuario() {
           </span>
         )
       )}
-      <footer className="InformacionDelUsuario__Footer">
-        <button
-          type="button"
-          className="InformacionDelUsuario__Footer__Boton Cancelar"
-          onClick={ReiniciarFormulario}
-        >
-          Cancelar
-        </button>
-        <button
-          type="submit"
-          className="InformacionDelUsuario__Footer__Boton Guardar"
-        >
-          Guardar
+      <footer className="EditarUsuario__Footer">
+        <button type="submit" className="EditarUsuario__Footer__Boton Guardar">
+          Actualizar
         </button>
       </footer>
     </form>

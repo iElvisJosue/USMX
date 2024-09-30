@@ -16,7 +16,6 @@ import RegistrarUsuario from "./vistas/RegistrarUsuario";
 import RegistrarProducto from "./vistas/RegistrarProducto";
 import Pedidos from "./vistas/Pedidos";
 import NumeroDeGuia from "./vistas/NumeroDeGuia";
-import AsignarAgenciaUsuario from "./vistas/AsignarAgenciaUsuario";
 import AsignarProductoAgencia from "./vistas/AsignarProductoAgencia";
 import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
 
@@ -49,10 +48,6 @@ export default function App() {
                         <Route
                           path="/Registrar-Agencia"
                           element={<RegistrarAgencia />}
-                        />
-                        <Route
-                          path="/Asignar-Agencia-Usuario"
-                          element={<AsignarAgenciaUsuario />}
                         />
                         <Route
                           path="/Asignar-Producto-Agencia"
