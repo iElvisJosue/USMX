@@ -18,6 +18,7 @@ import Pedidos from "./vistas/Pedidos";
 import NumeroDeGuia from "./vistas/NumeroDeGuia";
 import AsignarAgenciaUsuario from "./vistas/AsignarAgenciaUsuario";
 import AsignarProductoAgencia from "./vistas/AsignarProductoAgencia";
+import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
 
 // PROTECCIÓN DE RUTAS
 import ProteccionPorCookies from "./proteccion/ProteccionPorCookies";
@@ -44,10 +45,20 @@ export default function App() {
                     <Route element={<ProteccionPorCookies />}>
                       {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
                       <Route element={<ProteccionParaAdministradores />}>
+                        {/* RUTAS DE AGENCIAS */}
                         <Route
                           path="/Registrar-Agencia"
                           element={<RegistrarAgencia />}
                         />
+                        <Route
+                          path="/Asignar-Agencia-Usuario"
+                          element={<AsignarAgenciaUsuario />}
+                        />
+                        <Route
+                          path="/Asignar-Producto-Agencia"
+                          element={<AsignarProductoAgencia />}
+                        />
+                        {/* RUTAS DE USUARIOS */}
                         <Route
                           path="/Registrar-Usuario"
                           element={<RegistrarUsuario />}
@@ -57,12 +68,8 @@ export default function App() {
                           element={<RegistrarProducto />}
                         />
                         <Route
-                          path="/Asignar-Agencia-Usuario"
-                          element={<AsignarAgenciaUsuario />}
-                        />
-                        <Route
-                          path="/Asignar-Producto-Agencia"
-                          element={<AsignarProductoAgencia />}
+                          path="/Administrar-Usuarios"
+                          element={<AdministrarUsuarios />}
                         />
                       </Route>
                       {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}

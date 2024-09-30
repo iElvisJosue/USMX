@@ -109,7 +109,7 @@
 }
 .Menu__MostrarMenu {
   position: fixed;
-  top: 20px;
+  top: 22.5px;
   right: 10px;
   color: var(--ColorPrincipal);
   font-size: 30px;

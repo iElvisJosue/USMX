@@ -7,6 +7,8 @@ import {
   SolicitudBuscarAgenciasQueNoTieneElUsuario,
   SolicitudDesasignarAgenciaAlUsuario,
   SolicitudAsignarAgenciaAlUsuario,
+  SolicitudBuscarUsuariosParaAdministrarPorFiltro,
+  SolicitudActualizarEstadoUsuario,
 } from "../api/authUsuarios";
 
 export const UsuariosContext = createContext();
@@ -70,6 +72,23 @@ export const ProveedorUsuarios = ({ children }) => {
       return error;
     }
   };
+  const BuscarUsuariosParaAdministrarPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarUsuariosParaAdministrarPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ActualizarEstadoUsuario = async (data) => {
+    try {
+      const res = await SolicitudActualizarEstadoUsuario(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+
   return (
     <UsuariosContext.Provider
       value={{
@@ -79,6 +98,8 @@ export const ProveedorUsuarios = ({ children }) => {
         BuscarAgenciasQueNoTieneElUsuario,
         AsignarAgenciaAlUsuario,
         DesasignarAgenciaAlUsuario,
+        BuscarUsuariosParaAdministrarPorFiltro,
+        ActualizarEstadoUsuario,
       }}
     >
       {children}

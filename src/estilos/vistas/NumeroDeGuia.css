@@ -96,6 +96,7 @@
   text-transform: uppercase;
 }
 .NumeroDeGuia__Movimientos--Detalles {
+  width: 100%;
   text-align: center;
 }
 .NumeroDeGuia__Movimientos--Detalles.Pendiente {

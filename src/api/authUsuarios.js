@@ -18,3 +18,9 @@ export const SolicitudAsignarAgenciaAlUsuario = (data) =>
 // SOLICITUD PARA DESASIGNAR UNA AGENCIA AL USUARIO
 export const SolicitudDesasignarAgenciaAlUsuario = (data) =>
   axios.post("/usuarios/DesasignarAgenciaAlUsuario", data);
+// SOLICITUD PARA BUSCAR USUARIOS PARA ADMINISTRAR POR FILTRO
+export const SolicitudBuscarUsuariosParaAdministrarPorFiltro = (data) =>
+  axios.post("/usuarios/BuscarUsuariosParaAdministrarPorFiltro", data);
+// SOLICITUD PARA ACTIVAR O DESACTIVAR UN USUARIO
+export const SolicitudActualizarEstadoUsuario = (data) =>
+  axios.put("/usuarios/ActualizarEstadoUsuario", data);

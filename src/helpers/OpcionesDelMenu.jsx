@@ -23,11 +23,6 @@ export const OpcionesDelMenu = {
           nombre: "Pedidos (F)",
           url: `${HOST}Pedidos`,
         },
-        // {
-        //   icono: "search-circle",
-        //   nombre: "Buscar Guía",
-        //   url: "#",
-        // },
       ],
     },
     {
@@ -81,14 +76,14 @@ export const OpcionesDelMenu = {
         },
         {
           icono: "create",
-          nombre: "Administrar Usuarios",
-          url: "#",
+          nombre: "Administrar Usuarios (F)",
+          url: `${HOST}Administrar-Usuarios`,
         },
-        {
-          icono: "business",
-          nombre: "Asignar Agencia (F)",
-          url: `${HOST}Asignar-Agencia-Usuario`,
-        },
+        // {
+        //   icono: "business",
+        //   nombre: "Asignar Agencia (F)",
+        //   url: `${HOST}Asignar-Agencia-Usuario`,
+        // },
       ],
     },
     {
