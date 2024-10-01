@@ -37,13 +37,8 @@ export const OpcionesDelMenu = {
         },
         {
           icono: "cog",
-          nombre: "Administrar Agencias",
-          url: "#",
-        },
-        {
-          icono: "basket",
-          nombre: "Asignar Productos (F)",
-          url: `${HOST}Asignar-Producto-Agencia`,
+          nombre: "Administrar Agencias (F)",
+          url: `${HOST}Administrar-Agencias`,
         },
       ],
     },

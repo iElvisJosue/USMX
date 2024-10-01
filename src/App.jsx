@@ -16,8 +16,8 @@ import RegistrarUsuario from "./vistas/RegistrarUsuario";
 import RegistrarProducto from "./vistas/RegistrarProducto";
 import Pedidos from "./vistas/Pedidos";
 import NumeroDeGuia from "./vistas/NumeroDeGuia";
-import AsignarProductoAgencia from "./vistas/AsignarProductoAgencia";
 import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
+import AdministrarAgencias from "./vistas/AdministrarAgencias";
 
 // PROTECCIÓN DE RUTAS
 import ProteccionPorCookies from "./proteccion/ProteccionPorCookies";
@@ -50,8 +50,8 @@ export default function App() {
                           element={<RegistrarAgencia />}
                         />
                         <Route
-                          path="/Asignar-Producto-Agencia"
-                          element={<AsignarProductoAgencia />}
+                          path="/Administrar-Agencias"
+                          element={<AdministrarAgencias />}
                         />
                         {/* RUTAS DE USUARIOS */}
                         <Route

@@ -2,14 +2,12 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../context/AgenciasContext";
-import { useGlobal } from "../context/GlobalContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 
-export default function useBuscarAgenciasPorFiltroYTipoDeUsuario() {
-  const { BuscarAgenciasPorFiltroYTipoDeUsuario } = useAgencias();
-  const { usuario } = useGlobal();
+export default function useBuscarAgenciasPorFiltro() {
+  const { BuscarAgenciasPorFiltro } = useAgencias();
 
   const [agencias, establecerAgencias] = useState([]);
   const [cargandoAgencias, establecerCargandoAgencias] = useState(true);
@@ -20,11 +18,9 @@ export default function useBuscarAgenciasPorFiltroYTipoDeUsuario() {
   useEffect(() => {
     const obtenerAgencias = async () => {
       try {
-        const res = await BuscarAgenciasPorFiltroYTipoDeUsuario({
+        const res = await BuscarAgenciasPorFiltro({
           CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroAgencias,
-          tipoDeUsuario: usuario.Permisos,
-          idDelUsuario: usuario.idUsuario,
         });
         establecerAgencias(res.data);
         establecerCargandoAgencias(false);

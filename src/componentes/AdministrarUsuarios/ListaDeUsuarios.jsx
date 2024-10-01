@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../Cargando";
@@ -84,16 +83,10 @@ export default function ListaDeUsuarios({
   const EstablecerInformacionDelUsuarioSeleccionado = (infUsuario) => {
     establecerInformacionDelUsuario(infUsuario);
     establecerVista(1);
-    toast.success(
-      `El usuario ${infUsuario.Usuario.toUpperCase()} fue seleccionado con éxito ✨`
-    );
   };
   const EstablecerInformacionDelUsuarioAEditar = (infUsuario) => {
     establecerInformacionDelUsuario(infUsuario);
     establecerVista(2);
-    toast.success(
-      `El usuario ${infUsuario.Usuario.toUpperCase()} fue seleccionado con éxito ✨`
-    );
   };
 
   if (cargandoUsuarios) return <Cargando />;
@@ -131,7 +124,7 @@ export default function ListaDeUsuarios({
             {usuarios.length} resultados{" "}
           </small>
           <h2 className="ListaDeUsuarios__Clasificacion">
-            Clasificación de perfiles por colores:
+            Clasificación de perfiles:
           </h2>
           <span className="ListaDeUsuarios__Colores">
             <p className="ListaDeUsuarios__Clasificacion--Texto Usuario">
@@ -169,7 +162,7 @@ export default function ListaDeUsuarios({
             infUsuario.EstadoUsuario === "Activo" ? (
               <section
                 className={`ListaDeUsuarios__Usuario ${infUsuario.Permisos}`}
-                key={infUsuario.id}
+                key={infUsuario.idUsuario}
               >
                 {IconosPorTipoDeUsuario[infUsuario.Permisos]}
                 <p>{infUsuario.Usuario}</p>
@@ -212,7 +205,7 @@ export default function ListaDeUsuarios({
             ) : (
               <section
                 className="ListaDeUsuarios__Usuario Desactivado"
-                key={infUsuario.id}
+                key={infUsuario.idUsuario}
               >
                 {IconosPorTipoDeUsuario.Desactivado}
                 <p>{infUsuario.Usuario}</p>

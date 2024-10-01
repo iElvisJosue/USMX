@@ -1,9 +1,9 @@
 import axios from "./axios";
 
-// PETICIÓN PARA REGISTRAR UNA AGENCIA
+// SOLICITUD PARA REGISTRAR UNA AGENCIA
 export const SolicitudRegistrarAgencia = (data) =>
   axios.post("/agencias/RegistrarAgencia", data);
-// PETICIÓN PARA BUSCAR LAS AGENCIAS POR FILTRO Y TIPO DE USUARIO
+// SOLICITUD PARA BUSCAR LAS AGENCIAS POR FILTRO Y TIPO DE USUARIO
 export const SolicitudBuscarAgenciasPorFiltroYTipoDeUsuario = (data) =>
   axios.post("/agencias/BuscarAgenciasPorFiltroYTipoDeUsuario", data);
 // SOLICITUD PARA BUSCAR LOS PRODUCTOS QUE TIENE LA AGENCIA
@@ -18,3 +18,12 @@ export const SolicitudAsignarProductoAgencia = (data) =>
 // SOLICITUD PARA DESASIGNAR UN PRODUCTO A UNA AGENCIA
 export const SolicitudDesasignarProductoAgencia = (data) =>
   axios.post("/agencias/DesasignarProductoAgencia", data);
+// SOLICITUD PARA ACTIVAR O DESACTIVAR UNA AGENCIA
+export const SolicitudActualizarEstadoAgencia = (data) =>
+  axios.put("/agencias/ActualizarEstadoAgencia", data);
+// SOLICITUD PARA ACTUALIZAR LA INFORMACION DE UNA AGENCIA
+export const SolicitudActualizarInformacionAgencia = (data) =>
+  axios.put("/agencias/ActualizarInformacionAgencia", data);
+// SOLICITUD PARA BUSCAR UNA AGENCIAS POR FILTRO
+export const SolicitudBuscarAgenciasPorFiltro = (data) =>
+  axios.post("/agencias/BuscarAgenciasPorFiltro", data);

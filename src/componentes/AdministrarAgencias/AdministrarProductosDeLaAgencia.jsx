@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import MensajeGeneral from "../MensajeGeneral";
 import Cargando from "../Cargando";
+import MensajeGeneral from "../MensajeGeneral";
 import ModalInformacionDelProducto from "./ModalInformacionDelProducto";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
@@ -19,11 +19,11 @@ import useBuscarProductosAsignadosYNoAsignadosPorAgencia from "../../hooks/useBu
 import usePaginacion from "../../hooks/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/AsignarProductoAgencia/ListaDeProductosDeLaAgencia.css";
+import "../../estilos/componentes/AdministrarAgencias/AdministrarProductosDeLaAgencia.css";
 
-export default function ListaDeProductosDeLaAgencia({
-  agencia,
-  establecerPaso,
+export default function AdministrarProductosDeLaAgencia({
+  informacionDeLaAgencia,
+  establecerVista,
 }) {
   const { DesasignarProductoAgencia } = useAgencias();
   const [informacionDelProducto, establecerInformacionDelProducto] =
@@ -48,7 +48,9 @@ export default function ListaDeProductosDeLaAgencia({
     establecerFiltroProductosAsignadosYNoAsignadosPorAgencia,
     buscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia,
     establecerBuscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia,
-  } = useBuscarProductosAsignadosYNoAsignadosPorAgencia(agencia.idAgencia);
+  } = useBuscarProductosAsignadosYNoAsignadosPorAgencia(
+    informacionDeLaAgencia.idAgencia
+  );
 
   useEffect(() => {
     if (productosAsignadosYNoAsignadosPorAgencia) {
@@ -109,10 +111,10 @@ export default function ListaDeProductosDeLaAgencia({
     productosAsignadosYNoAsignadosPorAgencia;
 
   return (
-    <div className="ListaDeProductosDeLaAgencia">
+    <div className="AdministrarProductosDeLaAgencia">
       {mostrarModal && (
         <ModalInformacionDelProducto
-          agencia={agencia}
+          agencia={informacionDeLaAgencia}
           informacionDelProducto={informacionDelProducto}
           establecerMostrarModal={establecerMostrarModal}
           buscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia={
@@ -123,31 +125,32 @@ export default function ListaDeProductosDeLaAgencia({
           }
         />
       )}
-      <span className="ListaDeProductosDeLaAgencia__Regresar">
+      <span className="AdministrarProductosDeLaAgencia__Regresar">
         <button
-          className="ListaDeProductosDeLaAgencia__Regresar__Boton"
-          onClick={() => establecerPaso(0)}
+          className="AdministrarProductosDeLaAgencia__Regresar__Boton"
+          onClick={() => establecerVista(0)}
         >
           <ion-icon name="arrow-back"></ion-icon>
         </button>
-        <small className="ListaDeProductosDeLaAgencia__Regresar__Usuario">
-          Agencia seleccionada: <b>{agencia.NombreAgencia.toUpperCase()}</b>
+        <small className="AdministrarProductosDeLaAgencia__Regresar__Usuario">
+          Agencia seleccionada:{" "}
+          <b>{informacionDeLaAgencia.NombreAgencia.toUpperCase()}</b>
         </small>
       </span>
       {ProductosAsignados.length > 0 && (
         <>
-          <h1 className="ListaDeProductosDeLaAgencia__Titulo">
+          <h1 className="AdministrarProductosDeLaAgencia__Titulo">
             Productos asignados
           </h1>
           {ProductosAsignados.map((infProducto, index) => (
             <section
-              className="ListaDeProductosDeLaAgencia__Agencia Asignadas"
+              className="AdministrarProductosDeLaAgencia__Agencia Asignadas"
               key={index}
             >
               <ion-icon name="basket"></ion-icon>
               <p>{infProducto.NombreProducto}</p>
               <button
-                className="ListaDeProductosDeLaAgencia__Agencia__Eliminar"
+                className="AdministrarProductosDeLaAgencia__Agencia__Eliminar"
                 onClick={() =>
                   PeticionDesasignarProductoAgencia(
                     infProducto.idUnionAgenciasProductos
@@ -157,7 +160,7 @@ export default function ListaDeProductosDeLaAgencia({
                 <ion-icon name="close"></ion-icon>
               </button>
               <button
-                className="ListaDeProductosDeLaAgencia__Agencia__Detalles"
+                className="AdministrarProductosDeLaAgencia__Agencia__Detalles"
                 onClick={() => MostrarModalYAsignarProducto(infProducto, false)}
               >
                 <ion-icon name="information"></ion-icon>
@@ -167,29 +170,29 @@ export default function ListaDeProductosDeLaAgencia({
         </>
       )}
 
-      <h1 className="ListaDeProductosDeLaAgencia__Titulo">
+      <h1 className="AdministrarProductosDeLaAgencia__Titulo">
         Asignar nuevo producto
       </h1>
-      <span className="ListaDeProductosDeLaAgencia__Buscar">
+      <span className="AdministrarProductosDeLaAgencia__Buscar">
         <input
           type="text"
           placeholder="Buscar producto"
           onChange={obtenerProductos}
         />
-        <span className="ListaDeProductosDeLaAgencia__Buscar__Lupa">
+        <span className="AdministrarProductosDeLaAgencia__Buscar__Lupa">
           <ion-icon name="search"></ion-icon>
         </span>
       </span>
       {ProductosNoAsignados.length > 0 ? (
         <>
-          <small className="ListaDeProductosDeLaAgencia__TextoResultados">
+          <small className="AdministrarProductosDeLaAgencia__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
             {ProductosNoAsignados.length} resultados{" "}
           </small>
-          <div className="ListaDeProductosDeLaAgencia__BotonesDePaginacion">
+          <div className="AdministrarProductosDeLaAgencia__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
               <button
-                className="ListaDeProductosDeLaAgencia__BotonesDePaginacion--Boton Anterior"
+                className="AdministrarProductosDeLaAgencia__BotonesDePaginacion--Boton Anterior"
                 onClick={MostrarVeinticincoMenos}
               >
                 <ion-icon name="arrow-back-outline"></ion-icon>
@@ -197,7 +200,7 @@ export default function ListaDeProductosDeLaAgencia({
             )}
             {indiceFinal < ProductosNoAsignados.length && (
               <button
-                className="ListaDeProductosDeLaAgencia__BotonesDePaginacion--Boton Siguiente"
+                className="AdministrarProductosDeLaAgencia__BotonesDePaginacion--Boton Siguiente"
                 onClick={MostrarVeinticincoMas}
               >
                 <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -207,7 +210,7 @@ export default function ListaDeProductosDeLaAgencia({
           {ProductosNoAsignados.slice(indiceInicial, indiceFinal).map(
             (infProducto, index) => (
               <section
-                className="ListaDeProductosDeLaAgencia__Agencia"
+                className="AdministrarProductosDeLaAgencia__Agencia"
                 key={index}
                 onClick={() => MostrarModalYAsignarProducto(infProducto, true)}
               >
@@ -216,7 +219,7 @@ export default function ListaDeProductosDeLaAgencia({
               </section>
             )
           )}
-          <small className="ListaDeProductosDeLaAgencia__TextoPaginas">
+          <small className="AdministrarProductosDeLaAgencia__TextoPaginas">
             Página {paginaParaMostrar} de {cantidadDePaginas}
           </small>
         </>

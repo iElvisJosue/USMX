@@ -7,6 +7,9 @@ import {
   SolicitudBuscarProductosQueNoTieneLaAgencia,
   SolicitudAsignarProductoAgencia,
   SolicitudDesasignarProductoAgencia,
+  SolicitudActualizarEstadoAgencia,
+  SolicitudActualizarInformacionAgencia,
+  SolicitudBuscarAgenciasPorFiltro,
 } from "../api/authAgencias";
 
 export const AgenciasContext = createContext();
@@ -76,6 +79,34 @@ export const ProveedorAgencias = ({ children }) => {
       return error;
     }
   };
+  const ActualizarEstadoAgencia = async (data) => {
+    try {
+      const res = await SolicitudActualizarEstadoAgencia(data);
+      return res;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  };
+
+  const ActualizarInformacionAgencia = async (data) => {
+    try {
+      const res = await SolicitudActualizarInformacionAgencia(data);
+      return res;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  };
+  const BuscarAgenciasPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarAgenciasPorFiltro(data);
+      return res;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  };
 
   return (
     <AgenciasContext.Provider
@@ -86,6 +117,9 @@ export const ProveedorAgencias = ({ children }) => {
         BuscarProductosQueNoTieneLaAgencia,
         AsignarProductoAgencia,
         DesasignarProductoAgencia,
+        ActualizarEstadoAgencia,
+        ActualizarInformacionAgencia,
+        BuscarAgenciasPorFiltro,
       }}
     >
       {children}

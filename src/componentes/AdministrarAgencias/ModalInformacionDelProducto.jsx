@@ -12,7 +12,7 @@ import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/AsignarProductoAgencia/ModalInformacionDelProducto.css";
+import "../../estilos/componentes/AdministrarAgencias/ModalInformacionDelProducto.css";
 
 export default function ModalInformacionDelProducto({
   agencia,
