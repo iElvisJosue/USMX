@@ -246,8 +246,11 @@
 }
 @media (width <= 500px) {
   .AdministrarProductosDeLaAgencia {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+  }
+  .AdministrarProductosDeLaAgencia__Agencia {
+    font-size: 14px;
   }
   .AdministrarProductosDeLaAgencia__Regresar__Boton {
     font-size: 14px;
@@ -257,10 +260,5 @@
   }
   .AdministrarProductosDeLaAgencia__TextoResultados ion-icon {
     font-size: 18px;
-  }
-}
-@media (width <= 500px) {
-  .AdministrarProductosDeLaAgencia {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
