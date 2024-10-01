@@ -3,14 +3,16 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS
 import { usePedidos } from "../context/PedidosContext";
+import { useGlobal } from "../context/GlobalContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
-// IMPORTAMOS LAS AYUDAS
 
 export default function useBuscarPedidosPorFecha() {
   const { BuscarPedidosPorFecha } = usePedidos();
+  const { usuario } = useGlobal();
+  console.log(usuario);
   const [pedidosPorFecha, establecerPedidosPorFecha] = useState(null);
   const [cargandoPedidosPorFecha, establecerCargandoPedidosPorFecha] =
     useState(true);
@@ -31,6 +33,7 @@ export default function useBuscarPedidosPorFecha() {
           CookieConToken: COOKIE_CON_TOKEN,
           primeraFecha,
           segundaFecha,
+          idDelUsuario: usuario.idUsuario,
         });
         if (res.response) {
           const { status, data } = res.response;
