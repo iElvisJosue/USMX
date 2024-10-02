@@ -8,23 +8,17 @@ import { useGlobal } from "../context/GlobalContext";
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
 
 export default function useBuscarPedidosPorFecha() {
   const { BuscarPedidosPorFecha } = usePedidos();
   const { usuario } = useGlobal();
-  console.log(usuario);
   const [pedidosPorFecha, establecerPedidosPorFecha] = useState(null);
   const [cargandoPedidosPorFecha, establecerCargandoPedidosPorFecha] =
     useState(true);
   // OBTENEMOS LA FECHA ACTUAL
   const [primeraFecha, establecerPrimeraFecha] = useState(ObtenerFechaActual());
   const [segundaFecha, establecerSegundaFecha] = useState(ObtenerFechaActual());
-
-  function ObtenerFechaActual() {
-    const now = new Date();
-    const tzoffset = now.getTimezoneOffset() * 60000; // offset en milisegundos
-    return new Date(now - tzoffset).toISOString().split("T")[0];
-  }
 
   useEffect(() => {
     async function obtenerPedidosPorFecha() {
