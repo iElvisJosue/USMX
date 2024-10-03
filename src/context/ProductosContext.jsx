@@ -3,6 +3,12 @@ import { createContext, useContext } from "react";
 import {
   SolicitudRegistrarProducto,
   SolicitudObtenerProductosPorAgencia,
+  SolicitudBuscarProductosPorFiltro,
+  SolicitudBuscarAgenciasQueTieneUnProducto,
+  SolicitudBuscarAgenciasQueNoTieneUnProducto,
+  SolicitudAsignarAgenciaAlProducto,
+  SolicitudDesasignarAgenciaAlProducto,
+  SolicitudActualizarInformacionDeUnProducto,
 } from "../api/authProductos";
 
 export const ProductosContext = createContext();
@@ -23,7 +29,6 @@ export const ProveedorProductos = ({ children }) => {
       const res = await SolicitudRegistrarProducto(data);
       return res;
     } catch (error) {
-      console.error(error);
       return error;
     }
   };
@@ -32,7 +37,54 @@ export const ProveedorProductos = ({ children }) => {
       const res = await SolicitudObtenerProductosPorAgencia(data);
       return res;
     } catch (error) {
-      console.error(error);
+      return error;
+    }
+  };
+  const BuscarProductosPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarProductosPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarAgenciasQueTieneUnProducto = async (data) => {
+    try {
+      const res = await SolicitudBuscarAgenciasQueTieneUnProducto(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarAgenciasQueNoTieneUnProducto = async (data) => {
+    try {
+      const res = await SolicitudBuscarAgenciasQueNoTieneUnProducto(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const AsignarAgenciaAlProducto = async (data) => {
+    try {
+      const res = await SolicitudAsignarAgenciaAlProducto(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const DesasignarAgenciaAlProducto = async (data) => {
+    try {
+      const res = await SolicitudDesasignarAgenciaAlProducto(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ActualizarInformacionDeUnProducto = async (data) => {
+    try {
+      const res = await SolicitudActualizarInformacionDeUnProducto(data);
+      return res;
+    } catch (error) {
       return error;
     }
   };
@@ -42,6 +94,12 @@ export const ProveedorProductos = ({ children }) => {
       value={{
         RegistrarProducto,
         ObtenerProductosPorAgencia,
+        BuscarProductosPorFiltro,
+        BuscarAgenciasQueTieneUnProducto,
+        BuscarAgenciasQueNoTieneUnProducto,
+        AsignarAgenciaAlProducto,
+        DesasignarAgenciaAlProducto,
+        ActualizarInformacionDeUnProducto,
       }}
     >
       {children}

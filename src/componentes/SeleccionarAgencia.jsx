@@ -39,7 +39,7 @@ export default function SeleccionarAgencia({
   } = usePaginacion();
 
   useEffect(() => {
-    if (usuario.Permisos === "Usuario" && agencias.length === 1) {
+    if (usuario.Permisos != "Administrador" && agencias.length === 1) {
       establecerAgencia(agencias[0]);
       establecerPaso(1);
       toast.success(
@@ -139,7 +139,7 @@ export default function SeleccionarAgencia({
             TextoBoton={"Registrar Agencia"}
           />
         ))}
-      {usuario.Permisos === "Usuario" && (
+      {usuario.Permisos !== "Administrador" && (
         <>
           {agencias.length === 0 && (
             <MensajeGeneral

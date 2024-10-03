@@ -28,7 +28,7 @@ export const CamposProducto = [
     placeholderCampo: "Escriba aquí...",
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
+      // required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
         value: /^\d+$/,
         message: "¡Este campo solo acepta números! 🔢",
@@ -48,7 +48,7 @@ export const CamposProducto = [
     placeholderCampo: "Escriba aquí...",
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
+      // required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
         value: /^\d+$/,
         message: "¡Este campo solo acepta números! 🔢",
@@ -68,7 +68,7 @@ export const CamposProducto = [
     placeholderCampo: "Escriba aquí...",
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
+      // required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
         value: /^\d+$/,
         message: "¡Este campo solo acepta números! 🔢",
@@ -109,10 +109,10 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      // pattern: {
+      //   value: /^\d+$/,
+      //   message: "¡Este campo solo acepta números! 🔢",
+      // },
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",

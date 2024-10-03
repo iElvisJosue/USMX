@@ -28,6 +28,7 @@ export default function useBuscarPedidosPorFecha() {
           primeraFecha,
           segundaFecha,
           idDelUsuario: usuario.idUsuario,
+          permisosUsuario: usuario.Permisos,
         });
         if (res.response) {
           const { status, data } = res.response;

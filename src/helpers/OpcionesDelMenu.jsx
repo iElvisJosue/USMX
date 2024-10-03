@@ -15,12 +15,12 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "cube",
-          nombre: "Realizar pedido (F)",
+          nombre: "Realizar pedido",
           url: `${HOST}Realizar-Pedido`,
         },
         {
           icono: "bag-handle",
-          nombre: "Pedidos (F)",
+          nombre: "Pedidos",
           url: `${HOST}Pedidos`,
         },
       ],
@@ -32,12 +32,12 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "add-circle",
-          nombre: "Registrar Agencia (F)",
+          nombre: "Registrar Agencia",
           url: `${HOST}Registrar-Agencia`,
         },
         {
           icono: "cog",
-          nombre: "Administrar Agencias (F)",
+          nombre: "Administrar Agencias",
           url: `${HOST}Administrar-Agencias`,
         },
       ],
@@ -49,13 +49,13 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "add-circle",
-          nombre: "Registrar Producto (F)",
+          nombre: "Registrar Producto",
           url: `${HOST}Registrar-Producto`,
         },
         {
           icono: "cog",
           nombre: "Administrar Productos",
-          url: "#",
+          url: `${HOST}Administrar-Productos`,
         },
       ],
     },
@@ -66,12 +66,12 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "person-add",
-          nombre: "Registrar Usuario (F)",
+          nombre: "Registrar Usuario",
           url: `${HOST}Registrar-Usuario`,
         },
         {
           icono: "cog",
-          nombre: "Administrar Usuarios (F)",
+          nombre: "Administrar Usuarios",
           url: `${HOST}Administrar-Usuarios`,
         },
       ],
@@ -95,12 +95,36 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "cube",
-          nombre: "Realizar pedido (F)",
+          nombre: "Realizar pedido",
           url: `${HOST}Realizar-Pedido`,
         },
         {
           icono: "bag-handle",
-          nombre: "Pedidos (F)",
+          nombre: "Pedidos",
+          url: `${HOST}Pedidos`,
+        },
+      ],
+    },
+  ],
+  Moderador: [
+    {
+      icono: "person-circle",
+      nombre: "Perfil",
+      url: "#",
+    },
+    {
+      icono: "storefront",
+      nombre: "Paquetería",
+      url: "#",
+      opcionesSecundarias: [
+        {
+          icono: "cube",
+          nombre: "Realizar pedido",
+          url: `${HOST}Realizar-Pedido`,
+        },
+        {
+          icono: "bag-handle",
+          nombre: "Pedidos",
           url: `${HOST}Pedidos`,
         },
       ],

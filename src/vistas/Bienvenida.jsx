@@ -7,6 +7,9 @@ import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 import Cargando from "../componentes/Cargando";
 
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useGlobal } from "../context/GlobalContext";
+
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarUltimosDiezPedidos from "../hooks/useBuscarUltimosDiezPedidos";
 
@@ -18,6 +21,7 @@ import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
 import "../estilos/vistas/Bienvenida.css";
 
 export default function Bienvenida() {
+  const { usuario } = useGlobal();
   const [pedidosHechosHoy, setPedidosHechosHoy] = useState(0);
   const {
     cargandoUltimosDiezPedidos,
@@ -40,6 +44,12 @@ export default function Bienvenida() {
 
   if (cargandoUltimosDiezPedidos) return <Cargando />;
 
+  const IconosPerfil = {
+    Administrador: <ion-icon name="shield-checkmark"></ion-icon>,
+    Moderador: <ion-icon name="glasses"></ion-icon>,
+    Usuario: <ion-icon name="person-circle"></ion-icon>,
+  };
+
   setTimeout(() => {
     setBuscarNuevamente(!buscarNuevamente);
   }, 5000);
@@ -56,13 +66,27 @@ export default function Bienvenida() {
           <p>Gestiona tus envíos de paquetería de manera rápida y sencilla.</p>
           <p>¡Comienza ahora a rastrear y administrar tus paquetes!</p>
         </section>
-        <section className="EspacioUno">
-          <h1>Espacio 1</h1>
+        <section className="Bienvenida__Perfil">
+          <span className="Bienvenida__Perfil--Encabezado">
+            <p>perfil</p>
+            <ion-icon name="open"></ion-icon>
+          </span>
+          <picture className="Bienvenida__Perfil--Icono">
+            <img
+              src="https://img.freepik.com/fotos-premium/icono-plano-aislado-fondo_1258715-220771.jpg"
+              alt=""
+            />
+          </picture>
+          <p className="Bienvenida__Perfil--Nombre">{usuario.Usuario}</p>
+          {IconosPerfil[usuario.Permisos]}
+          <small className="Bienvenida__Perfil--Permisos">
+            {usuario.Permisos}
+          </small>
         </section>
         <section className="Bienvenida__TotalDePedidosHechosHoy">
           <span className="Bienvenida__TotalDePedidosHechosHoy--Texto">
             <p>Pedidos hechos hoy</p>
-            <small>{ObtenerFechaActual()}</small>
+            <small>{ObtenerFechaActual().split("-").reverse().join("/")}</small>
           </span>
           <div className="Bienvenida__TotalDePedidosHechosHoy--Cantidad">
             <p>{pedidosHechosHoy}</p>

@@ -18,6 +18,7 @@ import Pedidos from "./vistas/Pedidos";
 import NumeroDeGuia from "./vistas/NumeroDeGuia";
 import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
 import AdministrarAgencias from "./vistas/AdministrarAgencias";
+import AdministrarProductos from "./vistas/AdministrarProductos";
 
 // PROTECCIÓN DE RUTAS
 import ProteccionPorCookies from "./proteccion/ProteccionPorCookies";
@@ -59,12 +60,17 @@ export default function App() {
                           element={<RegistrarUsuario />}
                         />
                         <Route
+                          path="/Administrar-Usuarios"
+                          element={<AdministrarUsuarios />}
+                        />
+                        {/* RUTAS DE PRODUCTOS */}
+                        <Route
                           path="/Registrar-Producto"
                           element={<RegistrarProducto />}
                         />
                         <Route
-                          path="/Administrar-Usuarios"
-                          element={<AdministrarUsuarios />}
+                          path="/Administrar-Productos"
+                          element={<AdministrarProductos />}
                         />
                       </Route>
                       {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
