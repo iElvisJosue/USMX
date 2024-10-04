@@ -72,10 +72,7 @@ export default function Bienvenida() {
             <ion-icon name="open"></ion-icon>
           </span>
           <picture className="Bienvenida__Perfil--Icono">
-            <img
-              src="https://img.freepik.com/fotos-premium/icono-plano-aislado-fondo_1258715-220771.jpg"
-              alt=""
-            />
+            <img src="/Perfil.png" alt="Icono perfil" />
           </picture>
           <p className="Bienvenida__Perfil--Nombre">{usuario.Usuario}</p>
           {IconosPerfil[usuario.Permisos]}
@@ -99,7 +96,7 @@ export default function Bienvenida() {
           <ul className="Bienvenida__UltimasGuias--Encabezado">
             <p>Últimos pedidos</p>
             <button
-              onClick={() => (window.location.href = `${HOST}Pedidos`)}
+              onClick={() => (window.location.href = `${HOST}Realizar-Pedido`)}
               title="Ver todos los pedidos"
             >
               <ion-icon name="add"></ion-icon>

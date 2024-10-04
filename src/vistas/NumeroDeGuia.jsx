@@ -18,8 +18,6 @@ export default function NumeroDeGuia() {
 
   if (buscandoInformacionGuia) return <Cargando />;
 
-  console.log(informacionGuia);
-
   return (
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
     <main className="NumeroDeGuia">
