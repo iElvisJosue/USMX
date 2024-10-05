@@ -1,0 +1,145 @@
+.Perfil {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 75px);
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Perfil__Contenido {
+  width: 650px;
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.Perfil__Contenido__Editar {
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 1px solid var(--ColorSecundario);
+}
+.Perfil__Contenido__Editar button {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: var(--ColorBlanco);
+  border: 1px solid var(--ColorSecundario);
+  color: var(--ColorNegro);
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Perfil__Contenido__Editar button ion-icon {
+  font-size: 20px;
+}
+.Perfil__Contenido__Editar button:hover {
+  color: var(--ColorAzul);
+  cursor: pointer;
+}
+.Perfil__Contenido__Foto {
+  width: 50px;
+  border-radius: 50%;
+  margin: 0 20px;
+  margin-top: 10px;
+}
+.Perfil__Contenido__Usuario {
+  font-weight: normal;
+  color: var(--ColorNegro);
+  margin: 0 20px;
+}
+.Perfil__Contenido__Permisos {
+  color: var(--ColorGris);
+  margin: 0 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.Perfil__Contenido__Permisos ion-icon {
+  padding: 2px 5px;
+  color: var(--ColorBlanco);
+  border-radius: 5px;
+}
+.Perfil__Contenido__Permisos.Administrador ion-icon {
+  background-color: var(--ColorNaranja);
+}
+.Perfil__Contenido__Permisos.Moderador ion-icon {
+  background-color: var(--ColorVerde);
+}
+.Perfil__Contenido__Permisos.Usuario ion-icon {
+  background-color: var(--ColorAzul);
+}
+.Perfil__Separador {
+  max-width: 100%;
+  margin: 25px 20px;
+  height: 2px;
+  background-color: var(--ColorSecundario);
+  border: none;
+}
+.Perfil__Contenido__Detalles {
+  height: 50px;
+  margin: 0 20px;
+
+  display: flex;
+  align-items: center;
+}
+.Perfil__Contenido__Detalles--Texto {
+  color: var(--ColorGris);
+  font-size: 16px;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.Perfil__Contenido__Detalles--Texto ion-icon {
+  font-size: 20px;
+}
+.Perfil__Contenido__Detalles--Valor {
+  width: 70%;
+  height: 100%;
+  font-weight: bold;
+  font-size: 16px;
+
+  display: flex;
+  align-items: center;
+}
+@media (width <= 970px) {
+  .Perfil {
+    display: initial;
+    padding: 10px;
+  }
+  .Perfil__Contenido {
+    width: 100%;
+  }
+}
+@media (width <= 525px) {
+  .Perfil__Contenido__Detalles--Texto {
+    width: 100%;
+  }
+  .Perfil__Contenido__Detalles--Valor {
+    width: 100%;
+  }
+  .Perfil__Contenido__Usuario {
+    font-size: 20px;
+  }
+  .Perfil__Contenido__Permisos,
+  .Perfil__Contenido__Detalles--Texto,
+  .Perfil__Contenido__Detalles--Valor {
+    font-size: 14px;
+  }
+  .Perfil__Contenido__Detalles--Texto ion-icon {
+    font-size: 18px;
+  }
+}

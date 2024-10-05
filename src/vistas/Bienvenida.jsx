@@ -69,7 +69,10 @@ export default function Bienvenida() {
         <section className="Bienvenida__Perfil">
           <span className="Bienvenida__Perfil--Encabezado">
             <p>perfil</p>
-            <ion-icon name="open"></ion-icon>
+            <ion-icon
+              name="open"
+              onClick={() => (window.location.href = `${HOST}Perfil`)}
+            ></ion-icon>
           </span>
           <picture className="Bienvenida__Perfil--Icono">
             <img src="/Perfil.png" alt="Icono perfil" />

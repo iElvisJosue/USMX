@@ -6,7 +6,7 @@ export const OpcionesDelMenu = {
     {
       icono: "person-circle",
       nombre: "Perfil",
-      url: "#",
+      url: `${HOST}Perfil`,
     },
     {
       icono: "storefront",
@@ -86,7 +86,7 @@ export const OpcionesDelMenu = {
     {
       icono: "person-circle",
       nombre: "Perfil",
-      url: "#",
+      url: `${HOST}Perfil`,
     },
     {
       icono: "storefront",
@@ -110,7 +110,7 @@ export const OpcionesDelMenu = {
     {
       icono: "person-circle",
       nombre: "Perfil",
-      url: "#",
+      url: `${HOST}Perfil`,
     },
     {
       icono: "storefront",

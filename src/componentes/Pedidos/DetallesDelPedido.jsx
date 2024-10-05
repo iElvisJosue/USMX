@@ -32,8 +32,6 @@ export default function DetallesDelPedido({
     paquete?.[indicePedido]?.GuiaPedido // Usa acceso condicional por si el paquete o el índice son indefinidos
   );
 
-  console.log(movimientos);
-
   const SiguientePedido = () => {
     if (indicePedido < paquete.length - 1) {
       establecerIndicePedido(indicePedido + 1);

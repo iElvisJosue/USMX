@@ -66,6 +66,10 @@
 }
 .Bienvenida__Perfil {
   grid-area: EspacioUno;
+  background-image: url("/BGPerfil.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   display: flex;
   flex-direction: column;
@@ -86,6 +90,11 @@
 }
 .Bienvenida__Perfil--Encabezado ion-icon {
   font-size: 25px;
+  transition: 0.3s ease-in-out all;
+}
+.Bienvenida__Perfil--Encabezado ion-icon:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
 .Bienvenida__Perfil--Icono {
   width: 125px;

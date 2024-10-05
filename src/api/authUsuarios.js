@@ -27,3 +27,6 @@ export const SolicitudActualizarEstadoUsuario = (data) =>
 // SOLICITUD PARA ACTUALIZAR LA INFORMACION DE UN USUARIO
 export const SolicitudActualizarInformacionDeUnUsuario = (data) =>
   axios.put("/usuarios/ActualizarInformacionDeUnUsuario", data);
+// SOLICITUD PARA OBTENER LA INFORMACION DE UN USUARIO
+export const SolicitudObtenerInformacionDeUnUsuario = (data) =>
+  axios.post("/usuarios/ObtenerInformacionDeUnUsuario", data);

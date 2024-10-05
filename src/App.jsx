@@ -9,6 +9,7 @@ import { ProveedorConfiguracion } from "./context/ConfiguracionContext";
 
 // IMPORTAMOS LAS VISTAS
 import IniciarSesion from "./vistas/IniciarSesion";
+import Perfil from "./vistas/Perfil";
 import Bienvenida from "./vistas/Bienvenida";
 import RealizarPedido from "./vistas/RealizarPedido";
 import RegistrarAgencia from "./vistas/RegistrarAgencia";
@@ -36,12 +37,12 @@ export default function App() {
                   <Routes>
                     {/* RUTAS SIN PROTECCIÓN */}
                     <Route path="/" element={<IniciarSesion />} />
-                    {/* TERMINAN LAS RUTAS SIN PROTECCIÓN */}
                     <Route
                       path="/NumeroDeGuia/:GuiaPedido"
                       element={<NumeroDeGuia />}
                     />
-                    {/* RUTAS PROTEGIDAS PARA USUARIOS LOGUEADOS */}
+                    {/* TERMINAN LAS RUTAS SIN PROTECCIÓN */}
+                    {/* RUTAS PROTEGIDAS POR COOKIES */}
                     <Route element={<ProteccionPorCookies />}>
                       {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
                       <Route element={<ProteccionParaAdministradores />}>
@@ -74,15 +75,18 @@ export default function App() {
                         />
                       </Route>
                       {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
+                      {/* RUTAS PROTEGIDAS PARA USUARIOS Y MODERADORES */}
                       <Route
                         path="/Realizar-Pedido"
                         element={<RealizarPedido />}
                       />
                       <Route path="/Pedidos" element={<Pedidos />} />
                       <Route path="/Bienvenida" element={<Bienvenida />} />
+                      <Route path="/Perfil" element={<Perfil />} />
                     </Route>
+                    {/* TERMINAN LAS RUTAS PROTEGIDAS PARA USUARIOS Y MODERADORES */}
                   </Routes>
-                  {/* TERMINAN LAS RUTAS PROTEGIDAS PARA USUARIOS LOGUEADOS */}
+                  {/* TERMINAN LAS RUTAS PROTEGIDAS POR COOKIES */}
                 </BrowserRouter>
               </ProveedorProductos>
             </ProveedorPedidos>
