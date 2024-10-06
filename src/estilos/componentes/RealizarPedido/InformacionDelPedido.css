@@ -26,7 +26,6 @@
 .InformacionDelPedido__Campo.Completo {
   grid-column: 1 / -1;
 }
-
 .InformacionDelPedido__Campo p {
   display: flex;
   align-items: center;
@@ -46,7 +45,7 @@
   height: 50px;
   max-height: 50px;
   background-color: var(--ColorSecundario);
-  border: 1px solid var(--ColorSecundario);
+  border: 2px solid var(--ColorSecundario);
   border-radius: 5px;
   padding: 0 10px;
   color: var(--ColorNegro);
@@ -55,6 +54,10 @@
 }
 .InformacionDelPedido__Campo input:focus {
   border: 2px solid var(--ColorNegro);
+}
+.InformacionDelPedido__Campo.Lectura {
+  background-color: transparent;
+  pointer-events: none;
 }
 .InformacionDelPedido__BotonPedido {
   grid-column: span 1;

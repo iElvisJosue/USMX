@@ -68,7 +68,7 @@ export default function RegistrarNuevoRemitente({
           className="RegistrarNuevoRemitente__Opciones--Boton"
           onClick={() => establecerVistaRemitente(1)}
         >
-          <ion-icon name="list"></ion-icon> Seleccionar Remitente
+          <ion-icon name="list"></ion-icon>
         </button>
       </span>
 

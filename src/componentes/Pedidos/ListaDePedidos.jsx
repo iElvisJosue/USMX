@@ -26,18 +26,18 @@ export default function ListaDePedidos({
         {vistaPedido === 0 ? (
           <button
             type="button"
-            className="ListaDePedidos__Opciones--Boton"
+            className="ListaDePedidos__Opciones--Boton BuscarPorFecha"
             onClick={() => establecerVistaPedido(1)}
           >
-            <ion-icon name="calendar"></ion-icon> Buscar por fecha
+            <ion-icon name="calendar"></ion-icon>
           </button>
         ) : (
           <button
             type="button"
-            className="ListaDePedidos__Opciones--Boton"
+            className="ListaDePedidos__Opciones--Boton ListaCompleta"
             onClick={() => establecerVistaPedido(0)}
           >
-            <ion-icon name="list"></ion-icon> Lista completa
+            <ion-icon name="list"></ion-icon>
           </button>
         )}
       </span>

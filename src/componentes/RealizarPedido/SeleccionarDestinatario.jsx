@@ -80,7 +80,7 @@ export default function SeleccionarDestinatario({
           className="SeleccionarDestinatario__Opciones--Boton"
           onClick={() => establecerVistaDestinatario(0)}
         >
-          <ion-icon name="add-circle"></ion-icon> Registrar Destinatario
+          <ion-icon name="add-circle"></ion-icon>
         </button>
       </span>
       <h1 className="SeleccionarDestinatario__Titulo">

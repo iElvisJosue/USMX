@@ -86,7 +86,7 @@ export default function RegistrarNuevoDestinatario({
           className="RegistrarNuevoDestinatario__Opciones--Boton"
           onClick={() => establecerVistaDestinatario(1)}
         >
-          <ion-icon name="list"></ion-icon> Seleccionar Destinatario
+          <ion-icon name="list"></ion-icon>
         </button>
       </span>
       <h1 className="RegistrarNuevoDestinatario__Titulo">

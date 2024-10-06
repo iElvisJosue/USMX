@@ -31,6 +31,9 @@
   justify-content: center;
   gap: 5px;
 }
+.RegistrarNuevoRemitente__Opciones--Boton:hover::after {
+  content: "Seleccionar Remitente";
+}
 .RegistrarNuevoRemitente__Opciones--Boton:hover {
   background-color: var(--ColorBlanco);
   color: var(--ColorAzul);

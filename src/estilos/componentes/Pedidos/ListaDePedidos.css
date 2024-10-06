@@ -31,6 +31,12 @@
   justify-content: center;
   gap: 5px;
 }
+.ListaDePedidos__Opciones--Boton.BuscarPorFecha:hover::after {
+  content: "Buscar por fecha";
+}
+.ListaDePedidos__Opciones--Boton.ListaCompleta:hover::after {
+  content: "Lista completa";
+}
 .ListaDePedidos__Opciones--Boton:hover {
   background-color: var(--ColorBlanco);
   color: var(--ColorAzul);

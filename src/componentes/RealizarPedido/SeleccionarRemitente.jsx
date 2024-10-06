@@ -80,7 +80,7 @@ export default function SeleccionarRemitente({
           className="SeleccionarRemitente__Opciones--Boton"
           onClick={() => establecerVistaRemitente(0)}
         >
-          <ion-icon name="add-circle"></ion-icon> Registrar Remitente
+          <ion-icon name="add-circle"></ion-icon>
         </button>
       </span>
       <h1 className="SeleccionarRemitente__Titulo">Seleccionar Remitente</h1>

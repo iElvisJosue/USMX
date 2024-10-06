@@ -171,6 +171,7 @@ export default function InformacionDelPedido({
       (producto) => producto.idProducto === idDelProductoSeleccionado
     );
 
+    EstablecerCamposSoloLectura(informacionProductoSeleccionado);
     setValue("Ancho", informacionProductoSeleccionado[0].AnchoProducto);
     setValue("Largo", informacionProductoSeleccionado[0].LargoProducto);
     setValue("Alto", informacionProductoSeleccionado[0].AltoProducto);
@@ -180,6 +181,36 @@ export default function InformacionDelPedido({
     );
 
     establecerProductoSeleccionado(informacionProductoSeleccionado[0]);
+  };
+
+  const EstablecerCamposSoloLectura = (informacion) => {
+    if (informacion[0].AnchoProducto) {
+      document
+        .getElementById("Ancho")
+        .classList.add("InformacionDelPedido__Campo", "Lectura");
+    } else {
+      document
+        .getElementById("Ancho")
+        .classList.remove("InformacionDelPedido__Campo", "Lectura");
+    }
+    if (informacion[0].LargoProducto) {
+      document
+        .getElementById("Largo")
+        .classList.add("InformacionDelPedido__Campo", "Lectura");
+    } else {
+      document
+        .getElementById("Largo")
+        .classList.remove("InformacionDelPedido__Campo", "Lectura");
+    }
+    if (informacion[0].AltoProducto) {
+      document
+        .getElementById("Alto")
+        .classList.add("InformacionDelPedido__Campo", "Lectura");
+    } else {
+      document
+        .getElementById("Alto")
+        .classList.remove("InformacionDelPedido__Campo", "Lectura");
+    }
   };
 
   const ObtenerPorcentajeDeCarga = (event) => {
@@ -435,7 +466,7 @@ export default function InformacionDelPedido({
           />
           {MensajeDeError("Alto")}
         </span>
-        <span className="InformacionDelPedido__Campo Individual Completo">
+        <span className="InformacionDelPedido__Campo Completo">
           <p>
             <ion-icon name="document-text"></ion-icon> Contenido del envío
           </p>
@@ -455,7 +486,7 @@ export default function InformacionDelPedido({
           />
           {MensajeDeError("ContenidoDeEnvio")}
         </span>
-        <span className="InformacionDelPedido__Campo Individual Individual">
+        <span className="InformacionDelPedido__Campo Individual">
           <p>
             <ion-icon name="cash"></ion-icon> Valor declarado
           </p>
@@ -478,7 +509,7 @@ export default function InformacionDelPedido({
           />
           {MensajeDeError("ValorDeclarado")}
         </span>
-        <span className="InformacionDelPedido__Campo Individual Individual">
+        <span className="InformacionDelPedido__Campo Individual">
           <p>
             <ion-icon name="shield-checkmark"></ion-icon> Valor asegurado
           </p>
