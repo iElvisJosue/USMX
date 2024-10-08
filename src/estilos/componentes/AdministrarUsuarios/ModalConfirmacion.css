@@ -19,6 +19,7 @@
   background-color: var(--ColorBlanco);
   padding: 10px;
   width: 400px;
+  border: 2px solid var(--ColorSecundario);
   /* width: 500px; */
   /* border-radius: 20px; */
 
@@ -35,7 +36,7 @@
   border: 2px solid var(--ColorRojo);
   background-color: var(--ColorRojo);
   color: var(--ColorBlanco);
-  font-size: 16px;
+  font-size: 20px;
   transition: 0.3s ease-in-out all;
 
   display: flex;
@@ -88,6 +89,7 @@
   cursor: pointer;
   transition: 0.3s;
   /* border-radius: 10px; */
+  text-transform: uppercase;
   margin-top: 20px;
 }
 .ModalConfirmacion__Contenido--Boton.Activar {

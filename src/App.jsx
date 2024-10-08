@@ -20,6 +20,7 @@ import NumeroDeGuia from "./vistas/NumeroDeGuia";
 import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
 import AdministrarAgencias from "./vistas/AdministrarAgencias";
 import AdministrarProductos from "./vistas/AdministrarProductos";
+import Configuracion from "./vistas/Configuracion";
 
 // PROTECCIÓN DE RUTAS
 import ProteccionPorCookies from "./proteccion/ProteccionPorCookies";
@@ -75,7 +76,7 @@ export default function App() {
                         />
                       </Route>
                       {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
-                      {/* RUTAS PROTEGIDAS PARA USUARIOS Y MODERADORES */}
+                      {/* RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
                       <Route
                         path="/Realizar-Pedido"
                         element={<RealizarPedido />}
@@ -83,8 +84,12 @@ export default function App() {
                       <Route path="/Pedidos" element={<Pedidos />} />
                       <Route path="/Bienvenida" element={<Bienvenida />} />
                       <Route path="/Perfil" element={<Perfil />} />
+                      <Route
+                        path="/Configuracion"
+                        element={<Configuracion />}
+                      />
+                      {/* TERMINAN LAS RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
                     </Route>
-                    {/* TERMINAN LAS RUTAS PROTEGIDAS PARA USUARIOS Y MODERADORES */}
                   </Routes>
                   {/* TERMINAN LAS RUTAS PROTEGIDAS POR COOKIES */}
                 </BrowserRouter>

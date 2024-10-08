@@ -45,9 +45,11 @@ export default function Bienvenida() {
   if (cargandoUltimosDiezPedidos) return <Cargando />;
 
   const IconosPerfil = {
-    Administrador: <ion-icon name="shield-checkmark"></ion-icon>,
-    Moderador: <ion-icon name="glasses"></ion-icon>,
-    Usuario: <ion-icon name="person-circle"></ion-icon>,
+    Administrador: (
+      <ion-icon name="shield-checkmark" class="IconoPermisos"></ion-icon>
+    ),
+    Moderador: <ion-icon name="glasses" class="IconoPermisos"></ion-icon>,
+    Usuario: <ion-icon name="person-circle" class="IconoPermisos"></ion-icon>,
   };
 
   setTimeout(() => {

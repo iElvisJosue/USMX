@@ -87,9 +87,11 @@
   font-weight: bold;
   font-size: 20px;
   text-transform: uppercase;
+  color: white;
 }
 .Bienvenida__Perfil--Encabezado ion-icon {
   font-size: 25px;
+  color: white;
   transition: 0.3s ease-in-out all;
 }
 .Bienvenida__Perfil--Encabezado ion-icon:hover {
@@ -100,10 +102,10 @@
   width: 125px;
   height: 125px;
   border-radius: 50%;
-  border-left: 5px solid var(--ColorBlanco);
-  border-top: 5px solid var(--ColorBlanco);
+  border-left: 5px solid white;
+  border-top: 5px solid white;
   border-right: 5px solid var(--ColorRojo);
-  border-bottom: 5px solid var(--ColorBlanco);
+  border-bottom: 5px solid white;
   transform: rotate(-45deg);
   padding: 10px;
 }
@@ -116,14 +118,17 @@
 }
 .Bienvenida__Perfil--Nombre {
   padding: 2px 10px;
-  background-color: var(--ColorBlanco);
+  background-color: white;
   color: var(--ColorAzul);
   border-radius: 15px;
   font-weight: bold;
 }
+.IconoPermisos {
+  color: white;
+}
 .Bienvenida__Perfil--Permisos {
   font-style: italic;
-  color: var(--ColorSecundario);
+  color: rgba(255, 255, 255, 0.514);
 }
 .Bienvenida__TotalDePedidosHechosHoy {
   grid-area: EspacioDos;
@@ -142,6 +147,8 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 5px;
+  color: white;
+  font-weight: bold;
 }
 .Bienvenida__TotalDePedidosHechosHoy--Texto p {
   font-weight: bold;
@@ -149,8 +156,8 @@
   text-transform: uppercase;
 }
 .Bienvenida__TotalDePedidosHechosHoy--Cantidad {
-  background: var(--ColorBlanco);
-  color: var(--ColorNegro);
+  background: white;
+  color: black;
   min-width: 65px;
   min-height: 65px;
   border-radius: 50%;
@@ -218,6 +225,7 @@
   font-weight: bold;
   text-align: center;
   background-color: var(--ColorBlanco);
+  color: var(--ColorNegro);
   gap: 10px;
 }
 .Bienvenida__UltimasGuias--Cuerpo span {

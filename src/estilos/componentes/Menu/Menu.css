@@ -43,6 +43,7 @@
   display: none;
   cursor: pointer;
   font-size: 30px;
+  color: var(--ColorNegro);
 }
 .Menu__Encabezado::before {
   content: "";

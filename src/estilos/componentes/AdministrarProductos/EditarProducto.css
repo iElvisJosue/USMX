@@ -121,8 +121,11 @@
   color: var(--ColorVerde);
 }
 @media (max-width: 1000px) {
+  .EditarProducto {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .EditarProducto__Titulo__Campo {
-    grid-column: span 2;
+    grid-column: span 1;
   }
   .EditarProducto__Titulo__Campo.Tres {
     grid-column: span 2;

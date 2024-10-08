@@ -79,7 +79,7 @@ export const OpcionesDelMenu = {
     {
       icono: "settings",
       nombre: "Configuración",
-      url: "#",
+      url: `${HOST}Configuracion`,
     },
   ],
   Usuario: [
@@ -105,6 +105,11 @@ export const OpcionesDelMenu = {
         },
       ],
     },
+    {
+      icono: "settings",
+      nombre: "Configuración",
+      url: `${HOST}Configuracion`,
+    },
   ],
   Moderador: [
     {
@@ -128,6 +133,11 @@ export const OpcionesDelMenu = {
           url: `${HOST}Pedidos`,
         },
       ],
+    },
+    {
+      icono: "settings",
+      nombre: "Configuración",
+      url: `${HOST}Configuracion`,
     },
   ],
 };

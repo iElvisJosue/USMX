@@ -167,12 +167,12 @@
   position: relative;
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
-  color: var(--ColorSecundario);
+  color: var(--ColorBlanco);
 }
 .AdministrarAgenciasDelProducto__Agencia.Asignadas:hover {
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
-  color: var(--ColorSecundario);
+  color: var(--Blanco);
   transform: scale(1);
   cursor: initial;
 }
@@ -206,7 +206,7 @@
   border-radius: 50%;
   border: 2px solid var(--ColorNaranja);
   background-color: var(--ColorNaranja);
-  color: var(--ColorNegro);
+  color: black;
   font-size: 10px;
   transition: 0.3s ease-in-out all;
 
@@ -225,7 +225,7 @@
 .AdministrarAgenciasDelProducto__Agencia:hover {
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
-  color: var(--ColorSecundario);
+  color: var(--ColorBlanco);
   cursor: pointer;
   transform: scale(1.02);
 }

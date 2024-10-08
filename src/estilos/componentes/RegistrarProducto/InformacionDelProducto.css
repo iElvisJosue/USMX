@@ -85,8 +85,11 @@
   color: var(--ColorVerde);
 }
 @media (max-width: 1000px) {
+  .InformacionDelProducto {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .InformacionDelProducto__Titulo__Campo {
-    grid-column: span 2;
+    grid-column: span 1;
   }
   .InformacionDelProducto__Titulo__Campo.Tres {
     grid-column: span 2;

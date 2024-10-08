@@ -203,7 +203,7 @@
   border-radius: 50%;
   border: 2px solid var(--ColorNaranja);
   background-color: var(--ColorNaranja);
-  color: var(--ColorNegro);
+  color: black;
   font-size: 10px;
   transition: 0.3s ease-in-out all;
 

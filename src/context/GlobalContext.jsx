@@ -22,17 +22,20 @@ export const ProveedorGlobal = ({ children }) => {
   const [usuario, establecerUsuario] = useState(null);
   const [tieneCookie, establecerTieneCookie] = useState(false);
   const [cargando, establecerCargando] = useState(true);
+
   const setError = () => {
     establecerUsuario(null);
     establecerTieneCookie(false);
     establecerCargando(false);
   };
+
   const setSuccess = (res) => {
     establecerUsuario(res);
     establecerCargando(false);
     establecerTieneCookie(true);
     return res;
   };
+
   // COMPROBAR SI TIENE UN COOKIE
   useEffect(() => {
     async function ValidarCookie() {

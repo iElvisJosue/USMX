@@ -18,7 +18,7 @@
   justify-content: center;
   gap: 20px;
 
-  box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.15);
 }
 .IniciarSesion__Form--Img {
   width: 120px;

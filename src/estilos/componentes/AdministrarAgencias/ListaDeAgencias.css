@@ -115,7 +115,6 @@
   height: 30px;
   padding: 0 10px;
   font-size: 14px;
-  color: var(--ColorBlanco);
   border-radius: 15px;
   font-weight: bold;
 
@@ -133,6 +132,7 @@
 }
 .ListaDeAgencias__Clasificacion--Texto.Desactivada {
   background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
 }
 .ListaDeAgencias__Agencia {
   position: relative;

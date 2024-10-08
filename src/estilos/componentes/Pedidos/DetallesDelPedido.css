@@ -148,6 +148,7 @@
   padding: 10px;
   border-radius: 15px;
   text-align: center;
+  color: var(--ColorNegro);
 
   display: flex;
   flex-direction: column;

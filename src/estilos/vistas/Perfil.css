@@ -68,7 +68,7 @@
 }
 .Perfil__Contenido__Permisos ion-icon {
   padding: 2px 5px;
-  color: var(--ColorBlanco);
+  color: white;
   border-radius: 5px;
 }
 .Perfil__Contenido__Permisos.Administrador ion-icon {
@@ -111,6 +111,7 @@
   height: 100%;
   font-weight: bold;
   font-size: 16px;
+  color: var(--ColorNegro);
 
   display: flex;
   align-items: center;

@@ -33,14 +33,19 @@
 }
 .ListaDePedidos__Opciones--Boton.BuscarPorFecha:hover::after {
   content: "Buscar por fecha";
+  color: var(--ColorAzul);
 }
 .ListaDePedidos__Opciones--Boton.ListaCompleta:hover::after {
   content: "Lista completa";
+  color: var(--ColorAzul);
 }
 .ListaDePedidos__Opciones--Boton:hover {
   background-color: var(--ColorBlanco);
-  color: var(--ColorAzul);
 }
 .ListaDePedidos__Opciones--Boton ion-icon {
   font-size: 20px;
+  color: var(--ColorBlanco);
+}
+.ListaDePedidos__Opciones--Boton:hover ion-icon {
+  color: var(--ColorAzul);
 }
