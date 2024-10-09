@@ -77,6 +77,35 @@ export const OpcionesDelMenu = {
       ],
     },
     {
+      icono: "code-working",
+      nombre: "Operaciones",
+      url: "#",
+      opcionesSecundarias: [
+        {
+          icono: "car",
+          nombre: "Movimientos",
+          url: `${HOST}Movimientos`,
+        },
+      ],
+    },
+    {
+      icono: "alert-circle",
+      nombre: "Ocurre",
+      url: "#",
+      // opcionesSecundarias: [
+      //   {
+      //     icono: "add-circle",
+      //     nombre: "Registrar Ocurre",
+      //     url: `${HOST}Registrar-Ocurre`,
+      //   },
+      //   {
+      //     icono: "cog",
+      //     nombre: "Administrar Ocurres",
+      //     url: `${HOST}Administrar-Ocurres`,
+      //   },
+      // ],
+    },
+    {
       icono: "settings",
       nombre: "Configuración",
       url: `${HOST}Configuracion`,

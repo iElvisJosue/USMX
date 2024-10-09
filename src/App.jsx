@@ -5,6 +5,8 @@ import { ProveedorAgencias } from "./context/AgenciasContext";
 import { ProveedorPedidos } from "./context/PedidosContext";
 import { ProveedorProductos } from "./context/ProductosContext";
 import { ProveedorUsuarios } from "./context/UsuariosContext";
+import { ProveedorOperaciones } from "./context/OperacionesContext";
+import { ProveedorOcurre } from "./context/OcurreContext";
 import { ProveedorConfiguracion } from "./context/ConfiguracionContext";
 
 // IMPORTAMOS LAS VISTAS
@@ -20,6 +22,7 @@ import NumeroDeGuia from "./vistas/NumeroDeGuia";
 import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
 import AdministrarAgencias from "./vistas/AdministrarAgencias";
 import AdministrarProductos from "./vistas/AdministrarProductos";
+import Movimientos from "./vistas/Movimientos";
 import Configuracion from "./vistas/Configuracion";
 
 // PROTECCIÓN DE RUTAS
@@ -34,65 +37,74 @@ export default function App() {
           <ProveedorUsuarios>
             <ProveedorPedidos>
               <ProveedorProductos>
-                <BrowserRouter>
-                  <Routes>
-                    {/* RUTAS SIN PROTECCIÓN */}
-                    <Route path="/" element={<IniciarSesion />} />
-                    <Route
-                      path="/NumeroDeGuia/:GuiaPedido"
-                      element={<NumeroDeGuia />}
-                    />
-                    {/* TERMINAN LAS RUTAS SIN PROTECCIÓN */}
-                    {/* RUTAS PROTEGIDAS POR COOKIES */}
-                    <Route element={<ProteccionPorCookies />}>
-                      {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
-                      <Route element={<ProteccionParaAdministradores />}>
-                        {/* RUTAS DE AGENCIAS */}
+                <ProveedorOperaciones>
+                  <ProveedorOcurre>
+                    <BrowserRouter>
+                      <Routes>
+                        {/* RUTAS SIN PROTECCIÓN */}
+                        <Route path="/" element={<IniciarSesion />} />
                         <Route
-                          path="/Registrar-Agencia"
-                          element={<RegistrarAgencia />}
+                          path="/NumeroDeGuia/:GuiaPedido"
+                          element={<NumeroDeGuia />}
                         />
-                        <Route
-                          path="/Administrar-Agencias"
-                          element={<AdministrarAgencias />}
-                        />
-                        {/* RUTAS DE USUARIOS */}
-                        <Route
-                          path="/Registrar-Usuario"
-                          element={<RegistrarUsuario />}
-                        />
-                        <Route
-                          path="/Administrar-Usuarios"
-                          element={<AdministrarUsuarios />}
-                        />
-                        {/* RUTAS DE PRODUCTOS */}
-                        <Route
-                          path="/Registrar-Producto"
-                          element={<RegistrarProducto />}
-                        />
-                        <Route
-                          path="/Administrar-Productos"
-                          element={<AdministrarProductos />}
-                        />
-                      </Route>
-                      {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
-                      {/* RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
-                      <Route
-                        path="/Realizar-Pedido"
-                        element={<RealizarPedido />}
-                      />
-                      <Route path="/Pedidos" element={<Pedidos />} />
-                      <Route path="/Bienvenida" element={<Bienvenida />} />
-                      <Route path="/Perfil" element={<Perfil />} />
-                      <Route
-                        path="/Configuracion"
-                        element={<Configuracion />}
-                      />
-                      {/* TERMINAN LAS RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
-                    </Route>
-                  </Routes>
-                  {/* TERMINAN LAS RUTAS PROTEGIDAS POR COOKIES */}
-                </BrowserRouter>
+                        {/* TERMINAN LAS RUTAS SIN PROTECCIÓN */}
+                        {/* RUTAS PROTEGIDAS POR COOKIES */}
+                        <Route element={<ProteccionPorCookies />}>
+                          {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
+                          <Route element={<ProteccionParaAdministradores />}>
+                            {/* RUTAS DE AGENCIAS */}
+                            <Route
+                              path="/Registrar-Agencia"
+                              element={<RegistrarAgencia />}
+                            />
+                            <Route
+                              path="/Administrar-Agencias"
+                              element={<AdministrarAgencias />}
+                            />
+                            {/* RUTAS DE USUARIOS */}
+                            <Route
+                              path="/Registrar-Usuario"
+                              element={<RegistrarUsuario />}
+                            />
+                            <Route
+                              path="/Administrar-Usuarios"
+                              element={<AdministrarUsuarios />}
+                            />
+                            {/* RUTAS DE PRODUCTOS */}
+                            <Route
+                              path="/Registrar-Producto"
+                              element={<RegistrarProducto />}
+                            />
+                            <Route
+                              path="/Administrar-Productos"
+                              element={<AdministrarProductos />}
+                            />
+                            {/* RUTAS DE MOVIMIENTOS */}
+                            <Route
+                              path="/Movimientos"
+                              element={<Movimientos />}
+                            />
+                          </Route>
+                          {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
+                          {/* RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
+                          <Route
+                            path="/Realizar-Pedido"
+                            element={<RealizarPedido />}
+                          />
+                          <Route path="/Pedidos" element={<Pedidos />} />
+                          <Route path="/Bienvenida" element={<Bienvenida />} />
+                          <Route path="/Perfil" element={<Perfil />} />
+                          <Route
+                            path="/Configuracion"
+                            element={<Configuracion />}
+                          />
+                          {/* TERMINAN LAS RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
+                        </Route>
+                      </Routes>
+                      {/* TERMINAN LAS RUTAS PROTEGIDAS POR COOKIES */}
+                    </BrowserRouter>
+                  </ProveedorOcurre>
+                </ProveedorOperaciones>
               </ProveedorProductos>
             </ProveedorPedidos>
           </ProveedorUsuarios>

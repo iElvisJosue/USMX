@@ -75,6 +75,7 @@
 }
 .BuscarPedidosPorFecha__Cuerpo__Tabla__Cuerpo {
   background-color: var(--ColorBlanco);
+  color: var(--ColorNegro);
   text-align: center;
 }
 .BuscarPedidosPorFecha__Cuerpo__Tabla__Cuerpo tr td {

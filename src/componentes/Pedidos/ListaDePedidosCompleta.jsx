@@ -129,7 +129,7 @@ export default function ListaDePedidosCompleta({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtro}".`}
+          Texto={"¡Oops! No hemos encontrado resultados."}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Realizar-Pedido"}

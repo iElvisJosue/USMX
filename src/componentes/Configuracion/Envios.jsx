@@ -1,6 +1,7 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useConfiguracion } from "../../context/ConfiguracionContext";
@@ -56,6 +57,10 @@ export default function Envios() {
   });
 
   const EliminarEnvio = async (idTipoEnvio) => {
+    if (envios.length === 1)
+      return toast.error(
+        "No puedes eliminar todos los tipos de envío del sistema. ❌"
+      );
     try {
       const res = await EliminarTipoDeEnvio({
         CookieConToken: COOKIE_CON_TOKEN,

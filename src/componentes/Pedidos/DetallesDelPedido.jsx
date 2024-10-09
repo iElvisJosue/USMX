@@ -327,7 +327,7 @@ export default function DetallesDelPedido({
           <>
             <span className="DetallesDelPedido__Detalles__Movimiento--Encabezado">
               <p className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
-                <ion-icon name="bag-handle"></ion-icon> <b>Estado del pedido</b>
+                <ion-icon name="bag-check"></ion-icon> <b>Estado del pedido</b>
               </p>
               <p className="DetallesDelPedido__Detalles__Movimiento--Encabezado--Descripcion">
                 <ion-icon name="car"></ion-icon> <b>Movimiento</b>

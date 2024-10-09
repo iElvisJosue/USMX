@@ -4,7 +4,7 @@
   padding: 10px;
   background-color: var(--ColorAzul);
   font-size: 14px;
-  font-family: "Ticketing", sans-serif !important;
+  font-family: "Ticketing", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 
@@ -16,14 +16,14 @@
 }
 .NumeroDeGuia__Separador {
   width: 100%;
-  border: 1px dashed var(--ColorNegro);
+  border: 1px dashed black;
 }
 .NumeroDeGuia__Ticket,
 .NumeroDeGuia__Movimientos {
   position: relative;
   width: 300px;
   min-height: 100px;
-  background-color: var(--ColorBlanco);
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,8 +47,8 @@
         circle,
         transparent,
         transparent 50%,
-        var(--ColorBlanco) 50%,
-        var(--ColorBlanco) 100%
+        white 50%,
+        white 100%
       ) -7px -8px / 16px 16px repeat-x;
   }
 
@@ -58,8 +58,8 @@
         circle,
         transparent,
         transparent 50%,
-        var(--ColorBlanco) 50%,
-        var(--ColorBlanco) 100%
+        white 50%,
+        white 100%
       ) -7px -2px / 16px 16px repeat-x;
   }
 }
@@ -75,7 +75,7 @@
   text-transform: uppercase;
 }
 .NumeroDeGuia__Ticket--Detalles.SinResultados b {
-  color: var(--ColorNegro);
+  color: black;
 }
 .NumeroDeGuia__Ticket--Detalles b {
   font-size: 16px;
@@ -83,7 +83,7 @@
 }
 .NumeroDeGuia__Ticket--Detalles ion-icon {
   font-size: 20px;
-  color: var(--ColorNegro);
+  color: black;
 }
 .NumeroDeGuia__Movimientos {
   width: 500px;

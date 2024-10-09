@@ -1,6 +1,7 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useConfiguracion } from "../../context/ConfiguracionContext";
@@ -56,6 +57,10 @@ export default function Cargas() {
   });
 
   const EliminarCarga = async (idCarga) => {
+    if (cargas.length === 1)
+      return toast.error(
+        "No puedes eliminar todos los tipos de cargas del sistema. ❌"
+      );
     try {
       const res = await EliminarTipoDeCarga({
         CookieConToken: COOKIE_CON_TOKEN,
