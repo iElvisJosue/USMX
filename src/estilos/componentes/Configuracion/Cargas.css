@@ -1,0 +1,132 @@
+.Cargas {
+  margin-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--ColorSecundario);
+  display: flex;
+}
+.Cargas__Texto {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.Cargas__Texto b {
+  color: var(--ColorNegro);
+  font-size: 18px;
+}
+.Cargas__Texto p {
+  color: var(--ColorGris);
+  font-size: 16px;
+}
+.Cargas__Texto--Inputs {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+.Cargas__Texto--Inputs--Span {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Cargas__Texto--Inputs input {
+  width: 100%;
+  min-height: 40px;
+  padding: 5px;
+  background-color: var(--ColorSecundario);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  color: var(--ColorBlanco);
+  font-size: 14px;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  text-align: center;
+}
+.Cargas__Texto--Inputs button {
+  width: 100%;
+  height: 40px;
+  color: var(--ColorBlanco);
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+  text-align: center;
+  text-transform: uppercase;
+}
+.Cargas__Texto--Inputs button:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+.Cargas__Lista {
+  flex: 1;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.Cargas__Lista li {
+  position: relative;
+  list-style: none;
+  padding: 5px 20px;
+  border-radius: 15px;
+  text-align: center;
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Cargas__Lista button {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+  border-radius: 15px;
+  width: 20px;
+  height: 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Cargas__Lista button:hover {
+  transform: scale(1.1);
+}
+@media (width <= 950px) {
+  .Cargas {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .Cargas__Lista {
+    border-top: 2px solid var(--ColorSecundario);
+    padding-top: 25px;
+  }
+}
+@media (width <= 500px) {
+  .Cargas__Texto b {
+    font-size: 16px;
+  }
+  .Cargas__Texto p {
+    font-size: 14px;
+  }
+}

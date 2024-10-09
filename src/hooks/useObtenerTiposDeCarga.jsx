@@ -9,8 +9,10 @@ import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 export default function useObtenerTiposDeCarga() {
   const { ObtenerTiposDeCarga } = useConfiguracion();
 
-  const [cargas, establecerCargas] = useState([]);
+  const [cargas, establecerCargas] = useState(null);
   const [cargandoCargas, establecerCargandoCargas] = useState(true);
+  const [obtenerCargasNuevamente, establecerObtenerCargasNuevamente] =
+    useState(false);
 
   useEffect(() => {
     const obtenerCargas = async () => {
@@ -25,7 +27,12 @@ export default function useObtenerTiposDeCarga() {
       }
     };
     obtenerCargas();
-  }, []);
+  }, [obtenerCargasNuevamente]);
 
-  return { cargas, cargandoCargas };
+  return {
+    cargas,
+    cargandoCargas,
+    obtenerCargasNuevamente,
+    establecerObtenerCargasNuevamente,
+  };
 }

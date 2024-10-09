@@ -338,7 +338,7 @@ export default function InformacionDelPedido({
             })}
           >
             <option value="Invalido">Selecciona un tipo de carga</option>
-            {cargas.map((carga) => (
+            {cargas?.map((carga) => (
               <option
                 key={carga.idCarga}
                 value={carga.TipoCarga}
@@ -362,7 +362,7 @@ export default function InformacionDelPedido({
             })}
           >
             <option value="Invalido">Selecciona un tipo de envío</option>
-            {envios.map((envio) => (
+            {envios?.map((envio) => (
               <option
                 key={envio.idTipoEnvio}
                 value={envio.TipoEnvio}

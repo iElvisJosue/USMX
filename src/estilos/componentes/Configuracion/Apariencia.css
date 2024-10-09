@@ -1,29 +1,28 @@
-.Configuracion__Apariencia {
-  margin-top: 25px;
-  padding: 10px 0;
+.Apariencia {
+  margin-top: 15px;
+  padding-bottom: 15px;
   border-bottom: 2px solid var(--ColorSecundario);
-
   display: flex;
 }
-.Configuracion__Apariencia__Texto {
+.Apariencia__Texto {
   flex: 1;
 }
-.Configuracion__Apariencia__Texto b {
+.Apariencia__Texto b {
   color: var(--ColorNegro);
   font-size: 18px;
 }
-.Configuracion__Apariencia__Texto p {
+.Apariencia__Texto p {
   color: var(--ColorGris);
   font-size: 16px;
 }
-.Configuracion__Apariencia__Ejemplos {
+.Apariencia__Ejemplos {
   flex: 1;
 
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
-.Configuracion__Apariencia__Ejemplo--Imagen {
+.Apariencia__Ejemplo--Imagen {
   width: 100%;
 
   display: flex;
@@ -31,7 +30,7 @@
   align-items: center;
   gap: 10px;
 }
-.Configuracion__Apariencia__Ejemplo--Imagen img {
+.Apariencia__Ejemplo--Imagen img {
   border-radius: 20px;
   padding: 5px;
   border: 3px dashed transparent;
@@ -39,38 +38,38 @@
   width: 90%;
   cursor: pointer;
 }
-.Configuracion__Apariencia__Ejemplo--Imagen:hover img {
+.Apariencia__Ejemplo--Imagen:hover img {
   border: 3px dashed var(--ColorAzul);
 }
-.Configuracion__Apariencia__Ejemplo--Imagen.Oscuro img {
+.Apariencia__Ejemplo--Imagen.Oscuro img {
   border: 3px dashed var(--ColorAzul);
   pointer-events: none;
 }
-.Configuracion__Apariencia__Ejemplo--Imagen b {
+.Apariencia__Ejemplo--Imagen b {
   color: var(--ColorNegro);
   transition: 0.3s ease-in-out all;
   font-size: 16px;
 }
-.Configuracion__Apariencia__Ejemplo--Imagen:hover b {
+.Apariencia__Ejemplo--Imagen:hover b {
   color: var(--ColorAzul);
 }
-.Configuracion__Apariencia__Ejemplo--Imagen.Oscuro b {
+.Apariencia__Ejemplo--Imagen.Oscuro b {
   color: var(--ColorAzul);
 }
 @media (width <= 950px) {
-  .Configuracion__Apariencia {
+  .Apariencia {
     flex-direction: column;
     gap: 20px;
   }
 }
 @media (width <= 500px) {
-  .Configuracion__Apariencia__Texto b {
+  .Apariencia__Texto b {
     font-size: 16px;
   }
-  .Configuracion__Apariencia__Texto p {
+  .Apariencia__Texto p {
     font-size: 14px;
   }
-  .Configuracion__Apariencia__Ejemplo--Imagen b {
+  .Apariencia__Ejemplo--Imagen b {
     font-size: 14px;
   }
 }

@@ -1,6 +1,3 @@
-// IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/Configuracion/Apariencia.css";
-
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useConfiguracion } from "../../context/ConfiguracionContext";
 import { useGlobal } from "../../context/GlobalContext";
@@ -8,6 +5,9 @@ import { useGlobal } from "../../context/GlobalContext";
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
+
+// IMPORTAMOS LOS ESTILOS
+import "../../estilos/componentes/Configuracion/Apariencia.css";
 
 export default function Apariencia() {
   const { usuario } = useGlobal();
@@ -40,14 +40,14 @@ export default function Apariencia() {
   };
 
   return (
-    <section className="Configuracion__Apariencia">
-      <div className="Configuracion__Apariencia__Texto">
+    <section className="Apariencia">
+      <div className="Apariencia__Texto">
         <b>Tema de la interfaz</b>
         <p>Selecciona el tema de la interfaz de la aplicación.</p>
       </div>
-      <div className="Configuracion__Apariencia__Ejemplos">
+      <div className="Apariencia__Ejemplos">
         <picture
-          className={`Configuracion__Apariencia__Ejemplo--Imagen ${
+          className={`Apariencia__Ejemplo--Imagen ${
             modoOscuro === 1 && "Oscuro"
           }`}
           onClick={
@@ -60,7 +60,7 @@ export default function Apariencia() {
           <b>Tema Oscuro</b>
         </picture>
         <picture
-          className={`Configuracion__Apariencia__Ejemplo--Imagen ${
+          className={`Apariencia__Ejemplo--Imagen ${
             modoOscuro === 0 && "Oscuro"
           }`}
           onClick={

@@ -5,8 +5,10 @@ import { Toaster } from "sonner";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
-import Apariencia from "../componentes/Configuracion/Apariencia";
 import MenuConfiguracion from "../componentes/Configuracion/MenuConfiguracion";
+import Apariencia from "../componentes/Configuracion/Apariencia";
+import Cargas from "../componentes/Configuracion/Cargas";
+import Envios from "../componentes/Configuracion/Envios";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/Configuracion.css";
@@ -23,8 +25,8 @@ export default function Configuracion() {
   const componentesParaMostrar = {
     0: Apariencia,
     1: Apariencia,
-    2: Apariencia,
-    3: Apariencia,
+    2: Cargas,
+    3: Envios,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
