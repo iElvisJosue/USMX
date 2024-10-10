@@ -256,7 +256,7 @@ export default function DetallesDelPedido({
         {paquete[indicePedido].AnchoPedido} x {paquete[indicePedido].AltoPedido}
       </div>
       <div className="DetallesDelPedido__Detalles Peso">
-        <ion-icon name="cube"></ion-icon> <b>Peso</b>
+        <ion-icon name="scale"></ion-icon> <b>Peso</b>
         {paquete[indicePedido].PesoPedido}
       </div>
       <div className="DetallesDelPedido__Detalles Contenido">
