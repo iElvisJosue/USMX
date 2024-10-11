@@ -160,18 +160,16 @@ export default function DetallesDelPedido({
           {paquete[indicePedido].NombreRemitente}{" "}
           {paquete[indicePedido].ApellidosRemitente}
         </p>
-        <p>
-          {(paquete[indicePedido].TelefonoCasaRemitente !== "" ||
-            paquete[indicePedido].CelularRemitente !== "") && (
-            <>
-              <b>Teléfono(s): </b>
-              {paquete[indicePedido].TelefonoCasaRemitente &&
-                paquete[indicePedido].TelefonoCasaRemitente}
-              {paquete[indicePedido].CelularRemitente &&
-                ` - ${paquete[indicePedido].CelularRemitente}`}
-            </>
-          )}
-        </p>
+        {(paquete[indicePedido].TelefonoCasaRemitente !== "" ||
+          paquete[indicePedido].CelularRemitente !== "") && (
+          <p>
+            <b>Teléfono(s): </b>
+            {paquete[indicePedido].TelefonoCasaRemitente &&
+              paquete[indicePedido].TelefonoCasaRemitente}
+            {paquete[indicePedido].CelularRemitente &&
+              ` - ${paquete[indicePedido].CelularRemitente}`}
+          </p>
+        )}
         <p>
           <b>Correo: </b>
           {paquete[indicePedido].CorreoRemitente}
@@ -201,18 +199,16 @@ export default function DetallesDelPedido({
           {paquete[indicePedido].ApellidoPaternoDestinatario}{" "}
           {paquete[indicePedido].ApellidoMaternoDestinatario}
         </p>
-        <p>
-          {(paquete[indicePedido].TelefonoCasaDestinatario !== "" ||
-            paquete[indicePedido].CelularDestinatario !== "") && (
-            <>
-              <b>Teléfono(s): </b>
-              {paquete[indicePedido].TelefonoCasaDestinatario &&
-                paquete[indicePedido].TelefonoCasaDestinatario}
-              {paquete[indicePedido].CelularDestinatario &&
-                ` - ${paquete[indicePedido].CelularDestinatario}`}
-            </>
-          )}
-        </p>
+        {(paquete[indicePedido].TelefonoCasaDestinatario !== "" ||
+          paquete[indicePedido].CelularDestinatario !== "") && (
+          <p>
+            <b>Teléfono(s): </b>
+            {paquete[indicePedido].TelefonoCasaDestinatario &&
+              paquete[indicePedido].TelefonoCasaDestinatario}
+            {paquete[indicePedido].CelularDestinatario &&
+              ` - ${paquete[indicePedido].CelularDestinatario}`}
+          </p>
+        )}
         <p>
           <b>Correo: </b>
           {paquete[indicePedido].CorreoDestinatario}
