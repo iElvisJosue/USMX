@@ -5,6 +5,7 @@ import { useState } from "react";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import RegistrarNuevoDestinatario from "./RegistrarNuevoDestinatario";
 import SeleccionarDestinatario from "./SeleccionarDestinatario";
+import SeleccionarOcurre from "./SeleccionarOcurre";
 
 export default function InformacionDelDestinatario({
   paso,
@@ -15,7 +16,8 @@ export default function InformacionDelDestinatario({
 }) {
   const [vistaDestinatario, establecerVistaDestinatario] = useState(0);
 
-  const PropsParaRegistrarNuevoDestinatario = {
+  // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
+  const valoresParaLosComponentes = {
     establecerVistaDestinatario,
     destinatario,
     establecerDestinatario,
@@ -23,14 +25,15 @@ export default function InformacionDelDestinatario({
     agencia,
     paso,
   };
+  // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
+  const componentesParaMostrar = {
+    0: RegistrarNuevoDestinatario,
+    1: SeleccionarDestinatario,
+    2: SeleccionarOcurre,
+  };
 
-  return vistaDestinatario === 0 ? (
-    <RegistrarNuevoDestinatario
-      PropsParaRegistrarNuevoDestinatario={PropsParaRegistrarNuevoDestinatario}
-    />
-  ) : (
-    <SeleccionarDestinatario
-      PropsParaRegistrarNuevoDestinatario={PropsParaRegistrarNuevoDestinatario}
-    />
-  );
+  // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
+  const ComponenteParaRenderizar = componentesParaMostrar[vistaDestinatario];
+
+  return <ComponenteParaRenderizar {...valoresParaLosComponentes} />;
 }

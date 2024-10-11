@@ -15,16 +15,12 @@ import usePaginacion from "../../hooks/usePaginacion";
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/SeleccionarRemitente.css";
 export default function SeleccionarRemitente({
-  PropsParaRegistrarNuevoRemitente,
+  establecerVistaRemitente,
+  establecerRemitente,
+  establecerPaso,
+  agencia,
+  paso,
 }) {
-  const {
-    establecerVistaRemitente,
-    establecerRemitente,
-    establecerPaso,
-    agencia,
-    paso,
-  } = PropsParaRegistrarNuevoRemitente;
-
   const { remitentes, cargandoRemitentes, filtro, establecerFiltro } =
     useBuscarRemitentesPorAgencia({
       idAgencia: agencia.idAgencia,

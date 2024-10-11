@@ -12,3 +12,6 @@ export const SolicitudActualizarEstadoOcurre = (data) =>
 // PETICION PARA ACTUALIZAR LA INFORMACIÓN DE UNA OCURRENCIA
 export const SolicitudActualizarInformacionOcurre = (data) =>
   axios.put("/ocurre/ActualizarInformacionOcurre", data);
+// PETICIÓN PARA BUSCAR LAS OCURRENCIAS POR ACTIVAS POR FILTRO
+export const SolicitudBuscarOcurresActivosPorFiltro = (data) =>
+  axios.post("/ocurre/BuscarOcurresActivosPorFiltro", data);

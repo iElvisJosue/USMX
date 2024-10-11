@@ -405,6 +405,7 @@ export default function InformacionDelPedido({
             id="Ancho"
             type="text"
             name="Ancho"
+            tabIndex="-1"
             placeholder="Escriba aquí..."
             {...register("Ancho", {
               required: "¡Este campo es obligatorio! ⚠️",
@@ -428,6 +429,7 @@ export default function InformacionDelPedido({
             id="Largo"
             type="text"
             name="Largo"
+            tabIndex="-1"
             placeholder="Escriba aquí..."
             {...register("Largo", {
               required: "¡Este campo es obligatorio! ⚠️",
@@ -451,6 +453,7 @@ export default function InformacionDelPedido({
             id="Alto"
             type="text"
             name="Alto"
+            tabIndex="-1"
             placeholder="Escriba aquí..."
             {...register("Alto", {
               required: "¡Este campo es obligatorio! ⚠️",

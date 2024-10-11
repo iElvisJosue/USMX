@@ -15,7 +15,12 @@ import { CamposRemitente } from "../../helpers/RealizarPedido/CamposRemitente";
 import "../../estilos/componentes/RealizarPedido/RegistrarNuevoRemitente.css";
 
 export default function RegistrarNuevoRemitente({
-  PropsParaRegistrarNuevoRemitente,
+  establecerVistaRemitente,
+  remitente,
+  establecerRemitente,
+  establecerPaso,
+  agencia,
+  paso,
 }) {
   const {
     handleSubmit,
@@ -25,15 +30,6 @@ export default function RegistrarNuevoRemitente({
   } = useForm({
     criteriaMode: "all",
   });
-
-  const {
-    establecerVistaRemitente,
-    remitente,
-    establecerRemitente,
-    establecerPaso,
-    agencia,
-    paso,
-  } = PropsParaRegistrarNuevoRemitente;
 
   useEffect(() => {
     if (remitente?.idRemitente === false) {
@@ -51,6 +47,8 @@ export default function RegistrarNuevoRemitente({
   }, []);
 
   const GuardaInformacionDelRemitente = handleSubmit(async (data) => {
+    // PONEMOS EL ID DEL REMITENTE COMO FALSO PARA QUE SE ALMACENE EN LA BASE DE DATOS
+    // Y SE CREE UNA UNION CON LA AGENCIA CORRESPONDIENTE
     data.idRemitente = false;
     establecerRemitente(data);
     establecerPaso(paso + 1);

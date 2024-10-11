@@ -9,6 +9,7 @@
   grid-column: 1 / -1;
   display: flex;
   justify-content: flex-end;
+  gap: 10px;
 }
 .RegistrarNuevoDestinatario__Opciones--Boton {
   width: auto;
@@ -31,8 +32,11 @@
   justify-content: center;
   gap: 5px;
 }
-.RegistrarNuevoDestinatario__Opciones--Boton:hover::after {
+.RegistrarNuevoDestinatario__Opciones--Boton.Lista:hover::after {
   content: "Seleccionar Destinatario";
+}
+.RegistrarNuevoDestinatario__Opciones--Boton.Ocurre:hover::after {
+  content: "Seleccionar Ocurre";
 }
 .RegistrarNuevoDestinatario__Opciones--Boton:hover {
   background-color: var(--ColorBlanco);
@@ -154,8 +158,5 @@
   .RegistrarNuevoDestinatario__Footer__Boton {
     width: 100%;
     height: 50px;
-  }
-  .RegistrarNuevoDestinatario__Opciones--Boton {
-    width: 100%;
   }
 }

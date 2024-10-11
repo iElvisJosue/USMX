@@ -5,6 +5,7 @@ import {
   SolicitudBuscarOcurresPorFiltro,
   SolicitudActualizarEstadoOcurre,
   SolicitudActualizarInformacionOcurre,
+  SolicitudBuscarOcurresActivosPorFiltro,
 } from "../api/authOcurre";
 
 export const OcurreContext = createContext();
@@ -50,6 +51,14 @@ export const ProveedorOcurre = ({ children }) => {
       return error;
     }
   };
+  const BuscarOcurresActivosPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarOcurresActivosPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <OcurreContext.Provider
@@ -58,6 +67,7 @@ export const ProveedorOcurre = ({ children }) => {
         BuscarOcurresPorFiltro,
         ActualizarEstadoOcurre,
         ActualizarInformacionOcurre,
+        BuscarOcurresActivosPorFiltro,
       }}
     >
       {children}

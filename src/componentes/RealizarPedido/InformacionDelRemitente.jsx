@@ -15,7 +15,8 @@ export default function InformacionDelRemitente({
 }) {
   const [vistaRemitente, establecerVistaRemitente] = useState(0);
 
-  const PropsParaRegistrarNuevoRemitente = {
+  // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
+  const valoresParaLosComponentes = {
     establecerVistaRemitente,
     remitente,
     establecerRemitente,
@@ -24,13 +25,14 @@ export default function InformacionDelRemitente({
     paso,
   };
 
-  return vistaRemitente === 0 ? (
-    <RegistrarNuevoRemitente
-      PropsParaRegistrarNuevoRemitente={PropsParaRegistrarNuevoRemitente}
-    />
-  ) : (
-    <SeleccionarRemitente
-      PropsParaRegistrarNuevoRemitente={PropsParaRegistrarNuevoRemitente}
-    />
-  );
+  // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
+  const componentesParaMostrar = {
+    0: RegistrarNuevoRemitente,
+    1: SeleccionarRemitente,
+  };
+
+  // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
+  const ComponenteParaRenderizar = componentesParaMostrar[vistaRemitente];
+
+  return <ComponenteParaRenderizar {...valoresParaLosComponentes} />;
 }

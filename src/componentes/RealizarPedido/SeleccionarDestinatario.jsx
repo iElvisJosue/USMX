@@ -15,17 +15,13 @@ import usePaginacion from "../../hooks/usePaginacion";
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/SeleccionarDestinatario.css";
 export default function SeleccionarDestinatario({
-  PropsParaRegistrarNuevoDestinatario,
+  establecerVistaDestinatario,
+  establecerDestinatario,
+  establecerPaso,
+  agencia,
+  paso,
 }) {
-  const {
-    establecerVistaDestinatario,
-    establecerDestinatario,
-    establecerPaso,
-    agencia,
-    paso,
-  } = PropsParaRegistrarNuevoDestinatario;
-
-  const { destinatarios, cargandoDestinatarios, filtro, establecerFiltro } =
+  const { destinatarios, cargandoDestinatarios, establecerFiltro } =
     useBuscarDestinatariosPorAgencia({
       idAgencia: agencia.idAgencia,
     });
@@ -77,10 +73,17 @@ export default function SeleccionarDestinatario({
       <span className="SeleccionarDestinatario__Opciones">
         <button
           type="button"
-          className="SeleccionarDestinatario__Opciones--Boton"
+          className="SeleccionarDestinatario__Opciones--Boton Registrar"
           onClick={() => establecerVistaDestinatario(0)}
         >
           <ion-icon name="add-circle"></ion-icon>
+        </button>
+        <button
+          type="button"
+          className="SeleccionarDestinatario__Opciones--Boton Ocurre"
+          onClick={() => establecerVistaDestinatario(2)}
+        >
+          <ion-icon name="alert-circle"></ion-icon>
         </button>
       </span>
       <h1 className="SeleccionarDestinatario__Titulo">
@@ -153,7 +156,7 @@ export default function SeleccionarDestinatario({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtro}"`}
+          Texto={`¡Oops! No se encontraron resultados.`}
         />
       )}
     </section>

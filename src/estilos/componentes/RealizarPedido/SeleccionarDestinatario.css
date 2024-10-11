@@ -9,6 +9,7 @@
   grid-column: 1 / -1;
   display: flex;
   justify-content: flex-end;
+  gap: 10px;
 }
 .SeleccionarDestinatario__Opciones--Boton {
   width: auto;
@@ -31,8 +32,11 @@
   justify-content: center;
   gap: 5px;
 }
-.SeleccionarDestinatario__Opciones--Boton:hover::after {
+.SeleccionarDestinatario__Opciones--Boton.Registrar:hover::after {
   content: "Registrar Destinatario";
+}
+.SeleccionarDestinatario__Opciones--Boton.Ocurre:hover::after {
+  content: "Seleccionar Ocurre";
 }
 .SeleccionarDestinatario__Opciones--Boton:hover {
   background-color: var(--ColorBlanco);
@@ -210,8 +214,5 @@
 @media (width <= 500px) {
   .SeleccionarDestinatario {
     grid-template-columns: 1fr;
-  }
-  .SeleccionarDestinatario__Opciones--Boton {
-    width: 100%;
   }
 }

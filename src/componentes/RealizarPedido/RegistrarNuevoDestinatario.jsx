@@ -15,7 +15,12 @@ import { CamposDestinatario } from "../../helpers/RealizarPedido/CamposDestinata
 import "../../estilos/componentes/RealizarPedido/RegistrarNuevoDestinatario.css";
 
 export default function RegistrarNuevoDestinatario({
-  PropsParaRegistrarNuevoDestinatario,
+  establecerVistaDestinatario,
+  destinatario,
+  establecerDestinatario,
+  establecerPaso,
+  agencia,
+  paso,
 }) {
   const {
     handleSubmit,
@@ -25,15 +30,6 @@ export default function RegistrarNuevoDestinatario({
   } = useForm({
     criteriaMode: "all",
   });
-
-  const {
-    establecerVistaDestinatario,
-    destinatario,
-    establecerDestinatario,
-    establecerPaso,
-    agencia,
-    paso,
-  } = PropsParaRegistrarNuevoDestinatario;
 
   useEffect(() => {
     if (destinatario?.idDestinatario === false) {
@@ -69,6 +65,8 @@ export default function RegistrarNuevoDestinatario({
   }, []);
 
   const GuardarInformacionDelDestinatario = handleSubmit(async (data) => {
+    // PONEMOS EL ID DEL DESTINATARIO COMO FALSO PARA QUE SE ALMACENE EN LA BASE DE DATOS
+    // Y SE CREE UNA UNION CON LA AGENCIA CORRESPONDIENTE
     data.idDestinatario = false;
     establecerDestinatario(data);
     establecerPaso(paso + 1);
@@ -83,10 +81,17 @@ export default function RegistrarNuevoDestinatario({
       <span className="RegistrarNuevoDestinatario__Opciones">
         <button
           type="button"
-          className="RegistrarNuevoDestinatario__Opciones--Boton"
+          className="RegistrarNuevoDestinatario__Opciones--Boton Lista"
           onClick={() => establecerVistaDestinatario(1)}
         >
           <ion-icon name="list"></ion-icon>
+        </button>
+        <button
+          type="button"
+          className="RegistrarNuevoDestinatario__Opciones--Boton Ocurre"
+          onClick={() => establecerVistaDestinatario(2)}
+        >
+          <ion-icon name="alert-circle"></ion-icon>
         </button>
       </span>
       <h1 className="RegistrarNuevoDestinatario__Titulo">
