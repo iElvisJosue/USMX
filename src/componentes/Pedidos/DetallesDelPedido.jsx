@@ -161,10 +161,16 @@ export default function DetallesDelPedido({
           {paquete[indicePedido].ApellidosRemitente}
         </p>
         <p>
-          <b>Teléfono(s): </b>
-          {paquete[indicePedido].TelefonoCasaRemitente}
-          {paquete[indicePedido].CelularRemitente &&
-            ` - ${paquete[indicePedido].CelularRemitente}`}
+          {(paquete[indicePedido].TelefonoCasaRemitente !== "" ||
+            paquete[indicePedido].CelularRemitente !== "") && (
+            <>
+              <b>Teléfono(s): </b>
+              {paquete[indicePedido].TelefonoCasaRemitente &&
+                paquete[indicePedido].TelefonoCasaRemitente}
+              {paquete[indicePedido].CelularRemitente &&
+                ` - ${paquete[indicePedido].CelularRemitente}`}
+            </>
+          )}
         </p>
         <p>
           <b>Correo: </b>
