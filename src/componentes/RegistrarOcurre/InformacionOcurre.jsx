@@ -129,7 +129,7 @@ export default function InformacionOcurre() {
           type="submit"
           className="InformacionOcurre__Footer__Boton Siguiente"
         >
-          Siguiente
+          Guardar
         </button>
       </footer>
     </form>
