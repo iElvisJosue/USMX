@@ -153,6 +153,8 @@ export default function ListaDeOcurres({
                   {infOcurre.CiudadOcurre}, {infOcurre.EstadoOcurre}{" "}
                   {infOcurre.CodigoPostalOcurre}
                 </p>
+                <ion-icon name="business"></ion-icon>
+                <p>{infOcurre.OperadorLogisticoOcurre}</p>
                 <span className="ListaDeOcurres__Ocurre__Opciones">
                   <button
                     className="ListaDeOcurres__Ocurre__Opciones--Boton Editar"
@@ -189,6 +191,8 @@ export default function ListaDeOcurres({
                   {infOcurre.CiudadOcurre}, {infOcurre.EstadoOcurre}{" "}
                   {infOcurre.CodigoPostalOcurre}
                 </p>
+                <ion-icon name="business"></ion-icon>
+                <p>{infOcurre.OperadorLogisticoOcurre}</p>
                 <span className="ListaDeOcurres__Ocurre__Opciones">
                   <button
                     className="ListaDeOcurres__Ocurre__Opciones--Boton Activar"

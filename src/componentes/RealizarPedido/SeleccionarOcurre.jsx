@@ -219,6 +219,8 @@ export default function SeleccionarOcurre({
                   {ocurre.CiudadOcurre}, {ocurre.EstadoOcurre}{" "}
                   {ocurre.CodigoPostalOcurre}
                 </p>
+                <ion-icon name="business"></ion-icon>
+                <p>{ocurre.OperadorLogisticoOcurre}</p>
               </section>
             ))}
           <small className="SeleccionarOcurre__TextoPaginas">

@@ -140,7 +140,7 @@
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  min-height: 200px;
+  min-height: 250px;
   height: auto;
   border-radius: 20px;
   padding: 10px;
@@ -238,9 +238,17 @@
     grid-column: 1 / -1;
   }
 }
+@media (width <= 970px) {
+  .ListaDeOcurres__Ocurre {
+    min-height: 270px;
+  }
+}
 @media (width <= 900px) {
   .ListaDeOcurres {
     grid-template-columns: 1fr;
+  }
+  .ListaDeOcurres__Ocurre {
+    min-height: 250px;
   }
 }
 @media (width <= 768px) {
@@ -260,7 +268,6 @@
   .ListaDeOcurres__TextoResultados {
     font-size: 12px;
   }
-
   .ListaDeOcurres__Ocurre {
     font-size: 12px;
   }
@@ -272,6 +279,9 @@
   }
   .ListaDeOcurres__Clasificacion--Texto {
     font-size: 12px;
+  }
+  .ListaDeOcurres__Ocurre {
+    min-height: 230px;
   }
 }
 @media (width <= 435px) {
