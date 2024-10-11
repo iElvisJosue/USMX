@@ -95,7 +95,15 @@ export default function RealizarPedido() {
         subseccion="Realizar pedido"
       />
       <div className="RealizarPedido">
-        <BarraDeProgreso Progreso={progreso} />
+        <BarraDeProgreso
+          Progreso={progreso}
+          IconoUno="person-circle"
+          TextoUno="Remitente"
+          IconoDos="location"
+          TextoDos="Destinatario"
+          IconoTres="cube"
+          TextoTres="Pedido"
+        />
         <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       </div>
       <Toaster richColors position="top-right" />

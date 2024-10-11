@@ -17,11 +17,13 @@ import RealizarPedido from "./vistas/RealizarPedido";
 import RegistrarAgencia from "./vistas/RegistrarAgencia";
 import RegistrarUsuario from "./vistas/RegistrarUsuario";
 import RegistrarProducto from "./vistas/RegistrarProducto";
+import RegistrarOcurre from "./vistas/RegistrarOcurre";
 import Pedidos from "./vistas/Pedidos";
 import NumeroDeGuia from "./vistas/NumeroDeGuia";
 import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
 import AdministrarAgencias from "./vistas/AdministrarAgencias";
 import AdministrarProductos from "./vistas/AdministrarProductos";
+import AdministrarOcurres from "./vistas/AdministrarOcurres";
 import Movimientos from "./vistas/Movimientos";
 import Configuracion from "./vistas/Configuracion";
 
@@ -79,10 +81,19 @@ export default function App() {
                               path="/Administrar-Productos"
                               element={<AdministrarProductos />}
                             />
-                            {/* RUTAS DE MOVIMIENTOS */}
+                            {/* RUTAS DE OPERACIONES */}
                             <Route
                               path="/Movimientos"
                               element={<Movimientos />}
+                            />
+                            {/* RUTAS DE OCURRES */}
+                            <Route
+                              path="/Registrar-Ocurre"
+                              element={<RegistrarOcurre />}
+                            />
+                            <Route
+                              path="/Administrar-Ocurres"
+                              element={<AdministrarOcurres />}
                             />
                           </Route>
                           {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}

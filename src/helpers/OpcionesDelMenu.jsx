@@ -92,18 +92,18 @@ export const OpcionesDelMenu = {
       icono: "alert-circle",
       nombre: "Ocurre",
       url: "#",
-      // opcionesSecundarias: [
-      //   {
-      //     icono: "add-circle",
-      //     nombre: "Registrar Ocurre",
-      //     url: `${HOST}Registrar-Ocurre`,
-      //   },
-      //   {
-      //     icono: "cog",
-      //     nombre: "Administrar Ocurres",
-      //     url: `${HOST}Administrar-Ocurres`,
-      //   },
-      // ],
+      opcionesSecundarias: [
+        {
+          icono: "add-circle",
+          nombre: "Registrar Ocurre",
+          url: `${HOST}Registrar-Ocurre`,
+        },
+        {
+          icono: "cog",
+          nombre: "Administrar Ocurres",
+          url: `${HOST}Administrar-Ocurres`,
+        },
+      ],
     },
     {
       icono: "settings",

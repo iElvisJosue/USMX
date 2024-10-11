@@ -1,0 +1,162 @@
+.InformacionOcurre {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+.InformacionOcurre__Opciones {
+  grid-column: 1 / -1;
+  margin-top: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.InformacionOcurre__Opciones--Boton {
+  height: 50px;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.InformacionOcurre__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.InformacionOcurre__Opciones--Boton.Regresar {
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+}
+.InformacionOcurre__Opciones--Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.InformacionOcurre__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.InformacionOcurre__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.InformacionOcurre__Campo {
+  grid-column: span 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.InformacionOcurre__Campo.Dos {
+  grid-column: span 2;
+}
+.InformacionOcurre__Campo.Tres {
+  grid-column: 1 / -1;
+}
+.InformacionOcurre__Campo p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  gap: 5px;
+}
+.InformacionOcurre__Campo p ion-icon {
+  font-size: 20px;
+}
+.InformacionOcurre__Campo input,
+.InformacionOcurre__Campo select {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 5px;
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.InformacionOcurre__Campo input:focus {
+  border: 2px solid var(--ColorNegro);
+}
+.InformacionOcurre__Footer {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.InformacionOcurre__Footer__Boton {
+  width: 150px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  border-radius: 25px;
+}
+.InformacionOcurre__Footer__Boton.Regresar {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.InformacionOcurre__Footer__Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.InformacionOcurre__Footer__Boton.Siguiente {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.InformacionOcurre__Footer__Boton.Siguiente:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+@media (width <= 850px) {
+  .InformacionOcurre {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .InformacionOcurre__Campo.Dos {
+    grid-column: span 1;
+  }
+  .InformacionOcurre__Opciones--Boton {
+    font-size: 14px;
+    gap: 2px;
+  }
+  .InformacionOcurre__Opciones--Boton ion-icon {
+    font-size: 18px;
+  }
+}
+@media (width <= 500px) {
+  .InformacionOcurre {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .InformacionOcurre__Titulo {
+    font-size: 20px;
+  }
+  .InformacionOcurre__Campo {
+    font-size: 16px;
+  }
+  .InformacionOcurre__Footer__Boton {
+    width: 100%;
+    height: 50px;
+  }
+  .InformacionOcurre__Opciones--Boton {
+    width: 100%;
+  }
+}

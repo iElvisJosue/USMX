@@ -1,6 +1,11 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext } from "react";
-import { SolicitudRegistrarOcurre } from "../api/authOcurre";
+import {
+  SolicitudRegistrarOcurre,
+  SolicitudBuscarOcurresPorFiltro,
+  SolicitudActualizarEstadoOcurre,
+  SolicitudActualizarInformacionOcurre,
+} from "../api/authOcurre";
 
 export const OcurreContext = createContext();
 
@@ -21,9 +26,40 @@ export const ProveedorOcurre = ({ children }) => {
       return error;
     }
   };
+  const BuscarOcurresPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarOcurresPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ActualizarEstadoOcurre = async (data) => {
+    try {
+      const res = await SolicitudActualizarEstadoOcurre(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ActualizarInformacionOcurre = async (data) => {
+    try {
+      const res = await SolicitudActualizarInformacionOcurre(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
-    <OcurreContext.Provider value={{ RegistrarOcurre }}>
+    <OcurreContext.Provider
+      value={{
+        RegistrarOcurre,
+        BuscarOcurresPorFiltro,
+        ActualizarEstadoOcurre,
+        ActualizarInformacionOcurre,
+      }}
+    >
       {children}
     </OcurreContext.Provider>
   );
