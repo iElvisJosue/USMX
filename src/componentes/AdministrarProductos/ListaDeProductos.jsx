@@ -23,12 +23,8 @@ export default function ListaDeProductos({
   //     useState(false);
   //   const [activar, establecerActivar] = useState(true);
   //   const [infAgencia, establecerInfAgencia] = useState(null);
-  const {
-    productos,
-    cargandoProductos,
-    filtroProductos,
-    establecerFiltroProductos,
-  } = useBuscarProductosPorFiltro();
+  const { productos, cargandoProductos, establecerFiltroProductos } =
+    useBuscarProductosPorFiltro();
   const {
     CantidadParaMostrar,
     paginaParaMostrar,
@@ -194,7 +190,7 @@ export default function ListaDeProductos({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtroProductos}"`}
+          Texto={`¡Oops! No se encontraron resultados.`}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Registrar-Producto"}

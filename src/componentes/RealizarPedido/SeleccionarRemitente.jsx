@@ -21,7 +21,7 @@ export default function SeleccionarRemitente({
   agencia,
   paso,
 }) {
-  const { remitentes, cargandoRemitentes, filtro, establecerFiltro } =
+  const { remitentes, cargandoRemitentes, establecerFiltro } =
     useBuscarRemitentesPorAgencia({
       idAgencia: agencia.idAgencia,
     });
@@ -142,7 +142,7 @@ export default function SeleccionarRemitente({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtro}"`}
+          Texto={`¡Oops! No se encontraron resultados.`}
         />
       )}
     </section>

@@ -130,53 +130,53 @@ export default function SeleccionarOcurre({
           <ion-icon name="list"></ion-icon>
         </button>
       </span>
-      <h1 className="SeleccionarOcurre__Titulo">Ingresa el nombre</h1>
-      <span className="SeleccionarOcurre__Campo Nombre">
-        <p>
-          <ion-icon name="person"></ion-icon>Nombre
-        </p>
-        <input
-          id="NombreDestinatario"
-          type="text"
-          name="NombreDestinatario"
-          placeholder="Escriba aquí..."
-        />
-      </span>
-      <span className="SeleccionarOcurre__Campo">
-        <p>
-          <ion-icon name="man"></ion-icon>Apellido paterno
-        </p>
-        <input
-          id="ApellidoPaternoDestinatario"
-          type="text"
-          name="ApellidoPaternoDestinatario"
-          placeholder="Escriba aquí..."
-        />
-      </span>
-      <span className="SeleccionarOcurre__Campo">
-        <p>
-          <ion-icon name="woman"></ion-icon>Apellido materno
-        </p>
-        <input
-          id="ApellidoMaternoDestinatario"
-          type="text"
-          name="ApellidoMaternoDestinatario"
-          placeholder="Escriba aquí..."
-        />
-      </span>
-      <h1 className="SeleccionarOcurre__Titulo">Seleccionar Ocurre</h1>
-      <span className="SeleccionarOcurre__Buscar">
-        <input
-          type="text"
-          placeholder="Buscar Ocurre"
-          onChange={ObtenerOcurres}
-        />
-        <span className="SeleccionarOcurre__Buscar__Lupa">
-          <ion-icon name="search"></ion-icon>
-        </span>
-      </span>
       {ocurresActivos.length > 0 ? (
         <>
+          <h1 className="SeleccionarOcurre__Titulo">Ingresa el nombre</h1>
+          <span className="SeleccionarOcurre__Campo Nombre">
+            <p>
+              <ion-icon name="person"></ion-icon>Nombre
+            </p>
+            <input
+              id="NombreDestinatario"
+              type="text"
+              name="NombreDestinatario"
+              placeholder="Escriba aquí..."
+            />
+          </span>
+          <span className="SeleccionarOcurre__Campo">
+            <p>
+              <ion-icon name="man"></ion-icon>Apellido paterno
+            </p>
+            <input
+              id="ApellidoPaternoDestinatario"
+              type="text"
+              name="ApellidoPaternoDestinatario"
+              placeholder="Escriba aquí..."
+            />
+          </span>
+          <span className="SeleccionarOcurre__Campo">
+            <p>
+              <ion-icon name="woman"></ion-icon>Apellido materno
+            </p>
+            <input
+              id="ApellidoMaternoDestinatario"
+              type="text"
+              name="ApellidoMaternoDestinatario"
+              placeholder="Escriba aquí..."
+            />
+          </span>
+          <h1 className="SeleccionarOcurre__Titulo">Seleccionar Ocurre</h1>
+          <span className="SeleccionarOcurre__Buscar">
+            <input
+              type="text"
+              placeholder="Buscar Ocurre"
+              onChange={ObtenerOcurres}
+            />
+            <span className="SeleccionarOcurre__Buscar__Lupa">
+              <ion-icon name="search"></ion-icon>
+            </span>
+          </span>
           <small className="SeleccionarOcurre__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
             {ocurresActivos.length} resultados
@@ -201,6 +201,7 @@ export default function SeleccionarOcurre({
               </button>
             )}
           </div>
+
           {ocurresActivos
             .slice(indiceInicial, indiceFinal)
             .map((ocurre, index) => (
@@ -248,6 +249,10 @@ export default function SeleccionarOcurre({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={`¡Oops! No se encontraron resultados.`}
+          Boton={true}
+          TipoBoton={"Azul"}
+          UrlBoton={"/Registrar-Ocurre"}
+          TextoBoton={"Registrar Ocurre"}
         />
       )}
     </section>
