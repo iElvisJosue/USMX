@@ -30,7 +30,7 @@ export default function ModalConfirmacionAgencias({
     : "ModalConfirmacionAgencias__Contenido--Texto Desactivar";
   const EstadoAgenciaParaBD = Activar ? "Activa" : "Desactivada";
 
-  const ActivarDesactivarUsuario = async () => {
+  const ActivarDesactivarAgencia = async () => {
     try {
       const res = await ActualizarEstadoAgencia({
         idAgencia: infAgencia.idAgencia,
@@ -75,7 +75,7 @@ export default function ModalConfirmacionAgencias({
         </small>
         <button
           className={ClaseBotonModal}
-          onClick={() => ActivarDesactivarUsuario()}
+          onClick={() => ActivarDesactivarAgencia()}
         >
           {TextoBotonModal}
         </button>

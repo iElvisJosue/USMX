@@ -155,7 +155,7 @@
   justify-content: flex-start;
   gap: 5px;
 }
-.ListaDeProductos__Producto.Desactivada {
+.ListaDeProductos__Producto.Desactivado {
   background-color: var(--ColorRojo);
   border: 2px solid var(--ColorRojo);
   color: var(--ColorBlanco);

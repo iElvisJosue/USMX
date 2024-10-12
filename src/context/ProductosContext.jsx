@@ -9,6 +9,7 @@ import {
   SolicitudAsignarAgenciaAlProducto,
   SolicitudDesasignarAgenciaAlProducto,
   SolicitudActualizarInformacionDeUnProducto,
+  SolicitudActualizarEstadoProducto,
 } from "../api/authProductos";
 
 export const ProductosContext = createContext();
@@ -88,6 +89,14 @@ export const ProveedorProductos = ({ children }) => {
       return error;
     }
   };
+  const ActualizarEstadoDeUnProducto = async (data) => {
+    try {
+      const res = await SolicitudActualizarEstadoProducto(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <ProductosContext.Provider
@@ -100,6 +109,7 @@ export const ProveedorProductos = ({ children }) => {
         AsignarAgenciaAlProducto,
         DesasignarAgenciaAlProducto,
         ActualizarInformacionDeUnProducto,
+        ActualizarEstadoDeUnProducto,
       }}
     >
       {children}

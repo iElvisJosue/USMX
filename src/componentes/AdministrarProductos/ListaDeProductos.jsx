@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-// import { useEffect, useState } from "react
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../Cargando";
 import MensajeGeneral from "../MensajeGeneral";
-// import ModalConfirmacionAgencias from "./ModalConfirmacionAgencias";
+import ModalConfirmacionProductos from "./ModalConfirmacionProductos";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarProductosPorFiltro from "../../hooks/useBuscarProductosPorFiltro";
@@ -19,12 +18,17 @@ export default function ListaDeProductos({
   establecerVista,
   establecerInformacionDelProducto,
 }) {
-  //   const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
-  //     useState(false);
-  //   const [activar, establecerActivar] = useState(true);
-  //   const [infAgencia, establecerInfAgencia] = useState(null);
-  const { productos, cargandoProductos, establecerFiltroProductos } =
-    useBuscarProductosPorFiltro();
+  const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
+    useState(false);
+  const [activar, establecerActivar] = useState(true);
+  const [infProducto, establecerInfProducto] = useState(null);
+  const {
+    productos,
+    cargandoProductos,
+    establecerFiltroProductos,
+    buscarProductosNuevamente,
+    establecerBuscarProductosNuevamente,
+  } = useBuscarProductosPorFiltro();
   const {
     CantidadParaMostrar,
     paginaParaMostrar,
@@ -57,16 +61,16 @@ export default function ListaDeProductos({
     }
   };
 
-  //   const MostrarModalActivar = (infAgencia) => {
-  //     establecerInfAgencia(infAgencia);
-  //     establecerActivar(true);
-  //     establecerMostrarModalConfirmacion(true);
-  //   };
-  //   const MostrarModalDesactivar = (infAgencia) => {
-  //     establecerInfAgencia(infAgencia);
-  //     establecerActivar(false);
-  //     establecerMostrarModalConfirmacion(true);
-  //   };
+  const MostrarModalActivar = (infProducto) => {
+    establecerInfProducto(infProducto);
+    establecerActivar(true);
+    establecerMostrarModalConfirmacion(true);
+  };
+  const MostrarModalDesactivar = (infProducto) => {
+    establecerInfProducto(infProducto);
+    establecerActivar(false);
+    establecerMostrarModalConfirmacion(true);
+  };
 
   const EstablecerInformacionDeLaAgenciaSeleccionada = (infProducto) => {
     establecerInformacionDelProducto(infProducto);
@@ -81,19 +85,19 @@ export default function ListaDeProductos({
 
   return (
     <div className="ListaDeProductos">
-      {/* {mostrarModalConfirmacion && (
-        <ModalConfirmacionAgencias
+      {mostrarModalConfirmacion && (
+        <ModalConfirmacionProductos
           Activar={activar}
-          infAgencia={infAgencia}
+          infProducto={infProducto}
           establecerMostrarModalConfirmacion={
             establecerMostrarModalConfirmacion
           }
-          obtenerAgenciasNuevamente={obtenerAgenciasNuevamente}
-          establecerObtenerAgenciasNuevamente={
-            establecerObtenerAgenciasNuevamente
+          buscarProductosNuevamente={buscarProductosNuevamente}
+          establecerBuscarProductosNuevamente={
+            establecerBuscarProductosNuevamente
           }
         />
-      )} */}
+      )}
       <h1 className="ListaDeProductos__Titulo">Administrar Productos</h1>
       <span className="ListaDeProductos__Buscar">
         <input
@@ -140,48 +144,69 @@ export default function ListaDeProductos({
               </button>
             )}
           </div>
-          {productos.slice(indiceInicial, indiceFinal).map((infProducto) => (
-            <section
-              className="ListaDeProductos__Producto"
-              key={infProducto.idProducto}
-            >
-              <ion-icon name="basket"></ion-icon>
-              <p>{infProducto.NombreProducto}</p>
-              <span className="ListaDeProductos__Producto__Opciones">
-                <button
-                  className="ListaDeProductos__Producto__Opciones--Boton Administrar"
-                  title="Administrar Agencias"
-                  onClick={() =>
-                    EstablecerInformacionDeLaAgenciaSeleccionada(infProducto)
-                  }
-                >
-                  <p>
-                    <ion-icon name="business"></ion-icon>
-                  </p>
-                </button>
-                <button
-                  className="ListaDeProductos__Producto__Opciones--Boton Editar"
-                  title="Editar producto"
-                  onClick={() =>
-                    EstablecerInformacionDelProductoAEditar(infProducto)
-                  }
-                >
-                  <p>
-                    <ion-icon name="create"></ion-icon>
-                  </p>
-                </button>
-                <button
-                  className="ListaDeProductos__Producto__Opciones--Boton Desactivar"
-                  //   onClick={() => MostrarModalDesactivar(infProducto)}
-                  title="Desactivar producto"
-                >
-                  <p>
-                    <ion-icon name="ban"></ion-icon>
-                  </p>
-                </button>
-              </span>
-            </section>
-          ))}
+          {productos.slice(indiceInicial, indiceFinal).map((infProducto) =>
+            infProducto.StatusProducto === "Activo" ? (
+              <section
+                className="ListaDeProductos__Producto"
+                key={infProducto.idProducto}
+              >
+                <ion-icon name="basket"></ion-icon>
+                <p>{infProducto.NombreProducto}</p>
+                <span className="ListaDeProductos__Producto__Opciones">
+                  <button
+                    className="ListaDeProductos__Producto__Opciones--Boton Administrar"
+                    title="Administrar Agencias"
+                    onClick={() =>
+                      EstablecerInformacionDeLaAgenciaSeleccionada(infProducto)
+                    }
+                  >
+                    <p>
+                      <ion-icon name="business"></ion-icon>
+                    </p>
+                  </button>
+                  <button
+                    className="ListaDeProductos__Producto__Opciones--Boton Editar"
+                    title="Editar producto"
+                    onClick={() =>
+                      EstablecerInformacionDelProductoAEditar(infProducto)
+                    }
+                  >
+                    <p>
+                      <ion-icon name="create"></ion-icon>
+                    </p>
+                  </button>
+                  <button
+                    className="ListaDeProductos__Producto__Opciones--Boton Desactivar"
+                    onClick={() => MostrarModalDesactivar(infProducto)}
+                    title="Desactivar producto"
+                  >
+                    <p>
+                      <ion-icon name="ban"></ion-icon>
+                    </p>
+                  </button>
+                </span>
+              </section>
+            ) : (
+              <section
+                className="ListaDeProductos__Producto Desactivado"
+                key={infProducto.idProducto}
+              >
+                <ion-icon name="ban"></ion-icon>
+                <p>{infProducto.NombreProducto}</p>
+                <span className="ListaDeProductos__Producto__Opciones">
+                  <button
+                    className="ListaDeProductos__Producto__Opciones--Boton Activar"
+                    title="Activar Producto"
+                    onClick={() => MostrarModalActivar(infProducto)}
+                  >
+                    <p>
+                      <ion-icon name="power"></ion-icon>
+                    </p>
+                  </button>
+                </span>
+              </section>
+            )
+          )}
 
           <small className="ListaDeProductos__TextoPaginas">
             Página {paginaParaMostrar} de {cantidadDePaginas}

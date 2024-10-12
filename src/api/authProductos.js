@@ -24,3 +24,6 @@ export const SolicitudDesasignarAgenciaAlProducto = (data) =>
 // SOLICITUD PARA ACTUALIZAR LA INFORMACION DE UN PRODUCTO
 export const SolicitudActualizarInformacionDeUnProducto = (data) =>
   axios.put("/productos/ActualizarInformacionDeUnProducto", data);
+// SOLICITUD PARA ACTIVAR O DESACTIVAR UN PRODUCTO
+export const SolicitudActualizarEstadoProducto = (data) =>
+  axios.put("/productos/ActualizarEstadoProducto", data);

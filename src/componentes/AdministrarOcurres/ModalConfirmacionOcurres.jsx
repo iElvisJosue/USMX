@@ -30,7 +30,7 @@ export default function ModalConfirmacionOcurres({
     : "ModalConfirmacionOcurres__Contenido--Texto Desactivar";
   const EstadoOcurreBD = Activar ? "Activa" : "Desactivada";
 
-  const ActivarDesactivarUsuario = async () => {
+  const ActivarDesactivarOcurre = async () => {
     try {
       const res = await ActualizarEstadoOcurre({
         idOcurre: infOcurre.idOcurre,
@@ -75,7 +75,7 @@ export default function ModalConfirmacionOcurres({
         </small>
         <button
           className={ClaseBotonModal}
-          onClick={() => ActivarDesactivarUsuario()}
+          onClick={() => ActivarDesactivarOcurre()}
         >
           {TextoBotonModal}
         </button>
