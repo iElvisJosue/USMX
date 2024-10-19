@@ -1,0 +1,282 @@
+.ListaDeCiudades {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+.ListaDeCiudades__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.ListaDeCiudades__Buscar {
+  grid-column: 4/6;
+  display: flex;
+}
+.ListaDeCiudades__Buscar input {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 15px 0 0 15px;
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.ListaDeCiudades__Buscar__Lupa {
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 0 15px 15px 0;
+  border-left: 2px solid var(--ColorBlanco);
+  background-color: var(--ColorSecundario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ColorGris);
+  font-size: 20px;
+}
+.ListaDeCiudades__TextoResultados {
+  grid-column: 1 / -1;
+  color: var(--ColorVerde);
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.ListaDeCiudades__TextoResultados ion-icon {
+  font-size: 20px;
+}
+.ListaDeCiudades__BotonesDePaginacion {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.ListaDeCiudades__BotonesDePaginacion--Boton {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaDeCiudades__BotonesDePaginacion--Boton ion-icon {
+  font-size: 15px;
+}
+.ListaDeCiudades__BotonesDePaginacion--Boton.Anterior {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.ListaDeCiudades__BotonesDePaginacion--Boton.Siguiente {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.ListaDeCiudades__BotonesDePaginacion--Boton.Anterior:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorRojo);
+}
+.ListaDeCiudades__BotonesDePaginacion--Boton.Siguiente:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+}
+.ListaDeCiudades__Clasificacion {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+
+  display: flex;
+  gap: 5px;
+}
+.ListaDeCiudades__Colores {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 5px;
+}
+.ListaDeCiudades__Clasificacion--Texto {
+  width: auto;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 14px;
+  border-radius: 15px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.ListaDeCiudades__Clasificacion--Texto ion-icon {
+  font-size: 16px;
+}
+.ListaDeCiudades__Clasificacion--Texto.Activa {
+  background-color: var(--ColorSecundario);
+  color: var(--ColorNegro);
+}
+.ListaDeCiudades__Clasificacion--Texto.Desactivada {
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+}
+.ListaDeCiudades__Ciudad {
+  grid-column: span 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  height: auto;
+  border-radius: 20px;
+  transition: 0.3s ease-in-out all;
+  color: var(--ColorNegro);
+  background-color: var(--ColorSecundario);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.ListaDeCiudades__Ciudad.Desactivada {
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+}
+.ListaDeCiudades__Ciudad ion-icon {
+  font-size: 25px;
+}
+.ListaDeCiudades__Ciudad__Detalles {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaDeCiudades__Ciudad__Opciones {
+  width: 100%;
+  min-height: 35px;
+
+  display: flex;
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton {
+  width: 100%;
+  height: 100%;
+  background-color: var(--ColorNegro);
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton ion-icon {
+  transition: 0.3s ease-in-out all;
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton p ion-icon {
+  font-size: 18px;
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton.Administrar p ion-icon {
+  font-size: 18px;
+  color: var(--ColorVerde);
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton.Editar p ion-icon {
+  font-size: 18px;
+  color: var(--ColorAzul);
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton.Desactivar p ion-icon {
+  font-size: 18px;
+  color: var(--ColorRojo);
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton:first-child {
+  border-radius: 0 0 0 20px;
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton:last-child {
+  border-radius: 0 0 20px 0;
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton.Activar {
+  border-radius: 0 0 20px 20px;
+  color: var(--ColorBlanco);
+}
+.ListaDeCiudades__Ciudad__Opciones--Boton:hover ion-icon {
+  transform: scale(1.2);
+}
+.ListaDeCiudades__Ciudad.Desactivado {
+  background-color: var(--ColorRojo);
+}
+.ListaDeCiudades__TextoPaginas {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-weight: bold;
+}
+@media (width <= 1300px) {
+  .ListaDeCiudades {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+  .ListaDeCiudades__Buscar {
+    grid-column: 2/3;
+  }
+}
+@media (width <= 1120px) {
+  .ListaDeCiudades__Buscar {
+    grid-column: 1 / -1;
+  }
+}
+@media (width <= 900px) {
+  .ListaDeCiudades {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (width <= 768px) {
+  .ListaDeCiudades {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (width <= 668px) {
+  .ListaDeCiudades {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (width <= 500px) {
+  .ListaDeCiudades {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ListaDeCiudades__Ciudad {
+    font-size: 12px;
+  }
+  .ListaDeCiudades__Titulo {
+    font-size: 20px;
+  }
+  .ListaDeCiudades__TextoResultados {
+    font-size: 12px;
+  }
+  .ListaDeCiudades__Clasificacion {
+    font-size: 18px;
+  }
+  .ListaDeCiudades__Clasificacion--Texto {
+    font-size: 12px;
+  }
+}
+@media (width <= 435px) {
+  .ListaDeCiudades__Colores {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

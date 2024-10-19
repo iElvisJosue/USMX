@@ -216,10 +216,11 @@ export default function AdministrarAgenciasDelProducto({
                 <ion-icon name="business"></ion-icon>
                 <p>{infAgencia.NombreAgencia}</p>
                 <ion-icon name="location"></ion-icon>
-                <p>{infAgencia.DireccionAgencia}</p>
                 <p>
-                  {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}{" "}
-                  {infAgencia.CodigoPostalAgencia}
+                  {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}
+                </p>
+                <p>
+                  {infAgencia.DireccionAgencia} {infAgencia.CodigoPostalAgencia}
                 </p>
               </section>
             )

@@ -95,15 +95,14 @@ export default function SeleccionarOcurre({
       ApellidoPaternoDestinatario,
       ApellidoMaternoDestinatario,
       TelefonoCasaDestinatario: infOcurre.TelefonoOcurre,
-      CelularDestinatario: infOcurre.CelularOcurre || "",
       CorreoDestinatario: infOcurre.CorreoOcurre,
-      ColoniaDestinatario: infOcurre.ColoniaOcurre,
-      MunicipioDelegacionDestinatario:
-        infOcurre.MunicipioDelegacionOcurre || "",
-      CodigoPostalDestinatario: infOcurre.CodigoPostalOcurre,
-      CiudadDestinatario: infOcurre.CiudadOcurre,
+      PaisDestinatario: infOcurre.PaisOcurre,
+      CodigoPaisDestinatario: infOcurre.CodigoPaisOcurre,
       EstadoDestinatario: infOcurre.EstadoOcurre,
+      CiudadDestinatario: infOcurre.CiudadOcurre,
+      CodigoPostalDestinatario: infOcurre.CodigoPostalOcurre,
       DireccionDestinatario: infOcurre.DireccionOcurre,
+      MunicipioDelegacionDestinatario: infOcurre.MunicipioDelegacionOcurre,
       ReferenciaDestinatario: infOcurre.ReferenciaOcurre,
     });
     toast.success("Paso 2 (Destinatario) completado con éxito ✨");

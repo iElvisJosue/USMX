@@ -4,7 +4,6 @@ export const CamposDestinatario = [
     iconoCampo: "person",
     tituloCampo: "Nombre",
     nombreCampo: "NombreDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -24,7 +23,6 @@ export const CamposDestinatario = [
     iconoCampo: "man",
     tituloCampo: "Apellido paterno",
     nombreCampo: "ApellidoPaternoDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -44,7 +42,7 @@ export const CamposDestinatario = [
     iconoCampo: "woman",
     tituloCampo: "Apellido materno",
     nombreCampo: "ApellidoMaternoDestinatario",
-    tipoCampo: "text",
+
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -64,11 +62,9 @@ export const CamposDestinatario = [
     iconoCampo: "call",
     tituloCampo: "Teléfono casa",
     nombreCampo: "TelefonoCasaDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
         value: /^\d+$/,
         message: "¡Este campo solo acepta números! 🔢",
@@ -88,7 +84,6 @@ export const CamposDestinatario = [
     iconoCampo: "phone-portrait",
     tituloCampo: "Celular",
     nombreCampo: "CelularDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -112,7 +107,6 @@ export const CamposDestinatario = [
     iconoCampo: "mail",
     tituloCampo: "Correo electrónico",
     nombreCampo: "CorreoDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -124,122 +118,6 @@ export const CamposDestinatario = [
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "ColoniaDestinatario",
-    iconoCampo: "golf",
-    tituloCampo: "Colonia",
-    nombreCampo: "ColoniaDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo Dos",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      maxLength: {
-        value: 100,
-        message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "MunicipioDelegacionDestinatario",
-    iconoCampo: "navigate",
-    tituloCampo: "Municipio o delegación",
-    nombreCampo: "MunicipioDelegacionDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      maxLength: {
-        value: 100,
-        message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "CodigoPostalDestinatario",
-    iconoCampo: "pin",
-    tituloCampo: "Código Postal",
-    nombreCampo: "CodigoPostalDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
-      maxLength: {
-        value: 10,
-        message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "CiudadDestinatario",
-    iconoCampo: "locate",
-    tituloCampo: "Ciudad",
-    nombreCampo: "CiudadDestinatario",
-    placeholderCampo: "Escriba aquí...",
-    // tipoCampo: "select",
-    tipoCampo: "text",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      maxLength: {
-        value: 100,
-        message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "EstadoDestinatario",
-    iconoCampo: "location",
-    tituloCampo: "Estado",
-    nombreCampo: "EstadoDestinatario",
-    placeholderCampo: "Escriba aquí...",
-    // tipoCampo: "select",
-    tipoCampo: "text",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      maxLength: {
-        value: 100,
-        message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "DireccionDestinatario",
-    iconoCampo: "trail-sign",
-    tituloCampo: "Dirección",
-    nombreCampo: "DireccionDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo Dos",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      maxLength: {
-        value: 1000,
-        message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "ReferenciaDestinatario",
-    iconoCampo: "document-text",
-    tituloCampo: "Referencia",
-    nombreCampo: "ReferenciaDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      maxLength: {
-        value: 1000,
-        message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
       },
     },
   },

@@ -1,0 +1,102 @@
+.Apariencia {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 75px);
+  overflow-y: auto;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+}
+.Apariencia__Titulo {
+  width: 100%;
+  color: var(--ColorNegro);
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.Apariencia__Subtitulo {
+  width: 100%;
+  color: var(--ColorGris);
+  font-weight: normal;
+}
+.Apariencia__Separador {
+  width: 100%;
+  min-height: 2px;
+  border: none;
+  margin: 20px 0;
+  background-color: var(--ColorSecundario);
+}
+.Apariencia__Cuerpo {
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--ColorSecundario);
+  display: flex;
+}
+.Apariencia__Cuerpo__Texto {
+  flex: 1;
+}
+.Apariencia__Cuerpo__Texto b {
+  color: var(--ColorNegro);
+  font-size: 18px;
+}
+.Apariencia__Cuerpo__Texto p {
+  color: var(--ColorGris);
+  font-size: 16px;
+}
+.Apariencia__Cuerpo__Ejemplos {
+  flex: 1;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.Apariencia__Cuerpo__Ejemplo--Imagen {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.Apariencia__Cuerpo__Ejemplo--Imagen img {
+  border-radius: 20px;
+  padding: 5px;
+  border: 3px dashed transparent;
+  transition: 0.3s ease-in-out all;
+  width: 90%;
+  cursor: pointer;
+}
+.Apariencia__Cuerpo__Ejemplo--Imagen:hover img {
+  border: 3px dashed var(--ColorAzul);
+}
+.Apariencia__Cuerpo__Ejemplo--Imagen.Oscuro img {
+  border: 3px dashed var(--ColorAzul);
+  pointer-events: none;
+}
+.Apariencia__Cuerpo__Ejemplo--Imagen b {
+  color: var(--ColorNegro);
+  transition: 0.3s ease-in-out all;
+  font-size: 16px;
+}
+.Apariencia__Cuerpo__Ejemplo--Imagen:hover b {
+  color: var(--ColorAzul);
+}
+.Apariencia__Cuerpo__Ejemplo--Imagen.Oscuro b {
+  color: var(--ColorAzul);
+}
+@media (width <= 950px) {
+  .Apariencia__Cuerpo {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media (width <= 500px) {
+  .Apariencia__Cuerpo__Texto b {
+    font-size: 16px;
+  }
+  .Apariencia__Cuerpo__Texto p {
+    font-size: 14px;
+  }
+  .Apariencia__Cuerpo__Ejemplo--Imagen b {
+    font-size: 14px;
+  }
+}

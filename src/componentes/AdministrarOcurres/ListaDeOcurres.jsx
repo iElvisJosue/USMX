@@ -50,7 +50,7 @@ export default function ListaDeOcurres({
     }
   }, [ocurres]);
 
-  const obtenerUsuarios = (event) => {
+  const ObtenerLasOcurrencias = (event) => {
     const valorIntroducido = event.target.value;
     // Utilizamos una expresión regular para permitir letras, números y "-"
     const regex = /^[a-zA-Z0-9\sáéíóúÁÉÍÓÚüÜ-]*$/;
@@ -98,7 +98,7 @@ export default function ListaDeOcurres({
         <input
           type="text"
           placeholder="Buscar ocurre"
-          onChange={obtenerUsuarios}
+          onChange={ObtenerLasOcurrencias}
         />
         <span className="ListaDeOcurres__Buscar__Lupa">
           <ion-icon name="search"></ion-icon>
@@ -115,10 +115,10 @@ export default function ListaDeOcurres({
           </h2>
           <span className="ListaDeOcurres__Colores">
             <p className="ListaDeOcurres__Clasificacion--Texto Activa">
-              <ion-icon name="alert-circle"></ion-icon> Activa
+              <ion-icon name="alert-circle"></ion-icon> Activo
             </p>
             <p className="ListaDeOcurres__Clasificacion--Texto Desactivada">
-              <ion-icon name="ban"></ion-icon> Desactivada
+              <ion-icon name="ban"></ion-icon> Desactivado
             </p>
           </span>
           <div className="ListaDeOcurres__BotonesDePaginacion">
@@ -145,16 +145,19 @@ export default function ListaDeOcurres({
                 className="ListaDeOcurres__Ocurre"
                 key={infOcurre.idOcurre}
               >
-                <ion-icon name="alert-circle"></ion-icon>
-                <p>{infOcurre.NombreOcurre}</p>
-                <ion-icon name="location"></ion-icon>
-                <p>{infOcurre.DireccionOcurre}</p>
-                <p>
-                  {infOcurre.CiudadOcurre}, {infOcurre.EstadoOcurre}{" "}
-                  {infOcurre.CodigoPostalOcurre}
-                </p>
-                <ion-icon name="business"></ion-icon>
-                <p>{infOcurre.OperadorLogisticoOcurre}</p>
+                <span className="ListaDeOcurres__Ocurre__Detalles">
+                  <ion-icon name="alert-circle"></ion-icon>
+                  <p>{infOcurre.NombreOcurre}</p>
+                  <ion-icon name="earth"></ion-icon>
+                  <p>{infOcurre.PaisOcurre}</p>
+                  <ion-icon name="location"></ion-icon>
+                  <p>
+                    {infOcurre.EstadoOcurre}, {infOcurre.CiudadOcurre},{" "}
+                    {infOcurre.DireccionOcurre} {infOcurre.CodigoPostalOcurre}
+                  </p>
+                  <ion-icon name="business"></ion-icon>
+                  <p>{infOcurre.OperadorLogisticoOcurre}</p>
+                </span>
                 <span className="ListaDeOcurres__Ocurre__Opciones">
                   <button
                     className="ListaDeOcurres__Ocurre__Opciones--Boton Editar"
@@ -183,16 +186,19 @@ export default function ListaDeOcurres({
                 className="ListaDeOcurres__Ocurre Desactivada"
                 key={infOcurre.idOcurre}
               >
-                <ion-icon name="alert-circle"></ion-icon>
-                <p>{infOcurre.NombreOcurre}</p>
-                <ion-icon name="location"></ion-icon>
-                <p>{infOcurre.DireccionOcurre}</p>
-                <p>
-                  {infOcurre.CiudadOcurre}, {infOcurre.EstadoOcurre}{" "}
-                  {infOcurre.CodigoPostalOcurre}
-                </p>
-                <ion-icon name="business"></ion-icon>
-                <p>{infOcurre.OperadorLogisticoOcurre}</p>
+                <span className="ListaDeOcurres__Ocurre__Detalles">
+                  <ion-icon name="alert-circle"></ion-icon>
+                  <p>{infOcurre.NombreOcurre}</p>
+                  <ion-icon name="earth"></ion-icon>
+                  <p>{infOcurre.PaisOcurre}</p>
+                  <ion-icon name="location"></ion-icon>
+                  <p>
+                    {infOcurre.EstadoOcurre}, {infOcurre.CiudadOcurre},{" "}
+                    {infOcurre.DireccionOcurre} {infOcurre.CodigoPostalOcurre}
+                  </p>
+                  <ion-icon name="business"></ion-icon>
+                  <p>{infOcurre.OperadorLogisticoOcurre}</p>
+                </span>
                 <span className="ListaDeOcurres__Ocurre__Opciones">
                   <button
                     className="ListaDeOcurres__Ocurre__Opciones--Boton Activar"

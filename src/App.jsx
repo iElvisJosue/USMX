@@ -24,8 +24,14 @@ import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
 import AdministrarAgencias from "./vistas/AdministrarAgencias";
 import AdministrarProductos from "./vistas/AdministrarProductos";
 import AdministrarOcurres from "./vistas/AdministrarOcurres";
+import AdministrarPaises from "./vistas/AdministrarPaises";
+import AdministrarEstados from "./vistas/AdministrarEstados";
+import AdministrarCiudades from "./vistas/AdministrarCiudades";
+import AdministrarColonias from "./vistas/AdministrarColonias";
 import Movimientos from "./vistas/Movimientos";
-import Configuracion from "./vistas/Configuracion";
+import Cargas from "./vistas/Cargas";
+import Envios from "./vistas/Envios";
+import Apariencia from "./vistas/Apariencia";
 
 // PROTECCIÓN DE RUTAS
 import ProteccionPorCookies from "./proteccion/ProteccionPorCookies";
@@ -96,6 +102,24 @@ export default function App() {
                               element={<AdministrarOcurres />}
                             />
                           </Route>
+                          <Route path="/Cargas" element={<Cargas />} />
+                          <Route path="/Envios" element={<Envios />} />
+                          <Route
+                            path="/Administrar-Paises"
+                            element={<AdministrarPaises />}
+                          />
+                          <Route
+                            path="/Administrar-Estados"
+                            element={<AdministrarEstados />}
+                          />
+                          <Route
+                            path="/Administrar-Ciudades"
+                            element={<AdministrarCiudades />}
+                          />
+                          <Route
+                            path="/Administrar-Colonias"
+                            element={<AdministrarColonias />}
+                          />
                           {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
                           {/* RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
                           <Route
@@ -105,10 +129,7 @@ export default function App() {
                           <Route path="/Pedidos" element={<Pedidos />} />
                           <Route path="/Bienvenida" element={<Bienvenida />} />
                           <Route path="/Perfil" element={<Perfil />} />
-                          <Route
-                            path="/Configuracion"
-                            element={<Configuracion />}
-                          />
+                          <Route path="/Apariencia" element={<Apariencia />} />
                           {/* TERMINAN LAS RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
                         </Route>
                       </Routes>

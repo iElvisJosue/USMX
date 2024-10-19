@@ -3,8 +3,7 @@ export const CamposAgencia = [
     idCampo: "NombreAgencia",
     iconoCampo: "business",
     tituloCampo: "Nombre de la agencia",
-    nombreCampo: "Agencia",
-    tipoCampo: "text",
+    nombreCampo: "NombreAgencia",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "InformacionDeLaAgencia__Titulo__Campo Dos",
     validadorCampo: {
@@ -23,8 +22,7 @@ export const CamposAgencia = [
     idCampo: "NombreContacto",
     iconoCampo: "person",
     tituloCampo: "Nombre del contacto",
-    nombreCampo: "Contacto",
-    tipoCampo: "text",
+    nombreCampo: "NombreContacto",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "InformacionDeLaAgencia__Titulo__Campo Dos",
     validadorCampo: {
@@ -43,8 +41,7 @@ export const CamposAgencia = [
     idCampo: "TelefonoContacto",
     iconoCampo: "call",
     tituloCampo: "Teléfono del contacto",
-    nombreCampo: "Telefono",
-    tipoCampo: "text",
+    nombreCampo: "TelefonoContacto",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "InformacionDeLaAgencia__Titulo__Campo",
     validadorCampo: {
@@ -67,10 +64,9 @@ export const CamposAgencia = [
     idCampo: "CorreoContacto",
     iconoCampo: "mail",
     tituloCampo: "Correo del contacto",
-    nombreCampo: "Correo",
-    tipoCampo: "text",
+    nombreCampo: "CorreoContacto",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDeLaAgencia__Titulo__Campo",
+    claseCampo: "InformacionDeLaAgencia__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
@@ -83,142 +79,4 @@ export const CamposAgencia = [
       },
     },
   },
-  {
-    idCampo: "EstadoAgencia",
-    iconoCampo: "location",
-    tituloCampo: "Estado",
-    nombreCampo: "Estado",
-    tipoCampo: "select",
-    claseCampo: "InformacionDeLaAgencia__Titulo__Campo",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-    },
-  },
-  {
-    idCampo: "CiudadAgencia",
-    iconoCampo: "locate",
-    tituloCampo: "Ciudad",
-    nombreCampo: "Ciudad",
-    tipoCampo: "select",
-    claseCampo: "InformacionDeLaAgencia__Titulo__Campo",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-    },
-  },
-  {
-    idCampo: "CPAgencia",
-    iconoCampo: "pin",
-    tituloCampo: "Código Postal",
-    nombreCampo: "CP",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDeLaAgencia__Titulo__Campo",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
-      maxLength: {
-        value: 10,
-        message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "DireccionAgencia",
-    iconoCampo: "trail-sign",
-    tituloCampo: "Dirección",
-    nombreCampo: "Direccion",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDeLaAgencia__Titulo__Campo Tres",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      maxLength: {
-        value: 1000,
-        message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-      },
-    },
-  },
-  // {
-  //   idCampo: "PrecioPublicoAgencia",
-  //   iconoCampo: "cash",
-  //   tituloCampo: "Precio público",
-  //   nombreCampo: "PrecioPublico",
-  //   tipoCampo: "text",
-  //   placeholderCampo: "Escriba aquí...",
-  //   claseCampo: "InformacionDeLaAgencia__Titulo__Campo",
-  //   validadorCampo: {
-  //     required: "¡Este campo es obligatorio! ⚠️",
-  //     pattern: {
-  //       value: /^\d+$/,
-  //       message: "¡Este campo solo acepta números! 🔢",
-  //     },
-  //     maxLength: {
-  //       value: 10,
-  //       message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-  //     },
-  //   },
-  // },
-  // {
-  //   idCampo: "LibraExtraAgencia",
-  //   iconoCampo: "scale",
-  //   tituloCampo: "Libra extra",
-  //   nombreCampo: "LibraExtra",
-  //   tipoCampo: "text",
-  //   placeholderCampo: "Escriba aquí...",
-  //   claseCampo: "InformacionDeLaAgencia__Titulo__Campo",
-  //   validadorCampo: {
-  //     required: "¡Este campo es obligatorio! ⚠️",
-  //     pattern: {
-  //       value: /^\d+$/,
-  //       message: "¡Este campo solo acepta números! 🔢",
-  //     },
-  //     maxLength: {
-  //       value: 10,
-  //       message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-  //     },
-  //   },
-  // },
-  // {
-  //   idCampo: "PesoSinCobroAgencia",
-  //   iconoCampo: "thumbs-up",
-  //   tituloCampo: "Peso sin cobro",
-  //   nombreCampo: "PesoSinCobro",
-  //   tipoCampo: "text",
-  //   placeholderCampo: "Escriba aquí...",
-  //   claseCampo: "InformacionDeLaAgencia__Titulo__Campo",
-  //   validadorCampo: {
-  //     required: "¡Este campo es obligatorio! ⚠️",
-  //     pattern: {
-  //       value: /^\d+$/,
-  //       message: "¡Este campo solo acepta números! 🔢",
-  //     },
-  //     maxLength: {
-  //       value: 10,
-  //       message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-  //     },
-  //   },
-  // },
-  // {
-  //   idCampo: "PesoMaximoAgencia",
-  //   iconoCampo: "warning",
-  //   tituloCampo: "Peso máximo",
-  //   nombreCampo: "PesoMaximo",
-  //   tipoCampo: "text",
-  //   placeholderCampo: "Escriba aquí...",
-  //   claseCampo: "InformacionDeLaAgencia__Titulo__Campo",
-  //   validadorCampo: {
-  //     required: "¡Este campo es obligatorio! ⚠️",
-  //     pattern: {
-  //       value: /^\d+$/,
-  //       message: "¡Este campo solo acepta números! 🔢",
-  //     },
-  //     maxLength: {
-  //       value: 10,
-  //       message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-  //     },
-  //   },
-  // },
 ];

@@ -53,24 +53,34 @@ export default function NumeroDeGuia() {
               </b>
               <br />
               <b>
-                {informacionGuia[0].DireccionDestinatario},{" "}
-                {informacionGuia[0].ColoniaDestinatario}, CP.{" "}
-                {informacionGuia[0].CodigoPostalDestinatario}
+                {informacionGuia[0].CelularDestinatario ||
+                informacionGuia[0].TelefonoCasaDestinatario
+                  ? `${
+                      informacionGuia[0].CelularDestinatario
+                        ? informacionGuia[0].CelularDestinatario
+                        : ""
+                    }${
+                      informacionGuia[0].TelefonoCasaDestinatario
+                        ? ` - ${informacionGuia[0].TelefonoCasaDestinatario}`
+                        : ""
+                    }`
+                  : "Teléfono(s): N/A"}
               </b>
               <br />
               <b>
-                {informacionGuia[0].TelefonoCasaDestinatario} -{" "}
-                {informacionGuia[0].CelularDestinatario}
-              </b>
-              <br />
-              <b>
+                {informacionGuia[0].PaisDestinatario}
+                <br />
                 {`${
-                  informacionGuia[0].MunicipioDelegacionDestinatario
-                    ? informacionGuia[0].MunicipioDelegacionDestinatario + " / "
-                    : ""
-                }`}
-                {informacionGuia[0].CiudadDestinatario} /{" "}
-                {informacionGuia[0].EstadoDestinatario}
+                  informacionGuia[0].MunicipioDelegacionDestinatario &&
+                  `${informacionGuia[0].MunicipioDelegacionDestinatario} /`
+                } `}
+                {informacionGuia[0].EstadoDestinatario} /{" "}
+                {informacionGuia[0].CiudadDestinatario}
+              </b>
+              <br />
+              <b>
+                {informacionGuia[0].DireccionDestinatario}{" "}
+                {informacionGuia[0].CodigoPostalDestinatario}
               </b>
               <br />
               {informacionGuia[0].ReferenciaDestinatario && (
@@ -109,7 +119,7 @@ export default function NumeroDeGuia() {
           <img
             className="NumeroDeGuia__Movimientos--Logo"
             src="/RastreoTicket.png"
-            alt="Logo USMX"
+            alt="Logo rastreando pedido"
           />
           <p className="NumeroDeGuia__Movimientos--Titulo">
             Movimientos del pedido

@@ -1,39 +1,65 @@
-.Envios {
-  margin-top: 15px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid var(--ColorSecundario);
+.Cargas {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 75px);
+  overflow-y: auto;
+  padding: 10px;
+
   display: flex;
+  flex-direction: column;
 }
-.Envios__Texto {
+.Cargas__Titulo {
+  width: 100%;
+  color: var(--ColorNegro);
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.Cargas__Subtitulo {
+  width: 100%;
+  color: var(--ColorGris);
+  font-weight: normal;
+}
+.Cargas__Separador {
+  width: 100%;
+  min-height: 2px;
+  border: none;
+  margin: 20px 0;
+  background-color: var(--ColorSecundario);
+}
+.Cargas__Cuerpo {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 15px;
+
+  border-bottom: 2px solid var(--ColorSecundario);
+}
+.Cargas__Formulario {
   flex: 1;
 
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  gap: 5px;
 }
-.Envios__Texto b {
+.Cargas__Formulario--Titulo {
   color: var(--ColorNegro);
   font-size: 18px;
 }
-.Envios__Texto p {
+.Cargas__Formulario--Subtitulo {
   color: var(--ColorGris);
   font-size: 16px;
 }
-.Envios__Texto--Inputs {
-  width: 100%;
-  margin-top: 10px;
+.Cargas__Formulario--Inputs {
   display: flex;
-  gap: 10px;
+  gap: 5px;
 }
-.Envios__Texto--Inputs--Span {
+.Cargas__Cuerpo__Inputs--Span {
   width: 100%;
 
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
-.Envios__Texto--Inputs input {
+.Cargas__Cuerpo__Inputs--Span input {
   width: 100%;
   min-height: 40px;
   padding: 5px;
@@ -47,7 +73,7 @@
   font-weight: bold;
   text-align: center;
 }
-.Envios__Texto--Inputs button {
+.Cargas__Formulario--Inputs button {
   width: 100%;
   height: 40px;
   color: var(--ColorBlanco);
@@ -61,12 +87,14 @@
   text-align: center;
   text-transform: uppercase;
 }
-.Envios__Texto--Inputs button:hover {
+.Cargas__Formulario--Inputs button:hover {
   background-color: transparent;
   color: var(--ColorVerde);
 }
-.Envios__Lista {
+.Cargas__Lista {
   flex: 1;
+}
+.Cargas__Lista__Detalles {
   padding: 10px;
 
   display: flex;
@@ -75,7 +103,7 @@
   justify-content: center;
   gap: 5px;
 }
-.Envios__Lista li {
+.Cargas__Lista__Detalles li {
   position: relative;
   list-style: none;
   padding: 5px 20px;
@@ -91,7 +119,7 @@
   align-items: center;
   justify-content: center;
 }
-.Envios__Lista button {
+.Cargas__Lista__Detalles button {
   position: absolute;
   top: -8px;
   right: -8px;
@@ -109,24 +137,24 @@
   align-items: center;
   justify-content: center;
 }
-.Envios__Lista button:hover {
+.Cargas__Lista__Detalles button:hover {
   transform: scale(1.1);
 }
 @media (width <= 950px) {
-  .Envios {
+  .Cargas__Cuerpo {
     flex-direction: column;
     gap: 20px;
   }
-  .Envios__Lista {
+  .Cargas__Lista__Detalles {
     border-top: 2px solid var(--ColorSecundario);
     padding-top: 25px;
   }
 }
 @media (width <= 500px) {
-  .Envios__Texto b {
+  .Cargas__Cuerpo__Texto b {
     font-size: 16px;
   }
-  .Envios__Texto p {
+  .Cargas__Cuerpo__Texto p {
     font-size: 14px;
   }
 }

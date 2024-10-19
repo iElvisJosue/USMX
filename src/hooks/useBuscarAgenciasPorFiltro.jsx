@@ -9,7 +9,7 @@ import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 export default function useBuscarAgenciasPorFiltro() {
   const { BuscarAgenciasPorFiltro } = useAgencias();
 
-  const [agencias, establecerAgencias] = useState([]);
+  const [agencias, establecerAgencias] = useState(null);
   const [cargandoAgencias, establecerCargandoAgencias] = useState(true);
   const [filtroAgencias, establecerFiltroAgencias] = useState("");
   const [obtenerAgenciasNuevamente, establecerObtenerAgenciasNuevamente] =

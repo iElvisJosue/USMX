@@ -108,7 +108,44 @@ export const OpcionesDelMenu = {
     {
       icono: "settings",
       nombre: "Configuración",
-      url: `${HOST}Configuracion`,
+      url: "#",
+      opcionesSecundarias: [
+        {
+          icono: "archive",
+          nombre: "Cargas",
+          url: `${HOST}Cargas`,
+        },
+        {
+          icono: "airplane",
+          nombre: "Envios",
+          url: `${HOST}Envios`,
+        },
+        {
+          icono: "earth",
+          nombre: "Paises",
+          url: `${HOST}Administrar-Paises`,
+        },
+        {
+          icono: "location",
+          nombre: "Estados",
+          url: `${HOST}Administrar-Estados`,
+        },
+        {
+          icono: "locate",
+          nombre: "Ciudades",
+          url: `${HOST}Administrar-Ciudades`,
+        },
+        {
+          icono: "trail-sign",
+          nombre: "Colonias",
+          url: `${HOST}Administrar-Colonias`,
+        },
+      ],
+    },
+    {
+      icono: "color-palette",
+      nombre: "Apariencia",
+      url: `${HOST}Apariencia`,
     },
   ],
   Usuario: [
@@ -135,9 +172,9 @@ export const OpcionesDelMenu = {
       ],
     },
     {
-      icono: "settings",
-      nombre: "Configuración",
-      url: `${HOST}Configuracion`,
+      icono: "color-palette",
+      nombre: "Apariencia",
+      url: `${HOST}Apariencia`,
     },
   ],
   Moderador: [
@@ -164,9 +201,9 @@ export const OpcionesDelMenu = {
       ],
     },
     {
-      icono: "settings",
-      nombre: "Configuración",
-      url: `${HOST}Configuracion`,
+      icono: "color-palette",
+      nombre: "Apariencia",
+      url: `${HOST}Apariencia`,
     },
   ],
 };

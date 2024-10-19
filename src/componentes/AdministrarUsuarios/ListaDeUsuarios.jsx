@@ -163,8 +163,10 @@ export default function ListaDeUsuarios({
                 className={`ListaDeUsuarios__Usuario ${infUsuario.Permisos}`}
                 key={infUsuario.idUsuario}
               >
-                {IconosPorTipoDeUsuario[infUsuario.Permisos]}
-                <p>{infUsuario.Usuario}</p>
+                <span className="ListaDeUsuarios__Usuario__Detalles">
+                  {IconosPorTipoDeUsuario[infUsuario.Permisos]}
+                  <p>{infUsuario.Usuario}</p>
+                </span>
                 {infUsuario.Permisos !== "Administrador" && (
                   <span className="ListaDeUsuarios__Usuario__Opciones">
                     <button
@@ -206,8 +208,10 @@ export default function ListaDeUsuarios({
                 className="ListaDeUsuarios__Usuario Desactivado"
                 key={infUsuario.idUsuario}
               >
-                {IconosPorTipoDeUsuario.Desactivado}
-                <p>{infUsuario.Usuario}</p>
+                <span className="ListaDeUsuarios__Usuario__Detalles">
+                  <ion-icon name="ban"></ion-icon>
+                  <p>{infUsuario.Usuario}</p>
+                </span>
                 <span className="ListaDeUsuarios__Usuario__Opciones">
                   <button
                     className="ListaDeUsuarios__Usuario__Opciones--Boton Activar"

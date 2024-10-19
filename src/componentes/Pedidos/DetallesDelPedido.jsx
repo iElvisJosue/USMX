@@ -132,7 +132,7 @@ export default function DetallesDelPedido({
         {paquete[indicePedido].GuiaPedido}
       </div>
       <div className="DetallesDelPedido__Detalles Usuario">
-        <ion-icon name="person-circle"></ion-icon> <b>Usuario responsable</b>{" "}
+        <ion-icon name="person-circle"></ion-icon> <b>Usuario</b>{" "}
         {paquete[indicePedido].UsuarioResponsablePedido}
       </div>
       <div
@@ -213,17 +213,12 @@ export default function DetallesDelPedido({
           <b>Correo: </b>
           {paquete[indicePedido].CorreoDestinatario}
         </p>
-        <p>
-          <b>Colonia: </b>
-          {paquete[indicePedido].ColoniaDestinatario}
-        </p>
         {paquete[indicePedido].MunicipioDelegacionDestinatario && (
           <p>
             <b>Municipio/Delegación: </b>
             {paquete[indicePedido].MunicipioDelegacionDestinatario}
           </p>
         )}
-
         <p>
           <b>Dirección: </b>
           {paquete[indicePedido].DireccionDestinatario} <br />{" "}

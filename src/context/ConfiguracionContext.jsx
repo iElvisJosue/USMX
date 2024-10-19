@@ -9,6 +9,10 @@ import {
   SolicitudEliminarTipoDeCarga,
   SolicitudRegistrarTipoDeEnvio,
   SolicitudEliminarTipoDeEnvio,
+  SolicitudBuscarPaisesPorFiltro,
+  SolicitudBuscarEstadosPorFiltro,
+  SolicitudBuscarCiudadesPorFiltro,
+  SolicitudBuscarColoniasPorFiltro,
 } from "../api/authConfiguracion";
 import { useGlobal } from "./GlobalContext";
 
@@ -125,6 +129,38 @@ export const ProveedorConfiguracion = ({ children }) => {
       return error;
     }
   };
+  const BuscarPaisesPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarPaisesPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarEstadosPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarEstadosPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarCiudadesPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarCiudadesPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarColoniasPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarColoniasPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <ConfiguracionContext.Provider
@@ -139,6 +175,10 @@ export const ProveedorConfiguracion = ({ children }) => {
         EliminarTipoDeCarga,
         RegistrarTipoDeEnvio,
         EliminarTipoDeEnvio,
+        BuscarPaisesPorFiltro,
+        BuscarEstadosPorFiltro,
+        BuscarCiudadesPorFiltro,
+        BuscarColoniasPorFiltro,
       }}
     >
       {children}

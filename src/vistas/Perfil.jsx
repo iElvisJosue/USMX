@@ -39,7 +39,6 @@ export default function Perfil() {
     Telefono,
     FechaCreacionUsuario,
     HoraCreacionUsuario,
-    Direccion,
   } = informacionDelUsuario[0];
 
   return (
@@ -98,15 +97,6 @@ export default function Perfil() {
             <p className="Perfil__Contenido__Detalles--Valor">
               {FormatearFecha(FechaCreacionUsuario.slice(0, 10))} a las{" "}
               {HoraCreacionUsuario}
-            </p>
-          </span>
-          <span className="Perfil__Contenido__Detalles">
-            <p className="Perfil__Contenido__Detalles--Texto">
-              <ion-icon name="location"></ion-icon>
-              Ubicación
-            </p>
-            <p className="Perfil__Contenido__Detalles--Valor">
-              {Direccion ?? "-"}
             </p>
           </span>
         </div>

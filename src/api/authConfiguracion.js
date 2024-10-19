@@ -28,3 +28,15 @@ export const SolicitudEliminarTipoDeEnvio = ({ CookieConToken, idTipoEnvio }) =>
   axios.delete(
     `/configuracion/EliminarTipoDeEnvio/${CookieConToken}/${idTipoEnvio}`
   );
+// PETICIÓN PARA BUSCAR LOS PAISES POR FILTRO
+export const SolicitudBuscarPaisesPorFiltro = (data) =>
+  axios.post("/configuracion/BuscarPaisesPorFiltro", data);
+// PETICIÓN PARA BUSCAR LOS ESTADOS POR FILTRO
+export const SolicitudBuscarEstadosPorFiltro = (data) =>
+  axios.post("/configuracion/BuscarEstadosPorFiltro", data);
+// PETICIÓN PARA BUSCAR LAS CIUDADES POR FILTRO
+export const SolicitudBuscarCiudadesPorFiltro = (data) =>
+  axios.post("/configuracion/BuscarCiudadesPorFiltro", data);
+// PETICIÓN PARA BUSCAR LAS COLONIAS POR FILTRO
+export const SolicitudBuscarColoniasPorFiltro = (data) =>
+  axios.post("/configuracion/BuscarColoniasPorFiltro", data);

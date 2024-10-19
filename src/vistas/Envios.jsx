@@ -1,23 +1,25 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { toast } from "sonner";
+import { Toaster, toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../../context/ConfiguracionContext";
+import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../Cargando";
+import Cargando from "../componentes/Cargando";
+import Menu from "../componentes/Menu/Menu";
+import Encabezado from "../componentes/Encabezado";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useObtenerTiposDeEnvio from "../../hooks/useObtenerTiposDeEnvio";
+import useObtenerTiposDeEnvio from "../hooks/useObtenerTiposDeEnvio";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
-import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
+import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/Configuracion/Envios.css";
+import "../estilos/vistas/Envios.css";
 
 export default function Envios() {
   const { RegistrarTipoDeEnvio, EliminarTipoDeEnvio } = useConfiguracion();
@@ -100,38 +102,55 @@ export default function Envios() {
   if (cargandoEnvios) return <Cargando />;
 
   return (
-    <form className="Envios" onSubmit={RegistrarNuevoEnvio}>
-      <div className="Envios__Texto">
-        <b>Tipos de envios</b>
-        <p>Registra los tipos de envios con los que trabajan.</p>
-        <div className="Envios__Texto--Inputs">
-          <span className="Envios__Texto--Inputs--Span">
-            <input
-              type="text"
-              name="TipoEnvio"
-              placeholder="Envío"
-              {...register("TipoEnvio", {
-                required: "¡Este campo es obligatorio! ⚠️",
-              })}
-            />
-            {MensajeDeError("TipoEnvio")}
-          </span>
-          <button>Añadir</button>
+    <main className="Main">
+      <Menu />
+      <Encabezado icono="airplane" seccion="Envios" />
+      <form className="Envios" onSubmit={RegistrarNuevoEnvio}>
+        <h2 className="Envios__Titulo">Envios</h2>
+        <h4 className="Envios__Subtitulo">
+          Administre la cantidad de envios que maneja el sistema para sus
+          pedidos.
+        </h4>
+        <hr className="Envios__Separador" />
+        <div className="Envios__Cuerpo">
+          <section className="Envios__Formulario">
+            <b className="Envios__Formulario--Titulo">Tipos de envios</b>
+            <p className="Envios__Formulario--Subtitulo">
+              Registra los tipos de envios con los que trabajan.
+            </p>
+            <div className="Envios__Formulario--Inputs">
+              <span className="Envios__Cuerpo__Inputs--Span">
+                <input
+                  type="text"
+                  name="TipoEnvio"
+                  placeholder="Envío"
+                  {...register("TipoEnvio", {
+                    required: "¡Este campo es obligatorio! ⚠️",
+                  })}
+                />
+                {MensajeDeError("TipoEnvio")}
+              </span>
+              <button>Añadir</button>
+            </div>
+          </section>
+          <section className="Envios__Lista">
+            <ul className="Envios__Lista__Detalles">
+              {envios.map((envio) => (
+                <li key={envio.idTipoEnvio}>
+                  <p>{envio.TipoEnvio}</p>
+                  <button
+                    type="button"
+                    onClick={() => EliminarEnvio(envio.idTipoEnvio)}
+                  >
+                    <ion-icon name="close"></ion-icon>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
-      </div>
-      <ul className="Envios__Lista">
-        {envios.map((envio) => (
-          <li key={envio.idTipoEnvio}>
-            <p>{envio.TipoEnvio}</p>
-            <button
-              type="button"
-              onClick={() => EliminarEnvio(envio.idTipoEnvio)}
-            >
-              <ion-icon name="close"></ion-icon>
-            </button>
-          </li>
-        ))}
-      </ul>
-    </form>
+      </form>
+      <Toaster richColors position="top-right" />
+    </main>
   );
 }

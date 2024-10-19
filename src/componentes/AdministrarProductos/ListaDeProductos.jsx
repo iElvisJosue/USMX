@@ -50,7 +50,7 @@ export default function ListaDeProductos({
     }
   }, [productos]);
 
-  const obtenerUsuarios = (event) => {
+  const ObtenerLosProductos = (event) => {
     const valorIntroducido = event.target.value;
     // Utilizamos una expresión regular para permitir letras, números y "-"
     const regex = /^[a-zA-Z0-9\sáéíóúÁÉÍÓÚüÜ-]*$/;
@@ -103,7 +103,7 @@ export default function ListaDeProductos({
         <input
           type="text"
           placeholder="Buscar producto"
-          onChange={obtenerUsuarios}
+          onChange={ObtenerLosProductos}
         />
         <span className="ListaDeProductos__Buscar__Lupa">
           <ion-icon name="search"></ion-icon>
@@ -150,8 +150,11 @@ export default function ListaDeProductos({
                 className="ListaDeProductos__Producto"
                 key={infProducto.idProducto}
               >
-                <ion-icon name="basket"></ion-icon>
-                <p>{infProducto.NombreProducto}</p>
+                <span className="ListaDeProductos__Producto__Detalles">
+                  <ion-icon name="basket"></ion-icon>
+                  <p>{infProducto.NombreProducto}</p>
+                </span>
+
                 <span className="ListaDeProductos__Producto__Opciones">
                   <button
                     className="ListaDeProductos__Producto__Opciones--Boton Administrar"
@@ -191,8 +194,10 @@ export default function ListaDeProductos({
                 className="ListaDeProductos__Producto Desactivado"
                 key={infProducto.idProducto}
               >
-                <ion-icon name="ban"></ion-icon>
-                <p>{infProducto.NombreProducto}</p>
+                <span className="ListaDeProductos__Producto__Detalles">
+                  <ion-icon name="basket"></ion-icon>
+                  <p>{infProducto.NombreProducto}</p>
+                </span>
                 <span className="ListaDeProductos__Producto__Opciones">
                   <button
                     className="ListaDeProductos__Producto__Opciones--Boton Activar"

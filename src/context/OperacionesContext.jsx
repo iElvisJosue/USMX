@@ -5,6 +5,10 @@ import {
   SolicitudObtenerTodosLosMovimientos,
   SolicitudActualizarEstadoDeUnMovimiento,
   SolicitudEditarMovimiento,
+  SolicitudObtenerPaisesActivos,
+  SolicitudObtenerEstadosPorCodigoDelPais,
+  SolicitudObtenerCiudadesPorEstado,
+  SolicitudObtenerColoniasPorCodigoPostal,
 } from "../api/authOperaciones";
 
 export const OperacionesContext = createContext();
@@ -53,6 +57,38 @@ export const ProveedorOperaciones = ({ children }) => {
       return error;
     }
   };
+  const ObtenerPaisesActivos = async (data) => {
+    try {
+      const res = await SolicitudObtenerPaisesActivos(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ObtenerEstadosPorCodigoDelPais = async (data) => {
+    try {
+      const res = await SolicitudObtenerEstadosPorCodigoDelPais(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ObtenerCiudadesPorEstado = async (data) => {
+    try {
+      const res = await SolicitudObtenerCiudadesPorEstado(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ObtenerColoniasPorCodigoPostal = async (data) => {
+    try {
+      const res = await SolicitudObtenerColoniasPorCodigoPostal(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <OperacionesContext.Provider
@@ -61,6 +97,10 @@ export const ProveedorOperaciones = ({ children }) => {
         ObtenerTodosLosMovimientos,
         ActualizarEstadoDeUnMovimiento,
         EditarMovimiento,
+        ObtenerPaisesActivos,
+        ObtenerEstadosPorCodigoDelPais,
+        ObtenerCiudadesPorEstado,
+        ObtenerColoniasPorCodigoPostal,
       }}
     >
       {children}

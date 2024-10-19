@@ -50,7 +50,7 @@ export default function ListaDeAgencias({
     }
   }, [agencias]);
 
-  const obtenerUsuarios = (event) => {
+  const ObtenerLasAgencias = (event) => {
     const valorIntroducido = event.target.value;
     // Utilizamos una expresión regular para permitir letras, números y "-"
     const regex = /^[a-zA-Z0-9\sáéíóúÁÉÍÓÚüÜ-]*$/;
@@ -103,7 +103,7 @@ export default function ListaDeAgencias({
         <input
           type="text"
           placeholder="Buscar agencia"
-          onChange={obtenerUsuarios}
+          onChange={ObtenerLasAgencias}
         />
         <span className="ListaDeAgencias__Buscar__Lupa">
           <ion-icon name="search"></ion-icon>
@@ -150,14 +150,20 @@ export default function ListaDeAgencias({
                 className="ListaDeAgencias__Agencia"
                 key={infAgencia.idAgencia}
               >
-                <ion-icon name="business"></ion-icon>
-                <p>{infAgencia.NombreAgencia}</p>
-                <ion-icon name="location"></ion-icon>
-                <p>{infAgencia.DireccionAgencia}</p>
-                <p>
-                  {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}{" "}
-                  {infAgencia.CodigoPostalAgencia}
-                </p>
+                <span className="ListaDeAgencias__Agencia__Detalles">
+                  <ion-icon name="business"></ion-icon>
+                  <p>{infAgencia.NombreAgencia}</p>
+                  <ion-icon name="earth"></ion-icon>
+                  <p>{infAgencia.PaisAgencia}</p>
+                  <ion-icon name="location"></ion-icon>
+                  <p>
+                    {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}
+                  </p>
+                  <p>
+                    {infAgencia.DireccionAgencia}{" "}
+                    {infAgencia.CodigoPostalAgencia}
+                  </p>
+                </span>
                 <span className="ListaDeAgencias__Agencia__Opciones">
                   <button
                     className="ListaDeAgencias__Agencia__Opciones--Boton Administrar"
@@ -197,14 +203,20 @@ export default function ListaDeAgencias({
                 className="ListaDeAgencias__Agencia Desactivada"
                 key={infAgencia.idAgencia}
               >
-                <ion-icon name="business"></ion-icon>
-                <p>{infAgencia.NombreAgencia}</p>
-                <ion-icon name="location"></ion-icon>
-                <p>{infAgencia.DireccionAgencia}</p>
-                <p>
-                  {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}{" "}
-                  {infAgencia.CodigoPostalAgencia}
-                </p>
+                <span className="ListaDeAgencias__Agencia__Detalles">
+                  <ion-icon name="business"></ion-icon>
+                  <p>{infAgencia.NombreAgencia}</p>
+                  <ion-icon name="earth"></ion-icon>
+                  <p>{infAgencia.PaisAgencia}</p>
+                  <ion-icon name="location"></ion-icon>
+                  <p>
+                    {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}
+                  </p>
+                  <p>
+                    {infAgencia.DireccionAgencia}{" "}
+                    {infAgencia.CodigoPostalAgencia}
+                  </p>
+                </span>
                 <span className="ListaDeAgencias__Agencia__Opciones">
                   <button
                     className="ListaDeAgencias__Agencia__Opciones--Boton Activar"
