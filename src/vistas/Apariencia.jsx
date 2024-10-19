@@ -12,7 +12,7 @@ import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 // IMPORTAMOS LOS ESTILOS
-import "../estilos/Vistas/Apariencia.css";
+import "../estilos/vistas/Apariencia.css";
 
 export default function Apariencia() {
   const { usuario } = useGlobal();
