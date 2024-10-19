@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../context/AgenciasContext";
@@ -99,9 +100,25 @@ export default function EditarAgencia({
     setValue("EstadoAgencia", informacionDeLaAgencia.EstadoAgencia);
     setValue("CodigoPostalAgencia", informacionDeLaAgencia.CodigoPostalAgencia);
     setValue("DireccionAgencia", informacionDeLaAgencia.DireccionAgencia);
+    if (informacionDeLaAgencia?.NombreAgencia === "USMX Express") {
+      document
+        .getElementById("NombreAgencia")
+        .classList.add("DesactivarNombreAgencia");
+      document
+        .getElementById("NombreAgencia")
+        .setAttribute("disabled", "disabled");
+    }
   }, []);
 
   const ActualizarInformacionDeLaAgencia = handleSubmit(async (info) => {
+    if (
+      informacionDeLaAgencia.NombreAgencia === "USMX Express" &&
+      info.NombreAgencia !== "USMX Express"
+    ) {
+      return toast.error(
+        "El nombre de la agencia USMX Express no puede ser cambiado ❌"
+      );
+    }
     try {
       const { CodigoPais } = DividirCodigoDelNombrePais(info.PaisAgencia);
       info.CodigoPaisAgencia = CodigoPais;

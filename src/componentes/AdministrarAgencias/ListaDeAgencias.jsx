@@ -187,15 +187,17 @@ export default function ListaDeAgencias({
                       <ion-icon name="create"></ion-icon>
                     </p>
                   </button>
-                  <button
-                    className="ListaDeAgencias__Agencia__Opciones--Boton Desactivar"
-                    onClick={() => MostrarModalDesactivar(infAgencia)}
-                    title="Desactivar agencia"
-                  >
-                    <p>
-                      <ion-icon name="ban"></ion-icon>
-                    </p>
-                  </button>
+                  {infAgencia.NombreAgencia !== "USMX Express" && (
+                    <button
+                      className="ListaDeAgencias__Agencia__Opciones--Boton Desactivar"
+                      onClick={() => MostrarModalDesactivar(infAgencia)}
+                      title="Desactivar agencia"
+                    >
+                      <p>
+                        <ion-icon name="ban"></ion-icon>
+                      </p>
+                    </button>
+                  )}
                 </span>
               </section>
             ) : (

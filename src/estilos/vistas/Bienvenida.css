@@ -241,15 +241,11 @@
   color: var(--ColorAzul);
 }
 .Bienvenida__UltimasGuias--Cuerpo.SinResultados {
-  background-color: var(--ColorBlanco);
-  width: 100%;
-  padding: 10px;
-  border-radius: 20px;
+  background-color: var(--ColorSecundario);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
 }
 .Bienvenida__UltimasGuias--Cuerpo.SinResultados img {
   width: 75px;
