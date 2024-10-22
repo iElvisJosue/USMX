@@ -20,6 +20,7 @@ export const CamposAgencia = [
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
       },
     },
+    tabIndex: "-1",
   },
   {
     idCampo: "NombreContacto",
@@ -36,6 +37,7 @@ export const CamposAgencia = [
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
       },
     },
+    tabIndex: "0",
   },
   {
     idCampo: "TelefonoContacto",
@@ -56,6 +58,7 @@ export const CamposAgencia = [
         message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
       },
     },
+    tabIndex: "0",
   },
   {
     idCampo: "CorreoContacto",
@@ -72,5 +75,6 @@ export const CamposAgencia = [
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
       },
     },
+    tabIndex: "0",
   },
 ];

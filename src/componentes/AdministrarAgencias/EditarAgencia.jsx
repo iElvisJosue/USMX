@@ -108,9 +108,6 @@ export default function EditarAgencia({
       document
         .getElementById("NombreAgencia")
         .classList.add("DesactivarNombreAgencia");
-      document
-        .getElementById("NombreAgencia")
-        .setAttribute("disabled", "disabled");
     }
   }, []);
 
@@ -211,6 +208,7 @@ export default function EditarAgencia({
             placeholderCampo,
             claseCampo,
             validadorCampo,
+            tabIndex,
           },
           index
         ) => (
@@ -224,6 +222,7 @@ export default function EditarAgencia({
               name={nombreCampo}
               placeholder={placeholderCampo}
               {...register(nombreCampo, validadorCampo)}
+              tabIndex={tabIndex}
             />
             {MensajeError(nombreCampo)}
           </span>
