@@ -1,3 +1,5 @@
+import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../helpers/Regexs";
+
 export const CamposMovimientos = [
   {
     idCampo: "EstadoMovimiento",
@@ -9,13 +11,10 @@ export const CamposMovimientos = [
     claseCampo: "RegistrarMovimiento__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -29,13 +28,10 @@ export const CamposMovimientos = [
     claseCampo: "RegistrarMovimiento__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -61,6 +57,7 @@ export const CamposMovimientos = [
     claseCampo: "RegistrarMovimiento__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
       maxLength: {
         value: 1000,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",

@@ -16,6 +16,10 @@ import useObtenerColoniasPorCP from "../../hooks/useObtenerColoniasPorCP";
 
 // IMPORTAMOS LAS AYUDAS
 import { CamposDestinatario } from "../../helpers/RealizarPedido/CamposDestinatario";
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+} from "../../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/RegistrarNuevoDestinatario.css";
@@ -296,10 +300,7 @@ export default function RegistrarNuevoDestinatario({
               id="CodigoPostalDestinatario"
               {...register("CodigoPostalDestinatario", {
                 required: "¡Este campo es obligatorio! ⚠️",
-                pattern: {
-                  value: /^\d+$/,
-                  message: "¡Este campo solo acepta números! 🔢",
-                },
+                pattern: REGEX_SOLO_NUMEROS,
                 maxLength: {
                   value: 5,
                   message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -317,8 +318,6 @@ export default function RegistrarNuevoDestinatario({
                   e.target.value.length === 5 ? e.target.value : null
                 );
               }}
-              minLength={5}
-              maxLength={5}
             ></input>
             {MensajeError("CodigoPostalDestinatario")}
           </span>
@@ -361,6 +360,7 @@ export default function RegistrarNuevoDestinatario({
               id="DireccionDestinatario"
               {...register("DireccionDestinatario", {
                 required: "¡Este campo es obligatorio! ⚠️",
+                pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                 maxLength: {
                   value: 1000,
                   message:
@@ -381,6 +381,7 @@ export default function RegistrarNuevoDestinatario({
           id="MunicipioDelegacionDestinatario"
           placeholder="Escriba aquí..."
           {...register("MunicipioDelegacionDestinatario", {
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
               message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
@@ -400,6 +401,7 @@ export default function RegistrarNuevoDestinatario({
           name="ReferenciaDestinatario"
           placeholder="Escriba aquí..."
           {...register("ReferenciaDestinatario", {
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",

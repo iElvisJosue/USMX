@@ -199,6 +199,7 @@
 .SeleccionarOcurre__Ocurre.Seleccionado {
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
+  color: white;
 }
 .SeleccionarOcurre__Ocurre ion-icon {
   font-size: 25px;
@@ -213,7 +214,6 @@
 .SeleccionarOcurre__Ocurre.Seleccionado:hover {
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
-  color: var(--ColorNegro);
   transform: scale(1);
 }
 .SeleccionarOcurre__TextoPaginas {

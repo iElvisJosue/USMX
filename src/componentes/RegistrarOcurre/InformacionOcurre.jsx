@@ -15,6 +15,11 @@ import useObtenerColoniasPorCP from "../../hooks/useObtenerColoniasPorCP";
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+  REGEX_CORREO,
+} from "../../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../estilos/componentes/Ocurre/InformacionOcurre.css";
@@ -133,6 +138,7 @@ export default function InformacionOcurre() {
           placeholder="Escriba aquí..."
           {...register("NombreOcurre", {
             required: "¡Este campo es obligatorio! ⚠️",
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
               message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
@@ -169,10 +175,7 @@ export default function InformacionOcurre() {
           name="TelefonoOcurre"
           placeholder="Escriba aquí..."
           {...register("TelefonoOcurre", {
-            pattern: {
-              value: /^\d+$/,
-              message: "¡Este campo solo acepta números! 🔢",
-            },
+            pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
               message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
@@ -196,10 +199,7 @@ export default function InformacionOcurre() {
           placeholder="Escriba aquí..."
           {...register("CorreoOcurre", {
             required: "¡Este campo es obligatorio! ⚠️",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "¡Formato de correo no valido! ⚠️",
-            },
+            pattern: REGEX_CORREO,
             maxLength: {
               value: 100,
               message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
@@ -311,10 +311,7 @@ export default function InformacionOcurre() {
               id="CodigoPostalOcurre"
               {...register("CodigoPostalOcurre", {
                 required: "¡Este campo es obligatorio! ⚠️",
-                pattern: {
-                  value: /^\d+$/,
-                  message: "¡Este campo solo acepta números! 🔢",
-                },
+                pattern: REGEX_SOLO_NUMEROS,
                 maxLength: {
                   value: 5,
                   message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -376,6 +373,7 @@ export default function InformacionOcurre() {
               id="DireccionOcurre"
               {...register("DireccionOcurre", {
                 required: "¡Este campo es obligatorio! ⚠️",
+                pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                 maxLength: {
                   value: 1000,
                   message:
@@ -396,6 +394,7 @@ export default function InformacionOcurre() {
           id="MunicipioDelegacionOcurre"
           placeholder="Escriba aquí..."
           {...register("MunicipioDelegacionOcurre", {
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
               message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
@@ -413,6 +412,7 @@ export default function InformacionOcurre() {
           id="ReferenciaOcurre"
           placeholder="Escriba aquí..."
           {...register("ReferenciaOcurre", {
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
@@ -430,6 +430,7 @@ export default function InformacionOcurre() {
           id="ObservacionesOcurre"
           placeholder="Escriba aquí..."
           {...register("ObservacionesOcurre", {
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",

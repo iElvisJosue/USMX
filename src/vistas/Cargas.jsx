@@ -17,6 +17,10 @@ import useObtenerTiposDeCarga from "../hooks/useObtenerTiposDeCarga";
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+} from "../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/vistas/Cargas.css";
@@ -126,6 +130,7 @@ export default function Cargas() {
                   placeholder="Carga"
                   {...register("TipoCarga", {
                     required: "¡Este campo es obligatorio! ⚠️",
+                    pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                   })}
                 />
                 {MensajeDeError("TipoCarga")}
@@ -137,6 +142,11 @@ export default function Cargas() {
                   placeholder="Porcentaje"
                   {...register("PorcentajeCarga", {
                     required: "¡Este campo es obligatorio! ⚠️",
+                    pattern: REGEX_SOLO_NUMEROS,
+                    maxLength: {
+                      value: 3,
+                      message: "¡Este campo solo acepta 3 números! 🔠",
+                    },
                   })}
                 />
                 {MensajeDeError("PorcentajeCarga")}

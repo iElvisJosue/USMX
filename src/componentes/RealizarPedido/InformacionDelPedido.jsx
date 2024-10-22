@@ -28,6 +28,10 @@ import {
 } from "../../helpers/RealizarPedido/Calculos";
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+} from "../../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/InformacionDelPedido.css";
@@ -311,10 +315,7 @@ export default function InformacionDelPedido({
             placeholder="Escriba aquí..."
             {...register("Cantidad", {
               required: "¡Este campo es obligatorio! ⚠️",
-              pattern: {
-                value: /^\d+$/,
-                message: "¡Este campo solo acepta números! 🔢",
-              },
+              pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
                 message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -385,10 +386,7 @@ export default function InformacionDelPedido({
             placeholder="Escriba aquí..."
             {...register("Peso", {
               required: "¡Este campo es obligatorio! ⚠️",
-              pattern: {
-                value: /^\d+$/,
-                message: "¡Este campo solo acepta números! 🔢",
-              },
+              pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
                 message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -409,10 +407,7 @@ export default function InformacionDelPedido({
             placeholder="Escriba aquí..."
             {...register("Ancho", {
               required: "¡Este campo es obligatorio! ⚠️",
-              pattern: {
-                value: /^\d+$/,
-                message: "¡Este campo solo acepta números! 🔢",
-              },
+              pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
                 message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -433,10 +428,7 @@ export default function InformacionDelPedido({
             placeholder="Escriba aquí..."
             {...register("Largo", {
               required: "¡Este campo es obligatorio! ⚠️",
-              pattern: {
-                value: /^\d+$/,
-                message: "¡Este campo solo acepta números! 🔢",
-              },
+              pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
                 message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -457,10 +449,7 @@ export default function InformacionDelPedido({
             placeholder="Escriba aquí..."
             {...register("Alto", {
               required: "¡Este campo es obligatorio! ⚠️",
-              pattern: {
-                value: /^\d+$/,
-                message: "¡Este campo solo acepta números! 🔢",
-              },
+              pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
                 message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -480,6 +469,7 @@ export default function InformacionDelPedido({
             placeholder="Escriba aquí..."
             {...register("ContenidoDeEnvio", {
               required: "¡Este campo es obligatorio! ⚠️",
+              pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 1000,
                 message:
@@ -500,10 +490,7 @@ export default function InformacionDelPedido({
             placeholder="Escriba aquí..."
             {...register("ValorDeclarado", {
               required: "¡Este campo es obligatorio! ⚠️",
-              pattern: {
-                value: /^\d+$/,
-                message: "¡Este campo solo acepta números! 🔢",
-              },
+              pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
                 message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
@@ -523,10 +510,7 @@ export default function InformacionDelPedido({
             placeholder="Escriba aquí..."
             {...register("ValorAsegurado", {
               required: "¡Este campo es obligatorio! ⚠️",
-              pattern: {
-                value: /^\d+$/,
-                message: "¡Este campo solo acepta números! 🔢",
-              },
+              pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
                 message: "¡Este campo no puede tener más de 10 caracteres! 🔠",

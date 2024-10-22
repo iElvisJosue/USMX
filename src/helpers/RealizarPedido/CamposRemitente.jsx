@@ -1,3 +1,9 @@
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+  REGEX_CORREO,
+} from "../../helpers/Regexs";
+
 export const CamposRemitente = [
   {
     idCampo: "NombreRemitente",
@@ -8,13 +14,10 @@ export const CamposRemitente = [
     claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -27,13 +30,10 @@ export const CamposRemitente = [
     claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -45,10 +45,7 @@ export const CamposRemitente = [
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 10,
         message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
@@ -68,10 +65,7 @@ export const CamposRemitente = [
     claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 10,
         message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
@@ -92,7 +86,7 @@ export const CamposRemitente = [
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
-        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        pattern: REGEX_CORREO,
         message: "¡Formato de correo no valido! ⚠️",
       },
       maxLength: {
@@ -101,89 +95,4 @@ export const CamposRemitente = [
       },
     },
   },
-  // {
-  //   idCampo: "CodigoPostalRemitente",
-  //   iconoCampo: "pin",
-  //   tituloCampo: "Código Postal",
-  //   nombreCampo: "CodigoPostalRemitente",
-  //   tipoCampo: "text",
-  //   placeholderCampo: "Escriba aquí...",
-  //   claseCampo: "RegistrarNuevoRemitente__Campo",
-  //   validadorCampo: {
-  //     required: "¡Este campo es obligatorio! ⚠️",
-  //     pattern: {
-  //       value: /^\d+$/,
-  //       message: "¡Este campo solo acepta números! 🔢",
-  //     },
-  //     maxLength: {
-  //       value: 10,
-  //       message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-  //     },
-  //   },
-  // },
-  // {
-  //   idCampo: "CiudadRemitente",
-  //   iconoCampo: "locate",
-  //   tituloCampo: "Ciudad",
-  //   nombreCampo: "CiudadRemitente",
-  //   placeholderCampo: "Escriba aquí...",
-  //   // tipoCampo: "select
-  //   tipoCampo: "text",
-  //   claseCampo: "RegistrarNuevoRemitente__Campo",
-  //   validadorCampo: {
-  //     required: "¡Este campo es obligatorio! ⚠️",
-  //     maxLength: {
-  //       value: 100,
-  //       message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-  //     },
-  //   },
-  // },
-  // {
-  //   idCampo: "EstadoRemitente",
-  //   iconoCampo: "location",
-  //   tituloCampo: "Estado",
-  //   nombreCampo: "EstadoRemitente",
-  //   tipoCampo: "text",
-  //   placeholderCampo: "Escriba aquí...",
-  //   // tipoCampo: "select",
-  //   claseCampo: "RegistrarNuevoRemitente__Campo",
-  //   validadorCampo: {
-  //     required: "¡Este campo es obligatorio! ⚠️",
-  //     maxLength: {
-  //       value: 100,
-  //       message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-  //     },
-  //   },
-  // },
-  // {
-  //   idCampo: "DireccionRemitente",
-  //   iconoCampo: "trail-sign",
-  //   tituloCampo: "Dirección",
-  //   nombreCampo: "DireccionRemitente",
-  //   tipoCampo: "text",
-  //   placeholderCampo: "Escriba aquí...",
-  //   claseCampo: "RegistrarNuevoRemitente__Campo Dos",
-  //   validadorCampo: {
-  //     required: "¡Este campo es obligatorio! ⚠️",
-  //     maxLength: {
-  //       value: 1000,
-  //       message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-  //     },
-  //   },
-  // },
-  // {
-  //   idCampo: "ReferenciaRemitente",
-  //   iconoCampo: "document-text",
-  //   tituloCampo: "Referencia",
-  //   nombreCampo: "ReferenciaRemitente",
-  //   tipoCampo: "text",
-  //   placeholderCampo: "Escriba aquí...",
-  //   claseCampo: "RegistrarNuevoRemitente__Campo",
-  //   validadorCampo: {
-  //     maxLength: {
-  //       value: 1000,
-  //       message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-  //     },
-  //   },
-  // },
 ];

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 // LIBRERIAS A USAR
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
@@ -11,6 +13,9 @@ import AgenciaSeleccionada from "./AgenciaSeleccionada";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarOcurresActivosPorFiltro from "../../hooks/useBuscarOcurresActivosPorFiltro";
 import usePaginacion from "../../hooks/usePaginacion";
+
+// IMPORTAMOS LAS AYUDAS
+import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/SeleccionarOcurre.css";
@@ -28,6 +33,14 @@ export default function SeleccionarOcurre({
     cargandoOcurresActivos,
     establecerFiltroOcurresActivos,
   } = useBuscarOcurresActivosPorFiltro();
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
+    criteriaMode: "all",
+  });
 
   useEffect(() => {
     if (ocurresActivos) {
@@ -69,32 +82,18 @@ export default function SeleccionarOcurre({
     );
   };
 
-  const ValidarCamposOcurre = () => {
-    const NombreDestinatario =
-      document.getElementById("NombreDestinatario").value;
-    const ApellidoPaternoDestinatario = document.getElementById(
-      "ApellidoPaternoDestinatario"
-    ).value;
-    const ApellidoMaternoDestinatario = document.getElementById(
-      "ApellidoMaternoDestinatario"
-    ).value;
+  const GuardaInformacionDeLaOcurrencia = handleSubmit(async (info) => {
     if (idOcurreSeleccionado === null) {
       return toast.error("Debe seleccionar un ocurre para continuar. ❌");
-    }
-    if (
-      NombreDestinatario === "" ||
-      ApellidoPaternoDestinatario === "" ||
-      ApellidoMaternoDestinatario === ""
-    ) {
-      return toast.error("Debe ingresar todos los campos. ❌");
     }
     // NO PONEMOS EL ID DEL DESTINATARIO COMO FALSO PARA QUE SE ALMACENE EN LA BASE DE DATOS
     // Y PARA QUE NO SE CREE LA UNION CON LA AGENCIA CORRESPONDIENTE
     establecerDestinatario({
-      NombreDestinatario,
-      ApellidoPaternoDestinatario,
-      ApellidoMaternoDestinatario,
-      TelefonoCasaDestinatario: infOcurre.TelefonoOcurre,
+      NombreDestinatario: info.NombreDestinatario,
+      ApellidoPaternoDestinatario: info.ApellidoPaternoDestinatario,
+      ApellidoMaternoDestinatario: info.ApellidoMaternoDestinatario,
+      CelularDestinatario: infOcurre.TelefonoOcurre,
+      TelefonoCasaDestinatario: "",
       CorreoDestinatario: infOcurre.CorreoOcurre,
       PaisDestinatario: infOcurre.PaisOcurre,
       CodigoPaisDestinatario: infOcurre.CodigoPaisOcurre,
@@ -107,12 +106,32 @@ export default function SeleccionarOcurre({
     });
     toast.success("Paso 2 (Destinatario) completado con éxito ✨");
     establecerPaso(paso + 1);
+  });
+
+  const MensajeError = (nombreCampo) => {
+    return (
+      <ErrorMessage
+        errors={errors}
+        name={nombreCampo}
+        render={({ messages }) =>
+          messages &&
+          Object.entries(messages).map(([type, message]) => (
+            <small key={type} className="RegistrarAgencia__MensajeDeError">
+              {message}
+            </small>
+          ))
+        }
+      />
+    );
   };
 
   if (cargandoOcurresActivos) return <Cargando />;
 
   return (
-    <section className="SeleccionarOcurre">
+    <form
+      className="SeleccionarOcurre"
+      onSubmit={GuardaInformacionDeLaOcurrencia}
+    >
       <span className="SeleccionarOcurre__Opciones">
         <button
           type="button"
@@ -129,53 +148,68 @@ export default function SeleccionarOcurre({
           <ion-icon name="list"></ion-icon>
         </button>
       </span>
+      <h1 className="SeleccionarOcurre__Titulo">Ingresa el nombre</h1>
+      <span className="SeleccionarOcurre__Campo Nombre">
+        <p>
+          <ion-icon name="person"></ion-icon>Nombre
+        </p>
+        <input
+          id="NombreDestinatario"
+          type="text"
+          name="NombreDestinatario"
+          placeholder="Escriba aquí..."
+          {...register("NombreDestinatario", {
+            required: "¡Este campo es obligatorio! ⚠️",
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+          })}
+        />
+        {MensajeError("NombreDestinatario")}
+      </span>
+      <span className="SeleccionarOcurre__Campo">
+        <p>
+          <ion-icon name="man"></ion-icon>Apellido paterno
+        </p>
+        <input
+          id="ApellidoPaternoDestinatario"
+          type="text"
+          name="ApellidoPaternoDestinatario"
+          placeholder="Escriba aquí..."
+          {...register("ApellidoPaternoDestinatario", {
+            required: "¡Este campo es obligatorio! ⚠️",
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+          })}
+        />
+        {MensajeError("ApellidoPaternoDestinatario")}
+      </span>
+      <span className="SeleccionarOcurre__Campo">
+        <p>
+          <ion-icon name="woman"></ion-icon>Apellido materno
+        </p>
+        <input
+          id="ApellidoMaternoDestinatario"
+          type="text"
+          name="ApellidoMaternoDestinatario"
+          placeholder="Escriba aquí..."
+          {...register("ApellidoMaternoDestinatario", {
+            required: "¡Este campo es obligatorio! ⚠️",
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+          })}
+        />
+        {MensajeError("ApellidoMaternoDestinatario")}
+      </span>
+      <h1 className="SeleccionarOcurre__Titulo">Seleccionar Ocurre</h1>
+      <span className="SeleccionarOcurre__Buscar">
+        <input
+          type="text"
+          placeholder="Buscar Ocurre"
+          onChange={ObtenerOcurres}
+        />
+        <span className="SeleccionarOcurre__Buscar__Lupa">
+          <ion-icon name="search"></ion-icon>
+        </span>
+      </span>
       {ocurresActivos.length > 0 ? (
         <>
-          <h1 className="SeleccionarOcurre__Titulo">Ingresa el nombre</h1>
-          <span className="SeleccionarOcurre__Campo Nombre">
-            <p>
-              <ion-icon name="person"></ion-icon>Nombre
-            </p>
-            <input
-              id="NombreDestinatario"
-              type="text"
-              name="NombreDestinatario"
-              placeholder="Escriba aquí..."
-            />
-          </span>
-          <span className="SeleccionarOcurre__Campo">
-            <p>
-              <ion-icon name="man"></ion-icon>Apellido paterno
-            </p>
-            <input
-              id="ApellidoPaternoDestinatario"
-              type="text"
-              name="ApellidoPaternoDestinatario"
-              placeholder="Escriba aquí..."
-            />
-          </span>
-          <span className="SeleccionarOcurre__Campo">
-            <p>
-              <ion-icon name="woman"></ion-icon>Apellido materno
-            </p>
-            <input
-              id="ApellidoMaternoDestinatario"
-              type="text"
-              name="ApellidoMaternoDestinatario"
-              placeholder="Escriba aquí..."
-            />
-          </span>
-          <h1 className="SeleccionarOcurre__Titulo">Seleccionar Ocurre</h1>
-          <span className="SeleccionarOcurre__Buscar">
-            <input
-              type="text"
-              placeholder="Buscar Ocurre"
-              onChange={ObtenerOcurres}
-            />
-            <span className="SeleccionarOcurre__Buscar__Lupa">
-              <ion-icon name="search"></ion-icon>
-            </span>
-          </span>
           <small className="SeleccionarOcurre__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
             {ocurresActivos.length} resultados
@@ -226,23 +260,6 @@ export default function SeleccionarOcurre({
           <small className="SeleccionarOcurre__TextoPaginas">
             Página {paginaParaMostrar} de {cantidadDePaginas}
           </small>
-          <footer className="SeleccionarOcurre__Footer">
-            <button
-              className="SeleccionarOcurre__Footer__Boton Regresar"
-              onClick={() => establecerPaso(paso - 1)}
-              type="button"
-            >
-              Regresar
-            </button>
-            <button
-              type="submit"
-              className="SeleccionarOcurre__Footer__Boton Siguiente"
-              onClick={ValidarCamposOcurre}
-            >
-              Siguiente
-            </button>
-          </footer>
-          <AgenciaSeleccionada NombreAgencia={agencia?.NombreAgencia} />
         </>
       ) : (
         <MensajeGeneral
@@ -254,6 +271,22 @@ export default function SeleccionarOcurre({
           TextoBoton={"Registrar Ocurre"}
         />
       )}
-    </section>
+      <footer className="SeleccionarOcurre__Footer">
+        <button
+          className="SeleccionarOcurre__Footer__Boton Regresar"
+          onClick={() => establecerPaso(paso - 1)}
+          type="button"
+        >
+          Regresar
+        </button>
+        <button
+          type="submit"
+          className="SeleccionarOcurre__Footer__Boton Siguiente"
+        >
+          Siguiente
+        </button>
+      </footer>
+      <AgenciaSeleccionada NombreAgencia={agencia?.NombreAgencia} />
+    </form>
   );
 }

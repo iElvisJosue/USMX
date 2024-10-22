@@ -16,13 +16,17 @@ import useObtenerColoniasPorCP from "../../hooks/useObtenerColoniasPorCP";
 import { CamposAgencia } from "../../helpers/RegistrarAgencia/CamposAgencia";
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+} from "../../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../estilos/componentes/RegistrarAgencia/InformacionDeLaAgencia.css";
 
 export default function InformacionDeLaAgencia() {
   const { RegistrarAgencia } = useAgencias();
-  // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCIÓN
+  // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCION
   const [codigoDelPaisSeleccionado, establecerCodigoDelPaisSeleccionado] =
     useState(null);
   const [idEstado, establecerIdEstado] = useState(null);
@@ -252,10 +256,7 @@ export default function InformacionDeLaAgencia() {
               id="CodigoPostalAgencia"
               {...register("CodigoPostalAgencia", {
                 required: "¡Este campo es obligatorio! ⚠️",
-                pattern: {
-                  value: /^\d+$/,
-                  message: "¡Este campo solo acepta números! 🔢",
-                },
+                pattern: REGEX_SOLO_NUMEROS,
                 maxLength: {
                   value: 5,
                   message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -317,6 +318,7 @@ export default function InformacionDeLaAgencia() {
               id="DireccionAgencia"
               {...register("DireccionAgencia", {
                 required: "¡Este campo es obligatorio! ⚠️",
+                pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                 maxLength: {
                   value: 1000,
                   message:

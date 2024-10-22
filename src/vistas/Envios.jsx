@@ -17,6 +17,7 @@ import useObtenerTiposDeEnvio from "../hooks/useObtenerTiposDeEnvio";
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
+import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/vistas/Envios.css";
@@ -126,6 +127,7 @@ export default function Envios() {
                   placeholder="Envío"
                   {...register("TipoEnvio", {
                     required: "¡Este campo es obligatorio! ⚠️",
+                    pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                   })}
                 />
                 {MensajeDeError("TipoEnvio")}
