@@ -6,6 +6,7 @@ import { useOperaciones } from "../context/OperacionesContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerColoniasPorCP(CodigoPostal = null) {
   const { ObtenerColoniasPorCodigoPostal } = useOperaciones();
@@ -18,7 +19,13 @@ export default function useObtenerColoniasPorCP(CodigoPostal = null) {
           CookieConToken: COOKIE_CON_TOKEN,
           CodigoPostal,
         });
-        establecerColoniasPorCP(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+          establecerColoniasPorCP([]);
+        } else {
+          establecerColoniasPorCP(res.data);
+        }
       } catch (error) {
         console.log(error);
       }

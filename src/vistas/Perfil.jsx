@@ -27,6 +27,7 @@ export default function Perfil() {
     Administrador: <ion-icon name="shield-checkmark"></ion-icon>,
     Moderador: <ion-icon name="glasses"></ion-icon>,
     Usuario: <ion-icon name="person-circle"></ion-icon>,
+    Error: <ion-icon name="close-outline"></ion-icon>,
   };
 
   if (cargandoInformacionDelUsuario) return <Cargando />;
@@ -39,7 +40,7 @@ export default function Perfil() {
     Telefono,
     FechaCreacionUsuario,
     HoraCreacionUsuario,
-  } = informacionDelUsuario[0];
+  } = informacionDelUsuario[0] || [];
 
   return (
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
@@ -58,10 +59,12 @@ export default function Perfil() {
             alt="Logo del perfil"
             className="Perfil__Contenido__Foto"
           />
-          <h1 className="Perfil__Contenido__Usuario">{Usuario}</h1>
-          <small className={`Perfil__Contenido__Permisos ${Permisos}`}>
-            {Permisos}
-            {IconosPerfil[Permisos]}
+          <h1 className="Perfil__Contenido__Usuario">{Usuario || "Usuario"}</h1>
+          <small
+            className={`Perfil__Contenido__Permisos ${Permisos || "Error"}`}
+          >
+            {Permisos || "Permisos"}
+            {IconosPerfil[Permisos] || IconosPerfil["Error"]}
           </small>
           <hr className="Perfil__Separador" />
           <span className="Perfil__Contenido__Detalles">
@@ -69,7 +72,9 @@ export default function Perfil() {
               <ion-icon name="person"></ion-icon>
               ID
             </p>
-            <p className="Perfil__Contenido__Detalles--Valor">{idUsuario}</p>
+            <p className="Perfil__Contenido__Detalles--Valor">
+              {idUsuario || "0"}
+            </p>
           </span>
           <span className="Perfil__Contenido__Detalles">
             <p className="Perfil__Contenido__Detalles--Texto">
@@ -77,7 +82,7 @@ export default function Perfil() {
               Correo
             </p>
             <p className="Perfil__Contenido__Detalles--Valor">
-              {Correo ?? "-"}
+              {Correo || "-"}
             </p>
           </span>
           <span className="Perfil__Contenido__Detalles">
@@ -86,7 +91,7 @@ export default function Perfil() {
               Teléfono
             </p>
             <p className="Perfil__Contenido__Detalles--Valor">
-              {Telefono ?? "-"}
+              {Telefono || "-"}
             </p>
           </span>
           <span className="Perfil__Contenido__Detalles">
@@ -95,8 +100,10 @@ export default function Perfil() {
               Fecha creación
             </p>
             <p className="Perfil__Contenido__Detalles--Valor">
-              {FormatearFecha(FechaCreacionUsuario.slice(0, 10))} a las{" "}
-              {HoraCreacionUsuario}
+              {FechaCreacionUsuario
+                ? FormatearFecha(FechaCreacionUsuario?.slice(0, 10))
+                : "00/00/0000"}{" "}
+              a las {HoraCreacionUsuario || "00:00:00"}
             </p>
           </span>
         </div>

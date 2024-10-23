@@ -5,11 +5,12 @@ import { useOcurre } from "../context/OcurreContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarOcurresActivosPorFiltro() {
   const { BuscarOcurresActivosPorFiltro } = useOcurre();
 
-  const [ocurresActivos, establecerOcurresActivos] = useState(null);
+  const [ocurresActivos, establecerOcurresActivos] = useState([]);
   const [cargandoOcurresActivos, establecerCargandoOcurresActivos] =
     useState(true);
   const [filtroOcurresActivos, establecerFiltroOcurresActivos] = useState("");
@@ -25,7 +26,12 @@ export default function useBuscarOcurresActivosPorFiltro() {
           CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroOcurresActivos,
         });
-        establecerOcurresActivos(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerOcurresActivos(res.data);
+        }
         establecerCargandoOcurresActivos(false);
       } catch (error) {
         console.log(error);

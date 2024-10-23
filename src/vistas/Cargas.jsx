@@ -10,6 +10,7 @@ import { useConfiguracion } from "../context/ConfiguracionContext";
 import Cargando from "../componentes/Cargando";
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
+import MensajeGeneral from "../componentes/MensajeGeneral";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerTiposDeCarga from "../hooks/useObtenerTiposDeCarga";
@@ -116,61 +117,68 @@ export default function Cargas() {
           pedidos.
         </h4>
         <hr className="Cargas__Separador" />
-        <div className="Cargas__Cuerpo">
-          <section className="Cargas__Formulario">
-            <b className="Cargas__Formulario--Titulo">Tipos de cargas</b>
-            <p className="Cargas__Formulario--Subtitulo">
-              Registra los tipos de cargas con los que trabajan.
-            </p>
-            <div className="Cargas__Formulario--Inputs">
-              <span className="Cargas__Cuerpo__Inputs--Span">
-                <input
-                  type="text"
-                  name="TipoCarga"
-                  placeholder="Carga"
-                  {...register("TipoCarga", {
-                    required: "¡Este campo es obligatorio! ⚠️",
-                    pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-                  })}
-                />
-                {MensajeDeError("TipoCarga")}
-              </span>
-              <span className="Cargas__Cuerpo__Inputs--Span">
-                <input
-                  type="text"
-                  name="PorcentajeCarga"
-                  placeholder="Porcentaje"
-                  {...register("PorcentajeCarga", {
-                    required: "¡Este campo es obligatorio! ⚠️",
-                    pattern: REGEX_SOLO_NUMEROS,
-                    maxLength: {
-                      value: 3,
-                      message: "¡Este campo solo acepta 3 números! 🔠",
-                    },
-                  })}
-                />
-                {MensajeDeError("PorcentajeCarga")}
-              </span>
-              <button>Añadir</button>
-            </div>
-          </section>
-          <section className="Cargas__Lista">
-            <ul className="Cargas__Lista__Detalles">
-              {cargas.map((carga) => (
-                <li key={carga.idCarga}>
-                  <p>{carga.TipoCarga}</p>
-                  <small>{carga.PorcentajeCarga}%</small>
-                  <button
-                    type="button"
-                    onClick={() => EliminarCarga(carga.idCarga)}
-                  >
-                    <ion-icon name="close"></ion-icon>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+        {cargas.length > 0 ? (
+          <div className="Cargas__Cuerpo">
+            <section className="Cargas__Formulario">
+              <b className="Cargas__Formulario--Titulo">Tipos de cargas</b>
+              <p className="Cargas__Formulario--Subtitulo">
+                Registra los tipos de cargas con los que trabajan.
+              </p>
+              <div className="Cargas__Formulario--Inputs">
+                <span className="Cargas__Cuerpo__Inputs--Span">
+                  <input
+                    type="text"
+                    name="TipoCarga"
+                    placeholder="Carga"
+                    {...register("TipoCarga", {
+                      required: "¡Este campo es obligatorio! ⚠️",
+                      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+                    })}
+                  />
+                  {MensajeDeError("TipoCarga")}
+                </span>
+                <span className="Cargas__Cuerpo__Inputs--Span">
+                  <input
+                    type="text"
+                    name="PorcentajeCarga"
+                    placeholder="Porcentaje"
+                    {...register("PorcentajeCarga", {
+                      required: "¡Este campo es obligatorio! ⚠️",
+                      pattern: REGEX_SOLO_NUMEROS,
+                      maxLength: {
+                        value: 3,
+                        message: "¡Este campo solo acepta 3 números! 🔠",
+                      },
+                    })}
+                  />
+                  {MensajeDeError("PorcentajeCarga")}
+                </span>
+                <button>Añadir</button>
+              </div>
+            </section>
+            <section className="Cargas__Lista">
+              <ul className="Cargas__Lista__Detalles">
+                {cargas.map((carga) => (
+                  <li key={carga.idCarga}>
+                    <p>{carga.TipoCarga}</p>
+                    <small>{carga.PorcentajeCarga}%</small>
+                    <button
+                      type="button"
+                      onClick={() => EliminarCarga(carga.idCarga)}
+                    >
+                      <ion-icon name="close"></ion-icon>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        ) : (
+          <MensajeGeneral
+            Imagen="SinResultados.png"
+            Texto="¡Oops! No se encontraron resultados."
+          />
+        )}
       </form>
       <Toaster richColors position="top-right" />
     </main>

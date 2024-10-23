@@ -3,18 +3,26 @@ import { useState, useEffect } from "react";
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { usePedidos } from "../context/PedidosContext";
 
+// IMPORTAMOS LAS AYUDAS
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
+
 export default function useBuscarUltimosDiezPedidos() {
-  const [ultimosDiezPedidos, setUltimosDiezPedidos] = useState(null);
-  const [cargandoUltimosDiezPedidos, setCargandoUltimosDiezPedidos] =
+  const [ultimosDiezPedidos, setUltimosDiezPedidos] = useState([]);
+  const [cargandoUltimosDiezPedidos, establecerCargandoUltimosDiezPedidos] =
     useState(true);
-  const [buscarNuevamente, setBuscarNuevamente] = useState(false);
+  const [buscarNuevamente, establecerBuscarNuevamente] = useState(false);
   const { BuscarUltimosDiezPedidos } = usePedidos();
   useEffect(() => {
     const obtenerUltimosDiezPedidos = async () => {
       try {
         const res = await BuscarUltimosDiezPedidos();
-        setUltimosDiezPedidos(res.data);
-        setCargandoUltimosDiezPedidos(false);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          setUltimosDiezPedidos(res.data);
+        }
+        establecerCargandoUltimosDiezPedidos(false);
       } catch (error) {
         console.log(error);
       }
@@ -25,6 +33,6 @@ export default function useBuscarUltimosDiezPedidos() {
     ultimosDiezPedidos,
     cargandoUltimosDiezPedidos,
     buscarNuevamente,
-    setBuscarNuevamente,
+    establecerBuscarNuevamente,
   };
 }

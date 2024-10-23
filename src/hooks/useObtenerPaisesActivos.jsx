@@ -6,6 +6,7 @@ import { useOperaciones } from "../context/OperacionesContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerPaisesActivos() {
   const { ObtenerPaisesActivos } = useOperaciones();
@@ -17,7 +18,13 @@ export default function useObtenerPaisesActivos() {
         const res = await ObtenerPaisesActivos({
           CookieConToken: COOKIE_CON_TOKEN,
         });
-        establecerPaises(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+          establecerPaises([]);
+        } else {
+          establecerPaises(res.data);
+        }
       } catch (error) {
         console.log(error);
       }

@@ -10,6 +10,7 @@ import { useConfiguracion } from "../context/ConfiguracionContext";
 import Cargando from "../componentes/Cargando";
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
+import MensajeGeneral from "../componentes/MensajeGeneral";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerTiposDeEnvio from "../hooks/useObtenerTiposDeEnvio";
@@ -113,44 +114,51 @@ export default function Envios() {
           pedidos.
         </h4>
         <hr className="Envios__Separador" />
-        <div className="Envios__Cuerpo">
-          <section className="Envios__Formulario">
-            <b className="Envios__Formulario--Titulo">Tipos de envios</b>
-            <p className="Envios__Formulario--Subtitulo">
-              Registra los tipos de envios con los que trabajan.
-            </p>
-            <div className="Envios__Formulario--Inputs">
-              <span className="Envios__Cuerpo__Inputs--Span">
-                <input
-                  type="text"
-                  name="TipoEnvio"
-                  placeholder="Envío"
-                  {...register("TipoEnvio", {
-                    required: "¡Este campo es obligatorio! ⚠️",
-                    pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-                  })}
-                />
-                {MensajeDeError("TipoEnvio")}
-              </span>
-              <button>Añadir</button>
-            </div>
-          </section>
-          <section className="Envios__Lista">
-            <ul className="Envios__Lista__Detalles">
-              {envios.map((envio) => (
-                <li key={envio.idTipoEnvio}>
-                  <p>{envio.TipoEnvio}</p>
-                  <button
-                    type="button"
-                    onClick={() => EliminarEnvio(envio.idTipoEnvio)}
-                  >
-                    <ion-icon name="close"></ion-icon>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+        {envios.length > 0 ? (
+          <div className="Envios__Cuerpo">
+            <section className="Envios__Formulario">
+              <b className="Envios__Formulario--Titulo">Tipos de envios</b>
+              <p className="Envios__Formulario--Subtitulo">
+                Registra los tipos de envios con los que trabajan.
+              </p>
+              <div className="Envios__Formulario--Inputs">
+                <span className="Envios__Cuerpo__Inputs--Span">
+                  <input
+                    type="text"
+                    name="TipoEnvio"
+                    placeholder="Envío"
+                    {...register("TipoEnvio", {
+                      required: "¡Este campo es obligatorio! ⚠️",
+                      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+                    })}
+                  />
+                  {MensajeDeError("TipoEnvio")}
+                </span>
+                <button>Añadir</button>
+              </div>
+            </section>
+            <section className="Envios__Lista">
+              <ul className="Envios__Lista__Detalles">
+                {envios.map((envio) => (
+                  <li key={envio.idTipoEnvio}>
+                    <p>{envio.TipoEnvio}</p>
+                    <button
+                      type="button"
+                      onClick={() => EliminarEnvio(envio.idTipoEnvio)}
+                    >
+                      <ion-icon name="close"></ion-icon>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        ) : (
+          <MensajeGeneral
+            Imagen="SinResultados.png"
+            Texto="¡Oops! No se encontraron resultados."
+          />
+        )}
       </form>
       <Toaster richColors position="top-right" />
     </main>

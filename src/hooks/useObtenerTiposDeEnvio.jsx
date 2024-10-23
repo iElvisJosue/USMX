@@ -5,10 +5,11 @@ import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerTiposDeEnvio() {
   const { ObtenerTiposDeEnvio } = useConfiguracion();
-  const [envios, establecerEnvios] = useState(null);
+  const [envios, establecerEnvios] = useState([]);
   const [cargandoEnvios, establecerCargandoEnvios] = useState(true);
   const [obtenerEnviosNuevamente, establecerObtenerEnviosNuevamente] =
     useState(false);
@@ -19,7 +20,12 @@ export default function useObtenerTiposDeEnvio() {
         const res = await ObtenerTiposDeEnvio({
           CookieConToken: COOKIE_CON_TOKEN,
         });
-        establecerEnvios(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerEnvios(res.data);
+        }
         establecerCargandoEnvios(false);
       } catch (error) {
         console.log(error);

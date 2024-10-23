@@ -80,6 +80,9 @@
 .Perfil__Contenido__Permisos.Usuario ion-icon {
   background-color: var(--ColorAzul);
 }
+.Perfil__Contenido__Permisos.Error ion-icon {
+  background-color: var(--ColorRojo);
+}
 .Perfil__Separador {
   max-width: 100%;
   margin: 25px 20px;

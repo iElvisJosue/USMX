@@ -6,6 +6,7 @@ import { useOperaciones } from "../context/OperacionesContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerEstadosPorCodigoDelPais(CodigoPais = null) {
   const { ObtenerEstadosPorCodigoDelPais } = useOperaciones();
@@ -19,7 +20,13 @@ export default function useObtenerEstadosPorCodigoDelPais(CodigoPais = null) {
           CookieConToken: COOKIE_CON_TOKEN,
           CodigoPais,
         });
-        establecerEstadosPorCodigoDelPais(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+          establecerEstadosPorCodigoDelPais([]);
+        } else {
+          establecerEstadosPorCodigoDelPais(res.data);
+        }
       } catch (error) {
         console.log(error);
       }

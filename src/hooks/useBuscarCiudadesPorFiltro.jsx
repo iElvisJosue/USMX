@@ -5,11 +5,12 @@ import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarCiudadesPorFiltro() {
   const { BuscarCiudadesPorFiltro } = useConfiguracion();
 
-  const [ciudades, establecerCiudades] = useState(null);
+  const [ciudades, establecerCiudades] = useState([]);
   const [cargandoCiudades, establecerCargandoCiudades] = useState(true);
   const [filtroCiudades, establecerFiltroCiudades] = useState("");
   const [obtenerCiudadesNuevamente, establecerObtenerCiudadesNuevamente] =
@@ -22,7 +23,12 @@ export default function useBuscarCiudadesPorFiltro() {
           CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroCiudades,
         });
-        establecerCiudades(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerCiudades(res.data);
+        }
         establecerCargandoCiudades(false);
       } catch (error) {
         console.log(error);

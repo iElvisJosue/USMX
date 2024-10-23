@@ -2,7 +2,6 @@
 import { createContext, useContext } from "react";
 import {
   SolicitudRegistrarUsuario,
-  SolicitudBuscarUsuariosPorFiltro,
   SolicitudBuscarAgenciasQueTieneElUsuario,
   SolicitudBuscarAgenciasQueNoTieneElUsuario,
   SolicitudDesasignarAgenciaAlUsuario,
@@ -29,14 +28,6 @@ export const ProveedorUsuarios = ({ children }) => {
   const RegistrarUsuario = async (data) => {
     try {
       const res = await SolicitudRegistrarUsuario(data);
-      return res;
-    } catch (error) {
-      return error;
-    }
-  };
-  const BuscarUsuariosPorFiltro = async (data) => {
-    try {
-      const res = await SolicitudBuscarUsuariosPorFiltro(data);
       return res;
     } catch (error) {
       return error;
@@ -111,7 +102,6 @@ export const ProveedorUsuarios = ({ children }) => {
     <UsuariosContext.Provider
       value={{
         RegistrarUsuario,
-        BuscarUsuariosPorFiltro,
         BuscarAgenciasQueTieneElUsuario,
         BuscarAgenciasQueNoTieneElUsuario,
         AsignarAgenciaAlUsuario,

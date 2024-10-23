@@ -6,6 +6,7 @@ import { useOperaciones } from "../context/OperacionesContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerCiudadesPorEstado(idEstado = null) {
   const { ObtenerCiudadesPorEstado } = useOperaciones();
@@ -18,7 +19,13 @@ export default function useObtenerCiudadesPorEstado(idEstado = null) {
           CookieConToken: COOKIE_CON_TOKEN,
           idEstado,
         });
-        establecerCiudadesPorEstado(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+          establecerCiudadesPorEstado([]);
+        } else {
+          establecerCiudadesPorEstado(res.data);
+        }
       } catch (error) {
         console.log(error);
       }

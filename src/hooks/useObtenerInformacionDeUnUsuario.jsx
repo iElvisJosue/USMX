@@ -5,11 +5,11 @@ import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerInformacionDeUnUsuario(idUsuario) {
   const { ObtenerInformacionDeUnUsuario } = useUsuarios();
-  const [informacionDelUsuario, establecerInformacionDelUsuario] =
-    useState(null);
+  const [informacionDelUsuario, establecerInformacionDelUsuario] = useState([]);
   const [
     cargandoInformacionDelUsuario,
     establecerCargandoInformacionDelUsuario,
@@ -22,7 +22,12 @@ export default function useObtenerInformacionDeUnUsuario(idUsuario) {
           idUsuario,
           CookieConToken: COOKIE_CON_TOKEN,
         });
-        establecerInformacionDelUsuario(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerInformacionDelUsuario(res.data);
+        }
         establecerCargandoInformacionDelUsuario(false);
       } catch (error) {
         console.log(error);

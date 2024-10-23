@@ -5,11 +5,12 @@ import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarColoniasPorFiltro() {
   const { BuscarColoniasPorFiltro } = useConfiguracion();
 
-  const [colonias, establecerColonias] = useState(null);
+  const [colonias, establecerColonias] = useState([]);
   const [cargandoColonias, establecerCargandoColonias] = useState(true);
   const [filtroColonias, establecerFiltroColonias] = useState("");
   const [obtenerColoniasNuevamente, establecerObtenerColoniasNuevamente] =
@@ -22,7 +23,12 @@ export default function useBuscarColoniasPorFiltro() {
           CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroColonias,
         });
-        establecerColonias(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerColonias(res.data);
+        }
         establecerCargandoColonias(false);
       } catch (error) {
         console.log(error);

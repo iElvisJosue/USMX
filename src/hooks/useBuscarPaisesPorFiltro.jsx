@@ -5,11 +5,12 @@ import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarPaisesPorFiltro() {
   const { BuscarPaisesPorFiltro } = useConfiguracion();
 
-  const [paises, establecerPaises] = useState(null);
+  const [paises, establecerPaises] = useState([]);
   const [cargandoPaises, establecerCargandoPaises] = useState(true);
   const [filtroPaises, establecerFiltroPaises] = useState("");
   const [obtenerPaisesNuevamente, establecerObtenerPaisesNuevamente] =
@@ -22,7 +23,12 @@ export default function useBuscarPaisesPorFiltro() {
           CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroPaises,
         });
-        establecerPaises(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerPaises(res.data);
+        }
         establecerCargandoPaises(false);
       } catch (error) {
         console.log(error);
