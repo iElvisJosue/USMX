@@ -5,6 +5,9 @@ import Cookies from "js-cookie";
 // CONTEXTOS A USAR
 import { useGlobal } from "../context/GlobalContext";
 
+// AYUDAS
+import { ESTILOS_PROMISE } from "../helpers/SonnerEstilos";
+
 export default function useCerrarSesion() {
   const { CerrarSesion } = useGlobal();
 
@@ -21,7 +24,8 @@ export default function useCerrarSesion() {
     });
 
     toast.promise(promesaCerrandoSesion, {
-      loading: "Cerrando sesión, por favor espere... ⌛",
+      loading: "Cerrando sesión, por favor espere...",
+      style: ESTILOS_PROMISE,
     });
   };
 

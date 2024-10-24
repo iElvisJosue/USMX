@@ -26,3 +26,10 @@ export const ESTILOS_ERROR = {
   borderRadius: "20px",
   fontSize: "16px",
 };
+export const ESTILOS_PROMISE = {
+  color: "#000000",
+  borderColor: "#ffffff",
+  backgroundColor: "#ffffff",
+  borderRadius: "20px",
+  fontSize: "16px",
+};
