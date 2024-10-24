@@ -12,6 +12,7 @@ import useContraseña from "../hooks/useContraseña";
 // AYUDAS A USAR
 import { IniciarSesionCampos } from "../helpers/IniciarSesion";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
+import { ESTILOS_SUCCESS } from "../helpers/SonnerEstilos";
 
 // ESTILOS A USAR
 import "../estilos/vistas/IniciarSesion.css";
@@ -27,7 +28,12 @@ export default function IniciarSesion() {
   } = useForm();
 
   const ManejarRespuestaExitosa = (res) => {
-    toast.success(`¡Bienvenido ${res.Usuario} 😎!`);
+    toast.success(
+      `¡Se ha iniciado sesión, bienvenido ${res.Usuario.toUpperCase()}!`,
+      {
+        style: ESTILOS_SUCCESS,
+      }
+    );
     setTimeout(() => navigate("/Bienvenida"), 1000);
   };
 
@@ -101,7 +107,7 @@ export default function IniciarSesion() {
           Iniciar Sesión <ion-icon name="log-in"></ion-icon>
         </button>
       </form>
-      <Toaster richColors position="top-right" closeButton />
+      <Toaster richColors position="top-right" />
     </main>
   );
 }

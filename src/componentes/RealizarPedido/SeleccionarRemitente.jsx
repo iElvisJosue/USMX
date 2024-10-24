@@ -12,6 +12,9 @@ import AgenciaSeleccionada from "./AgenciaSeleccionada";
 import useBuscarRemitentesPorAgencia from "../../hooks/useBuscarRemitentesPorAgencia";
 import usePaginacion from "../../hooks/usePaginacion";
 
+// IMPORTAMOS LAS AYUDAS
+import { ESTILOS_SUCCESS } from "../../helpers/SonnerEstilos";
+
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/SeleccionarRemitente.css";
 export default function SeleccionarRemitente({
@@ -62,7 +65,10 @@ export default function SeleccionarRemitente({
     establecerRemitente(remitente);
     establecerPaso(paso + 1);
     toast.success(
-      `Remitente ${remitente.NombreRemitente.toUpperCase()} ${remitente.ApellidosRemitente.toUpperCase()} seleccionado con éxito ✨`
+      `¡El remitente ${remitente.NombreRemitente.toUpperCase()} ${remitente.ApellidosRemitente.toUpperCase()} ha sido seleccionado con éxito!`,
+      {
+        style: ESTILOS_SUCCESS,
+      }
     );
   };
 

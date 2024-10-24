@@ -40,8 +40,8 @@ export default function RegistrarMovimiento({
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
         establecerObtenerMovimientosNuevamente(!obtenerMovimientosNuevamente);
+        reset();
       }
-      reset();
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });

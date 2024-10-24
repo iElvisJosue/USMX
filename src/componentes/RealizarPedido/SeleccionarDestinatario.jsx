@@ -12,6 +12,9 @@ import AgenciaSeleccionada from "./AgenciaSeleccionada";
 import useBuscarDestinatariosPorAgencia from "../../hooks/useBuscarDestinatariosPorAgencia";
 import usePaginacion from "../../hooks/usePaginacion";
 
+// IMPORTAMOS LAS AYUDAS
+import { ESTILOS_SUCCESS } from "../../helpers/SonnerEstilos";
+
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/SeleccionarDestinatario.css";
 export default function SeleccionarDestinatario({
@@ -62,7 +65,10 @@ export default function SeleccionarDestinatario({
     establecerDestinatario(destinatario);
     establecerPaso(paso + 1);
     toast.success(
-      `Remitente ${destinatario.NombreDestinatario.toUpperCase()} ${destinatario.ApellidoPaternoDestinatario.toUpperCase()} ${destinatario.ApellidoMaternoDestinatario.toUpperCase()} seleccionado con éxito ✨`
+      `¡El destinatario ${destinatario.NombreDestinatario.toUpperCase()} ${destinatario.ApellidoPaternoDestinatario.toUpperCase()} ${destinatario.ApellidoMaternoDestinatario.toUpperCase()} ha sido seleccionado con éxito!`,
+      {
+        style: ESTILOS_SUCCESS,
+      }
     );
   };
 

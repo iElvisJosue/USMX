@@ -19,6 +19,7 @@ import useObtenerTiposDeEnvio from "../hooks/useObtenerTiposDeEnvio";
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../helpers/Regexs";
+import { ESTILOS_ERROR } from "../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/vistas/Envios.css";
@@ -63,7 +64,10 @@ export default function Envios() {
   const EliminarEnvio = async (idTipoEnvio) => {
     if (envios.length === 1)
       return toast.error(
-        "No puedes eliminar todos los tipos de envío del sistema. ❌"
+        "No puedes eliminar todos los tipos de envío del sistema.",
+        {
+          style: ESTILOS_ERROR,
+        }
       );
     try {
       const res = await EliminarTipoDeEnvio({

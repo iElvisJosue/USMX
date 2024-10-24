@@ -12,6 +12,7 @@ import { useUsuarios } from "../../context/UsuariosContext";
 import { CamposUsuario } from "../../helpers/RegistrarUsuario/CamposUsuario";
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
+import { ESTILOS_WARNING } from "../../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../estilos/componentes/AdministrarUsuarios/EditarUsuario.css";
@@ -42,7 +43,12 @@ export default function EditarUsuario({
 
   const ActualizarInformacionDelUsuario = handleSubmit(async (info) => {
     if (info.Contraseña !== info.ContraseñaConfirmar) {
-      return toast.error("Las contraseñas no coinciden, intente nuevamente 🔒");
+      return toast.error(
+        "¡Oops! Parece que las contraseñas no coinciden, por favor intente nuevamente.",
+        {
+          style: ESTILOS_WARNING,
+        }
+      );
     }
     try {
       info.idUsuario = informacionDelUsuario?.idUsuario;

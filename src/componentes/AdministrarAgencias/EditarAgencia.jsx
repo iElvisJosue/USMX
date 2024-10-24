@@ -22,6 +22,7 @@ import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
   REGEX_SOLO_NUMEROS,
 } from "../../helpers/Regexs";
+import { ESTILOS_ERROR } from "../../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../estilos/componentes/AdministrarAgencias/EditarAgencia.css";
@@ -117,7 +118,10 @@ export default function EditarAgencia({
       info.NombreAgencia !== "USMX Express"
     ) {
       return toast.error(
-        "El nombre de la agencia USMX Express no puede ser cambiado ❌"
+        "¡El nombre de la agencia USMX Express no puede ser cambiado!",
+        {
+          style: ESTILOS_ERROR,
+        }
       );
     }
     try {

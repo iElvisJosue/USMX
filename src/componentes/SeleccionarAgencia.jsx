@@ -11,6 +11,9 @@ import Cargando from "./Cargando";
 import useBuscarAgenciasPorFiltroYTipoDeUsuario from "../hooks/useBuscarAgenciasPorFiltroYTipoDeUsuario";
 import usePaginacion from "../hooks/usePaginacion";
 
+// IMPORTAMOS LAS AYUDAS
+import { ESTILOS_SUCCESS } from "../helpers/SonnerEstilos";
+
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/componentes/SeleccionarAgencia.css";
 
@@ -39,7 +42,10 @@ export default function SeleccionarAgencia({
       establecerAgencia(agencias[0]);
       establecerPaso(1);
       toast.success(
-        `Agencia ${agencias[0].NombreAgencia.toUpperCase()} seleccionada con éxito ✨`
+        `¡La agencia ${agencias[0].NombreAgencia.toUpperCase()} seleccionada con éxito!`,
+        {
+          style: ESTILOS_SUCCESS,
+        }
       );
     }
     if (agencias) {

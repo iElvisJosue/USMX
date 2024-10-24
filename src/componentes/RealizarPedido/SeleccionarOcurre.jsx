@@ -16,6 +16,7 @@ import usePaginacion from "../../hooks/usePaginacion";
 
 // IMPORTAMOS LAS AYUDAS
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../helpers/Regexs";
+import { ESTILOS_SUCCESS, ESTILOS_WARNING } from "../../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/SeleccionarOcurre.css";
@@ -78,13 +79,21 @@ export default function SeleccionarOcurre({
     establecerInfOcurre(ocurre);
     establecerIdOcurreSeleccionado(ocurre.idOcurre);
     toast.success(
-      `Ocurre ${ocurre.NombreOcurre.toUpperCase()} seleccionado con éxito ✨`
+      `¡La ocurrencia ${ocurre.NombreOcurre.toUpperCase()} ha sido seleccionada con éxito!`,
+      {
+        style: ESTILOS_SUCCESS,
+      }
     );
   };
 
   const GuardaInformacionDeLaOcurrencia = handleSubmit(async (info) => {
     if (idOcurreSeleccionado === null) {
-      return toast.error("Debe seleccionar un ocurre para continuar. ❌");
+      return toast.error(
+        "¡Oops! Parece que no has seleccionado ninguna ocurrencia, por favor seleccione una.",
+        {
+          style: ESTILOS_WARNING,
+        }
+      );
     }
     // NO PONEMOS EL ID DEL DESTINATARIO COMO FALSO PARA QUE SE ALMACENE EN LA BASE DE DATOS
     // Y PARA QUE NO SE CREE LA UNION CON LA AGENCIA CORRESPONDIENTE
@@ -104,7 +113,9 @@ export default function SeleccionarOcurre({
       MunicipioDelegacionDestinatario: infOcurre.MunicipioDelegacionOcurre,
       ReferenciaDestinatario: infOcurre.ReferenciaOcurre,
     });
-    toast.success("Paso 2 (Destinatario) completado con éxito ✨");
+    toast.success("¡Paso 2 (Destinatario) completado con éxito!", {
+      style: ESTILOS_SUCCESS,
+    });
     establecerPaso(paso + 1);
   });
 

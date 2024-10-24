@@ -20,6 +20,7 @@ import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
   REGEX_SOLO_NUMEROS,
 } from "../../helpers/Regexs";
+import { ESTILOS_SUCCESS } from "../../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/RegistrarNuevoDestinatario.css";
@@ -98,7 +99,9 @@ export default function RegistrarNuevoDestinatario({
     data.CodigoPaisDestinatario = CodigoPais;
     establecerDestinatario(data);
     establecerPaso(paso + 1);
-    toast.success("Destinatario completado con éxito ✨");
+    toast.success("¡Paso 2 (Destinatario) completado con éxito!", {
+      style: ESTILOS_SUCCESS,
+    });
   });
 
   const EstablecerCodigoPais = (InfPais) => {

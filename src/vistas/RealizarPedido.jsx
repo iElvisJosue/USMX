@@ -18,6 +18,7 @@ import DetallesDelPedido from "../componentes/Pedidos/DetallesDelPedido";
 
 // IMPORTAMOS LAS AYUDAS
 import { LISTA_DE_PROGRESOS } from "../helpers/RealizarPedido/ListaDeProgreso";
+import { ESTILOS_SUCCESS } from "../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/RealizarPedido.css";
@@ -38,7 +39,10 @@ export default function RealizarPedido() {
 
   const EstablecerInformacionDeLaAgencia = (agencia) => {
     toast.success(
-      `Agencia ${agencia.NombreAgencia.toUpperCase()} seleccionada con éxito ✨`
+      `¡La agencia ${agencia.NombreAgencia.toUpperCase()} ha sido seleccionada con éxito!`,
+      {
+        style: ESTILOS_SUCCESS,
+      }
     );
     establecerAgencia(agencia);
     establecerPaso(1);

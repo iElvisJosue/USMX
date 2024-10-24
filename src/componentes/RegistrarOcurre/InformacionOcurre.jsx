@@ -69,8 +69,8 @@ export default function InformacionOcurre() {
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
+        reset();
       }
-      reset();
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
