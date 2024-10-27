@@ -1,6 +1,6 @@
 .Menu {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   background-color: var(--ColorSecundario);
   border-right: 1px solid var(--ColorBlanco);
   padding: 0 10px 10px 10px;

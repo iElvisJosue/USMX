@@ -1,0 +1,27 @@
+.RealizarPedido {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 125px);
+  overflow-y: auto;
+}
+.RealizarPedido__MensajeDeError {
+  width: 100%;
+  font-size: 13px;
+  color: var(--ColorRojo);
+  font-weight: bold;
+}
+.RealizarPedido__AgenciaSeleccionadaPedido {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+}
+.RealizarPedido__AgenciaSeleccionadaPedido b {
+  color: var(--ColorVerde);
+  font-style: italic;
+}
+@media (width <= 500px) {
+  .RealizarPedido__AgenciaSeleccionadaPedido {
+    font-size: 10px;
+  }
+}

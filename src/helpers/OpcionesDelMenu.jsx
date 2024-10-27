@@ -15,11 +15,6 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "cube",
-          nombre: "Realizar pedido",
-          url: `${HOST}Realizar-Pedido`,
-        },
-        {
-          icono: "bag-handle",
           nombre: "Pedidos",
           url: `${HOST}Pedidos`,
         },
@@ -28,53 +23,17 @@ export const OpcionesDelMenu = {
     {
       icono: "business",
       nombre: "Agencias",
-      url: "#",
-      opcionesSecundarias: [
-        {
-          icono: "add-circle",
-          nombre: "Registrar Agencia",
-          url: `${HOST}Registrar-Agencia`,
-        },
-        {
-          icono: "cog",
-          nombre: "Administrar Agencias",
-          url: `${HOST}Administrar-Agencias`,
-        },
-      ],
+      url: `${HOST}Agencias`,
     },
     {
       icono: "basket",
       nombre: "Productos",
-      url: "#",
-      opcionesSecundarias: [
-        {
-          icono: "add-circle",
-          nombre: "Registrar Producto",
-          url: `${HOST}Registrar-Producto`,
-        },
-        {
-          icono: "cog",
-          nombre: "Administrar Productos",
-          url: `${HOST}Administrar-Productos`,
-        },
-      ],
+      url: `${HOST}Productos`,
     },
     {
       icono: "people-circle",
       nombre: "Usuarios",
-      url: "#",
-      opcionesSecundarias: [
-        {
-          icono: "person-add",
-          nombre: "Registrar Usuario",
-          url: `${HOST}Registrar-Usuario`,
-        },
-        {
-          icono: "cog",
-          nombre: "Administrar Usuarios",
-          url: `${HOST}Administrar-Usuarios`,
-        },
-      ],
+      url: `${HOST}Usuarios`,
     },
     {
       icono: "code-working",
@@ -90,20 +49,8 @@ export const OpcionesDelMenu = {
     },
     {
       icono: "alert-circle",
-      nombre: "Ocurre",
-      url: "#",
-      opcionesSecundarias: [
-        {
-          icono: "add-circle",
-          nombre: "Registrar Ocurre",
-          url: `${HOST}Registrar-Ocurre`,
-        },
-        {
-          icono: "cog",
-          nombre: "Administrar Ocurres",
-          url: `${HOST}Administrar-Ocurres`,
-        },
-      ],
+      nombre: "Ocurres",
+      url: `${HOST}Ocurres`,
     },
     {
       icono: "settings",
@@ -161,11 +108,6 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "cube",
-          nombre: "Realizar pedido",
-          url: `${HOST}Realizar-Pedido`,
-        },
-        {
-          icono: "bag-handle",
           nombre: "Pedidos",
           url: `${HOST}Pedidos`,
         },
@@ -190,11 +132,6 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "cube",
-          nombre: "Realizar pedido",
-          url: `${HOST}Realizar-Pedido`,
-        },
-        {
-          icono: "bag-handle",
           nombre: "Pedidos",
           url: `${HOST}Pedidos`,
         },

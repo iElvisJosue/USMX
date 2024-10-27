@@ -6,32 +6,32 @@ import { Toaster } from "sonner";
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 import SubMenu from "../componentes/SubMenu";
-import RealizarPedido from "../componentes/Pedidos/RealizarPedido/RealizarPedido";
-import ListaPedidos from "../componentes/Pedidos/ListaPedidos/ListaPedidos";
+import RegistrarOcurre from "../componentes/Ocurres/RegistrarOcurre/RegistrarOcurre.jsx";
+import AdministrarOcurres from "../componentes/Ocurres/AdministrarOcurres/AdministrarOcurres";
 
 export default function Ocurres() {
   const [vistaOcurres, establecerVistaOcurres] = useState(0);
 
   const OpcionesSubMenu = [
     {
-      Texto: "Realizar Pedido",
-      Icono: "cube",
+      Texto: "Registrar Ocurre",
+      Icono: "add-circle",
     },
     {
-      Texto: "Lista Pedidos",
-      Icono: "list",
+      Texto: "Administrar Ocurres",
+      Icono: "cog",
     },
   ];
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
-    0: RealizarPedido,
-    1: ListaPedidos,
+    0: RegistrarOcurre,
+    1: AdministrarOcurres,
   };
 
   const TituloSubseccion = {
-    0: "Realizar Pedido",
-    1: "Lista Pedidos",
+    0: "Registrar Ocurre",
+    1: "Administrar Ocurres",
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -42,8 +42,8 @@ export default function Ocurres() {
     <main className="Main">
       <Menu />
       <Encabezado
-        icono="storefront"
-        seccion="Paquetería"
+        icono="alert-circle"
+        seccion="Ocurres"
         subseccion={TituloSubseccion[vistaOcurres]}
       />
       <SubMenu

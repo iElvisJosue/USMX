@@ -85,10 +85,7 @@ export const CamposRemitente = [
     claseCampo: "RegistrarNuevoRemitente__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        pattern: REGEX_CORREO,
-        message: "¡Formato de correo no valido! ⚠️",
-      },
+      pattern: REGEX_CORREO,
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",

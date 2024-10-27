@@ -13,24 +13,19 @@ import { ProveedorConfiguracion } from "./context/ConfiguracionContext";
 import IniciarSesion from "./vistas/IniciarSesion";
 import Perfil from "./vistas/Perfil";
 import Bienvenida from "./vistas/Bienvenida";
-import RealizarPedido from "./vistas/RealizarPedido";
-import RegistrarAgencia from "./vistas/RegistrarAgencia";
-import RegistrarUsuario from "./vistas/RegistrarUsuario";
-import RegistrarProducto from "./vistas/RegistrarProducto";
-import RegistrarOcurre from "./vistas/RegistrarOcurre";
-import Pedidos from "./vistas/Pedidos";
 import NumeroDeGuia from "./vistas/NumeroDeGuia";
-import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
-import AdministrarAgencias from "./vistas/AdministrarAgencias";
-import AdministrarProductos from "./vistas/AdministrarProductos";
-import AdministrarOcurres from "./vistas/AdministrarOcurres";
+import Pedidos from "./vistas/Pedidos";
+import Agencias from "./vistas/Agencias";
+import Productos from "./vistas/Productos";
+import Usuarios from "./vistas/Usuarios";
+import Movimientos from "./vistas/Movimientos";
+import Ocurres from "./vistas/Ocurres";
+import Cargas from "./vistas/Cargas";
+import Envios from "./vistas/Envios";
 import AdministrarPaises from "./vistas/AdministrarPaises";
 import AdministrarEstados from "./vistas/AdministrarEstados";
 import AdministrarCiudades from "./vistas/AdministrarCiudades";
 import AdministrarColonias from "./vistas/AdministrarColonias";
-import Movimientos from "./vistas/Movimientos";
-import Cargas from "./vistas/Cargas";
-import Envios from "./vistas/Envios";
 import Apariencia from "./vistas/Apariencia";
 
 // PROTECCIÓN DE RUTAS
@@ -61,46 +56,18 @@ export default function App() {
                           {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
                           <Route element={<ProteccionParaAdministradores />}>
                             {/* RUTAS DE AGENCIAS */}
-                            <Route
-                              path="/Registrar-Agencia"
-                              element={<RegistrarAgencia />}
-                            />
-                            <Route
-                              path="/Administrar-Agencias"
-                              element={<AdministrarAgencias />}
-                            />
+                            <Route path="/Agencias" element={<Agencias />} />
                             {/* RUTAS DE USUARIOS */}
-                            <Route
-                              path="/Registrar-Usuario"
-                              element={<RegistrarUsuario />}
-                            />
-                            <Route
-                              path="/Administrar-Usuarios"
-                              element={<AdministrarUsuarios />}
-                            />
+                            <Route path="/Usuarios" element={<Usuarios />} />
                             {/* RUTAS DE PRODUCTOS */}
-                            <Route
-                              path="/Registrar-Producto"
-                              element={<RegistrarProducto />}
-                            />
-                            <Route
-                              path="/Administrar-Productos"
-                              element={<AdministrarProductos />}
-                            />
+                            <Route path="/Productos" element={<Productos />} />
                             {/* RUTAS DE OPERACIONES */}
                             <Route
                               path="/Movimientos"
                               element={<Movimientos />}
                             />
                             {/* RUTAS DE OCURRES */}
-                            <Route
-                              path="/Registrar-Ocurre"
-                              element={<RegistrarOcurre />}
-                            />
-                            <Route
-                              path="/Administrar-Ocurres"
-                              element={<AdministrarOcurres />}
-                            />
+                            <Route path="/Ocurres" element={<Ocurres />} />
                           </Route>
                           <Route path="/Cargas" element={<Cargas />} />
                           <Route path="/Envios" element={<Envios />} />
@@ -122,10 +89,6 @@ export default function App() {
                           />
                           {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
                           {/* RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
-                          <Route
-                            path="/Realizar-Pedido"
-                            element={<RealizarPedido />}
-                          />
                           <Route path="/Pedidos" element={<Pedidos />} />
                           <Route path="/Bienvenida" element={<Bienvenida />} />
                           <Route path="/Perfil" element={<Perfil />} />

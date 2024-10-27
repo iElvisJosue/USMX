@@ -1,0 +1,158 @@
+.EditarOcurre {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+.EditarOcurre__Opciones {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.EditarOcurre__Opciones--Boton {
+  height: 50px;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.EditarOcurre__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.EditarOcurre__Opciones--Boton.Regresar {
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+}
+.EditarOcurre__Opciones--Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.EditarOcurre__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.EditarOcurre__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.EditarOcurre__Campo {
+  grid-column: span 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.EditarOcurre__Campo.Dos {
+  grid-column: span 2;
+}
+.EditarOcurre__Campo.Tres {
+  grid-column: 1 / -1;
+}
+.EditarOcurre__Campo p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  gap: 5px;
+}
+.EditarOcurre__Campo p ion-icon {
+  font-size: 20px;
+}
+.EditarOcurre__Campo input,
+.EditarOcurre__Campo select {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 5px;
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.EditarOcurre__Campo input:focus {
+  border: 2px solid var(--ColorNegro);
+}
+.EditarOcurre__Footer {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.EditarOcurre__Footer__Boton {
+  width: 150px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  border-radius: 25px;
+}
+.EditarOcurre__Footer__Boton.Regresar {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.EditarOcurre__Footer__Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.EditarOcurre__Footer__Boton.Siguiente {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.EditarOcurre__Footer__Boton.Siguiente:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+@media (width <= 850px) {
+  .EditarOcurre {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .EditarOcurre__Campo.Dos {
+    grid-column: span 1;
+  }
+  .EditarOcurre__Opciones--Boton {
+    font-size: 14px;
+    gap: 2px;
+  }
+  .EditarOcurre__Opciones--Boton ion-icon {
+    font-size: 18px;
+  }
+}
+@media (width <= 500px) {
+  .EditarOcurre {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .EditarOcurre__Titulo {
+    font-size: 20px;
+  }
+  .EditarOcurre__Campo {
+    font-size: 16px;
+  }
+  .EditarOcurre__Footer__Boton {
+    width: 100%;
+    height: 50px;
+  }
+}

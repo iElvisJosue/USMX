@@ -6,50 +6,50 @@ import { Toaster } from "sonner";
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 import SubMenu from "../componentes/SubMenu";
-import RealizarPedido from "../componentes/Pedidos/RealizarPedido/RealizarPedido";
-import ListaPedidos from "../componentes/Pedidos/ListaPedidos/ListaPedidos";
+import RegistrarAgencia from "../componentes/Agencias/RegistrarAgencia/RegistrarAgencia";
+import AdministrarAgencias from "../componentes/Agencias/AdministrarAgencias/AdministrarAgencias";
 
-export default function Ocurres() {
-  const [vistaOcurres, establecerVistaOcurres] = useState(0);
+export default function Agencias() {
+  const [vistaAgencias, establecerVistaAgencias] = useState(0);
 
   const OpcionesSubMenu = [
     {
-      Texto: "Realizar Pedido",
-      Icono: "cube",
+      Texto: "Registrar Agencia",
+      Icono: "add-circle",
     },
     {
-      Texto: "Lista Pedidos",
-      Icono: "list",
+      Texto: "Administrar Agencias",
+      Icono: "cog",
     },
   ];
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
-    0: RealizarPedido,
-    1: ListaPedidos,
+    0: RegistrarAgencia,
+    1: AdministrarAgencias,
   };
 
   const TituloSubseccion = {
-    0: "Realizar Pedido",
-    1: "Lista Pedidos",
+    0: "Registrar Agencia",
+    1: "Administrar Agencias",
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
-  const ComponenteParaRenderizar = componentesParaMostrar[vistaOcurres];
+  const ComponenteParaRenderizar = componentesParaMostrar[vistaAgencias];
 
   return (
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
     <main className="Main">
       <Menu />
       <Encabezado
-        icono="storefront"
-        seccion="Paquetería"
-        subseccion={TituloSubseccion[vistaOcurres]}
+        icono="business"
+        seccion="Agencias"
+        subseccion={TituloSubseccion[vistaAgencias]}
       />
       <SubMenu
         OpcionesSubMenu={OpcionesSubMenu}
-        vista={vistaOcurres}
-        establecerVista={establecerVistaOcurres}
+        vista={vistaAgencias}
+        establecerVista={establecerVistaAgencias}
       />
       <ComponenteParaRenderizar />
       <Toaster richColors position="top-right" />

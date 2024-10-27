@@ -1,0 +1,283 @@
+.DetallesPedido {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.DetallesPedido__Seccion,
+.DetallesPedido__Opciones {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.DetallesPedido__Opciones {
+  margin-top: 30px;
+}
+.DetallesPedido__Opciones--Botones {
+  display: flex;
+  gap: 5px;
+}
+.DetallesPedido__OtrosPedidos {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesPedido__OtrosPedidos--Texto {
+  font-weight: bold;
+  color: var(--ColorAzul);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesPedido__OtrosPedidos--Botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesPedido__OtrosPedidos--Botones--Boton {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesPedido__OtrosPedidos--Botones--Boton ion-icon {
+  font-size: 12px;
+}
+.DetallesPedido__OtrosPedidos--Botones--Boton.Anterior {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.DetallesPedido__OtrosPedidos--Botones--Boton.Siguiente {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.DetallesPedido__Opciones {
+  justify-content: space-between;
+}
+.DetallesPedido__Opciones--Boton {
+  height: 50px;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesPedido__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.DetallesPedido__Opciones--Boton.Regresar,
+.DetallesPedido__Opciones--Boton.OtroPedido {
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+}
+.DetallesPedido__Opciones--Boton.Regresar:hover,
+.DetallesPedido__Opciones--Boton.OtroPedido:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.DetallesPedido__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.DetallesPedido__Opciones--Boton.OtroPedido:hover::after {
+  content: "Realizar otro pedido";
+}
+.DetallesPedido__Opciones--Boton.Ticket,
+.DetallesPedido__Opciones--Boton.CodigoDeBarras,
+.DetallesPedido__Opciones--Boton.PaqueteTickets {
+  border: 2px solid var(--ColorAzul);
+  background-color: var(--ColorAzul);
+}
+.DetallesPedido__Opciones--Boton.Ticket:hover,
+.DetallesPedido__Opciones--Boton.CodigoDeBarras:hover,
+.DetallesPedido__Opciones--Boton.PaqueteTickets:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+.DetallesPedido__Opciones--Boton.Ticket:hover::after {
+  content: "Ticket";
+}
+.DetallesPedido__Opciones--Boton.CodigoDeBarras:hover::after {
+  content: "Etiqueta";
+}
+.DetallesPedido__Opciones--Boton.PaqueteTickets:hover::after {
+  content: "Paquete de tickets";
+}
+.DetallesPedido__Opciones__Titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.DetallesPedido__Seccion img {
+  width: 50px;
+  height: 50px;
+}
+.DetallesPedido__Seccion h1 {
+  color: var(--ColorAzul);
+  text-transform: uppercase;
+}
+.DetallesPedido__Detalles {
+  grid-column: span 1;
+  background-color: var(--ColorSecundario);
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  color: var(--ColorNegro);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesPedido__Detalles ion-icon {
+  font-size: 25px;
+}
+.DetallesPedido__Detalles.Guia {
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorBlanco);
+}
+.DetallesPedido__Detalles.Pendiente {
+  background-color: var(--ColorNaranja);
+  color: var(--ColorBlanco);
+}
+.DetallesPedido__Detalles.Pagado {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.DetallesPedido__Detalles.Agencia,
+.DetallesPedido__Detalles.Fecha,
+.DetallesPedido__Detalles.Remitente,
+.DetallesPedido__Detalles.Destinatario,
+.DetallesPedido__Detalles.Contenido,
+.DetallesPedido__Detalles.Total {
+  grid-column: span 2;
+}
+.DetallesPedido__Detalles.Remitente,
+.DetallesPedido__Detalles.Destinatario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.DetallesPedido__Detalles.Movimiento {
+  grid-column: 1 / -1;
+  background-color: var(--ColorBlanco);
+  padding: 0;
+
+  flex-direction: column;
+  gap: 10px;
+}
+.DetallesPedido__Detalles__Movimiento--Encabezado {
+  width: 100%;
+  border-radius: 15px;
+  background-color: var(--ColorSecundario);
+  padding: 0;
+
+  display: flex;
+}
+
+.DetallesPedido__Detalles__Movimiento--Encabezado.Creado,
+.DetallesPedido__Detalles__Movimiento--Encabezado.Pagado,
+.DetallesPedido__Detalles__Movimiento--Encabezado.Entregado {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.DetallesPedido__Detalles__Movimiento--Encabezado.Pendiente {
+  background-color: var(--ColorNaranja);
+  color: var(--ColorBlanco);
+}
+.DetallesPedido__Detalles__Movimiento--Encabezado.Cancelado {
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+}
+.DetallesPedido__Detalles__Movimiento--Encabezado.Camino {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+}
+.DetallesPedido__Detalles__Movimiento--Encabezado--Descripcion {
+  width: 100%;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.DetallesPedido__Detalles__Movimiento--Encabezado ion-icon {
+  font-size: 25px;
+}
+.DetallesPedido__Detalles__Encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.DetallesPedido__Detalles.CostoSeguro,
+.DetallesPedido__Detalles.CostoSobrePeso,
+.DetallesPedido__Detalles.CostoEnvio {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+}
+.DetallesPedido__Detalles.Total {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+@media (width <= 850px) {
+  .DetallesPedido {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .DetallesPedido__Seccion,
+  .DetallesPedido__Opciones {
+    font-size: 14px;
+  }
+  .DetallesPedido__Seccion img {
+    width: 40px;
+    height: 40px;
+  }
+  .DetallesPedido__Detalles {
+    font-size: 14px;
+  }
+  .DetallesPedido__Opciones--Boton {
+    font-size: 14px;
+  }
+  .DetallesPedido__Opciones--Boton ion-icon {
+    font-size: 16px;
+  }
+}
+@media (width <= 450px) {
+  .DetallesPedido__Detalles__Movimiento--Encabezado--Descripcion {
+    font-size: 12px;
+  }
+  .DetallesPedido__Detalles__Movimiento--Encabezado--Descripcion ion-icon {
+    font-size: 20px;
+  }
+}

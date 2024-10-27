@@ -65,6 +65,7 @@ input[type="file"] {
   display: grid;
   grid-template-areas:
     "MenuHamburguesa Encabezado Encabezado"
+    "MenuHamburguesa SubMenu SubMenu"
     "MenuHamburguesa Cuerpo Cuerpo";
   grid-template-columns: 300px 1fr 1fr;
   grid-template-rows: 75px 1fr;
@@ -79,6 +80,7 @@ input[type="file"] {
   .Main {
     grid-template-areas:
       "Encabezado Encabezado Encabezado"
+      "SubMenu SubMenu SubMenu"
       "Cuerpo Cuerpo Cuerpo";
   }
 }
