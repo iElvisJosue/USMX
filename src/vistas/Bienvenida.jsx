@@ -143,7 +143,7 @@ export default function Bienvenida() {
             <div className="Bienvenida__UltimasGuias--Cuerpo SinResultados">
               <img src="SinResultados.png" alt="No hay resultados" />
               <small>¡Oops! Parece que más no tienes pedidos realizados.</small>
-              <a href={`${HOST}Realizar-Pedido`}>Realizar pedido</a>
+              <a href={`${HOST}Pedidos`}>Realizar pedido</a>
             </div>
           )}
         </section>
