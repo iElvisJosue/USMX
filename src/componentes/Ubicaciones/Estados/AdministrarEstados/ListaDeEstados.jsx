@@ -3,20 +3,20 @@
 import { useEffect, useState } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../Cargando";
-import MensajeGeneral from "../MensajeGeneral";
+import Cargando from "../../../Cargando";
+import MensajeGeneral from "../../../MensajeGeneral";
 // import ModalConfirmacionAgencias from "./ModalConfirmacionAgencias";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarEstadosPorFiltro from "../../hooks/useBuscarEstadosPorFiltro";
-import usePaginacion from "../../hooks/usePaginacion";
+import useBuscarEstadosPorFiltro from "../../../../hooks/useBuscarEstadosPorFiltro";
+import usePaginacion from "../../../../hooks/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/AdministrarEstados/ListaDeEstados.css";
+import "../../../../estilos/componentes/Ubicaciones/Estados/AdministrarEstados/ListaDeEstados.css";
 
 export default function ListaDeEstados({
-  establecerVista,
-  establecerInformacionDeLaAgencia,
+  establecerVistaEstado,
+  establecerInformacionDelEstado,
 }) {
   const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
     useState(false);
@@ -72,13 +72,13 @@ export default function ListaDeEstados({
     establecerMostrarModalConfirmacion(true);
   };
 
-  const EstablecerInformacionDeLaAgenciaSeleccionada = (infEstado) => {
-    establecerInformacionDeLaAgencia(infEstado);
-    establecerVista(1);
+  const establecerInformacionDelEstadoSeleccionada = (infEstado) => {
+    establecerInformacionDelEstado(infEstado);
+    establecerVistaEstado(1);
   };
-  const EstablecerInformacionDeLaAgenciaAEditar = (infEstado) => {
-    establecerInformacionDeLaAgencia(infEstado);
-    establecerVista(2);
+  const establecerInformacionDelEstadoAEditar = (infEstado) => {
+    establecerInformacionDelEstado(infEstado);
+    establecerVistaEstado(2);
   };
 
   if (cargandoEstados) return <Cargando />;
@@ -161,7 +161,7 @@ export default function ListaDeEstados({
                     className="ListaDeEstados__Estado__Opciones--Boton Editar"
                     title="Editar estado"
                     // onClick={() =>
-                    //   EstablecerInformacionDeLaAgenciaAEditar(infEstado)
+                    //   establecerInformacionDelEstadoAEditar(infEstado)
                     // }
                   >
                     <p>

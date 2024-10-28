@@ -124,7 +124,7 @@ export default function SeleccionarAgenciaPedido({
                   <ion-icon name="location"></ion-icon>
                   <p>{agencia.DireccionAgencia}</p>
                   <p>
-                    {agencia.CiudadAgencia}, {agencia.EstadoAgencia}{" "}
+                    {agencia.EstadoAgencia}, {agencia.CiudadAgencia}{" "}
                     {agencia.CodigoPostalAgencia}
                   </p>
                 </section>
@@ -139,7 +139,7 @@ export default function SeleccionarAgenciaPedido({
             Texto={`¡Oops! No se encontraron resultados.`}
             Boton={true}
             TipoBoton={"Azul"}
-            UrlBoton={"/Registrar-Agencia"}
+            UrlBoton={"/Agencias"}
             TextoBoton={"Registrar Agencia"}
           />
         ))}

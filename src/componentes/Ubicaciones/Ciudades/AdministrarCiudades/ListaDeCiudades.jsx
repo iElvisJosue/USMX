@@ -3,20 +3,20 @@
 import { useEffect, useState } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../Cargando";
-import MensajeGeneral from "../MensajeGeneral";
+import Cargando from "../../../Cargando";
+import MensajeGeneral from "../../../MensajeGeneral";
 // import ModalConfirmacionAgencias from "./ModalConfirmacionAgencias";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarCiudadesPorFiltro from "../../hooks/useBuscarCiudadesPorFiltro";
-import usePaginacion from "../../hooks/usePaginacion";
+import useBuscarCiudadesPorFiltro from "../../../../hooks/useBuscarCiudadesPorFiltro";
+import usePaginacion from "../../../../hooks/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/AdministrarCiudades/ListaDeCiudades.css";
+import "../../../../estilos/componentes/Ubicaciones/Ciudades/AdministrarCiudades/ListaDeCiudades.css";
 
 export default function ListaDeCiudades({
-  establecerVista,
-  establecerInformacionDeLaAgencia,
+  establecerVistaCiudad,
+  establecerInformacionDeLaCiudad,
 }) {
   const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
     useState(false);
@@ -72,13 +72,13 @@ export default function ListaDeCiudades({
     establecerMostrarModalConfirmacion(true);
   };
 
-  const EstablecerInformacionDeLaAgenciaSeleccionada = (infCiudad) => {
-    establecerInformacionDeLaAgencia(infCiudad);
-    establecerVista(1);
+  const establecerInformacionDeLaCiudadSeleccionada = (infCiudad) => {
+    establecerInformacionDeLaCiudad(infCiudad);
+    establecerVistaCiudad(1);
   };
-  const EstablecerInformacionDeLaAgenciaAEditar = (infCiudad) => {
-    establecerInformacionDeLaAgencia(infCiudad);
-    establecerVista(2);
+  const establecerInformacionDeLaCiudadAEditar = (infCiudad) => {
+    establecerInformacionDeLaCiudad(infCiudad);
+    establecerVistaCiudad(2);
   };
 
   if (cargandoCiudades) return <Cargando />;
@@ -123,7 +123,7 @@ export default function ListaDeCiudades({
               <ion-icon name="business"></ion-icon> Activo
             </p>
             <p className="ListaDeCiudades__Clasificacion--Texto Desactivada">
-              <ion-icon name="ban"></ion-icon> Desactivado
+              <ion-icon name="ban"></ion-icon> Desactivada
             </p>
           </span>
           <div className="ListaDeCiudades__BotonesDePaginacion">
@@ -161,7 +161,7 @@ export default function ListaDeCiudades({
                     className="ListaDeCiudades__Ciudad__Opciones--Boton Editar"
                     title="Editar ciudad"
                     // onClick={() =>
-                    //   EstablecerInformacionDeLaAgenciaAEditar(infCiudad)
+                    //   establecerInformacionDeLaCiudadAEditar(infCiudad)
                     // }
                   >
                     <p>

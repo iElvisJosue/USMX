@@ -3,19 +3,19 @@
 import { useEffect, useState } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../Cargando";
-import MensajeGeneral from "../MensajeGeneral";
+import Cargando from "../../../Cargando";
+import MensajeGeneral from "../../../MensajeGeneral";
 // import ModalConfirmacionAgencias from "./ModalConfirmacionAgencias";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarPaisesPorFiltro from "../../hooks/useBuscarPaisesPorFiltro";
-import usePaginacion from "../../hooks/usePaginacion";
+import useBuscarPaisesPorFiltro from "../../../../hooks/useBuscarPaisesPorFiltro";
+import usePaginacion from "../../../../hooks/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/AdministrarPaises/ListaDePaises.css";
+import "../../../../estilos/componentes/Ubicaciones/Paises/AdministrarPaises/ListaDePaises.css";
 
 export default function ListaDePaises({
-  establecerVista,
+  establecerVistaUbicaciones,
   establecerInformacionDeLaAgencia,
 }) {
   const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
@@ -74,11 +74,11 @@ export default function ListaDePaises({
 
   const EstablecerInformacionDeLaAgenciaSeleccionada = (infPais) => {
     establecerInformacionDeLaAgencia(infPais);
-    establecerVista(1);
+    establecerVistaUbicaciones(1);
   };
   const EstablecerInformacionDeLaAgenciaAEditar = (infPais) => {
     establecerInformacionDeLaAgencia(infPais);
-    establecerVista(2);
+    establecerVistaUbicaciones(2);
   };
 
   if (cargandoPaises) return <Cargando />;

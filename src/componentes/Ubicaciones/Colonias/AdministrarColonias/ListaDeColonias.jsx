@@ -3,20 +3,20 @@
 import { useEffect, useState } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../Cargando";
-import MensajeGeneral from "../MensajeGeneral";
+import Cargando from "../../../Cargando";
+import MensajeGeneral from "../../../MensajeGeneral";
 // import ModalConfirmacionAgencias from "./ModalConfirmacionAgencias";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarColoniasPorFiltro from "../../hooks/useBuscarColoniasPorFiltro";
-import usePaginacion from "../../hooks/usePaginacion";
+import useBuscarColoniasPorFiltro from "../../../../hooks/useBuscarColoniasPorFiltro";
+import usePaginacion from "../../../../hooks/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/componentes/AdministrarColonias/ListaDeColonias.css";
+import "../../../../estilos/componentes/Ubicaciones/Colonias/AdministrarColonias/ListaDeColonias.css";
 
 export default function ListaDeColonias({
-  establecerVista,
-  establecerInformacionDeLaAgencia,
+  establecerVistaColonia,
+  establecerInformacionDeLaColonia,
 }) {
   const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
     useState(false);
@@ -72,13 +72,13 @@ export default function ListaDeColonias({
     establecerMostrarModalConfirmacion(true);
   };
 
-  const EstablecerInformacionDeLaAgenciaSeleccionada = (infColonia) => {
-    establecerInformacionDeLaAgencia(infColonia);
-    establecerVista(1);
+  const EstablecerInformacionDeLaColoniaSeleccionada = (infColonia) => {
+    establecerInformacionDeLaColonia(infColonia);
+    establecerVistaColonia(1);
   };
-  const EstablecerInformacionDeLaAgenciaAEditar = (infColonia) => {
-    establecerInformacionDeLaAgencia(infColonia);
-    establecerVista(2);
+  const EstablecerInformacionDeLaColoniaAEditar = (infColonia) => {
+    establecerInformacionDeLaColonia(infColonia);
+    establecerVistaColonia(2);
   };
 
   if (cargandoColonias) return <Cargando />;
@@ -166,7 +166,7 @@ export default function ListaDeColonias({
                     className="ListaDeColonias__Colonia__Opciones--Boton Editar"
                     title="Editar colonia"
                     // onClick={() =>
-                    //   EstablecerInformacionDeLaAgenciaAEditar(infColonia)
+                    //   EstablecerInformacionDeLaColoniaAEditar(infColonia)
                     // }
                   >
                     <p>

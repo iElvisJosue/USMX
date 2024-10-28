@@ -68,24 +68,9 @@ export const OpcionesDelMenu = {
           url: `${HOST}Envios`,
         },
         {
-          icono: "earth",
-          nombre: "Paises",
-          url: `${HOST}Administrar-Paises`,
-        },
-        {
-          icono: "location",
-          nombre: "Estados",
-          url: `${HOST}Administrar-Estados`,
-        },
-        {
-          icono: "locate",
-          nombre: "Ciudades",
-          url: `${HOST}Administrar-Ciudades`,
-        },
-        {
-          icono: "trail-sign",
-          nombre: "Colonias",
-          url: `${HOST}Administrar-Colonias`,
+          icono: "globe",
+          nombre: "Ubicaciones",
+          url: `${HOST}Ubicaciones`,
         },
       ],
     },

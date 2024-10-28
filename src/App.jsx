@@ -22,10 +22,7 @@ import Movimientos from "./vistas/Movimientos";
 import Ocurres from "./vistas/Ocurres";
 import Cargas from "./vistas/Cargas";
 import Envios from "./vistas/Envios";
-import AdministrarPaises from "./vistas/AdministrarPaises";
-import AdministrarEstados from "./vistas/AdministrarEstados";
-import AdministrarCiudades from "./vistas/AdministrarCiudades";
-import AdministrarColonias from "./vistas/AdministrarColonias";
+import Ubicaciones from "./vistas/Ubicaciones";
 import Apariencia from "./vistas/Apariencia";
 
 // PROTECCIÓN DE RUTAS
@@ -68,30 +65,19 @@ export default function App() {
                             />
                             {/* RUTAS DE OCURRES */}
                             <Route path="/Ocurres" element={<Ocurres />} />
+                            <Route path="/Cargas" element={<Cargas />} />
+                            <Route path="/Envios" element={<Envios />} />
+                            <Route
+                              path="/Ubicaciones"
+                              element={<Ubicaciones />}
+                            />
                           </Route>
-                          <Route path="/Cargas" element={<Cargas />} />
-                          <Route path="/Envios" element={<Envios />} />
-                          <Route
-                            path="/Administrar-Paises"
-                            element={<AdministrarPaises />}
-                          />
-                          <Route
-                            path="/Administrar-Estados"
-                            element={<AdministrarEstados />}
-                          />
-                          <Route
-                            path="/Administrar-Ciudades"
-                            element={<AdministrarCiudades />}
-                          />
-                          <Route
-                            path="/Administrar-Colonias"
-                            element={<AdministrarColonias />}
-                          />
+
                           {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
                           {/* RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
-                          <Route path="/Pedidos" element={<Pedidos />} />
                           <Route path="/Bienvenida" element={<Bienvenida />} />
                           <Route path="/Perfil" element={<Perfil />} />
+                          <Route path="/Pedidos" element={<Pedidos />} />
                           <Route path="/Apariencia" element={<Apariencia />} />
                           {/* TERMINAN LAS RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
                         </Route>
