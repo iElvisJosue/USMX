@@ -58,19 +58,34 @@ export default function ModalInformacionDeLaAgencia({
           <ion-icon name="business"></ion-icon>
           <b>Agencia</b>
           {informacionDeLaAgencia.NombreAgencia}
+          {informacionDeLaAgencia.NombreLegalAgencia && (
+            <>
+              <br />
+              {informacionDeLaAgencia.NombreLegalAgencia}
+            </>
+          )}
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion">
           <ion-icon name="person-circle"></ion-icon>
-          <b>Nombre Contacto</b> {informacionDeLaAgencia.NombreContactoAgencia}
+          <b>Representante</b>{" "}
+          {informacionDeLaAgencia.RepresentanteVentas || "N/A"} <br />
+          {informacionDeLaAgencia.TelefonoRepresentanteVentas && (
+            <>Tel. {informacionDeLaAgencia.TelefonoRepresentanteVentas}</>
+          )}
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion">
           <ion-icon name="call"></ion-icon>
-          <b>Teléfono Contacto </b>{" "}
-          {informacionDeLaAgencia.TelefonoContactoAgencia}
+          <b>Teléfono Agencia</b> {informacionDeLaAgencia.TelefonoAgencia}
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
           <ion-icon name="mail"></ion-icon>
-          <b>Correo</b> {informacionDeLaAgencia.CorreoContactoAgencia}
+          <b>Correo(s)</b> {informacionDeLaAgencia.CorreoAgencia}
+          {informacionDeLaAgencia.CorreoAgenciaSecundario && (
+            <>
+              <br />
+              {informacionDeLaAgencia.CorreoAgenciaSecundario}
+            </>
+          )}
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
           <ion-icon name="location"></ion-icon>

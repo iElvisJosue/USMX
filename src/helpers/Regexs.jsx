@@ -1,6 +1,6 @@
 export const REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS = {
-  value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
-  message: "¡Este campo solo acepta letras, números y espacios! 🔠",
+  value: /^[a-zA-Z0-9].*[a-zA-Z0-9]$/,
+  message: "¡La cadena debe empezar y terminar con una letra o número! 🔠",
 };
 
 export const REGEX_SOLO_NUMEROS = {

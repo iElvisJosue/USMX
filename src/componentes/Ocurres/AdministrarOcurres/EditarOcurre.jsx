@@ -33,6 +33,8 @@ export default function EditarOcurre({
   // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCIÓN
   const [codigoDelPaisSeleccionado, establecerCodigoDelPaisSeleccionado] =
     useState(informacionDelOcurre.CodigoPaisOcurre);
+  const [paisSeleccionado, establecerPaisSeleccionado] = useState(null);
+
   const [idEstado, establecerIdEstado] = useState(null);
   const [cpColonia, establecerCpColonia] = useState(
     informacionDelOcurre.CodigoPostalOcurre
@@ -54,7 +56,10 @@ export default function EditarOcurre({
     codigoDelPaisSeleccionado
   );
   const { ciudadesPorEstado } = useObtenerCiudadesPorEstado(idEstado);
-  const { coloniasPorCP } = useObtenerColoniasPorCP(cpColonia);
+  const { coloniasPorCP } = useObtenerColoniasPorCP(
+    cpColonia,
+    paisSeleccionado
+  );
   const {
     handleSubmit,
     register,
@@ -108,6 +113,11 @@ export default function EditarOcurre({
     );
     setValue("ReferenciaOcurre", informacionDelOcurre?.ReferenciaOcurre);
     setValue("ObservacionesOcurre", informacionDelOcurre?.ObservacionesOcurre);
+    // ESTABLECEMOS EL NOMBRE DEL PAIS
+    const { NombrePais } = DividirCodigoDelNombrePais(
+      informacionDelOcurre?.PaisOcurre
+    );
+    establecerPaisSeleccionado(NombrePais);
   }, [informacionDelOcurre]);
 
   const GuardarInformacionDelOcurre = handleSubmit(async (info) => {
@@ -132,7 +142,8 @@ export default function EditarOcurre({
   });
   const EstablecerCodigoPais = (InfPais) => {
     ReiniciarValoresDeLasDirecciones();
-    const { CodigoPais } = DividirCodigoDelNombrePais(InfPais);
+    const { CodigoPais, NombrePais } = DividirCodigoDelNombrePais(InfPais);
+    establecerPaisSeleccionado(NombrePais);
     establecerCodigoDelPaisSeleccionado(CodigoPais);
   };
 
@@ -151,6 +162,7 @@ export default function EditarOcurre({
       DireccionOcurre: "",
     });
 
+    establecerPaisSeleccionado(null);
     establecerCambiarValorDeLaCiudad(true);
     establecerCodigoDelPaisSeleccionado(null);
     establecerIdEstado(null);

@@ -8,9 +8,14 @@ import { useOperaciones } from "../context/OperacionesContext";
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
-export default function useObtenerColoniasPorCP(CodigoPostal = null) {
+export default function useObtenerColoniasPorCP(
+  CodigoPostal = null,
+  Pais = null
+) {
   const { ObtenerColoniasPorCodigoPostal } = useOperaciones();
   const [coloniasPorCP, establecerColoniasPorCP] = useState(null);
+
+  console.log(Pais);
 
   useEffect(() => {
     const obtenerColoniasPorCP = async () => {
@@ -18,6 +23,7 @@ export default function useObtenerColoniasPorCP(CodigoPostal = null) {
         const res = await ObtenerColoniasPorCodigoPostal({
           CookieConToken: COOKIE_CON_TOKEN,
           CodigoPostal,
+          Pais,
         });
         if (res.response) {
           const { status, data } = res.response;
@@ -31,7 +37,7 @@ export default function useObtenerColoniasPorCP(CodigoPostal = null) {
       }
     };
     obtenerColoniasPorCP();
-  }, [CodigoPostal]);
+  }, [CodigoPostal, Pais]);
 
   return { coloniasPorCP };
 }

@@ -48,36 +48,52 @@ export default function ModalInformacionDeLaAgencia({
   };
 
   return (
-    <div className="ModalInformacionDeLaAgencia">
-      <article className="ModalInformacionDeLaAgencia__Contenido">
+    <div className="ModalInformacionDeLaAgenciaProductos">
+      <article className="ModalInformacionDeLaAgenciaProductos__Contenido">
         <button
-          className="ModalInformacionDeLaAgencia__Contenido--CerrarModal"
+          className="ModalInformacionDeLaAgenciaProductos__Contenido--CerrarModal"
           onClick={() => establecerMostrarModal(false)}
         >
           <ion-icon name="close"></ion-icon>
         </button>
-        <h1 className="ModalInformacionDeLaAgencia__Contenido--Titulo">
+        <h1 className="ModalInformacionDeLaAgenciaProductos__Contenido--Titulo">
           Información de la agencia
         </h1>
-        <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
+        <small className="ModalInformacionDeLaAgenciaProductos__Contenido--Informacion Col2">
           <ion-icon name="business"></ion-icon>
           <b>Agencia</b>
           {informacionDeLaAgencia.NombreAgencia}
+          {informacionDeLaAgencia.NombreLegalAgencia && (
+            <>
+              <br />
+              {informacionDeLaAgencia.NombreLegalAgencia}
+            </>
+          )}
         </small>
-        <small className="ModalInformacionDeLaAgencia__Contenido--Informacion">
+
+        <small className="ModalInformacionDeLaAgenciaProductos__Contenido--Informacion">
           <ion-icon name="person-circle"></ion-icon>
-          <b>Nombre Contacto</b> {informacionDeLaAgencia.NombreContactoAgencia}
+          <b>Representante</b>{" "}
+          {informacionDeLaAgencia.RepresentanteVentas || "N/A"} <br />
+          {informacionDeLaAgencia.TelefonoRepresentanteVentas && (
+            <>Tel. {informacionDeLaAgencia.TelefonoRepresentanteVentas}</>
+          )}
         </small>
-        <small className="ModalInformacionDeLaAgencia__Contenido--Informacion">
+        <small className="ModalInformacionDeLaAgenciaProductos__Contenido--Informacion">
           <ion-icon name="call"></ion-icon>
-          <b>Teléfono Contacto </b>{" "}
-          {informacionDeLaAgencia.TelefonoContactoAgencia}
+          <b>Teléfono Agencia</b> {informacionDeLaAgencia.TelefonoAgencia}
         </small>
-        <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
+        <small className="ModalInformacionDeLaAgenciaProductos__Contenido--Informacion Col2">
           <ion-icon name="mail"></ion-icon>
-          <b>Correo</b> {informacionDeLaAgencia.CorreoContactoAgencia}
+          <b>Correo(s)</b> {informacionDeLaAgencia.CorreoAgencia}
+          {informacionDeLaAgencia.CorreoAgenciaSecundario && (
+            <>
+              <br />
+              {informacionDeLaAgencia.CorreoAgenciaSecundario}
+            </>
+          )}
         </small>
-        <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
+        <small className="ModalInformacionDeLaAgenciaProductos__Contenido--Informacion Col2">
           <ion-icon name="location"></ion-icon>
           <b>Locación</b>
           {informacionDeLaAgencia.PaisAgencia}
@@ -89,7 +105,7 @@ export default function ModalInformacionDeLaAgencia({
         </small>
         {informacionDeLaAgencia.Editable && (
           <button
-            className="ModalInformacionDeLaAgencia__Contenido--Boton"
+            className="ModalInformacionDeLaAgenciaProductos__Contenido--Boton"
             onClick={() =>
               PeticionAsignarAgenciaAlProducto(informacionDeLaAgencia.idAgencia)
             }

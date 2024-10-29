@@ -1,4 +1,4 @@
-.ModalInformacionDeLaAgencia {
+.ModalInformacionDeLaAgenciaProductos {
   position: absolute;
   top: 0;
   left: 0;
@@ -13,13 +13,13 @@
 
   z-index: 1000;
 }
-.ModalInformacionDeLaAgencia__MensajeDeError {
+.ModalInformacionDeLaAgenciaProductos__MensajeDeError {
   width: 100%;
   color: var(--ColorRojo);
   font-weight: bold;
 }
 
-.ModalInformacionDeLaAgencia__Contenido {
+.ModalInformacionDeLaAgenciaProductos__Contenido {
   position: relative;
   background-color: var(--ColorBlanco);
   padding: 10px;
@@ -32,7 +32,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
 }
-.ModalInformacionDeLaAgencia__Contenido--CerrarModal {
+.ModalInformacionDeLaAgenciaProductos__Contenido--CerrarModal {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -49,17 +49,17 @@
   align-items: center;
   justify-content: center;
 }
-.ModalInformacionDeLaAgencia__Contenido--CerrarModal:hover {
+.ModalInformacionDeLaAgenciaProductos__Contenido--CerrarModal:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
-.ModalInformacionDeLaAgencia__Contenido--Titulo {
+.ModalInformacionDeLaAgenciaProductos__Contenido--Titulo {
   grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
   padding: 10px 0;
 }
-.ModalInformacionDeLaAgencia__Contenido--Informacion {
+.ModalInformacionDeLaAgenciaProductos__Contenido--Informacion {
   grid-column: span 1;
   color: var(--ColorNegro);
   text-align: center;
@@ -74,27 +74,28 @@
   gap: 2px;
   /* border-radius: 10px; */
 }
-.ModalInformacionDeLaAgencia__Contenido--Informacion b {
+.ModalInformacionDeLaAgenciaProductos__Contenido--Informacion b {
   font-style: normal;
+  text-transform: uppercase;
 }
-.ModalInformacionDeLaAgencia__Contenido--Informacion.Col2 {
+.ModalInformacionDeLaAgenciaProductos__Contenido--Informacion.Col2 {
   grid-column: 1 / -1;
 }
-.ModalInformacionDeLaAgencia__Contenido--Informacion ion-icon {
+.ModalInformacionDeLaAgenciaProductos__Contenido--Informacion ion-icon {
   font-size: 20px;
 }
-.ModalInformacionDeLaAgencia__Contenido--Informacion--Input {
+.ModalInformacionDeLaAgenciaProductos__Contenido--Informacion--Input {
   width: 100%;
   text-align: center;
   background-color: var(--ColorBlanco);
   padding: 5px 0;
   border: none;
 }
-.ModalInformacionDeLaAgencia__Contenido--Informacion--Input.Desactivado {
+.ModalInformacionDeLaAgenciaProductos__Contenido--Informacion--Input.Desactivado {
   background-color: var(--ColorSecundario);
   pointer-events: none;
 }
-.ModalInformacionDeLaAgencia__Contenido--Boton {
+.ModalInformacionDeLaAgenciaProductos__Contenido--Boton {
   grid-column: 1 / -1;
   text-align: center;
   height: 50px;
@@ -109,15 +110,15 @@
   /* border-radius: 10px; */
   margin-top: 20px;
 }
-.ModalInformacionDeLaAgencia__Contenido--Boton:hover {
+.ModalInformacionDeLaAgenciaProductos__Contenido--Boton:hover {
   background-color: var(--ColorBlanco);
   color: var(--ColorVerde);
 }
 @media (width <= 550px) {
-  .ModalInformacionDeLaAgencia__Contenido {
+  .ModalInformacionDeLaAgenciaProductos__Contenido {
     width: 100%;
   }
-  .ModalInformacionDeLaAgencia__Contenido--CerrarModal {
+  .ModalInformacionDeLaAgenciaProductos__Contenido--CerrarModal {
     top: 0;
     right: 0;
     width: 30px;

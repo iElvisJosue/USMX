@@ -162,6 +162,13 @@
   justify-content: center;
   gap: 5px;
 }
+.AdministrarAgenciasDelProducto__Agencia:hover {
+  border: 2px solid var(--ColorVerde);
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+  cursor: pointer;
+  transform: scale(1.02);
+}
 .AdministrarAgenciasDelProducto__Agencia.Asignadas {
   position: relative;
   border: 2px solid var(--ColorVerde);
@@ -171,7 +178,6 @@
 .AdministrarAgenciasDelProducto__Agencia.Asignadas:hover {
   border: 2px solid var(--ColorVerde);
   background-color: var(--ColorVerde);
-  color: var(--Blanco);
   transform: scale(1);
   cursor: initial;
 }
@@ -219,14 +225,6 @@
 }
 .AdministrarAgenciasDelProducto__Agencia ion-icon {
   font-size: 25px;
-}
-
-.AdministrarAgenciasDelProducto__Agencia:hover {
-  border: 2px solid var(--ColorVerde);
-  background-color: var(--ColorVerde);
-  color: var(--ColorBlanco);
-  cursor: pointer;
-  transform: scale(1.02);
 }
 .AdministrarAgenciasDelProducto__TextoPaginas {
   grid-column: 1 / -1;

@@ -75,6 +75,7 @@
 }
 .ModalInformacionDelProducto__Contenido--Informacion b {
   font-style: normal;
+  text-transform: uppercase;
   color: var(--ColorNegro);
 }
 .ModalInformacionDelProducto__Contenido--Informacion.Col2 {

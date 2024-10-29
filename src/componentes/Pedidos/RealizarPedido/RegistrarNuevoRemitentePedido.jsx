@@ -46,6 +46,7 @@ export default function RegistrarNuevoRemitentePedido({
   // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCIÓN
   const [codigoDelPaisSeleccionado, establecerCodigoDelPaisSeleccionado] =
     useState(null);
+  const [paisSeleccionado, establecerPaisSeleccionado] = useState(null);
   const [idEstado, establecerIdEstado] = useState(null);
   const [cpColonia, establecerCpColonia] = useState(null);
   // ESTE ESTADO ES PARA NO MOSTRAR UN CAMPO EN BLANCO A LA HORA DE ITERAR
@@ -58,7 +59,10 @@ export default function RegistrarNuevoRemitentePedido({
     codigoDelPaisSeleccionado
   );
   const { ciudadesPorEstado } = useObtenerCiudadesPorEstado(idEstado);
-  const { coloniasPorCP } = useObtenerColoniasPorCP(cpColonia);
+  const { coloniasPorCP } = useObtenerColoniasPorCP(
+    cpColonia,
+    paisSeleccionado
+  );
 
   useEffect(() => {
     if (coloniasPorCP?.length > 0) {
@@ -92,7 +96,8 @@ export default function RegistrarNuevoRemitentePedido({
 
   const EstablecerCodigoPais = (InfPais) => {
     ReiniciarValoresDeLasDirecciones();
-    const { CodigoPais } = DividirCodigoDelNombrePais(InfPais);
+    const { CodigoPais, NombrePais } = DividirCodigoDelNombrePais(InfPais);
+    establecerPaisSeleccionado(NombrePais);
     establecerCodigoDelPaisSeleccionado(CodigoPais);
   };
 
@@ -111,6 +116,7 @@ export default function RegistrarNuevoRemitentePedido({
       DireccionRemitente: "",
     });
 
+    establecerPaisSeleccionado(null);
     establecerCodigoDelPaisSeleccionado(null);
     establecerIdEstado(null);
     establecerCpColonia(null);

@@ -35,6 +35,7 @@ export default function EditarAgencia({
   // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCIÓN
   const [codigoDelPaisSeleccionado, establecerCodigoDelPaisSeleccionado] =
     useState(informacionDeLaAgencia.CodigoPaisAgencia);
+  const [paisSeleccionado, establecerPaisSeleccionado] = useState(null);
   const [idEstado, establecerIdEstado] = useState(null);
   const [cpColonia, establecerCpColonia] = useState(
     informacionDeLaAgencia.CodigoPostalAgencia
@@ -56,7 +57,10 @@ export default function EditarAgencia({
     codigoDelPaisSeleccionado
   );
   const { ciudadesPorEstado } = useObtenerCiudadesPorEstado(idEstado);
-  const { coloniasPorCP } = useObtenerColoniasPorCP(cpColonia);
+  const { coloniasPorCP } = useObtenerColoniasPorCP(
+    cpColonia,
+    paisSeleccionado
+  );
 
   const {
     handleSubmit,
@@ -95,21 +99,53 @@ export default function EditarAgencia({
 
   useEffect(() => {
     setValue("NombreAgencia", informacionDeLaAgencia.NombreAgencia);
+    setValue("NombreLegalAgencia", informacionDeLaAgencia.NombreLegalAgencia);
     setValue("NombreContacto", informacionDeLaAgencia.NombreContactoAgencia);
-    setValue(
-      "TelefonoContacto",
-      informacionDeLaAgencia.TelefonoContactoAgencia
-    );
-    setValue("CorreoContacto", informacionDeLaAgencia.CorreoContactoAgencia);
     setValue("PaisAgencia", informacionDeLaAgencia.PaisAgencia);
     setValue("EstadoAgencia", informacionDeLaAgencia.EstadoAgencia);
     setValue("CodigoPostalAgencia", informacionDeLaAgencia.CodigoPostalAgencia);
     setValue("DireccionAgencia", informacionDeLaAgencia.DireccionAgencia);
+    setValue("TelefonoAgencia", informacionDeLaAgencia.TelefonoAgencia);
+    setValue("FaxAgencia", informacionDeLaAgencia.FaxAgencia);
+    setValue("CorreoAgencia", informacionDeLaAgencia.CorreoAgencia);
+    setValue(
+      "CorreoAgenciaSecundario",
+      informacionDeLaAgencia.CorreoAgenciaSecundario
+    );
+    setValue("RepresentanteVentas", informacionDeLaAgencia.RepresentanteVentas);
+    setValue(
+      "TelefonoRepresentanteVentas",
+      informacionDeLaAgencia.TelefonoRepresentanteVentas
+    );
+    setValue("NombreDueno", informacionDeLaAgencia.NombreDueno);
+    setValue("TelefonoDueno", informacionDeLaAgencia.TelefonoDueno);
+    setValue("NombreManager", informacionDeLaAgencia.NombreManager);
+    setValue("TelefonoManager", informacionDeLaAgencia.TelefonoManager);
+    setValue(
+      "NumeroLicenciaAgencia",
+      informacionDeLaAgencia.NumeroLicenciaAgencia
+    );
+    setValue(
+      "NumeroImpuestosVenta",
+      informacionDeLaAgencia.NumeroImpuestosVenta
+    );
+    setValue("SS", informacionDeLaAgencia.SS);
+    setValue("CopiaID", informacionDeLaAgencia.CopiaID);
+    setValue(
+      "CopiaLicenciaNegocio",
+      informacionDeLaAgencia.CopiaLicenciaNegocio
+    );
+    setValue("CopiaImpuestosVenta", informacionDeLaAgencia.CopiaImpuestosVenta);
     if (informacionDeLaAgencia?.NombreAgencia === "USMX Express") {
       document
         .getElementById("NombreAgencia")
         .classList.add("DesactivarNombreAgencia");
     }
+    // ESTABLECEMOS EL NOMBRE DEL PAIS
+    const { NombrePais } = DividirCodigoDelNombrePais(
+      informacionDeLaAgencia?.PaisAgencia
+    );
+    establecerPaisSeleccionado(NombrePais);
   }, []);
 
   const ActualizarInformacionDeLaAgencia = handleSubmit(async (info) => {
@@ -125,8 +161,13 @@ export default function EditarAgencia({
       );
     }
     try {
+      const CodigoEstado =
+        estadosPorCodigoDelPais.find(
+          (estado) => estado.NombreEstado === info.EstadoAgencia
+        ).CodigoEstado || "SCE";
       const { CodigoPais } = DividirCodigoDelNombrePais(info.PaisAgencia);
       info.CodigoPaisAgencia = CodigoPais;
+      info.CodigoEstadoAgencia = CodigoEstado;
       info.idAgencia = informacionDeLaAgencia?.idAgencia;
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await ActualizarInformacionAgencia(info);
@@ -146,7 +187,8 @@ export default function EditarAgencia({
 
   const EstablecerCodigoPais = (InfPais) => {
     ReiniciarValoresDeLasDirecciones();
-    const { CodigoPais } = DividirCodigoDelNombrePais(InfPais);
+    const { CodigoPais, NombrePais } = DividirCodigoDelNombrePais(InfPais);
+    establecerPaisSeleccionado(NombrePais);
     establecerCodigoDelPaisSeleccionado(CodigoPais);
   };
 
@@ -166,6 +208,7 @@ export default function EditarAgencia({
     });
 
     establecerCambiarValorDeLaCiudad(true);
+    establecerPaisSeleccionado(null);
     establecerCodigoDelPaisSeleccionado(null);
     establecerIdEstado(null);
     establecerCpColonia(null);
@@ -202,7 +245,7 @@ export default function EditarAgencia({
         </button>
       </div>
       <h1 className="EditarAgencia__Titulo">Editar Agencia</h1>
-      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
+      <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="business"></ion-icon> Nombre de la agencia
         </p>
@@ -222,16 +265,16 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("NombreAgencia")}
       </span>
-      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
+      <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="person"></ion-icon> Nombre del contacto
+          <ion-icon name="briefcase"></ion-icon> Nombre legal de la agencia
+          (DBA)
         </p>
         <input
-          id="NombreContacto"
-          name="NombreContacto"
+          id="NombreLegalAgencia"
+          name="NombreLegalAgencia"
           placeholder="Escriba aquí..."
-          {...register("NombreContacto", {
-            required: "¡Este campo es obligatorio! ⚠️",
+          {...register("NombreLegalAgencia", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
@@ -239,49 +282,7 @@ export default function EditarAgencia({
             },
           })}
         ></input>
-        {MensajeError("NombreContacto")}
-      </span>
-      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
-        <p>
-          <ion-icon name="call"></ion-icon> Teléfono del contacto
-        </p>
-        <input
-          id="TelefonoContacto"
-          name="TelefonoContacto"
-          placeholder="Escriba aquí..."
-          {...register("TelefonoContacto", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_SOLO_NUMEROS,
-            maxLength: {
-              value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-            },
-            minLength: {
-              value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
-            },
-          })}
-        ></input>
-        {MensajeError("TelefonoContacto")}
-      </span>
-      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
-        <p>
-          <ion-icon name="mail"></ion-icon> Correo del contacto
-        </p>
-        <input
-          id="CorreoContacto"
-          name="CorreoContacto"
-          placeholder="Escriba aquí..."
-          {...register("CorreoContacto", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_CORREO,
-            maxLength: {
-              value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-            },
-          })}
-        ></input>
-        {MensajeError("CorreoContacto")}
+        {MensajeError("NombreLegalAgencia")}
       </span>
       {paises && (
         <span
@@ -311,7 +312,7 @@ export default function EditarAgencia({
         </span>
       )}
       {estadosPorCodigoDelPais && (
-        <span className="EditarAgencia__Titulo__Campo Dos">
+        <span className="EditarAgencia__Titulo__Campo">
           <p>
             <ion-icon name="location"></ion-icon> Estado
           </p>
@@ -347,7 +348,7 @@ export default function EditarAgencia({
       )}
       {ciudadesPorEstado && (
         <>
-          <span className="EditarAgencia__Titulo__Campo Dos">
+          <span className="EditarAgencia__Titulo__Campo">
             <p>
               <ion-icon name="locate"></ion-icon> Ciudad
             </p>
@@ -407,7 +408,7 @@ export default function EditarAgencia({
       )}
       {coloniasPorCP &&
         (coloniasPorCP.length > 0 ? (
-          <span className="EditarAgencia__Titulo__Campo Tres">
+          <span className="EditarAgencia__Titulo__Campo Cuatro">
             <p>
               <ion-icon name="trail-sign"></ion-icon> Colonia
             </p>
@@ -433,7 +434,7 @@ export default function EditarAgencia({
             {MensajeError("DireccionAgencia")}
           </span>
         ) : (
-          <span className="EditarAgencia__Titulo__Campo Tres">
+          <span className="EditarAgencia__Titulo__Campo Cuatro">
             <p>
               <ion-icon name="trail-sign"></ion-icon> Dirección
             </p>
@@ -454,6 +455,290 @@ export default function EditarAgencia({
             {MensajeError("DireccionAgencia")}
           </span>
         ))}
+      <span className="EditarAgencia__Titulo__Campo">
+        <p>
+          <ion-icon name="call"></ion-icon> Tel. Agencia
+        </p>
+        <input
+          id="TelefonoAgencia"
+          name="TelefonoAgencia"
+          placeholder="Escriba aquí..."
+          {...register("TelefonoAgencia", {
+            required: "¡Este campo es obligatorio! ⚠️",
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("TelefonoAgencia")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo">
+        <p>
+          <ion-icon name="print"></ion-icon> Fax
+        </p>
+        <input
+          id="FaxAgencia"
+          name="FaxAgencia"
+          placeholder="Escriba aquí..."
+          {...register("FaxAgencia", {
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("FaxAgencia")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo">
+        <p>
+          <ion-icon name="mail"></ion-icon> Correo Agencia
+        </p>
+        <input
+          id="CorreoAgencia"
+          name="CorreoAgencia"
+          placeholder="Escriba aquí..."
+          {...register("CorreoAgencia", {
+            required: "¡Este campo es obligatorio! ⚠️",
+            pattern: REGEX_CORREO,
+            maxLength: {
+              value: 100,
+              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("CorreoAgencia")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo">
+        <p>
+          <ion-icon name="mail"></ion-icon> Correo Agencia #2 (Opcional)
+        </p>
+        <input
+          id="CorreoAgenciaSecundario"
+          name="CorreoAgenciaSecundario"
+          placeholder="Escriba aquí..."
+          {...register("CorreoAgenciaSecundario", {
+            pattern: REGEX_CORREO,
+            maxLength: {
+              value: 100,
+              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("CorreoAgenciaSecundario")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo Dos">
+        <p>
+          <ion-icon name="person"></ion-icon> Nombre representante ventas
+        </p>
+        <input
+          id="RepresentanteVentas"
+          name="RepresentanteVentas"
+          placeholder="Escriba aquí..."
+          {...register("RepresentanteVentas", {
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+            required: "¡Este campo es obligatorio! ⚠️",
+            maxLength: {
+              value: 100,
+              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("RepresentanteVentas")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo Dos">
+        <p>
+          <ion-icon name="call"></ion-icon> Tel. Representante
+        </p>
+        <input
+          id="TelefonoRepresentanteVentas"
+          name="TelefonoRepresentanteVentas"
+          placeholder="Escriba aquí..."
+          {...register("TelefonoRepresentanteVentas", {
+            required: "¡Este campo es obligatorio! ⚠️",
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("TelefonoRepresentanteVentas")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo Dos">
+        <p>
+          <ion-icon name="person"></ion-icon> Nombre del dueño
+        </p>
+        <input
+          id="NombreDueno"
+          name="NombreDueno"
+          placeholder="Escriba aquí..."
+          {...register("NombreDueno", {
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+            maxLength: {
+              value: 100,
+              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("NombreDueno")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo Dos">
+        <p>
+          <ion-icon name="call"></ion-icon> Tel. Dueño
+        </p>
+        <input
+          id="TelefonoDueno"
+          name="TelefonoDueno"
+          placeholder="Escriba aquí..."
+          {...register("TelefonoDueno", {
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("TelefonoDueno")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo Dos">
+        <p>
+          <ion-icon name="person"></ion-icon> Nombre del manager
+        </p>
+        <input
+          id="NombreManager"
+          name="NombreManager"
+          placeholder="Escriba aquí..."
+          {...register("NombreManager", {
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+            maxLength: {
+              value: 100,
+              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("NombreManager")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo Dos">
+        <p>
+          <ion-icon name="call"></ion-icon> Tel. Manager
+        </p>
+        <input
+          id="TelefonoManager"
+          name="TelefonoManager"
+          placeholder="Escriba aquí..."
+          {...register("TelefonoManager", {
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("TelefonoManager")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo">
+        <p>
+          <ion-icon name="reader"></ion-icon> No. Licencia
+        </p>
+        <input
+          id="NumeroLicenciaAgencia"
+          name="NumeroLicenciaAgencia"
+          placeholder="Escriba aquí..."
+          {...register("NumeroLicenciaAgencia", {
+            pattern: REGEX_SOLO_NUMEROS,
+          })}
+        ></input>
+        {MensajeError("NumeroLicenciaAgencia")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo">
+        <p>
+          <ion-icon name="reader"></ion-icon> No. Sales Tax
+        </p>
+        <input
+          id="NumeroImpuestosVenta"
+          name="NumeroImpuestosVenta"
+          placeholder="Escriba aquí..."
+          {...register("NumeroImpuestosVenta", {
+            pattern: REGEX_SOLO_NUMEROS,
+          })}
+        ></input>
+        {MensajeError("NumeroImpuestosVenta")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo Dos">
+        <p>
+          <ion-icon name="reader"></ion-icon> S.S
+        </p>
+        <input
+          id="SS"
+          name="SS"
+          placeholder="Escriba aquí..."
+          {...register("SS", {
+            pattern: REGEX_SOLO_NUMEROS,
+          })}
+        ></input>
+        {MensajeError("SS")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo">
+        <p>
+          <ion-icon name="copy"></ion-icon> Copia ID
+        </p>
+        <select name="CopiaID" id="CopiaID" {...register("CopiaID")}>
+          <option value="No">No</option>
+          <option value="Si">Si</option>
+        </select>
+        {MensajeError("CopiaID")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo Dos">
+        <p>
+          <ion-icon name="copy"></ion-icon> Copia Licencia
+        </p>
+        <select
+          name="CopiaLicenciaNegocio"
+          id="CopiaLicenciaNegocio"
+          {...register("CopiaLicenciaNegocio")}
+        >
+          <option value="No">No</option>
+          <option value="Si">Si</option>
+        </select>
+        {MensajeError("CopiaLicenciaNegocio")}
+      </span>
+      <span className="EditarAgencia__Titulo__Campo">
+        <p>
+          <ion-icon name="copy"></ion-icon> Copia Sales Tax
+        </p>
+        <select
+          name="CopiaImpuestosVenta"
+          id="CopiaImpuestosVenta"
+          {...register("CopiaImpuestosVenta")}
+        >
+          <option value="No">No</option>
+          <option value="Si">Si</option>
+        </select>
+        {MensajeError("CopiaImpuestosVenta")}
+      </span>
       <footer className="EditarAgencia__Footer">
         <button type="submit" className="EditarAgencia__Footer__Boton Guardar">
           Actualizar

@@ -75,6 +75,7 @@
 }
 .ModalInformacionDeLaAgencia__Contenido--Informacion b {
   font-style: normal;
+  text-transform: uppercase;
 }
 .ModalInformacionDeLaAgencia__Contenido--Informacion.Col2 {
   grid-column: 1 / -1;

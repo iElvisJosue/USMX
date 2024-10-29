@@ -51,6 +51,7 @@ export default function RegistrarNuevoDestinatarioPedido({
   // ESTE ESTADO ES PARA NO MOSTRAR UN CAMPO EN BLANCO A LA HORA DE ITERAR
   // MUCHO CON LA COLONIA Y EL CP
   const [coloniaSeleccionada, establecerColoniaSeleccionada] = useState("");
+  const [paisSeleccionado, establecerPaisSeleccionado] = useState(null);
 
   // OBTENEMOS LOS DATOS
   const { paises } = useObtenerPaisesActivos();
@@ -58,7 +59,10 @@ export default function RegistrarNuevoDestinatarioPedido({
     codigoDelPaisSeleccionado
   );
   const { ciudadesPorEstado } = useObtenerCiudadesPorEstado(idEstado);
-  const { coloniasPorCP } = useObtenerColoniasPorCP(cpColonia);
+  const { coloniasPorCP } = useObtenerColoniasPorCP(
+    cpColonia,
+    paisSeleccionado
+  );
 
   useEffect(() => {
     if (coloniasPorCP?.length > 0) {
@@ -106,7 +110,8 @@ export default function RegistrarNuevoDestinatarioPedido({
 
   const EstablecerCodigoPais = (InfPais) => {
     ReiniciarValoresDeLasDirecciones();
-    const { CodigoPais } = DividirCodigoDelNombrePais(InfPais);
+    const { CodigoPais, NombrePais } = DividirCodigoDelNombrePais(InfPais);
+    establecerPaisSeleccionado(NombrePais);
     establecerCodigoDelPaisSeleccionado(CodigoPais);
   };
 
@@ -125,6 +130,7 @@ export default function RegistrarNuevoDestinatarioPedido({
       DireccionDestinatario: "",
     });
 
+    establecerPaisSeleccionado(null);
     establecerCodigoDelPaisSeleccionado(null);
     establecerIdEstado(null);
     establecerCpColonia(null);
