@@ -27,3 +27,8 @@ export const SolicitudActualizarInformacionAgencia = (data) =>
 // SOLICITUD PARA BUSCAR UNA AGENCIAS POR FILTRO
 export const SolicitudBuscarAgenciasPorFiltro = (data) =>
   axios.post("/agencias/BuscarAgenciasPorFiltro", data);
+// SOLICITUD PARA CREAR UN EXCEL CON LAS AGENCIAS
+export const SolicitudCrearYDescargarExcelDeAgencias = (data) =>
+  axios.post("/agencias/CrearYDescargarExcelDeAgencias", data, {
+    responseType: "blob",
+  });

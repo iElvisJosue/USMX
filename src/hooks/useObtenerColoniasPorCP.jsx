@@ -15,8 +15,6 @@ export default function useObtenerColoniasPorCP(
   const { ObtenerColoniasPorCodigoPostal } = useOperaciones();
   const [coloniasPorCP, establecerColoniasPorCP] = useState(null);
 
-  console.log(Pais);
-
   useEffect(() => {
     const obtenerColoniasPorCP = async () => {
       try {

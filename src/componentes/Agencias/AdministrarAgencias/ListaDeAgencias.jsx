@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
+
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useAgencias } from "../../../context/AgenciasContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../../Cargando";
@@ -11,6 +15,10 @@ import ModalConfirmacionAgencias from "./ModalConfirmacionAgencias";
 import useBuscarAgenciasPorFiltro from "../../../hooks/useBuscarAgenciasPorFiltro";
 import usePaginacion from "../../../hooks/usePaginacion";
 
+// IMPORTAMOS LAS AYUDAS
+import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
+
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ListaDeAgencias.css";
 
@@ -18,6 +26,7 @@ export default function ListaDeAgencias({
   establecerVista,
   establecerInformacionDeLaAgencia,
 }) {
+  const { CrearYDescargarExcelDeAgencias } = useAgencias();
   const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
     useState(false);
   const [activar, establecerActivar] = useState(true);
@@ -40,7 +49,6 @@ export default function ListaDeAgencias({
     MostrarVeinticincoMenos,
     reiniciarValores,
   } = usePaginacion();
-
   useEffect(() => {
     if (agencias) {
       const cantidadDePaginasEnAgencias = Math.ceil(
@@ -49,7 +57,6 @@ export default function ListaDeAgencias({
       establecerCantidadDePaginas(cantidadDePaginasEnAgencias);
     }
   }, [agencias]);
-
   const ObtenerLasAgencias = (event) => {
     const valorIntroducido = event.target.value;
     // Utilizamos una expresión regular para permitir letras, números y "-"
@@ -60,7 +67,6 @@ export default function ListaDeAgencias({
       reiniciarValores();
     }
   };
-
   const MostrarModalActivar = (infAgencia) => {
     establecerInfAgencia(infAgencia);
     establecerActivar(true);
@@ -71,7 +77,6 @@ export default function ListaDeAgencias({
     establecerActivar(false);
     establecerMostrarModalConfirmacion(true);
   };
-
   const EstablecerInformacionDeLaAgenciaSeleccionada = (infAgencia) => {
     establecerInformacionDeLaAgencia(infAgencia);
     establecerVista(1);
@@ -79,6 +84,50 @@ export default function ListaDeAgencias({
   const EstablecerInformacionDeLaAgenciaAEditar = (infAgencia) => {
     establecerInformacionDeLaAgencia(infAgencia);
     establecerVista(2);
+  };
+  const EstablecerAgenciasParaElExcel = async () => {
+    const solicitudPromise = CrearYDescargarExcelDeAgencias({
+      CookieConToken: COOKIE_CON_TOKEN,
+      Agencias: agencias,
+    });
+
+    toast.promise(solicitudPromise, {
+      loading: "Generando archivo Excel...",
+      success:
+        "¡El archivo Excel fue generado con éxito y está listo para su descarga!",
+      error:
+        "¡Oops! Parece que ocurrió un error al generar o descargar el archivo.",
+      style: {
+        borderRadius: "20px",
+        fontSize: "16px",
+      },
+    });
+
+    try {
+      const res = await solicitudPromise;
+      if (res.response) {
+        const { status, data } = res.response;
+        ManejarMensajesDeRespuesta({ status, data });
+      } else {
+        // Crear un objeto URL para el blob de datos del archivo
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement("a");
+
+        // Configurar el enlace para la descarga
+        link.href = url;
+        link.setAttribute("download", "ListaDeAgencias.xlsx"); // nombre del archivo a descargar
+
+        // Añadir temporalmente el enlace al DOM y simular un clic
+        document.body.appendChild(link);
+        link.click();
+
+        // Eliminar el enlace del DOM después de la descarga
+        link.parentNode.removeChild(link);
+      }
+    } catch (error) {
+      const { status, data } = error.response;
+      ManejarMensajesDeRespuesta({ status, data });
+    }
   };
 
   if (cargandoAgencias) return <Cargando />;
@@ -102,7 +151,7 @@ export default function ListaDeAgencias({
       <span className="ListaDeAgencias__Buscar">
         <input
           type="text"
-          placeholder="Buscar agencia"
+          placeholder="Buscar Agencia (Nombre, País, Estado, Ciudad, CP)"
           onChange={ObtenerLasAgencias}
         />
         <span className="ListaDeAgencias__Buscar__Lupa">
@@ -110,26 +159,37 @@ export default function ListaDeAgencias({
         </span>
       </span>
       {agencias.length > 0 ? (
-        <>
-          <small className="ListaDeAgencias__TextoResultados">
+        <div className="ListaDeAgencias__Contenedor">
+          <small className="ListaDeAgencias__Contenedor__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
             {agencias.length} resultados{" "}
           </small>
-          <h2 className="ListaDeAgencias__Clasificacion">
+          <h2 className="ListaDeAgencias__Contenedor__Clasificacion">
             Estatus de las agencias:
           </h2>
-          <span className="ListaDeAgencias__Colores">
-            <p className="ListaDeAgencias__Clasificacion--Texto Activa">
+          <span className="ListaDeAgencias__Contenedor__Colores">
+            <p className="ListaDeAgencias__Contenedor__Clasificacion--Texto Activa">
               <ion-icon name="business"></ion-icon> Activa
             </p>
-            <p className="ListaDeAgencias__Clasificacion--Texto Desactivada">
+            <p className="ListaDeAgencias__Contenedor__Clasificacion--Texto Desactivada">
               <ion-icon name="ban"></ion-icon> Desactivada
             </p>
           </span>
-          <div className="ListaDeAgencias__BotonesDePaginacion">
+          <h2 className="ListaDeAgencias__Contenedor__Operaciones">
+            Operaciones:
+          </h2>
+          <span className="ListaDeAgencias__Contenedor__Colores">
+            <button
+              className="ListaDeAgencias__Contenedor__Operaciones--Boton DescargarExcel"
+              onClick={EstablecerAgenciasParaElExcel}
+            >
+              <ion-icon name="download"></ion-icon> Descargar Excel
+            </button>
+          </span>
+          <div className="ListaDeAgencias__Contenedor__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
               <button
-                className="ListaDeAgencias__BotonesDePaginacion--Boton Anterior"
+                className="ListaDeAgencias__Contenedor__BotonesDePaginacion--Boton Anterior"
                 onClick={MostrarVeinticincoMenos}
               >
                 <ion-icon name="arrow-back-outline"></ion-icon>
@@ -137,7 +197,7 @@ export default function ListaDeAgencias({
             )}
             {indiceFinal < agencias.length && (
               <button
-                className="ListaDeAgencias__BotonesDePaginacion--Boton Siguiente"
+                className="ListaDeAgencias__Contenedor__BotonesDePaginacion--Boton Siguiente"
                 onClick={MostrarVeinticincoMas}
               >
                 <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -147,26 +207,29 @@ export default function ListaDeAgencias({
           {agencias.slice(indiceInicial, indiceFinal).map((infAgencia) =>
             infAgencia.StatusAgencia === "Activa" ? (
               <section
-                className="ListaDeAgencias__Agencia"
+                className="ListaDeAgencias__Contenedor__Agencia"
                 key={infAgencia.idAgencia}
               >
-                <span className="ListaDeAgencias__Agencia__Detalles">
+                <span className="ListaDeAgencias__Contenedor__Agencia__Detalles">
                   <ion-icon name="business"></ion-icon>
-                  <p>{infAgencia.NombreAgencia}</p>
+                  <p>
+                    {infAgencia.idEspecial}
+                    <br /> {infAgencia.NombreAgencia}
+                  </p>
                   <ion-icon name="earth"></ion-icon>
                   <p>{infAgencia.PaisAgencia}</p>
                   <ion-icon name="location"></ion-icon>
                   <p>
-                    {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}
+                    {infAgencia.EstadoAgencia}, {infAgencia.CiudadAgencia}
                   </p>
                   <p>
                     {infAgencia.DireccionAgencia}{" "}
                     {infAgencia.CodigoPostalAgencia}
                   </p>
                 </span>
-                <span className="ListaDeAgencias__Agencia__Opciones">
+                <span className="ListaDeAgencias__Contenedor__Agencia__Opciones">
                   <button
-                    className="ListaDeAgencias__Agencia__Opciones--Boton Administrar"
+                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Administrar"
                     title="Administrar Productos"
                     onClick={() =>
                       EstablecerInformacionDeLaAgenciaSeleccionada(infAgencia)
@@ -177,7 +240,7 @@ export default function ListaDeAgencias({
                     </p>
                   </button>
                   <button
-                    className="ListaDeAgencias__Agencia__Opciones--Boton Editar"
+                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Editar"
                     title="Editar agencia"
                     onClick={() =>
                       EstablecerInformacionDeLaAgenciaAEditar(infAgencia)
@@ -189,7 +252,7 @@ export default function ListaDeAgencias({
                   </button>
                   {infAgencia.NombreAgencia !== "USMX Express" && (
                     <button
-                      className="ListaDeAgencias__Agencia__Opciones--Boton Desactivar"
+                      className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Desactivar"
                       onClick={() => MostrarModalDesactivar(infAgencia)}
                       title="Desactivar agencia"
                     >
@@ -202,10 +265,10 @@ export default function ListaDeAgencias({
               </section>
             ) : (
               <section
-                className="ListaDeAgencias__Agencia Desactivada"
+                className="ListaDeAgencias__Contenedor__Agencia Desactivada"
                 key={infAgencia.idAgencia}
               >
-                <span className="ListaDeAgencias__Agencia__Detalles">
+                <span className="ListaDeAgencias__Contenedor__Agencia__Detalles">
                   <ion-icon name="business"></ion-icon>
                   <p>{infAgencia.NombreAgencia}</p>
                   <ion-icon name="earth"></ion-icon>
@@ -219,9 +282,9 @@ export default function ListaDeAgencias({
                     {infAgencia.CodigoPostalAgencia}
                   </p>
                 </span>
-                <span className="ListaDeAgencias__Agencia__Opciones">
+                <span className="ListaDeAgencias__Contenedor__Agencia__Opciones">
                   <button
-                    className="ListaDeAgencias__Agencia__Opciones--Boton Activar"
+                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Activar"
                     onClick={() => MostrarModalActivar(infAgencia)}
                     title="Activar agencia"
                   >
@@ -233,11 +296,10 @@ export default function ListaDeAgencias({
               </section>
             )
           )}
-
-          <small className="ListaDeAgencias__TextoPaginas">
+          <small className="ListaDeAgencias__Contenedor__TextoPaginas">
             Página {paginaParaMostrar} de {cantidadDePaginas}
           </small>
-        </>
+        </div>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}

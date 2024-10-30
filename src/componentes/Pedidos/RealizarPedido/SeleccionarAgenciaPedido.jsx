@@ -120,12 +120,15 @@ export default function SeleccionarAgenciaPedido({
                   onClick={() => FuncionParaRealizar(agencia)}
                 >
                   <ion-icon name="business"></ion-icon>
-                  <p>{agencia.NombreAgencia}</p>
-                  <ion-icon name="location"></ion-icon>
-                  <p>{agencia.DireccionAgencia}</p>
                   <p>
-                    {agencia.EstadoAgencia}, {agencia.CiudadAgencia}{" "}
-                    {agencia.CodigoPostalAgencia}
+                    {agencia.idEspecial} <br /> {agencia.NombreAgencia}
+                  </p>
+                  <ion-icon name="location"></ion-icon>
+                  <p>
+                    {agencia.EstadoAgencia}, {agencia.CiudadAgencia}
+                  </p>
+                  <p>
+                    {agencia.DireccionAgencia} {agencia.CodigoPostalAgencia}
                   </p>
                 </section>
               ))}

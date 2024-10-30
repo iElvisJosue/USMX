@@ -42,7 +42,13 @@
   color: var(--ColorGris);
   font-size: 20px;
 }
-.ListaDeAgencias__TextoResultados {
+.ListaDeAgencias__Contenedor {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.ListaDeAgencias__Contenedor__TextoResultados {
   grid-column: 1 / -1;
   color: var(--ColorVerde);
   text-align: right;
@@ -53,10 +59,10 @@
   align-items: center;
   justify-content: right;
 }
-.ListaDeAgencias__TextoResultados ion-icon {
+.ListaDeAgencias__Contenedor__TextoResultados ion-icon {
   font-size: 20px;
 }
-.ListaDeAgencias__BotonesDePaginacion {
+.ListaDeAgencias__Contenedor__BotonesDePaginacion {
   grid-column: 1 / -1;
 
   display: flex;
@@ -64,7 +70,7 @@
   justify-content: center;
   gap: 10px;
 }
-.ListaDeAgencias__BotonesDePaginacion--Boton {
+.ListaDeAgencias__Contenedor__BotonesDePaginacion--Boton {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -79,38 +85,40 @@
   justify-content: center;
   gap: 5px;
 }
-.ListaDeAgencias__BotonesDePaginacion--Boton ion-icon {
+.ListaDeAgencias__Contenedor__BotonesDePaginacion--Boton ion-icon {
   font-size: 15px;
 }
-.ListaDeAgencias__BotonesDePaginacion--Boton.Anterior {
+.ListaDeAgencias__Contenedor__BotonesDePaginacion--Boton.Anterior {
   background-color: var(--ColorRojo);
   border: 2px solid var(--ColorRojo);
 }
-.ListaDeAgencias__BotonesDePaginacion--Boton.Siguiente {
+.ListaDeAgencias__Contenedor__BotonesDePaginacion--Boton.Siguiente {
   background-color: var(--ColorAzul);
   border: 2px solid var(--ColorAzul);
 }
-.ListaDeAgencias__BotonesDePaginacion--Boton.Anterior:hover {
+.ListaDeAgencias__Contenedor__BotonesDePaginacion--Boton.Anterior:hover {
   background-color: var(--ColorBlanco);
   color: var(--ColorRojo);
 }
-.ListaDeAgencias__BotonesDePaginacion--Boton.Siguiente:hover {
+.ListaDeAgencias__Contenedor__BotonesDePaginacion--Boton.Siguiente:hover {
   background-color: var(--ColorBlanco);
   color: var(--ColorAzul);
 }
-.ListaDeAgencias__Clasificacion {
+.ListaDeAgencias__Contenedor__Clasificacion,
+.ListaDeAgencias__Contenedor__Operaciones {
   grid-column: 1 / -1;
   color: var(--ColorAzul);
 
   display: flex;
   gap: 5px;
 }
-.ListaDeAgencias__Colores {
+.ListaDeAgencias__Contenedor__Colores {
   grid-column: 1 / -1;
   display: flex;
   gap: 5px;
 }
-.ListaDeAgencias__Clasificacion--Texto {
+.ListaDeAgencias__Contenedor__Clasificacion--Texto,
+.ListaDeAgencias__Contenedor__Operaciones--Boton {
   width: auto;
   height: 30px;
   padding: 0 10px;
@@ -123,18 +131,41 @@
   justify-content: center;
   gap: 2px;
 }
-.ListaDeAgencias__Clasificacion--Texto ion-icon {
+.ListaDeAgencias__Contenedor__Operaciones--Boton.CrearExcel {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+}
+.ListaDeAgencias__Contenedor__Operaciones--Boton.CrearExcel:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+}
+.ListaDeAgencias__Contenedor__Operaciones--Boton.DescargarExcel {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+}
+.ListaDeAgencias__Contenedor__Operaciones--Boton.DescargarExcel:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorVerde);
+}
+.ListaDeAgencias__Contenedor__Clasificacion--Texto ion-icon,
+.ListaDeAgencias__Contenedor__Operaciones--Boton ion-icon {
   font-size: 16px;
 }
-.ListaDeAgencias__Clasificacion--Texto.Activa {
+.ListaDeAgencias__Contenedor__Clasificacion--Texto.Activa {
   background-color: var(--ColorSecundario);
   color: var(--ColorNegro);
 }
-.ListaDeAgencias__Clasificacion--Texto.Desactivada {
+.ListaDeAgencias__Contenedor__Clasificacion--Texto.Desactivada {
   background-color: var(--ColorRojo);
   color: var(--ColorBlanco);
 }
-.ListaDeAgencias__Agencia {
+.ListaDeAgencias__Contenedor__Agencia {
   grid-column: span 1;
   text-align: center;
   font-size: 16px;
@@ -150,14 +181,14 @@
   align-items: center;
   justify-content: space-between;
 }
-.ListaDeAgencias__Agencia.Desactivada {
+.ListaDeAgencias__Contenedor__Agencia.Desactivada {
   background-color: var(--ColorRojo);
   color: var(--ColorBlanco);
 }
-.ListaDeAgencias__Agencia ion-icon {
+.ListaDeAgencias__Contenedor__Agencia ion-icon {
   font-size: 25px;
 }
-.ListaDeAgencias__Agencia__Detalles {
+.ListaDeAgencias__Contenedor__Agencia__Detalles {
   width: 100%;
   height: 100%;
   padding: 10px;
@@ -168,13 +199,13 @@
   justify-content: center;
   gap: 5px;
 }
-.ListaDeAgencias__Agencia__Opciones {
+.ListaDeAgencias__Contenedor__Agencia__Opciones {
   width: 100%;
   min-height: 35px;
 
   display: flex;
 }
-.ListaDeAgencias__Agencia__Opciones--Boton {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton {
   width: 100%;
   height: 100%;
   background-color: var(--ColorNegro);
@@ -185,41 +216,41 @@
   align-items: center;
   justify-content: center;
 }
-.ListaDeAgencias__Agencia__Opciones--Boton ion-icon {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton ion-icon {
   transition: 0.3s ease-in-out all;
 }
-.ListaDeAgencias__Agencia__Opciones--Boton p ion-icon {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton p ion-icon {
   font-size: 18px;
 }
-.ListaDeAgencias__Agencia__Opciones--Boton.Administrar p ion-icon {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton.Administrar p ion-icon {
   font-size: 18px;
   color: var(--ColorVerde);
 }
-.ListaDeAgencias__Agencia__Opciones--Boton.Editar p ion-icon {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton.Editar p ion-icon {
   font-size: 18px;
   color: var(--ColorAzul);
 }
-.ListaDeAgencias__Agencia__Opciones--Boton.Desactivar p ion-icon {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton.Desactivar p ion-icon {
   font-size: 18px;
   color: var(--ColorRojo);
 }
-.ListaDeAgencias__Agencia__Opciones--Boton:first-child {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton:first-child {
   border-radius: 0 0 0 20px;
 }
-.ListaDeAgencias__Agencia__Opciones--Boton:last-child {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton:last-child {
   border-radius: 0 0 20px 0;
 }
-.ListaDeAgencias__Agencia__Opciones--Boton.Activar {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton.Activar {
   border-radius: 0 0 20px 20px;
   color: var(--ColorBlanco);
 }
-.ListaDeAgencias__Agencia__Opciones--Boton:hover ion-icon {
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton:hover ion-icon {
   transform: scale(1.2);
 }
-.ListaDeAgencias__Agencia.Desactivado {
+.ListaDeAgencias__Contenedor__Agencia.Desactivado {
   background-color: var(--ColorRojo);
 }
-.ListaDeAgencias__TextoPaginas {
+.ListaDeAgencias__Contenedor__TextoPaginas {
   grid-column: 1 / -1;
   color: var(--ColorAzul);
   text-align: center;
@@ -229,12 +260,14 @@
   .ListaDeAgencias__Buscar {
     grid-column: 1 / -1;
   }
-  .ListaDeAgencias {
+  .ListaDeAgencias,
+  .ListaDeAgencias__Contenedor {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (width <= 500px) {
-  .ListaDeAgencias {
+  .ListaDeAgencias,
+  .ListaDeAgencias__Contenedor {
     grid-template-columns: 1fr;
   }
   .ListaDeAgencias__Agencia {
@@ -243,18 +276,20 @@
   .ListaDeAgencias__Titulo {
     font-size: 20px;
   }
-  .ListaDeAgencias__TextoResultados {
+  .ListaDeAgencias__Contenedor__TextoResultados {
     font-size: 12px;
   }
-  .ListaDeAgencias__Clasificacion {
+  .ListaDeAgencias__Contenedor__Clasificacion,
+  .ListaDeAgencias__Contenedor__Operaciones {
     font-size: 18px;
   }
-  .ListaDeAgencias__Clasificacion--Texto {
+  .ListaDeAgencias__Contenedor__Clasificacion--Texto,
+  .ListaDeAgencias__Contenedor__Operaciones--Boton {
     font-size: 12px;
   }
 }
 @media (width <= 435px) {
-  .ListaDeAgencias__Colores {
+  .ListaDeAgencias__Contenedor__Colores {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }

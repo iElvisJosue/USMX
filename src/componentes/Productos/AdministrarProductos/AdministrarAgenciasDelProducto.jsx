@@ -147,7 +147,9 @@ export default function AdministrarAgenciasDelProducto({
               key={index}
             >
               <ion-icon name="business"></ion-icon>
-              <p>{infAgencia.NombreAgencia}</p>
+              <p>
+                {infAgencia.idEspecial} <br /> {infAgencia.NombreAgencia}
+              </p>
 
               <button
                 className="AdministrarAgenciasDelProducto__Agencia__Eliminar"
@@ -214,10 +216,12 @@ export default function AdministrarAgenciasDelProducto({
                 onClick={() => MostrarModalYAsignarAgencia(infAgencia, true)}
               >
                 <ion-icon name="business"></ion-icon>
-                <p>{infAgencia.NombreAgencia}</p>
+                <p>
+                  {infAgencia.idEspecial} | {infAgencia.NombreAgencia}
+                </p>
                 <ion-icon name="location"></ion-icon>
                 <p>
-                  {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}
+                  {infAgencia.EstadoAgencia}, {infAgencia.CiudadAgencia}
                 </p>
                 <p>
                   {infAgencia.DireccionAgencia} {infAgencia.CodigoPostalAgencia}
