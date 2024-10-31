@@ -214,7 +214,8 @@ export default function AdministrarAgenciasDelUsuario({
               >
                 <ion-icon name="business"></ion-icon>
                 <p>
-                  {infAgencia.idEspecial} | {infAgencia.NombreAgencia}
+                  {infAgencia.idEspecial} <br />
+                  {infAgencia.NombreAgencia}
                 </p>
                 <ion-icon name="location"></ion-icon>
                 <p>
