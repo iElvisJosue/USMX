@@ -101,7 +101,7 @@ export default function Bienvenida() {
           <ul className="Bienvenida__UltimasGuias--Encabezado">
             <p>Últimos pedidos</p>
             <button
-              onClick={() => (window.location.href = `${HOST}Realizar-Pedido`)}
+              onClick={() => (window.location.href = `${HOST}Pedidos`)}
               title="Ver todos los pedidos"
             >
               <ion-icon name="add"></ion-icon>
