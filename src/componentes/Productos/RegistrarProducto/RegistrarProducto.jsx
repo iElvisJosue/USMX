@@ -11,6 +11,7 @@ import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
   REGEX_SOLO_NUMEROS,
+  REGEX_DECIMALES,
 } from "../../../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS A USAR
@@ -178,7 +179,7 @@ export default function RegistrarProducto() {
             placeholder="Escriba aquí..."
             {...register("CostoLibraExtraProducto", {
               required: "¡Este campo es obligatorio! ⚠️",
-              pattern: REGEX_SOLO_NUMEROS,
+              pattern: REGEX_DECIMALES,
               maxLength: {
                 value: 5,
                 message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
