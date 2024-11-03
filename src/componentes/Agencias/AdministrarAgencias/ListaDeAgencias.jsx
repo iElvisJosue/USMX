@@ -18,6 +18,10 @@ import usePaginacion from "../../../hooks/usePaginacion";
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
+import {
+  ObtenerFechaActual,
+  ObtenerHoraActual,
+} from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ListaDeAgencias.css";
@@ -115,7 +119,10 @@ export default function ListaDeAgencias({
 
         // Configurar el enlace para la descarga
         link.href = url;
-        link.setAttribute("download", "ListaDeAgencias.xlsx"); // nombre del archivo a descargar
+        link.setAttribute(
+          "download",
+          `Lista De Agencias ${ObtenerFechaActual()} a las ${FormatearHoraParaArchivoExcel()}.xlsx`
+        ); // nombre del archivo a descargar
 
         // Añadir temporalmente el enlace al DOM y simular un clic
         document.body.appendChild(link);
@@ -127,6 +134,16 @@ export default function ListaDeAgencias({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    }
+  };
+
+  const FormatearHoraParaArchivoExcel = () => {
+    const HoraActual = ObtenerHoraActual();
+    const Hora = parseInt(HoraActual.split(":")[0], 10); // Convertir a número
+    if (Hora < 12) {
+      return `${HoraActual.replace(/:/g, ".")} AM`;
+    } else {
+      return `${HoraActual.replace(/:/g, ".")} PM`;
     }
   };
 
