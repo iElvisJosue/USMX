@@ -36,8 +36,7 @@ export default function ListaDeAgencias({
     useState(false);
   const [mostrarModalSubirArchivo, establecerMostrarModalSubirArchivo] =
     useState(false);
-  const [informacionArchivo, establecerInformacionArchivo] =
-    useState("Remitentes");
+  const [informacionArchivo, establecerInformacionArchivo] = useState(null);
   const [activar, establecerActivar] = useState(true);
   const [infAgencia, establecerInfAgencia] = useState(null);
   const {
@@ -152,14 +151,8 @@ export default function ListaDeAgencias({
     }
   };
 
-  const EstablecerInformacionParaElTipoDeArchivo = (
-    TipoDeArchivo,
-    idAgencia
-  ) => {
-    establecerInformacionArchivo({
-      TipoDeArchivo,
-      idAgencia,
-    });
+  const EstablecerInformacionParaElTipoDeArchivo = (idAgencia) => {
+    establecerInformacionArchivo({ idAgencia });
     establecerMostrarModalSubirArchivo(true);
   };
 
@@ -292,31 +285,16 @@ export default function ListaDeAgencias({
                     </p>
                   </button>
                   <button
-                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Remitentes"
-                    title="Subir Remitentes"
+                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton SubirArchivo"
+                    title="Subir Archivo"
                     onClick={() =>
                       EstablecerInformacionParaElTipoDeArchivo(
-                        "Remitentes",
                         infAgencia.idAgencia
                       )
                     }
                   >
                     <p>
-                      <ion-icon name="person-circle"></ion-icon>
-                    </p>
-                  </button>
-                  <button
-                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Destinatarios"
-                    title="Subir Destinatarios"
-                    onClick={() =>
-                      EstablecerInformacionParaElTipoDeArchivo(
-                        "Destinatarios",
-                        infAgencia.idAgencia
-                      )
-                    }
-                  >
-                    <p>
-                      <ion-icon name="location"></ion-icon>
+                      <ion-icon name="document-attach"></ion-icon>
                     </p>
                   </button>
                   {infAgencia.NombreAgencia !== "USMX Express" && (

@@ -16,7 +16,7 @@ export default function ModalSubirArchivo({
   informacionArchivo,
   establecerMostrarModalSubirArchivo,
 }) {
-  //   const [image, establecerArchivo] = useState("SeleccionarArchivo.xlsx");
+  const [esRemitente, establecerEsRemitente] = useState(true);
   const [hayArchivo, establecerHayArchivo] = useState(null);
   const [mostrarError, establecerMostrarError] = useState(false);
   const { handleSubmit } = useForm({
@@ -65,7 +65,7 @@ export default function ModalSubirArchivo({
     try {
       // Crea una promesa que lanza un error explícito en caso de respuesta no exitosa
       const solicitudPromise = (
-        informacionArchivo.TipoDeArchivo === "Remitentes"
+        esRemitente
           ? SubirArchivoRemitentes(formData)
           : SubirArchivoDestinatarios(formData)
       ).then((res) => {
@@ -78,9 +78,15 @@ export default function ModalSubirArchivo({
 
       // Usamos toast.promise para manejar el estado de carga, éxito y error
       const res = toast.promise(solicitudPromise, {
-        loading: `Insertando información de los ${informacionArchivo.TipoDeArchivo.toUpperCase()}...`,
-        success: `¡La información de los ${informacionArchivo.TipoDeArchivo.toUpperCase()} ha sido insertada con éxito!`,
-        error: `¡Oops! Parece que algo salió mal al insertar la información de los ${informacionArchivo.TipoDeArchivo.toUpperCase()}. Por favor, intenta de nuevo.`,
+        loading: `Insertando información de los ${
+          esRemitente ? "REMITENTES" : "DESTINATARIOS"
+        }...`,
+        success: `¡La información de los ${
+          esRemitente ? "REMITENTES" : "DESTINATARIOS"
+        } ha sido insertada con éxito!`,
+        error: `¡Oops! Parece que algo salió mal al insertar la información de los ${
+          esRemitente ? "REMITENTES" : "DESTINATARIOS"
+        }. Por favor, intenta de nuevo.`,
         style: {
           borderRadius: "20px",
           fontSize: "16px",
@@ -114,19 +120,43 @@ export default function ModalSubirArchivo({
     >
       <article className="ModalSubirArchivo__Contenido">
         <button
+          type="button"
           className="ModalSubirArchivo__Contenido--CerrarModal"
           onClick={() => establecerMostrarModalSubirArchivo(false)}
         >
           <ion-icon name="close"></ion-icon>
         </button>
+        <section
+          className={`ModalSubirArchivo__Contenido--Opciones ${
+            esRemitente ? "Remitentes" : "Destinatarios"
+          }`}
+        >
+          <button
+            className="ModalSubirArchivo__Contenido--Opciones--Boton"
+            type="button"
+            onClick={() => establecerEsRemitente(true)}
+          >
+            <ion-icon name="person-circle"></ion-icon>
+            Remitentes
+          </button>
+          <button
+            className="ModalSubirArchivo__Contenido--Opciones--Boton"
+            type="button"
+            onClick={() => establecerEsRemitente(false)}
+          >
+            <ion-icon name="location"></ion-icon> Destinatarios
+          </button>
+        </section>
         <h1 className="ModalSubirArchivo__Contenido--Titulo">
-          SUBIR {informacionArchivo.TipoDeArchivo}
+          SELECCIONAR ARCHIVO
         </h1>
         <picture className="ModalSubirArchivo__Contenido--Imagen">
           <img src="SubirExcel.png" alt="Icono de subir excel" />
         </picture>
         <small className="ModalSubirArchivo__Contenido--Texto">
-          Por favor, selecciona un archivo en formato XLSX.
+          Para subir la información de los{" "}
+          {esRemitente ? "REMITENTES" : "DESTINATARIOS"}, debes seleccionar un
+          archivo en formato XLSX.
         </small>
         <label className="ModalSubirArchivo__Contenido--Archivo">
           <input
@@ -135,13 +165,14 @@ export default function ModalSubirArchivo({
             name="Excel"
             onChange={ManejarCambiosEnElArchivo}
           />
-          {hayArchivo ? hayArchivo?.name : "Seleccionar Archivo"}
+          {hayArchivo ? hayArchivo?.name : "Seleccionar"}
         </label>
         {mostrarError && (
           <span className="ModalSubirArchivo__Contenido--Archivo--MensajeDeError">
             ¡Por favor, selecciona un archivo! ⚠️
           </span>
         )}
+
         <button className="ModalSubirArchivo__Contenido--Boton">
           Realizar
         </button>

@@ -46,6 +46,48 @@
   transform: scale(1.1);
   cursor: pointer;
 }
+.ModalSubirArchivo__Contenido--Opciones {
+  grid-column: 1 / -1;
+  display: flex;
+}
+.ModalSubirArchivo__Contenido--Opciones--Boton {
+  width: 100%;
+  min-height: 35px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--ColorNegro);
+  background-color: transparent;
+  border: 2px solid var(--ColorGrisClaro);
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: 0.3s ease-in-out color;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.ModalSubirArchivo__Contenido--Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.ModalSubirArchivo__Contenido--Opciones.Remitentes button:nth-child(1) {
+  border-top: 2px solid var(--ColorGrisClaro);
+  border-right: 2px solid var(--ColorGrisClaro);
+  color: var(--ColorVerde);
+}
+.ModalSubirArchivo__Contenido--Opciones.Remitentes button:nth-child(2) {
+  border-bottom: 2px solid var(--ColorGrisClaro);
+}
+.ModalSubirArchivo__Contenido--Opciones.Destinatarios button:nth-child(1) {
+  border-bottom: 2px solid var(--ColorGrisClaro);
+}
+.ModalSubirArchivo__Contenido--Opciones.Destinatarios button:nth-child(2) {
+  border-top: 2px solid var(--ColorGrisClaro);
+  border-left: 2px solid var(--ColorGrisClaro);
+  color: var(--ColorVerde);
+}
 .ModalSubirArchivo__Contenido--Titulo {
   grid-column: 1 / -1;
   text-align: center;
