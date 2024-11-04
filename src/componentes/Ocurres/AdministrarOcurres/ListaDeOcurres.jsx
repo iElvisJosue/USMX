@@ -148,15 +148,16 @@ export default function ListaDeOcurres({
                 <span className="ListaDeOcurres__Ocurre__Detalles">
                   <ion-icon name="alert-circle"></ion-icon>
                   <p>{infOcurre.NombreOcurre}</p>
-                  <ion-icon name="earth"></ion-icon>
-                  <p>{infOcurre.PaisOcurre}</p>
-                  <ion-icon name="location"></ion-icon>
-                  <p>
-                    {infOcurre.EstadoOcurre}, {infOcurre.CiudadOcurre},{" "}
-                    {infOcurre.DireccionOcurre} {infOcurre.CodigoPostalOcurre}
-                  </p>
                   <ion-icon name="business"></ion-icon>
                   <p>{infOcurre.OperadorLogisticoOcurre}</p>
+                  <ion-icon name="location"></ion-icon>
+                  <p>
+                    {infOcurre.PaisOcurre}
+                    <br />
+                    {infOcurre.EstadoOcurre}, {infOcurre.CiudadOcurre}
+                    <br />
+                    {infOcurre.DireccionOcurre} {infOcurre.CodigoPostalOcurre}
+                  </p>
                 </span>
                 <span className="ListaDeOcurres__Ocurre__Opciones">
                   <button
@@ -189,15 +190,16 @@ export default function ListaDeOcurres({
                 <span className="ListaDeOcurres__Ocurre__Detalles">
                   <ion-icon name="alert-circle"></ion-icon>
                   <p>{infOcurre.NombreOcurre}</p>
-                  <ion-icon name="earth"></ion-icon>
-                  <p>{infOcurre.PaisOcurre}</p>
-                  <ion-icon name="location"></ion-icon>
-                  <p>
-                    {infOcurre.EstadoOcurre}, {infOcurre.CiudadOcurre},{" "}
-                    {infOcurre.DireccionOcurre} {infOcurre.CodigoPostalOcurre}
-                  </p>
                   <ion-icon name="business"></ion-icon>
                   <p>{infOcurre.OperadorLogisticoOcurre}</p>
+                  <ion-icon name="location"></ion-icon>
+                  <p>
+                    {infOcurre.PaisOcurre}
+                    <br />
+                    {infOcurre.EstadoOcurre}, {infOcurre.CiudadOcurre}
+                    <br />
+                    {infOcurre.DireccionOcurre} {infOcurre.CodigoPostalOcurre}
+                  </p>
                 </span>
                 <span className="ListaDeOcurres__Ocurre__Opciones">
                   <button

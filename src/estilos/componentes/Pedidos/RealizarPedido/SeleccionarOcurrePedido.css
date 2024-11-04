@@ -59,8 +59,14 @@
   justify-content: flex-start;
   gap: 10px;
 }
-.SeleccionarOcurrePedido__Campo.Nombre {
+.SeleccionarOcurrePedido__Campo.Dos {
   grid-column: span 2;
+}
+.SeleccionarOcurrePedido__Campo.Tres {
+  grid-column: span 3;
+}
+.SeleccionarOcurrePedido__Campo.Cuatro {
+  grid-column: 1 / -1;
 }
 .SeleccionarOcurrePedido__Campo p {
   display: flex;
@@ -263,16 +269,13 @@
   .SeleccionarOcurrePedido__Buscar {
     grid-column: 1 / -1;
   }
-  .SeleccionarOcurrePedido__Campo.Nombre {
-    grid-column: span 1;
+  .SeleccionarOcurrePedido__Campo.Dos {
+    grid-column: 1 / -1;
   }
 }
 @media (width <= 850px) {
   .SeleccionarOcurrePedido {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .SeleccionarOcurrePedido__Campo.Nombre {
-    grid-column: 1 / -1;
   }
 }
 @media (width <= 500px) {
@@ -300,9 +303,6 @@
 @media (width <= 500px) {
   .SeleccionarOcurrePedido {
     grid-template-columns: 1fr;
-  }
-  .SeleccionarOcurrePedido__Campo.Nombre {
-    grid-column: span 1;
   }
   .SeleccionarOcurrePedido__Footer__Boton {
     width: 100%;

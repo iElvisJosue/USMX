@@ -102,18 +102,17 @@ export default function SeleccionarOcurrePedido({
     // Y PARA QUE NO SE CREE LA UNION CON LA AGENCIA CORRESPONDIENTE
     establecerDestinatario({
       NombreDestinatario: info.NombreDestinatario,
-      ApellidoPaternoDestinatario: info.ApellidoPaternoDestinatario,
-      ApellidoMaternoDestinatario: info.ApellidoMaternoDestinatario,
-      CelularDestinatario: infOcurre.TelefonoOcurre,
-      TelefonoCasaDestinatario: "",
+      ApellidosDestinatario: info.ApellidosDestinatario,
+      TelefonoUnoDestinatario: infOcurre.TelefonoUnoOcurre,
+      TelefonoDosDestinatario: infOcurre.TelefonoDosOcurre,
       CorreoDestinatario: infOcurre.CorreoOcurre,
       PaisDestinatario: infOcurre.PaisOcurre,
       CodigoPaisDestinatario: infOcurre.CodigoPaisOcurre,
       EstadoDestinatario: infOcurre.EstadoOcurre,
+      CodigoEstadoDestinatario: infOcurre.CodigoEstadoOcurre,
       CiudadDestinatario: infOcurre.CiudadOcurre,
       CodigoPostalDestinatario: infOcurre.CodigoPostalOcurre,
       DireccionDestinatario: infOcurre.DireccionOcurre,
-      MunicipioDelegacionDestinatario: infOcurre.MunicipioDelegacionOcurre,
       ReferenciaDestinatario: infOcurre.ReferenciaOcurre,
     });
     toast.success("¡Paso 2 (Destinatario) completado con éxito!", {
@@ -130,7 +129,7 @@ export default function SeleccionarOcurrePedido({
         render={({ messages }) =>
           messages &&
           Object.entries(messages).map(([type, message]) => (
-            <small key={type} className="RegistrarAgencia__MensajeDeError">
+            <small key={type} className="RealizarPedido__MensajeDeError">
               {message}
             </small>
           ))
@@ -163,7 +162,7 @@ export default function SeleccionarOcurrePedido({
         </button>
       </span>
       <h1 className="SeleccionarOcurrePedido__Titulo">Ingresa el nombre</h1>
-      <span className="SeleccionarOcurrePedido__Campo Nombre">
+      <span className="SeleccionarOcurrePedido__Campo Dos">
         <p>
           <ion-icon name="person"></ion-icon>Nombre
         </p>
@@ -179,37 +178,21 @@ export default function SeleccionarOcurrePedido({
         />
         {MensajeError("NombreDestinatario")}
       </span>
-      <span className="SeleccionarOcurrePedido__Campo">
+      <span className="SeleccionarOcurrePedido__Campo Dos">
         <p>
-          <ion-icon name="man"></ion-icon>Apellido paterno
+          <ion-icon name="person"></ion-icon>Apellidos
         </p>
         <input
-          id="ApellidoPaternoDestinatario"
+          id="ApellidosDestinatario"
           type="text"
-          name="ApellidoPaternoDestinatario"
+          name="ApellidosDestinatario"
           placeholder="Escriba aquí..."
-          {...register("ApellidoPaternoDestinatario", {
+          {...register("ApellidosDestinatario", {
             required: "¡Este campo es obligatorio! ⚠️",
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
           })}
         />
-        {MensajeError("ApellidoPaternoDestinatario")}
-      </span>
-      <span className="SeleccionarOcurrePedido__Campo">
-        <p>
-          <ion-icon name="woman"></ion-icon>Apellido materno
-        </p>
-        <input
-          id="ApellidoMaternoDestinatario"
-          type="text"
-          name="ApellidoMaternoDestinatario"
-          placeholder="Escriba aquí..."
-          {...register("ApellidoMaternoDestinatario", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-          })}
-        />
-        {MensajeError("ApellidoMaternoDestinatario")}
+        {MensajeError("ApellidosDestinatario")}
       </span>
       <h1 className="SeleccionarOcurrePedido__Titulo">Seleccionar Ocurre</h1>
       <span className="SeleccionarOcurrePedido__Buscar">
@@ -261,14 +244,14 @@ export default function SeleccionarOcurrePedido({
               >
                 <ion-icon name="alert-circle"></ion-icon>
                 <p>{ocurre.NombreOcurre}</p>
-                <ion-icon name="location"></ion-icon>
-                <p>{ocurre.DireccionOcurre}</p>
-                <p>
-                  {ocurre.CiudadOcurre}, {ocurre.EstadoOcurre}{" "}
-                  {ocurre.CodigoPostalOcurre}
-                </p>
                 <ion-icon name="business"></ion-icon>
                 <p>{ocurre.OperadorLogisticoOcurre}</p>
+                <ion-icon name="location"></ion-icon>
+                <p>
+                  {ocurre.EstadoOcurre}, {ocurre.CiudadOcurre}
+                  <br />
+                  {ocurre.DireccionOcurre} {ocurre.CodigoPostalOcurre}
+                </p>
               </section>
             ))}
           <small className="SeleccionarOcurrePedido__TextoPaginas">

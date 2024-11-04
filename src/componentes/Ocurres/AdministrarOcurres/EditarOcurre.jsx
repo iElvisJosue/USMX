@@ -101,16 +101,13 @@ export default function EditarOcurre({
       "OperadorLogisticoOcurre",
       informacionDelOcurre?.OperadorLogisticoOcurre
     );
-    setValue("TelefonoOcurre", informacionDelOcurre?.TelefonoOcurre);
+    setValue("TelefonoUnoOcurre", informacionDelOcurre?.TelefonoUnoOcurre);
+    setValue("TelefonoDosOcurre", informacionDelOcurre?.TelefonoDosOcurre);
     setValue("CorreoOcurre", informacionDelOcurre?.CorreoOcurre);
     setValue("PaisOcurre", informacionDelOcurre?.PaisOcurre);
     setValue("EstadoOcurre", informacionDelOcurre?.EstadoOcurre);
     setValue("CodigoPostalOcurre", informacionDelOcurre?.CodigoPostalOcurre);
     setValue("DireccionOcurre", informacionDelOcurre?.DireccionOcurre);
-    setValue(
-      "MunicipioDelegacionOcurre",
-      informacionDelOcurre?.MunicipioDelegacionOcurre
-    );
     setValue("ReferenciaOcurre", informacionDelOcurre?.ReferenciaOcurre);
     setValue("ObservacionesOcurre", informacionDelOcurre?.ObservacionesOcurre);
     // ESTABLECEMOS EL NOMBRE DEL PAIS
@@ -239,14 +236,14 @@ export default function EditarOcurre({
       </span>
       <span className="EditarOcurre__Campo">
         <p>
-          <ion-icon name="call"></ion-icon> Teléfono
+          <ion-icon name="call"></ion-icon> Teléfono #1 (Opcional)
         </p>
         <input
-          id="TelefonoOcurre"
+          id="TelefonoUnoOcurre"
           type="text"
-          name="TelefonoOcurre"
+          name="TelefonoUnoOcurre"
           placeholder="Escriba aquí..."
-          {...register("TelefonoOcurre", {
+          {...register("TelefonoUnoOcurre", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
@@ -258,9 +255,32 @@ export default function EditarOcurre({
             },
           })}
         />
-        {MensajeError("TelefonoOcurre")}
+        {MensajeError("TelefonoUnoOcurre")}
       </span>
       <span className="EditarOcurre__Campo">
+        <p>
+          <ion-icon name="call"></ion-icon> Teléfono #2 (Opcional)
+        </p>
+        <input
+          id="TelefonoDosOcurre"
+          type="text"
+          name="TelefonoDosOcurre"
+          placeholder="Escriba aquí..."
+          {...register("TelefonoDosOcurre", {
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+            },
+          })}
+        />
+        {MensajeError("TelefonoDosOcurre")}
+      </span>
+      <span className="EditarOcurre__Campo Dos">
         <p>
           <ion-icon name="mail"></ion-icon> Correo electrónico
         </p>
@@ -348,7 +368,7 @@ export default function EditarOcurre({
       )}
       {ciudadesPorEstado && (
         <>
-          <span className="EditarOcurre__Campo Dos">
+          <span className="EditarOcurre__Campo">
             <p>
               <ion-icon name="locate"></ion-icon> Ciudad
             </p>
@@ -454,24 +474,6 @@ export default function EditarOcurre({
             {MensajeError("DireccionOcurre")}
           </span>
         ))}
-      <span className="EditarOcurre__Campo">
-        <p>
-          <ion-icon name="navigate"></ion-icon> Municipio o delegación
-        </p>
-        <input
-          name="MunicipioDelegacionOcurre"
-          id="MunicipioDelegacionOcurre"
-          placeholder="Escriba aquí..."
-          {...register("MunicipioDelegacionOcurre", {
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            maxLength: {
-              value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-            },
-          })}
-        ></input>
-        {MensajeError("MunicipioDelegacionOcurre")}
-      </span>
       <span className="EditarOcurre__Campo Tres">
         <p>
           <ion-icon name="document-text"></ion-icon> Referencia

@@ -180,14 +180,14 @@ export default function RegistrarOcurre() {
         </span>
         <span className="RegistrarOcurre__InformacionOcurre__Campo">
           <p>
-            <ion-icon name="call"></ion-icon> Teléfono
+            <ion-icon name="call"></ion-icon> Teléfono #1 (Opcional)
           </p>
           <input
-            id="TelefonoOcurre"
+            id="TelefonoUnoOcurre"
             type="text"
-            name="TelefonoOcurre"
+            name="TelefonoUnoOcurre"
             placeholder="Escriba aquí..."
-            {...register("TelefonoOcurre", {
+            {...register("TelefonoUnoOcurre", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
@@ -200,9 +200,33 @@ export default function RegistrarOcurre() {
               },
             })}
           />
-          {MensajeError("TelefonoOcurre")}
+          {MensajeError("TelefonoUnoOcurre")}
         </span>
         <span className="RegistrarOcurre__InformacionOcurre__Campo">
+          <p>
+            <ion-icon name="call"></ion-icon> Teléfono #2 (Opcional)
+          </p>
+          <input
+            id="TelefonoDosOcurre"
+            type="text"
+            name="TelefonoDosOcurre"
+            placeholder="Escriba aquí..."
+            {...register("TelefonoDosOcurre", {
+              pattern: REGEX_SOLO_NUMEROS,
+              maxLength: {
+                value: 10,
+                message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+              },
+              minLength: {
+                value: 10,
+                message:
+                  "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+              },
+            })}
+          />
+          {MensajeError("TelefonoDosOcurre")}
+        </span>
+        <span className="RegistrarOcurre__InformacionOcurre__Campo Dos">
           <p>
             <ion-icon name="mail"></ion-icon> Correo electrónico
           </p>
@@ -289,7 +313,7 @@ export default function RegistrarOcurre() {
         )}
         {ciudadesPorEstado && (
           <>
-            <span className="RegistrarOcurre__InformacionOcurre__Campo Dos">
+            <span className="RegistrarOcurre__InformacionOcurre__Campo">
               <p>
                 <ion-icon name="locate"></ion-icon> Ciudad
               </p>
@@ -400,24 +424,6 @@ export default function RegistrarOcurre() {
               {MensajeError("DireccionOcurre")}
             </span>
           ))}
-        <span className="RegistrarOcurre__InformacionOcurre__Campo">
-          <p>
-            <ion-icon name="navigate"></ion-icon> Municipio o delegación
-          </p>
-          <input
-            name="MunicipioDelegacionOcurre"
-            id="MunicipioDelegacionOcurre"
-            placeholder="Escriba aquí..."
-            {...register("MunicipioDelegacionOcurre", {
-              pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-              maxLength: {
-                value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-              },
-            })}
-          ></input>
-          {MensajeError("MunicipioDelegacionOcurre")}
-        </span>
         <span className="RegistrarOcurre__InformacionOcurre__Campo Tres">
           <p>
             <ion-icon name="document-text"></ion-icon> Referencia
