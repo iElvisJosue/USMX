@@ -163,6 +163,16 @@
   justify-content: center;
   gap: 5px;
 }
+.AdministrarProductosDeLaAgencia__Agencia ion-icon {
+  font-size: 25px;
+}
+.AdministrarProductosDeLaAgencia__Agencia:hover {
+  border: 2px solid var(--ColorVerde);
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+  cursor: pointer;
+  transform: scale(1.02);
+}
 .AdministrarProductosDeLaAgencia__Agencia.Asignadas {
   position: relative;
   border: 2px solid var(--ColorVerde);
@@ -198,13 +208,7 @@
   position: absolute;
   width: 25px;
   height: 25px;
-  bottom: -12.5px;
-  right: calc(50% - 12.5px);
   border-radius: 50%;
-  border: 2px solid var(--ColorNaranja);
-  background-color: var(--ColorNaranja);
-  color: black;
-  font-size: 10px;
   transition: 0.3s ease-in-out all;
 
   display: flex;
@@ -215,16 +219,22 @@
   transform: scale(1.2);
   cursor: pointer;
 }
-.AdministrarProductosDeLaAgencia__Agencia ion-icon {
-  font-size: 25px;
+.AdministrarProductosDeLaAgencia__Agencia__Detalles.Editar {
+  bottom: -12.5px;
+  right: calc(50% + 2.5px);
+  border: 2px solid var(--ColorAzul);
+  background-color: var(--ColorAzul);
+  color: white;
 }
-
-.AdministrarProductosDeLaAgencia__Agencia:hover {
-  border: 2px solid var(--ColorVerde);
-  background-color: var(--ColorVerde);
-  color: var(--ColorBlanco);
-  cursor: pointer;
-  transform: scale(1.02);
+.AdministrarProductosDeLaAgencia__Agencia__Detalles.Informacion {
+  bottom: -12.5px;
+  right: calc(50% - 27.5px);
+  border: 2px solid var(--ColorNaranja);
+  background-color: var(--ColorNaranja);
+  color: black;
+}
+.AdministrarProductosDeLaAgencia__Agencia__Detalles.Editar ion-icon {
+  font-size: 14px !important;
 }
 .AdministrarProductosDeLaAgencia__TextoPaginas {
   grid-column: 1 / -1;

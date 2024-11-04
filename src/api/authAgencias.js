@@ -15,6 +15,9 @@ export const SolicitudBuscarProductosQueNoTieneLaAgencia = (data) =>
 // SOLICITUD PARA ASIGNAR UN PRODUCTO A UNA AGENCIA
 export const SolicitudAsignarProductoAgencia = (data) =>
   axios.post("/agencias/AsignarProductoAgencia", data);
+// SOLICITUD PARA ACTUALIZAR EL PRODUCTO ASIGNADO DE UNA AGENCIA
+export const SolicitudActualizarProductoAgencia = (data) =>
+  axios.put("/agencias/ActualizarProductoAgencia", data);
 // SOLICITUD PARA DESASIGNAR UN PRODUCTO A UNA AGENCIA
 export const SolicitudDesasignarProductoAgencia = (data) =>
   axios.post("/agencias/DesasignarProductoAgencia", data);

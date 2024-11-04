@@ -6,6 +6,7 @@ import {
   SolicitudBuscarProductosQueTieneLaAgencia,
   SolicitudBuscarProductosQueNoTieneLaAgencia,
   SolicitudAsignarProductoAgencia,
+  SolicitudActualizarProductoAgencia,
   SolicitudDesasignarProductoAgencia,
   SolicitudActualizarEstadoAgencia,
   SolicitudActualizarInformacionAgencia,
@@ -66,6 +67,14 @@ export const ProveedorAgencias = ({ children }) => {
       return error;
     }
   };
+  const ActualizarProductoAgencia = async (data) => {
+    try {
+      const res = await SolicitudActualizarProductoAgencia(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
   const DesasignarProductoAgencia = async (data) => {
     try {
       const res = await SolicitudDesasignarProductoAgencia(data);
@@ -117,6 +126,7 @@ export const ProveedorAgencias = ({ children }) => {
         BuscarProductosQueTieneLaAgencia,
         BuscarProductosQueNoTieneLaAgencia,
         AsignarProductoAgencia,
+        ActualizarProductoAgencia,
         DesasignarProductoAgencia,
         ActualizarEstadoAgencia,
         ActualizarInformacionAgencia,

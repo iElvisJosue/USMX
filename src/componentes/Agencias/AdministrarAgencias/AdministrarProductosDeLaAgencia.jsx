@@ -74,7 +74,10 @@ export default function AdministrarProductosDeLaAgencia({
     }
   };
 
-  const MostrarModalYAsignarProducto = (infProducto, Editable) => {
+  const MostrarModalYAsignarProducto = (infProducto, Editable, Actualizar) => {
+    // infProducto.Actualizar ES PARA PODER ACTUALIZAR LA INFORMACION DE UN PRODUCTO ASIGNADO
+    infProducto.Actualizar = Actualizar;
+    // infProducto.Editable ES PARA ASIGNAR UN PRODUCTO A UNA AGENCIA
     infProducto.Editable = Editable;
     establecerMostrarModal(true);
     establecerInformacionDelProducto(infProducto);
@@ -159,8 +162,18 @@ export default function AdministrarProductosDeLaAgencia({
                 <ion-icon name="close"></ion-icon>
               </button>
               <button
-                className="AdministrarProductosDeLaAgencia__Agencia__Detalles"
-                onClick={() => MostrarModalYAsignarProducto(infProducto, false)}
+                className="AdministrarProductosDeLaAgencia__Agencia__Detalles Editar"
+                onClick={() =>
+                  MostrarModalYAsignarProducto(infProducto, true, true)
+                }
+              >
+                <ion-icon name="color-wand"></ion-icon>
+              </button>
+              <button
+                className="AdministrarProductosDeLaAgencia__Agencia__Detalles Informacion"
+                onClick={() =>
+                  MostrarModalYAsignarProducto(infProducto, false, false)
+                }
               >
                 <ion-icon name="information"></ion-icon>
               </button>
@@ -211,7 +224,9 @@ export default function AdministrarProductosDeLaAgencia({
               <section
                 className="AdministrarProductosDeLaAgencia__Agencia"
                 key={index}
-                onClick={() => MostrarModalYAsignarProducto(infProducto, true)}
+                onClick={() =>
+                  MostrarModalYAsignarProducto(infProducto, true, false)
+                }
               >
                 <ion-icon name="basket"></ion-icon>
                 <p>{infProducto.NombreProducto}</p>

@@ -21,7 +21,7 @@ export default function ModalInformacionDelProducto({
   buscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia,
   establecerBuscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia,
 }) {
-  const { AsignarProductoAgencia } = useAgencias();
+  const { AsignarProductoAgencia, ActualizarProductoAgencia } = useAgencias();
   const {
     handleSubmit,
     register,
@@ -71,9 +71,9 @@ export default function ModalInformacionDelProducto({
       );
     }
   }, []);
-  const PeticionAsignarProductoAgencia = handleSubmit(async (data) => {
+  const PeticionAdministrarProductoAgencia = handleSubmit(async (data) => {
     try {
-      const res = await AsignarProductoAgencia({
+      const InfProducto = {
         CookieConToken: COOKIE_CON_TOKEN,
         idAgencia: agencia.idAgencia,
         idProducto: informacionDelProducto.idProducto,
@@ -82,7 +82,14 @@ export default function ModalInformacionDelProducto({
         LibraExtraProducto: data.LibraExtraProducto,
         PesoMaximoProducto: data.PesoMaximoProducto,
         PesoSinCobroProducto: data.PesoSinCobroProducto,
-      });
+        idUnionAgenciasProductos:
+          informacionDelProducto.idUnionAgenciasProductos,
+      };
+      // SI TENEMOS LA PROPIEDAD ACTUALIZAR EN TRUE ES PORQUE VAMOS A ACTUALIZAR LA INFORMACION
+      // DEL PRODUCTO ASIGNADO A LA AGENCIA, DE LO CONTRARIO ES PORQUE VAMOS A ASIGNAR UN PRODUCTO
+      const res = informacionDelProducto.Actualizar
+        ? await ActualizarProductoAgencia(InfProducto)
+        : await AsignarProductoAgencia(InfProducto);
       if (res.response) {
         const { status, data } = res.response;
         ManejarMensajesDeRespuesta({ status, data });
@@ -128,7 +135,7 @@ export default function ModalInformacionDelProducto({
     <div className="ModalInformacionDelProducto">
       <form
         className="ModalInformacionDelProducto__Contenido"
-        onSubmit={PeticionAsignarProductoAgencia}
+        onSubmit={PeticionAdministrarProductoAgencia}
       >
         <button
           type="button"
@@ -215,7 +222,7 @@ export default function ModalInformacionDelProducto({
             type="submit"
             className="ModalInformacionDelProducto__Contenido--Boton"
           >
-            Asignar
+            {informacionDelProducto.Actualizar ? "Actualizar" : "Asignar"}
           </button>
         )}
       </form>
