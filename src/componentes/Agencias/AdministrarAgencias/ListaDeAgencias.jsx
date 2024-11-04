@@ -151,8 +151,11 @@ export default function ListaDeAgencias({
     }
   };
 
-  const EstablecerInformacionParaElTipoDeArchivo = (idAgencia) => {
-    establecerInformacionArchivo({ idAgencia });
+  const EstablecerInformacionParaElTipoDeArchivo = (Agencia) => {
+    establecerInformacionArchivo({
+      idAgencia: Agencia.idAgencia,
+      NombreAgencia: Agencia.NombreAgencia,
+    });
     establecerMostrarModalSubirArchivo(true);
   };
 
@@ -288,9 +291,7 @@ export default function ListaDeAgencias({
                     className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton SubirArchivo"
                     title="Subir Archivo"
                     onClick={() =>
-                      EstablecerInformacionParaElTipoDeArchivo(
-                        infAgencia.idAgencia
-                      )
+                      EstablecerInformacionParaElTipoDeArchivo(infAgencia)
                     }
                   >
                     <p>

@@ -201,6 +201,10 @@
   padding: 10px 0;
   font-weight: bold;
 }
+.ModalSubirArchivo__Contenido--Texto b {
+  text-transform: uppercase;
+  color: var(--ColorVerde);
+}
 .ModalSubirArchivo__Contenido--Archivo {
   grid-column: 1 / -1;
   height: 40px;

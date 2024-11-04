@@ -86,6 +86,7 @@ export default function ModalSubirArchivo({
   };
 
   const ValoresParaLosComponentes = {
+    informacionArchivo,
     esRemitente,
     establecerEsRemitente,
     hayArchivo,

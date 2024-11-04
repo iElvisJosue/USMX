@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 export default function ModalSubirArchivoSeleccionar({
+  informacionArchivo,
   esRemitente,
   establecerEsRemitente,
   hayArchivo,
@@ -37,7 +38,8 @@ export default function ModalSubirArchivoSeleccionar({
       </picture>
       <small className="ModalSubirArchivo__Contenido--Texto">
         Para subir la información de los{" "}
-        {esRemitente ? "REMITENTES" : "DESTINATARIOS"}, debes seleccionar un
+        <b>{esRemitente ? "REMITENTES" : "DESTINATARIOS"}</b> a la agencia{" "}
+        <b>{informacionArchivo.NombreAgencia || "N/A"}</b>, debes seleccionar un
         archivo en formato XLSX.
       </small>
       <label className="ModalSubirArchivo__Contenido--Archivo">
