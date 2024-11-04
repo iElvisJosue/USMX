@@ -74,8 +74,8 @@ export default function RegistrarNuevoRemitentePedido({
     if (remitente?.idRemitente === false) {
       setValue("NombreRemitente", remitente?.NombreRemitente);
       setValue("ApellidosRemitente", remitente?.ApellidosRemitente);
-      setValue("TelefonoCasaRemitente", remitente?.TelefonoCasaRemitente);
-      setValue("CelularRemitente", remitente?.CelularRemitente);
+      setValue("TelefonoUnoRemitente", remitente?.TelefonoUnoRemitente);
+      setValue("TelefonoDosRemitente", remitente?.TelefonoDosRemitente);
       setValue("CorreoRemitente", remitente?.CorreoRemitente);
       setValue("ReferenciaRemitente", remitente?.ReferenciaRemitente);
     }
@@ -199,37 +199,14 @@ export default function RegistrarNuevoRemitentePedido({
       </span>
       <span className="RegistrarNuevoRemitentePedido__Campo">
         <p>
-          <ion-icon name="call"></ion-icon> Teléfono casa
+          <ion-icon name="call"></ion-icon> Teléfono #1
         </p>
         <input
-          id="TelefonoCasaRemitente"
+          id="TelefonoUnoRemitente"
           type="text"
-          name="TelefonoCasaRemitente"
+          name="TelefonoUnoRemitente"
           placeholder="Escriba aquí..."
-          {...register("TelefonoCasaRemitente", {
-            pattern: REGEX_SOLO_NUMEROS,
-            maxLength: {
-              value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-            },
-            minLength: {
-              value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("TelefonoCasaRemitente")}
-      </span>
-      <span className="RegistrarNuevoRemitentePedido__Campo">
-        <p>
-          <ion-icon name="phone-portrait"></ion-icon> Celular
-        </p>
-        <input
-          id="CelularRemitente"
-          type="text"
-          name="CelularRemitente"
-          placeholder="Escriba aquí..."
-          {...register("CelularRemitente", {
+          {...register("TelefonoUnoRemitente", {
             required: "¡Este campo es obligatorio! ⚠️",
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
@@ -242,7 +219,30 @@ export default function RegistrarNuevoRemitentePedido({
             },
           })}
         />
-        {MensajeError("CelularRemitente")}
+        {MensajeError("TelefonoUnoRemitente")}
+      </span>
+      <span className="RegistrarNuevoRemitentePedido__Campo">
+        <p>
+          <ion-icon name="call"></ion-icon> Teléfono #2 (Opcional)
+        </p>
+        <input
+          id="TelefonoDosRemitente"
+          type="text"
+          name="TelefonoDosRemitente"
+          placeholder="Escriba aquí..."
+          {...register("TelefonoDosRemitente", {
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+            },
+          })}
+        />
+        {MensajeError("TelefonoDosRemitente")}
       </span>
       <span className="RegistrarNuevoRemitentePedido__Campo Dos">
         <p>

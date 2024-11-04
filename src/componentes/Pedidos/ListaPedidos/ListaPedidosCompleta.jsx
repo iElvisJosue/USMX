@@ -101,9 +101,7 @@ export default function ListaDePedidosCompleta({
                       {pedido.NombreRemitente} {pedido.ApellidosRemitente}
                     </td>
                     <td>
-                      {pedido.NombreDestinatario}{" "}
-                      {pedido.ApellidoPaternoDestinatario}{" "}
-                      {pedido.ApellidoMaternoDestinatario}
+                      {pedido.NombreDestinatario} {pedido.ApellidosDestinatario}
                     </td>
                     <td>{pedido.NombreAgencia}</td>
                     <td>{pedido.UsuarioResponsablePedido}</td>

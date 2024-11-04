@@ -48,20 +48,19 @@ export default function NumeroDeGuia() {
               Destinatario <br />{" "}
               <b>
                 {informacionGuia[0].NombreDestinatario}{" "}
-                {informacionGuia[0].ApellidoPaternoDestinatario}{" "}
-                {informacionGuia[0].ApellidoMaternoDestinatario}
+                {informacionGuia[0].ApellidosDestinatario}
               </b>
               <br />
               <b>
-                {informacionGuia[0].CelularDestinatario ||
-                informacionGuia[0].TelefonoCasaDestinatario
+                {informacionGuia[0].TelefonoUnoDestinatario ||
+                informacionGuia[0].TelefonoDosDestinatario
                   ? `${
-                      informacionGuia[0].CelularDestinatario
-                        ? informacionGuia[0].CelularDestinatario
+                      informacionGuia[0].TelefonoUnoDestinatario
+                        ? informacionGuia[0].TelefonoUnoDestinatario
                         : ""
                     }${
-                      informacionGuia[0].TelefonoCasaDestinatario
-                        ? ` - ${informacionGuia[0].TelefonoCasaDestinatario}`
+                      informacionGuia[0].TelefonoDosDestinatario
+                        ? ` - ${informacionGuia[0].TelefonoDosDestinatario}`
                         : ""
                     }`
                   : "Teléfono(s): N/A"}
@@ -70,10 +69,6 @@ export default function NumeroDeGuia() {
               <b>
                 {informacionGuia[0].PaisDestinatario}
                 <br />
-                {`${
-                  informacionGuia[0].MunicipioDelegacionDestinatario &&
-                  `${informacionGuia[0].MunicipioDelegacionDestinatario} /`
-                } `}
                 {informacionGuia[0].EstadoDestinatario} /{" "}
                 {informacionGuia[0].CiudadDestinatario}
               </b>

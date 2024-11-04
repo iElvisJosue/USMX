@@ -12,6 +12,8 @@ import {
   SolicitudActualizarInformacionAgencia,
   SolicitudBuscarAgenciasPorFiltro,
   SolicitudCrearYDescargarExcelDeAgencias,
+  SolicitudSubirArchivoRemitentes,
+  SolicitudSubirArchivoDestinatarios,
 } from "../api/authAgencias";
 
 export const AgenciasContext = createContext();
@@ -117,6 +119,22 @@ export const ProveedorAgencias = ({ children }) => {
       return error;
     }
   };
+  const SubirArchivoRemitentes = async (data) => {
+    try {
+      const res = await SolicitudSubirArchivoRemitentes(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const SubirArchivoDestinatarios = async (data) => {
+    try {
+      const res = await SolicitudSubirArchivoDestinatarios(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <AgenciasContext.Provider
@@ -132,6 +150,8 @@ export const ProveedorAgencias = ({ children }) => {
         ActualizarInformacionAgencia,
         BuscarAgenciasPorFiltro,
         CrearYDescargarExcelDeAgencias,
+        SubirArchivoRemitentes,
+        SubirArchivoDestinatarios,
       }}
     >
       {children}

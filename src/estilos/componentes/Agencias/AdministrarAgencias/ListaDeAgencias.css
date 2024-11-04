@@ -230,6 +230,16 @@
   font-size: 18px;
   color: var(--ColorAzul);
 }
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton.Remitentes p ion-icon {
+  font-size: 18px;
+  color: var(--ColorAzul);
+}
+.ListaDeAgencias__Contenedor__Agencia__Opciones--Boton.Destinatarios
+  p
+  ion-icon {
+  font-size: 18px;
+  color: var(--ColorAzul);
+}
 .ListaDeAgencias__Contenedor__Agencia__Opciones--Boton.Desactivar p ion-icon {
   font-size: 18px;
   color: var(--ColorRojo);

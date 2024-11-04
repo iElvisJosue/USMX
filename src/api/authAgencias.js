@@ -35,3 +35,9 @@ export const SolicitudCrearYDescargarExcelDeAgencias = (data) =>
   axios.post("/agencias/CrearYDescargarExcelDeAgencias", data, {
     responseType: "blob",
   });
+// SOLICITUD PARA SUBIR UN ARCHIVO EXCEL DE REMITENTES
+export const SolicitudSubirArchivoRemitentes = (data) =>
+  axios.post("/agencias/SubirArchivoRemitentes", data);
+// SOLICITUD PARA SUBIR UN ARCHIVO EXCEL DE DESTINATARIOS
+export const SolicitudSubirArchivoDestinatarios = (data) =>
+  axios.post("/agencias/SubirArchivoDestinatarios", data);

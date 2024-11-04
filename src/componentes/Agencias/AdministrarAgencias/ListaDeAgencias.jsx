@@ -10,6 +10,7 @@ import { useAgencias } from "../../../context/AgenciasContext";
 import Cargando from "../../Cargando";
 import MensajeGeneral from "../../MensajeGeneral";
 import ModalConfirmacionAgencias from "./ModalConfirmacionAgencias";
+import ModalSubirArchivo from "./ModalSubirArchivo";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarAgenciasPorFiltro from "../../../hooks/useBuscarAgenciasPorFiltro";
@@ -33,6 +34,10 @@ export default function ListaDeAgencias({
   const { CrearYDescargarExcelDeAgencias } = useAgencias();
   const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
     useState(false);
+  const [mostrarModalSubirArchivo, establecerMostrarModalSubirArchivo] =
+    useState(false);
+  const [informacionArchivo, establecerInformacionArchivo] =
+    useState("Remitentes");
   const [activar, establecerActivar] = useState(true);
   const [infAgencia, establecerInfAgencia] = useState(null);
   const {
@@ -147,6 +152,17 @@ export default function ListaDeAgencias({
     }
   };
 
+  const EstablecerInformacionParaElTipoDeArchivo = (
+    TipoDeArchivo,
+    idAgencia
+  ) => {
+    establecerInformacionArchivo({
+      TipoDeArchivo,
+      idAgencia,
+    });
+    establecerMostrarModalSubirArchivo(true);
+  };
+
   if (cargandoAgencias) return <Cargando />;
 
   return (
@@ -161,6 +177,14 @@ export default function ListaDeAgencias({
           obtenerAgenciasNuevamente={obtenerAgenciasNuevamente}
           establecerObtenerAgenciasNuevamente={
             establecerObtenerAgenciasNuevamente
+          }
+        />
+      )}
+      {mostrarModalSubirArchivo && (
+        <ModalSubirArchivo
+          informacionArchivo={informacionArchivo}
+          establecerMostrarModalSubirArchivo={
+            establecerMostrarModalSubirArchivo
           }
         />
       )}
@@ -258,7 +282,7 @@ export default function ListaDeAgencias({
                   </button>
                   <button
                     className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Editar"
-                    title="Editar agencia"
+                    title="Editar Agencia"
                     onClick={() =>
                       EstablecerInformacionDeLaAgenciaAEditar(infAgencia)
                     }
@@ -267,11 +291,39 @@ export default function ListaDeAgencias({
                       <ion-icon name="create"></ion-icon>
                     </p>
                   </button>
+                  <button
+                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Remitentes"
+                    title="Subir Remitentes"
+                    onClick={() =>
+                      EstablecerInformacionParaElTipoDeArchivo(
+                        "Remitentes",
+                        infAgencia.idAgencia
+                      )
+                    }
+                  >
+                    <p>
+                      <ion-icon name="person-circle"></ion-icon>
+                    </p>
+                  </button>
+                  <button
+                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Destinatarios"
+                    title="Subir Destinatarios"
+                    onClick={() =>
+                      EstablecerInformacionParaElTipoDeArchivo(
+                        "Destinatarios",
+                        infAgencia.idAgencia
+                      )
+                    }
+                  >
+                    <p>
+                      <ion-icon name="location"></ion-icon>
+                    </p>
+                  </button>
                   {infAgencia.NombreAgencia !== "USMX Express" && (
                     <button
                       className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Desactivar"
                       onClick={() => MostrarModalDesactivar(infAgencia)}
-                      title="Desactivar agencia"
+                      title="Desactivar Agencia"
                     >
                       <p>
                         <ion-icon name="ban"></ion-icon>
@@ -303,7 +355,7 @@ export default function ListaDeAgencias({
                   <button
                     className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Activar"
                     onClick={() => MostrarModalActivar(infAgencia)}
-                    title="Activar agencia"
+                    title="Activar Agencia"
                   >
                     <p>
                       <ion-icon name="power"></ion-icon>

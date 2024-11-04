@@ -142,14 +142,16 @@ export default function SeleccionarDestinatarioPedido({
                 <ion-icon name="person-circle"></ion-icon>
                 <p>
                   {destinatario.NombreDestinatario}{" "}
-                  {destinatario.ApellidoPaternoDestinatario}{" "}
-                  {destinatario.ApellidoMaternoDestinatario}
+                  {destinatario.ApellidosDestinatario}
                 </p>
                 <ion-icon name="location"></ion-icon>
-                <p>{destinatario.DireccionDestinatario}</p>
                 <p>
-                  {destinatario.CiudadDestinatario},{" "}
-                  {destinatario.EstadoDestinatario}{" "}
+                  {destinatario.PaisDestinatario}
+                  <br />
+                  {destinatario.EstadoDestinatario},{" "}
+                  {destinatario.CiudadDestinatario}
+                  <br />
+                  {destinatario.DireccionDestinatario}
                   {destinatario.CodigoPostalDestinatario}
                 </p>
               </section>

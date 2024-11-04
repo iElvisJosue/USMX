@@ -135,9 +135,12 @@ export default function SeleccionarRemitente({
                   {remitente.NombreRemitente} {remitente.ApellidosRemitente}
                 </p>
                 <ion-icon name="location"></ion-icon>
-                <p>{remitente.DireccionRemitente}</p>
                 <p>
-                  {remitente.CiudadRemitente}, {remitente.EstadoRemitente}{" "}
+                  {remitente.PaisRemitente}
+                  <br />
+                  {remitente.EstadoRemitente}, {remitente.CiudadRemitente}
+                  <br />
+                  {remitente.DireccionRemitente}
                   {remitente.CodigoPostalRemitente}
                 </p>
               </section>

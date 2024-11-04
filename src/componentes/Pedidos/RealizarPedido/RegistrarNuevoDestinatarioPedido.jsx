@@ -73,24 +73,16 @@ export default function RegistrarNuevoDestinatarioPedido({
   useEffect(() => {
     if (destinatario?.idDestinatario === false) {
       setValue("NombreDestinatario", destinatario?.NombreDestinatario);
+      setValue("ApellidosDestinatario", destinatario?.ApellidosDestinatario);
       setValue(
-        "ApellidoPaternoDestinatario",
-        destinatario?.ApellidoPaternoDestinatario
+        "TelefonoUnoDestinatario",
+        destinatario?.TelefonoUnoDestinatario
       );
       setValue(
-        "ApellidoMaternoDestinatario",
-        destinatario?.ApellidoMaternoDestinatario
+        "TelefonoDosDestinatario",
+        destinatario?.TelefonoDosDestinatario
       );
-      setValue(
-        "TelefonoCasaDestinatario",
-        destinatario?.TelefonoCasaDestinatario
-      );
-      setValue("CelularDestinatario", destinatario?.CelularDestinatario);
       setValue("CorreoDestinatario", destinatario?.CorreoDestinatario);
-      setValue(
-        "MunicipioDelegacionDestinatario",
-        destinatario?.MunicipioDelegacionDestinatario
-      );
       setValue("ReferenciaDestinatario", destinatario?.ReferenciaDestinatario);
     }
   }, []);
@@ -198,13 +190,13 @@ export default function RegistrarNuevoDestinatarioPedido({
       </span>
       <span className="RegistrarNuevoDestinatarioPedido__Campo">
         <p>
-          <ion-icon name="man"></ion-icon> Apellido paterno
+          <ion-icon name="person"></ion-icon> Apellidos
         </p>
         <input
-          name="ApellidoPaternoDestinatario"
-          id="ApellidoPaternoDestinatario"
+          name="ApellidosDestinatario"
+          id="ApellidosDestinatario"
           placeholder="Escriba aquí..."
-          {...register("ApellidoPaternoDestinatario", {
+          {...register("ApellidosDestinatario", {
             required: "¡Este campo es obligatorio! ⚠️",
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
@@ -213,58 +205,17 @@ export default function RegistrarNuevoDestinatarioPedido({
             },
           })}
         ></input>
-        {MensajeError("ApellidoPaternoDestinatario")}
+        {MensajeError("ApellidosDestinatario")}
       </span>
       <span className="RegistrarNuevoDestinatarioPedido__Campo">
         <p>
-          <ion-icon name="woman"></ion-icon> Apellido materno
+          <ion-icon name="call"></ion-icon> Teléfono #1
         </p>
         <input
-          name="ApellidoMaternoDestinatario"
-          id="ApellidoMaternoDestinatario"
+          name="TelefonoUnoDestinatario"
+          id="TelefonoUnoDestinatario"
           placeholder="Escriba aquí..."
-          {...register("ApellidoMaternoDestinatario", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            maxLength: {
-              value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-            },
-          })}
-        ></input>
-        {MensajeError("ApellidoMaternoDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedido__Campo">
-        <p>
-          <ion-icon name="call"></ion-icon> Teléfono casa
-        </p>
-        <input
-          name="TelefonoCasaDestinatario"
-          id="TelefonoCasaDestinatario"
-          placeholder="Escriba aquí..."
-          {...register("TelefonoCasaDestinatario", {
-            pattern: REGEX_SOLO_NUMEROS,
-            maxLength: {
-              value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-            },
-            minLength: {
-              value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
-            },
-          })}
-        ></input>
-        {MensajeError("TelefonoCasaDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedido__Campo">
-        <p>
-          <ion-icon name="phone-portrait"></ion-icon> Celular
-        </p>
-        <input
-          name="CelularDestinatario"
-          id="CelularDestinatario"
-          placeholder="Escriba aquí..."
-          {...register("CelularDestinatario", {
+          {...register("TelefonoUnoDestinatario", {
             required: "¡Este campo es obligatorio! ⚠️",
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
@@ -277,9 +228,31 @@ export default function RegistrarNuevoDestinatarioPedido({
             },
           })}
         ></input>
-        {MensajeError("CelularDestinatario")}
+        {MensajeError("TelefonoUnoDestinatario")}
       </span>
       <span className="RegistrarNuevoDestinatarioPedido__Campo">
+        <p>
+          <ion-icon name="call"></ion-icon> Teléfono #2 (Opcional)
+        </p>
+        <input
+          name="TelefonoDosDestinatario"
+          id="TelefonoDosDestinatario"
+          placeholder="Escriba aquí..."
+          {...register("TelefonoDosDestinatario", {
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+            },
+          })}
+        ></input>
+        {MensajeError("TelefonoDosDestinatario")}
+      </span>
+      <span className="RegistrarNuevoDestinatarioPedido__Campo Dos">
         <p>
           <ion-icon name="mail"></ion-icon> Correo electrónico
         </p>
@@ -473,25 +446,7 @@ export default function RegistrarNuevoDestinatarioPedido({
             {MensajeError("DireccionDestinatario")}
           </span>
         ))}
-      <span className="RegistrarNuevoDestinatarioPedido__Campo">
-        <p>
-          <ion-icon name="navigate"></ion-icon> Municipio o delegación
-        </p>
-        <input
-          name="MunicipioDelegacionDestinatario"
-          id="MunicipioDelegacionDestinatario"
-          placeholder="Escriba aquí..."
-          {...register("MunicipioDelegacionDestinatario", {
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            maxLength: {
-              value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-            },
-          })}
-        ></input>
-        {MensajeError("MunicipioDelegacionDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedido__Campo Dos">
+      <span className="RegistrarNuevoDestinatarioPedido__Campo Tres">
         <p>
           <ion-icon name="document-text"></ion-icon> Referencia
         </p>
