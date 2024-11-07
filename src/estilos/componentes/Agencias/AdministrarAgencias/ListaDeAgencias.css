@@ -182,13 +182,13 @@
   justify-content: space-between;
 }
 .ListaDeAgencias__Contenedor__Agencia.Desactivada {
-  background-color: var(--ColorRojo);
-  color: var(--ColorBlanco);
+  color: var(--ColorRojo);
 }
 .ListaDeAgencias__Contenedor__Agencia ion-icon {
   font-size: 25px;
 }
 .ListaDeAgencias__Contenedor__Agencia__Detalles {
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 10px;
@@ -198,6 +198,52 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+.ListaDeAgencias__Contenedor__Agencia__Detalles--Activa {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  min-width: 40px;
+  min-height: 25px;
+  border-radius: 15px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ListaDeAgencias__Contenedor__Agencia__Detalles--Activa.No {
+  background-color: var(--ColorRojo);
+}
+.ListaDeAgencias__Contenedor__Agencia__Detalles--Activa.Si {
+  background-color: var(--ColorVerde);
+}
+.ListaDeAgencias__Contenedor__Agencia__Detalles--Activa button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ListaDeAgencias__Contenedor__Agencia__Detalles--Activa.Si button {
+  transform: translateX(8px);
+}
+.ListaDeAgencias__Contenedor__Agencia__Detalles--Activa.Si button ion-icon {
+  color: var(--ColorVerde);
+}
+.ListaDeAgencias__Contenedor__Agencia__Detalles--Activa.No button {
+  transform: translateX(-8px);
+}
+.ListaDeAgencias__Contenedor__Agencia__Detalles--Activa.No button ion-icon {
+  color: var(--ColorRojo);
+}
+.ListaDeAgencias__Contenedor__Agencia__Detalles--Activa button ion-icon {
+  font-size: 10px;
 }
 .ListaDeAgencias__Contenedor__Agencia__Opciones {
   width: 100%;

@@ -9,7 +9,6 @@ import { useAgencias } from "../../../context/AgenciasContext";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../../Cargando";
 import MensajeGeneral from "../../MensajeGeneral";
-import ModalConfirmacionAgencias from "./ModalConfirmacionAgencias";
 import ModalSubirArchivo from "./ModalSubirArchivo";
 
 // IMPORTAMOS LOS HOOKS A USAR
@@ -31,14 +30,11 @@ export default function ListaDeAgencias({
   establecerVista,
   establecerInformacionDeLaAgencia,
 }) {
-  const { CrearYDescargarExcelDeAgencias } = useAgencias();
-  const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
-    useState(false);
+  const { CrearYDescargarExcelDeAgencias, ActualizarEstadoAgencia } =
+    useAgencias();
   const [mostrarModalSubirArchivo, establecerMostrarModalSubirArchivo] =
     useState(false);
   const [informacionArchivo, establecerInformacionArchivo] = useState(null);
-  const [activar, establecerActivar] = useState(true);
-  const [infAgencia, establecerInfAgencia] = useState(null);
   const {
     agencias,
     cargandoAgencias,
@@ -75,15 +71,25 @@ export default function ListaDeAgencias({
       reiniciarValores();
     }
   };
-  const MostrarModalActivar = (infAgencia) => {
-    establecerInfAgencia(infAgencia);
-    establecerActivar(true);
-    establecerMostrarModalConfirmacion(true);
-  };
-  const MostrarModalDesactivar = (infAgencia) => {
-    establecerInfAgencia(infAgencia);
-    establecerActivar(false);
-    establecerMostrarModalConfirmacion(true);
+  const ActivarDesactivarAgencia = async (idAgencia, EstadoAgenciaParaBD) => {
+    try {
+      const res = await ActualizarEstadoAgencia({
+        idAgencia: idAgencia,
+        StatusAgencia: EstadoAgenciaParaBD,
+        CookieConToken: COOKIE_CON_TOKEN,
+      });
+      if (res.response) {
+        const { status, data } = res.response;
+        ManejarMensajesDeRespuesta({ status, data });
+      } else {
+        const { status, data } = res;
+        ManejarMensajesDeRespuesta({ status, data });
+      }
+      establecerObtenerAgenciasNuevamente(!obtenerAgenciasNuevamente);
+    } catch (error) {
+      const { status, data } = error.response;
+      ManejarMensajesDeRespuesta({ status, data });
+    }
   };
   const EstablecerInformacionDeLaAgenciaSeleccionada = (infAgencia) => {
     establecerInformacionDeLaAgencia(infAgencia);
@@ -163,19 +169,6 @@ export default function ListaDeAgencias({
 
   return (
     <div className="ListaDeAgencias">
-      {mostrarModalConfirmacion && (
-        <ModalConfirmacionAgencias
-          Activar={activar}
-          infAgencia={infAgencia}
-          establecerMostrarModalConfirmacion={
-            establecerMostrarModalConfirmacion
-          }
-          obtenerAgenciasNuevamente={obtenerAgenciasNuevamente}
-          establecerObtenerAgenciasNuevamente={
-            establecerObtenerAgenciasNuevamente
-          }
-        />
-      )}
       {mostrarModalSubirArchivo && (
         <ModalSubirArchivo
           informacionArchivo={informacionArchivo}
@@ -241,29 +234,63 @@ export default function ListaDeAgencias({
               </button>
             )}
           </div>
-          {agencias.slice(indiceInicial, indiceFinal).map((infAgencia) =>
-            infAgencia.StatusAgencia === "Activa" ? (
-              <section
-                className="ListaDeAgencias__Contenedor__Agencia"
-                key={infAgencia.idAgencia}
-              >
-                <span className="ListaDeAgencias__Contenedor__Agencia__Detalles">
-                  <ion-icon name="business"></ion-icon>
-                  <p>
-                    {infAgencia.idEspecial}
-                    <br /> {infAgencia.NombreAgencia}
-                  </p>
-                  <ion-icon name="earth"></ion-icon>
-                  <p>{infAgencia.PaisAgencia}</p>
-                  <ion-icon name="location"></ion-icon>
-                  <p>
-                    {infAgencia.EstadoAgencia}, {infAgencia.CiudadAgencia}
-                  </p>
-                  <p>
-                    {infAgencia.DireccionAgencia}{" "}
-                    {infAgencia.CodigoPostalAgencia}
-                  </p>
-                </span>
+          {agencias.slice(indiceInicial, indiceFinal).map((infAgencia) => (
+            <section
+              className={`ListaDeAgencias__Contenedor__Agencia ${
+                infAgencia.StatusAgencia !== "Activa" && "Desactivada"
+              }`}
+              key={infAgencia.idAgencia}
+            >
+              <span className="ListaDeAgencias__Contenedor__Agencia__Detalles">
+                <ion-icon name="business"></ion-icon>
+                <p>
+                  {infAgencia.idEspecial}
+                  <br /> {infAgencia.NombreAgencia}
+                </p>
+                <ion-icon name="earth"></ion-icon>
+                <p>{infAgencia.PaisAgencia}</p>
+                <ion-icon name="location"></ion-icon>
+                <p>
+                  {infAgencia.EstadoAgencia}, {infAgencia.CiudadAgencia}
+                </p>
+                <p>
+                  {infAgencia.DireccionAgencia} {infAgencia.CodigoPostalAgencia}
+                </p>
+                {infAgencia.NombreAgencia !== "USMX Express" && (
+                  <span
+                    className={`ListaDeAgencias__Contenedor__Agencia__Detalles--Activa ${
+                      infAgencia.StatusAgencia === "Activa" ? "Si" : "No"
+                    }`}
+                  >
+                    {infAgencia.StatusAgencia === "Activa" ? (
+                      <button
+                        title="Desactivar Agencia"
+                        onClick={() =>
+                          ActivarDesactivarAgencia(
+                            infAgencia.idAgencia,
+                            "Desactivada"
+                          )
+                        }
+                      >
+                        <ion-icon name="business"></ion-icon>
+                      </button>
+                    ) : (
+                      <button
+                        title="Activar Agencia"
+                        onClick={() =>
+                          ActivarDesactivarAgencia(
+                            infAgencia.idAgencia,
+                            "Activa"
+                          )
+                        }
+                      >
+                        <ion-icon name="ban"></ion-icon>
+                      </button>
+                    )}
+                  </span>
+                )}
+              </span>
+              {infAgencia.StatusAgencia === "Activa" && (
                 <span className="ListaDeAgencias__Contenedor__Agencia__Opciones">
                   <button
                     className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Administrar"
@@ -298,52 +325,10 @@ export default function ListaDeAgencias({
                       <ion-icon name="document-attach"></ion-icon>
                     </p>
                   </button>
-                  {infAgencia.NombreAgencia !== "USMX Express" && (
-                    <button
-                      className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Desactivar"
-                      onClick={() => MostrarModalDesactivar(infAgencia)}
-                      title="Desactivar Agencia"
-                    >
-                      <p>
-                        <ion-icon name="ban"></ion-icon>
-                      </p>
-                    </button>
-                  )}
                 </span>
-              </section>
-            ) : (
-              <section
-                className="ListaDeAgencias__Contenedor__Agencia Desactivada"
-                key={infAgencia.idAgencia}
-              >
-                <span className="ListaDeAgencias__Contenedor__Agencia__Detalles">
-                  <ion-icon name="business"></ion-icon>
-                  <p>{infAgencia.NombreAgencia}</p>
-                  <ion-icon name="earth"></ion-icon>
-                  <p>{infAgencia.PaisAgencia}</p>
-                  <ion-icon name="location"></ion-icon>
-                  <p>
-                    {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}
-                  </p>
-                  <p>
-                    {infAgencia.DireccionAgencia}{" "}
-                    {infAgencia.CodigoPostalAgencia}
-                  </p>
-                </span>
-                <span className="ListaDeAgencias__Contenedor__Agencia__Opciones">
-                  <button
-                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Activar"
-                    onClick={() => MostrarModalActivar(infAgencia)}
-                    title="Activar Agencia"
-                  >
-                    <p>
-                      <ion-icon name="power"></ion-icon>
-                    </p>
-                  </button>
-                </span>
-              </section>
-            )
-          )}
+              )}
+            </section>
+          ))}
           <small className="ListaDeAgencias__Contenedor__TextoPaginas">
             Página {paginaParaMostrar} de {cantidadDePaginas}
           </small>

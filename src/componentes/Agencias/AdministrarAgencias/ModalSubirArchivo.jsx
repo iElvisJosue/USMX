@@ -74,6 +74,8 @@ export default function ModalSubirArchivo({
         : await SubirArchivoDestinatarios(formData);
       if (res.response) {
         establecerContenidoModal(2);
+        establecerHayArchivo(null);
+        establecerMostrarError(false);
       } else {
         establecerContenidoModal(1);
         establecerHayArchivo(null);
