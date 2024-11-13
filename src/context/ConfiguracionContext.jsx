@@ -13,6 +13,7 @@ import {
   SolicitudBuscarEstadosPorFiltro,
   SolicitudBuscarCiudadesPorFiltro,
   SolicitudBuscarColoniasPorFiltro,
+  SolicitudObtenerApiGoogleMapsAutoCompletado,
 } from "../api/authConfiguracion";
 import { useGlobal } from "./GlobalContext";
 
@@ -162,6 +163,15 @@ export const ProveedorConfiguracion = ({ children }) => {
     }
   };
 
+  const ObtenerApiGoogleMapsAutoCompletado = async (data) => {
+    try {
+      const res = await SolicitudObtenerApiGoogleMapsAutoCompletado(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+
   return (
     <ConfiguracionContext.Provider
       value={{
@@ -179,6 +189,7 @@ export const ProveedorConfiguracion = ({ children }) => {
         BuscarEstadosPorFiltro,
         BuscarCiudadesPorFiltro,
         BuscarColoniasPorFiltro,
+        ObtenerApiGoogleMapsAutoCompletado,
       }}
     >
       {children}

@@ -40,3 +40,10 @@ export const SolicitudBuscarCiudadesPorFiltro = (data) =>
 // PETICIÓN PARA BUSCAR LAS COLONIAS POR FILTRO
 export const SolicitudBuscarColoniasPorFiltro = (data) =>
   axios.post("/configuracion/BuscarColoniasPorFiltro", data);
+// PETICIÓN PARA OBTENER LA API DE GOOGLE MAPS AUTO COMPLETADO
+export const SolicitudObtenerApiGoogleMapsAutoCompletado = ({
+  CookieConToken,
+}) =>
+  axios.get(
+    `/configuracion/ObtenerApiGoogleMapsAutoCompletado/${CookieConToken}`
+  );

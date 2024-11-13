@@ -13,6 +13,7 @@ import { toast } from "sonner";
 import AgenciaSeleccionadaPedido from "./AgenciaSeleccionadaPedido";
 
 // IMPORTAMOS LOS HOOKS A USAR
+import useObtenerApiGoogleMapsAutoCompletado from "../../../hooks/useObtenerApiGoogleMapsAutoCompletado";
 // import useObtenerPaisesActivos from "../../../hooks/useObtenerPaisesActivos";
 // import useObtenerEstadosPorCodigoDelPais from "../../../hooks/useObtenerEstadosPorCodigoDelPais";
 // import useObtenerCiudadesPorEstado from "../../../hooks/useObtenerCiudadesPorEstado";
@@ -51,8 +52,9 @@ export default function RegistrarNuevoRemitentePedido({
     criteriaMode: "all",
   });
 
-  // IMPORTAMOS EL API KEY DE GOOGLE MAPS
-  const API_KEY = "AIzaSyB0EN7W2fXb7EFFuh4ev9ma8-d7ec5vPRc";
+  const { apiGoogleMapsAutoCompletado } =
+    useObtenerApiGoogleMapsAutoCompletado();
+  console.log(apiGoogleMapsAutoCompletado);
 
   useEffect(() => {
     if (remitente?.idRemitente === false) {
@@ -343,21 +345,26 @@ export default function RegistrarNuevoRemitentePedido({
         />
         {MensajeError("CorreoRemitente")}
       </span>
-      <span className="RegistrarNuevoRemitentePedido__Campo Tres LoadScript">
-        <p>
-          <ion-icon name="location"></ion-icon> Dirección
-        </p>
-        <LoadScript googleMapsApiKey={API_KEY} libraries={["places"]}>
-          <GooglePlacesAutocomplete
-            apiKey={API_KEY}
-            selectProps={{
-              value: direccion,
-              onChange: manejarDireccion,
-              placeholder: "Escribe la dirección...",
-            }}
-          />
-        </LoadScript>
-      </span>
+      {apiGoogleMapsAutoCompletado && (
+        <span className="RegistrarNuevoRemitentePedido__Campo Tres LoadScript">
+          <p>
+            <ion-icon name="location"></ion-icon> Dirección
+          </p>
+          <LoadScript
+            googleMapsApiKey={apiGoogleMapsAutoCompletado}
+            libraries={["places"]}
+          >
+            <GooglePlacesAutocomplete
+              apiKey={apiGoogleMapsAutoCompletado}
+              selectProps={{
+                value: direccion,
+                onChange: manejarDireccion,
+                placeholder: "Escribe la dirección...",
+              }}
+            />
+          </LoadScript>
+        </span>
+      )}
       {detallesDeLaDireccion.PAIS_REMITENTE && (
         <div className="RegistrarNuevoRemitentePedido__DetallesDireccion">
           <p>Detalles de la dirección</p>
