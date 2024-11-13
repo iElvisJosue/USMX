@@ -174,7 +174,7 @@ export default function EditarOcurre({
     establecerDireccion,
     detallesDeLaDireccion,
     establecerDetallesDeLaDireccion,
-    ciudadesPermitidas: ["us", "mx"],
+    ciudadesPermitidas: ["mx"],
   };
 
   // const EstablecerCodigoPais = (InfPais) => {

@@ -141,7 +141,7 @@ export default function RegistrarOcurre() {
     establecerDireccion,
     detallesDeLaDireccion,
     establecerDetallesDeLaDireccion,
-    ciudadesPermitidas: ["us", "mx"],
+    ciudadesPermitidas: ["mx"],
   };
 
   const MensajeError = (nombreCampo) => {
