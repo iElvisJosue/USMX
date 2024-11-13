@@ -3,15 +3,19 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useOcurre } from "../../../context/OcurreContext";
 
+// IMPORTAMOS LOS COMPONENTES A USAR
+import GoogleAPI from "../../GoogleAPI";
+
 // IMPORTAMOS LOS HOOKS A USAR
-import useObtenerPaisesActivos from "../../../hooks/useObtenerPaisesActivos";
-import useObtenerEstadosPorCodigoDelPais from "../../../hooks/useObtenerEstadosPorCodigoDelPais";
-import useObtenerCiudadesPorEstado from "../../../hooks/useObtenerCiudadesPorEstado";
-import useObtenerColoniasPorCP from "../../../hooks/useObtenerColoniasPorCP";
+// import useObtenerPaisesActivos from "../../../hooks/useObtenerPaisesActivos";
+// import useObtenerEstadosPorCodigoDelPais from "../../../hooks/useObtenerEstadosPorCodigoDelPais";
+// import useObtenerCiudadesPorEstado from "../../../hooks/useObtenerCiudadesPorEstado";
+// import useObtenerColoniasPorCP from "../../../hooks/useObtenerColoniasPorCP";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -21,6 +25,7 @@ import {
   REGEX_SOLO_NUMEROS,
   REGEX_CORREO,
 } from "../../../helpers/Regexs";
+import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS A USAR (ESTILOS REUTILIZADOS)
 import "../../../estilos/componentes/Ocurres/AdministrarOcurres/EditarOcurre.css";
@@ -29,71 +34,82 @@ export default function EditarOcurre({
   informacionDelOcurre,
   establecerVistaOcurres,
 }) {
+  // ESTADOS AQUI
+  const [direccion, establecerDireccion] = useState(null);
+  const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] = useState({
+    PAIS: informacionDelOcurre.PaisOcurre,
+    CODIGO_PAIS: informacionDelOcurre.CodigoPaisOcurre,
+    ESTADO: informacionDelOcurre.EstadoOcurre,
+    CODIGO_ESTADO: informacionDelOcurre.CodigoEstadoOcurre,
+    CIUDAD: informacionDelOcurre.CiudadOcurre,
+    CODIGO_POSTAL: informacionDelOcurre.CodigoPostalOcurre,
+    DIRECCION: informacionDelOcurre.DireccionOcurre,
+  });
   const { ActualizarInformacionOcurre } = useOcurre();
-  // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCIÓN
-  const [codigoDelPaisSeleccionado, establecerCodigoDelPaisSeleccionado] =
-    useState(informacionDelOcurre.CodigoPaisOcurre);
-  const [paisSeleccionado, establecerPaisSeleccionado] = useState(null);
+  // // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCIÓN
+  // const [codigoDelPaisSeleccionado, establecerCodigoDelPaisSeleccionado] =
+  //   useState(informacionDelOcurre.CodigoPaisOcurre);
+  // const [paisSeleccionado, establecerPaisSeleccionado] = useState(null);
 
-  const [idEstado, establecerIdEstado] = useState(null);
-  const [cpColonia, establecerCpColonia] = useState(
-    informacionDelOcurre.CodigoPostalOcurre
-  );
-  // ESTE ESTADO ES PARA NO MOSTRAR UN CAMPO EN BLANCO A LA HORA DE ITERAR
-  // MUCHO CON LA COLONIA Y EL CP
-  const [coloniaSeleccionada, establecerColoniaSeleccionada] = useState(
-    informacionDelOcurre.DireccionOcurre
-  );
-  // ESTE ESTADO ES PARA CAMBIAR EL VALOR DE LA COLONIA POR DEFECTO DE LA BD
-  const [cambiarValorDeLaColonia, establecerCambiarValorDeLaColonia] =
-    useState(false);
-  // ESTE ESTADO ES PARA CAMBIAR EL VALOR DE LA CIUDAD POR DEFECTO DE LA BD
-  const [cambiarValorDeLaCiudad, establecerCambiarValorDeLaCiudad] =
-    useState(false);
+  // const [idEstado, establecerIdEstado] = useState(null);
+  // const [cpColonia, establecerCpColonia] = useState(
+  //   informacionDelOcurre.CodigoPostalOcurre
+  // );
+  // // ESTE ESTADO ES PARA NO MOSTRAR UN CAMPO EN BLANCO A LA HORA DE ITERAR
+  // // MUCHO CON LA COLONIA Y EL CP
+  // const [coloniaSeleccionada, establecerColoniaSeleccionada] = useState(
+  //   informacionDelOcurre.DireccionOcurre
+  // );
+  // // ESTE ESTADO ES PARA CAMBIAR EL VALOR DE LA COLONIA POR DEFECTO DE LA BD
+  // const [cambiarValorDeLaColonia, establecerCambiarValorDeLaColonia] =
+  //   useState(false);
+  // // ESTE ESTADO ES PARA CAMBIAR EL VALOR DE LA CIUDAD POR DEFECTO DE LA BD
+  // const [cambiarValorDeLaCiudad, establecerCambiarValorDeLaCiudad] =
+  //   useState(false);
 
-  const { paises } = useObtenerPaisesActivos();
-  const { estadosPorCodigoDelPais } = useObtenerEstadosPorCodigoDelPais(
-    codigoDelPaisSeleccionado
-  );
-  const { ciudadesPorEstado } = useObtenerCiudadesPorEstado(idEstado);
-  const { coloniasPorCP } = useObtenerColoniasPorCP(
-    cpColonia,
-    paisSeleccionado
-  );
+  // const { paises } = useObtenerPaisesActivos();
+  // const { estadosPorCodigoDelPais } = useObtenerEstadosPorCodigoDelPais(
+  //   codigoDelPaisSeleccionado
+  // );
+  // const { ciudadesPorEstado } = useObtenerCiudadesPorEstado(idEstado);
+  // const { coloniasPorCP } = useObtenerColoniasPorCP(
+  //   cpColonia,
+  //   paisSeleccionado
+  // );
   const {
     handleSubmit,
     register,
     setValue,
-    reset,
+    // reset,
     formState: { errors },
   } = useForm({
     criteriaMode: "all",
   });
 
   // CAMBIAMOS LA COLONIA SELECCIONADA POR DEFECTO UNICAMENTE CUANDO SE CAMBIA EL CP
-  useEffect(() => {
-    if (coloniasPorCP?.length > 0 && cambiarValorDeLaColonia) {
-      establecerColoniaSeleccionada(coloniasPorCP[0].NombreColonia);
-    }
-  }, [coloniasPorCP, cpColonia]);
+  // useEffect(() => {
+  //   if (coloniasPorCP?.length > 0 && cambiarValorDeLaColonia) {
+  //     establecerColoniaSeleccionada(coloniasPorCP[0].NombreColonia);
+  //   }
+  // }, [coloniasPorCP, cpColonia]);
 
   // ESTE USE EFFECT SE ENCARGA DE ESTABLECER EL ID DEL ESTADO
   // PERO PRIMERO NOS DEBEMOS ASEGURAR DE QUE LOS ESTADOS HAYAN CARGADO
-  useEffect(() => {
-    if (estadosPorCodigoDelPais) {
-      const selectElement = document.getElementById("EstadoOcurre");
-      const selectedOption = selectElement.options[selectElement.selectedIndex];
-      establecerIdEstado(selectedOption.id);
-    }
-  }, [estadosPorCodigoDelPais]);
+  // useEffect(() => {
+  //   if (estadosPorCodigoDelPais) {
+  //     const selectElement = document.getElementById("EstadoOcurre");
+  //     const selectedOption = selectElement.options[selectElement.selectedIndex];
+  //     establecerIdEstado(selectedOption.id);
+  //   }
+  // }, [estadosPorCodigoDelPais]);
 
   // ESTE USE EFFECT SE ENCARGA DE ESTABLECER LA CIUDAD SELECCIONADA POR DEFECTO
   // UNICAMENTE CUANDO SE INICIA EL COMPONENTE, POR ESO AGREGAMOS EL ESTADO DE cambiarValorDeLaCiudad
-  useEffect(() => {
-    if (ciudadesPorEstado && !cambiarValorDeLaCiudad) {
-      setValue("CiudadOcurre", informacionDelOcurre.CiudadOcurre);
-    }
-  }, [ciudadesPorEstado]);
+  // useEffect(() => {
+  //   if (ciudadesPorEstado && !cambiarValorDeLaCiudad) {
+  //     setValue("CiudadOcurre", informacionDelOcurre.CiudadOcurre);
+  //   }
+  // }, [ciudadesPorEstado]);
 
   useEffect(() => {
     setValue("NombreOcurre", informacionDelOcurre?.NombreOcurre);
@@ -104,24 +120,39 @@ export default function EditarOcurre({
     setValue("TelefonoUnoOcurre", informacionDelOcurre?.TelefonoUnoOcurre);
     setValue("TelefonoDosOcurre", informacionDelOcurre?.TelefonoDosOcurre);
     setValue("CorreoOcurre", informacionDelOcurre?.CorreoOcurre);
-    setValue("PaisOcurre", informacionDelOcurre?.PaisOcurre);
-    setValue("EstadoOcurre", informacionDelOcurre?.EstadoOcurre);
-    setValue("CodigoPostalOcurre", informacionDelOcurre?.CodigoPostalOcurre);
-    setValue("DireccionOcurre", informacionDelOcurre?.DireccionOcurre);
-    setValue("ReferenciaOcurre", informacionDelOcurre?.ReferenciaOcurre);
+    // setValue("PaisOcurre", informacionDelOcurre?.PaisOcurre);
+    // setValue("EstadoOcurre", informacionDelOcurre?.EstadoOcurre);
+    // setValue("CodigoPostalOcurre", informacionDelOcurre?.CodigoPostalOcurre);
+    // setValue("DireccionOcurre", informacionDelOcurre?.DireccionOcurre);
+    // setValue("ReferenciaOcurre", informacionDelOcurre?.ReferenciaOcurre);
     setValue("ObservacionesOcurre", informacionDelOcurre?.ObservacionesOcurre);
     // ESTABLECEMOS EL NOMBRE DEL PAIS
-    const { NombrePais } = DividirCodigoDelNombrePais(
-      informacionDelOcurre?.PaisOcurre
-    );
-    establecerPaisSeleccionado(NombrePais);
+    // const { NombrePais } = DividirCodigoDelNombrePais(
+    //   informacionDelOcurre?.PaisOcurre
+    // );
+    // establecerPaisSeleccionado(NombrePais);
   }, [informacionDelOcurre]);
 
   const GuardarInformacionDelOcurre = handleSubmit(async (info) => {
+    if (!detallesDeLaDireccion) {
+      return toast.error(
+        "¡Para actualizar el ocurre, debe seleccionar una dirección!",
+        {
+          style: ESTILOS_WARNING,
+        }
+      );
+    }
     try {
-      const { CodigoPais } = DividirCodigoDelNombrePais(info.PaisOcurre);
-      info.CodigoPaisOcurre = CodigoPais;
+      // const { CodigoPais } = DividirCodigoDelNombrePais(info.PaisOcurre);
+      // info.CodigoPaisOcurre = CodigoPais;
       info.idOcurre = informacionDelOcurre?.idOcurre;
+      info.PaisOcurre = detallesDeLaDireccion.PAIS;
+      info.CodigoPaisOcurre = detallesDeLaDireccion.CODIGO_PAIS;
+      info.EstadoOcurre = detallesDeLaDireccion.ESTADO;
+      info.CodigoEstadoOcurre = detallesDeLaDireccion.CODIGO_ESTADO;
+      info.CiudadOcurre = detallesDeLaDireccion.CIUDAD;
+      info.CodigoPostalOcurre = detallesDeLaDireccion.CODIGO_POSTAL;
+      info.DireccionOcurre = detallesDeLaDireccion.DIRECCION;
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await ActualizarInformacionOcurre(info);
       if (res.response) {
@@ -137,35 +168,44 @@ export default function EditarOcurre({
       ManejarMensajesDeRespuesta({ status, data });
     }
   });
-  const EstablecerCodigoPais = (InfPais) => {
-    ReiniciarValoresDeLasDirecciones();
-    const { CodigoPais, NombrePais } = DividirCodigoDelNombrePais(InfPais);
-    establecerPaisSeleccionado(NombrePais);
-    establecerCodigoDelPaisSeleccionado(CodigoPais);
+
+  const PropsGoogleAPI = {
+    direccion,
+    establecerDireccion,
+    detallesDeLaDireccion,
+    establecerDetallesDeLaDireccion,
+    ciudadesPermitidas: ["us", "mx"],
   };
 
-  const DividirCodigoDelNombrePais = (PaisPorDividir) => {
-    // ESTAMOS OBTENIENDO POR EJEMPLO: MX | Mexico
-    const CodigoPais = PaisPorDividir.split(" | ")[0];
-    const NombrePais = PaisPorDividir.split(" | ")[1];
-    return { CodigoPais, NombrePais };
-  };
+  // const EstablecerCodigoPais = (InfPais) => {
+  //   ReiniciarValoresDeLasDirecciones();
+  //   const { CodigoPais, NombrePais } = DividirCodigoDelNombrePais(InfPais);
+  //   establecerPaisSeleccionado(NombrePais);
+  //   establecerCodigoDelPaisSeleccionado(CodigoPais);
+  // };
 
-  const ReiniciarValoresDeLasDirecciones = () => {
-    reset({
-      EstadoOcurre: "",
-      CiudadOcurre: "",
-      CodigoPostalOcurre: "",
-      DireccionOcurre: "",
-    });
+  // const DividirCodigoDelNombrePais = (PaisPorDividir) => {
+  //   // ESTAMOS OBTENIENDO POR EJEMPLO: MX | Mexico
+  //   const CodigoPais = PaisPorDividir.split(" | ")[0];
+  //   const NombrePais = PaisPorDividir.split(" | ")[1];
+  //   return { CodigoPais, NombrePais };
+  // };
 
-    establecerPaisSeleccionado(null);
-    establecerCambiarValorDeLaCiudad(true);
-    establecerCodigoDelPaisSeleccionado(null);
-    establecerIdEstado(null);
-    establecerCpColonia(null);
-    establecerCambiarValorDeLaColonia(false);
-  };
+  // const ReiniciarValoresDeLasDirecciones = () => {
+  //   reset({
+  //     EstadoOcurre: "",
+  //     CiudadOcurre: "",
+  //     CodigoPostalOcurre: "",
+  //     DireccionOcurre: "",
+  //   });
+
+  //   establecerPaisSeleccionado(null);
+  //   establecerCambiarValorDeLaCiudad(true);
+  //   establecerCodigoDelPaisSeleccionado(null);
+  //   establecerIdEstado(null);
+  //   establecerCpColonia(null);
+  //   establecerCambiarValorDeLaColonia(false);
+  // };
 
   const MensajeError = (nombreCampo) => {
     return (
@@ -300,7 +340,7 @@ export default function EditarOcurre({
         />
         {MensajeError("CorreoOcurre")}
       </span>
-      {paises && (
+      {/* {paises && (
         <span
           className="EditarOcurre__Campo"
           onChange={(e) => EstablecerCodigoPais(e.target.value)}
@@ -491,7 +531,7 @@ export default function EditarOcurre({
           })}
         ></input>
         {MensajeError("ReferenciaOcurre")}
-      </span>
+      </span> */}
       <span className="EditarOcurre__Campo Tres">
         <p>
           <ion-icon name="search"></ion-icon> Observaciones
@@ -510,6 +550,7 @@ export default function EditarOcurre({
         ></input>
         {MensajeError("ObservacionesOcurre")}
       </span>
+      <GoogleAPI {...PropsGoogleAPI} />
       <footer className="EditarOcurre__Footer">
         <button type="submit" className="EditarOcurre__Footer__Boton Siguiente">
           Actualizar

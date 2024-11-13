@@ -1,16 +1,20 @@
 // LIBRERÍAS A USAR
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useOcurre } from "../../../context/OcurreContext";
 
+// IMPORTAMOS LOS COMPONENTES A USAR
+import GoogleAPI from "../../GoogleAPI";
+
 // IMPORTAMOS LOS HOOKS A USAR
-import useObtenerPaisesActivos from "../../../hooks/useObtenerPaisesActivos";
-import useObtenerEstadosPorCodigoDelPais from "../../../hooks/useObtenerEstadosPorCodigoDelPais";
-import useObtenerCiudadesPorEstado from "../../../hooks/useObtenerCiudadesPorEstado";
-import useObtenerColoniasPorCP from "../../../hooks/useObtenerColoniasPorCP";
+// import useObtenerPaisesActivos from "../../../hooks/useObtenerPaisesActivos";
+// import useObtenerEstadosPorCodigoDelPais from "../../../hooks/useObtenerEstadosPorCodigoDelPais";
+// import useObtenerCiudadesPorEstado from "../../../hooks/useObtenerCiudadesPorEstado";
+// import useObtenerColoniasPorCP from "../../../hooks/useObtenerColoniasPorCP";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -20,31 +24,36 @@ import {
   REGEX_SOLO_NUMEROS,
   REGEX_CORREO,
 } from "../../../helpers/Regexs";
+import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Ocurres/RegistrarOcurre/RegistrarOcurre.css";
 
 export default function RegistrarOcurre() {
-  const { RegistrarOcurre } = useOcurre();
-  // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCIÓN
-  const [codigoDelPaisSeleccionado, establecerCodigoDelPaisSeleccionado] =
+  // ESTADOS AQUI
+  const [direccion, establecerDireccion] = useState(null);
+  const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] =
     useState(null);
-  const [paisSeleccionado, establecerPaisSeleccionado] = useState(null);
-  const [idEstado, establecerIdEstado] = useState(null);
-  const [cpColonia, establecerCpColonia] = useState(null);
-  // ESTE ESTADO ES PARA NO MOSTRAR UN CAMPO EN BLANCO A LA HORA DE ITERAR
-  // MUCHO CON LA COLONIA Y EL CP
-  const [coloniaSeleccionada, establecerColoniaSeleccionada] = useState("");
-  // OBTENEMOS LOS DATOS
-  const { paises } = useObtenerPaisesActivos();
-  const { estadosPorCodigoDelPais } = useObtenerEstadosPorCodigoDelPais(
-    codigoDelPaisSeleccionado
-  );
-  const { ciudadesPorEstado } = useObtenerCiudadesPorEstado(idEstado);
-  const { coloniasPorCP } = useObtenerColoniasPorCP(
-    cpColonia,
-    paisSeleccionado
-  );
+  const { RegistrarOcurre } = useOcurre();
+  // // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCIÓN
+  // const [codigoDelPaisSeleccionado, establecerCodigoDelPaisSeleccionado] =
+  //   useState(null);
+  // const [paisSeleccionado, establecerPaisSeleccionado] = useState(null);
+  // const [idEstado, establecerIdEstado] = useState(null);
+  // const [cpColonia, establecerCpColonia] = useState(null);
+  // // ESTE ESTADO ES PARA NO MOSTRAR UN CAMPO EN BLANCO A LA HORA DE ITERAR
+  // // MUCHO CON LA COLONIA Y EL CP
+  // const [coloniaSeleccionada, establecerColoniaSeleccionada] = useState("");
+  // // OBTENEMOS LOS DATOS
+  // const { paises } = useObtenerPaisesActivos();
+  // const { estadosPorCodigoDelPais } = useObtenerEstadosPorCodigoDelPais(
+  //   codigoDelPaisSeleccionado
+  // );
+  // const { ciudadesPorEstado } = useObtenerCiudadesPorEstado(idEstado);
+  // const { coloniasPorCP } = useObtenerColoniasPorCP(
+  //   cpColonia,
+  //   paisSeleccionado
+  // );
 
   const {
     handleSubmit,
@@ -55,16 +64,31 @@ export default function RegistrarOcurre() {
     criteriaMode: "all",
   });
 
-  useEffect(() => {
-    if (coloniasPorCP?.length > 0) {
-      establecerColoniaSeleccionada(coloniasPorCP[0].NombreColonia); // Selecciona la primera colonia
-    }
-  }, [coloniasPorCP]);
+  // useEffect(() => {
+  //   if (coloniasPorCP?.length > 0) {
+  //     establecerColoniaSeleccionada(coloniasPorCP[0].NombreColonia); // Selecciona la primera colonia
+  //   }
+  // }, [coloniasPorCP]);
 
   const GuardarInformacionDelOcurre = handleSubmit(async (info) => {
+    if (!detallesDeLaDireccion) {
+      return toast.error(
+        "¡Para registrar el ocurre, debe seleccionar una dirección!",
+        {
+          style: ESTILOS_WARNING,
+        }
+      );
+    }
     try {
-      const { CodigoPais } = DividirCodigoDelNombrePais(info.PaisOcurre);
-      info.CodigoPaisOcurre = CodigoPais;
+      // const { CodigoPais } = DividirCodigoDelNombrePais(info.PaisOcurre);
+      // info.CodigoPaisOcurre = CodigoPais;
+      info.PaisOcurre = detallesDeLaDireccion.PAIS;
+      info.CodigoPaisOcurre = detallesDeLaDireccion.CODIGO_PAIS;
+      info.EstadoOcurre = detallesDeLaDireccion.ESTADO;
+      info.CodigoEstadoOcurre = detallesDeLaDireccion.CODIGO_ESTADO;
+      info.CiudadOcurre = detallesDeLaDireccion.CIUDAD;
+      info.CodigoPostalOcurre = detallesDeLaDireccion.CODIGO_POSTAL;
+      info.DireccionOcurre = detallesDeLaDireccion.DIRECCION;
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarOcurre(info);
       if (res.response) {
@@ -74,7 +98,9 @@ export default function RegistrarOcurre() {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
         reset();
-        ReiniciarValoresDeLasDirecciones();
+        establecerDireccion(null);
+        establecerDetallesDeLaDireccion(null);
+        // ReiniciarValoresDeLasDirecciones();
       }
     } catch (error) {
       const { status, data } = error.response;
@@ -82,32 +108,40 @@ export default function RegistrarOcurre() {
     }
   });
 
-  const EstablecerCodigoPais = (InfPais) => {
-    ReiniciarValoresDeLasDirecciones();
-    const { CodigoPais, NombrePais } = DividirCodigoDelNombrePais(InfPais);
-    establecerPaisSeleccionado(NombrePais);
-    establecerCodigoDelPaisSeleccionado(CodigoPais);
-  };
+  // const EstablecerCodigoPais = (InfPais) => {
+  //   ReiniciarValoresDeLasDirecciones();
+  //   const { CodigoPais, NombrePais } = DividirCodigoDelNombrePais(InfPais);
+  //   establecerPaisSeleccionado(NombrePais);
+  //   establecerCodigoDelPaisSeleccionado(CodigoPais);
+  // };
 
-  const DividirCodigoDelNombrePais = (PaisPorDividir) => {
-    // ESTAMOS OBTENIENDO POR EJEMPLO: MX | Mexico
-    const CodigoPais = PaisPorDividir.split(" | ")[0];
-    const NombrePais = PaisPorDividir.split(" | ")[1];
-    return { CodigoPais, NombrePais };
-  };
+  // const DividirCodigoDelNombrePais = (PaisPorDividir) => {
+  //   // ESTAMOS OBTENIENDO POR EJEMPLO: MX | Mexico
+  //   const CodigoPais = PaisPorDividir.split(" | ")[0];
+  //   const NombrePais = PaisPorDividir.split(" | ")[1];
+  //   return { CodigoPais, NombrePais };
+  // };
 
-  const ReiniciarValoresDeLasDirecciones = () => {
-    reset({
-      EstadoOcurre: "",
-      CiudadOcurre: "",
-      CodigoPostalOcurre: "",
-      DireccionOcurre: "",
-    });
+  // const ReiniciarValoresDeLasDirecciones = () => {
+  //   reset({
+  //     EstadoOcurre: "",
+  //     CiudadOcurre: "",
+  //     CodigoPostalOcurre: "",
+  //     DireccionOcurre: "",
+  //   });
 
-    establecerPaisSeleccionado(null);
-    establecerCodigoDelPaisSeleccionado(null);
-    establecerIdEstado(null);
-    establecerCpColonia(null);
+  //   establecerPaisSeleccionado(null);
+  //   establecerCodigoDelPaisSeleccionado(null);
+  //   establecerIdEstado(null);
+  //   establecerCpColonia(null);
+  // };
+
+  const PropsGoogleAPI = {
+    direccion,
+    establecerDireccion,
+    detallesDeLaDireccion,
+    establecerDetallesDeLaDireccion,
+    ciudadesPermitidas: ["us", "mx"],
   };
 
   const MensajeError = (nombreCampo) => {
@@ -246,7 +280,7 @@ export default function RegistrarOcurre() {
           />
           {MensajeError("CorreoOcurre")}
         </span>
-        {paises && (
+        {/* {paises && (
           <span
             className="RegistrarOcurre__InformacionOcurre__Campo"
             onChange={(e) => EstablecerCodigoPais(e.target.value)}
@@ -442,10 +476,10 @@ export default function RegistrarOcurre() {
             })}
           ></input>
           {MensajeError("ReferenciaOcurre")}
-        </span>
+        </span> */}
         <span className="RegistrarOcurre__InformacionOcurre__Campo Tres">
           <p>
-            <ion-icon name="search"></ion-icon> Observaciones
+            <ion-icon name="document-text"></ion-icon> Observaciones
           </p>
           <input
             name="ObservacionesOcurre"
@@ -462,6 +496,7 @@ export default function RegistrarOcurre() {
           ></input>
           {MensajeError("ObservacionesOcurre")}
         </span>
+        <GoogleAPI {...PropsGoogleAPI} />
         <footer className="RegistrarOcurre__InformacionOcurre__Footer">
           <button
             className="RegistrarOcurre__InformacionOcurre__Footer__Boton Regresar"
