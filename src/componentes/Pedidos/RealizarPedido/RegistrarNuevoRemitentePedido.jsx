@@ -54,7 +54,6 @@ export default function RegistrarNuevoRemitentePedido({
 
   const { apiGoogleMapsAutoCompletado } =
     useObtenerApiGoogleMapsAutoCompletado();
-  console.log(apiGoogleMapsAutoCompletado);
 
   useEffect(() => {
     if (remitente?.idRemitente === false) {
