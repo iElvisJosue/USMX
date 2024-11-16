@@ -8,18 +8,22 @@ import Cargando from "../componentes/Cargando";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useGlobal } from "../context/GlobalContext";
+import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerInformacionDeUnUsuario from "../hooks/useObtenerInformacionDeUnUsuario";
 
 // IMPORTAMOS LAS AYUDAS
 import { FormatearFecha } from "../helpers/FuncionesGenerales";
+import { ListaDeIdiomas } from "../Diccionario/Idiomas";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/Perfil.css";
 
 export default function Perfil() {
   const { usuario } = useGlobal();
+  const { idioma } = useConfiguracion();
+
   const { informacionDelUsuario, cargandoInformacionDelUsuario } =
     useObtenerInformacionDeUnUsuario(usuario?.idUsuario);
 
@@ -46,7 +50,10 @@ export default function Perfil() {
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
     <main className="Main">
       <Menu />
-      <Encabezado icono="person-circle" seccion="Perfil" />
+      <Encabezado
+        icono="person-circle"
+        seccion={ListaDeIdiomas.VistaPerfil[idioma].Perfil}
+      />
       <div className="Perfil">
         <div className="Perfil__Contenido">
           <span className="Perfil__Contenido__Editar">
@@ -79,7 +86,7 @@ export default function Perfil() {
           <span className="Perfil__Contenido__Detalles">
             <p className="Perfil__Contenido__Detalles--Texto">
               <ion-icon name="mail"></ion-icon>
-              Correo
+              {ListaDeIdiomas.VistaPerfil[idioma].Correo}
             </p>
             <p className="Perfil__Contenido__Detalles--Valor">
               {Correo || "-"}
@@ -88,7 +95,7 @@ export default function Perfil() {
           <span className="Perfil__Contenido__Detalles">
             <p className="Perfil__Contenido__Detalles--Texto">
               <ion-icon name="call"></ion-icon>
-              Teléfono
+              {ListaDeIdiomas.VistaPerfil[idioma].Telefono}
             </p>
             <p className="Perfil__Contenido__Detalles--Valor">
               {Telefono || "-"}
@@ -97,13 +104,13 @@ export default function Perfil() {
           <span className="Perfil__Contenido__Detalles">
             <p className="Perfil__Contenido__Detalles--Texto">
               <ion-icon name="calendar"></ion-icon>
-              Fecha creación
+              {ListaDeIdiomas.VistaPerfil[idioma].FechaDeCreacion}
             </p>
             <p className="Perfil__Contenido__Detalles--Valor">
               {FechaCreacionUsuario
                 ? FormatearFecha(FechaCreacionUsuario?.slice(0, 10))
                 : "00/00/0000"}{" "}
-              a las {HoraCreacionUsuario || "00:00:00"}
+              - {HoraCreacionUsuario || "00:00:00"}
             </p>
           </span>
         </div>

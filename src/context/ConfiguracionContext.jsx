@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useState } from "react";
 import {
-  SolicitudObtenerTiposDeCarga,
-  SolicitudObtenerTiposDeEnvio,
   SolicitudObtenerModoOscuro,
   SolicitudActualizarModoOscuro,
+  SolicitudObtenerIdioma,
+  SolicitudActualizarIdioma,
+  SolicitudObtenerTiposDeCarga,
+  SolicitudObtenerTiposDeEnvio,
   SolicitudRegistrarTipoDeCarga,
   SolicitudEliminarTipoDeCarga,
   SolicitudRegistrarTipoDeEnvio,
@@ -31,7 +33,9 @@ export const useConfiguracion = () => {
 };
 export const ProveedorConfiguracion = ({ children }) => {
   const [obtenerModoOscuro, establecerObtenerModoOscuro] = useState(false);
-  const [modoOscuro, setModoOscuro] = useState(false);
+  const [modoOscuro, establecerModoOscuro] = useState(false);
+  const [obtenerIdioma, establecerObtenerIdioma] = useState(false);
+  const [idioma, establecerIdioma] = useState("es");
   const { usuario } = useGlobal();
 
   // OBTENER MODO OSCURO
@@ -43,7 +47,7 @@ export const ProveedorConfiguracion = ({ children }) => {
           return console.log("Error al obtener el modo oscuro");
         } else {
           const { ModoOscuro } = res.data[0];
-          setModoOscuro(ModoOscuro);
+          establecerModoOscuro(ModoOscuro);
           document.documentElement.style.setProperty(
             "--ColorPrincipal",
             `${ModoOscuro ? "#e7e8ed" : "#171616"}`
@@ -74,6 +78,38 @@ export const ProveedorConfiguracion = ({ children }) => {
     ObtenerModoOscuro();
   }, [usuario, obtenerModoOscuro]);
 
+  // OBTENER IDIOMA
+  useEffect(() => {
+    async function ObtenerIdioma() {
+      if (usuario) {
+        const res = await SolicitudObtenerIdioma(usuario.idUsuario);
+        if (!res.data) {
+          return console.log("Error al obtener el idioma");
+        } else {
+          const { Idioma } = res.data[0];
+          establecerIdioma(Idioma);
+        }
+      }
+    }
+    ObtenerIdioma();
+  }, [usuario, obtenerIdioma]);
+
+  const ActualizarModoOscuro = async (data) => {
+    try {
+      const res = await SolicitudActualizarModoOscuro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ActualizarIdioma = async (data) => {
+    try {
+      const res = await SolicitudActualizarIdioma(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
   const ObtenerTiposDeCarga = async (data) => {
     try {
       const res = await SolicitudObtenerTiposDeCarga(data);
@@ -85,14 +121,6 @@ export const ProveedorConfiguracion = ({ children }) => {
   const ObtenerTiposDeEnvio = async (data) => {
     try {
       const res = await SolicitudObtenerTiposDeEnvio(data);
-      return res;
-    } catch (error) {
-      return error;
-    }
-  };
-  const ActualizarModoOscuro = async (data) => {
-    try {
-      const res = await SolicitudActualizarModoOscuro(data);
       return res;
     } catch (error) {
       return error;
@@ -176,11 +204,15 @@ export const ProveedorConfiguracion = ({ children }) => {
     <ConfiguracionContext.Provider
       value={{
         modoOscuro,
+        ActualizarModoOscuro,
         obtenerModoOscuro,
         establecerObtenerModoOscuro,
+        idioma,
+        ActualizarIdioma,
+        obtenerIdioma,
+        establecerObtenerIdioma,
         ObtenerTiposDeCarga,
         ObtenerTiposDeEnvio,
-        ActualizarModoOscuro,
         RegistrarTipoDeCarga,
         EliminarTipoDeCarga,
         RegistrarTipoDeEnvio,

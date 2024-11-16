@@ -4,8 +4,15 @@ import { LoadScript } from "@react-google-maps/api";
 import GooglePlacesAutocomplete, {
   geocodeByAddress,
 } from "react-google-places-autocomplete";
+
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerApiGoogleMapsAutoCompletado from "../hooks/useObtenerApiGoogleMapsAutoCompletado";
+
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useConfiguracion } from "../context/ConfiguracionContext";
+
+// IMPORTAMOS LAS AYUDAS
+import { ListaDeIdiomas } from "../Diccionario/Idiomas";
 
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/componentes/GoogleAPI.css";
@@ -19,6 +26,7 @@ export default function GoogleAPI({
 }) {
   const { apiGoogleMapsAutoCompletado } =
     useObtenerApiGoogleMapsAutoCompletado();
+  const { idioma } = useConfiguracion();
 
   const manejarDireccion = async (value) => {
     establecerDireccion(value);
@@ -70,7 +78,8 @@ export default function GoogleAPI({
       {apiGoogleMapsAutoCompletado && (
         <span className="GoogleAPI__LoadScript">
           <p>
-            <ion-icon name="search"></ion-icon> Buscar dirección
+            <ion-icon name="search"></ion-icon>{" "}
+            {ListaDeIdiomas.GoogleAPI[idioma].BuscarDireccion}
           </p>
           <LoadScript
             googleMapsApiKey={apiGoogleMapsAutoCompletado}
@@ -84,7 +93,7 @@ export default function GoogleAPI({
               selectProps={{
                 value: direccion,
                 onChange: manejarDireccion,
-                placeholder: "Escribe la dirección...",
+                placeholder: ListaDeIdiomas.Placeholder[idioma],
               }}
             />
           </LoadScript>
@@ -93,7 +102,7 @@ export default function GoogleAPI({
       {detallesDeLaDireccion && (
         <div className="GoogleAPI__Detalles">
           <p className="GoogleAPI__Detalles--Titulo">
-            Detalles de la dirección{" "}
+            {ListaDeIdiomas.GoogleAPI[idioma].DetallesDeLaDireccion}{" "}
             <button
               type="button"
               className="GoogleAPI__Detalles--Cerrar"
@@ -107,49 +116,49 @@ export default function GoogleAPI({
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="flag"></ion-icon>
-              País
+              {ListaDeIdiomas.GoogleAPI[idioma].Pais}
             </p>
             <b>{detallesDeLaDireccion.PAIS}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="keypad-outline"></ion-icon>
-              Código de País
+              {ListaDeIdiomas.GoogleAPI[idioma].CodigoPais}
             </p>
             <b>{detallesDeLaDireccion.CODIGO_PAIS}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="location"></ion-icon>
-              Estado
+              {ListaDeIdiomas.GoogleAPI[idioma].Estado}
             </p>
             <b>{detallesDeLaDireccion.ESTADO}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="keypad-outline"></ion-icon>
-              Codigo de Estado
+              {ListaDeIdiomas.GoogleAPI[idioma].CodigoEstado}
             </p>
             <b>{detallesDeLaDireccion.CODIGO_ESTADO}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="locate"></ion-icon>
-              Ciudad
+              {ListaDeIdiomas.GoogleAPI[idioma].Ciudad}
             </p>
             <b>{detallesDeLaDireccion.CIUDAD}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="pin"></ion-icon>
-              Codigo Postal
+              {ListaDeIdiomas.GoogleAPI[idioma].CodigoPostal}
             </p>
             <b>{detallesDeLaDireccion.CODIGO_POSTAL}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido Direccion">
             <p>
               <ion-icon name="trail-sign"></ion-icon>
-              Dirección
+              {ListaDeIdiomas.GoogleAPI[idioma].Direccion}
             </p>
             <b>{detallesDeLaDireccion.DIRECCION}</b>
           </span>

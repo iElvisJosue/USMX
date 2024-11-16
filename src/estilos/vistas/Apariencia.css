@@ -27,8 +27,6 @@
   background-color: var(--ColorSecundario);
 }
 .Apariencia__Cuerpo {
-  padding-bottom: 15px;
-  border-bottom: 2px solid var(--ColorSecundario);
   display: flex;
 }
 .Apariencia__Cuerpo__Texto {
@@ -65,10 +63,17 @@
   width: 90%;
   cursor: pointer;
 }
+.Apariencia__Cuerpo__Ejemplo--Imagen.Idioma img {
+  width: 50%;
+}
 .Apariencia__Cuerpo__Ejemplo--Imagen:hover img {
   border: 3px dashed var(--ColorAzul);
 }
 .Apariencia__Cuerpo__Ejemplo--Imagen.Oscuro img {
+  border: 3px dashed var(--ColorAzul);
+  pointer-events: none;
+}
+.Apariencia__Cuerpo__Ejemplo--Imagen.Idioma.Seleccionado img {
   border: 3px dashed var(--ColorAzul);
   pointer-events: none;
 }
@@ -81,6 +86,9 @@
   color: var(--ColorAzul);
 }
 .Apariencia__Cuerpo__Ejemplo--Imagen.Oscuro b {
+  color: var(--ColorAzul);
+}
+.Apariencia__Cuerpo__Ejemplo--Imagen.Idioma.Seleccionado b {
   color: var(--ColorAzul);
 }
 @media (width <= 950px) {

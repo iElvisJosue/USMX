@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
+// IMPORTAMOS LAS AYUDAS
+import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
+
 export default function ModalSubirArchivoSeleccionar({
+  idioma,
   informacionArchivo,
   esRemitente,
   establecerEsRemitente,
@@ -20,27 +24,36 @@ export default function ModalSubirArchivoSeleccionar({
           onClick={() => establecerEsRemitente(true)}
         >
           <ion-icon name="person-circle"></ion-icon>
-          Remitentes
+          {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].Remitentes}
         </button>
         <button
           className="ModalSubirArchivo__Contenido--Opciones--Boton"
           type="button"
           onClick={() => establecerEsRemitente(false)}
         >
-          <ion-icon name="location"></ion-icon> Destinatarios
+          <ion-icon name="location"></ion-icon>
+          {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].Destinatarios}
         </button>
       </section>
       <h1 className="ModalSubirArchivo__Contenido--Titulo">
-        SELECCIONAR ARCHIVO
+        {
+          ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma]
+            .SeleccionarArchivos
+        }
       </h1>
       <picture className="ModalSubirArchivo__Contenido--Imagen">
         <img src="SubirExcel.png" alt="Icono de subir excel" />
       </picture>
       <small className="ModalSubirArchivo__Contenido--Texto">
-        Para subir la información de los{" "}
-        <b>{esRemitente ? "REMITENTES" : "DESTINATARIOS"}</b> a la agencia{" "}
-        <b>{informacionArchivo.NombreAgencia || "N/A"}</b>, debes seleccionar un
-        archivo en formato XLSX.
+        {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].MensajeParteUno}{" "}
+        <b>
+          {esRemitente
+            ? `${ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].Remitentes}`
+            : `${ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].Destinatarios}`}
+        </b>{" "}
+        {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].MensajeParteDos}{" "}
+        <b>{informacionArchivo.NombreAgencia || "N/A"}</b>,{" "}
+        {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].MensajeParteTres}
       </small>
       <label className="ModalSubirArchivo__Contenido--Archivo">
         <input
@@ -49,14 +62,18 @@ export default function ModalSubirArchivoSeleccionar({
           name="Excel"
           onChange={ManejarCambiosEnElArchivo}
         />
-        {hayArchivo ? hayArchivo?.name : "Seleccionar"}
+        {hayArchivo
+          ? hayArchivo?.name
+          : `${ListaDeIdiomas.Botones[idioma].Seleccionar}`}
       </label>
       {mostrarError && (
         <span className="ModalSubirArchivo__Contenido--Archivo--MensajeDeError">
-          ¡Por favor, selecciona un archivo! ⚠️
+          {ListaDeIdiomas.MensajesDeError[idioma].Archivo}
         </span>
       )}
-      <button className="ModalSubirArchivo__Contenido--Boton">Subir</button>
+      <button className="ModalSubirArchivo__Contenido--Boton">
+        {ListaDeIdiomas.Botones[idioma].Subir}
+      </button>
     </>
   );
 }

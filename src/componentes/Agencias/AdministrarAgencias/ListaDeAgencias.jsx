@@ -5,6 +5,7 @@ import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../../context/AgenciasContext";
+import { useConfiguracion } from "../../../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../../Cargando";
@@ -22,6 +23,7 @@ import {
   ObtenerFechaActual,
   ObtenerHoraActual,
 } from "../../../helpers/FuncionesGenerales";
+import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ListaDeAgencias.css";
@@ -30,6 +32,7 @@ export default function ListaDeAgencias({
   establecerVista,
   establecerInformacionDeLaAgencia,
 }) {
+  const { idioma } = useConfiguracion();
   const { CrearYDescargarExcelDeAgencias, ActualizarEstadoAgencia } =
     useAgencias();
   const [mostrarModalSubirArchivo, establecerMostrarModalSubirArchivo] =
@@ -175,13 +178,18 @@ export default function ListaDeAgencias({
           establecerMostrarModalSubirArchivo={
             establecerMostrarModalSubirArchivo
           }
+          idioma={idioma}
         />
       )}
-      <h1 className="ListaDeAgencias__Titulo">Administrar Agencias</h1>
+      <h1 className="ListaDeAgencias__Titulo">
+        {ListaDeIdiomas.VistaAdministrarAgencias[idioma].AdministrarAgencias}
+      </h1>
       <span className="ListaDeAgencias__Buscar">
         <input
           type="text"
-          placeholder="Buscar Agencia (Nombre, País, Estado, Ciudad, CP)"
+          placeholder={
+            ListaDeIdiomas.VistaAdministrarAgencias[idioma].BuscarAgencia
+          }
           onChange={ObtenerLasAgencias}
         />
         <span className="ListaDeAgencias__Buscar__Lupa">
@@ -191,29 +199,36 @@ export default function ListaDeAgencias({
       {agencias.length > 0 ? (
         <div className="ListaDeAgencias__Contenedor">
           <small className="ListaDeAgencias__Contenedor__TextoResultados">
-            <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
-            {agencias.length} resultados{" "}
+            <ion-icon name="search-circle"></ion-icon>
+            {ListaDeIdiomas.Resultados[idioma].Obtuvimos} {agencias.length}{" "}
+            {ListaDeIdiomas.Resultados[idioma].Resultados}
           </small>
           <h2 className="ListaDeAgencias__Contenedor__Clasificacion">
-            Estatus de las agencias:
+            {
+              ListaDeIdiomas.VistaAdministrarAgencias[idioma]
+                .EstatusDeLasAgencia
+            }
           </h2>
           <span className="ListaDeAgencias__Contenedor__Colores">
             <p className="ListaDeAgencias__Contenedor__Clasificacion--Texto Activa">
-              <ion-icon name="business"></ion-icon> Activa
+              <ion-icon name="business"></ion-icon>{" "}
+              {ListaDeIdiomas.VistaAdministrarAgencias[idioma].Activa}
             </p>
             <p className="ListaDeAgencias__Contenedor__Clasificacion--Texto Desactivada">
-              <ion-icon name="ban"></ion-icon> Desactivada
+              <ion-icon name="ban"></ion-icon>{" "}
+              {ListaDeIdiomas.VistaAdministrarAgencias[idioma].Desactivada}
             </p>
           </span>
           <h2 className="ListaDeAgencias__Contenedor__Operaciones">
-            Operaciones:
+            {ListaDeIdiomas.VistaAdministrarAgencias[idioma].Operaciones}
           </h2>
           <span className="ListaDeAgencias__Contenedor__Colores">
             <button
               className="ListaDeAgencias__Contenedor__Operaciones--Boton DescargarExcel"
               onClick={EstablecerAgenciasParaElExcel}
             >
-              <ion-icon name="download"></ion-icon> Descargar Excel
+              <ion-icon name="download"></ion-icon>{" "}
+              {ListaDeIdiomas.Botones[idioma].DescargarExcel}
             </button>
           </span>
           <div className="ListaDeAgencias__Contenedor__BotonesDePaginacion">
@@ -330,17 +345,20 @@ export default function ListaDeAgencias({
             </section>
           ))}
           <small className="ListaDeAgencias__Contenedor__TextoPaginas">
-            Página {paginaParaMostrar} de {cantidadDePaginas}
+            {ListaDeIdiomas.Paginacion[idioma].Pagina} {paginaParaMostrar}{" "}
+            {ListaDeIdiomas.Paginacion[idioma].De} {cantidadDePaginas}
           </small>
         </div>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados.`}
+          Texto={ListaDeIdiomas.Resultados[idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Agencias"}
-          TextoBoton={"Registrar Agencia"}
+          TextoBoton={
+            ListaDeIdiomas.VistaAdministrarAgencias[idioma].RegistrarAgencia
+          }
         />
       )}
     </div>

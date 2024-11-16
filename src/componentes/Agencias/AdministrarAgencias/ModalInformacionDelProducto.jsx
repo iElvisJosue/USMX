@@ -10,11 +10,13 @@ import { useAgencias } from "../../../context/AgenciasContext";
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
+import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ModalInformacionDelProducto.css";
 
 export default function ModalInformacionDelProducto({
+  idioma,
   agencia,
   informacionDelProducto,
   establecerMostrarModal,
@@ -145,14 +147,21 @@ export default function ModalInformacionDelProducto({
           <ion-icon name="close"></ion-icon>
         </button>
         <h1 className="ModalInformacionDelProducto__Contenido--Titulo">
-          Detalles del producto
+          {
+            ListaDeIdiomas.ModalInformacionDelProducto[idioma]
+              .DetallesDelProducto
+          }
         </h1>
         <small className="ModalInformacionDelProducto__Contenido--Informacion Col2">
-          <ion-icon name="basket"></ion-icon> <b>Producto </b>
+          <ion-icon name="basket"></ion-icon>{" "}
+          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].Producto}</b>
           {informacionDelProducto.NombreProducto}
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
-          <ion-icon name="cash"></ion-icon> <b>Precio público </b>
+          <ion-icon name="cash"></ion-icon>{" "}
+          <b>
+            {ListaDeIdiomas.ModalInformacionDelProducto[idioma].PrecioPublico}
+          </b>
           <input
             className={ClaseInputs}
             type="text"
@@ -164,7 +173,8 @@ export default function ModalInformacionDelProducto({
           {MensajeDeError("PrecioProducto")}
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
-          <ion-icon name="cash"></ion-icon> <b>Comisión </b>
+          <ion-icon name="cash"></ion-icon>{" "}
+          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].Comision}</b>
           <input
             className={ClaseInputs}
             type="text"
@@ -176,7 +186,8 @@ export default function ModalInformacionDelProducto({
           {MensajeDeError("ComisionProducto")}
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
-          <ion-icon name="scale"></ion-icon> <b>Libra extra </b>
+          <ion-icon name="scale"></ion-icon>{" "}
+          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].LibraExtra}</b>
           <input
             className={ClaseInputs}
             type="text"
@@ -188,7 +199,10 @@ export default function ModalInformacionDelProducto({
           {MensajeDeError("LibraExtraProducto")}
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
-          <ion-icon name="thumbs-up"></ion-icon> <b>Peso sin cobro </b>
+          <ion-icon name="thumbs-up"></ion-icon>{" "}
+          <b>
+            {ListaDeIdiomas.ModalInformacionDelProducto[idioma].PesoSinCobro}
+          </b>
           <input
             className={ClaseInputs}
             type="text"
@@ -200,7 +214,8 @@ export default function ModalInformacionDelProducto({
           {MensajeDeError("PesoSinCobroProducto")}
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion Col2">
-          <ion-icon name="warning"></ion-icon> <b>Peso máximo </b>
+          <ion-icon name="warning"></ion-icon>{" "}
+          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].PesoMaximo}</b>
           <input
             className={ClaseInputs}
             type="text"
@@ -212,9 +227,13 @@ export default function ModalInformacionDelProducto({
           {MensajeDeError("PesoMaximoProducto")}
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion Col2">
-          <ion-icon name="expand"></ion-icon> <b>Medidas </b>
-          Ancho {informacionDelProducto.AnchoProducto} - Alto{" "}
-          {informacionDelProducto.AltoProducto} - Altura{" "}
+          <ion-icon name="expand"></ion-icon>{" "}
+          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].Medidas}</b>
+          {ListaDeIdiomas.ModalInformacionDelProducto[idioma].Ancho}{" "}
+          {informacionDelProducto.AnchoProducto} -{" "}
+          {ListaDeIdiomas.ModalInformacionDelProducto[idioma].Alto}{" "}
+          {informacionDelProducto.AltoProducto} -{" "}
+          {ListaDeIdiomas.ModalInformacionDelProducto[idioma].Largo}{" "}
           {informacionDelProducto.LargoProducto}
         </small>
         {informacionDelProducto.Editable && (
@@ -222,7 +241,9 @@ export default function ModalInformacionDelProducto({
             type="submit"
             className="ModalInformacionDelProducto__Contenido--Boton"
           >
-            {informacionDelProducto.Actualizar ? "Actualizar" : "Asignar"}
+            {informacionDelProducto.Actualizar
+              ? `${ListaDeIdiomas.Botones[idioma].Actualizar}`
+              : `${ListaDeIdiomas.Botones[idioma].Asignar}`}
           </button>
         )}
       </form>

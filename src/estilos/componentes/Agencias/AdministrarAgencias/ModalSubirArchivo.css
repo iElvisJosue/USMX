@@ -43,11 +43,14 @@
   font-size: 14px;
   text-align: center;
   font-weight: bold;
+  color: var(--ColorNegro);
 }
-.ModalSubirArchivo__Contenido--Completado--Texto {
+.ModalSubirArchivo__Contenido--Completado--Texto b {
+  text-transform: uppercase;
   color: var(--ColorVerde);
 }
-.ModalSubirArchivo__Contenido--Error--Texto {
+.ModalSubirArchivo__Contenido--Error--Texto b {
+  text-transform: uppercase;
   color: var(--ColorRojo);
 }
 .ModalSubirArchivo__Contenido--Completado--Boton,

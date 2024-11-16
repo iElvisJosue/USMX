@@ -7,7 +7,7 @@
 
   display: grid;
   grid-template-areas:
-    "Bienvenida Bienvenida EspacioUno"
+    "Bienvenida Bienvenida Perfil"
     "EspacioDos UltimasDiezGuias UltimasDiezGuias"
     "EspacioTres UltimasDiezGuias UltimasDiezGuias";
   grid-template-columns: repeat(3, 1fr);
@@ -52,7 +52,6 @@
 .Bienvenida__Perfil,
 .Bienvenida__TotalDePedidosHechosHoy,
 .EspacioTres {
-  grid-area: EspacioUno;
   padding: 20px;
   width: 100%;
   height: 100%;
@@ -65,7 +64,7 @@
   justify-content: center;
 }
 .Bienvenida__Perfil {
-  grid-area: EspacioUno;
+  grid-area: Perfil;
   background-image: url("/BGPerfil.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -296,8 +295,8 @@
 @media (width <= 500px) {
   .Bienvenida {
     grid-template-areas:
+      "Perfil Perfil Perfil"
       "Bienvenida Bienvenida Bienvenida"
-      "EspacioUno EspacioUno EspacioUno"
       "UltimasDiezGuias UltimasDiezGuias UltimasDiezGuias"
       "EspacioDos EspacioDos EspacioDos"
       "EspacioTres EspacioTres EspacioTres";
@@ -306,7 +305,6 @@
   .Bienvenida__Mensaje,
   .Bienvenida__UltimasGuias,
   .Bienvenida__UltimasGuias--Cuerpo,
-  .EspacioUno,
   .Bienvenida__TotalDePedidosHechosHoy,
   .EspacioTres {
     border-radius: 15px;
@@ -318,8 +316,6 @@
     font-size: 16px;
   }
   .Bienvenida__TotalDePedidosHechosHoy--Cantidad {
-    min-width: 50px;
-    min-height: 50px;
     font-size: 16px;
   }
   .Bienvenida__UltimasGuias {

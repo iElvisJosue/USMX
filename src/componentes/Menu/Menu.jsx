@@ -6,13 +6,15 @@ import MenuOpciones from "./MenuOpciones";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useGlobal } from "../../context/GlobalContext";
+import { useConfiguracion } from "../../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useCerrarSesion from "../../hooks/useCerrarSesion";
+import OpcionesDelMenu from "../../helpers/OpcionesDelMenu";
 
 // IMPORTAMOS LAS AYUDAS
-import { OpcionesDelMenu } from "../../helpers/OpcionesDelMenu";
 import { HOST } from "../../helpers/Urls";
+import { ListaDeIdiomas } from "../../Diccionario/Idiomas";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Menu/Menu.css";
@@ -21,6 +23,8 @@ export default function Menu() {
   const [mostrarMenu, setMostrarMenu] = useState(false);
   const { CerrandoSesion } = useCerrarSesion();
   const { usuario } = useGlobal();
+  const { OpcionesMenu } = OpcionesDelMenu();
+  const { idioma } = useConfiguracion();
 
   const ClaseMenu = mostrarMenu ? "Menu Activo" : "Menu";
 
@@ -40,7 +44,7 @@ export default function Menu() {
         ></ion-icon>
       </span>
       <div className="Menu__Cuerpo">
-        {OpcionesDelMenu[usuario.Permisos].map(
+        {OpcionesMenu[usuario.Permisos].map(
           ({ icono, nombre, url, opcionesSecundarias }, index) => (
             <MenuOpciones
               key={index}
@@ -60,7 +64,8 @@ export default function Menu() {
         onClick={() => setMostrarMenu(true)}
       ></ion-icon>
       <button className="Menu__CerrarSesion" onClick={CerrandoSesion}>
-        <ion-icon name="log-out"></ion-icon> Cerrar sesión
+        <ion-icon name="log-out"></ion-icon>{" "}
+        {ListaDeIdiomas.Botones[idioma].CerrarSesion}
       </button>
     </aside>
   );

@@ -6,6 +6,7 @@ import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../../context/AgenciasContext";
+import { useConfiguracion } from "../../../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import GoogleAPI from "../../GoogleAPI";
@@ -19,6 +20,7 @@ import {
   REGEX_CORREO,
 } from "../../../helpers/Regexs";
 import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
+import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Agencias/RegistrarAgencia/RegistrarAgencia.css";
@@ -29,6 +31,7 @@ export default function RegistrarAgencia() {
   const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] =
     useState(null);
   const { RegistrarAgencia } = useAgencias();
+  const { idioma } = useConfiguracion();
   const {
     handleSubmit,
     register,
@@ -107,23 +110,24 @@ export default function RegistrarAgencia() {
         onSubmit={GuardaInformacionDeLaAgencia}
       >
         <h1 className="RegistrarAgencia__InformacionDeLaAgencia__Titulo">
-          Registrar Agencia
+          {ListaDeIdiomas.VistaRegistrarAgencia[idioma].RegistrarAgencia}
         </h1>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="business"></ion-icon> Nombre de la agencia
+            <ion-icon name="business"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NombreDeLaAgencia}
           </p>
           <input
             id="NombreAgencia"
             name="NombreAgencia"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             tabIndex={-1}
             {...register("NombreAgencia", {
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
               },
             })}
           ></input>
@@ -131,18 +135,21 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="briefcase"></ion-icon> Nombre legal de la agencia
-            (DBA)
+            <ion-icon name="briefcase"></ion-icon>
+            {
+              ListaDeIdiomas.VistaRegistrarAgencia[idioma]
+                .NombreLegalDeLaAgencia
+            }
           </p>
           <input
             id="NombreLegalAgencia"
             name="NombreLegalAgencia"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("NombreLegalAgencia", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
               },
             })}
           ></input>
@@ -151,23 +158,23 @@ export default function RegistrarAgencia() {
         <GoogleAPI {...PropsGoogleAPI} />
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
-            <ion-icon name="call"></ion-icon> Tel. Agencia
+            <ion-icon name="call"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].TelAgencia}
           </p>
           <input
             id="TelefonoAgencia"
             name="TelefonoAgencia"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("TelefonoAgencia", {
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message:
-                  "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
               },
             })}
           ></input>
@@ -175,22 +182,22 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
-            <ion-icon name="print"></ion-icon> Fax
+            <ion-icon name="print"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].Fax}
           </p>
           <input
             id="FaxAgencia"
             name="FaxAgencia"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("FaxAgencia", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message:
-                  "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
               },
             })}
           ></input>
@@ -198,18 +205,19 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
-            <ion-icon name="mail"></ion-icon> Correo Agencia
+            <ion-icon name="mail"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CorreoAgencia}
           </p>
           <input
             id="CorreoAgencia"
             name="CorreoAgencia"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("CorreoAgencia", {
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
               pattern: REGEX_CORREO,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
               },
             })}
           ></input>
@@ -217,17 +225,18 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
-            <ion-icon name="mail"></ion-icon> Correo Agencia #2 (Opcional)
+            <ion-icon name="mail"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CorreoAgencia2}
           </p>
           <input
             id="CorreoAgenciaSecundario"
             name="CorreoAgenciaSecundario"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("CorreoAgenciaSecundario", {
               pattern: REGEX_CORREO,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
               },
             })}
           ></input>
@@ -235,18 +244,22 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="person"></ion-icon> Nombre representante ventas
+            <ion-icon name="person"></ion-icon>
+            {
+              ListaDeIdiomas.VistaRegistrarAgencia[idioma]
+                .NombreRepresentanteVentas
+            }
           </p>
           <input
             id="RepresentanteVentas"
             name="RepresentanteVentas"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("RepresentanteVentas", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
               },
             })}
           ></input>
@@ -254,23 +267,23 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="call"></ion-icon> Tel. Representante
+            <ion-icon name="call"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].TelRepresentante}
           </p>
           <input
             id="TelefonoRepresentanteVentas"
             name="TelefonoRepresentanteVentas"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("TelefonoRepresentanteVentas", {
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message:
-                  "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
               },
             })}
           ></input>
@@ -278,17 +291,18 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="person"></ion-icon> Nombre del dueño
+            <ion-icon name="person"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NombreDelDueño}
           </p>
           <input
             id="NombreDueno"
             name="NombreDueno"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("NombreDueno", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
               },
             })}
           ></input>
@@ -296,22 +310,22 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="call"></ion-icon> Tel. Dueño
+            <ion-icon name="call"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].TelDueño}
           </p>
           <input
             id="TelefonoDueno"
             name="TelefonoDueno"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("TelefonoDueno", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message:
-                  "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
               },
             })}
           ></input>
@@ -319,17 +333,18 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="person"></ion-icon> Nombre del manager
+            <ion-icon name="person"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NombreDelManager}
           </p>
           <input
             id="NombreManager"
             name="NombreManager"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("NombreManager", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
               },
             })}
           ></input>
@@ -337,22 +352,22 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="call"></ion-icon> Tel. Manager
+            <ion-icon name="call"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].TelManager}
           </p>
           <input
             id="TelefonoManager"
             name="TelefonoManager"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("TelefonoManager", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message:
-                  "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
               },
             })}
           ></input>
@@ -360,12 +375,13 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
-            <ion-icon name="reader"></ion-icon> No. Licencia
+            <ion-icon name="reader"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NoLicencia}
           </p>
           <input
             id="NumeroLicenciaAgencia"
             name="NumeroLicenciaAgencia"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("NumeroLicenciaAgencia", {
               pattern: REGEX_SOLO_NUMEROS,
             })}
@@ -374,12 +390,13 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
-            <ion-icon name="reader"></ion-icon> No. Sales Tax
+            <ion-icon name="reader"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NoSalesTax}
           </p>
           <input
             id="NumeroImpuestosVenta"
             name="NumeroImpuestosVenta"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("NumeroImpuestosVenta", {
               pattern: REGEX_SOLO_NUMEROS,
             })}
@@ -388,12 +405,13 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="reader"></ion-icon> S.S
+            <ion-icon name="reader"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].SS}
           </p>
           <input
             id="SS"
             name="SS"
-            placeholder="Escriba aquí..."
+            placeholder={ListaDeIdiomas.Placeholder[idioma]}
             {...register("SS", {
               pattern: REGEX_SOLO_NUMEROS,
             })}
@@ -402,7 +420,8 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
-            <ion-icon name="copy"></ion-icon> Copia ID
+            <ion-icon name="copy"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CopiaID}
           </p>
           <select name="CopiaID" id="CopiaID" {...register("CopiaID")}>
             <option value="No">No</option>
@@ -412,7 +431,8 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
-            <ion-icon name="copy"></ion-icon> Copia Licencia
+            <ion-icon name="copy"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CopiaLicencia}
           </p>
           <select
             name="CopiaLicenciaNegocio"
@@ -426,7 +446,8 @@ export default function RegistrarAgencia() {
         </span>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
-            <ion-icon name="copy"></ion-icon> Copia Sales Tax
+            <ion-icon name="copy"></ion-icon>
+            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CopiaSalesTax}
           </p>
           <select
             name="CopiaImpuestosVenta"
@@ -444,13 +465,13 @@ export default function RegistrarAgencia() {
             className="RegistrarAgencia__InformacionDeLaAgencia__Footer__Boton Cancelar"
             onClick={ReiniciarFormulario}
           >
-            Cancelar
+            {ListaDeIdiomas.Botones[idioma].Cancelar}
           </button>
           <button
             type="submit"
             className="RegistrarAgencia__InformacionDeLaAgencia__Footer__Boton Guardar"
           >
-            Guardar
+            {ListaDeIdiomas.Botones[idioma].Guardar}
           </button>
         </footer>
       </form>

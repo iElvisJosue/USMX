@@ -20,6 +20,7 @@ import "../../../estilos/componentes/Agencias/AdministrarAgencias/ModalSubirArch
 export default function ModalSubirArchivo({
   informacionArchivo,
   establecerMostrarModalSubirArchivo,
+  idioma,
 }) {
   const [contenidoModal, establecerContenidoModal] = useState(0);
   const [esRemitente, establecerEsRemitente] = useState(true);
@@ -88,6 +89,7 @@ export default function ModalSubirArchivo({
   };
 
   const ValoresParaLosComponentes = {
+    idioma,
     informacionArchivo,
     esRemitente,
     establecerEsRemitente,

@@ -7,6 +7,7 @@ import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../../context/AgenciasContext";
+import { useConfiguracion } from "../../../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import GoogleAPI from "../../GoogleAPI";
@@ -20,6 +21,7 @@ import {
   REGEX_CORREO,
 } from "../../../helpers/Regexs";
 import { ESTILOS_ERROR, ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
+import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/EditarAgencia.css";
@@ -29,6 +31,8 @@ export default function EditarAgencia({
   establecerVista,
 }) {
   const { ActualizarInformacionAgencia } = useAgencias();
+  const { idioma } = useConfiguracion();
+
   // ESTADOS AQUI
   const [direccion, establecerDireccion] = useState(null);
   const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] = useState({
@@ -174,10 +178,13 @@ export default function EditarAgencia({
           <ion-icon name="arrow-back"></ion-icon>
         </button>
       </div>
-      <h1 className="EditarAgencia__Titulo">Editar Agencia</h1>
+      <h1 className="EditarAgencia__Titulo">
+        {ListaDeIdiomas.VistaEditarAgencia[idioma].EditarAgencia}
+      </h1>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="business"></ion-icon> Nombre de la agencia
+          <ion-icon name="business"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].NombreDeLaAgencia}
         </p>
         <input
           id="NombreAgencia"
@@ -185,11 +192,11 @@ export default function EditarAgencia({
           placeholder="Escriba aquí..."
           tabIndex={-1}
           {...register("NombreAgencia", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
             },
           })}
         ></input>
@@ -197,8 +204,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="briefcase"></ion-icon> Nombre legal de la agencia
-          (DBA)
+          <ion-icon name="briefcase"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].NombreLegalDeLaAgencia}
         </p>
         <input
           id="NombreLegalAgencia"
@@ -208,7 +215,7 @@ export default function EditarAgencia({
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
             },
           })}
         ></input>
@@ -217,22 +224,23 @@ export default function EditarAgencia({
       <GoogleAPI {...PropsGoogleAPI} />
       <span className="EditarAgencia__Titulo__Campo">
         <p>
-          <ion-icon name="call"></ion-icon> Tel. Agencia
+          <ion-icon name="call"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].TelAgencia}
         </p>
         <input
           id="TelefonoAgencia"
           name="TelefonoAgencia"
           placeholder="Escriba aquí..."
           {...register("TelefonoAgencia", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
             },
           })}
         ></input>
@@ -240,7 +248,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo">
         <p>
-          <ion-icon name="print"></ion-icon> Fax
+          <ion-icon name="print"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].Fax}
         </p>
         <input
           id="FaxAgencia"
@@ -250,11 +259,11 @@ export default function EditarAgencia({
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
             },
           })}
         ></input>
@@ -262,18 +271,19 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo">
         <p>
-          <ion-icon name="mail"></ion-icon> Correo Agencia
+          <ion-icon name="mail"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].CorreoAgencia}
         </p>
         <input
           id="CorreoAgencia"
           name="CorreoAgencia"
           placeholder="Escriba aquí..."
           {...register("CorreoAgencia", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
             pattern: REGEX_CORREO,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
             },
           })}
         ></input>
@@ -281,7 +291,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo">
         <p>
-          <ion-icon name="mail"></ion-icon> Correo Agencia #2 (Opcional)
+          <ion-icon name="mail"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].CorreoAgencia2}
         </p>
         <input
           id="CorreoAgenciaSecundario"
@@ -291,7 +302,7 @@ export default function EditarAgencia({
             pattern: REGEX_CORREO,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
             },
           })}
         ></input>
@@ -299,7 +310,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="person"></ion-icon> Nombre representante ventas
+          <ion-icon name="person"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].NombreRepresentanteVentas}
         </p>
         <input
           id="RepresentanteVentas"
@@ -307,10 +319,10 @@ export default function EditarAgencia({
           placeholder="Escriba aquí..."
           {...register("RepresentanteVentas", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
             },
           })}
         ></input>
@@ -318,22 +330,23 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="call"></ion-icon> Tel. Representante
+          <ion-icon name="call"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].TelRepresentante}
         </p>
         <input
           id="TelefonoRepresentanteVentas"
           name="TelefonoRepresentanteVentas"
           placeholder="Escriba aquí..."
           {...register("TelefonoRepresentanteVentas", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
             },
           })}
         ></input>
@@ -341,7 +354,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="person"></ion-icon> Nombre del dueño
+          <ion-icon name="person"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].NombreDelDueño}
         </p>
         <input
           id="NombreDueno"
@@ -351,7 +365,7 @@ export default function EditarAgencia({
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
             },
           })}
         ></input>
@@ -359,7 +373,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="call"></ion-icon> Tel. Dueño
+          <ion-icon name="call"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].TelDueño}
         </p>
         <input
           id="TelefonoDueno"
@@ -369,11 +384,11 @@ export default function EditarAgencia({
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
             },
           })}
         ></input>
@@ -381,7 +396,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="person"></ion-icon> Nombre del manager
+          <ion-icon name="person"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].NombreDelManager}
         </p>
         <input
           id="NombreManager"
@@ -391,7 +407,7 @@ export default function EditarAgencia({
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
             },
           })}
         ></input>
@@ -399,7 +415,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="call"></ion-icon> Tel. Manager
+          <ion-icon name="call"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].TelManager}
         </p>
         <input
           id="TelefonoManager"
@@ -409,11 +426,11 @@ export default function EditarAgencia({
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+              message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
             },
           })}
         ></input>
@@ -421,7 +438,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo">
         <p>
-          <ion-icon name="reader"></ion-icon> No. Licencia
+          <ion-icon name="reader"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].NoLicencia}
         </p>
         <input
           id="NumeroLicenciaAgencia"
@@ -435,7 +453,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo">
         <p>
-          <ion-icon name="reader"></ion-icon> No. Sales Tax
+          <ion-icon name="reader"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].NoSalesTax}
         </p>
         <input
           id="NumeroImpuestosVenta"
@@ -449,7 +468,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="reader"></ion-icon> S.S
+          <ion-icon name="reader"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].SS}
         </p>
         <input
           id="SS"
@@ -463,7 +483,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo">
         <p>
-          <ion-icon name="copy"></ion-icon> Copia ID
+          <ion-icon name="copy"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].CopiaID}
         </p>
         <select name="CopiaID" id="CopiaID" {...register("CopiaID")}>
           <option value="No">No</option>
@@ -473,7 +494,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
-          <ion-icon name="copy"></ion-icon> Copia Licencia
+          <ion-icon name="copy"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].CopiaLicencia}
         </p>
         <select
           name="CopiaLicenciaNegocio"
@@ -487,7 +509,8 @@ export default function EditarAgencia({
       </span>
       <span className="EditarAgencia__Titulo__Campo">
         <p>
-          <ion-icon name="copy"></ion-icon> Copia Sales Tax
+          <ion-icon name="copy"></ion-icon>{" "}
+          {ListaDeIdiomas.VistaEditarAgencia[idioma].CopiaSalesTax}
         </p>
         <select
           name="CopiaImpuestosVenta"
@@ -501,7 +524,7 @@ export default function EditarAgencia({
       </span>
       <footer className="EditarAgencia__Footer">
         <button type="submit" className="EditarAgencia__Footer__Boton Guardar">
-          Actualizar
+          {ListaDeIdiomas.Botones[idioma].Actualizar}
         </button>
       </footer>
     </form>

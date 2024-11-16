@@ -27,7 +27,7 @@ export default function Bienvenida() {
     cargandoUltimosDiezPedidos,
     ultimosDiezPedidos,
     buscarNuevamente,
-    establecerBuscarNuevamenteBuscarNuevamente,
+    establecerBuscarNuevamente,
   } = useBuscarUltimosDiezPedidos();
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function Bienvenida() {
   };
 
   setTimeout(() => {
-    establecerBuscarNuevamenteBuscarNuevamente(!buscarNuevamente);
+    establecerBuscarNuevamente(!buscarNuevamente);
   }, 5000);
 
   return (

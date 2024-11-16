@@ -21,6 +21,10 @@ export default function Apariencia() {
     obtenerModoOscuro,
     establecerObtenerModoOscuro,
     ActualizarModoOscuro,
+    idioma,
+    obtenerIdioma,
+    establecerObtenerIdioma,
+    ActualizarIdioma,
   } = useConfiguracion();
 
   const ActualizarElModoOscuroDelUsuario = async (ValorModoOscuro) => {
@@ -43,6 +47,26 @@ export default function Apariencia() {
       ManejarMensajesDeRespuesta({ status, data });
     }
   };
+  const ActualizarElIdiomaDelUsuario = async (valorIdioma) => {
+    try {
+      const res = await ActualizarIdioma({
+        CookieConToken: COOKIE_CON_TOKEN,
+        idUsuario: usuario.idUsuario,
+        Idioma: valorIdioma,
+      });
+      if (res.response) {
+        const { status, data } = res.response;
+        ManejarMensajesDeRespuesta({ status, data });
+      } else {
+        const { status, data } = res;
+        ManejarMensajesDeRespuesta({ status, data });
+        establecerObtenerIdioma(!obtenerIdioma);
+      }
+    } catch (error) {
+      const { status, data } = error.response;
+      ManejarMensajesDeRespuesta({ status, data });
+    }
+  };
 
   return (
     <main className="Main">
@@ -57,8 +81,8 @@ export default function Apariencia() {
         <hr className="Apariencia__Separador" />
         <section className="Apariencia__Cuerpo">
           <div className="Apariencia__Cuerpo__Texto">
-            <b>Tema de la interfaz</b>
-            <p>Selecciona el tema de la interfaz de la aplicación.</p>
+            <b>TEMA</b>
+            <p>Selecciona el tema que deseas para la apariencia del sistema.</p>
           </div>
           <div className="Apariencia__Cuerpo__Ejemplos">
             <picture
@@ -66,9 +90,9 @@ export default function Apariencia() {
                 modoOscuro === 1 && "Oscuro"
               }`}
               onClick={
-                modoOscuro === 0
-                  ? () => ActualizarElModoOscuroDelUsuario(true)
-                  : undefined
+                modoOscuro === 1
+                  ? undefined
+                  : () => ActualizarElModoOscuroDelUsuario(true)
               }
             >
               <img src="TemaOscuro.png" alt="Tema Oscuro" />
@@ -79,13 +103,48 @@ export default function Apariencia() {
                 modoOscuro === 0 && "Oscuro"
               }`}
               onClick={
-                modoOscuro === 1
-                  ? () => ActualizarElModoOscuroDelUsuario(false)
-                  : undefined
+                modoOscuro === 0
+                  ? undefined
+                  : () => ActualizarElModoOscuroDelUsuario(false)
               }
             >
               <img src="TemaClaro.png" alt="Tema Claro" />
               <b>Tema Claro</b>
+            </picture>
+          </div>
+        </section>
+        <hr className="Apariencia__Separador" />
+        <section className="Apariencia__Cuerpo">
+          <div className="Apariencia__Cuerpo__Texto">
+            <b>IDIOMA</b>
+            <p>Selecciona el idioma de la aplicación.</p>
+          </div>
+          <div className="Apariencia__Cuerpo__Ejemplos">
+            <picture
+              className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
+                idioma === "en" && "Seleccionado"
+              }`}
+              onClick={
+                idioma === "en"
+                  ? undefined
+                  : () => ActualizarElIdiomaDelUsuario("en")
+              }
+            >
+              <img src="BanderaUSA.png" alt="Idioma inglés" />
+              <b>Inglés</b>
+            </picture>
+            <picture
+              className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
+                idioma === "es" && "Seleccionado"
+              }`}
+              onClick={
+                idioma === "es"
+                  ? undefined
+                  : () => ActualizarElIdiomaDelUsuario("es")
+              }
+            >
+              <img src="BanderaMexico.png" alt="Idioma español" />
+              <b>Español</b>
             </picture>
           </div>
         </section>

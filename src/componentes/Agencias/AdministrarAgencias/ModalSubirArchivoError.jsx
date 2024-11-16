@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
+// IMPORTAMOS LAS AYUDAS
+import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
 
 // LOS ESTILOS ESTÁN EN ModalSubirArchivo.css
 export default function ModalSubirArchivoError({
+  idioma,
   esRemitente,
   establecerContenidoModal,
 }) {
@@ -13,16 +16,20 @@ export default function ModalSubirArchivoError({
         className="ModalSubirArchivo__Contenido--Error--Imagen"
       />
       <p className="ModalSubirArchivo__Contenido--Error--Texto">
-        ¡Oops! Parece que algo salió mal al insertar la información de los{" "}
-        {esRemitente ? "REMITENTES " : "DESTINATARIOS "} por favor, intenta de
-        nuevo más tarde.
+        {ListaDeIdiomas.ModalSubirArchivoError[idioma].MensajeParteUno}{" "}
+        <b>
+          {esRemitente
+            ? `${ListaDeIdiomas.ModalSubirArchivoError[idioma].Remitentes} `
+            : `${ListaDeIdiomas.ModalSubirArchivoError[idioma].Destinatarios} `}
+        </b>
+        {ListaDeIdiomas.ModalSubirArchivoError[idioma].MensajeParteDos}
       </p>
       <button
         className="ModalSubirArchivo__Contenido--Error--Boton"
         type="button"
         onClick={() => establecerContenidoModal(0)}
       >
-        Regresar
+        {ListaDeIdiomas.Botones[idioma].Regresar}
       </button>
     </section>
   );
