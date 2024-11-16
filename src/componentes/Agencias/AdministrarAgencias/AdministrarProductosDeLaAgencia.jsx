@@ -9,12 +9,15 @@ import ModalInformacionDelProducto from "./ModalInformacionDelProducto";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../../context/AgenciasContext";
-import { useConfiguracion } from "../../../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
-import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
+import {
+  DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA,
+  DICCIONARIO_RESULTADOS,
+  DICCIONARIO_PAGINACION,
+} from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarProductosAsignadosYNoAsignadosPorAgencia from "../../../hooks/useBuscarProductosAsignadosYNoAsignadosPorAgencia";
@@ -24,10 +27,10 @@ import usePaginacion from "../../../hooks/usePaginacion";
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/AdministrarProductosDeLaAgencia.css";
 
 export default function AdministrarProductosDeLaAgencia({
+  idioma,
   informacionDeLaAgencia,
   establecerVista,
 }) {
-  const { idioma } = useConfiguracion();
   const { DesasignarProductoAgencia } = useAgencias();
   const [informacionDelProducto, establecerInformacionDelProducto] =
     useState(null);
@@ -140,7 +143,7 @@ export default function AdministrarProductosDeLaAgencia({
         </button>
         <small className="AdministrarProductosDeLaAgencia__Regresar__Usuario">
           {
-            ListaDeIdiomas.VistaAdministrarProductosDeLaAgencia[idioma]
+            DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
               .AgenciaSeleccionada
           }{" "}
           <b>{informacionDeLaAgencia.NombreAgencia.toUpperCase()}</b>
@@ -150,7 +153,7 @@ export default function AdministrarProductosDeLaAgencia({
         <>
           <h1 className="AdministrarProductosDeLaAgencia__Titulo">
             {
-              ListaDeIdiomas.VistaAdministrarProductosDeLaAgencia[idioma]
+              DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
                 .ProductosAsignados
             }
           </h1>
@@ -194,7 +197,7 @@ export default function AdministrarProductosDeLaAgencia({
 
       <h1 className="AdministrarProductosDeLaAgencia__Titulo">
         {
-          ListaDeIdiomas.VistaAdministrarProductosDeLaAgencia[idioma]
+          DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
             .AsignarNuevoProducto
         }
       </h1>
@@ -202,7 +205,7 @@ export default function AdministrarProductosDeLaAgencia({
         <input
           type="text"
           placeholder={
-            ListaDeIdiomas.VistaAdministrarProductosDeLaAgencia[idioma]
+            DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
               .BuscarProducto
           }
           onChange={obtenerProductos}
@@ -215,9 +218,9 @@ export default function AdministrarProductosDeLaAgencia({
         <>
           <small className="AdministrarProductosDeLaAgencia__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {ListaDeIdiomas.Resultados[idioma].Obtuvimos}{" "}
+            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos}{" "}
             {ProductosNoAsignados.length}{" "}
-            {ListaDeIdiomas.Resultados[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
           </small>
           <div className="AdministrarProductosDeLaAgencia__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
@@ -252,19 +255,19 @@ export default function AdministrarProductosDeLaAgencia({
             )
           )}
           <small className="AdministrarProductosDeLaAgencia__TextoPaginas">
-            {ListaDeIdiomas.Paginacion[idioma].Pagina} {paginaParaMostrar}{" "}
-            {ListaDeIdiomas.Paginacion[idioma].De} {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
           </small>
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={ListaDeIdiomas.Resultados[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Productos"}
           TextoBoton={
-            ListaDeIdiomas.VistaAdministrarProductosDeLaAgencia[idioma]
+            DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
               .RegistrarProducto
           }
         />

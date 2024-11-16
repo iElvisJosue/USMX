@@ -14,17 +14,17 @@ import OpcionesDelMenu from "../../helpers/OpcionesDelMenu";
 
 // IMPORTAMOS LAS AYUDAS
 import { HOST } from "../../helpers/Urls";
-import { ListaDeIdiomas } from "../../Diccionario/Idiomas";
+import { DICCIONARIO_BOTONES } from "../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Menu/Menu.css";
 
 export default function Menu() {
-  const [mostrarMenu, setMostrarMenu] = useState(false);
-  const { CerrandoSesion } = useCerrarSesion();
   const { usuario } = useGlobal();
-  const { OpcionesMenu } = OpcionesDelMenu();
   const { idioma } = useConfiguracion();
+  const { CerrandoSesion } = useCerrarSesion();
+  const { OpcionesMenu } = OpcionesDelMenu(idioma);
+  const [mostrarMenu, setMostrarMenu] = useState(false);
 
   const ClaseMenu = mostrarMenu ? "Menu Activo" : "Menu";
 
@@ -65,7 +65,7 @@ export default function Menu() {
       ></ion-icon>
       <button className="Menu__CerrarSesion" onClick={CerrandoSesion}>
         <ion-icon name="log-out"></ion-icon>{" "}
-        {ListaDeIdiomas.Botones[idioma].CerrarSesion}
+        {DICCIONARIO_BOTONES[idioma].CerrarSesion}
       </button>
     </aside>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
 
@@ -8,12 +9,13 @@ import EditarOcurre from "./EditarOcurre";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Ocurres/AdministrarOcurres/AdministrarOcurres.css";
 
-export default function AdministrarOcurres() {
+export default function AdministrarOcurres({ idioma }) {
   const [informacionDelOcurre, establecerInformacionDelOcurre] = useState(null);
   const [vistaOcurres, establecerVistaOcurres] = useState(0);
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
+    idioma,
     vistaOcurres,
     establecerVistaOcurres,
     informacionDelOcurre,

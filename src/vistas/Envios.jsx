@@ -15,6 +15,15 @@ import MensajeGeneral from "../componentes/MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerTiposDeEnvio from "../hooks/useObtenerTiposDeEnvio";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_ENVIOS,
+  DICCIONARIO_BOTONES,
+  DICCIONARIO_MENSAJES_DE_ERROR,
+  DICCIONARIO_RESULTADOS,
+  DICCIONARIO_PLACEHOLDERS,
+} from "../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
@@ -25,7 +34,8 @@ import { ESTILOS_ERROR } from "../helpers/SonnerEstilos";
 import "../estilos/vistas/Envios.css";
 
 export default function Envios() {
-  const { RegistrarTipoDeEnvio, EliminarTipoDeEnvio } = useConfiguracion();
+  const { idioma, RegistrarTipoDeEnvio, EliminarTipoDeEnvio } =
+    useConfiguracion();
   const {
     envios,
     cargandoEnvios,
@@ -110,35 +120,39 @@ export default function Envios() {
   return (
     <main className="Main">
       <Menu />
-      <Encabezado icono="airplane" seccion="Envios" />
+      <Encabezado
+        icono="airplane"
+        seccion={DICCIONARIO_ENVIOS[idioma].Envios}
+      />
       <form className="Envios" onSubmit={RegistrarNuevoEnvio}>
-        <h2 className="Envios__Titulo">Envios</h2>
+        <h2 className="Envios__Titulo">{DICCIONARIO_ENVIOS[idioma].Envios}</h2>
         <h4 className="Envios__Subtitulo">
-          Administre la cantidad de envios que maneja el sistema para sus
-          pedidos.
+          {DICCIONARIO_ENVIOS[idioma].DescripcionEnvios}
         </h4>
         <hr className="Envios__Separador" />
         {envios.length > 0 ? (
           <div className="Envios__Cuerpo">
             <section className="Envios__Formulario">
-              <b className="Envios__Formulario--Titulo">Tipos de envios</b>
+              <b className="Envios__Formulario--Titulo">
+                {DICCIONARIO_ENVIOS[idioma].TiposDeEnvios}
+              </b>
               <p className="Envios__Formulario--Subtitulo">
-                Registra los tipos de envios con los que trabajan.
+                {DICCIONARIO_ENVIOS[idioma].DescripcionTiposDeEnvios}
               </p>
               <div className="Envios__Formulario--Inputs">
                 <span className="Envios__Cuerpo__Inputs--Span">
                   <input
                     type="text"
                     name="TipoEnvio"
-                    placeholder="Envío"
+                    placeholder={DICCIONARIO_PLACEHOLDERS[idioma].Envio}
                     {...register("TipoEnvio", {
-                      required: "¡Este campo es obligatorio! ⚠️",
+                      required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
                       pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                     })}
                   />
                   {MensajeDeError("TipoEnvio")}
                 </span>
-                <button>Añadir</button>
+                <button>{DICCIONARIO_BOTONES[idioma].Añadir}</button>
               </div>
             </section>
             <section className="Envios__Lista">
@@ -160,7 +174,7 @@ export default function Envios() {
         ) : (
           <MensajeGeneral
             Imagen="SinResultados.png"
-            Texto="¡Oops! No se encontraron resultados."
+            Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
           />
         )}
       </form>

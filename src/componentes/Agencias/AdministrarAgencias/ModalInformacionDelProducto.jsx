@@ -10,7 +10,10 @@ import { useAgencias } from "../../../context/AgenciasContext";
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
-import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
+import {
+  DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO,
+  DICCIONARIO_BOTONES,
+} from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ModalInformacionDelProducto.css";
@@ -148,19 +151,19 @@ export default function ModalInformacionDelProducto({
         </button>
         <h1 className="ModalInformacionDelProducto__Contenido--Titulo">
           {
-            ListaDeIdiomas.ModalInformacionDelProducto[idioma]
+            DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma]
               .DetallesDelProducto
           }
         </h1>
         <small className="ModalInformacionDelProducto__Contenido--Informacion Col2">
           <ion-icon name="basket"></ion-icon>{" "}
-          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].Producto}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Producto}</b>
           {informacionDelProducto.NombreProducto}
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
           <ion-icon name="cash"></ion-icon>{" "}
           <b>
-            {ListaDeIdiomas.ModalInformacionDelProducto[idioma].PrecioPublico}
+            {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].PrecioPublico}
           </b>
           <input
             className={ClaseInputs}
@@ -174,7 +177,7 @@ export default function ModalInformacionDelProducto({
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
           <ion-icon name="cash"></ion-icon>{" "}
-          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].Comision}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Comision}</b>
           <input
             className={ClaseInputs}
             type="text"
@@ -187,7 +190,7 @@ export default function ModalInformacionDelProducto({
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
           <ion-icon name="scale"></ion-icon>{" "}
-          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].LibraExtra}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].LibraExtra}</b>
           <input
             className={ClaseInputs}
             type="text"
@@ -201,7 +204,7 @@ export default function ModalInformacionDelProducto({
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
           <ion-icon name="thumbs-up"></ion-icon>{" "}
           <b>
-            {ListaDeIdiomas.ModalInformacionDelProducto[idioma].PesoSinCobro}
+            {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].PesoSinCobro}
           </b>
           <input
             className={ClaseInputs}
@@ -215,7 +218,7 @@ export default function ModalInformacionDelProducto({
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion Col2">
           <ion-icon name="warning"></ion-icon>{" "}
-          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].PesoMaximo}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].PesoMaximo}</b>
           <input
             className={ClaseInputs}
             type="text"
@@ -228,12 +231,12 @@ export default function ModalInformacionDelProducto({
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion Col2">
           <ion-icon name="expand"></ion-icon>{" "}
-          <b>{ListaDeIdiomas.ModalInformacionDelProducto[idioma].Medidas}</b>
-          {ListaDeIdiomas.ModalInformacionDelProducto[idioma].Ancho}{" "}
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Medidas}</b>
+          {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Ancho}{" "}
           {informacionDelProducto.AnchoProducto} -{" "}
-          {ListaDeIdiomas.ModalInformacionDelProducto[idioma].Alto}{" "}
+          {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Alto}{" "}
           {informacionDelProducto.AltoProducto} -{" "}
-          {ListaDeIdiomas.ModalInformacionDelProducto[idioma].Largo}{" "}
+          {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Largo}{" "}
           {informacionDelProducto.LargoProducto}
         </small>
         {informacionDelProducto.Editable && (
@@ -242,8 +245,8 @@ export default function ModalInformacionDelProducto({
             className="ModalInformacionDelProducto__Contenido--Boton"
           >
             {informacionDelProducto.Actualizar
-              ? `${ListaDeIdiomas.Botones[idioma].Actualizar}`
-              : `${ListaDeIdiomas.Botones[idioma].Asignar}`}
+              ? `${DICCIONARIO_BOTONES[idioma].Actualizar}`
+              : `${DICCIONARIO_BOTONES[idioma].Asignar}`}
           </button>
         )}
       </form>

@@ -12,7 +12,10 @@ import useObtenerApiGoogleMapsAutoCompletado from "../hooks/useObtenerApiGoogleM
 import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { ListaDeIdiomas } from "../Diccionario/Idiomas";
+import {
+  DICCIONARIO_GOOGLE_API,
+  DICCIONARIO_PLACEHOLDERS,
+} from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/componentes/GoogleAPI.css";
@@ -79,7 +82,7 @@ export default function GoogleAPI({
         <span className="GoogleAPI__LoadScript">
           <p>
             <ion-icon name="search"></ion-icon>{" "}
-            {ListaDeIdiomas.GoogleAPI[idioma].BuscarDireccion}
+            {DICCIONARIO_GOOGLE_API[idioma].BuscarDireccion}
           </p>
           <LoadScript
             googleMapsApiKey={apiGoogleMapsAutoCompletado}
@@ -93,7 +96,7 @@ export default function GoogleAPI({
               selectProps={{
                 value: direccion,
                 onChange: manejarDireccion,
-                placeholder: ListaDeIdiomas.Placeholder[idioma],
+                placeholder: DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui,
               }}
             />
           </LoadScript>
@@ -102,7 +105,7 @@ export default function GoogleAPI({
       {detallesDeLaDireccion && (
         <div className="GoogleAPI__Detalles">
           <p className="GoogleAPI__Detalles--Titulo">
-            {ListaDeIdiomas.GoogleAPI[idioma].DetallesDeLaDireccion}{" "}
+            {DICCIONARIO_GOOGLE_API[idioma].DetallesDeLaDireccion}{" "}
             <button
               type="button"
               className="GoogleAPI__Detalles--Cerrar"
@@ -116,49 +119,49 @@ export default function GoogleAPI({
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="flag"></ion-icon>
-              {ListaDeIdiomas.GoogleAPI[idioma].Pais}
+              {DICCIONARIO_GOOGLE_API[idioma].Pais}
             </p>
             <b>{detallesDeLaDireccion.PAIS}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="keypad-outline"></ion-icon>
-              {ListaDeIdiomas.GoogleAPI[idioma].CodigoPais}
+              {DICCIONARIO_GOOGLE_API[idioma].CodigoPais}
             </p>
             <b>{detallesDeLaDireccion.CODIGO_PAIS}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="location"></ion-icon>
-              {ListaDeIdiomas.GoogleAPI[idioma].Estado}
+              {DICCIONARIO_GOOGLE_API[idioma].Estado}
             </p>
             <b>{detallesDeLaDireccion.ESTADO}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="keypad-outline"></ion-icon>
-              {ListaDeIdiomas.GoogleAPI[idioma].CodigoEstado}
+              {DICCIONARIO_GOOGLE_API[idioma].CodigoEstado}
             </p>
             <b>{detallesDeLaDireccion.CODIGO_ESTADO}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="locate"></ion-icon>
-              {ListaDeIdiomas.GoogleAPI[idioma].Ciudad}
+              {DICCIONARIO_GOOGLE_API[idioma].Ciudad}
             </p>
             <b>{detallesDeLaDireccion.CIUDAD}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido">
             <p>
               <ion-icon name="pin"></ion-icon>
-              {ListaDeIdiomas.GoogleAPI[idioma].CodigoPostal}
+              {DICCIONARIO_GOOGLE_API[idioma].CodigoPostal}
             </p>
             <b>{detallesDeLaDireccion.CODIGO_POSTAL}</b>
           </span>
           <span className="GoogleAPI__Detalles--Contenido Direccion">
             <p>
               <ion-icon name="trail-sign"></ion-icon>
-              {ListaDeIdiomas.GoogleAPI[idioma].Direccion}
+              {DICCIONARIO_GOOGLE_API[idioma].Direccion}
             </p>
             <b>{detallesDeLaDireccion.DIRECCION}</b>
           </span>

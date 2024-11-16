@@ -7,6 +7,9 @@ import { Toaster } from "sonner";
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_APARIENCIA } from "../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
@@ -71,18 +74,22 @@ export default function Apariencia() {
   return (
     <main className="Main">
       <Menu />
-      <Encabezado icono="color-palette" seccion="Apariencia" />
+      <Encabezado
+        icono="color-palette"
+        seccion={DICCIONARIO_APARIENCIA[idioma].Apariencia}
+      />
       <div className="Apariencia">
-        <h2 className="Apariencia__Titulo">Apariencia</h2>
+        <h2 className="Apariencia__Titulo">
+          {DICCIONARIO_APARIENCIA[idioma].Apariencia}
+        </h2>
         <h4 className="Apariencia__Subtitulo">
-          Administre la configuración y preferencias de la apariencia del
-          sistema.
+          {DICCIONARIO_APARIENCIA[idioma].DescripcionApariencia}
         </h4>
         <hr className="Apariencia__Separador" />
         <section className="Apariencia__Cuerpo">
           <div className="Apariencia__Cuerpo__Texto">
-            <b>TEMA</b>
-            <p>Selecciona el tema que deseas para la apariencia del sistema.</p>
+            <b>{DICCIONARIO_APARIENCIA[idioma].TemaSistema}</b>
+            <p>{DICCIONARIO_APARIENCIA[idioma].DescripcionTemaSistema}</p>
           </div>
           <div className="Apariencia__Cuerpo__Ejemplos">
             <picture
@@ -96,7 +103,7 @@ export default function Apariencia() {
               }
             >
               <img src="TemaOscuro.png" alt="Tema Oscuro" />
-              <b>Tema Oscuro</b>
+              <b>{DICCIONARIO_APARIENCIA[idioma].TemaOscuro}</b>
             </picture>
             <picture
               className={`Apariencia__Cuerpo__Ejemplo--Imagen ${
@@ -109,15 +116,15 @@ export default function Apariencia() {
               }
             >
               <img src="TemaClaro.png" alt="Tema Claro" />
-              <b>Tema Claro</b>
+              <b>{DICCIONARIO_APARIENCIA[idioma].TemaClaro}</b>
             </picture>
           </div>
         </section>
         <hr className="Apariencia__Separador" />
         <section className="Apariencia__Cuerpo">
           <div className="Apariencia__Cuerpo__Texto">
-            <b>IDIOMA</b>
-            <p>Selecciona el idioma de la aplicación.</p>
+            <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaSistema}</b>
+            <p>{DICCIONARIO_APARIENCIA[idioma].DescripcionIdiomaSistema}</p>
           </div>
           <div className="Apariencia__Cuerpo__Ejemplos">
             <picture
@@ -131,7 +138,7 @@ export default function Apariencia() {
               }
             >
               <img src="BanderaUSA.png" alt="Idioma inglés" />
-              <b>Inglés</b>
+              <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaIngles}</b>
             </picture>
             <picture
               className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
@@ -144,7 +151,7 @@ export default function Apariencia() {
               }
             >
               <img src="BanderaMexico.png" alt="Idioma español" />
-              <b>Español</b>
+              <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaEspanol}</b>
             </picture>
           </div>
         </section>

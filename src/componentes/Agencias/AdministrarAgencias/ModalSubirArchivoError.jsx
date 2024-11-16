@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS AYUDAS
-import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
+import {
+  DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR,
+  DICCIONARIO_BOTONES,
+} from "../../../diccionario/Diccionario";
 
 // LOS ESTILOS ESTÁN EN ModalSubirArchivo.css
 export default function ModalSubirArchivoError({
@@ -16,20 +19,20 @@ export default function ModalSubirArchivoError({
         className="ModalSubirArchivo__Contenido--Error--Imagen"
       />
       <p className="ModalSubirArchivo__Contenido--Error--Texto">
-        {ListaDeIdiomas.ModalSubirArchivoError[idioma].MensajeParteUno}{" "}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[idioma].MensajeParteUno}{" "}
         <b>
           {esRemitente
-            ? `${ListaDeIdiomas.ModalSubirArchivoError[idioma].Remitentes} `
-            : `${ListaDeIdiomas.ModalSubirArchivoError[idioma].Destinatarios} `}
+            ? `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[idioma].Remitentes} `
+            : `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[idioma].Destinatarios} `}
         </b>
-        {ListaDeIdiomas.ModalSubirArchivoError[idioma].MensajeParteDos}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[idioma].MensajeParteDos}
       </p>
       <button
         className="ModalSubirArchivo__Contenido--Error--Boton"
         type="button"
         onClick={() => establecerContenidoModal(0)}
       >
-        {ListaDeIdiomas.Botones[idioma].Regresar}
+        {DICCIONARIO_BOTONES[idioma].Regresar}
       </button>
     </section>
   );

@@ -2,6 +2,12 @@
 import { useState } from "react";
 import { Toaster } from "sonner";
 
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useConfiguracion } from "../context/ConfiguracionContext";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_OCURRES } from "../diccionario/Diccionario";
+
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
@@ -10,18 +16,24 @@ import RegistrarOcurre from "../componentes/Ocurres/RegistrarOcurre/RegistrarOcu
 import AdministrarOcurres from "../componentes/Ocurres/AdministrarOcurres/AdministrarOcurres";
 
 export default function Ocurres() {
+  const { idioma } = useConfiguracion();
   const [vistaOcurres, establecerVistaOcurres] = useState(0);
 
   const OpcionesSubMenu = [
     {
-      Texto: "Registrar Ocurre",
+      Texto: DICCIONARIO_OCURRES[idioma].RegistrarOcurre,
       Icono: "add-circle",
     },
     {
-      Texto: "Administrar Ocurres",
+      Texto: DICCIONARIO_OCURRES[idioma].AdministrarOcurres,
       Icono: "cog",
     },
   ];
+
+  // VALORES COMPARTIDOS ENTRE LOS COMPONENTES
+  const valoresParaLosComponentes = {
+    idioma,
+  };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
@@ -30,8 +42,8 @@ export default function Ocurres() {
   };
 
   const TituloSubseccion = {
-    0: "Registrar Ocurre",
-    1: "Administrar Ocurres",
+    0: DICCIONARIO_OCURRES[idioma].RegistrarOcurre,
+    1: DICCIONARIO_OCURRES[idioma].AdministrarOcurres,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -43,7 +55,7 @@ export default function Ocurres() {
       <Menu />
       <Encabezado
         icono="alert-circle"
-        seccion="Ocurres"
+        seccion={DICCIONARIO_OCURRES[idioma].Ocurres}
         subseccion={TituloSubseccion[vistaOcurres]}
       />
       <SubMenu
@@ -51,7 +63,7 @@ export default function Ocurres() {
         vista={vistaOcurres}
         establecerVista={establecerVistaOcurres}
       />
-      <ComponenteParaRenderizar />
+      <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       <Toaster richColors position="top-right" />
     </main>
   );

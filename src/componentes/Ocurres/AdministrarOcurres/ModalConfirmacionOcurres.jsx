@@ -2,6 +2,9 @@
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useOcurre } from "../../../context/OcurreContext";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_MODAL_CONFIRMACION_OCURRE } from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
@@ -10,6 +13,7 @@ import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import "../../../estilos/componentes/Ocurres/AdministrarOcurres/ModalConfirmacionOcurres.css";
 
 export default function ModalConfirmacionOcurres({
+  idioma,
   Activar = true,
   infOcurre,
   establecerMostrarModalConfirmacion,
@@ -20,11 +24,15 @@ export default function ModalConfirmacionOcurres({
   const ClaseTituloModal = Activar
     ? "ModalConfirmacionOcurres__Contenido--Titulo Activar"
     : "ModalConfirmacionOcurres__Contenido--Titulo Desactivar";
-  const TituloModal = Activar ? "Activar ocurre" : "Desactivar ocurre";
+  const TituloModal = Activar
+    ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].ActivarOcurre
+    : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].DesactivarOcurre;
   const ClaseBotonModal = Activar
     ? "ModalConfirmacionOcurres__Contenido--Boton Activar"
     : "ModalConfirmacionOcurres__Contenido--Boton Desactivar";
-  const TextoBotonModal = Activar ? "Activar" : "Desactivar";
+  const TextoBotonModal = Activar
+    ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].Activar
+    : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].Desactivar;
   const ClaseTextoModal = Activar
     ? "ModalConfirmacionOcurres__Contenido--Texto Activar"
     : "ModalConfirmacionOcurres__Contenido--Texto Desactivar";
@@ -63,14 +71,20 @@ export default function ModalConfirmacionOcurres({
         </button>
         <h1 className={ClaseTituloModal}>{TituloModal}</h1>
         <small className={ClaseTextoModal}>
-          ¿Esta seguro que desea {Activar ? "activar" : "desactivar"} el ocurre{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].MensajeParteUno}{" "}
+          {Activar
+            ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].Activar
+            : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].Desactivar}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].MensajeParteDos}{" "}
           <b>{infOcurre.NombreOcurre}</b>?
           <br />
           <br />
           <i>
             {Activar
-              ? `El ocurre se activara una vez confirmada esta acción, por lo cual, el ocurre ${infOcurre.NombreOcurre} podrá trabajar con normalidad en el sistema.`
-              : `El ocurre se desactivara una vez confirmada esta opción, por lo cual, con el ocurre ${infOcurre.NombreOcurre} no sé podrá realizar ninguna operación.`}
+              ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma]
+                  .AdvertenciaUnoOcurre
+              : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma]
+                  .AdvertenciaDosOcurre}
           </i>
         </small>
         <button

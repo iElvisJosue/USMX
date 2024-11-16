@@ -13,7 +13,7 @@ import RegistrarAgencia from "../componentes/Agencias/RegistrarAgencia/Registrar
 import AdministrarAgencias from "../componentes/Agencias/AdministrarAgencias/AdministrarAgencias";
 
 // IMPORTAMOS LAS AYUDAS A USAR
-import { ListaDeIdiomas } from "../Diccionario/Idiomas";
+import { DICCIONARIO_AGENCIAS } from "../diccionario/Diccionario";
 
 export default function Agencias() {
   const { idioma } = useConfiguracion();
@@ -21,14 +21,19 @@ export default function Agencias() {
 
   const OpcionesSubMenu = [
     {
-      Texto: ListaDeIdiomas.VistaAgencias[idioma].RegistrarAgencia,
+      Texto: DICCIONARIO_AGENCIAS[idioma].RegistrarAgencia,
       Icono: "add-circle",
     },
     {
-      Texto: ListaDeIdiomas.VistaAgencias[idioma].AdministrarAgencias,
+      Texto: DICCIONARIO_AGENCIAS[idioma].AdministrarAgencias,
       Icono: "cog",
     },
   ];
+
+  // VALORES COMPARTIDOS ENTRE LOS COMPONENTES
+  const valoresParaLosComponentes = {
+    idioma,
+  };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
@@ -37,8 +42,8 @@ export default function Agencias() {
   };
 
   const TituloSubseccion = {
-    0: ListaDeIdiomas.VistaAgencias[idioma].RegistrarAgencia,
-    1: ListaDeIdiomas.VistaAgencias[idioma].AdministrarAgencias,
+    0: DICCIONARIO_AGENCIAS[idioma].RegistrarAgencia,
+    1: DICCIONARIO_AGENCIAS[idioma].AdministrarAgencias,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -50,7 +55,7 @@ export default function Agencias() {
       <Menu />
       <Encabezado
         icono="business"
-        seccion={ListaDeIdiomas.VistaAgencias[idioma].Agencias}
+        seccion={DICCIONARIO_AGENCIAS[idioma].Agencias}
         subseccion={TituloSubseccion[vistaAgencias]}
       />
       <SubMenu
@@ -58,7 +63,7 @@ export default function Agencias() {
         vista={vistaAgencias}
         establecerVista={establecerVistaAgencias}
       />
-      <ComponenteParaRenderizar />
+      <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       <Toaster richColors position="top-right" />
     </main>
   );

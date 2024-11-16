@@ -18,9 +18,9 @@ import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ModalSubirArchivo.css";
 
 export default function ModalSubirArchivo({
+  idioma,
   informacionArchivo,
   establecerMostrarModalSubirArchivo,
-  idioma,
 }) {
   const [contenidoModal, establecerContenidoModal] = useState(0);
   const [esRemitente, establecerEsRemitente] = useState(true);

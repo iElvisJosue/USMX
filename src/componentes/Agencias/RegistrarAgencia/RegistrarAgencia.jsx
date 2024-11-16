@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -6,7 +7,6 @@ import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../../context/AgenciasContext";
-import { useConfiguracion } from "../../../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import GoogleAPI from "../../GoogleAPI";
@@ -20,18 +20,22 @@ import {
   REGEX_CORREO,
 } from "../../../helpers/Regexs";
 import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
-import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
+import {
+  DICCIONARIO_REGISTRAR_AGENCIA,
+  DICCIONARIO_MENSAJES_DE_ERROR,
+  DICCIONARIO_PLACEHOLDERS,
+  DICCIONARIO_BOTONES,
+} from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Agencias/RegistrarAgencia/RegistrarAgencia.css";
 
-export default function RegistrarAgencia() {
+export default function RegistrarAgencia({ idioma }) {
   // ESTADOS AQUI
   const [direccion, establecerDireccion] = useState(null);
   const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] =
     useState(null);
   const { RegistrarAgencia } = useAgencias();
-  const { idioma } = useConfiguracion();
   const {
     handleSubmit,
     register,
@@ -110,24 +114,24 @@ export default function RegistrarAgencia() {
         onSubmit={GuardaInformacionDeLaAgencia}
       >
         <h1 className="RegistrarAgencia__InformacionDeLaAgencia__Titulo">
-          {ListaDeIdiomas.VistaRegistrarAgencia[idioma].RegistrarAgencia}
+          {DICCIONARIO_REGISTRAR_AGENCIA[idioma].RegistrarAgencia}
         </h1>
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="business"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NombreDeLaAgencia}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].NombreDeLaAgencia}
           </p>
           <input
             id="NombreAgencia"
             name="NombreAgencia"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             tabIndex={-1}
             {...register("NombreAgencia", {
-              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           ></input>
@@ -136,20 +140,17 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="briefcase"></ion-icon>
-            {
-              ListaDeIdiomas.VistaRegistrarAgencia[idioma]
-                .NombreLegalDeLaAgencia
-            }
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].NombreLegalDeLaAgencia}
           </p>
           <input
             id="NombreLegalAgencia"
             name="NombreLegalAgencia"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("NombreLegalAgencia", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           ></input>
@@ -159,22 +160,22 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
             <ion-icon name="call"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].TelAgencia}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].TelAgencia}
           </p>
           <input
             id="TelefonoAgencia"
             name="TelefonoAgencia"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("TelefonoAgencia", {
-              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
               },
             })}
           ></input>
@@ -183,21 +184,21 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
             <ion-icon name="print"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].Fax}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].Fax}
           </p>
           <input
             id="FaxAgencia"
             name="FaxAgencia"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("FaxAgencia", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
               },
             })}
           ></input>
@@ -206,18 +207,18 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
             <ion-icon name="mail"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CorreoAgencia}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].CorreoAgencia}
           </p>
           <input
             id="CorreoAgencia"
             name="CorreoAgencia"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("CorreoAgencia", {
-              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               pattern: REGEX_CORREO,
               maxLength: {
                 value: 100,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           ></input>
@@ -226,17 +227,17 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
             <ion-icon name="mail"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CorreoAgencia2}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].CorreoAgencia2}
           </p>
           <input
             id="CorreoAgenciaSecundario"
             name="CorreoAgenciaSecundario"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("CorreoAgenciaSecundario", {
               pattern: REGEX_CORREO,
               maxLength: {
                 value: 100,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           ></input>
@@ -245,21 +246,18 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="person"></ion-icon>
-            {
-              ListaDeIdiomas.VistaRegistrarAgencia[idioma]
-                .NombreRepresentanteVentas
-            }
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].NombreRepresentanteVentas}
           </p>
           <input
             id="RepresentanteVentas"
             name="RepresentanteVentas"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("RepresentanteVentas", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               maxLength: {
                 value: 100,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           ></input>
@@ -268,22 +266,22 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="call"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].TelRepresentante}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].TelRepresentante}
           </p>
           <input
             id="TelefonoRepresentanteVentas"
             name="TelefonoRepresentanteVentas"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("TelefonoRepresentanteVentas", {
-              required: ListaDeIdiomas.MensajesDeError[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
               },
             })}
           ></input>
@@ -292,17 +290,17 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="person"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NombreDelDueño}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].NombreDelDueño}
           </p>
           <input
             id="NombreDueno"
             name="NombreDueno"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("NombreDueno", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           ></input>
@@ -311,21 +309,21 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="call"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].TelDueño}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].TelDueño}
           </p>
           <input
             id="TelefonoDueno"
             name="TelefonoDueno"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("TelefonoDueno", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
               },
             })}
           ></input>
@@ -334,17 +332,17 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="person"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NombreDelManager}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].NombreDelManager}
           </p>
           <input
             id="NombreManager"
             name="NombreManager"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("NombreManager", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           ></input>
@@ -353,21 +351,21 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="call"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].TelManager}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].TelManager}
           </p>
           <input
             id="TelefonoManager"
             name="TelefonoManager"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("TelefonoManager", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Max10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message: ListaDeIdiomas.MensajesDeError[idioma].Min10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
               },
             })}
           ></input>
@@ -376,12 +374,12 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
             <ion-icon name="reader"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NoLicencia}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].NoLicencia}
           </p>
           <input
             id="NumeroLicenciaAgencia"
             name="NumeroLicenciaAgencia"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("NumeroLicenciaAgencia", {
               pattern: REGEX_SOLO_NUMEROS,
             })}
@@ -391,12 +389,12 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
             <ion-icon name="reader"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].NoSalesTax}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].NoSalesTax}
           </p>
           <input
             id="NumeroImpuestosVenta"
             name="NumeroImpuestosVenta"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("NumeroImpuestosVenta", {
               pattern: REGEX_SOLO_NUMEROS,
             })}
@@ -406,12 +404,12 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="reader"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].SS}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].SS}
           </p>
           <input
             id="SS"
             name="SS"
-            placeholder={ListaDeIdiomas.Placeholder[idioma]}
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("SS", {
               pattern: REGEX_SOLO_NUMEROS,
             })}
@@ -421,7 +419,7 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
             <ion-icon name="copy"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CopiaID}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].CopiaID}
           </p>
           <select name="CopiaID" id="CopiaID" {...register("CopiaID")}>
             <option value="No">No</option>
@@ -432,7 +430,7 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
           <p>
             <ion-icon name="copy"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CopiaLicencia}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].CopiaLicencia}
           </p>
           <select
             name="CopiaLicenciaNegocio"
@@ -447,7 +445,7 @@ export default function RegistrarAgencia() {
         <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
           <p>
             <ion-icon name="copy"></ion-icon>
-            {ListaDeIdiomas.VistaRegistrarAgencia[idioma].CopiaSalesTax}
+            {DICCIONARIO_REGISTRAR_AGENCIA[idioma].CopiaSalesTax}
           </p>
           <select
             name="CopiaImpuestosVenta"
@@ -465,13 +463,13 @@ export default function RegistrarAgencia() {
             className="RegistrarAgencia__InformacionDeLaAgencia__Footer__Boton Cancelar"
             onClick={ReiniciarFormulario}
           >
-            {ListaDeIdiomas.Botones[idioma].Cancelar}
+            {DICCIONARIO_BOTONES[idioma].Cancelar}
           </button>
           <button
             type="submit"
             className="RegistrarAgencia__InformacionDeLaAgencia__Footer__Boton Guardar"
           >
-            {ListaDeIdiomas.Botones[idioma].Guardar}
+            {DICCIONARIO_BOTONES[idioma].Guardar}
           </button>
         </footer>
       </form>

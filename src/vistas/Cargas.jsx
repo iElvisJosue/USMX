@@ -15,6 +15,15 @@ import MensajeGeneral from "../componentes/MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerTiposDeCarga from "../hooks/useObtenerTiposDeCarga";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_CARGAS,
+  DICCIONARIO_BOTONES,
+  DICCIONARIO_MENSAJES_DE_ERROR,
+  DICCIONARIO_RESULTADOS,
+  DICCIONARIO_PLACEHOLDERS,
+} from "../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
@@ -28,7 +37,8 @@ import { ESTILOS_ERROR } from "../helpers/SonnerEstilos";
 import "../estilos/vistas/Cargas.css";
 
 export default function Cargas() {
-  const { RegistrarTipoDeCarga, EliminarTipoDeCarga } = useConfiguracion();
+  const { idioma, RegistrarTipoDeCarga, EliminarTipoDeCarga } =
+    useConfiguracion();
   const {
     cargas,
     cargandoCargas,
@@ -113,29 +123,30 @@ export default function Cargas() {
   return (
     <main className="Main">
       <Menu />
-      <Encabezado icono="archive" seccion="Cargas" />
+      <Encabezado icono="archive" seccion={DICCIONARIO_CARGAS[idioma].Cargas} />
       <form className="Cargas" onSubmit={RegistrarNuevaCarga}>
-        <h2 className="Cargas__Titulo">Cargas</h2>
+        <h2 className="Cargas__Titulo">{DICCIONARIO_CARGAS[idioma].Cargas}</h2>
         <h4 className="Cargas__Subtitulo">
-          Administre la cantidad de cargas que maneja el sistema para sus
-          pedidos.
+          {DICCIONARIO_CARGAS[idioma].DescripcionCargas}
         </h4>
         <hr className="Cargas__Separador" />
         {cargas.length > 0 ? (
           <div className="Cargas__Cuerpo">
             <section className="Cargas__Formulario">
-              <b className="Cargas__Formulario--Titulo">Tipos de cargas</b>
+              <b className="Cargas__Formulario--Titulo">
+                {DICCIONARIO_CARGAS[idioma].TiposDeCargas}
+              </b>
               <p className="Cargas__Formulario--Subtitulo">
-                Registra los tipos de cargas con los que trabajan.
+                {DICCIONARIO_CARGAS[idioma].DescripcionTiposDeCargas}
               </p>
               <div className="Cargas__Formulario--Inputs">
                 <span className="Cargas__Cuerpo__Inputs--Span">
                   <input
                     type="text"
                     name="TipoCarga"
-                    placeholder="Carga"
+                    placeholder={DICCIONARIO_PLACEHOLDERS[idioma].Carga}
                     {...register("TipoCarga", {
-                      required: "¡Este campo es obligatorio! ⚠️",
+                      required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
                       pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                     })}
                   />
@@ -145,19 +156,20 @@ export default function Cargas() {
                   <input
                     type="text"
                     name="PorcentajeCarga"
-                    placeholder="Porcentaje"
+                    placeholder={DICCIONARIO_PLACEHOLDERS[idioma].Porcentaje}
                     {...register("PorcentajeCarga", {
-                      required: "¡Este campo es obligatorio! ⚠️",
+                      required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
                       pattern: REGEX_SOLO_NUMEROS,
                       maxLength: {
                         value: 3,
-                        message: "¡Este campo solo acepta 3 números! 🔠",
+                        message:
+                          DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max3Numeros,
                       },
                     })}
                   />
                   {MensajeDeError("PorcentajeCarga")}
                 </span>
-                <button>Añadir</button>
+                <button>{DICCIONARIO_BOTONES[idioma].Añadir}</button>
               </div>
             </section>
             <section className="Cargas__Lista">
@@ -180,7 +192,7 @@ export default function Cargas() {
         ) : (
           <MensajeGeneral
             Imagen="SinResultados.png"
-            Texto="¡Oops! No se encontraron resultados."
+            Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
           />
         )}
       </form>

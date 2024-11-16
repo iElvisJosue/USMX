@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS AYUDAS
-import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
+import {
+  DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO,
+  DICCIONARIO_BOTONES,
+} from "../../../diccionario/Diccionario";
 
 // LOS ESTILOS ESTÁN EN ModalSubirArchivo.css
 export default function ModalSubirArchivoCompletado({
@@ -16,20 +19,20 @@ export default function ModalSubirArchivoCompletado({
         className="ModalSubirArchivo__Contenido--Completado--Imagen"
       />
       <p className="ModalSubirArchivo__Contenido--Completado--Texto">
-        {ListaDeIdiomas.ModalSubirArchivoCompletado[idioma].MensajeParteUno}{" "}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[idioma].MensajeParteUno}{" "}
         <b>
           {esRemitente
-            ? `${ListaDeIdiomas.ModalSubirArchivoCompletado[idioma].Remitentes} `
-            : `${ListaDeIdiomas.ModalSubirArchivoCompletado[idioma].Destinatarios} `}
+            ? `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[idioma].Remitentes} `
+            : `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[idioma].Destinatarios} `}
         </b>
-        {ListaDeIdiomas.ModalSubirArchivoCompletado[idioma].MensajeParteDos}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[idioma].MensajeParteDos}
       </p>
       <button
         className="ModalSubirArchivo__Contenido--Completado--Boton"
         type="button"
         onClick={() => establecerContenidoModal(0)}
       >
-        {ListaDeIdiomas.Botones[idioma].Regresar}
+        {DICCIONARIO_BOTONES[idioma].Regresar}
       </button>
     </section>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // LIBRERÍAS A USAR
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -9,6 +10,14 @@ import { useOcurre } from "../../../context/OcurreContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import GoogleAPI from "../../GoogleAPI";
+
+// IMPORTAMOS LOS DICCIONARIOS A USAR
+import {
+  DICCIONARIO_REGISTRAR_OCURRE,
+  DICCIONARIO_PLACEHOLDERS,
+  DICCIONARIO_BOTONES,
+  DICCIONARIO_MENSAJES_DE_ERROR,
+} from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS HOOKS A USAR
 // import useObtenerPaisesActivos from "../../../hooks/useObtenerPaisesActivos";
@@ -29,7 +38,7 @@ import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Ocurres/RegistrarOcurre/RegistrarOcurre.css";
 
-export default function RegistrarOcurre() {
+export default function RegistrarOcurre({ idioma }) {
   // ESTADOS AQUI
   const [direccion, establecerDireccion] = useState(null);
   const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] =
@@ -172,23 +181,24 @@ export default function RegistrarOcurre() {
         onSubmit={GuardarInformacionDelOcurre}
       >
         <h1 className="RegistrarOcurre__InformacionOcurre__Titulo">
-          Registrar Ocurre
+          {DICCIONARIO_REGISTRAR_OCURRE[idioma].RegistrarOcurre}
         </h1>
         <span className="RegistrarOcurre__InformacionOcurre__Campo">
           <p>
-            <ion-icon name="alert-circle"></ion-icon> Nombre del ocurre
+            <ion-icon name="alert-circle"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_OCURRE[idioma].NombreDelOcurre}
           </p>
           <input
             id="NombreOcurre"
             type="text"
             name="NombreOcurre"
-            placeholder="Escriba aquí..."
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("NombreOcurre", {
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           />
@@ -196,7 +206,8 @@ export default function RegistrarOcurre() {
         </span>
         <span className="RegistrarOcurre__InformacionOcurre__Campo">
           <p>
-            <ion-icon name="business"></ion-icon> Operador logístico
+            <ion-icon name="business"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_OCURRE[idioma].OperadorLogistico}
           </p>
           <select
             name="OperadorLogisticoOcurre"
@@ -214,23 +225,23 @@ export default function RegistrarOcurre() {
         </span>
         <span className="RegistrarOcurre__InformacionOcurre__Campo">
           <p>
-            <ion-icon name="call"></ion-icon> Teléfono #1 (Opcional)
+            <ion-icon name="call"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_OCURRE[idioma].TelefonoUno}
           </p>
           <input
             id="TelefonoUnoOcurre"
             type="text"
             name="TelefonoUnoOcurre"
-            placeholder="Escriba aquí..."
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("TelefonoUnoOcurre", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message:
-                  "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
               },
             })}
           />
@@ -238,23 +249,23 @@ export default function RegistrarOcurre() {
         </span>
         <span className="RegistrarOcurre__InformacionOcurre__Campo">
           <p>
-            <ion-icon name="call"></ion-icon> Teléfono #2 (Opcional)
+            <ion-icon name="call"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_OCURRE[idioma].TelefonoDos}
           </p>
           <input
             id="TelefonoDosOcurre"
             type="text"
             name="TelefonoDosOcurre"
-            placeholder="Escriba aquí..."
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("TelefonoDosOcurre", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
               },
               minLength: {
                 value: 10,
-                message:
-                  "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
               },
             })}
           />
@@ -262,19 +273,20 @@ export default function RegistrarOcurre() {
         </span>
         <span className="RegistrarOcurre__InformacionOcurre__Campo Dos">
           <p>
-            <ion-icon name="mail"></ion-icon> Correo electrónico
+            <ion-icon name="mail"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_OCURRE[idioma].CorreoElectronico}
           </p>
           <input
             id="CorreoOcurre"
             type="text"
             name="CorreoOcurre"
-            placeholder="Escriba aquí..."
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("CorreoOcurre", {
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               pattern: REGEX_CORREO,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           />
@@ -292,7 +304,7 @@ export default function RegistrarOcurre() {
               name="PaisOcurre"
               id="PaisOcurre"
               {...register("PaisOcurre", {
-                required: "¡Este campo es obligatorio! ⚠️",
+                required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               })}
               defaultValue={""}
             >
@@ -320,7 +332,7 @@ export default function RegistrarOcurre() {
               name="EstadoOcurre"
               id="EstadoOcurre"
               {...register("EstadoOcurre", {
-                required: "¡Este campo es obligatorio! ⚠️",
+                required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               })}
               defaultValue={""}
               onChange={(e) => {
@@ -355,7 +367,7 @@ export default function RegistrarOcurre() {
                 name="CiudadOcurre"
                 id="CiudadOcurre"
                 {...register("CiudadOcurre", {
-                  required: "¡Este campo es obligatorio! ⚠️",
+                  required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
                 })}
                 defaultValue={""}
               >
@@ -382,7 +394,7 @@ export default function RegistrarOcurre() {
                 name="CodigoPostalOcurre"
                 id="CodigoPostalOcurre"
                 {...register("CodigoPostalOcurre", {
-                  required: "¡Este campo es obligatorio! ⚠️",
+                  required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
                   pattern: REGEX_SOLO_NUMEROS,
                   maxLength: {
                     value: 5,
@@ -395,7 +407,7 @@ export default function RegistrarOcurre() {
                       "¡Este campo no puede tener menos de 5 caracteres! 🔠",
                   },
                 })}
-                placeholder="Escriba aquí..."
+                placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}]}
                 onChange={(e) => {
                   // PONEMOS 5 PORQUE ES EL MÍNIMO Y MAXIMO DE UN CP
                   establecerCpColonia(
@@ -419,7 +431,7 @@ export default function RegistrarOcurre() {
                 name="DireccionOcurre"
                 id="DireccionOcurre"
                 {...register("DireccionOcurre", {
-                  required: "¡Este campo es obligatorio! ⚠️",
+                  required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
                 })}
                 value={coloniaSeleccionada}
                 onChange={(e) => establecerColoniaSeleccionada(e.target.value)}
@@ -445,15 +457,15 @@ export default function RegistrarOcurre() {
                 name="DireccionOcurre"
                 id="DireccionOcurre"
                 {...register("DireccionOcurre", {
-                  required: "¡Este campo es obligatorio! ⚠️",
+                  required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
                   pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                   maxLength: {
                     value: 1000,
                     message:
-                      "¡Este campo no puede tener más de 1000 caracteres! 🔠",
+                      DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max1000,],
                   },
                 })}
-                placeholder="Escriba aquí..."
+                placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}]}
               ></input>
               {MensajeError("DireccionOcurre")}
             </span>
@@ -465,13 +477,13 @@ export default function RegistrarOcurre() {
           <input
             name="ReferenciaOcurre"
             id="ReferenciaOcurre"
-            placeholder="Escriba aquí..."
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("ReferenciaOcurre", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 1000,
                 message:
-                  "¡Este campo no puede tener más de 1000 caracteres! 🔠",
+                  DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max1000,
               },
             })}
           ></input>
@@ -479,18 +491,18 @@ export default function RegistrarOcurre() {
         </span> */}
         <span className="RegistrarOcurre__InformacionOcurre__Campo Tres">
           <p>
-            <ion-icon name="document-text"></ion-icon> Observaciones
+            <ion-icon name="document-text"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_OCURRE[idioma].Observaciones}
           </p>
           <input
             name="ObservacionesOcurre"
             id="ObservacionesOcurre"
-            placeholder="Escriba aquí..."
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("ObservacionesOcurre", {
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 1000,
-                message:
-                  "¡Este campo no puede tener más de 1000 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max1000,
               },
             })}
           ></input>
@@ -503,13 +515,13 @@ export default function RegistrarOcurre() {
             type="button"
             onClick={CancelarRegistro}
           >
-            Cancelar
+            {DICCIONARIO_BOTONES[idioma].Cancelar}
           </button>
           <button
             type="submit"
             className="RegistrarOcurre__InformacionOcurre__Footer__Boton Siguiente"
           >
-            Guardar
+            {DICCIONARIO_BOTONES[idioma].Guardar}
           </button>
         </footer>
       </form>

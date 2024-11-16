@@ -5,7 +5,6 @@ import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../../context/AgenciasContext";
-import { useConfiguracion } from "../../../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../../Cargando";
@@ -23,16 +22,21 @@ import {
   ObtenerFechaActual,
   ObtenerHoraActual,
 } from "../../../helpers/FuncionesGenerales";
-import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
+import {
+  DICCIONARIO_LISTA_DE_AGENCIAS,
+  DICCIONARIO_BOTONES,
+  DICCIONARIO_RESULTADOS,
+  DICCIONARIO_PAGINACION,
+} from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ListaDeAgencias.css";
 
 export default function ListaDeAgencias({
+  idioma,
   establecerVista,
   establecerInformacionDeLaAgencia,
 }) {
-  const { idioma } = useConfiguracion();
   const { CrearYDescargarExcelDeAgencias, ActualizarEstadoAgencia } =
     useAgencias();
   const [mostrarModalSubirArchivo, establecerMostrarModalSubirArchivo] =
@@ -149,7 +153,6 @@ export default function ListaDeAgencias({
       ManejarMensajesDeRespuesta({ status, data });
     }
   };
-
   const FormatearHoraParaArchivoExcel = () => {
     const HoraActual = ObtenerHoraActual();
     const Hora = parseInt(HoraActual.split(":")[0], 10); // Convertir a número
@@ -159,7 +162,6 @@ export default function ListaDeAgencias({
       return `${HoraActual.replace(/:/g, ".")} PM`;
     }
   };
-
   const EstablecerInformacionParaElTipoDeArchivo = (Agencia) => {
     establecerInformacionArchivo({
       idAgencia: Agencia.idAgencia,
@@ -174,22 +176,20 @@ export default function ListaDeAgencias({
     <div className="ListaDeAgencias">
       {mostrarModalSubirArchivo && (
         <ModalSubirArchivo
+          idioma={idioma}
           informacionArchivo={informacionArchivo}
           establecerMostrarModalSubirArchivo={
             establecerMostrarModalSubirArchivo
           }
-          idioma={idioma}
         />
       )}
       <h1 className="ListaDeAgencias__Titulo">
-        {ListaDeIdiomas.VistaAdministrarAgencias[idioma].AdministrarAgencias}
+        {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].AdministrarAgencias}
       </h1>
       <span className="ListaDeAgencias__Buscar">
         <input
           type="text"
-          placeholder={
-            ListaDeIdiomas.VistaAdministrarAgencias[idioma].BuscarAgencia
-          }
+          placeholder={DICCIONARIO_LISTA_DE_AGENCIAS[idioma].BuscarAgencia}
           onChange={ObtenerLasAgencias}
         />
         <span className="ListaDeAgencias__Buscar__Lupa">
@@ -200,27 +200,24 @@ export default function ListaDeAgencias({
         <div className="ListaDeAgencias__Contenedor">
           <small className="ListaDeAgencias__Contenedor__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {ListaDeIdiomas.Resultados[idioma].Obtuvimos} {agencias.length}{" "}
-            {ListaDeIdiomas.Resultados[idioma].Resultados}
+            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {agencias.length}{" "}
+            {DICCIONARIO_RESULTADOS[idioma].Resultados}
           </small>
           <h2 className="ListaDeAgencias__Contenedor__Clasificacion">
-            {
-              ListaDeIdiomas.VistaAdministrarAgencias[idioma]
-                .EstatusDeLasAgencia
-            }
+            {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].EstatusDeLasAgencia}
           </h2>
           <span className="ListaDeAgencias__Contenedor__Colores">
             <p className="ListaDeAgencias__Contenedor__Clasificacion--Texto Activa">
               <ion-icon name="business"></ion-icon>{" "}
-              {ListaDeIdiomas.VistaAdministrarAgencias[idioma].Activa}
+              {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].Activa}
             </p>
             <p className="ListaDeAgencias__Contenedor__Clasificacion--Texto Desactivada">
               <ion-icon name="ban"></ion-icon>{" "}
-              {ListaDeIdiomas.VistaAdministrarAgencias[idioma].Desactivada}
+              {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].Desactivada}
             </p>
           </span>
           <h2 className="ListaDeAgencias__Contenedor__Operaciones">
-            {ListaDeIdiomas.VistaAdministrarAgencias[idioma].Operaciones}
+            {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].Operaciones}
           </h2>
           <span className="ListaDeAgencias__Contenedor__Colores">
             <button
@@ -228,7 +225,7 @@ export default function ListaDeAgencias({
               onClick={EstablecerAgenciasParaElExcel}
             >
               <ion-icon name="download"></ion-icon>{" "}
-              {ListaDeIdiomas.Botones[idioma].DescargarExcel}
+              {DICCIONARIO_BOTONES[idioma].DescargarExcel}
             </button>
           </span>
           <div className="ListaDeAgencias__Contenedor__BotonesDePaginacion">
@@ -345,20 +342,18 @@ export default function ListaDeAgencias({
             </section>
           ))}
           <small className="ListaDeAgencias__Contenedor__TextoPaginas">
-            {ListaDeIdiomas.Paginacion[idioma].Pagina} {paginaParaMostrar}{" "}
-            {ListaDeIdiomas.Paginacion[idioma].De} {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
           </small>
         </div>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={ListaDeIdiomas.Resultados[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Agencias"}
-          TextoBoton={
-            ListaDeIdiomas.VistaAdministrarAgencias[idioma].RegistrarAgencia
-          }
+          TextoBoton={DICCIONARIO_LISTA_DE_AGENCIAS[idioma].RegistrarAgencia}
         />
       )}
     </div>

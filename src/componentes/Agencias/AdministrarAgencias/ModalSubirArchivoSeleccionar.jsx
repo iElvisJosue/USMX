@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS AYUDAS
-import { ListaDeIdiomas } from "../../../Diccionario/Idiomas";
+import {
+  DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR,
+  DICCIONARIO_BOTONES,
+  DICCIONARIO_MENSAJES_DE_ERROR,
+} from "../../../diccionario/Diccionario";
 
 export default function ModalSubirArchivoSeleccionar({
   idioma,
@@ -24,7 +28,7 @@ export default function ModalSubirArchivoSeleccionar({
           onClick={() => establecerEsRemitente(true)}
         >
           <ion-icon name="person-circle"></ion-icon>
-          {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].Remitentes}
+          {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].Remitentes}
         </button>
         <button
           className="ModalSubirArchivo__Contenido--Opciones--Boton"
@@ -32,12 +36,12 @@ export default function ModalSubirArchivoSeleccionar({
           onClick={() => establecerEsRemitente(false)}
         >
           <ion-icon name="location"></ion-icon>
-          {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].Destinatarios}
+          {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].Destinatarios}
         </button>
       </section>
       <h1 className="ModalSubirArchivo__Contenido--Titulo">
         {
-          ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma]
+          DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma]
             .SeleccionarArchivos
         }
       </h1>
@@ -45,15 +49,15 @@ export default function ModalSubirArchivoSeleccionar({
         <img src="SubirExcel.png" alt="Icono de subir excel" />
       </picture>
       <small className="ModalSubirArchivo__Contenido--Texto">
-        {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].MensajeParteUno}{" "}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].MensajeParteUno}{" "}
         <b>
           {esRemitente
-            ? `${ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].Remitentes}`
-            : `${ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].Destinatarios}`}
+            ? `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].Remitentes}`
+            : `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].Destinatarios}`}
         </b>{" "}
-        {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].MensajeParteDos}{" "}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].MensajeParteDos}{" "}
         <b>{informacionArchivo.NombreAgencia || "N/A"}</b>,{" "}
-        {ListaDeIdiomas.ModalSubirArchivoSeleccionar[idioma].MensajeParteTres}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].MensajeParteTres}
       </small>
       <label className="ModalSubirArchivo__Contenido--Archivo">
         <input
@@ -64,15 +68,15 @@ export default function ModalSubirArchivoSeleccionar({
         />
         {hayArchivo
           ? hayArchivo?.name
-          : `${ListaDeIdiomas.Botones[idioma].Seleccionar}`}
+          : `${DICCIONARIO_BOTONES[idioma].Seleccionar}`}
       </label>
       {mostrarError && (
         <span className="ModalSubirArchivo__Contenido--Archivo--MensajeDeError">
-          {ListaDeIdiomas.MensajesDeError[idioma].Archivo}
+          {DICCIONARIO_MENSAJES_DE_ERROR[idioma].Archivo}
         </span>
       )}
       <button className="ModalSubirArchivo__Contenido--Boton">
-        {ListaDeIdiomas.Botones[idioma].Subir}
+        {DICCIONARIO_BOTONES[idioma].Subir}
       </button>
     </>
   );

@@ -11,10 +11,17 @@ import ModalConfirmacionOcurres from "./ModalConfirmacionOcurres";
 import useBuscarOcurresPorFiltro from "../../../hooks/useBuscarOcurresPorFiltro";
 import usePaginacion from "../../../hooks/usePaginacion";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_LISTA_DE_OCURRES,
+  DICCIONARIO_RESULTADOS,
+} from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Ocurres/AdministrarOcurres/ListaDeOcurres.css";
 
 export default function ListaDeOcurres({
+  idioma,
   establecerVistaOcurres,
   establecerInformacionDelOcurre,
 }) {
@@ -82,6 +89,7 @@ export default function ListaDeOcurres({
     <div className="ListaDeOcurres">
       {mostrarModalConfirmacion && (
         <ModalConfirmacionOcurres
+          idioma={idioma}
           Activar={activar}
           infOcurre={infOcurre}
           establecerMostrarModalConfirmacion={
@@ -93,11 +101,13 @@ export default function ListaDeOcurres({
           }
         />
       )}
-      <h1 className="ListaDeOcurres__Titulo">Administrar ocurres</h1>
+      <h1 className="ListaDeOcurres__Titulo">
+        {DICCIONARIO_LISTA_DE_OCURRES[idioma].AdministrarOcurres}
+      </h1>
       <span className="ListaDeOcurres__Buscar">
         <input
           type="text"
-          placeholder="Buscar ocurre"
+          placeholder={DICCIONARIO_LISTA_DE_OCURRES[idioma].BuscarOcurre}
           onChange={ObtenerLasOcurrencias}
         />
         <span className="ListaDeOcurres__Buscar__Lupa">
@@ -107,18 +117,21 @@ export default function ListaDeOcurres({
       {ocurres.length > 0 ? (
         <>
           <small className="ListaDeOcurres__TextoResultados">
-            <ion-icon name="search-circle"></ion-icon>Obtuvimos {ocurres.length}{" "}
-            resultados{" "}
+            <ion-icon name="search-circle"></ion-icon>
+            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {ocurres.length}{" "}
+            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
           </small>
           <h2 className="ListaDeOcurres__Clasificacion">
-            Estatus de los ocurres:
+            {DICCIONARIO_LISTA_DE_OCURRES[idioma].EstatusDeLosOcurre}
           </h2>
           <span className="ListaDeOcurres__Colores">
             <p className="ListaDeOcurres__Clasificacion--Texto Activa">
-              <ion-icon name="alert-circle"></ion-icon> Activo
+              <ion-icon name="alert-circle"></ion-icon>{" "}
+              {DICCIONARIO_LISTA_DE_OCURRES[idioma].Activo}
             </p>
             <p className="ListaDeOcurres__Clasificacion--Texto Desactivada">
-              <ion-icon name="ban"></ion-icon> Desactivado
+              <ion-icon name="ban"></ion-icon>{" "}
+              {DICCIONARIO_LISTA_DE_OCURRES[idioma].Desactivado}
             </p>
           </span>
           <div className="ListaDeOcurres__BotonesDePaginacion">
@@ -223,11 +236,11 @@ export default function ListaDeOcurres({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados.`}
+          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Ocurres"}
-          TextoBoton={"Registrar Ocurre"}
+          TextoBoton={DICCIONARIO_LISTA_DE_OCURRES[idioma].RegistrarOcurre}
         />
       )}
     </div>

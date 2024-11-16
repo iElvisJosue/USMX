@@ -15,7 +15,7 @@ import useObtenerInformacionDeUnUsuario from "../hooks/useObtenerInformacionDeUn
 
 // IMPORTAMOS LAS AYUDAS
 import { FormatearFecha } from "../helpers/FuncionesGenerales";
-import { ListaDeIdiomas } from "../Diccionario/Idiomas";
+import { DICCIONARIO_PERFIL } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/Perfil.css";
@@ -52,7 +52,7 @@ export default function Perfil() {
       <Menu />
       <Encabezado
         icono="person-circle"
-        seccion={ListaDeIdiomas.VistaPerfil[idioma].Perfil}
+        seccion={DICCIONARIO_PERFIL[idioma].Perfil}
       />
       <div className="Perfil">
         <div className="Perfil__Contenido">
@@ -86,7 +86,7 @@ export default function Perfil() {
           <span className="Perfil__Contenido__Detalles">
             <p className="Perfil__Contenido__Detalles--Texto">
               <ion-icon name="mail"></ion-icon>
-              {ListaDeIdiomas.VistaPerfil[idioma].Correo}
+              {DICCIONARIO_PERFIL[idioma].Correo}
             </p>
             <p className="Perfil__Contenido__Detalles--Valor">
               {Correo || "-"}
@@ -95,7 +95,7 @@ export default function Perfil() {
           <span className="Perfil__Contenido__Detalles">
             <p className="Perfil__Contenido__Detalles--Texto">
               <ion-icon name="call"></ion-icon>
-              {ListaDeIdiomas.VistaPerfil[idioma].Telefono}
+              {DICCIONARIO_PERFIL[idioma].Telefono}
             </p>
             <p className="Perfil__Contenido__Detalles--Valor">
               {Telefono || "-"}
@@ -104,7 +104,7 @@ export default function Perfil() {
           <span className="Perfil__Contenido__Detalles">
             <p className="Perfil__Contenido__Detalles--Texto">
               <ion-icon name="calendar"></ion-icon>
-              {ListaDeIdiomas.VistaPerfil[idioma].FechaDeCreacion}
+              {DICCIONARIO_PERFIL[idioma].FechaDeCreacion}
             </p>
             <p className="Perfil__Contenido__Detalles--Valor">
               {FechaCreacionUsuario
