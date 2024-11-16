@@ -44,7 +44,7 @@
   flex: 1;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-;
   gap: 10px;
 }
 .Apariencia__Cuerpo__Ejemplo--Imagen {
@@ -56,25 +56,27 @@
   gap: 10px;
 }
 .Apariencia__Cuerpo__Ejemplo--Imagen img {
-  border-radius: 20px;
   padding: 5px;
   border: 3px dashed transparent;
   transition: 0.3s ease-in-out all;
-  width: 90%;
+  width: 50%;
   cursor: pointer;
 }
-.Apariencia__Cuerpo__Ejemplo--Imagen.Idioma img {
+/* .Apariencia__Cuerpo__Ejemplo--Imagen.Idioma img {
   width: 50%;
-}
+} */
 .Apariencia__Cuerpo__Ejemplo--Imagen:hover img {
+  border-radius: 50%;
   border: 3px dashed var(--ColorAzul);
 }
 .Apariencia__Cuerpo__Ejemplo--Imagen.Oscuro img {
-  border: 3px dashed var(--ColorAzul);
+  border-radius: 50%;
+  border: 3px dashed var(--ColorVerde);
   pointer-events: none;
 }
 .Apariencia__Cuerpo__Ejemplo--Imagen.Idioma.Seleccionado img {
-  border: 3px dashed var(--ColorAzul);
+  border-radius: 50%;
+  border: 3px dashed var(--ColorVerde);
   pointer-events: none;
 }
 .Apariencia__Cuerpo__Ejemplo--Imagen b {
@@ -86,10 +88,10 @@
   color: var(--ColorAzul);
 }
 .Apariencia__Cuerpo__Ejemplo--Imagen.Oscuro b {
-  color: var(--ColorAzul);
+  color: var(--ColorVerde);
 }
 .Apariencia__Cuerpo__Ejemplo--Imagen.Idioma.Seleccionado b {
-  color: var(--ColorAzul);
+  color: var(--ColorVerde);
 }
 @media (width <= 950px) {
   .Apariencia__Cuerpo {
