@@ -3,6 +3,13 @@
 import { useEffect } from "react";
 import { toast } from "sonner";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_SELECCIONAR_AGENCIA_PEDIDO,
+  DICCIONARIO_RESULTADOS,
+  DICCIONARIO_PAGINACION,
+} from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LOS COMPONENTES A USAR
 import MensajeGeneral from "../../MensajeGeneral";
 import Cargando from "../../Cargando";
@@ -18,6 +25,7 @@ import { ESTILOS_SUCCESS } from "../../../helpers/SonnerEstilos";
 import "../../../estilos/componentes/Pedidos/RealizarPedido/SeleccionarAgenciaPedido.css";
 
 export default function SeleccionarAgenciaPedido({
+  idioma,
   establecerAgencia,
   usuario,
   FuncionParaRealizar,
@@ -72,13 +80,15 @@ export default function SeleccionarAgenciaPedido({
   return (
     <div className="SeleccionarAgenciaPedido">
       <h1 className="SeleccionarAgenciaPedido__Titulo">
-        Selecciona una agencia
+        {DICCIONARIO_SELECCIONAR_AGENCIA_PEDIDO[idioma].SeleccionaUnaAgencia}
       </h1>
       {usuario.Permisos === "Administrador" && (
         <span className="SeleccionarAgenciaPedido__Buscar">
           <input
             type="text"
-            placeholder="Buscar agencia"
+            placeholder={
+              DICCIONARIO_SELECCIONAR_AGENCIA_PEDIDO[idioma].BuscarAgencia
+            }
             onChange={obtenerAgencias}
           />
           <span className="SeleccionarAgenciaPedido__Buscar__Lupa">
@@ -90,8 +100,9 @@ export default function SeleccionarAgenciaPedido({
         (agencias.length > 0 ? (
           <>
             <small className="SeleccionarAgenciaPedido__TextoResultados">
-              <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
-              {agencias.length} resultados
+              <ion-icon name="search-circle"></ion-icon>
+              {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {agencias.length}{" "}
+              {DICCIONARIO_RESULTADOS[idioma].Resultados}
             </small>
             <div className="SeleccionarAgenciaPedido__BotonesDePaginacion">
               {indiceInicial >= CantidadParaMostrar && (
@@ -133,17 +144,20 @@ export default function SeleccionarAgenciaPedido({
                 </section>
               ))}
             <small className="SeleccionarAgenciaPedido__TextoPaginas">
-              Página {paginaParaMostrar} de {cantidadDePaginas}
+              {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
+              {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
             </small>
           </>
         ) : (
           <MensajeGeneral
             Imagen={"SinResultados.png"}
-            Texto={`¡Oops! No se encontraron resultados.`}
+            Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
             Boton={true}
             TipoBoton={"Azul"}
             UrlBoton={"/Agencias"}
-            TextoBoton={"Registrar Agencia"}
+            TextoBoton={
+              DICCIONARIO_SELECCIONAR_AGENCIA_PEDIDO[idioma].RegistrarAgencia
+            }
           />
         ))}
       {usuario.Permisos !== "Administrador" && (
@@ -151,7 +165,7 @@ export default function SeleccionarAgenciaPedido({
           {agencias.length === 0 && (
             <MensajeGeneral
               Imagen={"SinResultados.png"}
-              Texto={"¡Oops! Parece que no tienes una agencia asignada."}
+              Texto={DICCIONARIO_SELECCIONAR_AGENCIA_PEDIDO[idioma].SinAgencias}
             />
           )}
           {agencias.length > 1 &&

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
 
@@ -9,7 +10,7 @@ import EditarProducto from "./EditarProducto";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Productos/AdministrarProductos/AdministrarProductos.css";
 
-export default function AdministrarProductos() {
+export default function AdministrarProductos({ idioma }) {
   const [informacionDelProducto, establecerInformacionDelProducto] =
     useState(null);
   const [informacionDeLaAgencia, establecerInformacionDeLaAgencia] =
@@ -17,6 +18,7 @@ export default function AdministrarProductos() {
   const [vistaProductos, establecerVistaProductos] = useState(0);
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
+    idioma,
     vistaProductos,
     establecerVistaProductos,
     informacionDelProducto,

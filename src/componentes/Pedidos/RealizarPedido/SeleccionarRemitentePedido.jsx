@@ -3,14 +3,21 @@
 import { useEffect } from "react";
 import { toast } from "sonner";
 
+// IMPORTAMOS LOS HOOKS A USAR
+import useBuscarRemitentesPorAgencia from "../../../hooks/useBuscarRemitentesPorAgencia";
+import usePaginacion from "../../../hooks/usePaginacion";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_SELECCIONAR_REMITENTE_PEDIDO,
+  DICCIONARIO_RESULTADOS,
+  DICCIONARIO_PAGINACION,
+} from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../../Cargando";
 import MensajeGeneral from "../../MensajeGeneral";
 import AgenciaSeleccionadaPedido from "./AgenciaSeleccionadaPedido";
-
-// IMPORTAMOS LOS HOOKS A USAR
-import useBuscarRemitentesPorAgencia from "../../../hooks/useBuscarRemitentesPorAgencia";
-import usePaginacion from "../../../hooks/usePaginacion";
 
 // IMPORTAMOS LAS AYUDAS
 import { ESTILOS_SUCCESS } from "../../../helpers/SonnerEstilos";
@@ -18,6 +25,7 @@ import { ESTILOS_SUCCESS } from "../../../helpers/SonnerEstilos";
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Pedidos/RealizarPedido/SeleccionarRemitentePedido.css";
 export default function SeleccionarRemitente({
+  idioma,
   establecerVistaRemitente,
   establecerRemitente,
   establecerPaso,
@@ -86,12 +94,14 @@ export default function SeleccionarRemitente({
         </button>
       </span>
       <h1 className="SeleccionarRemitentePedido__Titulo">
-        Seleccionar Remitente
+        {DICCIONARIO_SELECCIONAR_REMITENTE_PEDIDO[idioma].SeleccionarRemitente}
       </h1>
       <span className="SeleccionarRemitentePedido__Buscar">
         <input
           type="text"
-          placeholder="Buscar Remitente"
+          placeholder={
+            DICCIONARIO_SELECCIONAR_REMITENTE_PEDIDO[idioma].BuscarRemitente
+          }
           onChange={ObtenerRemitentes}
         />
         <span className="SeleccionarRemitentePedido__Buscar__Lupa">
@@ -101,8 +111,9 @@ export default function SeleccionarRemitente({
       {remitentes.length > 0 ? (
         <>
           <small className="SeleccionarRemitentePedido__TextoResultados">
-            <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
-            {remitentes.length} resultados
+            <ion-icon name="search-circle"></ion-icon>
+            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {remitentes.length}{" "}
+            {DICCIONARIO_RESULTADOS[idioma].Resultados}
           </small>
           <div className="SeleccionarRemitentePedido__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
@@ -146,14 +157,18 @@ export default function SeleccionarRemitente({
               </section>
             ))}
           <small className="SeleccionarRemitentePedido__TextoPaginas">
-            Página {paginaParaMostrar} de {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
           </small>
-          <AgenciaSeleccionadaPedido NombreAgencia={agencia?.NombreAgencia} />
+          <AgenciaSeleccionadaPedido
+            idioma={idioma}
+            NombreAgencia={agencia?.NombreAgencia}
+          />
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados.`}
+          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
         />
       )}
     </section>

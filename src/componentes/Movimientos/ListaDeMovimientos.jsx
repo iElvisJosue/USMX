@@ -2,17 +2,24 @@
 // IMPORTAMOS LAS LIBRERIAS A USAR
 import { useState } from "react";
 
-// IMPORTAMOS LAS AYUDAS
-// import { FormatearFecha } from "../../helpers/FuncionesGenerales";
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_LISTA_DE_MOVIMIENTOS,
+  DICCIONARIO_RESULTADOS,
+} from "../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import ModalConfirmacionMovimientos from "./ModalConfirmacionMovimientos";
 import MensajeGeneral from "../MensajeGeneral";
 
+// IMPORTAMOS LAS AYUDAS
+import { FormatearFecha } from "../../helpers/FuncionesGenerales";
+
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Movimientos/ListaDeMovimientos.css";
 
 export default function ListaDeMovimientos({
+  idioma,
   movimientos,
   establecerVista,
   filtro,
@@ -55,6 +62,7 @@ export default function ListaDeMovimientos({
     <div className="ListaDeMovimientos">
       {mostrarModalConfirmacion && (
         <ModalConfirmacionMovimientos
+          idioma={idioma}
           Activar={activar}
           movimientos={movimientos}
           establecerMostrarModalConfirmacion={
@@ -68,13 +76,15 @@ export default function ListaDeMovimientos({
         />
       )}
       <h1 className="ListaDeMovimientos__Titulo">
-        Lista completa de movimientos
+        {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].ListaCompletaDeMovimientos}
       </h1>
       <span className="ListaDeMovimientos__Buscar">
         <input
           value={filtro}
           type="text"
-          placeholder="Buscar por Estado, Detalles, Origen ó Status"
+          placeholder={
+            DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].BuscarMovimientos
+          }
           onChange={BuscarMovimientos}
         />
         <span className="ListaDeMovimientos__Buscar__Lupa">
@@ -84,8 +94,9 @@ export default function ListaDeMovimientos({
       {movimientos.length > 0 ? (
         <>
           <small className="ListaDeMovimientos__TextoResultados">
-            <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
-            {movimientos.length} resultados{" "}
+            <ion-icon name="search-circle"></ion-icon>
+            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {movimientos.length}{" "}
+            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
           </small>
           <div className="ListaDeMovimientos__Cuerpo">
             <table className="ListaDeMovimientos__Cuerpo__Tabla">
@@ -94,32 +105,32 @@ export default function ListaDeMovimientos({
                   <th>
                     <ion-icon name="bag-check"></ion-icon>
                     <br />
-                    Estado
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Estado}
                   </th>
                   <th>
                     <ion-icon name="document-text"></ion-icon>
                     <br />
-                    Detalles
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Detalles}
                   </th>
                   <th>
                     <ion-icon name="locate"></ion-icon>
                     <br />
-                    Origen
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Origen}
                   </th>
                   <th>
                     <ion-icon name="radio-button-on"></ion-icon>
                     <br />
-                    Por Defecto
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].PorDefecto}
                   </th>
-                  {/* <th>
+                  <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
-                    Fecha y Hora
-                  </th> */}
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].FechaCreacion}
+                  </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    Acciones
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -137,12 +148,12 @@ export default function ListaDeMovimientos({
                     <td>{movimiento.DetallesMovimiento}</td>
                     <td>{movimiento.OrigenMovimiento}</td>
                     <td>{movimiento.PorDefectoMovimiento}</td>
-                    {/* <td>
+                    <td>
                       {FormatearFecha(
                         movimiento.FechaCreacionMovimiento.slice(0, 10)
                       )}{" "}
                       {movimiento.HoraCreacionMovimiento}
-                    </td> */}
+                    </td>
                     <td className="ListaDeMovimientos__Cuerpo__Tabla__Cuerpo__Acciones">
                       {movimiento.ActivoMovimiento === "Activo" ? (
                         <>
@@ -179,7 +190,7 @@ export default function ListaDeMovimientos({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={"¡Oops! No se encontraron resultados."}
+          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
         />
       )}
     </div>

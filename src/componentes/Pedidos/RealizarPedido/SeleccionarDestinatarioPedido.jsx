@@ -12,12 +12,20 @@ import AgenciaSeleccionadaPedido from "./AgenciaSeleccionadaPedido";
 import useBuscarDestinatariosPorAgencia from "../../../hooks/useBuscarDestinatariosPorAgencia";
 import usePaginacion from "../../../hooks/usePaginacion";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_SELECCIONAR_DESTINATARIO_PEDIDO,
+  DICCIONARIO_RESULTADOS,
+  DICCIONARIO_PAGINACION,
+} from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { ESTILOS_SUCCESS } from "../../../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Pedidos/RealizarPedido/SeleccionarDestinatarioPedido.css";
 export default function SeleccionarDestinatarioPedido({
+  idioma,
   establecerVistaDestinatario,
   establecerDestinatario,
   establecerPaso,
@@ -93,12 +101,18 @@ export default function SeleccionarDestinatarioPedido({
         </button>
       </span>
       <h1 className="SeleccionarDestinatarioPedido__Titulo">
-        Seleccionar Destinatario
+        {
+          DICCIONARIO_SELECCIONAR_DESTINATARIO_PEDIDO[idioma]
+            .SeleccionarDestinatario
+        }
       </h1>
       <span className="SeleccionarDestinatarioPedido__Buscar">
         <input
           type="text"
-          placeholder="Buscar Destinatario"
+          placeholder={
+            DICCIONARIO_SELECCIONAR_DESTINATARIO_PEDIDO[idioma]
+              .BuscarDestinatario
+          }
           onChange={ObtenerDestinatarios}
         />
         <span className="SeleccionarDestinatarioPedido__Buscar__Lupa">
@@ -108,8 +122,9 @@ export default function SeleccionarDestinatarioPedido({
       {destinatarios.length > 0 ? (
         <>
           <small className="SeleccionarDestinatarioPedido__TextoResultados">
-            <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
-            {destinatarios.length} resultados
+            <ion-icon name="search-circle"></ion-icon>
+            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {destinatarios.length}{" "}
+            {DICCIONARIO_RESULTADOS[idioma].Resultados}
           </small>
           <div className="SeleccionarDestinatarioPedido__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
@@ -157,14 +172,18 @@ export default function SeleccionarDestinatarioPedido({
               </section>
             ))}
           <small className="SeleccionarDestinatarioPedido__TextoPaginas">
-            Página {paginaParaMostrar} de {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
           </small>
-          <AgenciaSeleccionadaPedido NombreAgencia={agencia?.NombreAgencia} />
+          <AgenciaSeleccionadaPedido
+            idioma={idioma}
+            NombreAgencia={agencia?.NombreAgencia}
+          />
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados.`}
+          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
         />
       )}
     </section>

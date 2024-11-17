@@ -2,6 +2,12 @@
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useUsuarios } from "../../../context/UsuariosContext";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA,
+  DICCIONARIO_BOTONES,
+} from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
@@ -10,6 +16,7 @@ import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/ModalInformacionDeLaAgencia.css";
 
 export default function ModalInformacionDeLaAgencia({
+  idioma,
   informacionDelUsuario,
   informacionDeLaAgencia,
   establecerMostrarModal,
@@ -52,11 +59,14 @@ export default function ModalInformacionDeLaAgencia({
           <ion-icon name="close"></ion-icon>
         </button>
         <h1 className="ModalInformacionDeLaAgencia__Contenido--Titulo">
-          Información de la agencia
+          {
+            DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma]
+              .InformacionDeLaAgencia
+          }
         </h1>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
           <ion-icon name="business"></ion-icon>
-          <b>Agencia</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].Agencia}</b>
           {informacionDeLaAgencia.NombreAgencia}
           {informacionDeLaAgencia.NombreLegalAgencia && (
             <>
@@ -67,7 +77,9 @@ export default function ModalInformacionDeLaAgencia({
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion">
           <ion-icon name="person-circle"></ion-icon>
-          <b>Representante</b>{" "}
+          <b>
+            {DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].Representante}
+          </b>{" "}
           {informacionDeLaAgencia.RepresentanteVentas || "N/A"} <br />
           {informacionDeLaAgencia.TelefonoRepresentanteVentas && (
             <>Tel. {informacionDeLaAgencia.TelefonoRepresentanteVentas}</>
@@ -75,11 +87,17 @@ export default function ModalInformacionDeLaAgencia({
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion">
           <ion-icon name="call"></ion-icon>
-          <b>Teléfono Agencia</b> {informacionDeLaAgencia.TelefonoAgencia}
+          <b>
+            {DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].TelAgencia}
+          </b>{" "}
+          {informacionDeLaAgencia.TelefonoAgencia}
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
           <ion-icon name="mail"></ion-icon>
-          <b>Correo(s)</b> {informacionDeLaAgencia.CorreoAgencia}
+          <b>
+            {DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].Correos}
+          </b>{" "}
+          {informacionDeLaAgencia.CorreoAgencia}
           {informacionDeLaAgencia.CorreoAgenciaSecundario && (
             <>
               <br />
@@ -89,7 +107,7 @@ export default function ModalInformacionDeLaAgencia({
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
           <ion-icon name="location"></ion-icon>
-          <b>Locación</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].Locacion}</b>
           {informacionDeLaAgencia.PaisAgencia}
           <br />
           {informacionDeLaAgencia.CiudadAgencia},{" "}
@@ -104,7 +122,7 @@ export default function ModalInformacionDeLaAgencia({
               PeticionAsignarAgenciaAlUsuario(informacionDeLaAgencia.idAgencia)
             }
           >
-            Asignar
+            {DICCIONARIO_BOTONES[idioma].Asignar}
           </button>
         )}
       </article>

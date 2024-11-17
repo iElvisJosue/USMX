@@ -1,9 +1,13 @@
+/* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useGlobal } from "../../../context/GlobalContext";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_REALIZAR_PEDIDO } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import BarraDeProgresoPedido from "./BarraDeProgresoPedido";
@@ -20,7 +24,7 @@ import { ESTILOS_SUCCESS } from "../../../helpers/SonnerEstilos";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Pedidos/RealizarPedido/RealizarPedido.css";
 
-export default function RealizarPedido() {
+export default function RealizarPedido({ idioma }) {
   const [paso, establecerPaso] = useState(0);
   const [progreso, establecerProgreso] = useState([]);
   const [agencia, establecerAgencia] = useState(null);
@@ -56,6 +60,7 @@ export default function RealizarPedido() {
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
+    idioma,
     agencia,
     establecerAgencia,
     paso,
@@ -91,11 +96,11 @@ export default function RealizarPedido() {
       <BarraDeProgresoPedido
         Progreso={progreso}
         IconoUno="person-circle"
-        TextoUno="Remitente"
+        TextoUno={DICCIONARIO_REALIZAR_PEDIDO[idioma].Remitente}
         IconoDos="location"
-        TextoDos="Destinatario"
+        TextoDos={DICCIONARIO_REALIZAR_PEDIDO[idioma].Destinatario}
         IconoTres="cube"
-        TextoTres="Pedido"
+        TextoTres={DICCIONARIO_REALIZAR_PEDIDO[idioma].Pedido}
       />
       <ComponenteParaRenderizar {...valoresParaLosComponentes} />
     </div>

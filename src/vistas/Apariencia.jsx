@@ -88,45 +88,23 @@ export default function Apariencia() {
         <hr className="Apariencia__Separador" />
         <section className="Apariencia__Cuerpo">
           <div className="Apariencia__Cuerpo__Texto">
-            <b>{DICCIONARIO_APARIENCIA[idioma].TemaSistema}</b>
-            <p>{DICCIONARIO_APARIENCIA[idioma].DescripcionTemaSistema}</p>
-          </div>
-          <div className="Apariencia__Cuerpo__Ejemplos">
-            <picture
-              className={`Apariencia__Cuerpo__Ejemplo--Imagen ${
-                modoOscuro === 1 && "Oscuro"
-              }`}
-              onClick={
-                modoOscuro === 1
-                  ? undefined
-                  : () => ActualizarElModoOscuroDelUsuario(true)
-              }
-            >
-              <img src="TemaOscuro.png" alt="Tema Oscuro" />
-              <b>{DICCIONARIO_APARIENCIA[idioma].TemaOscuro}</b>
-            </picture>
-            <picture
-              className={`Apariencia__Cuerpo__Ejemplo--Imagen ${
-                modoOscuro === 0 && "Oscuro"
-              }`}
-              onClick={
-                modoOscuro === 0
-                  ? undefined
-                  : () => ActualizarElModoOscuroDelUsuario(false)
-              }
-            >
-              <img src="TemaClaro.png" alt="Tema Claro" />
-              <b>{DICCIONARIO_APARIENCIA[idioma].TemaClaro}</b>
-            </picture>
-          </div>
-        </section>
-        <hr className="Apariencia__Separador" />
-        <section className="Apariencia__Cuerpo">
-          <div className="Apariencia__Cuerpo__Texto">
             <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaSistema}</b>
             <p>{DICCIONARIO_APARIENCIA[idioma].DescripcionIdiomaSistema}</p>
           </div>
           <div className="Apariencia__Cuerpo__Ejemplos">
+            <picture
+              className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
+                idioma === "es" && "Seleccionado"
+              }`}
+              onClick={
+                idioma === "es"
+                  ? undefined
+                  : () => ActualizarElIdiomaDelUsuario("es")
+              }
+            >
+              <img src="BanderaMexico.png" alt="Idioma español" />
+              <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaEspanol}</b>
+            </picture>
             <picture
               className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
                 idioma === "en" && "Seleccionado"
@@ -140,18 +118,40 @@ export default function Apariencia() {
               <img src="BanderaUSA.png" alt="Idioma inglés" />
               <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaIngles}</b>
             </picture>
+          </div>
+        </section>
+        <hr className="Apariencia__Separador" />
+        <section className="Apariencia__Cuerpo">
+          <div className="Apariencia__Cuerpo__Texto">
+            <b>{DICCIONARIO_APARIENCIA[idioma].TemaSistema}</b>
+            <p>{DICCIONARIO_APARIENCIA[idioma].DescripcionTemaSistema}</p>
+          </div>
+          <div className="Apariencia__Cuerpo__Ejemplos">
             <picture
-              className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
-                idioma === "es" && "Seleccionado"
+              className={`Apariencia__Cuerpo__Ejemplo--Imagen ${
+                modoOscuro === 0 && "Oscuro"
               }`}
               onClick={
-                idioma === "es"
+                modoOscuro === 0
                   ? undefined
-                  : () => ActualizarElIdiomaDelUsuario("es")
+                  : () => ActualizarElModoOscuroDelUsuario(false)
               }
             >
-              <img src="BanderaMexico.png" alt="Idioma español" />
-              <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaEspanol}</b>
+              <img src="TemaClaro.png" alt="Tema Claro" />
+              <b>{DICCIONARIO_APARIENCIA[idioma].TemaClaro}</b>
+            </picture>
+            <picture
+              className={`Apariencia__Cuerpo__Ejemplo--Imagen ${
+                modoOscuro === 1 && "Oscuro"
+              }`}
+              onClick={
+                modoOscuro === 1
+                  ? undefined
+                  : () => ActualizarElModoOscuroDelUsuario(true)
+              }
+            >
+              <img src="TemaOscuro.png" alt="Tema Oscuro" />
+              <b>{DICCIONARIO_APARIENCIA[idioma].TemaOscuro}</b>
             </picture>
           </div>
         </section>

@@ -2,6 +2,9 @@
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useUsuarios } from "../../../context/UsuariosContext";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_MODAL_CONFIRMACION_USUARIO } from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
@@ -10,6 +13,7 @@ import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/ModalConfirmacion.css";
 
 export default function ModalConfirmacion({
+  idioma,
   Activar = true,
   infUsuario,
   establecerMostrarModalConfirmacion,
@@ -20,11 +24,15 @@ export default function ModalConfirmacion({
   const ClaseTituloModal = Activar
     ? "ModalConfirmacion__Contenido--Titulo Activar"
     : "ModalConfirmacion__Contenido--Titulo Desactivar";
-  const TituloModal = Activar ? "Activar usuario" : "Desactivar usuario";
+  const TituloModal = Activar
+    ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].ActivarUsuario
+    : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].DesactivarUsuario;
   const ClaseBotonModal = Activar
     ? "ModalConfirmacion__Contenido--Boton Activar"
     : "ModalConfirmacion__Contenido--Boton Desactivar";
-  const TextoBotonModal = Activar ? "Activar" : "Desactivar";
+  const TextoBotonModal = Activar
+    ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].Activar
+    : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].Desactivar;
   const ClaseTextoModal = Activar
     ? "ModalConfirmacion__Contenido--Texto Activar"
     : "ModalConfirmacion__Contenido--Texto Desactivar";
@@ -63,14 +71,19 @@ export default function ModalConfirmacion({
         </button>
         <h1 className={ClaseTituloModal}>{TituloModal}</h1>
         <small className={ClaseTextoModal}>
-          ¿Esta seguro que desea {Activar ? "activar" : "desactivar"} al usuario{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].MensajeParteUno}{" "}
+          {Activar
+            ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].Activar
+            : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].Desactivar}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].MensajeParteDos}{" "}
           <b>{infUsuario.Usuario}</b>?
           <br />
           <br />
           <i>
             {Activar
-              ? `El usuario se activara una vez confirmada esta acción, por lo cual, el usuario ${infUsuario.Usuario} tendrá acceso al sistema nuevamente.`
-              : `El usuario se desactivara una vez confirmada esta opción, por lo cual, el usuario ${infUsuario.Usuario} no tendrá acceso al sistema hasta que vuelva a ser activado.`}
+              ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].MensajeActivar
+              : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma]
+                  .MensajeDesactivar}
           </i>
         </small>
         <button

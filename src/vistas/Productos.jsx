@@ -2,6 +2,12 @@
 import { useState } from "react";
 import { Toaster } from "sonner";
 
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useConfiguracion } from "../context/ConfiguracionContext";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_PRODUCTOS } from "../diccionario/Diccionario";
+
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
@@ -10,18 +16,24 @@ import RegistrarProducto from "../componentes/Productos/RegistrarProducto/Regist
 import AdministrarProductos from "../componentes/Productos/AdministrarProductos/AdministrarProductos";
 
 export default function Productos() {
+  const { idioma } = useConfiguracion();
   const [vistaProductos, establecerVistaProductos] = useState(0);
 
   const OpcionesSubMenu = [
     {
-      Texto: "Registrar Producto",
+      Texto: DICCIONARIO_PRODUCTOS[idioma].RegistrarProducto,
       Icono: "add-circle",
     },
     {
-      Texto: "Administrar Productos",
+      Texto: DICCIONARIO_PRODUCTOS[idioma].AdministrarProductos,
       Icono: "cog",
     },
   ];
+
+  // VALORES COMPARTIDOS ENTRE LOS COMPONENTES
+  const valoresParaLosComponentes = {
+    idioma,
+  };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
@@ -30,8 +42,8 @@ export default function Productos() {
   };
 
   const TituloSubseccion = {
-    0: "Registrar Producto",
-    1: "Administrar Productos",
+    0: DICCIONARIO_PRODUCTOS[idioma].RegistrarProducto,
+    1: DICCIONARIO_PRODUCTOS[idioma].AdministrarProductos,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -43,7 +55,7 @@ export default function Productos() {
       <Menu />
       <Encabezado
         icono="basket"
-        seccion="Agencias"
+        seccion={DICCIONARIO_PRODUCTOS[idioma].Productos}
         subseccion={TituloSubseccion[vistaProductos]}
       />
       <SubMenu
@@ -51,7 +63,7 @@ export default function Productos() {
         vista={vistaProductos}
         establecerVista={establecerVistaProductos}
       />
-      <ComponenteParaRenderizar />
+      <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       <Toaster richColors position="top-right" />
     </main>
   );

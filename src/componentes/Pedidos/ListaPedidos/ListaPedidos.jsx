@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
 
@@ -9,7 +10,7 @@ import DetallesPedido from "./DetallesPedido";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Pedidos/ListaPedidos/ListaPedidos.css";
 
-export default function ListaPedidos() {
+export default function ListaPedidos({ idioma }) {
   const [vista, establecerVista] = useState(0);
   const [esCompleta, establecerEsCompleta] = useState(true);
   const [detallesPedido, establecerDetallesPedido] = useState(null);
@@ -22,6 +23,7 @@ export default function ListaPedidos() {
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
+    idioma,
     esCompleta,
     establecerVista,
     detallesPedido,

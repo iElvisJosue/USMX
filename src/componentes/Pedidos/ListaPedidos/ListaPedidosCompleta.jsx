@@ -6,6 +6,13 @@ import MensajeGeneral from "../../MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarPedidosPorFiltroYTipoDeUsuario from "../../../hooks/useBuscarPedidosPorFiltroYTipoDeUsuario";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_LISTA_PEDIDOS_COMPLETA,
+  DICCIONARIO_RESULTADOS,
+  DICCIONARIO_BOTONES,
+} from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { FormatearFecha } from "../../../helpers/FuncionesGenerales";
 
@@ -13,6 +20,7 @@ import { FormatearFecha } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Pedidos/ListaPedidos/ListaPedidosCompleta.css";
 
 export default function ListaDePedidosCompleta({
+  idioma,
   EstablecerLosDetallesDelPedido,
 }) {
   const { pedidos, cargando, filtro, establecerFiltro } =
@@ -33,13 +41,13 @@ export default function ListaDePedidosCompleta({
   return (
     <div className="ListaPedidosCompleta">
       <h1 className="ListaPedidosCompleta__Titulo">
-        Lista completa de pedidos
+        {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].ListaCompletaDePedidos}
       </h1>
       <span className="ListaPedidosCompleta__Buscar">
         <input
           value={filtro}
           type="text"
-          placeholder="Buscar por Guía, Remitente, Destinatario, Usuario o Agencia"
+          placeholder={DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].BuscarPedido}
           onChange={BuscarPedidos}
         />
         <span className="ListaPedidosCompleta__Buscar__Lupa">
@@ -49,8 +57,9 @@ export default function ListaDePedidosCompleta({
       {pedidos.length > 0 ? (
         <>
           <small className="ListaPedidosCompleta__TextoResultados">
-            <ion-icon name="search-circle"></ion-icon>Obtuvimos {pedidos.length}{" "}
-            resultados{" "}
+            <ion-icon name="search-circle"></ion-icon>
+            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {pedidos.length}{" "}
+            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
           </small>
           <div className="ListaPedidosCompleta__Cuerpo">
             <table className="ListaPedidosCompleta__Cuerpo__Tabla">
@@ -59,37 +68,37 @@ export default function ListaDePedidosCompleta({
                   <th>
                     <ion-icon name="document-text"></ion-icon>
                     <br />
-                    Guía
+                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].Guia}
                   </th>
                   <th>
                     <ion-icon name="paper-plane"></ion-icon>
                     <br />
-                    Remitente
+                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].Remitente}
                   </th>
                   <th>
                     <ion-icon name="location"></ion-icon>
                     <br />
-                    Destinatario
+                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].Destinatario}
                   </th>
                   <th>
                     <ion-icon name="business"></ion-icon>
                     <br />
-                    Agencia
+                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].Agencia}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    Usuario
+                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
-                    Fecha y Hora
+                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].FechaCreacion}
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    Acciones
+                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -114,7 +123,7 @@ export default function ListaDePedidosCompleta({
                         className="ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() => EstablecerLosDetallesDelPedido(pedido)}
                       >
-                        Ver
+                        {DICCIONARIO_BOTONES[idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -126,11 +135,11 @@ export default function ListaDePedidosCompleta({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={"¡Oops! No se encontraron resultados."}
+          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Pedidos"}
-          TextoBoton={"Realizar pedido"}
+          TextoBoton={DICCIONARIO_LISTA_PEDIDOS_COMPLETA[idioma].RealizarPedido}
         />
       )}
     </div>

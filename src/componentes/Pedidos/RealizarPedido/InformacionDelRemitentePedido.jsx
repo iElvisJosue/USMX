@@ -7,6 +7,7 @@ import RegistrarNuevoRemitentePedido from "./RegistrarNuevoRemitentePedido";
 import SeleccionarRemitentePedido from "./SeleccionarRemitentePedido";
 
 export default function InformacionDelRemitentePedido({
+  idioma,
   paso,
   establecerPaso,
   remitente,
@@ -17,6 +18,7 @@ export default function InformacionDelRemitentePedido({
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
+    idioma,
     establecerVistaRemitente,
     remitente,
     establecerRemitente,

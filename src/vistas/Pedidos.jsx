@@ -2,6 +2,12 @@
 import { useState } from "react";
 import { Toaster } from "sonner";
 
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useConfiguracion } from "../context/ConfiguracionContext";
+
+// IMPORTAMOS LOS DICCIONARIOS A USAR
+import { DICCIONARIO_PEDIDOS } from "../diccionario/Diccionario";
+
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
@@ -10,15 +16,21 @@ import RealizarPedido from "../componentes/Pedidos/RealizarPedido/RealizarPedido
 import ListaPedidos from "../componentes/Pedidos/ListaPedidos/ListaPedidos";
 
 export default function Ocurres() {
+  const { idioma } = useConfiguracion();
   const [vistaOcurres, establecerVistaOcurres] = useState(0);
+
+  // VALORES COMPARTIDOS ENTRE LOS COMPONENTES
+  const valoresParaLosComponentes = {
+    idioma,
+  };
 
   const OpcionesSubMenu = [
     {
-      Texto: "Realizar Pedido",
+      Texto: DICCIONARIO_PEDIDOS[idioma].RealizarPedido,
       Icono: "cube",
     },
     {
-      Texto: "Lista Pedidos",
+      Texto: DICCIONARIO_PEDIDOS[idioma].ListaDePedidos,
       Icono: "list",
     },
   ];
@@ -30,8 +42,8 @@ export default function Ocurres() {
   };
 
   const TituloSubseccion = {
-    0: "Realizar Pedido",
-    1: "Lista Pedidos",
+    0: DICCIONARIO_PEDIDOS[idioma].RealizarPedido,
+    1: DICCIONARIO_PEDIDOS[idioma].ListaDePedidos,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -43,7 +55,7 @@ export default function Ocurres() {
       <Menu />
       <Encabezado
         icono="storefront"
-        seccion="Paquetería"
+        seccion={DICCIONARIO_PEDIDOS[idioma].Paqueteria}
         subseccion={TituloSubseccion[vistaOcurres]}
       />
       <SubMenu
@@ -51,7 +63,7 @@ export default function Ocurres() {
         vista={vistaOcurres}
         establecerVista={establecerVistaOcurres}
       />
-      <ComponenteParaRenderizar />
+      <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       <Toaster richColors position="top-right" />
     </main>
   );

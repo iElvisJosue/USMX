@@ -3,26 +3,34 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useEffect, useState } from "react";
 
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useProductos } from "../../../context/ProductosContext";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_PRODUCTO,
+  DICCIONARIO_RESULTADOS,
+  DICCIONARIO_PAGINACION,
+} from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LOS COMPONENTES A USAR
 import MensajeGeneral from "../../MensajeGeneral";
 import Cargando from "../../Cargando";
 import ModalInformacionDeLaAgencia from "./ModalInformacionDeLaAgencia";
 
-// IMPORTAMOS LOS CONTEXTOS A USAR
-import { useProductos } from "../../../context/ProductosContext";
+// IMPORTAMOS LOS HOOKS A USAR
+import useBuscarAgenciasAsignadasYNoAsignadasPorProducto from "../../../hooks/useBuscarAgenciasAsignadasYNoAsignadasPorProducto";
+import usePaginacion from "../../../hooks/usePaginacion";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 
-// IMPORTAMOS LOS HOOKS A USAR
-import useBuscarAgenciasAsignadasYNoAsignadasPorProducto from "../../../hooks/useBuscarAgenciasAsignadasYNoAsignadasPorProducto";
-import usePaginacion from "../../../hooks/usePaginacion";
-
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Productos/AdministrarProductos/AdministrarAgenciasDelProducto.css";
 
 export default function AdministrarAgenciasDelProducto({
+  idioma,
   establecerVistaProductos,
   informacionDelProducto,
   informacionDeLaAgencia,
@@ -113,6 +121,7 @@ export default function AdministrarAgenciasDelProducto({
     <div className="AdministrarAgenciasDelProducto">
       {mostrarModal && (
         <ModalInformacionDeLaAgencia
+          idioma={idioma}
           informacionDelProducto={informacionDelProducto}
           informacionDeLaAgencia={informacionDeLaAgencia}
           establecerMostrarModal={establecerMostrarModal}
@@ -132,14 +141,20 @@ export default function AdministrarAgenciasDelProducto({
           <ion-icon name="arrow-back"></ion-icon>
         </button>
         <small className="AdministrarAgenciasDelProducto__Regresar__Usuario">
-          Producto seleccionado:{" "}
+          {
+            DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_PRODUCTO[idioma]
+              .ProductoSeleccionado
+          }{" "}
           <b>{informacionDelProducto.NombreProducto.toUpperCase()}</b>
         </small>
       </span>
       {AgenciasAsignadas.length > 0 && (
         <>
           <h1 className="AdministrarAgenciasDelProducto__Titulo">
-            Agencias asignadas al producto
+            {
+              DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_PRODUCTO[idioma]
+                .AgenciasAsignadas
+            }
           </h1>
           {AgenciasAsignadas.map((infAgencia, index) => (
             <section
@@ -172,12 +187,17 @@ export default function AdministrarAgenciasDelProducto({
         </>
       )}
       <h1 className="AdministrarAgenciasDelProducto__Titulo">
-        Asignar nueva agencia al producto
+        {
+          DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_PRODUCTO[idioma]
+            .AsignarNuevaAgencia
+        }
       </h1>
       <span className="AdministrarAgenciasDelProducto__Buscar">
         <input
           type="text"
-          placeholder="Buscar agencia"
+          placeholder={
+            DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_PRODUCTO[idioma].BuscarAgencia
+          }
           onChange={obtenerAgencias}
         />
         <span className="AdministrarAgenciasDelProducto__Buscar__Lupa">
@@ -187,8 +207,10 @@ export default function AdministrarAgenciasDelProducto({
       {AgenciasNoAsignadas.length > 0 ? (
         <>
           <small className="AdministrarAgenciasDelProducto__TextoResultados">
-            <ion-icon name="search-circle"></ion-icon>Obtuvimos{" "}
-            {AgenciasNoAsignadas.length} resultados{" "}
+            <ion-icon name="search-circle"></ion-icon>
+            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos}{" "}
+            {AgenciasNoAsignadas.length}{" "}
+            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
           </small>
           <div className="AdministrarAgenciasDelProducto__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
@@ -231,17 +253,21 @@ export default function AdministrarAgenciasDelProducto({
             )
           )}
           <small className="AdministrarAgenciasDelProducto__TextoPaginas">
-            Página {paginaParaMostrar} de {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
           </small>
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados.`}
+          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Agencias"}
-          TextoBoton={"Registrar Agencia"}
+          TextoBoton={
+            DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_PRODUCTO[idioma]
+              .RegistrarAgencia
+          }
         />
       )}
     </div>

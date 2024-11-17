@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -6,6 +7,14 @@ import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useUsuarios } from "../../../context/UsuariosContext";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_REGISTRAR_USUARIO,
+  DICCIONARIO_MENSAJES_DE_ERROR,
+  DICCIONARIO_BOTONES,
+  DICCIONARIO_PLACEHOLDERS,
+} from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -16,7 +25,7 @@ import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../../helpers/Regexs";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Usuarios/RegistrarUsuario/RegistrarUsuario.css";
 
-export default function InformacionDelUsuario() {
+export default function InformacionDelUsuario({ idioma }) {
   const { RegistrarUsuario } = useUsuarios();
   const [mostrarContraseña, establecerMostrarContraseña] = useState(false);
 
@@ -107,23 +116,24 @@ export default function InformacionDelUsuario() {
           </button>
         </div>
         <h1 className="RegistrarUsuario__InformacionDelUsuario__Titulo">
-          Registrar Usuario
+          {DICCIONARIO_REGISTRAR_USUARIO[idioma].RegistrarUsuario}
         </h1>
         <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
           <p>
-            <ion-icon name="person"></ion-icon> Nombre del usuario
+            <ion-icon name="person"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_USUARIO[idioma].NombreDelUsuario}
           </p>
           <input
             id="Usuario"
             type="text"
             name="Usuario"
-            placeholder="Escriba aquí..."
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("Usuario", {
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
             })}
           />
@@ -131,7 +141,8 @@ export default function InformacionDelUsuario() {
         </span>
         <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
           <p>
-            <ion-icon name="hand-left"></ion-icon> Permisos
+            <ion-icon name="hand-left"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_USUARIO[idioma].Permisos}
           </p>
           <select id="Permisos" name="Permisos" {...register("Permisos")}>
             <option value="Usuario">Usuario</option>
@@ -142,22 +153,23 @@ export default function InformacionDelUsuario() {
         </span>
         <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
           <p>
-            <ion-icon name="lock-closed"></ion-icon> Contraseña
+            <ion-icon name="lock-closed"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_USUARIO[idioma].Contrasena}
           </p>
           <input
             id="Contraseña"
             type="password"
             name="Contraseña"
-            placeholder="Escriba aquí..."
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("Contraseña", {
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
               minLength: {
                 value: 4,
-                message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
               },
             })}
           />
@@ -165,23 +177,23 @@ export default function InformacionDelUsuario() {
         </span>
         <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
           <p>
-            <ion-icon name="checkmark-done-circle"></ion-icon> Confirmar
-            contraseña
+            <ion-icon name="checkmark-done-circle"></ion-icon>{" "}
+            {DICCIONARIO_REGISTRAR_USUARIO[idioma].ConfirmarContrasena}
           </p>
           <input
             id="ContraseñaConfirmar"
             type="password"
             name="ContraseñaConfirmar"
-            placeholder="Escriba aquí..."
+            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
             {...register("ContraseñaConfirmar", {
-              required: "¡Este campo es obligatorio! ⚠️",
+              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
               maxLength: {
                 value: 100,
-                message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
               },
               minLength: {
                 value: 4,
-                message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
+                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
               },
             })}
           />
@@ -193,13 +205,13 @@ export default function InformacionDelUsuario() {
             className="RegistrarUsuario__InformacionDelUsuario__Footer__Boton Cancelar"
             onClick={ReiniciarFormulario}
           >
-            Cancelar
+            {DICCIONARIO_BOTONES[idioma].Cancelar}
           </button>
           <button
             type="submit"
             className="RegistrarUsuario__InformacionDelUsuario__Footer__Boton Guardar"
           >
-            Guardar
+            {DICCIONARIO_BOTONES[idioma].Guardar}
           </button>
         </footer>
       </form>

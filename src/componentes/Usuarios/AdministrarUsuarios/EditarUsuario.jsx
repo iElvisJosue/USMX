@@ -8,6 +8,14 @@ import { toast } from "sonner";
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useUsuarios } from "../../../context/UsuariosContext";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_EDITAR_USUARIO,
+  DICCIONARIO_MENSAJES_DE_ERROR,
+  DICCIONARIO_BOTONES,
+  DICCIONARIO_PLACEHOLDERS,
+} from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
@@ -18,6 +26,7 @@ import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../../helpers/Regexs";
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/EditarUsuario.css";
 
 export default function EditarUsuario({
+  idioma,
   informacionDelUsuario,
   establecerVista,
 }) {
@@ -119,30 +128,34 @@ export default function EditarUsuario({
           <ion-icon name={mostrarContraseña ? "eye-off" : "eye"}></ion-icon>
         </button>
       </div>
-      <h1 className="EditarUsuario__Titulo">Editar Usuario</h1>
-      <span className="EditarUsuario__Titulo__Campo Dos">
+      <h1 className="EditarUsuario__Titulo">
+        {DICCIONARIO_EDITAR_USUARIO[idioma].EditarUsuario}
+      </h1>
+      <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
         <p>
-          <ion-icon name="person"></ion-icon> Nombre del usuario
+          <ion-icon name="person"></ion-icon>{" "}
+          {DICCIONARIO_EDITAR_USUARIO[idioma].NombreDelUsuario}
         </p>
         <input
           id="Usuario"
           type="text"
           name="Usuario"
-          placeholder="Escriba aquí..."
+          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
           {...register("Usuario", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
             },
           })}
         />
         {MensajeError("Usuario")}
       </span>
-      <span className="EditarUsuario__Titulo__Campo Dos">
+      <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
         <p>
-          <ion-icon name="hand-left"></ion-icon> Permisos
+          <ion-icon name="hand-left"></ion-icon>{" "}
+          {DICCIONARIO_EDITAR_USUARIO[idioma].Permisos}
         </p>
         <select id="Permisos" name="Permisos" {...register("Permisos")}>
           <option value="Usuario">Usuario</option>
@@ -151,48 +164,49 @@ export default function EditarUsuario({
         </select>
         {MensajeError("Permisos")}
       </span>
-      <span className="EditarUsuario__Titulo__Campo Dos">
+      <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
         <p>
-          <ion-icon name="lock-closed"></ion-icon> Contraseña
+          <ion-icon name="lock-closed"></ion-icon>{" "}
+          {DICCIONARIO_EDITAR_USUARIO[idioma].Contrasena}
         </p>
         <input
           id="Contraseña"
           type="password"
           name="Contraseña"
-          placeholder="Escriba aquí..."
+          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
           {...register("Contraseña", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
             },
             minLength: {
               value: 4,
-              message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
             },
           })}
         />
         {MensajeError("Contraseña")}
       </span>
-      <span className="EditarUsuario__Titulo__Campo Dos">
+      <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
         <p>
-          <ion-icon name="checkmark-done-circle"></ion-icon> Confirmar
-          contraseña
+          <ion-icon name="checkmark-done-circle"></ion-icon>{" "}
+          {DICCIONARIO_EDITAR_USUARIO[idioma].ConfirmarContrasena}
         </p>
         <input
           id="ContraseñaConfirmar"
           type="password"
           name="ContraseñaConfirmar"
-          placeholder="Escriba aquí..."
+          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
           {...register("ContraseñaConfirmar", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
             },
             minLength: {
               value: 4,
-              message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
             },
           })}
         />
@@ -200,7 +214,7 @@ export default function EditarUsuario({
       </span>
       <footer className="EditarUsuario__Footer">
         <button type="submit" className="EditarUsuario__Footer__Boton Guardar">
-          Actualizar
+          {DICCIONARIO_BOTONES[idioma].Actualizar}
         </button>
       </footer>
     </form>

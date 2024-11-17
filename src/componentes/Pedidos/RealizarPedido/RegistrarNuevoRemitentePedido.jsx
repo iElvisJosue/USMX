@@ -5,6 +5,14 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "sonner";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_REGISTRAR_NUEVO_REMITENTE_PEDIDO,
+  DICCIONARIO_PLACEHOLDERS,
+  DICCIONARIO_MENSAJES_DE_ERROR,
+  DICCIONARIO_BOTONES,
+} from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LOS COMPONENTES A USAR
 import AgenciaSeleccionadaPedido from "./AgenciaSeleccionadaPedido";
 import GoogleAPI from "../../GoogleAPI";
@@ -24,6 +32,7 @@ import {
 import "../../../estilos/componentes/Pedidos/RealizarPedido/RegistrarNuevoRemitentePedido.css";
 
 export default function RegistrarNuevoRemitentePedido({
+  idioma,
   establecerVistaRemitente,
   remitente,
   establecerRemitente,
@@ -130,23 +139,27 @@ export default function RegistrarNuevoRemitentePedido({
         </button>
       </span>
       <h1 className="RegistrarNuevoRemitentePedido__Titulo">
-        Registrar Nuevo Remitente
+        {
+          DICCIONARIO_REGISTRAR_NUEVO_REMITENTE_PEDIDO[idioma]
+            .RegistrarNuevoRemitente
+        }
       </h1>
       <span className="RegistrarNuevoRemitentePedido__Campo">
         <p>
-          <ion-icon name="person"></ion-icon> Nombre
+          <ion-icon name="person"></ion-icon>{" "}
+          {DICCIONARIO_REGISTRAR_NUEVO_REMITENTE_PEDIDO[idioma].Nombre}
         </p>
         <input
           id="NombreRemitente"
           type="text"
           name="NombreRemitente"
-          placeholder="Escriba aquí..."
+          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
           {...register("NombreRemitente", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
             },
           })}
         />
@@ -154,19 +167,20 @@ export default function RegistrarNuevoRemitentePedido({
       </span>
       <span className="RegistrarNuevoRemitentePedido__Campo">
         <p>
-          <ion-icon name="person"></ion-icon> Apellidos
+          <ion-icon name="person"></ion-icon>{" "}
+          {DICCIONARIO_REGISTRAR_NUEVO_REMITENTE_PEDIDO[idioma].Apellidos}
         </p>
         <input
           id="ApellidosRemitente"
           type="text"
           name="ApellidosRemitente"
-          placeholder="Escriba aquí..."
+          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
           {...register("ApellidosRemitente", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
             },
           })}
         />
@@ -174,23 +188,24 @@ export default function RegistrarNuevoRemitentePedido({
       </span>
       <span className="RegistrarNuevoRemitentePedido__Campo">
         <p>
-          <ion-icon name="call"></ion-icon> Teléfono #1
+          <ion-icon name="call"></ion-icon>{" "}
+          {DICCIONARIO_REGISTRAR_NUEVO_REMITENTE_PEDIDO[idioma].TelefonoUno}
         </p>
         <input
           id="TelefonoUnoRemitente"
           type="text"
           name="TelefonoUnoRemitente"
-          placeholder="Escriba aquí..."
+          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
           {...register("TelefonoUnoRemitente", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
             },
           })}
         />
@@ -198,22 +213,23 @@ export default function RegistrarNuevoRemitentePedido({
       </span>
       <span className="RegistrarNuevoRemitentePedido__Campo">
         <p>
-          <ion-icon name="call"></ion-icon> Teléfono #2 (Opcional)
+          <ion-icon name="call"></ion-icon>{" "}
+          {DICCIONARIO_REGISTRAR_NUEVO_REMITENTE_PEDIDO[idioma].TelefonoDos}
         </p>
         <input
           id="TelefonoDosRemitente"
           type="text"
           name="TelefonoDosRemitente"
-          placeholder="Escriba aquí..."
+          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
           {...register("TelefonoDosRemitente", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
             },
           })}
         />
@@ -221,19 +237,23 @@ export default function RegistrarNuevoRemitentePedido({
       </span>
       <span className="RegistrarNuevoRemitentePedido__Campo Dos">
         <p>
-          <ion-icon name="mail"></ion-icon> Correo electrónico
+          <ion-icon name="mail"></ion-icon>{" "}
+          {
+            DICCIONARIO_REGISTRAR_NUEVO_REMITENTE_PEDIDO[idioma]
+              .CorreoElectronico
+          }
         </p>
         <input
           id="CorreoRemitente"
           type="text"
           name="CorreoRemitente"
-          placeholder="Escriba aquí..."
+          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
           {...register("CorreoRemitente", {
-            required: "¡Este campo es obligatorio! ⚠️",
+            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
             pattern: REGEX_CORREO,
             maxLength: {
               value: 100,
-              message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
             },
           })}
         />
@@ -246,16 +266,19 @@ export default function RegistrarNuevoRemitentePedido({
           className="RegistrarNuevoRemitentePedido__Footer__Boton Regresar"
           onClick={() => establecerPaso(paso - 1)}
         >
-          Regresar
+          {DICCIONARIO_BOTONES[idioma].Regresar}
         </button>
         <button
           type="submit"
           className="RegistrarNuevoRemitentePedido__Footer__Boton Siguiente"
         >
-          Siguiente
+          {DICCIONARIO_BOTONES[idioma].Siguiente}
         </button>
       </footer>
-      <AgenciaSeleccionadaPedido NombreAgencia={agencia?.NombreAgencia} />
+      <AgenciaSeleccionadaPedido
+        idioma={idioma}
+        NombreAgencia={agencia?.NombreAgencia}
+      />
     </form>
   );
 }

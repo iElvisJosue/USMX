@@ -9,9 +9,16 @@ import Cargando from "../componentes/Cargando";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useGlobal } from "../context/GlobalContext";
+import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarUltimosDiezPedidos from "../hooks/useBuscarUltimosDiezPedidos";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
+import {
+  DICCIONARIO_BIENVENIDA,
+  DICCIONARIO_RESULTADOS,
+} from "../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
 import { HOST } from "../helpers/Urls";
@@ -22,6 +29,7 @@ import "../estilos/vistas/Bienvenida.css";
 
 export default function Bienvenida() {
   const { usuario } = useGlobal();
+  const { idioma } = useConfiguracion();
   const [pedidosHechosHoy, setPedidosHechosHoy] = useState(0);
   const {
     cargandoUltimosDiezPedidos,
@@ -60,17 +68,20 @@ export default function Bienvenida() {
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
     <main className="Main">
       <Menu />
-      <Encabezado icono="sparkles" seccion="Bienvenido" />
+      <Encabezado
+        icono="sparkles"
+        seccion={DICCIONARIO_BIENVENIDA[idioma].Bienvenido}
+      />
       <div className="Bienvenida">
         <section className="Bienvenida__Mensaje">
           <img src="Logo-USMX.png" alt="Logo USMX" />
-          <p>¡Bienvenido al sistema de USMX XPRESS!</p>
-          <p>Gestiona tus envíos de paquetería de manera rápida y sencilla.</p>
-          <p>¡Comienza ahora a rastrear y administrar tus paquetes!</p>
+          <p>{DICCIONARIO_BIENVENIDA[idioma].MensajeUno}</p>
+          <p>{DICCIONARIO_BIENVENIDA[idioma].MensajeDos}</p>
+          <p>{DICCIONARIO_BIENVENIDA[idioma].MensajeTres}</p>
         </section>
         <section className="Bienvenida__Perfil">
           <span className="Bienvenida__Perfil--Encabezado">
-            <p>perfil</p>
+            <p>{DICCIONARIO_BIENVENIDA[idioma].Perfil}</p>
             <ion-icon
               name="open"
               onClick={() => (window.location.href = `${HOST}Perfil`)}
@@ -87,7 +98,7 @@ export default function Bienvenida() {
         </section>
         <section className="Bienvenida__TotalDePedidosHechosHoy">
           <span className="Bienvenida__TotalDePedidosHechosHoy--Texto">
-            <p>Pedidos hechos hoy</p>
+            <p>{DICCIONARIO_BIENVENIDA[idioma].PedidosHechosHoy}</p>
             <small>{ObtenerFechaActual().split("-").reverse().join("/")}</small>
           </span>
           <div className="Bienvenida__TotalDePedidosHechosHoy--Cantidad">
@@ -99,7 +110,7 @@ export default function Bienvenida() {
         </section>
         <section className="Bienvenida__UltimasGuias">
           <ul className="Bienvenida__UltimasGuias--Encabezado">
-            <p>Últimos pedidos</p>
+            <p>{DICCIONARIO_BIENVENIDA[idioma].UltimosPedidos}</p>
             <button
               onClick={() => (window.location.href = `${HOST}Pedidos`)}
               title="Ver todos los pedidos"
@@ -142,8 +153,12 @@ export default function Bienvenida() {
           ) : (
             <div className="Bienvenida__UltimasGuias--Cuerpo SinResultados">
               <img src="SinResultados.png" alt="No hay resultados" />
-              <small>¡Oops! Parece que más no tienes pedidos realizados.</small>
-              <a href={`${HOST}Pedidos`}>Realizar pedido</a>
+              <small>
+                {DICCIONARIO_RESULTADOS[idioma].NoResultadosPedidos}
+              </small>
+              <a href={`${HOST}Pedidos`}>
+                {DICCIONARIO_BIENVENIDA[idioma].RealizarPedido}
+              </a>
             </div>
           )}
         </section>

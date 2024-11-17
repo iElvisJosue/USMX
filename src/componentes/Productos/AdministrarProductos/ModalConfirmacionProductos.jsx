@@ -2,6 +2,9 @@
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useProductos } from "../../../context/ProductosContext";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS } from "../../../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
@@ -10,6 +13,7 @@ import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import "../../../estilos/componentes/Productos/AdministrarProductos/ModalConfirmacionProductos.css";
 
 export default function ModalConfirmacionProductos({
+  idioma,
   Activar = true,
   infProducto,
   establecerMostrarModalConfirmacion,
@@ -20,11 +24,15 @@ export default function ModalConfirmacionProductos({
   const ClaseTituloModal = Activar
     ? "ModalConfirmacionProductos__Contenido--Titulo Activar"
     : "ModalConfirmacionProductos__Contenido--Titulo Desactivar";
-  const TituloModal = Activar ? "Activar producto" : "Desactivar producto";
+  const TituloModal = Activar
+    ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].ActivarProducto
+    : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].DesactivarProducto;
   const ClaseBotonModal = Activar
     ? "ModalConfirmacionProductos__Contenido--Boton Activar"
     : "ModalConfirmacionProductos__Contenido--Boton Desactivar";
-  const TextoBotonModal = Activar ? "Activar" : "Desactivar";
+  const TextoBotonModal = Activar
+    ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].Activar
+    : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].Desactivar;
   const ClaseTextoModal = Activar
     ? "ModalConfirmacionProductos__Contenido--Texto Activar"
     : "ModalConfirmacionProductos__Contenido--Texto Desactivar";
@@ -63,14 +71,19 @@ export default function ModalConfirmacionProductos({
         </button>
         <h1 className={ClaseTituloModal}>{TituloModal}</h1>
         <small className={ClaseTextoModal}>
-          ¿Esta seguro que desea {Activar ? "activar" : "desactivar"} el
-          producto <b>{infProducto.NombreProducto}</b>?
+          {DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].MensajeParteUno}{" "}
+          {Activar
+            ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].Activar
+            : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].Desactivar}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].MensajeParteDos}{" "}
+          <b>{infProducto.NombreProducto}</b>?
           <br />
           <br />
           <i>
             {Activar
-              ? `El producto se activara una vez confirmada esta acción, por lo cual, el producto ${infProducto.NombreProducto} podrá trabajar con normalidad en el sistema.`
-              : `El producto se desactivara una vez confirmada esta opción, por lo cual, con el producto ${infProducto.NombreProducto} no sé podrá realizar ninguna operación.`}
+              ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].MensajeActivar
+              : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma]
+                  .MensajeDesactivar}
           </i>
         </small>
         <button

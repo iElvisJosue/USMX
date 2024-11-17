@@ -2,6 +2,9 @@
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useOperaciones } from "../../context/OperacionesContext";
 
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS } from "../../diccionario/Diccionario";
+
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
@@ -10,6 +13,7 @@ import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 import "../../estilos/componentes/Movimientos/ModalConfirmacionMovimientos.css";
 
 export default function ModalConfirmacionMovimientos({
+  idioma,
   Activar = true,
   informacionDelMovimiento,
   establecerMostrarModalConfirmacion,
@@ -20,11 +24,15 @@ export default function ModalConfirmacionMovimientos({
   const ClaseTituloModal = Activar
     ? "ModalConfirmacionMovimientos__Contenido--Titulo Activar"
     : "ModalConfirmacionMovimientos__Contenido--Titulo Desactivar";
-  const TituloModal = Activar ? "Activar movimiento" : "Desactivar movimiento";
+  const TituloModal = Activar
+    ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].ActivarMovimiento
+    : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].DesactivarMovimiento;
   const ClaseBotonModal = Activar
     ? "ModalConfirmacionMovimientos__Contenido--Boton Activar"
     : "ModalConfirmacionMovimientos__Contenido--Boton Desactivar";
-  const TextoBotonModal = Activar ? "Activar" : "Desactivar";
+  const TextoBotonModal = Activar
+    ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].Activar
+    : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].Desactivar;
   const ClaseTextoModal = Activar
     ? "ModalConfirmacionMovimientos__Contenido--Texto Activar"
     : "ModalConfirmacionMovimientos__Contenido--Texto Desactivar";
@@ -63,14 +71,21 @@ export default function ModalConfirmacionMovimientos({
         </button>
         <h1 className={ClaseTituloModal}>{TituloModal}</h1>
         <small className={ClaseTextoModal}>
-          ¿Esta seguro que desea {Activar ? "activar" : "desactivar"} el
-          movimiento <b>{informacionDelMovimiento.DetallesMovimiento}</b>?
+          {DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].MensajeParteUno}{" "}
+          {Activar
+            ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].Activar
+            : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma]
+                .Desactivar}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].MensajeParteDos}{" "}
+          <b>{informacionDelMovimiento.DetallesMovimiento}</b>?
           <br />
           <br />
           <i>
             {Activar
-              ? `El movimiento se activara una vez confirmada esta acción, por lo cual, el movimiento ${informacionDelMovimiento.DetallesMovimiento} podrá trabajar con normalidad en el sistema.`
-              : `El movimiento se desactivara una vez confirmada esta opción, por lo cual, con el movimiento ${informacionDelMovimiento.DetallesMovimiento} no sé podrá realizar ninguna operación.`}
+              ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma]
+                  .MensajeActivar
+              : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma]
+                  .MensajeDesactivar}
           </i>
         </small>
         <button
