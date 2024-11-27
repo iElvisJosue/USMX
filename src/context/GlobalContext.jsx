@@ -1,11 +1,19 @@
+// IMPORTAMOS LAS LIBRERÍAS A USAR
 import { createContext, useState, useContext, useEffect } from "react";
+import Cookies from "js-cookie";
+import { toast } from "sonner";
 import {
   SolicitudIniciarSesion,
   SolicitudVerificarToken,
   SolicitudCerrarSesion,
 } from "../api/authGlobal";
-import Cookies from "js-cookie";
 
+// IMPORTAMOS LAS AYUDAS
+import {
+  ESTILOS_INFO,
+  ESTILOS_ERROR,
+  ESTILOS_SUCCESS,
+} from "../helpers/SonnerEstilos";
 export const GlobalContext = createContext();
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -40,26 +48,34 @@ export const ProveedorGlobal = ({ children }) => {
   useEffect(() => {
     async function ValidarCookie() {
       const cookies = Cookies.get();
-      if (!cookies.TokenDeAcceso) {
+      if (!cookies.TOKEN_DE_ACCESO_USMX) {
         console.log("NO HAY COOKIE :(");
         setError();
         return;
       }
       try {
         const res = await SolicitudVerificarToken({
-          cookie: cookies.TokenDeAcceso,
+          TOKEN_DE_ACCESO_USMX: cookies.TOKEN_DE_ACCESO_USMX,
         });
-        if (!res.data) {
-          setError();
-          return;
-        } else {
+        if (res.data) {
           setSuccess(res.data);
-          return;
+          return toast.error("¡Vaya! Parece que ya tienes una sesión activa.", {
+            style: ESTILOS_INFO,
+            action: {
+              label: (
+                <ion-icon name="home" style={{ color: "white" }}></ion-icon>
+              ),
+              onClick: () => {
+                window.location.href = "/Bienvenida";
+              },
+            },
+          });
         }
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
         setError();
-        return;
+        return toast.error(err.response.data, {
+          style: ESTILOS_ERROR,
+        });
       }
     }
     ValidarCookie();
@@ -71,7 +87,7 @@ export const ProveedorGlobal = ({ children }) => {
       if (!res.data) {
         return setError();
       }
-      Cookies.set("TokenDeAcceso", res.data.TokenDeAcceso, {
+      Cookies.set("TOKEN_DE_ACCESO_USMX", res.data.TOKEN_DE_ACCESO_USMX, {
         expires: 1,
       });
       return setSuccess(res.data);
@@ -82,8 +98,18 @@ export const ProveedorGlobal = ({ children }) => {
   };
 
   const CerrarSesion = async () => {
-    await SolicitudCerrarSesion();
-    return setError();
+    try {
+      const res = await SolicitudCerrarSesion();
+      if (res.data) {
+        toast.success(res.data, {
+          style: ESTILOS_SUCCESS,
+        });
+        return setError();
+      }
+    } catch (error) {
+      console.log(error);
+      return setError();
+    }
   };
 
   return (
