@@ -4,7 +4,7 @@ import Cargando from "../../Cargando";
 import MensajeGeneral from "../../MensajeGeneral";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarPedidosPorFiltroYTipoDeUsuario from "../../../hooks/useBuscarPedidosPorFiltroYTipoDeUsuario";
+import useBuscarPedidosPorFiltro from "../../../hooks/useBuscarPedidosPorFiltro";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
@@ -24,7 +24,7 @@ export default function ListaDePedidosCompleta({
   EstablecerLosDetallesDelPedido,
 }) {
   const { pedidos, cargando, filtro, establecerFiltro } =
-    useBuscarPedidosPorFiltroYTipoDeUsuario();
+    useBuscarPedidosPorFiltro();
 
   const BuscarPedidos = (event) => {
     const valorIntroducido = event.target.value;
@@ -113,7 +113,7 @@ export default function ListaDePedidosCompleta({
                       {pedido.NombreDestinatario} {pedido.ApellidosDestinatario}
                     </td>
                     <td>{pedido.NombreAgencia}</td>
-                    <td>{pedido.UsuarioResponsablePedido}</td>
+                    <td>{pedido.Usuario}</td>
                     <td>
                       {FormatearFecha(pedido.FechaCreacionPedido.slice(0, 10))}{" "}
                       {pedido.HoraCreacionPedido}

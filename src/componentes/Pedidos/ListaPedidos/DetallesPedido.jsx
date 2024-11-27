@@ -148,7 +148,7 @@ export default function DetallesPedido({
           <div className="DetallesPedido__Detalles Usuario">
             <ion-icon name="person-circle"></ion-icon>{" "}
             <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Usuario}</b>{" "}
-            {paquete[indicePedido].UsuarioResponsablePedido}
+            {paquete[indicePedido].Usuario}
           </div>
           <div
             className={`DetallesPedido__Detalles ${paquete[indicePedido].EstadoPedido}`}

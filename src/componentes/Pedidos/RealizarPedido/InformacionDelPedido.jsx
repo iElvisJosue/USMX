@@ -174,8 +174,6 @@ export default function InformacionDelPedido({
             Number(productoSeleccionado.LibraExtraProducto)
           )
         ),
-        idAgencia: agencia.idAgencia,
-        NombreAgencia: agencia.NombreAgencia,
       };
       nuevoPedido.push(nuevoProducto); // Añadir el nuevo producto al pedido
     }
@@ -269,8 +267,12 @@ export default function InformacionDelPedido({
   const GuardarTodaLaInformacionEnLaBD = async () => {
     const TodaLaInformacion = {
       CookieConToken: COOKIE_CON_TOKEN,
-      destinatario,
       remitente,
+      destinatario,
+      idUsuario: usuario.idUsuario,
+      NombreUsuario: usuario.Usuario,
+      idAgencia: agencia.idAgencia,
+      NombreAgencia: agencia.NombreAgencia,
       pedido,
     };
     try {

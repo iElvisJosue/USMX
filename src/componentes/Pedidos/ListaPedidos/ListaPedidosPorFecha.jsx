@@ -126,7 +126,7 @@ export default function ListaPedidosPorFecha({
                       {pedido.NombreDestinatario} {pedido.ApellidosDestinatario}
                     </td>
                     <td>{pedido.NombreAgencia}</td>
-                    <td>{pedido.UsuarioResponsablePedido}</td>
+                    <td>{pedido.Usuario}</td>
                     <td>
                       {FormatearFecha(pedido.FechaCreacionPedido.slice(0, 10))}{" "}
                       {pedido.HoraCreacionPedido}

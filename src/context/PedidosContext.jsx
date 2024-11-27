@@ -2,14 +2,17 @@
 import { createContext, useContext } from "react";
 import {
   SolicitudGuardarTodaLaInformacion,
-  SolicitudBuscarPedidosPorFiltro,
+  SolicitudBuscarTodosLosPedidosPorFiltro,
+  SolicitudBuscarTodosLosPedidosPorFecha,
+  SolicitudBuscarPedidosDeUnUsuarioPorFiltro,
+  SolicitudBuscarPedidosDeUnUsuarioPorFecha,
   SolicitudBuscarPedidosPorPaquete,
   SolicitudBuscarRemitentesPorAgencia,
   SolicitudBuscarDestinatariosPorAgencia,
-  SolicitudBuscarUltimosDiezPedidos,
+  SolicitudBuscarUltimosDiezPedidosGenerales,
+  SolicitudBuscarUltimosDiezPedidosDeUnUsuario,
   SolicitudBuscarMovimientosDeUnPedido,
   SolicitudBuscarPedidoPorNumeroDeGuia,
-  SolicitudBuscarPedidosPorFecha,
 } from "../api/authPedidos";
 
 export const PedidosContext = createContext();
@@ -31,9 +34,33 @@ export const ProveedorPedidos = ({ children }) => {
       return error;
     }
   };
-  const BuscarPedidosPorFiltro = async (data) => {
+  const BuscarTodosLosPedidosPorFiltro = async (data) => {
     try {
-      const res = await SolicitudBuscarPedidosPorFiltro(data);
+      const res = await SolicitudBuscarTodosLosPedidosPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarTodosLosPedidosPorFecha = async (data) => {
+    try {
+      const res = await SolicitudBuscarTodosLosPedidosPorFecha(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarPedidosDeUnUsuarioPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarPedidosDeUnUsuarioPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarPedidosDeUnUsuarioPorFecha = async (data) => {
+    try {
+      const res = await SolicitudBuscarPedidosDeUnUsuarioPorFecha(data);
       return res;
     } catch (error) {
       return error;
@@ -63,9 +90,17 @@ export const ProveedorPedidos = ({ children }) => {
       return error;
     }
   };
-  const BuscarUltimosDiezPedidos = async () => {
+  const BuscarUltimosDiezPedidosGenerales = async () => {
     try {
-      const res = await SolicitudBuscarUltimosDiezPedidos();
+      const res = await SolicitudBuscarUltimosDiezPedidosGenerales();
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarUltimosDiezPedidosDeUnUsuario = async (data) => {
+    try {
+      const res = await SolicitudBuscarUltimosDiezPedidosDeUnUsuario(data);
       return res;
     } catch (error) {
       return error;
@@ -88,27 +123,21 @@ export const ProveedorPedidos = ({ children }) => {
     }
   };
 
-  const BuscarPedidosPorFecha = async (data) => {
-    try {
-      const res = await SolicitudBuscarPedidosPorFecha(data);
-      return res;
-    } catch (error) {
-      return error;
-    }
-  };
-
   return (
     <PedidosContext.Provider
       value={{
         GuardarTodaLaInformacion,
-        BuscarPedidosPorFiltro,
+        BuscarTodosLosPedidosPorFiltro,
+        BuscarTodosLosPedidosPorFecha,
+        BuscarPedidosDeUnUsuarioPorFiltro,
+        BuscarPedidosDeUnUsuarioPorFecha,
         BuscarPedidosPorPaquete,
         BuscarRemitentesPorAgencia,
         BuscarDestinatariosPorAgencia,
-        BuscarUltimosDiezPedidos,
+        BuscarUltimosDiezPedidosGenerales,
+        BuscarUltimosDiezPedidosDeUnUsuario,
         BuscarMovimientosDeUnPedido,
         BuscarPedidoPorNumeroDeGuia,
-        BuscarPedidosPorFecha,
       }}
     >
       {children}

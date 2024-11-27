@@ -8,8 +8,9 @@ import { useGlobal } from "../context/GlobalContext";
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
-export default function useBuscarPedidosPorFiltroYTipoDeUsuario() {
-  const { BuscarPedidosPorFiltro } = usePedidos();
+export default function useBuscarPedidosPorFiltro() {
+  const { BuscarTodosLosPedidosPorFiltro, BuscarPedidosDeUnUsuarioPorFiltro } =
+    usePedidos();
   const { usuario } = useGlobal();
 
   const [pedidos, establecerPedidos] = useState([]);
@@ -17,14 +18,19 @@ export default function useBuscarPedidosPorFiltroYTipoDeUsuario() {
   const [filtro, establecerFiltro] = useState("");
 
   useEffect(() => {
-    const buscarPedidos = async () => {
+    const buscarPedidosPorFiltro = async () => {
       try {
-        const res = await BuscarPedidosPorFiltro({
-          CookieConToken: COOKIE_CON_TOKEN,
-          filtro,
-          tipoDeUsuario: usuario.Permisos,
-          idDelUsuario: usuario.idUsuario,
-        });
+        const res =
+          usuario.Permisos === "Administrador"
+            ? await BuscarTodosLosPedidosPorFiltro({
+                CookieConToken: COOKIE_CON_TOKEN,
+                filtro,
+              })
+            : await BuscarPedidosDeUnUsuarioPorFiltro({
+                CookieConToken: COOKIE_CON_TOKEN,
+                idUsuario: usuario.idUsuario,
+                filtro,
+              });
         if (res.response) {
           const { status, data } = res.response;
           ManejarMensajesDeRespuesta({ status, data });
@@ -36,7 +42,7 @@ export default function useBuscarPedidosPorFiltroYTipoDeUsuario() {
         console.log(error);
       }
     };
-    buscarPedidos();
+    buscarPedidosPorFiltro();
   }, [filtro]);
 
   return { pedidos, cargando, filtro, establecerFiltro };

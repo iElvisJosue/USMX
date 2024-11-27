@@ -11,7 +11,8 @@ import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
 
 export default function useBuscarPedidosPorFecha() {
-  const { BuscarPedidosPorFecha } = usePedidos();
+  const { BuscarTodosLosPedidosPorFecha, BuscarPedidosDeUnUsuarioPorFecha } =
+    usePedidos();
   const { usuario } = useGlobal();
   const [pedidosPorFecha, establecerPedidosPorFecha] = useState([]);
   const [cargandoPedidosPorFecha, establecerCargandoPedidosPorFecha] =
@@ -23,13 +24,19 @@ export default function useBuscarPedidosPorFecha() {
   useEffect(() => {
     async function obtenerPedidosPorFecha() {
       try {
-        const res = await BuscarPedidosPorFecha({
-          CookieConToken: COOKIE_CON_TOKEN,
-          primeraFecha,
-          segundaFecha,
-          idDelUsuario: usuario.idUsuario,
-          permisosUsuario: usuario.Permisos,
-        });
+        const res =
+          usuario.Permisos === "Administrador"
+            ? await BuscarTodosLosPedidosPorFecha({
+                CookieConToken: COOKIE_CON_TOKEN,
+                primeraFecha,
+                segundaFecha,
+              })
+            : await BuscarPedidosDeUnUsuarioPorFecha({
+                CookieConToken: COOKIE_CON_TOKEN,
+                idUsuario: usuario.idUsuario,
+                primeraFecha,
+                segundaFecha,
+              });
         if (res.response) {
           const { status, data } = res.response;
           ManejarMensajesDeRespuesta({ status, data });
