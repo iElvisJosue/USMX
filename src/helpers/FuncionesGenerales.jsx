@@ -1,3 +1,7 @@
+import { toast } from "sonner";
+// AYUDAS A USAR
+import { ESTILOS_INFO } from "./SonnerEstilos";
+
 export const FormatearFecha = (Fecha) => {
   const fechaFormateada = Fecha.split("-").reverse().join("/");
   return fechaFormateada;
@@ -20,4 +24,13 @@ export const ObtenerHoraActual = () => {
   };
   const HoraActual = Hoy.toLocaleTimeString("en-US", Opciones);
   return HoraActual;
+};
+
+export const MensajePeticionPendiente = () => {
+  return toast.error(
+    "¡Tienes una petición pendiente, por favor espera a que se resuelva!",
+    {
+      style: ESTILOS_INFO,
+    }
+  );
 };

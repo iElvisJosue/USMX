@@ -107,10 +107,12 @@
 .NumeroDeGuia__Movimientos--Detalles.Entregado {
   color: var(--ColorVerde);
 }
-.NumeroDeGuia__Movimientos--Detalles.Cancelado {
+.NumeroDeGuia__Movimientos--Detalles.Cancelado,
+.NumeroDeGuia__Movimientos--Detalles.Devuelto {
   color: var(--ColorRojo);
 }
-.NumeroDeGuia__Movimientos--Detalles.Camino {
+.NumeroDeGuia__Movimientos--Detalles.Camino,
+.NumeroDeGuia__Movimientos--Detalles.Recolectado {
   color: var(--ColorAzul);
 }
 @media (width <= 510px) {

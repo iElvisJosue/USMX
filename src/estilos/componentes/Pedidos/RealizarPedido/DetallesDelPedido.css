@@ -218,7 +218,8 @@
   background-color: var(--ColorRojo);
   color: var(--ColorBlanco);
 }
-.DetallesDelPedido__Detalles__Movimiento--Encabezado.Camino {
+.DetallesDelPedido__Detalles__Movimiento--Encabezado.Camino,
+.DetallesDelPedido__Detalles__Movimiento--Encabezado.Recolectado {
   background-color: var(--ColorAzul);
   color: var(--ColorBlanco);
 }

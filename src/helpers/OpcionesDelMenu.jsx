@@ -34,9 +34,41 @@ export default function OpcionesDelMenu(idioma) {
         url: `${HOST}Productos`,
       },
       {
+        icono: "bag-check",
+        nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Recolecciones}`,
+        url: `${HOST}Recolecciones`,
+      },
+      {
         icono: "people-circle",
         nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Usuarios}`,
         url: `${HOST}Usuarios`,
+      },
+      {
+        icono: "cube",
+        nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Bodega}`,
+        url: `#`,
+        opcionesSecundarias: [
+          {
+            icono: "log-in",
+            nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Entrada}`,
+            url: `${HOST}Bodega-Entradas`,
+          },
+          {
+            icono: "swap-horizontal",
+            nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Movimientos}`,
+            url: `${HOST}Bodega-Movimientos`,
+          },
+          {
+            icono: "log-out",
+            nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Salida}`,
+            url: `${HOST}Bodega-Salidas`,
+          },
+          {
+            icono: "arrow-undo",
+            nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Devolucion}`,
+            url: `${HOST}Bodega-Devoluciones`,
+          },
+        ],
       },
       {
         icono: "code-working",
@@ -70,11 +102,6 @@ export default function OpcionesDelMenu(idioma) {
             nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Envios}`,
             url: `${HOST}Envios`,
           },
-          // {
-          //   icono: "globe",
-          //   nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Ubicaciones}`,
-          //   url: `${HOST}Ubicaciones`,
-          // },
         ],
       },
       {
@@ -122,6 +149,62 @@ export default function OpcionesDelMenu(idioma) {
             icono: "cube",
             nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Pedidos}`,
             url: `${HOST}Pedidos`,
+          },
+        ],
+      },
+      {
+        icono: "color-palette",
+        nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Apariencia}`,
+        url: `${HOST}Apariencia`,
+      },
+    ],
+    Chofer: [
+      {
+        icono: "person-circle",
+        nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Perfil}`,
+        url: `${HOST}Perfil`,
+      },
+      {
+        icono: "bag-check",
+        nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Recolecciones}`,
+        url: `${HOST}Recolecciones`,
+      },
+      {
+        icono: "color-palette",
+        nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Apariencia}`,
+        url: `${HOST}Apariencia`,
+      },
+    ],
+    Bodega: [
+      {
+        icono: "person-circle",
+        nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Perfil}`,
+        url: `${HOST}Perfil`,
+      },
+      {
+        icono: "cube",
+        nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Bodega}`,
+        url: `#`,
+        opcionesSecundarias: [
+          {
+            icono: "log-in",
+            nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Entrada}`,
+            url: `${HOST}Bodega-Entradas`,
+          },
+          {
+            icono: "swap-horizontal",
+            nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Movimientos}`,
+            url: `${HOST}Bodega-Movimientos`,
+          },
+          {
+            icono: "log-out",
+            nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Salida}`,
+            url: `${HOST}Bodega-Salidas`,
+          },
+          {
+            icono: "arrow-undo",
+            nombre: `${DICCIONARIO_OPCIONES_DEL_MENU[idioma].Devolucion}`,
+            url: `${HOST}Bodega-Devoluciones`,
           },
         ],
       },

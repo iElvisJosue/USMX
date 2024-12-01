@@ -74,6 +74,12 @@
 .Perfil__Contenido__Permisos.Administrador ion-icon {
   background-color: var(--ColorNaranja);
 }
+.Perfil__Contenido__Permisos.Chofer ion-icon {
+  background-color: var(--ColorDurazno);
+}
+.Perfil__Contenido__Permisos.Bodega ion-icon {
+  background-color: var(--ColorCafe);
+}
 .Perfil__Contenido__Permisos.Moderador ion-icon {
   background-color: var(--ColorVerde);
 }

@@ -21,13 +21,16 @@ import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor"
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../../helpers/Regexs";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
+import { TIPOS_DE_USUARIOS } from "../../../helpers/TiposDeUsuario";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Usuarios/RegistrarUsuario/RegistrarUsuario.css";
 
 export default function InformacionDelUsuario({ idioma }) {
-  const { RegistrarUsuario } = useUsuarios();
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const [mostrarContraseña, establecerMostrarContraseña] = useState(false);
+  const { RegistrarUsuario } = useUsuarios();
 
   const {
     handleSubmit,
@@ -39,6 +42,9 @@ export default function InformacionDelUsuario({ idioma }) {
   });
 
   const GuardaInformacionDelUsuario = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    // SI LAS CONTRASEÑAS NO COINCIDEN, MOSTRAMOS UNA ALERTA
     if (info.Contraseña !== info.ContraseñaConfirmar) {
       return toast.error(
         "¡Oops! Parece que las contraseñas no coinciden, por favor intente nuevamente.",
@@ -47,6 +53,7 @@ export default function InformacionDelUsuario({ idioma }) {
         }
       );
     }
+    establecerPeticionPendiente(true);
     try {
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarUsuario(info);
@@ -61,6 +68,8 @@ export default function InformacionDelUsuario({ idioma }) {
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 
@@ -145,9 +154,11 @@ export default function InformacionDelUsuario({ idioma }) {
             {DICCIONARIO_REGISTRAR_USUARIO[idioma].Permisos}
           </p>
           <select id="Permisos" name="Permisos" {...register("Permisos")}>
-            <option value="Usuario">Usuario</option>
-            <option value="Administrador">Administrador</option>
-            <option value="Moderador">Moderador</option>
+            {TIPOS_DE_USUARIOS.map((permiso) => (
+              <option key={permiso} value={permiso}>
+                {permiso}
+              </option>
+            ))}
           </select>
           {MensajeError("Permisos")}
         </span>

@@ -130,20 +130,24 @@ export default function RegistrarMovimiento({
       </span>
       <span className="RegistrarMovimiento__Titulo__Campo">
         <p>
-          <ion-icon name="radio-button-on"></ion-icon>{" "}
-          {DICCIONARIO_REGISTRAR_MOVIMIENTO[idioma].MovimientoPorDefecto}
+          <ion-icon name="apps"></ion-icon>{" "}
+          {DICCIONARIO_REGISTRAR_MOVIMIENTO[idioma].CategoriaDelMovimiento}
         </p>
         <select
-          name="PorDefectoMovimiento"
-          id="PorDefectoMovimiento"
-          {...register("PorDefectoMovimiento", {
+          name="CategoriaMovimiento"
+          id="CategoriaMovimiento"
+          {...register("CategoriaMovimiento", {
             required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
           })}
         >
-          <option value="No">No</option>
-          <option value="Si">Si</option>
+          <option value="Inicial">Inicial</option>
+          <option value="Recoleccion">Recoleccion</option>
+          <option value="Devolucion">Devolucion</option>
+          <option value="Entrada Bodega">Entrada Bodega</option>
+          <option value="Salida Bodega">Salida Bodega</option>
+          <option value="Movimento Bodega">Movimento Bodega</option>
         </select>
-        {MensajeDeError("PorDefectoMovimiento")}
+        {MensajeDeError("CategoriaMovimiento")}
       </span>
       <span className="RegistrarMovimiento__Titulo__Campo Dos">
         <p>

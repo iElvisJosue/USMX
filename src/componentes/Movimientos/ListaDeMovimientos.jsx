@@ -12,9 +12,6 @@ import {
 import ModalConfirmacionMovimientos from "./ModalConfirmacionMovimientos";
 import MensajeGeneral from "../MensajeGeneral";
 
-// IMPORTAMOS LAS AYUDAS
-import { FormatearFecha } from "../../helpers/FuncionesGenerales";
-
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Movimientos/ListaDeMovimientos.css";
 
@@ -118,14 +115,9 @@ export default function ListaDeMovimientos({
                     {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Origen}
                   </th>
                   <th>
-                    <ion-icon name="radio-button-on"></ion-icon>
+                    <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].PorDefecto}
-                  </th>
-                  <th>
-                    <ion-icon name="calendar"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].FechaCreacion}
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Categoria}
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
@@ -137,7 +129,7 @@ export default function ListaDeMovimientos({
               <tbody className="ListaDeMovimientos__Cuerpo__Tabla__Cuerpo">
                 {movimientos.map((movimiento) => (
                   <tr
-                    key={movimiento.idListaMovimiento}
+                    key={movimiento.idMovimiento}
                     className={`ListaDeMovimientos__Cuerpo__Tabla__Cuerpo--TR ${
                       movimiento.ActivoMovimiento === "Activo"
                         ? ""
@@ -147,13 +139,7 @@ export default function ListaDeMovimientos({
                     <td>{movimiento.EstadoMovimiento.toUpperCase()}</td>
                     <td>{movimiento.DetallesMovimiento}</td>
                     <td>{movimiento.OrigenMovimiento}</td>
-                    <td>{movimiento.PorDefectoMovimiento}</td>
-                    <td>
-                      {FormatearFecha(
-                        movimiento.FechaCreacionMovimiento.slice(0, 10)
-                      )}{" "}
-                      {movimiento.HoraCreacionMovimiento}
-                    </td>
+                    <td>{movimiento.CategoriaMovimiento}</td>
                     <td className="ListaDeMovimientos__Cuerpo__Tabla__Cuerpo__Acciones">
                       {movimiento.ActivoMovimiento === "Activo" ? (
                         <>

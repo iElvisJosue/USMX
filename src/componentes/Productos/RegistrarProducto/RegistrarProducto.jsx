@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
@@ -22,11 +23,13 @@ import {
   REGEX_SOLO_NUMEROS,
   REGEX_DECIMALES,
 } from "../../../helpers/Regexs";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Productos/RegistrarProducto/RegistrarProducto.css";
 
 export default function RegistrarProducto({ idioma }) {
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { RegistrarProducto } = useProductos();
 
   const {
@@ -39,6 +42,9 @@ export default function RegistrarProducto({ idioma }) {
   });
 
   const GuardaInformacionDelProducto = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarProducto(info);
@@ -53,6 +59,8 @@ export default function RegistrarProducto({ idioma }) {
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 

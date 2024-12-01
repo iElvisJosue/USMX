@@ -3,7 +3,7 @@
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 20px;
 }
 .ListaDeUsuarios__Titulo {
   grid-column: 1 / -1;
@@ -130,6 +130,12 @@
 .ListaDeUsuarios__Clasificacion--Texto.Moderador {
   background-color: var(--ColorVerde);
 }
+.ListaDeUsuarios__Clasificacion--Texto.Chofer {
+  background-color: var(--ColorDurazno);
+}
+.ListaDeUsuarios__Clasificacion--Texto.Bodega {
+  background-color: var(--ColorCafe);
+}
 .ListaDeUsuarios__Clasificacion--Texto.Administrador {
   background-color: var(--ColorNaranja);
 }
@@ -161,16 +167,17 @@
 .ListaDeUsuarios__Usuario.Moderador {
   background-color: var(--ColorVerde);
 }
+.ListaDeUsuarios__Usuario.Chofer {
+  background-color: var(--ColorDurazno);
+}
+.ListaDeUsuarios__Usuario.Bodega {
+  background-color: var(--ColorCafe);
+}
 .ListaDeUsuarios__Usuario.Administrador {
   background-color: var(--ColorNaranja);
-  justify-content: center;
 }
 .ListaDeUsuarios__Usuario.Desactivado {
   background-color: var(--ColorRojo);
-}
-.ListaDeUsuarios__Usuario.Desactivada {
-  background-color: var(--ColorRojo);
-  color: var(--ColorBlanco);
 }
 .ListaDeUsuarios__Usuario ion-icon {
   font-size: 25px;
@@ -205,26 +212,28 @@
   justify-content: center;
 }
 .ListaDeUsuarios__Usuario__Opciones--Boton ion-icon {
+  font-size: 18px;
   transition: 0.3s ease-in-out all;
 }
 .ListaDeUsuarios__Usuario__Opciones--Boton.Usuario p ion-icon {
-  font-size: 18px;
   color: var(--ColorAzul);
 }
 .ListaDeUsuarios__Usuario__Opciones--Boton.Moderador p ion-icon {
-  font-size: 18px;
   color: var(--ColorVerde);
 }
+.ListaDeUsuarios__Usuario__Opciones--Boton.Chofer p ion-icon {
+  color: var(--ColorDurazno);
+}
+.ListaDeUsuarios__Usuario__Opciones--Boton.Bodega p ion-icon {
+  color: var(--ColorCafe);
+}
 .ListaDeUsuarios__Usuario__Opciones--Boton.Administrador p ion-icon {
-  font-size: 18px;
   color: var(--ColorNaranja);
 }
 .ListaDeUsuarios__Usuario__Opciones--Boton.Desactivado p ion-icon {
-  font-size: 18px;
   color: var(--ColorRojo);
 }
 .ListaDeUsuarios__Usuario__Opciones--Boton.Activar p ion-icon {
-  font-size: 18px;
   color: var(--ColorVerde);
 }
 .ListaDeUsuarios__Usuario__Opciones--Boton:first-child {
@@ -239,9 +248,6 @@
 .ListaDeUsuarios__Usuario__Opciones--Boton:hover ion-icon {
   transform: scale(1.2);
 }
-.ListaDeUsuarios__Usuario.Desactivado {
-  background-color: var(--ColorRojo);
-}
 .ListaDeUsuarios__TextoPaginas {
   grid-column: 1 / -1;
   color: var(--ColorAzul);
@@ -254,6 +260,15 @@
   }
   .ListaDeUsuarios {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (width <= 1000px) {
+  .ListaDeUsuarios__Colores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ListaDeUsuarios__Clasificacion--Texto {
+    grid-column: span 1;
   }
 }
 @media (width <= 500px) {

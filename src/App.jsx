@@ -5,6 +5,8 @@ import { ProveedorAgencias } from "./context/AgenciasContext";
 import { ProveedorPedidos } from "./context/PedidosContext";
 import { ProveedorProductos } from "./context/ProductosContext";
 import { ProveedorUsuarios } from "./context/UsuariosContext";
+import { ProveedorRecolecciones } from "./context/RecoleccionesContext";
+import { ProveedorBodega } from "./context/BodegaContext";
 import { ProveedorOperaciones } from "./context/OperacionesContext";
 import { ProveedorOcurre } from "./context/OcurreContext";
 import { ProveedorConfiguracion } from "./context/ConfiguracionContext";
@@ -18,6 +20,11 @@ import Pedidos from "./vistas/Pedidos";
 import Agencias from "./vistas/Agencias";
 import Productos from "./vistas/Productos";
 import Usuarios from "./vistas/Usuarios";
+import Recolecciones from "./vistas/Recolecciones";
+import BodegaEntradas from "./vistas/BodegaEntradas.jsx";
+import BodegaMovimientos from "./vistas/BodegaMovimientos";
+import BodegaSalidas from "./vistas/BodegaSalidas";
+import BodegaDevoluciones from "./vistas/BodegaDevoluciones";
 import Movimientos from "./vistas/Movimientos";
 import Ocurres from "./vistas/Ocurres";
 import Cargas from "./vistas/Cargas";
@@ -28,6 +35,9 @@ import Apariencia from "./vistas/Apariencia";
 // PROTECCIÓN DE RUTAS
 import ProteccionPorCookies from "./proteccion/ProteccionPorCookies";
 import ProteccionParaAdministradores from "./proteccion/ProteccionParaAdministradores";
+import ProteccionParaUsuariosYAdministradores from "./proteccion/ProteccionParaUsuariosYAdministradores";
+import ProteccionParaChoferesYAdministradores from "./proteccion/ProteccionParaChoferesYAdministradores";
+import ProteccionParaBodeguerosYAdministradores from "./proteccion/ProteccionParaBodeguerosYAdministradores.jsx";
 
 export default function App() {
   return (
@@ -35,59 +45,127 @@ export default function App() {
       <ProveedorConfiguracion>
         <ProveedorAgencias>
           <ProveedorUsuarios>
-            <ProveedorPedidos>
-              <ProveedorProductos>
-                <ProveedorOperaciones>
-                  <ProveedorOcurre>
-                    <BrowserRouter>
-                      <Routes>
-                        {/* RUTAS SIN PROTECCIÓN */}
-                        <Route path="/" element={<IniciarSesion />} />
-                        <Route
-                          path="/NumeroDeGuia/:GuiaPedido"
-                          element={<NumeroDeGuia />}
-                        />
-                        {/* TERMINAN LAS RUTAS SIN PROTECCIÓN */}
-                        {/* RUTAS PROTEGIDAS POR COOKIES */}
-                        <Route element={<ProteccionPorCookies />}>
-                          {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
-                          <Route element={<ProteccionParaAdministradores />}>
-                            {/* RUTAS DE AGENCIAS */}
-                            <Route path="/Agencias" element={<Agencias />} />
-                            {/* RUTAS DE USUARIOS */}
-                            <Route path="/Usuarios" element={<Usuarios />} />
-                            {/* RUTAS DE PRODUCTOS */}
-                            <Route path="/Productos" element={<Productos />} />
-                            {/* RUTAS DE OPERACIONES */}
+            <ProveedorRecolecciones>
+              <ProveedorBodega>
+                <ProveedorPedidos>
+                  <ProveedorProductos>
+                    <ProveedorOperaciones>
+                      <ProveedorOcurre>
+                        <BrowserRouter>
+                          <Routes>
+                            {/* RUTAS SIN PROTECCIÓN */}
+                            <Route path="/" element={<IniciarSesion />} />
                             <Route
-                              path="/Movimientos"
-                              element={<Movimientos />}
+                              path="/NumeroDeGuia/:GuiaPedido"
+                              element={<NumeroDeGuia />}
                             />
-                            {/* RUTAS DE OCURRES */}
-                            <Route path="/Ocurres" element={<Ocurres />} />
-                            <Route path="/Cargas" element={<Cargas />} />
-                            <Route path="/Envios" element={<Envios />} />
-                            <Route
-                              path="/Ubicaciones"
-                              element={<Ubicaciones />}
-                            />
-                          </Route>
+                            {/* TERMINAN LAS RUTAS SIN PROTECCIÓN */}
+                            {/* RUTAS PROTEGIDAS POR COOKIES */}
+                            <Route element={<ProteccionPorCookies />}>
+                              {/* RUTAS PARA TODOS LOS USUARIOS */}
+                              <Route
+                                path="/Bienvenida"
+                                element={<Bienvenida />}
+                              />
+                              <Route path="/Perfil" element={<Perfil />} />
+                              <Route
+                                path="/Apariencia"
+                                element={<Apariencia />}
+                              />
+                              {/* TERMINAN LAS RUTAS PARA TODOS LOS USUARIOS */}
 
-                          {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
-                          {/* RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
-                          <Route path="/Bienvenida" element={<Bienvenida />} />
-                          <Route path="/Perfil" element={<Perfil />} />
-                          <Route path="/Pedidos" element={<Pedidos />} />
-                          <Route path="/Apariencia" element={<Apariencia />} />
-                          {/* TERMINAN LAS RUTAS PROTEGIDAS PARA TODOS LOS USUARIOS */}
-                        </Route>
-                      </Routes>
-                      {/* TERMINAN LAS RUTAS PROTEGIDAS POR COOKIES */}
-                    </BrowserRouter>
-                  </ProveedorOcurre>
-                </ProveedorOperaciones>
-              </ProveedorProductos>
-            </ProveedorPedidos>
+                              {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
+                              <Route
+                                element={<ProteccionParaAdministradores />}
+                              >
+                                {/* RUTAS DE AGENCIAS */}
+                                <Route
+                                  path="/Agencias"
+                                  element={<Agencias />}
+                                />
+                                {/* RUTAS DE USUARIOS */}
+                                <Route
+                                  path="/Usuarios"
+                                  element={<Usuarios />}
+                                />
+                                {/* RUTAS DE PRODUCTOS */}
+                                <Route
+                                  path="/Productos"
+                                  element={<Productos />}
+                                />
+                                {/* RUTAS DE OPERACIONES */}
+                                <Route
+                                  path="/Movimientos"
+                                  element={<Movimientos />}
+                                />
+                                {/* RUTAS DE OCURRES */}
+                                <Route path="/Ocurres" element={<Ocurres />} />
+                                <Route path="/Cargas" element={<Cargas />} />
+                                <Route path="/Envios" element={<Envios />} />
+                                <Route
+                                  path="/Ubicaciones"
+                                  element={<Ubicaciones />}
+                                />
+                              </Route>
+                              {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
+
+                              {/* RUTAS PROTEGIDAS PARA USUARIOS Y ADMINS */}
+                              <Route
+                                element={
+                                  <ProteccionParaUsuariosYAdministradores />
+                                }
+                              >
+                                <Route path="/Pedidos" element={<Pedidos />} />
+                              </Route>
+                              {/* TERMINAN LAS RUTAS PROTEGIDAS PARA USUARIOS Y ADMINS */}
+
+                              {/* RUTAS PROTEGIDAS PARA BODEGUEROS Y ADMINS */}
+                              <Route
+                                element={
+                                  <ProteccionParaBodeguerosYAdministradores />
+                                }
+                              >
+                                <Route
+                                  path="/Bodega-Entradas"
+                                  element={<BodegaEntradas />}
+                                />
+                                <Route
+                                  path="/Bodega-Movimientos"
+                                  element={<BodegaMovimientos />}
+                                />
+                                <Route
+                                  path="/Bodega-Salidas"
+                                  element={<BodegaSalidas />}
+                                />
+                                <Route
+                                  path="/Bodega-Devoluciones"
+                                  element={<BodegaDevoluciones />}
+                                />
+                              </Route>
+                              {/* TERMINAN LAS RUTAS PROTEGIDAS PARA BODEGUEROS Y ADMINS */}
+
+                              {/* RUTAS PROTEGIDAS PARA CHOFERES Y ADMINS */}
+                              <Route
+                                element={
+                                  <ProteccionParaChoferesYAdministradores />
+                                }
+                              >
+                                <Route
+                                  path="/Recolecciones"
+                                  element={<Recolecciones />}
+                                />
+                              </Route>
+                              {/* TERMINAN LAS RUTAS PROTEGIDAS PARA CHOFERES Y ADMINS */}
+                            </Route>
+                          </Routes>
+                          {/* TERMINAN LAS RUTAS PROTEGIDAS POR COOKIES */}
+                        </BrowserRouter>
+                      </ProveedorOcurre>
+                    </ProveedorOperaciones>
+                  </ProveedorProductos>
+                </ProveedorPedidos>
+              </ProveedorBodega>
+            </ProveedorRecolecciones>
           </ProveedorUsuarios>
         </ProveedorAgencias>
       </ProveedorConfiguracion>

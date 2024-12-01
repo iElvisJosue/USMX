@@ -73,6 +73,8 @@ export default function ListaDeUsuarios({
     Usuario: <ion-icon name="person-circle"></ion-icon>,
     Moderador: <ion-icon name="glasses"></ion-icon>,
     Administrador: <ion-icon name="shield-checkmark"></ion-icon>,
+    Chofer: <ion-icon name="car"></ion-icon>,
+    Bodega: <ion-icon name="cube"></ion-icon>,
     Desactivado: <ion-icon name="ban"></ion-icon>,
   };
 
@@ -145,6 +147,14 @@ export default function ListaDeUsuarios({
             <p className="ListaDeUsuarios__Clasificacion--Texto Moderador">
               <ion-icon name="glasses"></ion-icon>{" "}
               {DICCIONARIO_LISTA_DE_USUARIOS[idioma].Moderador}
+            </p>
+            <p className="ListaDeUsuarios__Clasificacion--Texto Chofer">
+              <ion-icon name="car"></ion-icon>{" "}
+              {DICCIONARIO_LISTA_DE_USUARIOS[idioma].Chofer}
+            </p>
+            <p className="ListaDeUsuarios__Clasificacion--Texto Bodega">
+              <ion-icon name="cube"></ion-icon>{" "}
+              {DICCIONARIO_LISTA_DE_USUARIOS[idioma].Bodega}
             </p>
             <p className="ListaDeUsuarios__Clasificacion--Texto Administrador">
               <ion-icon name="shield-checkmark"></ion-icon>{" "}

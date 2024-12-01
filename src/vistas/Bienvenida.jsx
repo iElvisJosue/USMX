@@ -58,6 +58,8 @@ export default function Bienvenida() {
     ),
     Moderador: <ion-icon name="glasses" class="IconoPermisos"></ion-icon>,
     Usuario: <ion-icon name="person-circle" class="IconoPermisos"></ion-icon>,
+    Chofer: <ion-icon name="car" class="IconoPermisos"></ion-icon>,
+    Bodega: <ion-icon name="cube" class="IconoPermisos"></ion-icon>,
   };
 
   setTimeout(() => {

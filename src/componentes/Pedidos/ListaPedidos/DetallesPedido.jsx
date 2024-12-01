@@ -416,11 +416,11 @@ export default function DetallesPedido({
                         {movimiento.DetallesMovimiento}
                       </b>
                       <b className="DetallesPedido__Detalles__Movimiento--Encabezado--Descripcion">
-                        {movimiento.FechaCreacionMovimiento.slice(0, 10)
+                        {movimiento.FechaCreacionUnion.slice(0, 10)
                           .split("-")
                           .reverse()
                           .join("/")}{" "}
-                        {movimiento.HoraCreacionMovimiento}
+                        {movimiento.HoraCreacionUnion}
                       </b>
                       <b className="DetallesPedido__Detalles__Movimiento--Encabezado--Descripcion">
                         {movimiento.OrigenMovimiento}

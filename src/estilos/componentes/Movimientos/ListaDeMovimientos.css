@@ -138,6 +138,7 @@
   justify-content: center;
 }
 .ListaDeMovimientos__Cuerpo__Tabla__Cuerpo__Acciones button:hover {
+  cursor: pointer;
   background-color: transparent;
   color: var(--ColorAzul);
 }

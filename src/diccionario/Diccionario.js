@@ -3,12 +3,17 @@ export const DICCIONARIO_OPCIONES_DEL_MENU = {
   es: {
     Perfil: "Perfil",
     Paqueteria: "Paquetería",
-    Pedidos: "Pedidos",
     Agencias: "Agencias",
     Productos: "Productos",
     Usuarios: "Usuarios",
     Operaciones: "Operaciones",
     Movimientos: "Movimientos",
+    Pedidos: "Pedidos",
+    Recolecciones: "Recolecciones",
+    Bodega: "Bodega",
+    Entrada: "Entrada ",
+    Salida: "Salida",
+    Devolucion: "Devolucion",
     Ocurres: "Ocurres",
     Configuracion: "Configuración",
     Cargas: "Cargas",
@@ -25,6 +30,11 @@ export const DICCIONARIO_OPCIONES_DEL_MENU = {
     Usuarios: "Users",
     Operaciones: "Operations",
     Movimientos: "Movements",
+    Recolecciones: "Collections",
+    Bodega: "Warehouse",
+    Entrada: "Entry",
+    Salida: "Exit",
+    Devolucion: "Return",
     Ocurres: "Ocurrences",
     Configuracion: "Configuration",
     Cargas: "Loads",
@@ -801,6 +811,8 @@ export const DICCIONARIO_LISTA_DE_USUARIOS = {
     ClasificacionDePerfiles: "Clasificacion de perfiles",
     Usuario: "Usuario",
     Moderador: "Moderador",
+    Chofer: "Chofer",
+    Bodega: "Bodega",
     Administrador: "Administrador",
     Desactivado: "Desactivado",
     RegistrarUsuario: "Registrar usuario",
@@ -811,6 +823,8 @@ export const DICCIONARIO_LISTA_DE_USUARIOS = {
     ClasificacionDePerfiles: "Profile classification",
     Usuario: "User",
     Moderador: "Moderator",
+    Chofer: "Driver",
+    Bodega: "Warehouse",
     Administrador: "Administrator",
     Desactivado: "Disabled",
     RegistrarUsuario: "Register user",
@@ -894,6 +908,458 @@ export const DICCIONARIO_MODAL_CONFIRMACION_USUARIO = {
 };
 /* TERMINA DICCIONARIO PARA LAS VISTAS RELACIONADAS CON LOS USUARIOS */
 
+/* INICIA DICCIONARIO PARA LA VISTA RECOLECCIONES */
+export const DICCIONARIO_RECOLECCIONES = {
+  es: {
+    Recolecciones: "Recolecciones",
+    CrearRecoleccion: "Crear recolección",
+    ListaDeRecolecciones: "Lista de recolecciones",
+  },
+  en: {
+    Recolecciones: "Collections",
+    CrearRecoleccion: "Create collection",
+    ListaDeRecolecciones: "Collection list",
+  },
+};
+export const DICCIONARIO_FORMULARIO_RECOLECCIONES = {
+  es: {
+    IngresaEscaneaGuia: "Ingresa o escanea la guía:",
+    CrearRecoleccion: "Crear recolección",
+  },
+  en: {
+    IngresaEscaneaGuia: "Enter or scan the waybill:",
+    CrearRecoleccion: "Create collection",
+  },
+};
+export const DICCIONARIO_LISTA_DE_RECOLECCION = {
+  es: {
+    ListaDeGuias: "Lista de guías en la recolección",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+    Acciones: "Acciones",
+  },
+  en: {
+    ListaDeGuias: "List of waybills in the collection",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
+    Acciones: "Actions",
+  },
+};
+export const DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA = {
+  es: {
+    ListaCompletaDeRecolecciones: "Lista completa de recolecciones",
+    BuscarRecoleccion: "Buscar por número de recolección",
+    idRecoleccion: "ID Recolección",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
+    CrearRecoleccion: "Crear recolección",
+  },
+  en: {
+    ListaCompletaDeRecolecciones: "Complete collection list",
+    BuscarRecoleccion: "Search by collection number",
+    idRecoleccion: "Collection ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    Acciones: "Actions",
+    CrearRecoleccion: "Create collection",
+  },
+};
+export const DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA = {
+  es: {
+    BuscarRecoleccionesPorFecha: "Buscar recolecciones por fecha",
+    idRecoleccion: "ID Recolección",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
+    CrearRecoleccion: "Crear recolección",
+  },
+  en: {
+    BuscarRecoleccionesPorFecha: "Search collections by date",
+    BuscarRecoleccion: "Search by collection number",
+    idRecoleccion: "Collection ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    Acciones: "Actions",
+    CrearRecoleccion: "Create collection",
+  },
+};
+
+/* TERMINA DICCIONARIO PARA LA VISTA RECOLECCIONES */
+
+/* INICIA DICCIONARIO PARA LAS VISTAS DE BODEGA */
+export const DICCIONARIO_BODEGA_ENTRADAS = {
+  es: {
+    Bodega: "Bodega",
+    Entrada: "Entrada",
+    CrearEntrada: "Crear entrada",
+    ListaDeEntradas: "Lista de entradas",
+  },
+  en: {
+    Bodega: "Warehouse",
+    Entrada: "Entry",
+    CrearEntrada: "Create entry",
+    ListaDeEntradas: "Entry list",
+  },
+};
+export const DICCIONARIO_FORMULARIO_DATOS_ENTRADA = {
+  es: {
+    EntradaBodega: "Entrada a la bodega",
+    SeleccionaElMovimiento: "Selecciona el movimiento",
+    Seleccionar: "Seleccionar",
+    NombreDelTransportista: "Nombre del transportista",
+    Remolque: "Remolque",
+    Tracto: "Tracto",
+    Candado: "Candado",
+    HoraDeEntrada: "Hora de entrada",
+  },
+  en: {
+    EntradaBodega: "Entry to the warehouse",
+    SeleccionaElMovimiento: "Select the movement",
+    Seleccionar: "Select",
+    NombreDelTransportista: "Transporter name",
+    Remolque: "Trailer",
+    Tracto: "Truck",
+    Candado: "Lock",
+    HoraDeEntrada: "Entry time",
+  },
+};
+export const DICCIONARIO_FORMULARIO_BUSQUEDA_ENTRADAS = {
+  es: {
+    IngresaEscaneaGuia: "Ingresa o escanea la guía:",
+    CrearEntrada: "Crear entrada",
+  },
+  en: {
+    IngresaEscaneaGuia: "Enter or scan the waybill:",
+    CrearEntrada: "Create entry",
+  },
+};
+export const DICCIONARIO_LISTA_ENTRADAS = {
+  es: {
+    ListaDeGuias: "Lista de guías para la entrada",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+    Acciones: "Acciones",
+  },
+  en: {
+    ListaDeGuias: "List of waybills for the entry",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
+    Acciones: "Actions",
+  },
+};
+export const DICCIONARIO_LISTA_ENTRADAS_COMPLETA = {
+  es: {
+    ListaCompletaDeEntradas: "Lista completa de entradas",
+    BuscarEntrada: "Buscar por número de entrada",
+    idEntrada: "ID Entrada",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    CrearEntrada: "Crear entrada",
+  },
+  en: {
+    ListaCompletaDeEntradas: "Complete entry list",
+    BuscarEntrada: "Search by entry number",
+    idEntrada: "Entry ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    CrearEntrada: "Create entry",
+  },
+};
+export const DICCIONARIO_LISTA_ENTRADAS_POR_FECHA = {
+  es: {
+    BuscarEntradasPorFecha: "Buscar entradas por fecha",
+    idEntrada: "ID Entrada",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    CrearEntrada: "Crear entrada",
+  },
+  en: {
+    BuscarEntradasPorFecha: "Search entries by date",
+    idEntrada: "Entry ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    CrearEntrada: "Create entry",
+  },
+};
+export const DICCIONARIO_BODEGA_DEVOLUCIONES = {
+  es: {
+    Bodega: "Bodega",
+    Devoluciones: "Devoluciones",
+    CrearDevolucion: "Crear devolución",
+    ListaDeDevoluciones: "Lista de devoluciones",
+  },
+  en: {
+    Bodega: "Warehouse",
+    Devoluciones: "Returns",
+    CrearDevolucion: "Create return",
+    ListaDeDevoluciones: "Return list",
+  },
+};
+export const DICCIONARIO_FORMULARIO_DEVOLUCIONES = {
+  es: {
+    IngresaEscaneaGuia: "Ingresa o escanea la guía:",
+    CrearDevolucion: "Crear devolución",
+  },
+  en: {
+    IngresaEscaneaGuia: "Enter or scan the waybill:",
+    CrearDevolucion: "Create return",
+  },
+};
+export const DICCIONARIO_LISTA_DEVOLUCIONES = {
+  es: {
+    ListaDeGuias: "Lista de guías en la devolución",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+    Acciones: "Acciones",
+  },
+  en: {
+    ListaDeGuias: "List of waybills in the return",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
+    Acciones: "Actions",
+  },
+};
+export const DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA = {
+  es: {
+    ListaCompletaDeDevoluciones: "Lista completa de devoluciones",
+    BuscarDevolucion: "Buscar por número de devolución",
+    idDevolucion: "ID Devolución",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    CrearDevolucion: "Crear devolución",
+  },
+  en: {
+    ListaCompletaDeDevoluciones: "Complete return list",
+    BuscarDevolucion: "Search by return number",
+    idDevolucion: "Return ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    CrearDevolucion: "Create return",
+  },
+};
+export const DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA = {
+  es: {
+    BuscarDevolucionesPorFecha: "Buscar devolución por fecha",
+    idDevolucion: "ID Devolución",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    CrearDevolucion: "Crear devolución",
+  },
+  en: {
+    BuscarDevolucionesPorFecha: "Search returns by date",
+    idDevolucion: "Return ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    CrearDevolucion: "Create return",
+  },
+};
+export const DICCIONARIO_BODEGA_MOVIMIENTOS = {
+  es: {
+    Bodega: "Bodega",
+    Movimientos: "Movimientos",
+    CrearMovimiento: "Crear movimiento",
+    ListaDeMovimientos: "Lista de movimientos",
+  },
+  en: {
+    Bodega: "Warehouse",
+    Movimientos: "Movements",
+    CrearMovimiento: "Create movement",
+    ListaDeMovimientos: "Movement list",
+  },
+};
+export const DICCIONARIO_FORMULARIO_MOVIMIENTOS = {
+  es: {
+    IngresaEscaneaGuia: "Ingresa o escanea la guía:",
+    CrearMovimiento: "Crear movimiento",
+  },
+  en: {
+    IngresaEscaneaGuia: "Enter or scan the waybill:",
+    CrearMovimiento: "Create movement",
+  },
+};
+export const DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA = {
+  es: {
+    ListaDeGuias: "Lista de guías en el movimiento",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+    Acciones: "Acciones",
+  },
+  en: {
+    ListaDeGuias: "List of waybills in the movement",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
+    Acciones: "Actions",
+  },
+};
+export const DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA = {
+  es: {
+    ListaCompletaDeMovimientos: "Lista completa de movimientos",
+    BuscarMovimiento: "Buscar por número de movimiento",
+    idMovimientoB: "ID Movimiento B.",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    CrearMovimiento: "Crear movimiento",
+  },
+  en: {
+    ListaCompletaDeMovimientos: "Complete movement list",
+    BuscarMovimiento: "Search by movement number",
+    idMovimientoB: "Movement W. ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    CrearMovimiento: "Create movement",
+  },
+};
+export const DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA = {
+  es: {
+    BuscarMovimientosPorFecha: "Buscar movimientos por fecha",
+    idMovimientoB: "ID Movimiento B.",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    CrearMovimiento: "Crear movimiento",
+  },
+  en: {
+    BuscarMovimientosPorFecha: "Search movements by date",
+    idMovimientoB: "Movement B. ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    CrearMovimiento: "Create movement",
+  },
+};
+export const DICCIONARIO_BODEGA_SALIDAS = {
+  es: {
+    Bodega: "Bodega",
+    CrearSalida: "Crear salida",
+    ListaDeSalidas: "Lista de salidas",
+  },
+  en: {
+    Bodega: "Warehouse",
+    CrearSalida: "Create exit",
+    ListaDeSalidas: "Exit list",
+  },
+};
+export const DICCIONARIO_FORMULARIO_DATOS_SALIDA = {
+  es: {
+    SalidaBodega: "Salida de la bodega",
+    SeleccionaElMovimiento: "Selecciona el movimiento",
+    Seleccionar: "Seleccionar",
+    NombreDelTransportista: "Nombre del transportista",
+    Remolque: "Remolque",
+    Tracto: "Tracto",
+    Candado: "Candado",
+    HoraSalida: "Hora de salida",
+  },
+  en: {
+    SalidaBodega: "Exit from the warehouse",
+    SeleccionaElMovimiento: "Select the movement",
+    Seleccionar: "Select",
+    NombreDelTransportista: "Transporter name",
+    Remolque: "Trailer",
+    Tracto: "Truck",
+    Candado: "Lock",
+    HoraSalida: "Exit time",
+  },
+};
+export const DICCIONARIO_FORMULARIO_BUSQUEDA_SALIDAS = {
+  es: {
+    IngresaEscaneaGuia: "Ingresa o escanea la guía:",
+    CrearSalida: "Crear salida",
+  },
+  en: {
+    IngresaEscaneaGuia: "Enter or scan the waybill:",
+    CrearSalida: "Create exit",
+  },
+};
+export const DICCIONARIO_LISTA_SALIDAS = {
+  es: {
+    ListaDeGuias: "Lista de guías para la salida",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+    Acciones: "Acciones",
+  },
+  en: {
+    ListaDeGuias: "List of waybills for the exit",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
+    Acciones: "Actions",
+  },
+};
+export const DICCIONARIO_LISTA_SALIDAS_COMPLETA = {
+  es: {
+    ListaCompletaDeSalidas: "Lista completa de salidas",
+    BuscarSalida: "Buscar por número de salida",
+    idSalida: "ID Salida",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    CrearSalida: "Crear salida",
+  },
+  en: {
+    ListaCompletaDeSalidas: "Complete exit list",
+    BuscarSalida: "Search by exit number",
+    idSalida: "Exit ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    CrearSalida: "Create exit",
+  },
+};
+export const DICCIONARIO_LISTA_SALIDAS_POR_FECHA = {
+  es: {
+    BuscarSalidasPorFecha: "Buscar salidas por fecha",
+    idSalida: "ID Salida",
+    CPedidos: "C. Pedidos",
+    Usuario: "Usuario",
+    FechaCreacion: "Fecha de creación",
+    CrearSalida: "Crear salida",
+  },
+  en: {
+    BuscarSalidasPorFecha: "Search exits by date",
+    idSalida: "Exit ID",
+    CPedidos: "C. Orders",
+    Usuario: "User",
+    FechaCreacion: "Creation date",
+    CrearSalida: "Create exit",
+  },
+};
+/* TERMINA DICCIONARIO PARA LAS VISTAS DE BODEGA */
+
 /* INICIA DICCIONARIO PARA LA VISTA MOVIMIENTOS */
 export const DICCIONARIO_MOVIMIENTOS = {
   es: {
@@ -910,14 +1376,14 @@ export const DICCIONARIO_REGISTRAR_MOVIMIENTO = {
     RegistrarMovimiento: "Registrar movimiento",
     EstadoDelMovimiento: "Estado del movimiento",
     OrigenDelMovimiento: "Origen del movimiento",
-    MovimientoPorDefecto: "Movimiento por defecto",
+    CategoriaDelMovimiento: "Categoria del movimiento",
     DetallesDelMovimiento: "Detalles del movimiento",
   },
   en: {
     RegistrarMovimiento: "Register movement",
     EstadoDelMovimiento: "Movement status",
     OrigenDelMovimiento: "Movement origin",
-    MovimientoPorDefecto: "Default movement",
+    CategoriaDelMovimiento: "Movement category",
     DetallesDelMovimiento: "Movement details",
   },
 };
@@ -944,7 +1410,7 @@ export const DICCIONARIO_LISTA_DE_MOVIMIENTOS = {
     Estado: "Estado",
     Detalles: "Detalles",
     Origen: "Origen",
-    PorDefecto: "Por defecto",
+    Categoria: "Categoria",
     FechaCreacion: "Fecha de creación",
     Acciones: "Acciones",
   },
@@ -954,7 +1420,7 @@ export const DICCIONARIO_LISTA_DE_MOVIMIENTOS = {
     Estado: "Status",
     Detalles: "Details",
     Origen: "Origin",
-    PorDefecto: "Default",
+    Categoria: "Category",
     FechaCreacion: "Creation date",
     Acciones: "Actions",
   },
@@ -1185,6 +1651,7 @@ export const DICCIONARIO_GOOGLE_API = {
 export const DICCIONARIO_BOTONES = {
   es: {
     Guardar: "Guardar",
+    Buscar: "Buscar",
     Cancelar: "Cancelar",
     Regresar: "Regresar",
     Actualizar: "Actualizar",
@@ -1202,9 +1669,11 @@ export const DICCIONARIO_BOTONES = {
     Eliminar: "Eliminar",
     UltimaMilla: "Última milla",
     Finalizar: "Finalizar",
+    Registrar: "Registrar",
   },
   en: {
     Guardar: "Save",
+    Buscar: "Search",
     Cancelar: "Cancel",
     Regresar: "Back",
     Actualizar: "Update",
@@ -1222,6 +1691,7 @@ export const DICCIONARIO_BOTONES = {
     Eliminar: "Delete",
     UltimaMilla: "Last Mile",
     Finalizar: "Finish",
+    Registrar: "Register",
   },
 };
 export const DICCIONARIO_PLACEHOLDERS = {

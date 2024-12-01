@@ -49,14 +49,14 @@ export default function EditarMovimiento({
       informacionDelMovimiento?.DetallesMovimiento
     );
     setValue(
-      "PorDefectoMovimiento",
-      informacionDelMovimiento?.PorDefectoMovimiento
+      "CategoriaMovimiento",
+      informacionDelMovimiento?.CategoriaMovimiento
     );
   }, []);
 
   const GuardarInformacionDelMovimiento = handleSubmit(async (info) => {
     try {
-      info.idListaMovimiento = informacionDelMovimiento?.idListaMovimiento;
+      info.idMovimiento = informacionDelMovimiento?.idMovimiento;
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await EditarMovimiento(info);
       if (res.response) {
@@ -152,20 +152,24 @@ export default function EditarMovimiento({
       </span>
       <span className="RegistrarMovimiento__Titulo__Campo">
         <p>
-          <ion-icon name="radio-button-on"></ion-icon>{" "}
+          <ion-icon name="apps"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_MOVIMIENTO[idioma].MovimientoPorDefecto}
         </p>
         <select
-          name="PorDefectoMovimiento"
-          id="PorDefectoMovimiento"
-          {...register("PorDefectoMovimiento", {
+          name="CategoriaMovimiento"
+          id="CategoriaMovimiento"
+          {...register("CategoriaMovimiento", {
             required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
           })}
         >
-          <option value="No">No</option>
-          <option value="Si">Si</option>
+          <option value="Inicial">Inicial</option>
+          <option value="Recoleccion">Recoleccion</option>
+          <option value="Devolucion">Devolucion</option>
+          <option value="Entrada Bodega">Entrada Bodega</option>
+          <option value="Salida Bodega">Salida Bodega</option>
+          <option value="Movimento Bodega">Movimento Bodega</option>
         </select>
-        {MensajeDeError("PorDefectoMovimiento")}
+        {MensajeDeError("CategoriaMovimiento")}
       </span>
       <span className="RegistrarMovimiento__Titulo__Campo Dos">
         <p>

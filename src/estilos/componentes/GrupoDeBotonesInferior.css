@@ -1,0 +1,59 @@
+.GrupoDeBotonesInferior {
+  grid-column: 1 / -1;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.GrupoDeBotonesInferior--Boton {
+  width: 150px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.GrupoDeBotonesInferior--Boton ion-icon {
+  font-size: 18px;
+}
+.GrupoDeBotonesInferior--Boton.Cancelar {
+  background: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.GrupoDeBotonesInferior--Boton.Registrar {
+  background: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.GrupoDeBotonesInferior--Boton.Actualizar,
+.GrupoDeBotonesInferior--Boton.Siguiente {
+  background: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.GrupoDeBotonesInferior--Boton:hover {
+  cursor: pointer;
+  background-color: var(--ColorBlanco);
+}
+.GrupoDeBotonesInferior--Boton.Cancelar:hover {
+  color: var(--ColorRojo);
+}
+.GrupoDeBotonesInferior--Boton.Registrar:hover {
+  color: var(--ColorVerde);
+}
+.GrupoDeBotonesInferior--Boton.Actualizar:hover,
+.GrupoDeBotonesInferior--Boton.Siguiente:hover {
+  color: var(--ColorAzul);
+}
+@media (max-width: 900px) {
+  .GrupoDeBotonesInferior--Boton {
+    width: 100%;
+  }
+}

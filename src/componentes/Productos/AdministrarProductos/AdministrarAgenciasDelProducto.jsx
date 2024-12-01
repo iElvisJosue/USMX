@@ -25,6 +25,7 @@ import usePaginacion from "../../../hooks/usePaginacion";
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Productos/AdministrarProductos/AdministrarAgenciasDelProducto.css";
@@ -37,6 +38,7 @@ export default function AdministrarAgenciasDelProducto({
   establecerInformacionDeLaAgencia,
 }) {
   const [mostrarModal, establecerMostrarModal] = useState(false);
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { DesasignarAgenciaAlProducto } = useProductos();
   const {
     CantidadParaMostrar,
@@ -91,6 +93,9 @@ export default function AdministrarAgenciasDelProducto({
   const PeticionDesasignarAgenciaAlProducto = async (
     idUnionAgenciasProductos
   ) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await DesasignarAgenciaAlProducto({
         CookieConToken: COOKIE_CON_TOKEN,
@@ -109,6 +114,8 @@ export default function AdministrarAgenciasDelProducto({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
 

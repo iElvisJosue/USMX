@@ -21,6 +21,8 @@ import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor"
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../../helpers/Regexs";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
+import { TIPOS_DE_USUARIOS } from "../../../helpers/TiposDeUsuario";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/EditarUsuario.css";
@@ -30,8 +32,9 @@ export default function EditarUsuario({
   informacionDelUsuario,
   establecerVista,
 }) {
-  const { ActualizarInformacionDeUnUsuario } = useUsuarios();
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const [mostrarContraseña, establecerMostrarContraseña] = useState(false);
+  const { ActualizarInformacionDeUnUsuario } = useUsuarios();
 
   const {
     handleSubmit,
@@ -51,6 +54,9 @@ export default function EditarUsuario({
   }, []);
 
   const ActualizarInformacionDelUsuario = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    // SI LAS CONTRASEÑAS NO COINCIDEN, MOSTRAMOS UNA ALERTA
     if (info.Contraseña !== info.ContraseñaConfirmar) {
       return toast.error(
         "¡Oops! Parece que las contraseñas no coinciden, por favor intente nuevamente.",
@@ -59,6 +65,7 @@ export default function EditarUsuario({
         }
       );
     }
+    establecerPeticionPendiente(true);
     try {
       info.idUsuario = informacionDelUsuario?.idUsuario;
       info.CookieConToken = COOKIE_CON_TOKEN;
@@ -69,12 +76,14 @@ export default function EditarUsuario({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
-        reset();
         establecerVista(0);
+        reset();
       }
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 
@@ -158,9 +167,11 @@ export default function EditarUsuario({
           {DICCIONARIO_EDITAR_USUARIO[idioma].Permisos}
         </p>
         <select id="Permisos" name="Permisos" {...register("Permisos")}>
-          <option value="Usuario">Usuario</option>
-          <option value="Administrador">Administrador</option>
-          <option value="Moderador">Moderador</option>
+          {TIPOS_DE_USUARIOS.map((permiso) => (
+            <option key={permiso} value={permiso}>
+              {permiso}
+            </option>
+          ))}
         </select>
         {MensajeError("Permisos")}
       </span>

@@ -1,0 +1,61 @@
+.GrupoDeInputs {
+  grid-column: span 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.GrupoDeInputs.Dos {
+  grid-column: span 2;
+}
+.GrupoDeInputs.Tres {
+  grid-column: span 3;
+}
+.GrupoDeInputs.Completo {
+  grid-column: 1 / -1;
+}
+.GrupoDeInputs p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  font-size: 16px;
+  gap: 5px;
+}
+.GrupoDeInputs p ion-icon {
+  font-size: 20px;
+}
+.GrupoDeInputs b {
+  color: var(--ColorRojo);
+}
+.GrupoDeInputs input,
+.GrupoDeInputs select {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 5px;
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.GrupoDeInputs input:focus {
+  border: 2px solid var(--ColorNegro);
+}
+@media (max-width: 1000px) {
+  .GrupoDeInputs.Tres {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 500px) {
+  .GrupoDeInputs,
+  .GrupoDeInputs.Dos,
+  .GrupoDeInputs.Tres {
+    grid-column: 1 / -1;
+  }
+}

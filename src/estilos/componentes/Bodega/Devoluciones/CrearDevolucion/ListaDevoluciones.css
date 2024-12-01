@@ -1,0 +1,115 @@
+.ListaDevoluciones {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.ListaDevoluciones__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+.ListaDevoluciones__Cuerpo {
+  grid-column: 1 / -1;
+  overflow-x: auto;
+}
+.ListaDevoluciones__Cuerpo--Tabla {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+.ListaDevoluciones__Cuerpo--Tabla--Encabezado tr th {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px;
+  min-width: 200px;
+}
+.ListaDevoluciones__Cuerpo--Tabla--Encabezado tr th ion-icon {
+  font-size: 20px;
+}
+.ListaDevoluciones__Cuerpo--Tabla__Cuerpo {
+  background-color: var(--ColorBlanco);
+  text-align: center;
+}
+.ListaDevoluciones__Cuerpo--Tabla__Cuerpo tr td {
+  height: 65px;
+  padding: 5px;
+  font-size: 14px;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  text-align: center;
+}
+.ListaDevoluciones__Cuerpo--Tabla__Cuerpo--TR {
+  background-color: var(--ColorBlanco);
+  padding: 10px;
+  font-size: 14px;
+  color: var(--ColorNegro);
+  text-align: center;
+  border-right: 2px solid var(--ColorSecundario);
+  border-bottom: 2px solid var(--ColorSecundario);
+  border-left: 2px solid var(--ColorSecundario);
+}
+.ListaDevoluciones__Cuerpo--Tabla__Cuerpo hr {
+  height: 2px;
+  background-color: var(--ColorSecundario);
+  border: none;
+}
+.ListaDevoluciones__Cuerpo--Tabla__Cuerpo__Acciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+}
+.ListaDevoluciones__Cuerpo--Tabla__Cuerpo__Acciones button {
+  width: 35px;
+  height: 35px;
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+  color: var(--ColorBlanco);
+  border-radius: 50%;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ListaDevoluciones__Cuerpo--Tabla__Cuerpo__Acciones button ion-icon {
+  font-size: 18px;
+}
+.ListaDevoluciones__Cuerpo--Tabla__Cuerpo__Acciones button:hover {
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--ColorRojo);
+}
+@media (max-width: 500px) {
+  .ListaDevoluciones__Titulo {
+    font-size: 20px;
+  }
+  .ListaDevoluciones__Cuerpo--Tabla--Encabezado tr th ion-icon {
+    font-size: 16px;
+  }
+  .ListaDevoluciones__Cuerpo--Tabla--Encabezado tr th {
+    font-size: 14px;
+  }
+  .ListaDevoluciones__Cuerpo--Tabla__Cuerpo tr td {
+    font-size: 12px;
+  }
+  .ListaDevoluciones__Cuerpo--Tabla__Cuerpo tr td {
+    padding: 5px;
+  }
+  .ListaDevoluciones__Cuerpo--Tabla__Cuerpo__Acciones button {
+    width: 30px;
+    height: 30px;
+  }
+  .ListaDevoluciones__Cuerpo--Tabla__Cuerpo__Acciones button ion-icon {
+    font-size: 16px;
+  }
+}

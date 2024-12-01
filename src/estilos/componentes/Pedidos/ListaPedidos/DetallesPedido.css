@@ -214,11 +214,13 @@
   background-color: var(--ColorNaranja);
   color: var(--ColorBlanco);
 }
-.DetallesPedido__Detalles__Movimiento--Encabezado.Cancelado {
+.DetallesPedido__Detalles__Movimiento--Encabezado.Cancelado,
+.DetallesPedido__Detalles__Movimiento--Encabezado.Devuelto {
   background-color: var(--ColorRojo);
   color: var(--ColorBlanco);
 }
-.DetallesPedido__Detalles__Movimiento--Encabezado.Camino {
+.DetallesPedido__Detalles__Movimiento--Encabezado.Camino,
+.DetallesPedido__Detalles__Movimiento--Encabezado.Recolectado {
   background-color: var(--ColorAzul);
   color: var(--ColorBlanco);
 }

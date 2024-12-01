@@ -1,0 +1,50 @@
+.ListaDeMovimientosEnBodega {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 125px);
+  overflow-y: auto;
+}
+.ListaDeMovimientosEnBodega__Opciones {
+  grid-column: 1 / -1;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.ListaDeMovimientosEnBodega__Opciones--Boton {
+  width: auto;
+  padding: 0 10px;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  border-radius: 15px;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaDeMovimientosEnBodega__Opciones--Boton.BuscarPorFecha:hover::after {
+  content: "Buscar por fecha";
+  color: var(--ColorAzul);
+}
+.ListaDeMovimientosEnBodega__Opciones--Boton.ListaCompleta:hover::after {
+  content: "Lista completa";
+  color: var(--ColorAzul);
+}
+.ListaDeMovimientosEnBodega__Opciones--Boton:hover {
+  background-color: var(--ColorBlanco);
+}
+.ListaDeMovimientosEnBodega__Opciones--Boton ion-icon {
+  font-size: 20px;
+  color: var(--ColorBlanco);
+}
+.ListaDeMovimientosEnBodega__Opciones--Boton:hover ion-icon {
+  color: var(--ColorAzul);
+}

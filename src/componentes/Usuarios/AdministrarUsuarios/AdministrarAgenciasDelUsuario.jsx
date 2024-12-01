@@ -21,6 +21,7 @@ import {
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarAgenciasAsignadasYNoAsignadasPorUsuario from "../../../hooks/useBuscarAgenciasAsignadasYNoAsignadasPorUsuario";
@@ -36,6 +37,7 @@ export default function AdministrarAgenciasDelUsuario({
   informacionDeLaAgencia,
   establecerInformacionDeLaAgencia,
 }) {
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const [mostrarModal, establecerMostrarModal] = useState(false);
   const { DesasignarAgenciaAlUsuario } = useUsuarios();
   const {
@@ -87,6 +89,9 @@ export default function AdministrarAgenciasDelUsuario({
   };
 
   const PeticionDesasignarAgenciaAlUsuario = async (idUnionAgencia) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await DesasignarAgenciaAlUsuario({
         CookieConToken: COOKIE_CON_TOKEN,
@@ -105,6 +110,8 @@ export default function AdministrarAgenciasDelUsuario({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
 

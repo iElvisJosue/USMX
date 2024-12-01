@@ -1,0 +1,140 @@
+.ListaDeMovimientosEnBodegaPorFecha {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+  gap: 25px;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorNegro);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+
+  display: flex;
+  flex-direction: column;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Titulo--Fechas {
+  font-size: 12px;
+  color: var(--ColorVerde);
+}
+.ListaDeMovimientosEnBodegaPorFecha__Botones {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Botones--Boton {
+  width: auto;
+  padding: 0 10px;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--ColorGrisClaro);
+  border: 2px solid var(--ColorGrisClaro);
+  color: var(--ColorNegro);
+  border-radius: 15px;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+}
+.ListaDeMovimientosEnBodegaPorFecha__TextoResultados {
+  grid-column: 1 / -1;
+  color: var(--ColorVerde);
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.ListaDeMovimientosEnBodegaPorFecha__TextoResultados ion-icon {
+  font-size: 20px;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo {
+  grid-column: 1 / -1;
+  overflow-x: auto;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Encabezado tr th {
+  background-color: var(--ColorNegro);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  min-width: 200px;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Encabezado tr th ion-icon {
+  font-size: 20px;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo tr:nth-child(odd) {
+  background-color: var(--ColorSecundario);
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorNegro);
+  text-align: center;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo tr td {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  border-right: 2px solid var(--ColorSecundario);
+  border-bottom: 2px solid var(--ColorSecundario);
+  border-left: 2px solid var(--ColorSecundario);
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo hr {
+  height: 2px;
+  background-color: var(--ColorSecundario);
+  border: none;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles {
+  cursor: pointer;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 12px;
+  width: 50px;
+  height: 35px;
+  transition: 0.3s ease-in-out all;
+}
+.ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+@media (max-width: 500px) {
+  .ListaDeMovimientosEnBodegaPorFecha__Titulo {
+    font-size: 20px;
+  }
+  .ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Encabezado
+    tr
+    th
+    ion-icon {
+    font-size: 16px;
+  }
+  .ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Encabezado tr th {
+    font-size: 14px;
+  }
+  .ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo tr td {
+    font-size: 12px;
+  }
+  .ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo tr td {
+    padding: 5px;
+  }
+  .ListaDeMovimientosEnBodegaPorFecha__TextoResultados {
+    font-size: 12px;
+  }
+  .ListaDeMovimientosEnBodegaPorFecha__TextoResultados ion-icon {
+    font-size: 16px;
+  }
+}

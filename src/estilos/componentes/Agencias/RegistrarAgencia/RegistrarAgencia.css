@@ -26,51 +26,6 @@
   text-transform: uppercase;
   margin-top: 20px;
 }
-.RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo {
-  grid-column: span 1;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 10px;
-}
-.RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo.Dos {
-  grid-column: span 2;
-}
-.RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo.Tres {
-  grid-column: span 3;
-}
-.RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo.Cuatro {
-  grid-column: 1 / -1;
-}
-.RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo p {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: var(--ColorNegro);
-  font-weight: bold;
-  gap: 5px;
-}
-.RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo p ion-icon {
-  font-size: 20px;
-}
-.RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo input,
-.RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo select {
-  width: 100%;
-  min-height: 50px;
-  height: 50px;
-  max-height: 50px;
-  background-color: var(--ColorSecundario);
-  border: 1px solid var(--ColorSecundario);
-  border-radius: 5px;
-  padding: 0 10px;
-  color: var(--ColorNegro);
-  font-size: 16px;
-  font-weight: bold;
-}
-.RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo input:focus {
-  border: 2px solid var(--ColorNegro);
-}
 .RegistrarAgencia__InformacionDeLaAgencia__Footer {
   grid-column: 1 / -1;
 
@@ -107,11 +62,8 @@
   color: var(--ColorVerde);
 }
 @media (max-width: 1000px) {
-  .RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo {
+  .GrupoDeInputs.AgenciaUno {
     grid-column: span 2;
-  }
-  .RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo.Tres {
-    grid-column: 1 / -1;
   }
 }
 @media (max-width: 500px) {
@@ -122,13 +74,10 @@
   .RegistrarAgencia__InformacionDeLaAgencia {
     gap: 25px;
   }
-  .RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo {
+  .GrupoDeInputs.AgenciaUno {
     grid-column: 1 / -1;
   }
-  .RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo.Tres {
-    grid-column: 1 / -1;
-  }
-  .RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo.Dos {
+  .GrupoDeInputs.AgenciaDos {
     grid-column: 1 / -1;
   }
   .RegistrarAgencia__InformacionDeLaAgencia__Footer__Boton {

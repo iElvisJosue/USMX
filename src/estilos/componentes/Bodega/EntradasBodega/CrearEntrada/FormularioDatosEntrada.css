@@ -1,0 +1,31 @@
+.FormularioDatosDeEntrada {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.FormularioDatosDeEntrada__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+.FormularioDatosDeEntrada__MensajeDeError {
+  width: 100%;
+  font-size: 13px;
+  color: var(--ColorRojo);
+  font-weight: bold;
+}
+@media (max-width: 800px) {
+  .FormularioDatosDeEntrada {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .FormularioDatosDeEntrada__Titulo {
+    font-size: 20px;
+  }
+}

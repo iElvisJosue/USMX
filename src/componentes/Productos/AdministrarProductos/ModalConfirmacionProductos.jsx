@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+// IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState } from "react";
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useProductos } from "../../../context/ProductosContext";
 
@@ -8,6 +10,7 @@ import { DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS } from "../../../diccionario/D
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Productos/AdministrarProductos/ModalConfirmacionProductos.css";
@@ -20,7 +23,9 @@ export default function ModalConfirmacionProductos({
   buscarProductosNuevamente,
   establecerBuscarProductosNuevamente,
 }) {
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { ActualizarEstadoDeUnProducto } = useProductos();
+
   const ClaseTituloModal = Activar
     ? "ModalConfirmacionProductos__Contenido--Titulo Activar"
     : "ModalConfirmacionProductos__Contenido--Titulo Desactivar";
@@ -39,6 +44,9 @@ export default function ModalConfirmacionProductos({
   const EstadoProductoParaBD = Activar ? "Activo" : "Desactivado";
 
   const ActivarDesactivarProducto = async () => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await ActualizarEstadoDeUnProducto({
         idProducto: infProducto.idProducto,
@@ -51,12 +59,14 @@ export default function ModalConfirmacionProductos({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
+        establecerBuscarProductosNuevamente(!buscarProductosNuevamente);
       }
-      establecerBuscarProductosNuevamente(!buscarProductosNuevamente);
-      establecerMostrarModalConfirmacion(false);
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerMostrarModalConfirmacion(false);
+      establecerPeticionPendiente(false);
     }
   };
 

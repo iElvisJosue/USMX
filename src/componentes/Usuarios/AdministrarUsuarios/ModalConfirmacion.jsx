@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+// IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState } from "react";
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useUsuarios } from "../../../context/UsuariosContext";
 
@@ -8,6 +10,7 @@ import { DICCIONARIO_MODAL_CONFIRMACION_USUARIO } from "../../../diccionario/Dic
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/ModalConfirmacion.css";
@@ -20,7 +23,9 @@ export default function ModalConfirmacion({
   obtenerUsuariosNuevamente,
   establecerObtenerUsuariosNuevamente,
 }) {
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { ActualizarEstadoUsuario } = useUsuarios();
+
   const ClaseTituloModal = Activar
     ? "ModalConfirmacion__Contenido--Titulo Activar"
     : "ModalConfirmacion__Contenido--Titulo Desactivar";
@@ -39,6 +44,9 @@ export default function ModalConfirmacion({
   const EstadoUsuarioParaBD = Activar ? "Activo" : "Desactivado";
 
   const ActivarDesactivarUsuario = async () => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await ActualizarEstadoUsuario({
         idUsuario: infUsuario.idUsuario,
@@ -51,12 +59,14 @@ export default function ModalConfirmacion({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
+        establecerObtenerUsuariosNuevamente(!obtenerUsuariosNuevamente);
       }
-      establecerObtenerUsuariosNuevamente(!obtenerUsuariosNuevamente);
-      establecerMostrarModalConfirmacion(false);
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerMostrarModalConfirmacion(false);
+      establecerPeticionPendiente(false);
     }
   };
 

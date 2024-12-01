@@ -42,7 +42,7 @@ export default function ModalConfirmacionMovimientos({
     try {
       const res = await ActualizarEstadoDeUnMovimiento({
         CookieConToken: COOKIE_CON_TOKEN,
-        idListaMovimiento: informacionDelMovimiento.idListaMovimiento,
+        idMovimiento: informacionDelMovimiento.idMovimiento,
         ActivoMovimiento: EstadoMovimientoParaBD,
       });
       if (res.response) {

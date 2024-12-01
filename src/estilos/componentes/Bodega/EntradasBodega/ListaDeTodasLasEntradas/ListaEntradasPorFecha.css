@@ -1,0 +1,137 @@
+.ListaEntradasPorFecha {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+  gap: 25px;
+}
+.ListaEntradasPorFecha__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorNegro);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+
+  display: flex;
+  flex-direction: column;
+}
+.ListaEntradasPorFecha__Titulo--Fechas {
+  font-size: 12px;
+  color: var(--ColorVerde);
+}
+.ListaEntradasPorFecha__Botones {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.ListaEntradasPorFecha__Botones--Boton {
+  width: auto;
+  padding: 0 10px;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--ColorGrisClaro);
+  border: 2px solid var(--ColorGrisClaro);
+  color: var(--ColorNegro);
+  border-radius: 15px;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+}
+.ListaEntradasPorFecha__TextoResultados {
+  grid-column: 1 / -1;
+  color: var(--ColorVerde);
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.ListaEntradasPorFecha__TextoResultados ion-icon {
+  font-size: 20px;
+}
+.ListaEntradasPorFecha__Cuerpo {
+  grid-column: 1 / -1;
+  overflow-x: auto;
+}
+.ListaEntradasPorFecha__Cuerpo__Tabla {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+.ListaEntradasPorFecha__Cuerpo__Tabla__Encabezado tr th {
+  background-color: var(--ColorNegro);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  min-width: 200px;
+}
+.ListaEntradasPorFecha__Cuerpo__Tabla__Encabezado tr th ion-icon {
+  font-size: 20px;
+}
+.ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo tr:nth-child(odd) {
+  background-color: var(--ColorSecundario);
+}
+.ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorNegro);
+  text-align: center;
+}
+.ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo tr td {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  border-right: 2px solid var(--ColorSecundario);
+  border-bottom: 2px solid var(--ColorSecundario);
+  border-left: 2px solid var(--ColorSecundario);
+}
+.ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo hr {
+  height: 2px;
+  background-color: var(--ColorSecundario);
+  border: none;
+}
+.ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles {
+  cursor: pointer;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 12px;
+  width: 50px;
+  height: 35px;
+  transition: 0.3s ease-in-out all;
+}
+.ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+@media (max-width: 500px) {
+  .ListaEntradasPorFecha__Titulo {
+    font-size: 20px;
+  }
+  .ListaEntradasPorFecha__Cuerpo__Tabla__Encabezado tr th ion-icon {
+    font-size: 16px;
+  }
+  .ListaEntradasPorFecha__Cuerpo__Tabla__Encabezado tr th {
+    font-size: 14px;
+  }
+  .ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo tr td {
+    font-size: 12px;
+  }
+  .ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo tr td {
+    padding: 5px;
+  }
+  .ListaEntradasPorFecha__TextoResultados {
+    font-size: 12px;
+  }
+  .ListaEntradasPorFecha__TextoResultados ion-icon {
+    font-size: 16px;
+  }
+}

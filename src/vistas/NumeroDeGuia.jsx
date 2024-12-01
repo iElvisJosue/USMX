@@ -127,11 +127,11 @@ export default function NumeroDeGuia() {
               key={index}
             >
               {movimiento.EstadoMovimiento} - {movimiento.DetallesMovimiento} -{" "}
-              {movimiento.FechaCreacionMovimiento.slice(0, 10)
+              {movimiento.FechaCreacionUnion.slice(0, 10)
                 .split("-")
                 .reverse()
                 .join("/")}{" "}
-              {movimiento.HoraCreacionMovimiento}
+              {movimiento.HoraCreacionUnion}
             </p>
           ))}
         </article>

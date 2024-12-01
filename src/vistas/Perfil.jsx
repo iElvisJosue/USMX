@@ -29,6 +29,8 @@ export default function Perfil() {
 
   const IconosPerfil = {
     Administrador: <ion-icon name="shield-checkmark"></ion-icon>,
+    Chofer: <ion-icon name="car"></ion-icon>,
+    Bodega: <ion-icon name="cube"></ion-icon>,
     Moderador: <ion-icon name="glasses"></ion-icon>,
     Usuario: <ion-icon name="person-circle"></ion-icon>,
     Error: <ion-icon name="close-outline"></ion-icon>,

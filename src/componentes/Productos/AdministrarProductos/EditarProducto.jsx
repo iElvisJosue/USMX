@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
@@ -23,6 +23,7 @@ import {
   REGEX_SOLO_NUMEROS,
   REGEX_DECIMALES,
 } from "../../../helpers/Regexs";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Productos/AdministrarProductos/EditarProducto.css";
@@ -32,6 +33,7 @@ export default function EditarProducto({
   informacionDelProducto,
   establecerVistaProductos,
 }) {
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { ActualizarInformacionDeUnProducto } = useProductos();
 
   const {
@@ -62,6 +64,9 @@ export default function EditarProducto({
   }, []);
 
   const ActualizarInformacionDelProducto = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       info.CookieConToken = COOKIE_CON_TOKEN;
       info.idProducto = informacionDelProducto?.idProducto;
@@ -77,6 +82,8 @@ export default function EditarProducto({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 
