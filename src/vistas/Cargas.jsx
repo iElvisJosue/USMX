@@ -1,4 +1,5 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { Toaster, toast } from "sonner";
@@ -15,6 +16,16 @@ import MensajeGeneral from "../componentes/MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerTiposDeCarga from "../hooks/useObtenerTiposDeCarga";
 
+// IMPORTAMOS LAS AYUDAS
+import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+} from "../helpers/Regexs";
+import { ESTILOS_ERROR } from "../helpers/SonnerEstilos";
+import { MensajePeticionPendiente } from "../helpers/FuncionesGenerales";
+
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_CARGAS,
@@ -24,19 +35,12 @@ import {
   DICCIONARIO_PLACEHOLDERS,
 } from "../diccionario/Diccionario";
 
-// IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
-import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
-import {
-  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-  REGEX_SOLO_NUMEROS,
-} from "../helpers/Regexs";
-import { ESTILOS_ERROR } from "../helpers/SonnerEstilos";
-
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/vistas/Cargas.css";
 
 export default function Cargas() {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { idioma, RegistrarTipoDeCarga, EliminarTipoDeCarga } =
     useConfiguracion();
   const {
@@ -56,6 +60,9 @@ export default function Cargas() {
   });
 
   const RegistrarNuevaCarga = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarTipoDeCarga(info);
@@ -71,10 +78,14 @@ export default function Cargas() {
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 
   const EliminarCarga = async (idCarga) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
     if (cargas.length === 1)
       return toast.error(
         "No puedes eliminar todos los tipos de cargas del sistema.",
@@ -82,6 +93,7 @@ export default function Cargas() {
           style: ESTILOS_ERROR,
         }
       );
+    establecerPeticionPendiente(true);
     try {
       const res = await EliminarTipoDeCarga({
         CookieConToken: COOKIE_CON_TOKEN,
@@ -98,6 +110,8 @@ export default function Cargas() {
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
 

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
@@ -19,6 +19,7 @@ import {
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../helpers/Regexs";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
+import { MensajePeticionPendiente } from "../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS A USAR (ESTILOS RECICLADOS)
 import "../../estilos/componentes/Movimientos/RegistrarMovimientos.css";
@@ -30,6 +31,8 @@ export default function EditarMovimiento({
   obtenerMovimientosNuevamente,
   establecerObtenerMovimientosNuevamente,
 }) {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { EditarMovimiento } = useOperaciones();
 
   const {
@@ -55,6 +58,9 @@ export default function EditarMovimiento({
   }, []);
 
   const GuardarInformacionDelMovimiento = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       info.idMovimiento = informacionDelMovimiento?.idMovimiento;
       info.CookieConToken = COOKIE_CON_TOKEN;
@@ -71,6 +77,8 @@ export default function EditarMovimiento({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 

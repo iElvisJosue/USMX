@@ -20,6 +20,9 @@ import {
   REGEX_CORREO,
 } from "../../../helpers/Regexs";
 import { ESTILOS_ERROR, ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_EDITAR_AGENCIA,
   DICCIONARIO_MENSAJES_DE_ERROR,
@@ -35,9 +38,8 @@ export default function EditarAgencia({
   informacionDeLaAgencia,
   establecerVista,
 }) {
-  const { ActualizarInformacionAgencia } = useAgencias();
-
   // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const [direccion, establecerDireccion] = useState(null);
   const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] = useState({
     PAIS: informacionDeLaAgencia.PaisAgencia,
@@ -48,6 +50,7 @@ export default function EditarAgencia({
     CODIGO_POSTAL: informacionDeLaAgencia.CodigoPostalAgencia,
     DIRECCION: informacionDeLaAgencia.DireccionAgencia,
   });
+  const { ActualizarInformacionAgencia } = useAgencias();
 
   const {
     handleSubmit,
@@ -101,6 +104,8 @@ export default function EditarAgencia({
   }, []);
 
   const ActualizarInformacionDeLaAgencia = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
     if (
       informacionDeLaAgencia.NombreAgencia === "USMX Express" &&
       info.NombreAgencia !== "USMX Express"
@@ -120,6 +125,7 @@ export default function EditarAgencia({
         }
       );
     }
+    establecerPeticionPendiente(true);
     try {
       info.idAgencia = informacionDeLaAgencia?.idAgencia;
       info.PaisAgencia = detallesDeLaDireccion.PAIS;
@@ -142,6 +148,8 @@ export default function EditarAgencia({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 

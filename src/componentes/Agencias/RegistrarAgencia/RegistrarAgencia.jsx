@@ -20,6 +20,9 @@ import {
   REGEX_CORREO,
 } from "../../../helpers/Regexs";
 import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_REGISTRAR_AGENCIA,
   DICCIONARIO_MENSAJES_DE_ERROR,
@@ -32,6 +35,7 @@ import "../../../estilos/componentes/Agencias/RegistrarAgencia/RegistrarAgencia.
 
 export default function RegistrarAgencia({ idioma }) {
   // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const [direccion, establecerDireccion] = useState(null);
   const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] =
     useState(null);
@@ -46,6 +50,8 @@ export default function RegistrarAgencia({ idioma }) {
   });
 
   const GuardaInformacionDeLaAgencia = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
     if (!detallesDeLaDireccion) {
       return toast.error(
         "¡Para registrar la agencia, debe seleccionar una dirección!",
@@ -54,6 +60,7 @@ export default function RegistrarAgencia({ idioma }) {
         }
       );
     }
+    establecerPeticionPendiente(true);
     try {
       info.PaisAgencia = detallesDeLaDireccion.PAIS;
       info.CodigoPaisAgencia = detallesDeLaDireccion.CODIGO_PAIS;
@@ -70,13 +77,13 @@ export default function RegistrarAgencia({ idioma }) {
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
-        reset();
-        establecerDireccion(null);
-        establecerDetallesDeLaDireccion(null);
+        ReiniciarFormulario();
       }
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 
@@ -106,7 +113,10 @@ export default function RegistrarAgencia({ idioma }) {
   };
   const ReiniciarFormulario = () => {
     reset();
+    establecerDireccion(null);
+    establecerDetallesDeLaDireccion(null);
   };
+
   return (
     <div className="RegistrarAgencia">
       <form

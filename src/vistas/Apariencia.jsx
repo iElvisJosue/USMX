@@ -1,3 +1,6 @@
+// IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState } from "react";
+
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useConfiguracion } from "../context/ConfiguracionContext";
 import { useGlobal } from "../context/GlobalContext";
@@ -7,17 +10,20 @@ import { Toaster } from "sonner";
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 
-// IMPORTAMOS EL DICCIONARIO A USAR
-import { DICCIONARIO_APARIENCIA } from "../diccionario/Diccionario";
-
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
+import { MensajePeticionPendiente } from "../helpers/FuncionesGenerales";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_APARIENCIA } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/vistas/Apariencia.css";
 
 export default function Apariencia() {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { usuario } = useGlobal();
   const {
     modoOscuro,
@@ -31,6 +37,9 @@ export default function Apariencia() {
   } = useConfiguracion();
 
   const ActualizarElModoOscuroDelUsuario = async (ValorModoOscuro) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await ActualizarModoOscuro({
         CookieConToken: COOKIE_CON_TOKEN,
@@ -48,9 +57,14 @@ export default function Apariencia() {
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
   const ActualizarElIdiomaDelUsuario = async (valorIdioma) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await ActualizarIdioma({
         CookieConToken: COOKIE_CON_TOKEN,
@@ -68,6 +82,8 @@ export default function Apariencia() {
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
 

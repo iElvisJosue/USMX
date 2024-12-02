@@ -44,6 +44,7 @@ import {
   ESTILOS_WARNING,
   ESTILOS_SUCCESS,
 } from "../../../helpers/SonnerEstilos";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Pedidos/RealizarPedido/InformacionDelPedido.css";
@@ -59,6 +60,8 @@ export default function InformacionDelPedido({
   establecerPedido,
   establecerDetallesPedido,
 }) {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   // OBTENEMOS LOS PRODUCTOS, TIPOS DE CARGA Y TIPOS DE ENVIO
   const { productos } = useObtenerProductosPorAgencia(agencia.idAgencia);
   const { cargas, cargandoCargas } = useObtenerTiposDeCarga();
@@ -265,6 +268,8 @@ export default function InformacionDelPedido({
   };
 
   const GuardarTodaLaInformacionEnLaBD = async () => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
     const TodaLaInformacion = {
       CookieConToken: COOKIE_CON_TOKEN,
       remitente,
@@ -275,6 +280,7 @@ export default function InformacionDelPedido({
       NombreAgencia: agencia.NombreAgencia,
       pedido,
     };
+    establecerPeticionPendiente(true);
     try {
       const res = await GuardarTodaLaInformacion(TodaLaInformacion);
       if (res.response) {
@@ -290,6 +296,8 @@ export default function InformacionDelPedido({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
 

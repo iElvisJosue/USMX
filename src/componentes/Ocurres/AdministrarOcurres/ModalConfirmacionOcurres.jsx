@@ -1,4 +1,7 @@
 /* eslint-disable react/prop-types */
+// IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState } from "react";
+
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useOcurre } from "../../../context/OcurreContext";
 
@@ -8,6 +11,7 @@ import { DICCIONARIO_MODAL_CONFIRMACION_OCURRE } from "../../../diccionario/Dicc
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Ocurres/AdministrarOcurres/ModalConfirmacionOcurres.css";
@@ -20,6 +24,8 @@ export default function ModalConfirmacionOcurres({
   obtenerOcurresNuevamente,
   establecerObtenerOcurresNuevamente,
 }) {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { ActualizarEstadoOcurre } = useOcurre();
   const ClaseTituloModal = Activar
     ? "ModalConfirmacionOcurres__Contenido--Titulo Activar"
@@ -39,6 +45,9 @@ export default function ModalConfirmacionOcurres({
   const EstadoOcurreBD = Activar ? "Activa" : "Desactivada";
 
   const ActivarDesactivarOcurre = async () => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await ActualizarEstadoOcurre({
         idOcurre: infOcurre.idOcurre,
@@ -51,12 +60,14 @@ export default function ModalConfirmacionOcurres({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
+        establecerObtenerOcurresNuevamente(!obtenerOcurresNuevamente);
       }
-      establecerObtenerOcurresNuevamente(!obtenerOcurresNuevamente);
-      establecerMostrarModalConfirmacion(false);
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
+      establecerMostrarModalConfirmacion(false);
     }
   };
 

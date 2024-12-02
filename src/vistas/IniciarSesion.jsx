@@ -1,4 +1,5 @@
 // LIBRERÍAS A USAR
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
@@ -13,11 +14,14 @@ import useContraseña from "../hooks/useContraseña";
 import { IniciarSesionCampos } from "../helpers/IniciarSesion";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 import { ESTILOS_SUCCESS } from "../helpers/SonnerEstilos";
+import { MensajePeticionPendiente } from "../helpers/FuncionesGenerales";
 
 // ESTILOS A USAR
 import "../estilos/vistas/IniciarSesion.css";
 
 export default function IniciarSesion() {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const navigate = useNavigate();
   const { IniciarSesion } = useGlobal();
   const { iconoDeContraseña } = useContraseña();
@@ -38,6 +42,9 @@ export default function IniciarSesion() {
   };
 
   const verificarInicioDeSesion = handleSubmit(async (data) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await IniciarSesion(data);
       if (res.response) {
@@ -49,6 +56,8 @@ export default function IniciarSesion() {
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 

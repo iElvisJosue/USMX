@@ -1,10 +1,17 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useOperaciones } from "../../context/OperacionesContext";
+
+// IMPORTAMOS LAS AYUDAS
+import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
+import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../helpers/Regexs";
+import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
+import { MensajePeticionPendiente } from "../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
@@ -14,11 +21,6 @@ import {
   DICCIONARIO_PLACEHOLDERS,
 } from "../../diccionario/Diccionario";
 
-// IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
-import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../helpers/Regexs";
-import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
-
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../estilos/componentes/Movimientos/RegistrarMovimientos.css";
 
@@ -27,6 +29,8 @@ export default function RegistrarMovimiento({
   obtenerMovimientosNuevamente,
   establecerObtenerMovimientosNuevamente,
 }) {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { RegistrarMovimiento } = useOperaciones();
 
   const {
@@ -39,6 +43,9 @@ export default function RegistrarMovimiento({
   });
 
   const GuardarInformacionDelMovimiento = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarMovimiento(info);
@@ -54,6 +61,8 @@ export default function RegistrarMovimiento({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 

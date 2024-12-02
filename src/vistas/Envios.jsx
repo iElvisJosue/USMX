@@ -1,4 +1,5 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { Toaster, toast } from "sonner";
@@ -15,6 +16,13 @@ import MensajeGeneral from "../componentes/MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerTiposDeEnvio from "../hooks/useObtenerTiposDeEnvio";
 
+// IMPORTAMOS LAS AYUDAS
+import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
+import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../helpers/Regexs";
+import { ESTILOS_ERROR } from "../helpers/SonnerEstilos";
+import { MensajePeticionPendiente } from "../helpers/FuncionesGenerales";
+
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_ENVIOS,
@@ -24,16 +32,12 @@ import {
   DICCIONARIO_PLACEHOLDERS,
 } from "../diccionario/Diccionario";
 
-// IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
-import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
-import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../helpers/Regexs";
-import { ESTILOS_ERROR } from "../helpers/SonnerEstilos";
-
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/vistas/Envios.css";
 
 export default function Envios() {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { idioma, RegistrarTipoDeEnvio, EliminarTipoDeEnvio } =
     useConfiguracion();
   const {
@@ -53,6 +57,9 @@ export default function Envios() {
   });
 
   const RegistrarNuevoEnvio = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarTipoDeEnvio(info);
@@ -68,10 +75,14 @@ export default function Envios() {
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
 
   const EliminarEnvio = async (idTipoEnvio) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
     if (envios.length === 1)
       return toast.error(
         "No puedes eliminar todos los tipos de envío del sistema.",
@@ -79,6 +90,7 @@ export default function Envios() {
           style: ESTILOS_ERROR,
         }
       );
+    establecerPeticionPendiente(true);
     try {
       const res = await EliminarTipoDeEnvio({
         CookieConToken: COOKIE_CON_TOKEN,
@@ -95,6 +107,8 @@ export default function Envios() {
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
 

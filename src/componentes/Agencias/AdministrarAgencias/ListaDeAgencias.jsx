@@ -22,6 +22,9 @@ import {
   ObtenerFechaActual,
   ObtenerHoraActual,
 } from "../../../helpers/FuncionesGenerales";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_LISTA_DE_AGENCIAS,
   DICCIONARIO_BOTONES,
@@ -37,6 +40,8 @@ export default function ListaDeAgencias({
   establecerVista,
   establecerInformacionDeLaAgencia,
 }) {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { CrearYDescargarExcelDeAgencias, ActualizarEstadoAgencia } =
     useAgencias();
   const [mostrarModalSubirArchivo, establecerMostrarModalSubirArchivo] =
@@ -79,6 +84,9 @@ export default function ListaDeAgencias({
     }
   };
   const ActivarDesactivarAgencia = async (idAgencia, EstadoAgenciaParaBD) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await ActualizarEstadoAgencia({
         idAgencia: idAgencia,
@@ -91,11 +99,13 @@ export default function ListaDeAgencias({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
+        establecerObtenerAgenciasNuevamente(!obtenerAgenciasNuevamente);
       }
-      establecerObtenerAgenciasNuevamente(!obtenerAgenciasNuevamente);
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
   const EstablecerInformacionDeLaAgenciaSeleccionada = (infAgencia) => {
@@ -107,11 +117,13 @@ export default function ListaDeAgencias({
     establecerVista(2);
   };
   const EstablecerAgenciasParaElExcel = async () => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     const solicitudPromise = CrearYDescargarExcelDeAgencias({
       CookieConToken: COOKIE_CON_TOKEN,
       Agencias: agencias,
     });
-
     toast.promise(solicitudPromise, {
       loading: "Generando archivo Excel...",
       success:
@@ -151,6 +163,8 @@ export default function ListaDeAgencias({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
   const FormatearHoraParaArchivoExcel = () => {

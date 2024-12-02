@@ -19,12 +19,6 @@ import {
   DICCIONARIO_MENSAJES_DE_ERROR,
 } from "../../../diccionario/Diccionario";
 
-// IMPORTAMOS LOS HOOKS A USAR
-// import useObtenerPaisesActivos from "../../../hooks/useObtenerPaisesActivos";
-// import useObtenerEstadosPorCodigoDelPais from "../../../hooks/useObtenerEstadosPorCodigoDelPais";
-// import useObtenerCiudadesPorEstado from "../../../hooks/useObtenerCiudadesPorEstado";
-// import useObtenerColoniasPorCP from "../../../hooks/useObtenerColoniasPorCP";
-
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
@@ -34,36 +28,18 @@ import {
   REGEX_CORREO,
 } from "../../../helpers/Regexs";
 import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Ocurres/RegistrarOcurre/RegistrarOcurre.css";
 
 export default function RegistrarOcurre({ idioma }) {
   // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const [direccion, establecerDireccion] = useState(null);
   const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] =
     useState(null);
   const { RegistrarOcurre } = useOcurre();
-  // // ESTADOS PARA ALMACENAR LOS DATOS DE LA DIRECCIÓN
-  // const [codigoDelPaisSeleccionado, establecerCodigoDelPaisSeleccionado] =
-  //   useState(null);
-  // const [paisSeleccionado, establecerPaisSeleccionado] = useState(null);
-  // const [idEstado, establecerIdEstado] = useState(null);
-  // const [cpColonia, establecerCpColonia] = useState(null);
-  // // ESTE ESTADO ES PARA NO MOSTRAR UN CAMPO EN BLANCO A LA HORA DE ITERAR
-  // // MUCHO CON LA COLONIA Y EL CP
-  // const [coloniaSeleccionada, establecerColoniaSeleccionada] = useState("");
-  // // OBTENEMOS LOS DATOS
-  // const { paises } = useObtenerPaisesActivos();
-  // const { estadosPorCodigoDelPais } = useObtenerEstadosPorCodigoDelPais(
-  //   codigoDelPaisSeleccionado
-  // );
-  // const { ciudadesPorEstado } = useObtenerCiudadesPorEstado(idEstado);
-  // const { coloniasPorCP } = useObtenerColoniasPorCP(
-  //   cpColonia,
-  //   paisSeleccionado
-  // );
-
   const {
     handleSubmit,
     register,
@@ -73,13 +49,9 @@ export default function RegistrarOcurre({ idioma }) {
     criteriaMode: "all",
   });
 
-  // useEffect(() => {
-  //   if (coloniasPorCP?.length > 0) {
-  //     establecerColoniaSeleccionada(coloniasPorCP[0].NombreColonia); // Selecciona la primera colonia
-  //   }
-  // }, [coloniasPorCP]);
-
   const GuardarInformacionDelOcurre = handleSubmit(async (info) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
     if (!detallesDeLaDireccion) {
       return toast.error(
         "¡Para registrar el ocurre, debe seleccionar una dirección!",
@@ -88,9 +60,8 @@ export default function RegistrarOcurre({ idioma }) {
         }
       );
     }
+    establecerPeticionPendiente(true);
     try {
-      // const { CodigoPais } = DividirCodigoDelNombrePais(info.PaisOcurre);
-      // info.CodigoPaisOcurre = CodigoPais;
       info.PaisOcurre = detallesDeLaDireccion.PAIS;
       info.CodigoPaisOcurre = detallesDeLaDireccion.CODIGO_PAIS;
       info.EstadoOcurre = detallesDeLaDireccion.ESTADO;
@@ -106,44 +77,15 @@ export default function RegistrarOcurre({ idioma }) {
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
-        reset();
-        establecerDireccion(null);
-        establecerDetallesDeLaDireccion(null);
-        // ReiniciarValoresDeLasDirecciones();
+        CancelarRegistro();
       }
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   });
-
-  // const EstablecerCodigoPais = (InfPais) => {
-  //   ReiniciarValoresDeLasDirecciones();
-  //   const { CodigoPais, NombrePais } = DividirCodigoDelNombrePais(InfPais);
-  //   establecerPaisSeleccionado(NombrePais);
-  //   establecerCodigoDelPaisSeleccionado(CodigoPais);
-  // };
-
-  // const DividirCodigoDelNombrePais = (PaisPorDividir) => {
-  //   // ESTAMOS OBTENIENDO POR EJEMPLO: MX | Mexico
-  //   const CodigoPais = PaisPorDividir.split(" | ")[0];
-  //   const NombrePais = PaisPorDividir.split(" | ")[1];
-  //   return { CodigoPais, NombrePais };
-  // };
-
-  // const ReiniciarValoresDeLasDirecciones = () => {
-  //   reset({
-  //     EstadoOcurre: "",
-  //     CiudadOcurre: "",
-  //     CodigoPostalOcurre: "",
-  //     DireccionOcurre: "",
-  //   });
-
-  //   establecerPaisSeleccionado(null);
-  //   establecerCodigoDelPaisSeleccionado(null);
-  //   establecerIdEstado(null);
-  //   establecerCpColonia(null);
-  // };
 
   const PropsGoogleAPI = {
     direccion,
@@ -172,6 +114,8 @@ export default function RegistrarOcurre({ idioma }) {
 
   const CancelarRegistro = () => {
     reset();
+    establecerDireccion(null);
+    establecerDetallesDeLaDireccion(null);
   };
 
   return (
@@ -292,203 +236,6 @@ export default function RegistrarOcurre({ idioma }) {
           />
           {MensajeError("CorreoOcurre")}
         </span>
-        {/* {paises && (
-          <span
-            className="RegistrarOcurre__InformacionOcurre__Campo"
-            onChange={(e) => EstablecerCodigoPais(e.target.value)}
-          >
-            <p>
-              <ion-icon name="flag"></ion-icon> País
-            </p>
-            <select
-              name="PaisOcurre"
-              id="PaisOcurre"
-              {...register("PaisOcurre", {
-                required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
-              })}
-              defaultValue={""}
-            >
-              <option value="" disabled>
-                Selecciona un país
-              </option>
-              {paises.map((pais) => (
-                <option
-                  key={pais.idPais}
-                  value={`${pais.CodigoPais} | ${pais.NombrePais}`}
-                >
-                  {pais.CodigoPais} | {pais.NombrePais}
-                </option>
-              ))}
-            </select>
-            {MensajeError("PaisOcurre")}
-          </span>
-        )}
-        {estadosPorCodigoDelPais && (
-          <span className="RegistrarOcurre__InformacionOcurre__Campo">
-            <p>
-              <ion-icon name="location"></ion-icon> Estado
-            </p>
-            <select
-              name="EstadoOcurre"
-              id="EstadoOcurre"
-              {...register("EstadoOcurre", {
-                required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
-              })}
-              defaultValue={""}
-              onChange={(e) => {
-                const selectedOption = e.target.options[e.target.selectedIndex];
-                establecerIdEstado(selectedOption.id);
-                document.getElementById("CiudadOcurre").value = "";
-              }}
-            >
-              <option value="" disabled>
-                Selecciona un estado
-              </option>
-              {estadosPorCodigoDelPais.map((estado) => (
-                <option
-                  key={estado.idEstado}
-                  value={estado.NombreEstado}
-                  id={estado.idEstado}
-                >
-                  {estado.NombreEstado}
-                </option>
-              ))}
-            </select>
-            {MensajeError("EstadoOcurre")}
-          </span>
-        )}
-        {ciudadesPorEstado && (
-          <>
-            <span className="RegistrarOcurre__InformacionOcurre__Campo">
-              <p>
-                <ion-icon name="locate"></ion-icon> Ciudad
-              </p>
-              <select
-                name="CiudadOcurre"
-                id="CiudadOcurre"
-                {...register("CiudadOcurre", {
-                  required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
-                })}
-                defaultValue={""}
-              >
-                <option value="" disabled>
-                  Selecciona una ciudad
-                </option>
-                {ciudadesPorEstado.map((ciudad) => (
-                  <option
-                    key={ciudad.idCiudad}
-                    value={ciudad.NombreCiudad}
-                    id={ciudad.idCiudad}
-                  >
-                    {ciudad.NombreCiudad}
-                  </option>
-                ))}
-              </select>
-              {MensajeError("CiudadOcurre")}
-            </span>
-            <span className="RegistrarOcurre__InformacionOcurre__Campo">
-              <p>
-                <ion-icon name="pin"></ion-icon> Código Postal
-              </p>
-              <input
-                name="CodigoPostalOcurre"
-                id="CodigoPostalOcurre"
-                {...register("CodigoPostalOcurre", {
-                  required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
-                  pattern: REGEX_SOLO_NUMEROS,
-                  maxLength: {
-                    value: 5,
-                    message:
-                      "¡Este campo no puede tener más de 5 caracteres! 🔠",
-                  },
-                  minLength: {
-                    value: 5,
-                    message:
-                      "¡Este campo no puede tener menos de 5 caracteres! 🔠",
-                  },
-                })}
-                placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}]}
-                onChange={(e) => {
-                  // PONEMOS 5 PORQUE ES EL MÍNIMO Y MAXIMO DE UN CP
-                  establecerCpColonia(
-                    e.target.value.length === 5 ? e.target.value : null
-                  );
-                }}
-                minLength={5}
-                maxLength={5}
-              ></input>
-              {MensajeError("CodigoPostalOcurre")}
-            </span>
-          </>
-        )}
-        {coloniasPorCP &&
-          (coloniasPorCP?.length > 0 ? (
-            <span className="RegistrarOcurre__InformacionOcurre__Campo Dos">
-              <p>
-                <ion-icon name="trail-sign"></ion-icon> Colonia
-              </p>
-              <select
-                name="DireccionOcurre"
-                id="DireccionOcurre"
-                {...register("DireccionOcurre", {
-                  required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
-                })}
-                value={coloniaSeleccionada}
-                onChange={(e) => establecerColoniaSeleccionada(e.target.value)}
-              >
-                {coloniasPorCP.map((colonia) => (
-                  <option
-                    key={colonia.idColonia}
-                    value={colonia.NombreColonia}
-                    id={colonia.idColonia}
-                  >
-                    {colonia.NombreColonia}
-                  </option>
-                ))}
-              </select>
-              {MensajeError("DireccionOcurre")}
-            </span>
-          ) : (
-            <span className="RegistrarOcurre__InformacionOcurre__Campo Dos">
-              <p>
-                <ion-icon name="trail-sign"></ion-icon> Dirección
-              </p>
-              <input
-                name="DireccionOcurre"
-                id="DireccionOcurre"
-                {...register("DireccionOcurre", {
-                  required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
-                  pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-                  maxLength: {
-                    value: 1000,
-                    message:
-                      DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max1000,],
-                  },
-                })}
-                placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}]}
-              ></input>
-              {MensajeError("DireccionOcurre")}
-            </span>
-          ))}
-        <span className="RegistrarOcurre__InformacionOcurre__Campo Tres">
-          <p>
-            <ion-icon name="document-text"></ion-icon> Referencia
-          </p>
-          <input
-            name="ReferenciaOcurre"
-            id="ReferenciaOcurre"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
-            {...register("ReferenciaOcurre", {
-              pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-              maxLength: {
-                value: 1000,
-                message:
-                  DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max1000,
-              },
-            })}
-          ></input>
-          {MensajeError("ReferenciaOcurre")}
-        </span> */}
         <span className="RegistrarOcurre__InformacionOcurre__Campo Tres">
           <p>
             <ion-icon name="document-text"></ion-icon>{" "}

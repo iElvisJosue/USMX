@@ -1,13 +1,17 @@
 /* eslint-disable react/prop-types */
+// IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState } from "react";
+
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useOperaciones } from "../../context/OperacionesContext";
-
-// IMPORTAMOS EL DICCIONARIO A USAR
-import { DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS } from "../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
+import { MensajePeticionPendiente } from "../../helpers/FuncionesGenerales";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
+import { DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS } from "../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Movimientos/ModalConfirmacionMovimientos.css";
@@ -20,6 +24,8 @@ export default function ModalConfirmacionMovimientos({
   obtenerMovimientosNuevamente,
   establecerObtenerMovimientosNuevamente,
 }) {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { ActualizarEstadoDeUnMovimiento } = useOperaciones();
   const ClaseTituloModal = Activar
     ? "ModalConfirmacionMovimientos__Contenido--Titulo Activar"
@@ -38,7 +44,10 @@ export default function ModalConfirmacionMovimientos({
     : "ModalConfirmacionMovimientos__Contenido--Texto Desactivar";
   const EstadoMovimientoParaBD = Activar ? "Activo" : "Desactivado";
 
-  const ActivarDesactivarUsuario = async () => {
+  const ActivarDesactivarMovimiento = async () => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await ActualizarEstadoDeUnMovimiento({
         CookieConToken: COOKIE_CON_TOKEN,
@@ -51,12 +60,14 @@ export default function ModalConfirmacionMovimientos({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
+        establecerObtenerMovimientosNuevamente(!obtenerMovimientosNuevamente);
       }
-      establecerObtenerMovimientosNuevamente(!obtenerMovimientosNuevamente);
-      establecerMostrarModalConfirmacion(false);
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
+      establecerMostrarModalConfirmacion(false);
     }
   };
 
@@ -90,7 +101,7 @@ export default function ModalConfirmacionMovimientos({
         </small>
         <button
           className={ClaseBotonModal}
-          onClick={() => ActivarDesactivarUsuario()}
+          onClick={() => ActivarDesactivarMovimiento()}
         >
           {TextoBotonModal}
         </button>

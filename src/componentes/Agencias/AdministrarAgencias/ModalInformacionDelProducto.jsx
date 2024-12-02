@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERIAS A USAR
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
@@ -10,6 +10,9 @@ import { useAgencias } from "../../../context/AgenciasContext";
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO,
   DICCIONARIO_BOTONES,
@@ -26,6 +29,8 @@ export default function ModalInformacionDelProducto({
   buscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia,
   establecerBuscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia,
 }) {
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { AsignarProductoAgencia, ActualizarProductoAgencia } = useAgencias();
   const {
     handleSubmit,
@@ -77,6 +82,9 @@ export default function ModalInformacionDelProducto({
     }
   }, []);
   const PeticionAdministrarProductoAgencia = handleSubmit(async (data) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const InfProducto = {
         CookieConToken: COOKIE_CON_TOKEN,
@@ -104,11 +112,13 @@ export default function ModalInformacionDelProducto({
         establecerBuscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia(
           !buscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia
         );
-        establecerMostrarModal(false);
       }
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
+      establecerMostrarModal(false);
     }
   });
 

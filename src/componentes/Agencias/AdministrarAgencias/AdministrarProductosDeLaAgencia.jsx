@@ -13,6 +13,9 @@ import { useAgencias } from "../../../context/AgenciasContext";
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
+import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA,
   DICCIONARIO_RESULTADOS,
@@ -31,10 +34,12 @@ export default function AdministrarProductosDeLaAgencia({
   informacionDeLaAgencia,
   establecerVista,
 }) {
-  const { DesasignarProductoAgencia } = useAgencias();
+  // ESTADOS AQUI
+  const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const [informacionDelProducto, establecerInformacionDelProducto] =
     useState(null);
   const [mostrarModal, establecerMostrarModal] = useState(false);
+  const { DesasignarProductoAgencia } = useAgencias();
   const {
     CantidadParaMostrar,
     paginaParaMostrar,
@@ -92,6 +97,9 @@ export default function AdministrarProductosDeLaAgencia({
   const PeticionDesasignarProductoAgencia = async (
     idUnionAgenciasProductos
   ) => {
+    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
+    if (peticionPediente) return MensajePeticionPendiente();
+    establecerPeticionPendiente(true);
     try {
       const res = await DesasignarProductoAgencia({
         CookieConToken: COOKIE_CON_TOKEN,
@@ -110,6 +118,8 @@ export default function AdministrarProductosDeLaAgencia({
     } catch (error) {
       const { status, data } = error.response;
       ManejarMensajesDeRespuesta({ status, data });
+    } finally {
+      establecerPeticionPendiente(false);
     }
   };
 
