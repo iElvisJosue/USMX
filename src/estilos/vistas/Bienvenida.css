@@ -330,6 +330,11 @@
 .Bienvenida__UltimasGuias--Cuerpo--Detalles:last-child {
   border-bottom: 2px solid var(--ColorAzul);
 }
+@media (width >= 1920px) {
+  .Bienvenida {
+    grid-template-rows: 350px 75px 150px 150px 75px auto;
+  }
+}
 @media (width <= 1000px) {
   .Bienvenida {
     grid-template-columns: repeat(2, 1fr);
