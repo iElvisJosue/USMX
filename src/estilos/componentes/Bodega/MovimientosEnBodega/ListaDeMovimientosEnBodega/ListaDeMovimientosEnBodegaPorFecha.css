@@ -98,8 +98,8 @@
 }
 .ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles {
   cursor: pointer;
-  background-color: var(--ColorAzul);
-  border: 2px solid var(--ColorAzul);
+  background-color: var(--ColorNegro);
+  border: 2px solid var(--ColorNegro);
   color: var(--ColorBlanco);
   font-weight: bold;
   border-radius: 10px;
@@ -110,7 +110,7 @@
 }
 .ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles:hover {
   background-color: transparent;
-  color: var(--ColorAzul);
+  color: var(--ColorNegro);
 }
 @media (max-width: 500px) {
   .ListaDeMovimientosEnBodegaPorFecha__Titulo {

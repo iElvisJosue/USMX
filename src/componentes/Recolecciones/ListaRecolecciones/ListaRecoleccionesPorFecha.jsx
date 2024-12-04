@@ -10,7 +10,7 @@ import useBuscarRecoleccionesPorFecha from "../../../hooks/Recolecciones/useBusc
 import {
   DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA,
   DICCIONARIO_RESULTADOS,
-  // DICCIONARIO_BOTONES,
+  DICCIONARIO_BOTONES,
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -21,7 +21,7 @@ import "../../../estilos/componentes/Recolecciones/ListaRecolecciones/ListaRecol
 
 export default function ListaRecoleccionesPorFecha({
   idioma,
-  // EstablecerLosDetallesDeLaRecoleccion,
+  EstablecerLosDetallesDeLaRecoleccion,
 }) {
   const {
     recoleccionesPorFecha,
@@ -108,6 +108,11 @@ export default function ListaRecoleccionesPorFecha({
                         .FechaCreacion
                     }
                   </th>
+                  <th>
+                    <ion-icon name="code-working"></ion-icon>
+                    <br />
+                    {DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[idioma].Acciones}
+                  </th>
                 </tr>
               </thead>
               <tbody className="ListaRecoleccionesPorFecha__Cuerpo__Tabla__Cuerpo">
@@ -122,16 +127,19 @@ export default function ListaRecoleccionesPorFecha({
                       )}{" "}
                       {recoleccion.HoraCreacionRecoleccion}
                     </td>
-                    {/* <td>
+                    <td>
                       <button
                         className="ListaRecoleccionesPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() =>
-                          EstablecerLosDetallesDeLaRecoleccion(recoleccion)
+                          EstablecerLosDetallesDeLaRecoleccion(
+                            recoleccion,
+                            false
+                          )
                         }
                       >
                         {DICCIONARIO_BOTONES[idioma].Ver}
                       </button>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>

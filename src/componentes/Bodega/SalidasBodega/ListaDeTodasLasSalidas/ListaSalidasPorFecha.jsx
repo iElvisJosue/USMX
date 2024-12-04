@@ -10,7 +10,7 @@ import useBuscarSalidasABodegaPorFecha from "../../../../hooks/Bodega/Salidas/us
 import {
   DICCIONARIO_LISTA_SALIDAS_POR_FECHA,
   DICCIONARIO_RESULTADOS,
-  // DICCIONARIO_BOTONES,
+  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -21,7 +21,7 @@ import "../../../../estilos/componentes/Bodega/SalidasBodega/ListaDeTodasLasSali
 
 export default function ListaSalidasPorFecha({
   idioma,
-  // EstablecerLosDetallesDeLaEntrada,
+  EstablecerLosDetallesDeLaSalida,
 }) {
   const {
     salidasPorFecha,
@@ -98,6 +98,11 @@ export default function ListaSalidasPorFecha({
                     <br />
                     {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[idioma].FechaCreacion}
                   </th>
+                  <th>
+                    <ion-icon name="code-working"></ion-icon>
+                    <br />
+                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[idioma].Acciones}
+                  </th>
                 </tr>
               </thead>
               <tbody className="ListaSalidasPorFecha__Cuerpo__Tabla__Cuerpo">
@@ -112,16 +117,16 @@ export default function ListaSalidasPorFecha({
                       )}{" "}
                       {infSalida.HoraCreacionSalida}
                     </td>
-                    {/* <td>
+                    <td>
                       <button
                         className="ListaSalidasPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() =>
-                          EstablecerLosDetallesDeLaEntrada(infSalida)
+                          EstablecerLosDetallesDeLaSalida(infSalida)
                         }
                       >
                         {DICCIONARIO_BOTONES[idioma].Ver}
                       </button>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>

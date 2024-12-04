@@ -10,7 +10,7 @@ import useBuscarDevolucionesPorFiltro from "../../../../hooks/Bodega/Devolucione
 import {
   DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA,
   DICCIONARIO_RESULTADOS,
-  // DICCIONARIO_BOTONES,
+  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -21,7 +21,7 @@ import "../../../../estilos/componentes/Bodega/Devoluciones/ListaDevoluciones/Li
 
 export default function ListaDevolucionesCompleta({
   idioma,
-  // EstablecerLosDetallesDeLaDevolucion,
+  EstablecerLosDetallesDeLaDevolucion,
 }) {
   const { devoluciones, cargando, filtro, establecerFiltro } =
     useBuscarDevolucionesPorFiltro();
@@ -96,6 +96,11 @@ export default function ListaDevolucionesCompleta({
                         .FechaCreacion
                     }
                   </th>
+                  <th>
+                    <ion-icon name="code-working"></ion-icon>
+                    <br />
+                    {DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[idioma].Acciones}
+                  </th>
                 </tr>
               </thead>
               <tbody className="ListaDevolucionesCompleta__Cuerpo__Tabla__Cuerpo">
@@ -110,16 +115,16 @@ export default function ListaDevolucionesCompleta({
                       )}{" "}
                       {devolucion.HoraCreacionDevolucion}
                     </td>
-                    {/* <td>
+                    <td>
                       <button
                         className="ListaDevolucionesCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() =>
-                          EstablecerLosDetallesDeLaDevolucion(devolucion)
+                          EstablecerLosDetallesDeLaDevolucion(devolucion, true)
                         }
                       >
                         {DICCIONARIO_BOTONES[idioma].Ver}
                       </button>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>

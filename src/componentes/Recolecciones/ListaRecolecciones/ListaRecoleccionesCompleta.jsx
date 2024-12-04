@@ -10,7 +10,7 @@ import useBuscarRecoleccionesPorFiltro from "../../../hooks/Recolecciones/useBus
 import {
   DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA,
   DICCIONARIO_RESULTADOS,
-  // DICCIONARIO_BOTONES,
+  DICCIONARIO_BOTONES,
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -21,7 +21,7 @@ import "../../../estilos/componentes/Recolecciones/ListaRecolecciones/ListaRecol
 
 export default function ListaRecoleccionesCompleta({
   idioma,
-  // EstablecerLosDetallesDeLaRecoleccion,
+  EstablecerLosDetallesDeLaRecoleccion,
 }) {
   const { recolecciones, cargando, filtro, establecerFiltro } =
     useBuscarRecoleccionesPorFiltro();
@@ -96,6 +96,11 @@ export default function ListaRecoleccionesCompleta({
                         .FechaCreacion
                     }
                   </th>
+                  <th>
+                    <ion-icon name="code-working"></ion-icon>
+                    <br />
+                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[idioma].Acciones}
+                  </th>
                 </tr>
               </thead>
               <tbody className="ListaRecoleccionesCompleta__Cuerpo__Tabla__Cuerpo">
@@ -110,16 +115,19 @@ export default function ListaRecoleccionesCompleta({
                       )}{" "}
                       {recoleccion.HoraCreacionRecoleccion}
                     </td>
-                    {/* <td>
+                    <td>
                       <button
                         className="ListaRecoleccionesCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() =>
-                          EstablecerLosDetallesDeLaRecoleccion(recoleccion)
+                          EstablecerLosDetallesDeLaRecoleccion(
+                            recoleccion,
+                            true
+                          )
                         }
                       >
                         {DICCIONARIO_BOTONES[idioma].Ver}
                       </button>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>

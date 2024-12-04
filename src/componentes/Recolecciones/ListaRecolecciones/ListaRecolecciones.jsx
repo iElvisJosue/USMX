@@ -5,7 +5,7 @@ import { useState } from "react";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import ListaRecoleccionesCompleta from "./ListaRecoleccionesCompleta";
 import ListaRecoleccionesPorFecha from "./ListaRecoleccionesPorFecha";
-// import DetallesPedido from "./DetallesPedido";
+import DetallesRecoleccion from "./DetallesRecoleccion";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Recolecciones/ListaRecolecciones/ListaRecolecciones.css";
@@ -13,10 +13,11 @@ import "../../../estilos/componentes/Recolecciones/ListaRecolecciones/ListaRecol
 export default function ListaRecolecciones({ idioma }) {
   const [vista, establecerVista] = useState(0);
   const [esCompleta, establecerEsCompleta] = useState(true);
-  const [detallesRecoleccion, establecerDetallesRecoleccion] = useState(null);
+  const [informacionDeLaRecoleccion, establecerInformacionDeLaRecoleccion] =
+    useState(null);
 
-  const EstablecerLosDetallesDeLaRecoleccion = (Recoleccion, esCompleta) => {
-    establecerDetallesRecoleccion(Recoleccion);
+  const EstablecerLosDetallesDeLaRecoleccion = (recoleccion, esCompleta) => {
+    establecerInformacionDeLaRecoleccion(recoleccion);
     establecerEsCompleta(esCompleta);
     establecerVista(2);
   };
@@ -26,15 +27,15 @@ export default function ListaRecolecciones({ idioma }) {
     idioma,
     esCompleta,
     establecerVista,
-    detallesRecoleccion,
-    establecerDetallesRecoleccion,
+    informacionDeLaRecoleccion,
+    establecerInformacionDeLaRecoleccion,
     EstablecerLosDetallesDeLaRecoleccion,
   };
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
     0: ListaRecoleccionesCompleta,
     1: ListaRecoleccionesPorFecha,
-    // 2: DetallesPedido,
+    2: DetallesRecoleccion,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS

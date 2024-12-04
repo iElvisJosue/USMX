@@ -23,3 +23,11 @@ export const SolicitudBuscarRecoleccionesDeUnChoferPorFiltro = (data) =>
 // PETICIÓN PARA BUSCAR LAS RECOLECCIONES DE UN CHOFER POR FECHA
 export const SolicitudBuscarRecoleccionesDeUnChoferPorFecha = (data) =>
   axios.post("/recolecciones/BuscarRecoleccionesDeUnChoferPorFecha", data);
+// PETICIÓN PARA OBTENER LOS PEDIDOS DE UNA RECOLECCION
+export const SolicitudObtenerPedidosDeUnaRecoleccion = ({
+  CookieConToken,
+  idRecoleccion,
+}) =>
+  axios.get(
+    `/recolecciones/ObtenerPedidosDeUnaRecoleccion/${CookieConToken}/${idRecoleccion}`
+  );

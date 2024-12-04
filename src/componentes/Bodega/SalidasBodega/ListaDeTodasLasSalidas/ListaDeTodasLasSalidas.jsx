@@ -5,7 +5,7 @@ import { useState } from "react";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import ListaSalidasCompleta from "./ListaSalidasCompleta";
 import ListaSalidasPorFecha from "./ListaSalidasPorFecha";
-// import DetallesPedido from "./DetallesPedido";
+import DetallesSalida from "./DetallesSalida";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../../estilos/componentes/Bodega/SalidasBodega/ListaDeTodasLasSalidas/ListaDeTodasLasSalidas.css";
@@ -13,10 +13,10 @@ import "../../../../estilos/componentes/Bodega/SalidasBodega/ListaDeTodasLasSali
 export default function ListaDeTodasLasSalidas({ idioma }) {
   const [vista, establecerVista] = useState(0);
   const [esCompleta, establecerEsCompleta] = useState(true);
-  const [detallesSalida, establecerDetallesSalida] = useState(null);
+  const [informacionSalida, establecerInformacionDeLaSalida] = useState(null);
 
   const EstablecerLosDetallesDeLaSalida = (Salida, esCompleta) => {
-    establecerDetallesSalida(Salida);
+    establecerInformacionDeLaSalida(Salida);
     establecerEsCompleta(esCompleta);
     establecerVista(2);
   };
@@ -26,15 +26,15 @@ export default function ListaDeTodasLasSalidas({ idioma }) {
     idioma,
     esCompleta,
     establecerVista,
-    detallesSalida,
-    establecerDetallesSalida,
+    informacionSalida,
+    establecerInformacionDeLaSalida,
     EstablecerLosDetallesDeLaSalida,
   };
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
     0: ListaSalidasCompleta,
     1: ListaSalidasPorFecha,
-    // 2: DetallesPedido,
+    2: DetallesSalida,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS

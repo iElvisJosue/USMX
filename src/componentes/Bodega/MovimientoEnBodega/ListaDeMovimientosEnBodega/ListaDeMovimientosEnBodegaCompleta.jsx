@@ -10,7 +10,7 @@ import useBuscarMovimientosBodegaPorFiltro from "../../../../hooks/Bodega/Movimi
 import {
   DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA,
   DICCIONARIO_RESULTADOS,
-  // DICCIONARIO_BOTONES,
+  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -21,7 +21,7 @@ import "../../../../estilos/componentes/Bodega/MovimientosEnBodega/ListaDeMovimi
 
 export default function ListaDeMovimientosEnBodegaCompleta({
   idioma,
-  // EstablecerLosDetallesDelMovimiento,
+  EstablecerLosDetallesDelMovimiento,
 }) {
   const { movimientosBodega, cargando, filtro, establecerFiltro } =
     useBuscarMovimientosBodegaPorFiltro();
@@ -97,6 +97,11 @@ export default function ListaDeMovimientosEnBodegaCompleta({
                         .FechaCreacion
                     }
                   </th>
+                  <th>
+                    <ion-icon name="code-working"></ion-icon>
+                    <br />
+                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[idioma].Acciones}
+                  </th>
                 </tr>
               </thead>
               <tbody className="ListaDeMovimientosEnBodegaCompleta__Cuerpo__Tabla__Cuerpo">
@@ -111,16 +116,16 @@ export default function ListaDeMovimientosEnBodegaCompleta({
                       )}{" "}
                       {movBodega.HoraCreacionMovimientoBodega}
                     </td>
-                    {/* <td>
+                    <td>
                       <button
                         className="ListaDeMovimientosEnBodegaCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() =>
-                          EstablecerLosDetallesDelMovimiento(movBodega)
+                          EstablecerLosDetallesDelMovimiento(movBodega, true)
                         }
                       >
                         {DICCIONARIO_BOTONES[idioma].Ver}
                       </button>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>

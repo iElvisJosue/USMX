@@ -5,7 +5,7 @@ import { useState } from "react";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import ListaDevolucionesCompleta from "./ListaDevolucionesCompleta";
 import ListaDevolucionesPorFecha from "./ListaDevolucionesPorFecha";
-// import DetallesPedido from "./DetallesPedido";
+import DetallesDevolucion from "./DetallesDevolucion";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../../estilos/componentes/Bodega/Devoluciones/ListaDevoluciones/ListaDevoluciones.css";
@@ -13,10 +13,11 @@ import "../../../../estilos/componentes/Bodega/Devoluciones/ListaDevoluciones/Li
 export default function ListaDevoluciones({ idioma }) {
   const [vista, establecerVista] = useState(0);
   const [esCompleta, establecerEsCompleta] = useState(true);
-  const [detallesDevolucion, establecerDetallesDevolucion] = useState(null);
+  const [informacionDeLaDevolucion, establecerInformacionDeLaDevolucion] =
+    useState(null);
 
   const EstablecerLosDetallesDeLaDevolucion = (Devolucion, esCompleta) => {
-    establecerDetallesDevolucion(Devolucion);
+    establecerInformacionDeLaDevolucion(Devolucion);
     establecerEsCompleta(esCompleta);
     establecerVista(2);
   };
@@ -26,15 +27,15 @@ export default function ListaDevoluciones({ idioma }) {
     idioma,
     esCompleta,
     establecerVista,
-    detallesDevolucion,
-    establecerDetallesDevolucion,
+    informacionDeLaDevolucion,
+    establecerInformacionDeLaDevolucion,
     EstablecerLosDetallesDeLaDevolucion,
   };
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
     0: ListaDevolucionesCompleta,
     1: ListaDevolucionesPorFecha,
-    // 2: DetallesPedido,
+    2: DetallesDevolucion,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS

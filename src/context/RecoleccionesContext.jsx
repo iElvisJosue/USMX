@@ -7,6 +7,7 @@ import {
   SolicitudBuscarTodasLasRecoleccionesPorFecha,
   SolicitudBuscarRecoleccionesDeUnChoferPorFiltro,
   SolicitudBuscarRecoleccionesDeUnChoferPorFecha,
+  SolicitudObtenerPedidosDeUnaRecoleccion,
 } from "../api/authRecolecciones";
 
 export const RecoleccionesContext = createContext();
@@ -62,10 +63,17 @@ export const ProveedorRecolecciones = ({ children }) => {
       return error;
     }
   };
-
   const BuscarRecoleccionesDeUnChoferPorFecha = async (data) => {
     try {
       const res = await SolicitudBuscarRecoleccionesDeUnChoferPorFecha(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ObtenerPedidosDeUnaRecoleccion = async (data) => {
+    try {
+      const res = await SolicitudObtenerPedidosDeUnaRecoleccion(data);
       return res;
     } catch (error) {
       return error;
@@ -81,6 +89,7 @@ export const ProveedorRecolecciones = ({ children }) => {
         BuscarTodasLasRecoleccionesPorFecha,
         BuscarRecoleccionesDeUnChoferPorFiltro,
         BuscarRecoleccionesDeUnChoferPorFecha,
+        ObtenerPedidosDeUnaRecoleccion,
       }}
     >
       {children}

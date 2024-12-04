@@ -10,7 +10,7 @@ import useBuscarMovimientosBodegaPorFecha from "../../../../hooks/Bodega/Movimie
 import {
   DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA,
   DICCIONARIO_RESULTADOS,
-  // DICCIONARIO_BOTONES,
+  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -21,7 +21,7 @@ import "../../../../estilos/componentes/Bodega/MovimientosEnBodega/ListaDeMovimi
 
 export default function ListaDeMovimientosEnBodegaPorFecha({
   idioma,
-  // EstablecerLosDetallesDelMovimiento,
+  EstablecerLosDetallesDelMovimiento,
 }) {
   const {
     movimientosPorFecha,
@@ -108,6 +108,11 @@ export default function ListaDeMovimientosEnBodegaPorFecha({
                         .FechaCreacion
                     }
                   </th>
+                  <th>
+                    <ion-icon name="code-working"></ion-icon>
+                    <br />
+                    {DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[idioma].Acciones}
+                  </th>
                 </tr>
               </thead>
               <tbody className="ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo">
@@ -122,16 +127,19 @@ export default function ListaDeMovimientosEnBodegaPorFecha({
                       )}{" "}
                       {infMovimiento.HoraCreacionMovimientoBodega}
                     </td>
-                    {/* <td>
+                    <td>
                       <button
                         className="ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() =>
-                          EstablecerLosDetallesDelMovimiento(infMovimiento)
+                          EstablecerLosDetallesDelMovimiento(
+                            infMovimiento,
+                            false
+                          )
                         }
                       >
                         {DICCIONARIO_BOTONES[idioma].Ver}
                       </button>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>

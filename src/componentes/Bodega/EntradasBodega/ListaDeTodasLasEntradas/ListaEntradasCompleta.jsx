@@ -10,7 +10,7 @@ import useBuscarEntradasABodegaPorFiltro from "../../../../hooks/Bodega/Entradas
 import {
   DICCIONARIO_LISTA_ENTRADAS_COMPLETA,
   DICCIONARIO_RESULTADOS,
-  // DICCIONARIO_BOTONES,
+  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -21,7 +21,7 @@ import "../../../../estilos/componentes/Bodega/EntradasBodega/ListaDeTodasLasEnt
 
 export default function ListaEntradasCompleta({
   idioma,
-  // EstablecerLosDetallesDeLaEntrada,
+  EstablecerLosDetallesDeLaEntrada,
 }) {
   const { entradas, cargando, filtro, establecerFiltro } =
     useBuscarEntradasABodegaPorFiltro();
@@ -87,6 +87,11 @@ export default function ListaEntradasCompleta({
                     <br />
                     {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].FechaCreacion}
                   </th>
+                  <th>
+                    <ion-icon name="code-working"></ion-icon>
+                    <br />
+                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].Acciones}
+                  </th>
                 </tr>
               </thead>
               <tbody className="ListaEntradasCompleta__Cuerpo__Tabla__Cuerpo">
@@ -101,16 +106,16 @@ export default function ListaEntradasCompleta({
                       )}{" "}
                       {infEntrada.HoraCreacionEntrada}
                     </td>
-                    {/* <td>
+                    <td>
                       <button
                         className="ListaEntradasCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() =>
-                          EstablecerLosDetallesDeLaEntrada(infEntrada)
+                          EstablecerLosDetallesDeLaEntrada(infEntrada, true)
                         }
                       >
                         {DICCIONARIO_BOTONES[idioma].Ver}
                       </button>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>

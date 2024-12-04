@@ -1008,7 +1008,32 @@ export const DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA = {
     CrearRecoleccion: "Create collection",
   },
 };
-
+export const DICCIONARIO_DETALLES_RECOLECCION = {
+  es: {
+    Detalles: "Detalles",
+    IDRecoleccion: "ID Recolección",
+    CantidadDeGuias: "Cantidad de guías",
+    Usuario: "Usuario",
+    FechaDeCreacion: "Fecha de creación",
+    ListaDeGuias: "Lista de guías",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+  },
+  en: {
+    Detalles: "Details",
+    IDRecoleccion: "Collection ID",
+    CantidadDeGuias: "Number of waybills",
+    Usuario: "User",
+    FechaDeCreacion: "Creation date",
+    ListaDeGuias: "List of waybills",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
+  },
+};
 /* TERMINA DICCIONARIO PARA LA VISTA RECOLECCIONES */
 
 /* INICIA DICCIONARIO PARA LAS VISTAS DE BODEGA */
@@ -1084,6 +1109,7 @@ export const DICCIONARIO_LISTA_ENTRADAS_COMPLETA = {
     CPedidos: "C. Pedidos",
     Usuario: "Usuario",
     FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
     CrearEntrada: "Crear entrada",
   },
   en: {
@@ -1093,6 +1119,7 @@ export const DICCIONARIO_LISTA_ENTRADAS_COMPLETA = {
     CPedidos: "C. Orders",
     Usuario: "User",
     FechaCreacion: "Creation date",
+    Acciones: "Actions",
     CrearEntrada: "Create entry",
   },
 };
@@ -1103,6 +1130,7 @@ export const DICCIONARIO_LISTA_ENTRADAS_POR_FECHA = {
     CPedidos: "C. Pedidos",
     Usuario: "Usuario",
     FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
     CrearEntrada: "Crear entrada",
   },
   en: {
@@ -1111,7 +1139,44 @@ export const DICCIONARIO_LISTA_ENTRADAS_POR_FECHA = {
     CPedidos: "C. Orders",
     Usuario: "User",
     FechaCreacion: "Creation date",
+    Acciones: "Actions",
     CrearEntrada: "Create entry",
+  },
+};
+export const DICCIONARIO_DETALLES_ENTRADA = {
+  es: {
+    Detalles: "Detalles",
+    idEntradaBodega: "ID Entrada",
+    CantidadDeGuias: "Cantidad de guías",
+    Usuario: "Usuario",
+    FechaDeCreacion: "Fecha de creación",
+    NombreTransportista: "Nombre del transportista",
+    Remolque: "Remolque",
+    Tracto: "Tracto",
+    Candado: "Candado",
+    HoraDeEntrada: "Hora de entrada",
+    ListaDeGuias: "Lista de guías",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+  },
+  en: {
+    Detalles: "Details",
+    idEntradaBodega: "Entry ID",
+    CantidadDeGuias: "Number of waybills",
+    Usuario: "User",
+    FechaDeCreacion: "Creation date",
+    NombreTransportista: "Transporter name",
+    Remolque: "Trailer",
+    Tracto: "Truck",
+    Candado: "Lock",
+    HoraDeEntrada: "Entry time",
+    ListaDeGuias: "List of waybills",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
   },
 };
 export const DICCIONARIO_BODEGA_DEVOLUCIONES = {
@@ -1164,6 +1229,7 @@ export const DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA = {
     CPedidos: "C. Pedidos",
     Usuario: "Usuario",
     FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
     CrearDevolucion: "Crear devolución",
   },
   en: {
@@ -1173,6 +1239,7 @@ export const DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA = {
     CPedidos: "C. Orders",
     Usuario: "User",
     FechaCreacion: "Creation date",
+    Acciones: "Actions",
     CrearDevolucion: "Create return",
   },
 };
@@ -1183,6 +1250,7 @@ export const DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA = {
     CPedidos: "C. Pedidos",
     Usuario: "Usuario",
     FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
     CrearDevolucion: "Crear devolución",
   },
   en: {
@@ -1191,7 +1259,34 @@ export const DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA = {
     CPedidos: "C. Orders",
     Usuario: "User",
     FechaCreacion: "Creation date",
+    Acciones: "Actions",
     CrearDevolucion: "Create return",
+  },
+};
+export const DICCIONARIO_DETALLES_DEVOLUCION = {
+  es: {
+    Detalles: "Detalles",
+    idDevolucion: "ID Devolución",
+    CantidadDeGuias: "Cantidad de guías",
+    Usuario: "Usuario",
+    FechaDeCreacion: "Fecha de creación",
+    ListaDeGuias: "Lista de guías",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+  },
+  en: {
+    Detalles: "Details",
+    idDevolucion: "Return ID",
+    CantidadDeGuias: "Number of waybills",
+    Usuario: "User",
+    FechaDeCreacion: "Creation date",
+    ListaDeGuias: "List of waybills",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
   },
 };
 export const DICCIONARIO_BODEGA_MOVIMIENTOS = {
@@ -1244,6 +1339,7 @@ export const DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA = {
     CPedidos: "C. Pedidos",
     Usuario: "Usuario",
     FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
     CrearMovimiento: "Crear movimiento",
   },
   en: {
@@ -1253,6 +1349,7 @@ export const DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA = {
     CPedidos: "C. Orders",
     Usuario: "User",
     FechaCreacion: "Creation date",
+    Acciones: "Actions",
     CrearMovimiento: "Create movement",
   },
 };
@@ -1263,6 +1360,7 @@ export const DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA = {
     CPedidos: "C. Pedidos",
     Usuario: "Usuario",
     FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
     CrearMovimiento: "Crear movimiento",
   },
   en: {
@@ -1271,7 +1369,35 @@ export const DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA = {
     CPedidos: "C. Orders",
     Usuario: "User",
     FechaCreacion: "Creation date",
+    Acciones: "Actions",
     CrearMovimiento: "Create movement",
+  },
+};
+export const DICCIONARIO_DETALLES_MOVIMIENTO = {
+  es: {
+    Detalles: "Detalles",
+    idMovimientoBodega: "ID Movimiento",
+    CantidadDeGuias: "Cantidad de guías",
+    Usuario: "Usuario",
+    FechaDeCreacion: "Fecha de creación",
+
+    ListaDeGuias: "Lista de guías",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+  },
+  en: {
+    Detalles: "Details",
+    idMovimientoBodega: "Movement ID",
+    CantidadDeGuias: "Number of waybills",
+    Usuario: "User",
+    FechaDeCreacion: "Creation date",
+    ListaDeGuias: "List of waybills",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
   },
 };
 export const DICCIONARIO_BODEGA_SALIDAS = {
@@ -1344,6 +1470,7 @@ export const DICCIONARIO_LISTA_SALIDAS_COMPLETA = {
     CPedidos: "C. Pedidos",
     Usuario: "Usuario",
     FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
     CrearSalida: "Crear salida",
   },
   en: {
@@ -1353,6 +1480,7 @@ export const DICCIONARIO_LISTA_SALIDAS_COMPLETA = {
     CPedidos: "C. Orders",
     Usuario: "User",
     FechaCreacion: "Creation date",
+    Acciones: "Actions",
     CrearSalida: "Create exit",
   },
 };
@@ -1363,6 +1491,7 @@ export const DICCIONARIO_LISTA_SALIDAS_POR_FECHA = {
     CPedidos: "C. Pedidos",
     Usuario: "Usuario",
     FechaCreacion: "Fecha de creación",
+    Acciones: "Acciones",
     CrearSalida: "Crear salida",
   },
   en: {
@@ -1371,7 +1500,44 @@ export const DICCIONARIO_LISTA_SALIDAS_POR_FECHA = {
     CPedidos: "C. Orders",
     Usuario: "User",
     FechaCreacion: "Creation date",
+    Acciones: "Actions",
     CrearSalida: "Create exit",
+  },
+};
+export const DICCIONARIO_DETALLES_SALIDA = {
+  es: {
+    Detalles: "Detalles",
+    idSalidaBodega: "ID Salida",
+    CantidadDeGuias: "Cantidad de guías",
+    Usuario: "Usuario",
+    FechaDeCreacion: "Fecha de creación",
+    NombreTransportista: "Nombre del transportista",
+    Remolque: "Remolque",
+    Tracto: "Tracto",
+    Candado: "Candado",
+    HoraDeSalida: "Hora de salida",
+    ListaDeGuias: "Lista de guías",
+    Guia: "Guía",
+    Contenido: "Contenido",
+    Medidas: "Medidas",
+    Peso: "Peso",
+  },
+  en: {
+    Detalles: "Details",
+    idSalidaBodega: "Exit ID",
+    CantidadDeGuias: "Number of waybills",
+    Usuario: "User",
+    FechaDeCreacion: "Creation date",
+    NombreTransportista: "Transporter name",
+    Remolque: "Trailer",
+    Tracto: "Truck",
+    Candado: "Lock",
+    HoraDeSalida: "Exit time",
+    ListaDeGuias: "List of waybills",
+    Guia: "Waybill",
+    Contenido: "Content",
+    Medidas: "Dimensions",
+    Peso: "Weight",
   },
 };
 /* TERMINA DICCIONARIO PARA LAS VISTAS DE BODEGA */

@@ -5,7 +5,7 @@ import { useState } from "react";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import ListaDeMovimientosEnBodegaCompleta from "./ListaDeMovimientosEnBodegaCompleta";
 import ListaDeMovimientosEnBodegaPorFecha from "./ListaDeMovimientosEnBodegaPorFecha";
-// import DetallesPedido from "./DetallesPedido";
+import DetallesMovimientoEnBodega from "./DetallesMovimientoEnBodega";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../../estilos/componentes/Bodega/MovimientosEnBodega/ListaDeMovimientosEnBodega/ListaDeMovimientosEnBodega.css";
@@ -13,10 +13,11 @@ import "../../../../estilos/componentes/Bodega/MovimientosEnBodega/ListaDeMovimi
 export default function ListaDeMovimientosEnBodega({ idioma }) {
   const [vista, establecerVista] = useState(0);
   const [esCompleta, establecerEsCompleta] = useState(true);
-  const [detallesMovimiento, establecerDetallesMovimiento] = useState(null);
+  const [informacionDelMovimiento, establecerInformacionDelMovimiento] =
+    useState(null);
 
-  const EstablecerLosDetallesDelMovimiento = (Devolucion, esCompleta) => {
-    establecerDetallesMovimiento(Devolucion);
+  const EstablecerLosDetallesDelMovimiento = (Movimiento, esCompleta) => {
+    establecerInformacionDelMovimiento(Movimiento);
     establecerEsCompleta(esCompleta);
     establecerVista(2);
   };
@@ -26,15 +27,15 @@ export default function ListaDeMovimientosEnBodega({ idioma }) {
     idioma,
     esCompleta,
     establecerVista,
-    detallesMovimiento,
-    establecerDetallesMovimiento,
+    informacionDelMovimiento,
+    establecerInformacionDelMovimiento,
     EstablecerLosDetallesDelMovimiento,
   };
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
     0: ListaDeMovimientosEnBodegaCompleta,
     1: ListaDeMovimientosEnBodegaPorFecha,
-    // 2: DetallesPedido,
+    2: DetallesMovimientoEnBodega,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS

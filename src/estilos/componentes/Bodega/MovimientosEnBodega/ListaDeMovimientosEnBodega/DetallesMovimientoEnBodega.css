@@ -1,0 +1,204 @@
+.DetallesMovimientoEnBodega {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.DetallesMovimientoEnBodega__Seccion,
+.DetallesMovimientoEnBodega__Opciones {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.DetallesMovimientoEnBodega__Opciones {
+  margin-top: 30px;
+  justify-content: space-between;
+}
+.DetallesMovimientoEnBodega__Opciones--Boton {
+  height: 50px;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesMovimientoEnBodega__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.DetallesMovimientoEnBodega__Opciones--Boton:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.DetallesMovimientoEnBodega__Opciones--Boton:hover::after {
+  content: "Regresar";
+}
+.DetallesMovimientoEnBodega__Seccion img {
+  width: 50px;
+  height: 50px;
+}
+.DetallesMovimientoEnBodega__Seccion h1 {
+  color: var(--ColorAzul);
+  text-transform: uppercase;
+}
+.DetallesMovimientoEnBodega__Detalles {
+  grid-column: span 1;
+  background-color: var(--ColorSecundario);
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  color: var(--ColorNegro);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesMovimientoEnBodega__Detalles.Dos {
+  grid-column: span 2;
+}
+.DetallesMovimientoEnBodega__Detalles.Tres {
+  grid-column: span 3;
+}
+.DetallesMovimientoEnBodega__Detalles.Completo {
+  grid-column: 1 / -1;
+}
+.DetallesMovimientoEnBodega__Detalles ion-icon {
+  font-size: 25px;
+}
+.DetallesMovimientoEnBodega__Detalles.MovimientosB {
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorBlanco);
+}
+.DetallesMovimientoEnBodega__Cuerpo {
+  grid-column: 1 / -1;
+  overflow-x: auto;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla--Encabezado tr th {
+  background-color: var(--ColorNegro);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px;
+  min-width: 200px;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla--Encabezado tr th ion-icon {
+  font-size: 20px;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo {
+  background-color: var(--ColorBlanco);
+  text-align: center;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo tr td {
+  height: 65px;
+  padding: 5px;
+  font-size: 14px;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  text-align: center;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo--TR {
+  background-color: var(--ColorBlanco);
+  padding: 10px;
+  font-size: 14px;
+  color: var(--ColorNegro);
+  text-align: center;
+  border-right: 2px solid var(--ColorSecundario);
+  border-bottom: 2px solid var(--ColorSecundario);
+  border-left: 2px solid var(--ColorSecundario);
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo hr {
+  height: 2px;
+  background-color: var(--ColorSecundario);
+  border: none;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo__Acciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo__Acciones button {
+  width: 35px;
+  height: 35px;
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+  color: var(--ColorBlanco);
+  border-radius: 50%;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo__Acciones button ion-icon {
+  font-size: 18px;
+}
+.DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo__Acciones button:hover {
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--ColorRojo);
+}
+@media (width <= 850px) {
+  .DetallesMovimientoEnBodega {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .DetallesMovimientoEnBodega__Seccion,
+  .DetallesMovimientoEnBodega__Opciones {
+    font-size: 14px;
+  }
+  .DetallesMovimientoEnBodega__Seccion img {
+    width: 40px;
+    height: 40px;
+  }
+  .DetallesMovimientoEnBodega__Opciones--Boton {
+    font-size: 14px;
+  }
+  .DetallesMovimientoEnBodega__Opciones--Boton ion-icon {
+    font-size: 16px;
+  }
+  .DetallesMovimientoEnBodega__Detalles {
+    font-size: 14px;
+  }
+}
+@media (max-width: 500px) {
+  .DetallesMovimientoEnBodega__Cuerpo--Tabla--Encabezado tr th ion-icon {
+    font-size: 16px;
+  }
+  .DetallesMovimientoEnBodega__Cuerpo--Tabla--Encabezado tr th {
+    font-size: 14px;
+  }
+  .DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo tr td {
+    font-size: 12px;
+  }
+  .DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo tr td {
+    padding: 5px;
+  }
+  .DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo__Acciones button {
+    width: 30px;
+    height: 30px;
+  }
+  .DetallesMovimientoEnBodega__Cuerpo--Tabla__Cuerpo__Acciones button ion-icon {
+    font-size: 16px;
+  }
+}

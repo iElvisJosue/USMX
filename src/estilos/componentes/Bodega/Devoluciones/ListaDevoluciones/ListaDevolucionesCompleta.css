@@ -99,8 +99,8 @@
 }
 .ListaDevolucionesCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles {
   cursor: pointer;
-  background-color: var(--ColorAzul);
-  border: 2px solid var(--ColorAzul);
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
   color: var(--ColorBlanco);
   font-weight: bold;
   border-radius: 10px;
@@ -111,7 +111,7 @@
 }
 .ListaDevolucionesCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles:hover {
   background-color: transparent;
-  color: var(--ColorAzul);
+  color: var(--ColorRojo);
 }
 @media (max-width: 1000px) {
   .ListaDevolucionesCompleta__Buscar {

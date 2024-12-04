@@ -22,7 +22,6 @@ import Movimientos from "./vistas/Movimientos";
 import Ocurres from "./vistas/Ocurres";
 import Cargas from "./vistas/Cargas";
 import Envios from "./vistas/Envios";
-import Ubicaciones from "./vistas/Ubicaciones";
 import Apariencia from "./vistas/Apariencia";
 
 // PROTECCIÓN DE RUTAS
@@ -69,7 +68,6 @@ export default function App() {
               <Route path="/Ocurres" element={<Ocurres />} />
               <Route path="/Cargas" element={<Cargas />} />
               <Route path="/Envios" element={<Envios />} />
-              <Route path="/Ubicaciones" element={<Ubicaciones />} />
             </Route>
             {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
 

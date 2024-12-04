@@ -120,3 +120,35 @@ export const SolicitudBuscarTodasLasSalidasABodegaDeUnBodegueroPorFecha = (
   data
 ) =>
   axios.post("/bodega/BuscarTodasLasSalidasABodegaDeUnBodegueroPorFecha", data);
+// PETICIÓN PARA OBTENER LOS PEDIDOS DE UNA ENTRADA A BODEGA
+export const SolicitudObtenerPedidosDeUnaEntrada = ({
+  CookieConToken,
+  idEntradaBodega,
+}) =>
+  axios.get(
+    `/bodega/ObtenerPedidosDeUnaEntrada/${CookieConToken}/${idEntradaBodega}`
+  );
+// PETICIÓN PARA OBTENER LOS PEDIDOS DE UN MOVIMIENTO EN BODEGA
+export const SolicitudObtenerPedidosDeUnMovimientoEnBodega = ({
+  CookieConToken,
+  idMovimientoBodega,
+}) =>
+  axios.get(
+    `/bodega/ObtenerPedidosDeUnMovimientoEnBodega/${CookieConToken}/${idMovimientoBodega}`
+  );
+// PETICIÓN PARA OBTENER LOS PEDIDOS DE UNA SALIDA DE BODEGA
+export const SolicitudObtenerPedidosDeUnaSalida = ({
+  CookieConToken,
+  idSalidaBodega,
+}) =>
+  axios.get(
+    `/bodega/ObtenerPedidosDeUnaSalida/${CookieConToken}/${idSalidaBodega}`
+  );
+// PETICIÓN PARA OBTENER LOS PEDIDOS DE UNA DEVOLUCION
+export const SolicitudObtenerPedidosDeUnaDevolucion = ({
+  CookieConToken,
+  idDevolucion,
+}) =>
+  axios.get(
+    `/bodega/ObtenerPedidosDeUnaDevolucion/${CookieConToken}/${idDevolucion}`
+  );

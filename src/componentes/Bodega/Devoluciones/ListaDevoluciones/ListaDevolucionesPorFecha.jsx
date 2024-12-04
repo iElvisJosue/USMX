@@ -10,7 +10,7 @@ import useBuscarDevolucionesPorFecha from "../../../../hooks/Bodega/Devoluciones
 import {
   DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA,
   DICCIONARIO_RESULTADOS,
-  // DICCIONARIO_BOTONES,
+  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -21,7 +21,7 @@ import "../../../../estilos/componentes/Bodega/Devoluciones/ListaDevoluciones/Li
 
 export default function ListaDevolucionesPorFecha({
   idioma,
-  // EstablecerLosDetallesDeLaDevolucion,
+  EstablecerLosDetallesDeLaDevolucion,
 }) {
   const {
     devolucionesPorFecha,
@@ -108,6 +108,11 @@ export default function ListaDevolucionesPorFecha({
                         .FechaCreacion
                     }
                   </th>
+                  <th>
+                    <ion-icon name="code-working"></ion-icon>
+                    <br />
+                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[idioma].Acciones}
+                  </th>
                 </tr>
               </thead>
               <tbody className="ListaDevolucionesPorFecha__Cuerpo__Tabla__Cuerpo">
@@ -122,16 +127,16 @@ export default function ListaDevolucionesPorFecha({
                       )}{" "}
                       {devolucion.HoraCreacionDevolucion}
                     </td>
-                    {/* <td>
+                    <td>
                       <button
                         className="ListaDevolucionesPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() =>
-                          EstablecerLosDetallesDeLaDevolucion(devolucion)
+                          EstablecerLosDetallesDeLaDevolucion(devolucion, false)
                         }
                       >
                         {DICCIONARIO_BOTONES[idioma].Ver}
                       </button>
-                    </td> */}
+                    </td>
                   </tr>
                 ))}
               </tbody>

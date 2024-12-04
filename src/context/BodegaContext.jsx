@@ -27,6 +27,10 @@ import {
   SolicitudBuscarTodasLasSalidasABodegaPorFecha,
   SolicitudBuscarTodasLasSalidasABodegaDeUnBodegueroPorFiltro,
   SolicitudBuscarTodasLasSalidasABodegaDeUnBodegueroPorFecha,
+  SolicitudObtenerPedidosDeUnaEntrada,
+  SolicitudObtenerPedidosDeUnMovimientoEnBodega,
+  SolicitudObtenerPedidosDeUnaSalida,
+  SolicitudObtenerPedidosDeUnaDevolucion,
 } from "../api/authBodega";
 
 export const BodegaContext = createContext();
@@ -271,6 +275,38 @@ export const ProveedorBodega = ({ children }) => {
       return error;
     }
   };
+  const ObtenerPedidosDeUnaEntrada = async (data) => {
+    try {
+      const res = await SolicitudObtenerPedidosDeUnaEntrada(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ObtenerPedidosDeUnMovimientoEnBodega = async (data) => {
+    try {
+      const res = await SolicitudObtenerPedidosDeUnMovimientoEnBodega(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ObtenerPedidosDeUnaSalida = async (data) => {
+    try {
+      const res = await SolicitudObtenerPedidosDeUnaSalida(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ObtenerPedidosDeUnaDevolucion = async (data) => {
+    try {
+      const res = await SolicitudObtenerPedidosDeUnaDevolucion(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <BodegaContext.Provider
@@ -301,6 +337,10 @@ export const ProveedorBodega = ({ children }) => {
         BuscarTodasLasSalidasABodegaPorFecha,
         BuscarTodasLasSalidasABodegaDeUnBodegueroPorFiltro,
         BuscarTodasLasSalidasABodegaDeUnBodegueroPorFecha,
+        ObtenerPedidosDeUnaEntrada,
+        ObtenerPedidosDeUnMovimientoEnBodega,
+        ObtenerPedidosDeUnaSalida,
+        ObtenerPedidosDeUnaDevolucion,
       }}
     >
       {children}
