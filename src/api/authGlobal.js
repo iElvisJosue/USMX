@@ -9,3 +9,6 @@ export const SolicitudVerificarToken = (data) =>
 // PETICIÓN PARA CERRAR SESIÓN
 export const SolicitudCerrarSesion = (data) =>
   axios.post("/global/CerrarSesion", data);
+// PETICIÓN PARA OBTENER EL RESUMEN DIARIO
+export const SolicitudObtenerResumenDiario = ({ FechaDeHoy }) =>
+  axios.get(`/global/ObtenerResumenDiario/${FechaDeHoy}`);

@@ -6,6 +6,7 @@ import {
   SolicitudIniciarSesion,
   SolicitudVerificarToken,
   SolicitudCerrarSesion,
+  SolicitudObtenerResumenDiario,
 } from "../api/authGlobal";
 
 // IMPORTAMOS LAS AYUDAS
@@ -112,6 +113,18 @@ export const ProveedorGlobal = ({ children }) => {
     }
   };
 
+  const ObtenerResumenDiario = async (data) => {
+    try {
+      const res = await SolicitudObtenerResumenDiario(data);
+      if (res.data) {
+        return res.data;
+      }
+    } catch (error) {
+      console.log(error);
+      return setError();
+    }
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -120,6 +133,7 @@ export const ProveedorGlobal = ({ children }) => {
         tieneCookie,
         IniciarSesion,
         CerrarSesion,
+        ObtenerResumenDiario,
       }}
     >
       {children}

@@ -31,6 +31,7 @@ import ProteccionParaAdministradores from "./proteccion/ProteccionParaAdministra
 import ProteccionParaUsuariosYAdministradores from "./proteccion/ProteccionParaUsuariosYAdministradores";
 import ProteccionParaChoferesYAdministradores from "./proteccion/ProteccionParaChoferesYAdministradores";
 import ProteccionParaBodeguerosYAdministradores from "./proteccion/ProteccionParaBodeguerosYAdministradores.jsx";
+import ProteccionParaBienvenida from "./proteccion/ProteccionParaBienvenida";
 
 export default function App() {
   return (
@@ -44,10 +45,15 @@ export default function App() {
           {/* RUTAS PROTEGIDAS POR COOKIES */}
           <Route element={<ProteccionPorCookies />}>
             {/* RUTAS PARA TODOS LOS USUARIOS */}
-            <Route path="/Bienvenida" element={<Bienvenida />} />
             <Route path="/Perfil" element={<Perfil />} />
             <Route path="/Apariencia" element={<Apariencia />} />
             {/* TERMINAN LAS RUTAS PARA TODOS LOS USUARIOS */}
+
+            {/* RUTA PROTEGIDA PARA ADMINS, USUARIOS Y MODERADORES */}
+            <Route element={<ProteccionParaBienvenida />}>
+              <Route path="/Bienvenida" element={<Bienvenida />} />
+            </Route>
+            {/* TERMINA LA RUTA PROTEGIDA PARA ADMINS, USUARIOS Y MODERADORES */}
 
             {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
             <Route element={<ProteccionParaAdministradores />}>

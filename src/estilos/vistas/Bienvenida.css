@@ -6,18 +6,13 @@
   padding: 10px;
 
   display: grid;
-  grid-template-areas:
-    "Bienvenida Bienvenida Perfil"
-    "EspacioDos UltimasDiezGuias UltimasDiezGuias"
-    "EspacioTres UltimasDiezGuias UltimasDiezGuias";
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 300px 150px auto;
   align-items: flex-start;
   justify-items: center;
   gap: 10px;
 }
 .Bienvenida__Mensaje {
-  grid-area: Bienvenida;
+  grid-column: span 2;
   padding: 20px;
   width: 100%;
   height: 100%;
@@ -50,12 +45,10 @@
   color: var(--ColorVerde);
 }
 .Bienvenida__Perfil,
-.Bienvenida__TotalDePedidosHechosHoy,
-.EspacioTres {
+.Secciones__Hoy {
   padding: 20px;
   width: 100%;
   height: 100%;
-  background-color: var(--ColorAzul);
   color: var(--ColorBlanco);
   border-radius: 35px;
 
@@ -64,7 +57,7 @@
   justify-content: center;
 }
 .Bienvenida__Perfil {
-  grid-area: Perfil;
+  grid-column: span 1;
   background-image: url("/BGPerfil.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -129,18 +122,68 @@
   font-style: italic;
   color: rgba(255, 255, 255, 0.514);
 }
-.Bienvenida__TotalDePedidosHechosHoy {
-  grid-area: EspacioDos;
-  background-image: url("/PedidosHoy.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.Bienvenida__Titulo {
+  grid-column: 1 / -1;
+  padding: 10px 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ColorAzul);
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Bienvenida__Titulo small {
+  font-size: 12px;
+}
+.Secciones__Hoy {
+  min-height: 150px;
+  grid-column: span 1;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
+  overflow: hidden;
 }
-.Bienvenida__TotalDePedidosHechosHoy--Texto {
+.Secciones__Hoy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: brightness(0.4);
+  z-index: -1; /* Ubica la capa detrás del contenido */
+}
+.Secciones__Hoy .Secciones__Hoy--Texto,
+.Secciones__Hoy--Cantidad {
+  position: relative;
+  z-index: 2;
+}
+.Secciones__Hoy.Pedidos::before {
+  background-image: url("/PedidosHoy.jpg");
+}
+.Secciones__Hoy.Recolecciones::before {
+  background-image: url("/RecoleccionesHoy.jpg");
+}
+.Secciones__Hoy.Entradas::before {
+  background-image: url("/EntradasHoy.png");
+}
+.Secciones__Hoy.MovimientosBodega::before {
+  background-image: url("/MovimientosHoy.png");
+}
+.Secciones__Hoy.Salidas::before {
+  background-image: url("/SalidasHoy.jpg");
+}
+.Secciones__Hoy.Devoluciones::before {
+  background-image: url("/DevolucionesHoy.png");
+}
+.Secciones__Hoy--Texto {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -149,12 +192,12 @@
   color: white;
   font-weight: bold;
 }
-.Bienvenida__TotalDePedidosHechosHoy--Texto p {
+.Secciones__Hoy--Texto p {
   font-weight: bold;
   font-size: 20px;
   text-transform: uppercase;
 }
-.Bienvenida__TotalDePedidosHechosHoy--Cantidad {
+.Secciones__Hoy--Cantidad {
   background: white;
   color: black;
   min-width: 65px;
@@ -168,12 +211,8 @@
   align-items: center;
   justify-content: center;
 }
-.EspacioTres {
-  grid-area: EspacioTres;
-  height: 150px;
-}
 .Bienvenida__UltimasGuias {
-  grid-area: UltimasDiezGuias;
+  grid-column: 1 / -1;
   width: 100%;
   min-height: 310px;
   background-color: var(--ColorSecundario);
@@ -291,31 +330,34 @@
 .Bienvenida__UltimasGuias--Cuerpo--Detalles:last-child {
   border-bottom: 2px solid var(--ColorAzul);
 }
-
-@media (width <= 500px) {
+@media (width <= 1000px) {
   .Bienvenida {
-    grid-template-areas:
-      "Perfil Perfil Perfil"
-      "Bienvenida Bienvenida Bienvenida"
-      "UltimasDiezGuias UltimasDiezGuias UltimasDiezGuias"
-      "EspacioDos EspacioDos EspacioDos"
-      "EspacioTres EspacioTres EspacioTres";
-    grid-template-rows: auto;
+    grid-template-columns: repeat(2, 1fr);
   }
+  .Bienvenida__Mensaje,
+  .Bienvenida__Perfil {
+    grid-column: 1 / -1;
+  }
+}
+@media (width <= 600px) {
+  .Bienvenida {
+    grid-template-columns: 1fr;
+  }
+}
+@media (width <= 500px) {
   .Bienvenida__Mensaje,
   .Bienvenida__UltimasGuias,
   .Bienvenida__UltimasGuias--Cuerpo,
-  .Bienvenida__TotalDePedidosHechosHoy,
-  .EspacioTres {
+  .Secciones__Hoy {
     border-radius: 15px;
   }
   .Bienvenida__Mensaje p {
     font-size: 14px;
   }
-  .Bienvenida__TotalDePedidosHechosHoy--Texto p {
+  .Secciones__Hoy--Texto p {
     font-size: 16px;
   }
-  .Bienvenida__TotalDePedidosHechosHoy--Cantidad {
+  .Secciones__Hoy--Cantidad {
     font-size: 16px;
   }
   .Bienvenida__UltimasGuias {

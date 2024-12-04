@@ -38,7 +38,13 @@ export default function IniciarSesion() {
         style: ESTILOS_SUCCESS,
       }
     );
-    setTimeout(() => navigate("/Bienvenida"), 1000);
+    if (res.Permisos === "Chofer") {
+      return setTimeout(() => navigate("/Recolecciones"), 1000);
+    }
+    if (res.Permisos === "Bodega") {
+      return setTimeout(() => navigate("/Bodega-Entradas"), 1000);
+    }
+    return setTimeout(() => navigate("/Bienvenida"), 1000);
   };
 
   const verificarInicioDeSesion = handleSubmit(async (data) => {

@@ -1,5 +1,4 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-import { useState, useEffect } from "react";
 import { Toaster } from "sonner";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
@@ -13,6 +12,7 @@ import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarUltimosDiezPedidos from "../hooks/useBuscarUltimosDiezPedidos";
+import useObtenerResumenDiario from "../hooks/Bienvenida/useObtenerResumenDiario";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
@@ -30,27 +30,20 @@ import "../estilos/vistas/Bienvenida.css";
 export default function Bienvenida() {
   const { usuario } = useGlobal();
   const { idioma } = useConfiguracion();
-  const [pedidosHechosHoy, setPedidosHechosHoy] = useState(0);
   const {
     cargandoUltimosDiezPedidos,
     ultimosDiezPedidos,
     buscarNuevamente,
     establecerBuscarNuevamente,
   } = useBuscarUltimosDiezPedidos();
+  const {
+    resumen,
+    cargandoResumen,
+    obtenerResumenNuevamente,
+    establecerObtenerResumenNuevamente,
+  } = useObtenerResumenDiario();
 
-  useEffect(() => {
-    if (ultimosDiezPedidos) {
-      const FechaDeHoy = ObtenerFechaActual();
-      const pedidosPorFiltroDeHoy = ultimosDiezPedidos.filter(
-        ({ FechaCreacionPedido }) => {
-          return FechaCreacionPedido.slice(0, 10) === FechaDeHoy;
-        }
-      );
-      setPedidosHechosHoy(pedidosPorFiltroDeHoy.length);
-    }
-  }, [ultimosDiezPedidos]);
-
-  if (cargandoUltimosDiezPedidos) return <Cargando />;
+  if (cargandoUltimosDiezPedidos || cargandoResumen) return <Cargando />;
 
   const IconosPerfil = {
     Administrador: (
@@ -64,6 +57,7 @@ export default function Bienvenida() {
 
   setTimeout(() => {
     establecerBuscarNuevamente(!buscarNuevamente);
+    establecerObtenerResumenNuevamente(!obtenerResumenNuevamente);
   }, 5000);
 
   return (
@@ -98,21 +92,65 @@ export default function Bienvenida() {
             {usuario.Permisos}
           </small>
         </section>
-        <section className="Bienvenida__TotalDePedidosHechosHoy">
-          <span className="Bienvenida__TotalDePedidosHechosHoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].PedidosHechosHoy}</p>
-            <small>{ObtenerFechaActual().split("-").reverse().join("/")}</small>
+        <h1 className="Bienvenida__Titulo">
+          {DICCIONARIO_BIENVENIDA[idioma].ResumenDeHoy}
+          <small>{ObtenerFechaActual().split("-").reverse().join("/")}</small>
+        </h1>
+        <section className="Secciones__Hoy Pedidos">
+          <span className="Secciones__Hoy--Texto">
+            <p>{DICCIONARIO_BIENVENIDA[idioma].Pedidos}</p>
           </span>
-          <div className="Bienvenida__TotalDePedidosHechosHoy--Cantidad">
-            <p>{pedidosHechosHoy}</p>
+          <div className="Secciones__Hoy--Cantidad">
+            <p>{resumen.PedidosDeHoy}</p>
           </div>
         </section>
-        <section className="EspacioTres">
-          <h1>Espacio 3</h1>
+        <section className="Secciones__Hoy Recolecciones">
+          <span className="Secciones__Hoy--Texto">
+            <p>{DICCIONARIO_BIENVENIDA[idioma].Recolecciones}</p>
+          </span>
+          <div className="Secciones__Hoy--Cantidad">
+            <p>{resumen.RecoleccionesDeHoy}</p>
+          </div>
         </section>
+        <section className="Secciones__Hoy Entradas">
+          <span className="Secciones__Hoy--Texto">
+            <p>{DICCIONARIO_BIENVENIDA[idioma].EntradasBodega}</p>
+          </span>
+          <div className="Secciones__Hoy--Cantidad">
+            <p>{resumen.EntradasDeHoy}</p>
+          </div>
+        </section>
+        <section className="Secciones__Hoy MovimientosBodega">
+          <span className="Secciones__Hoy--Texto">
+            <p>{DICCIONARIO_BIENVENIDA[idioma].MovimientosBodega}</p>
+          </span>
+          <div className="Secciones__Hoy--Cantidad">
+            <p>{resumen.MovimientosDeHoy}</p>
+          </div>
+        </section>
+        <section className="Secciones__Hoy Salidas">
+          <span className="Secciones__Hoy--Texto">
+            <p>{DICCIONARIO_BIENVENIDA[idioma].SalidasBodega}</p>
+          </span>
+          <div className="Secciones__Hoy--Cantidad">
+            <p>{resumen.SalidasDeHoy}</p>
+          </div>
+        </section>
+        <section className="Secciones__Hoy Devoluciones">
+          <span className="Secciones__Hoy--Texto">
+            <p>{DICCIONARIO_BIENVENIDA[idioma].Devoluciones}</p>
+          </span>
+          <div className="Secciones__Hoy--Cantidad">
+            <p>{resumen.DevolucionesDeHoy}</p>
+          </div>
+        </section>
+        <h1 className="Bienvenida__Titulo">
+          {DICCIONARIO_BIENVENIDA[idioma].UltimosDiezPedidos}
+          <small>{DICCIONARIO_BIENVENIDA[idioma].General}</small>
+        </h1>
         <section className="Bienvenida__UltimasGuias">
           <ul className="Bienvenida__UltimasGuias--Encabezado">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].UltimosPedidos}</p>
+            <p>{DICCIONARIO_BIENVENIDA[idioma].ListaDePedidos}</p>
             <button
               onClick={() => (window.location.href = `${HOST}Pedidos`)}
               title="Ver todos los pedidos"
