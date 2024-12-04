@@ -1,0 +1,39 @@
+.InputBuscarEnTabla {
+  grid-column: 4/5;
+  display: flex;
+}
+.InputBuscarEnTabla input {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 15px 0 0 15px;
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.InputBuscarEnTabla__Lupa {
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 0 15px 15px 0;
+  border-left: 2px solid var(--ColorBlanco);
+  background-color: var(--ColorSecundario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ColorGris);
+  font-size: 20px;
+}
+@media (width <= 1120px) {
+  .InputBuscarEnTabla {
+    grid-column: 3/5;
+  }
+}
+@media (width <= 850px) {
+  .InputBuscarEnTabla {
+    grid-column: 1 / -1;
+  }
+}

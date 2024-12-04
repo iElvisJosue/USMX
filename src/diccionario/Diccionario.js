@@ -1882,12 +1882,14 @@ export const DICCIONARIO_PLACEHOLDERS = {
     Carga: "Carga",
     Porcentaje: "Porcentaje",
     Envio: "Envío",
+    BuscarGuia: "Buscar guía",
   },
   en: {
     EscribeAqui: "Write here...",
     Carga: "Load",
     Porcentaje: "Percentage",
     Envio: "Delivery",
+    BuscarGuia: "Search waybill",
   },
 };
 export const DICCIONARIO_MENSAJES_DE_ERROR = {

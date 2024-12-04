@@ -1,10 +1,17 @@
 /* eslint-disable react/prop-types */
+// IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../../../Cargando";
+import MensajeGeneral from "../../../MensajeGeneral";
+import InputBuscarEnTabla from "../../../InputBuscarEnTabla";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
-import { DICCIONARIO_DETALLES_ENTRADA } from "../../../../diccionario/Diccionario";
+import {
+  DICCIONARIO_DETALLES_ENTRADA,
+  DICCIONARIO_RESULTADOS,
+} from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerPedidosDeUnaEntrada from "../../../../hooks/Bodega/Entradas/useObtenerPedidosDeUnaEntrada";
@@ -21,9 +28,15 @@ export default function DetallesEntrada({
   establecerVista,
   esCompleta,
 }) {
+  const [arrayDePedidos, establecerArrayDePedidos] = useState([]);
   const { pedidos, cargando } = useObtenerPedidosDeUnaEntrada(
     informacionDeLaEntrada.idEntradaBodega
   );
+
+  useEffect(() => {
+    if (pedidos.length > 0) establecerArrayDePedidos(pedidos);
+  }, [pedidos]);
+
   if (cargando) return <Cargando />;
 
   return (
@@ -91,55 +104,67 @@ export default function DetallesEntrada({
         <img src="ListaDeGuias.png" alt="Logo Lista De Guias" />
         <h1>{DICCIONARIO_DETALLES_ENTRADA[idioma].ListaDeGuias}</h1>
       </section>
-      <div className="DetallesEntrada__Cuerpo" key={pedidos.length}>
-        <table className="DetallesEntrada__Cuerpo--Tabla">
-          <thead className="DetallesEntrada__Cuerpo--Tabla--Encabezado">
-            <tr>
-              <th>#</th>
-              <th>
-                <ion-icon name="bag-check"></ion-icon>
-                <br />
-                {DICCIONARIO_DETALLES_ENTRADA[idioma].Guia}
-              </th>
-              <th>
-                <ion-icon name="document-text"></ion-icon>
-                <br />
-                {DICCIONARIO_DETALLES_ENTRADA[idioma].Contenido}
-              </th>
-              <th>
-                <ion-icon name="expand"></ion-icon>
-                <br />
-                {DICCIONARIO_DETALLES_ENTRADA[idioma].Medidas}
-              </th>
-              <th>
-                <ion-icon name="scale"></ion-icon>
-                <br />
-                {DICCIONARIO_DETALLES_ENTRADA[idioma].Peso}
-              </th>
-            </tr>
-          </thead>
-          <tbody className="DetallesEntrada__Cuerpo--Tabla__Cuerpo">
-            {pedidos.map((pedido, index) => (
-              <tr
-                key={pedido.idPedido}
-                className={"DetallesEntrada__Cuerpo--Tabla__Cuerpo--TR"}
-              >
-                <td>{index + 1}</td>
-                <td>{pedido.GuiaPedido}</td>
-                <td>{pedido.ContenidoPedido}</td>
-                <td>
-                  Alto: {pedido.AltoPedido}
+      <InputBuscarEnTabla
+        idioma={idioma}
+        FuncionDeEstablecimiento={establecerArrayDePedidos}
+        ArrayDeBusqueda={pedidos}
+      />
+      {arrayDePedidos.length > 0 ? (
+        <div className="DetallesEntrada__Cuerpo" key={pedidos.length}>
+          <table className="DetallesEntrada__Cuerpo--Tabla">
+            <thead className="DetallesEntrada__Cuerpo--Tabla--Encabezado">
+              <tr>
+                <th>#</th>
+                <th>
+                  <ion-icon name="bag-check"></ion-icon>
                   <br />
-                  Ancho: {pedido.AnchoPedido}
+                  {DICCIONARIO_DETALLES_ENTRADA[idioma].Guia}
+                </th>
+                <th>
+                  <ion-icon name="document-text"></ion-icon>
                   <br />
-                  Largo: {pedido.LargoPedido}
-                </td>
-                <td>{pedido.PesoPedido}</td>
+                  {DICCIONARIO_DETALLES_ENTRADA[idioma].Contenido}
+                </th>
+                <th>
+                  <ion-icon name="expand"></ion-icon>
+                  <br />
+                  {DICCIONARIO_DETALLES_ENTRADA[idioma].Medidas}
+                </th>
+                <th>
+                  <ion-icon name="scale"></ion-icon>
+                  <br />
+                  {DICCIONARIO_DETALLES_ENTRADA[idioma].Peso}
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody className="DetallesEntrada__Cuerpo--Tabla__Cuerpo">
+              {arrayDePedidos.map((pedido, index) => (
+                <tr
+                  key={pedido.idPedido}
+                  className={"DetallesEntrada__Cuerpo--Tabla__Cuerpo--TR"}
+                >
+                  <td>{index + 1}</td>
+                  <td>{pedido.GuiaPedido}</td>
+                  <td>{pedido.ContenidoPedido}</td>
+                  <td>
+                    Alto: {pedido.AltoPedido}
+                    <br />
+                    Ancho: {pedido.AnchoPedido}
+                    <br />
+                    Largo: {pedido.LargoPedido}
+                  </td>
+                  <td>{pedido.PesoPedido}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <MensajeGeneral
+          Imagen="SinResultados.png"
+          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+        />
+      )}
     </div>
   );
 }
