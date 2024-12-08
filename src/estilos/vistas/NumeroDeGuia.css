@@ -14,6 +14,64 @@
   align-items: center;
   gap: 20px;
 }
+.NumeroDeGuia__BuscarNuevamente {
+  position: relative;
+  width: 300px;
+  height: 50px;
+
+  /* &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    height: 6px;
+    width: calc(100% - 5px);
+  }
+
+  &:before {
+    top: -5px;
+    background: radial-gradient(
+        circle,
+        transparent,
+        transparent 50%,
+        white 50%,
+        white 100%
+      ) -7px -8px / 16px 16px repeat-x;
+  }
+
+  &:after {
+    bottom: -5px;
+    background: radial-gradient(
+        circle,
+        transparent,
+        transparent 50%,
+        white 50%,
+        white 100%
+      ) -7px -2px / 16px 16px repeat-x;
+  } */
+}
+.NumeroDeGuia__BuscarNuevamente--Input {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
+.NumeroDeGuia__BuscarNuevamente--Boton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  cursor: pointer;
+}
+.NumeroDeGuia__BuscarNuevamente--Boton ion-icon {
+  font-size: 20px;
+  color: black;
+}
 .NumeroDeGuia__Separador {
   width: 100%;
   border: 1px dashed black;

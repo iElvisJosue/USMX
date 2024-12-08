@@ -7,6 +7,9 @@ import Cargando from "../componentes/Cargando";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarPedidoPorNumeroDeGuia from "../hooks/useBuscarPedidoPorNumeroDeGuia";
 
+// IMPORTAMOS LAS AYUDAS
+import { HOST } from "../helpers/Urls";
+
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/NumeroDeGuia.css";
 
@@ -18,9 +21,37 @@ export default function NumeroDeGuia() {
 
   if (buscandoInformacionGuia) return <Cargando />;
 
+  const BuscarNuevaGuia = () => {
+    const InputGuia = document.querySelector(
+      ".NumeroDeGuia__BuscarNuevamente--Input"
+    );
+    const NuevaGuia = InputGuia.value;
+    if (!NuevaGuia) return InputGuia.focus();
+    window.location.href = `${HOST}NumeroDeGuia/${NuevaGuia}`;
+  };
+
   return (
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
     <main className="NumeroDeGuia">
+      {informacionGuia.length === 0 && (
+        <span className="NumeroDeGuia__BuscarNuevamente">
+          <input
+            type="text"
+            placeholder="Buscar otra guía"
+            className="NumeroDeGuia__BuscarNuevamente--Input"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") BuscarNuevaGuia();
+            }}
+          />
+          <button
+            type="button"
+            className="NumeroDeGuia__BuscarNuevamente--Boton"
+            onClick={BuscarNuevaGuia}
+          >
+            <ion-icon name="search"></ion-icon>
+          </button>
+        </span>
+      )}
       <article className="NumeroDeGuia__Ticket">
         {informacionGuia.length > 0 ? (
           <>
@@ -119,7 +150,6 @@ export default function NumeroDeGuia() {
           <p className="NumeroDeGuia__Movimientos--Titulo">
             Movimientos del pedido
           </p>
-
           <hr className="NumeroDeGuia__Separador" />
           {informacionGuia.map((movimiento, index) => (
             <p
