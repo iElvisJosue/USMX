@@ -89,7 +89,10 @@ export default function Bienvenida() {
             ></ion-icon>
           </span>
           <picture className="Bienvenida__Perfil--Icono">
-            <img src="/Perfil.png" alt="Icono perfil" />
+            <img
+              src={`${HOST_IMAGENES}/${infUsuario.Foto}`}
+              alt={`${infUsuario.Usuario} Foto`}
+            />
           </picture>
           <p className="Bienvenida__Perfil--Nombre">{infUsuario.Usuario}</p>
           {IconosPerfil[infUsuario.Permisos]}
