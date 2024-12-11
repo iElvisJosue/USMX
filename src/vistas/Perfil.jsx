@@ -1,17 +1,14 @@
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
-import Cargando from "../componentes/Cargando";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useUsuarios } from "../context/UsuariosContext";
 import { useConfiguracion } from "../context/ConfiguracionContext";
 
-// IMPORTAMOS LOS HOOKS A USAR
-import useObtenerInformacionDeUnUsuario from "../hooks/useObtenerInformacionDeUnUsuario";
-
 // IMPORTAMOS LAS AYUDAS
 import { FormatearFecha } from "../helpers/FuncionesGenerales";
+import { HOST_IMAGENES } from "../helpers/Urls";
 import { DICCIONARIO_PERFIL } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS A USAR
@@ -20,9 +17,6 @@ import "../estilos/vistas/Perfil.css";
 export default function Perfil() {
   const { infUsuario } = useUsuarios();
   const { idioma } = useConfiguracion();
-
-  const { informacionDelUsuario, cargandoInformacionDelUsuario } =
-    useObtenerInformacionDeUnUsuario(infUsuario?.idUsuario);
 
   const IconosPerfil = {
     Administrador: <ion-icon name="shield-checkmark"></ion-icon>,
@@ -33,8 +27,6 @@ export default function Perfil() {
     Error: <ion-icon name="close-outline"></ion-icon>,
   };
 
-  if (cargandoInformacionDelUsuario) return <Cargando />;
-
   const {
     idUsuario,
     Usuario,
@@ -43,7 +35,7 @@ export default function Perfil() {
     Telefono,
     FechaCreacionUsuario,
     HoraCreacionUsuario,
-  } = informacionDelUsuario[0] || [];
+  } = infUsuario;
 
   return (
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
@@ -61,8 +53,8 @@ export default function Perfil() {
             </button>
           </span>
           <img
-            src="Perfil.png"
-            alt="Logo del perfil"
+            src={`${HOST_IMAGENES}/${infUsuario.Foto}`}
+            alt={`${infUsuario.Usuario} Foto de Perfil`}
             className="Perfil__Contenido__Foto"
           />
           <h1 className="Perfil__Contenido__Usuario">{Usuario || "Usuario"}</h1>

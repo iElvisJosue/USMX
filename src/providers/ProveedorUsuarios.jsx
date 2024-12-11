@@ -12,7 +12,6 @@ import {
   SolicitudBuscarUsuariosParaAdministrarPorFiltro,
   SolicitudActualizarEstadoUsuario,
   SolicitudActualizarInformacionDeUnUsuario,
-  SolicitudObtenerInformacionDeUnUsuario,
   SolicitudCerrarSesionUsuario,
 } from "../api/authUsuarios";
 import { UsuariosContext } from "../context/UsuariosContext";
@@ -134,14 +133,6 @@ export const ProveedorUsuarios = ({ children }) => {
       return error;
     }
   };
-  const ObtenerInformacionDeUnUsuario = async (data) => {
-    try {
-      const res = await SolicitudObtenerInformacionDeUnUsuario(data);
-      return res;
-    } catch (error) {
-      return error;
-    }
-  };
   const CerrarSesionUsuario = async () => {
     try {
       await SolicitudCerrarSesionUsuario();
@@ -167,7 +158,6 @@ export const ProveedorUsuarios = ({ children }) => {
         BuscarUsuariosParaAdministrarPorFiltro,
         ActualizarEstadoUsuario,
         ActualizarInformacionDeUnUsuario,
-        ObtenerInformacionDeUnUsuario,
         CerrarSesionUsuario,
       }}
     >

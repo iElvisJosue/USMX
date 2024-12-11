@@ -8,12 +8,6 @@ export const SolicitudVerificarTokenUsuario = (data) =>
 // SOLICITUD PARA INICIAR SESION
 export const SolicitudIniciarSesionUsuario = (data) =>
   axios.post("/usuarios/IniciarSesionUsuario", data);
-// SOLICITUD PARA OBTENER LA INFORMACION DE UN USUARIO
-export const SolicitudObtenerInformacionDeUnUsuario = (data) =>
-  axios.post(
-    "/usuarios/ObtenerInformacionDeUnUsuario",
-    AgregarCookiePeticion(data)
-  );
 // SOLICITUD PARA ACTUALIZAR LA INFORMACION DE UN USUARIO
 export const SolicitudActualizarInformacionDeUnUsuario = (data) =>
   axios.put(
