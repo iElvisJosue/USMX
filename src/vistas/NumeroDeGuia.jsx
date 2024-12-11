@@ -1,6 +1,9 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useParams } from "react-router-dom";
 
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useSistema } from "../context/SistemaContext";
+
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../componentes/Cargando";
 
@@ -8,18 +11,19 @@ import Cargando from "../componentes/Cargando";
 import useBuscarPedidoPorNumeroDeGuia from "../hooks/useBuscarPedidoPorNumeroDeGuia";
 
 // IMPORTAMOS LAS AYUDAS
-import { HOST } from "../helpers/Urls";
+import { HOST, HOST_IMAGENES } from "../helpers/Urls";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/NumeroDeGuia.css";
 
 export default function NumeroDeGuia() {
+  const { cargandoInfSistema, infSistema } = useSistema();
   const { GuiaPedido } = useParams();
 
   const { informacionGuia, buscandoInformacionGuia } =
     useBuscarPedidoPorNumeroDeGuia(GuiaPedido);
 
-  if (buscandoInformacionGuia) return <Cargando />;
+  if (buscandoInformacionGuia || cargandoInfSistema) return <Cargando />;
 
   const BuscarNuevaGuia = () => {
     const InputGuia = document.querySelector(
@@ -57,8 +61,8 @@ export default function NumeroDeGuia() {
           <>
             <img
               className="NumeroDeGuia__Ticket--Logo"
-              src="/Logo-USMX.png"
-              alt="Logo USMX"
+              src={`${HOST_IMAGENES}/${infSistema.LogoSistema}`}
+              alt={infSistema.NombreSistema}
             />
             <p className="NumeroDeGuia__Ticket--Detalles">
               Número de guía <br /> <b>{GuiaPedido}</b>
