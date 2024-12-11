@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useRecolecciones } from "../../context/RecoleccionesContext";
-import { useGlobal } from "../../context/GlobalContext";
+import { useUsuarios } from "../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
@@ -13,7 +13,7 @@ export default function useBuscarRecoleccionesPorFiltro() {
     BuscarTodasLasRecoleccionesPorFiltro,
     BuscarRecoleccionesDeUnChoferPorFiltro,
   } = useRecolecciones();
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
 
   const [recolecciones, establecerRecolecciones] = useState([]);
   const [cargando, establecerCargando] = useState(true);
@@ -23,14 +23,14 @@ export default function useBuscarRecoleccionesPorFiltro() {
     const buscarRecoleccionesPorFiltro = async () => {
       try {
         const res =
-          usuario.Permisos === "Administrador"
+          infUsuario.Permisos === "Administrador"
             ? await BuscarTodasLasRecoleccionesPorFiltro({
                 CookieConToken: COOKIE_CON_TOKEN,
                 filtro,
               })
             : await BuscarRecoleccionesDeUnChoferPorFiltro({
                 CookieConToken: COOKIE_CON_TOKEN,
-                idUsuario: usuario.idUsuario,
+                idUsuario: infUsuario.idUsuario,
                 filtro,
               });
         if (res.response) {

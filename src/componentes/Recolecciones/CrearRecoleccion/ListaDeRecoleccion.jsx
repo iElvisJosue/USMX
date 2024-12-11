@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../../../context/GlobalContext";
+import { useUsuarios } from "../../../context/UsuariosContext";
 import { useRecolecciones } from "../../../context/RecoleccionesContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -27,7 +27,7 @@ export default function ListaDeRecoleccion({
   establecerRecoleccion,
 }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const { CrearRecoleccion } = useRecolecciones();
   const { handleSubmit } = useForm({
     criteriaMode: "all",
@@ -39,7 +39,7 @@ export default function ListaDeRecoleccion({
     establecerPeticionPendiente(true);
     let infRecoleccion = {
       CookieConToken: COOKIE_CON_TOKEN,
-      idUsuario: usuario.idUsuario,
+      idUsuario: infUsuario.idUsuario,
       recoleccion,
     };
     try {

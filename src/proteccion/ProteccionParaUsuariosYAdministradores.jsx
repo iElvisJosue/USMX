@@ -1,15 +1,15 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useGlobal } from "../context/GlobalContext";
+import { useUsuarios } from "../context/UsuariosContext";
 import Cargando from "../componentes/Cargando";
 
 export default function ProteccionParaUsuariosYAdministradores() {
-  const { cargando, usuario } = useGlobal();
+  const { cargandoInfUsuario, infUsuario } = useUsuarios();
 
-  if (cargando) return <Cargando />;
+  if (cargandoInfUsuario) return <Cargando />;
   if (
-    usuario.Permisos !== "Usuario" &&
-    usuario.Permisos !== "Administrador" &&
-    usuario.Permisos !== "Moderador"
+    infUsuario.Permisos !== "Usuario" &&
+    infUsuario.Permisos !== "Administrador" &&
+    infUsuario.Permisos !== "Moderador"
   )
     return <Navigate to="/Bienvenida" replace />;
 

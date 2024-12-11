@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../../../../context/GlobalContext";
+import { useUsuarios } from "../../../../context/UsuariosContext";
 import { useBodega } from "../../../../context/BodegaContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -28,7 +28,7 @@ export default function ListaEntradas({
   establecerEntrada,
 }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const { CrearEntrada } = useBodega();
   const { handleSubmit } = useForm({
     criteriaMode: "all",
@@ -39,7 +39,7 @@ export default function ListaEntradas({
     if (peticionPediente) return MensajePeticionPendiente();
     const infEntradas = {
       CookieConToken: COOKIE_CON_TOKEN,
-      idUsuario: usuario.idUsuario,
+      idUsuario: infUsuario.idUsuario,
       infEntrada: informacionDeLaEntrada,
       entrada,
     };

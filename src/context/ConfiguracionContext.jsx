@@ -17,7 +17,7 @@ import {
   SolicitudBuscarColoniasPorFiltro,
   SolicitudObtenerApiGoogleMapsAutoCompletado,
 } from "../api/authConfiguracion";
-import { useGlobal } from "./GlobalContext";
+import { useUsuarios } from "./UsuariosContext";
 
 export const ConfiguracionContext = createContext();
 
@@ -36,13 +36,13 @@ export const ProveedorConfiguracion = ({ children }) => {
   const [modoOscuro, establecerModoOscuro] = useState(false);
   const [obtenerIdioma, establecerObtenerIdioma] = useState(false);
   const [idioma, establecerIdioma] = useState("es");
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
 
   // OBTENER MODO OSCURO
   useEffect(() => {
     async function ObtenerModoOscuro() {
-      if (usuario) {
-        const res = await SolicitudObtenerModoOscuro(usuario.idUsuario);
+      if (infUsuario) {
+        const res = await SolicitudObtenerModoOscuro(infUsuario.idUsuario);
         if (!res.data) {
           return console.log("Error al obtener el modo oscuro");
         } else {
@@ -76,13 +76,13 @@ export const ProveedorConfiguracion = ({ children }) => {
       }
     }
     ObtenerModoOscuro();
-  }, [usuario, obtenerModoOscuro]);
+  }, [infUsuario, obtenerModoOscuro]);
 
   // OBTENER IDIOMA
   useEffect(() => {
     async function ObtenerIdioma() {
-      if (usuario) {
-        const res = await SolicitudObtenerIdioma(usuario.idUsuario);
+      if (infUsuario) {
+        const res = await SolicitudObtenerIdioma(infUsuario.idUsuario);
         if (!res.data) {
           return console.log("Error al obtener el idioma");
         } else {
@@ -92,7 +92,7 @@ export const ProveedorConfiguracion = ({ children }) => {
       }
     }
     ObtenerIdioma();
-  }, [usuario, obtenerIdioma]);
+  }, [infUsuario, obtenerIdioma]);
 
   const ActualizarModoOscuro = async (data) => {
     try {

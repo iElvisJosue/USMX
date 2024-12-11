@@ -1,6 +1,5 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
-import { Toaster } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useConfiguracion } from "../context/ConfiguracionContext";
@@ -75,7 +74,6 @@ export default function Movimientos() {
           <EditarMovimiento {...valoresParaLosComponentes} />
         )}
       </div>
-      <Toaster richColors position="top-right" />
     </main>
   );
 }

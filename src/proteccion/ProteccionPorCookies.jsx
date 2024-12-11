@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useGlobal } from "../context/GlobalContext";
+import { useUsuarios } from "../context/UsuariosContext";
 import Cargando from "../componentes/Cargando";
 
 export default function ProteccionPorCookies() {
-  const { cargando, tieneCookie } = useGlobal();
+  const { cargandoInfUsuario, tieneCookie } = useUsuarios();
 
-  if (cargando) return <Cargando />;
-  if (!cargando && !tieneCookie) return <Navigate to="/" replace />;
+  if (cargandoInfUsuario) return <Cargando />;
+  if (!cargandoInfUsuario && !tieneCookie) return <Navigate to="/" replace />;
 
   return <Outlet />;
 }

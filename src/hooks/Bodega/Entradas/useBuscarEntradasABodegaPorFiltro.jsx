@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useBodega } from "../../../context/BodegaContext";
-import { useGlobal } from "../../../context/GlobalContext";
+import { useUsuarios } from "../../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
@@ -13,7 +13,7 @@ export default function useBuscarEntradasABodegaPorFiltro() {
     BuscarTodasLasEntradasABodegaPorFiltro,
     BuscarTodasLasEntradasABodegaDeUnBodegueroPorFiltro,
   } = useBodega();
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
 
   const [entradas, establecerEntradas] = useState([]);
   const [cargando, establecerCargando] = useState(true);
@@ -23,14 +23,14 @@ export default function useBuscarEntradasABodegaPorFiltro() {
     const buscarEntradasPorFiltro = async () => {
       try {
         const res =
-          usuario.Permisos === "Administrador"
+          infUsuario.Permisos === "Administrador"
             ? await BuscarTodasLasEntradasABodegaPorFiltro({
                 CookieConToken: COOKIE_CON_TOKEN,
                 filtro,
               })
             : await BuscarTodasLasEntradasABodegaDeUnBodegueroPorFiltro({
                 CookieConToken: COOKIE_CON_TOKEN,
-                idUsuario: usuario.idUsuario,
+                idUsuario: infUsuario.idUsuario,
                 filtro,
               });
         if (res.response) {

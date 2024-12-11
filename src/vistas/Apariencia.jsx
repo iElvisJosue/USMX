@@ -3,8 +3,7 @@ import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useConfiguracion } from "../context/ConfiguracionContext";
-import { useGlobal } from "../context/GlobalContext";
-import { Toaster } from "sonner";
+import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
@@ -24,7 +23,7 @@ import "../estilos/vistas/Apariencia.css";
 export default function Apariencia() {
   // ESTADOS AQUI
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const {
     modoOscuro,
     obtenerModoOscuro,
@@ -43,7 +42,7 @@ export default function Apariencia() {
     try {
       const res = await ActualizarModoOscuro({
         CookieConToken: COOKIE_CON_TOKEN,
-        idUsuario: usuario.idUsuario,
+        idUsuario: infUsuario.idUsuario,
         ModoOscuro: ValorModoOscuro,
       });
       if (res.response) {
@@ -68,7 +67,7 @@ export default function Apariencia() {
     try {
       const res = await ActualizarIdioma({
         CookieConToken: COOKIE_CON_TOKEN,
-        idUsuario: usuario.idUsuario,
+        idUsuario: infUsuario.idUsuario,
         Idioma: valorIdioma,
       });
       if (res.response) {
@@ -172,7 +171,6 @@ export default function Apariencia() {
           </div>
         </section>
       </div>
-      <Toaster richColors position="top-right" />
     </main>
   );
 }

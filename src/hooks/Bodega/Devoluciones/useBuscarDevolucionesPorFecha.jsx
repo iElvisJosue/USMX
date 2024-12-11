@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS
 import { useBodega } from "../../../context/BodegaContext";
-import { useGlobal } from "../../../context/GlobalContext";
+import { useUsuarios } from "../../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -15,7 +15,7 @@ export default function useBuscarDevolucionesPorFecha() {
     BuscarTodasLasDevolucionesPorFecha,
     BuscarDevolucionesDeUnBodegueroPorFecha,
   } = useBodega();
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const [devolucionesPorFecha, establecerDevolucionesPorFecha] = useState([]);
   const [cargandoDevolucionesPorFecha, establecerCargandoDevolucionesPorFecha] =
     useState(true);
@@ -27,7 +27,7 @@ export default function useBuscarDevolucionesPorFecha() {
     async function obtenerDevolucionesPorFecha() {
       try {
         const res =
-          usuario.Permisos === "Administrador"
+          infUsuario.Permisos === "Administrador"
             ? await BuscarTodasLasDevolucionesPorFecha({
                 CookieConToken: COOKIE_CON_TOKEN,
                 primeraFecha,
@@ -35,7 +35,7 @@ export default function useBuscarDevolucionesPorFecha() {
               })
             : await BuscarDevolucionesDeUnBodegueroPorFecha({
                 CookieConToken: COOKIE_CON_TOKEN,
-                idUsuario: usuario.idUsuario,
+                idUsuario: infUsuario.idUsuario,
                 primeraFecha,
                 segundaFecha,
               });

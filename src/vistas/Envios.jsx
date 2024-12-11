@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useConfiguracion } from "../context/ConfiguracionContext";
@@ -192,7 +192,6 @@ export default function Envios() {
           />
         )}
       </form>
-      <Toaster richColors position="top-right" />
     </main>
   );
 }

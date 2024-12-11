@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS
 import { useBodega } from "../../../context/BodegaContext";
-import { useGlobal } from "../../../context/GlobalContext";
+import { useUsuarios } from "../../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -15,7 +15,7 @@ export default function useBuscarEntradasABodegaPorFecha() {
     BuscarTodasLasEntradasABodegaPorFecha,
     BuscarTodasLasEntradasABodegaDeUnBodegueroPorFecha,
   } = useBodega();
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const [entradasPorFecha, establecerEntradasPorFecha] = useState([]);
   const [cargandoEntradasPorFecha, establecerCargandoEntradasPorFecha] =
     useState(true);
@@ -27,7 +27,7 @@ export default function useBuscarEntradasABodegaPorFecha() {
     async function obtenerEntradasPorFecha() {
       try {
         const res =
-          usuario.Permisos === "Administrador"
+          infUsuario.Permisos === "Administrador"
             ? await BuscarTodasLasEntradasABodegaPorFecha({
                 CookieConToken: COOKIE_CON_TOKEN,
                 primeraFecha,
@@ -35,7 +35,7 @@ export default function useBuscarEntradasABodegaPorFecha() {
               })
             : await BuscarTodasLasEntradasABodegaDeUnBodegueroPorFecha({
                 CookieConToken: COOKIE_CON_TOKEN,
-                idUsuario: usuario.idUsuario,
+                idUsuario: infUsuario.idUsuario,
                 primeraFecha,
                 segundaFecha,
               });

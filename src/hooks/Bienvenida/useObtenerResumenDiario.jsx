@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../../context/GlobalContext";
+import { useSistema } from "../../context/SistemaContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { ObtenerFechaActual } from "../../helpers/FuncionesGenerales";
 
 export default function useObtenerResumenDiario() {
-  const { ObtenerResumenDiario } = useGlobal();
+  const { ObtenerResumenDiario } = useSistema();
   const [resumen, establecerResumen] = useState([]);
   const [cargandoResumen, establecerCargandoResumen] = useState(true);
   const [obtenerResumenNuevamente, establecerObtenerResumenNuevamente] =

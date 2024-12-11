@@ -1,15 +1,15 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useGlobal } from "../context/GlobalContext";
+import { useUsuarios } from "../context/UsuariosContext";
 import Cargando from "../componentes/Cargando";
 
 export default function ProteccionParaBienvenida() {
-  const { cargando, usuario } = useGlobal();
+  const { cargandoInfUsuario, infUsuario } = useUsuarios();
 
-  if (cargando) return <Cargando />;
-  if (usuario.Permisos === "Chofer") {
+  if (cargandoInfUsuario) return <Cargando />;
+  if (infUsuario.Permisos === "Chofer") {
     return <Navigate to="/Recolecciones" replace />;
   }
-  if (usuario.Permisos === "Bodega") {
+  if (infUsuario.Permisos === "Bodega") {
     return <Navigate to="/Bodega-Entradas" replace />;
   }
 

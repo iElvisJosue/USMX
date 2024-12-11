@@ -1,13 +1,10 @@
-// IMPORTAMOS LAS LIBRERÍAS A USAR
-import { Toaster } from "sonner";
-
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 import Cargando from "../componentes/Cargando";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../context/GlobalContext";
+import { useUsuarios } from "../context/UsuariosContext";
 import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
@@ -21,11 +18,11 @@ import { DICCIONARIO_PERFIL } from "../diccionario/Diccionario";
 import "../estilos/vistas/Perfil.css";
 
 export default function Perfil() {
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const { idioma } = useConfiguracion();
 
   const { informacionDelUsuario, cargandoInformacionDelUsuario } =
-    useObtenerInformacionDeUnUsuario(usuario?.idUsuario);
+    useObtenerInformacionDeUnUsuario(infUsuario?.idUsuario);
 
   const IconosPerfil = {
     Administrador: <ion-icon name="shield-checkmark"></ion-icon>,
@@ -117,7 +114,6 @@ export default function Perfil() {
           </span>
         </div>
       </div>
-      <Toaster richColors position="top-right" />
     </main>
   );
 }

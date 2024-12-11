@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../../../context/GlobalContext";
+import { useUsuarios } from "../../../context/UsuariosContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import { DICCIONARIO_REALIZAR_PEDIDO } from "../../../diccionario/Diccionario";
@@ -32,7 +32,7 @@ export default function RealizarPedido({ idioma }) {
   const [destinatario, establecerDestinatario] = useState(null);
   const [pedido, establecerPedido] = useState([]);
   const [detallesPedido, establecerDetallesPedido] = useState(null);
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
 
   useEffect(() => {
     establecerProgreso(LISTA_DE_PROGRESOS[paso]);
@@ -72,7 +72,7 @@ export default function RealizarPedido({ idioma }) {
     pedido,
     establecerPedido,
     establecerProgreso,
-    usuario,
+    infUsuario,
     FuncionParaRealizar: EstablecerInformacionDeLaAgencia,
     detallesPedido,
     establecerDetallesPedido,

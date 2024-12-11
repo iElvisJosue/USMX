@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../../../../context/GlobalContext";
+import { useUsuarios } from "../../../../context/UsuariosContext";
 import { useBodega } from "../../../../context/BodegaContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -27,7 +27,7 @@ export default function ListaMovimientosEnBodega({
   establecerMovimiento,
 }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const { CrearMovimientoEnBodega } = useBodega();
   const { handleSubmit } = useForm({
     criteriaMode: "all",
@@ -39,7 +39,7 @@ export default function ListaMovimientosEnBodega({
     establecerPeticionPendiente(true);
     let infMovimientos = {
       CookieConToken: COOKIE_CON_TOKEN,
-      idUsuario: usuario.idUsuario,
+      idUsuario: infUsuario.idUsuario,
       movimientobodega: movimiento,
     };
     try {

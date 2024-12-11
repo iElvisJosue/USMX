@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../context/GlobalContext";
+import { useUsuarios } from "../context/UsuariosContext";
 import { usePedidos } from "../context/PedidosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarUltimosDiezPedidos() {
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const {
     BuscarUltimosDiezPedidosGenerales,
     BuscarUltimosDiezPedidosDeUnUsuario,
@@ -21,10 +21,10 @@ export default function useBuscarUltimosDiezPedidos() {
     const obtenerUltimosDiezPedidos = async () => {
       try {
         const res =
-          usuario.Permisos === "Administrador"
+          infUsuario.Permisos === "Administrador"
             ? await BuscarUltimosDiezPedidosGenerales()
             : await BuscarUltimosDiezPedidosDeUnUsuario({
-                idUsuario: usuario.idUsuario,
+                idUsuario: infUsuario.idUsuario,
               });
         if (res.response) {
           const { status, data } = res.response;

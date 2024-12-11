@@ -49,7 +49,7 @@ export const DICCIONARIO_OPCIONES_DEL_MENU = {
 export const DICCIONARIO_BIENVENIDA = {
   es: {
     Bienvenido: "Bienvenido",
-    MensajeUno: "¡Bienvenido al sistema de USMX XPRESS!",
+    MensajeUno: "Bienvenido al sistema: ",
     MensajeDos:
       "Gestiona tus envíos de paquetería de manera rápida y sencilla.",
     MensajeTres: "¡Comienza ahora a rastrear y administrar tus paquetes!",
@@ -68,7 +68,7 @@ export const DICCIONARIO_BIENVENIDA = {
   },
   en: {
     Bienvenido: "Welcome",
-    MensajeUno: "Welcome to the USMX XPRESS shipping system!",
+    MensajeUno: "Welcome to the system: ",
     MensajeDos: "Manage your shipping orders in a quick and easy way.",
     MensajeTres: "Start now to track and manage your packages!",
     Perfil: "Profile",

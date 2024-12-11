@@ -5,7 +5,8 @@ import { useState } from "react";
 import MenuOpciones from "./MenuOpciones";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../../context/GlobalContext";
+import { useSistema } from "../../context/SistemaContext";
+import { useUsuarios } from "../../context/UsuariosContext";
 import { useConfiguracion } from "../../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
@@ -13,14 +14,17 @@ import useCerrarSesion from "../../hooks/useCerrarSesion";
 import OpcionesDelMenu from "../../helpers/OpcionesDelMenu";
 
 // IMPORTAMOS LAS AYUDAS
-import { HOST } from "../../helpers/Urls";
+import { HOST, HOST_IMAGENES } from "../../helpers/Urls";
+
+// IMPORTAMOS EL DICCIONARIO A USAR
 import { DICCIONARIO_BOTONES } from "../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Menu/Menu.css";
 
 export default function Menu() {
-  const { usuario } = useGlobal();
+  const { infSistema } = useSistema();
+  const { infUsuario } = useUsuarios();
   const { idioma } = useConfiguracion();
   const { CerrandoSesion } = useCerrarSesion();
   const { OpcionesMenu } = OpcionesDelMenu(idioma);
@@ -32,11 +36,11 @@ export default function Menu() {
     <aside className={ClaseMenu}>
       <span className="Menu__Encabezado">
         <img
-          src="Logo-USMX.png"
-          alt="Logo del menu"
+          src={`${HOST_IMAGENES}/${infSistema.LogoSistema}`}
+          alt={infSistema.NombreSistema}
           onClick={() => (window.location.href = `${HOST}Bienvenida`)}
         />
-        <a href={`${HOST}Bienvenida`}>USMX</a>
+        <a href={`${HOST}Bienvenida`}>{infSistema.NombreSistema}</a>
         <ion-icon
           name="close-circle"
           class="Menu__Encabezado--MostrarMenu"
@@ -44,7 +48,7 @@ export default function Menu() {
         ></ion-icon>
       </span>
       <div className="Menu__Cuerpo">
-        {OpcionesMenu[usuario.Permisos].map(
+        {OpcionesMenu[infUsuario.Permisos].map(
           ({ icono, nombre, url, opcionesSecundarias }, index) => (
             <MenuOpciones
               key={index}

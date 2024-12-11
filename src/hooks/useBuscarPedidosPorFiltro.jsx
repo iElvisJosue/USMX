@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { usePedidos } from "../context/PedidosContext";
-import { useGlobal } from "../context/GlobalContext";
+import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
@@ -11,7 +11,7 @@ import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 export default function useBuscarPedidosPorFiltro() {
   const { BuscarTodosLosPedidosPorFiltro, BuscarPedidosDeUnUsuarioPorFiltro } =
     usePedidos();
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
 
   const [pedidos, establecerPedidos] = useState([]);
   const [cargando, establecerCargando] = useState(true);
@@ -21,14 +21,14 @@ export default function useBuscarPedidosPorFiltro() {
     const buscarPedidosPorFiltro = async () => {
       try {
         const res =
-          usuario.Permisos === "Administrador"
+          infUsuario.Permisos === "Administrador"
             ? await BuscarTodosLosPedidosPorFiltro({
                 CookieConToken: COOKIE_CON_TOKEN,
                 filtro,
               })
             : await BuscarPedidosDeUnUsuarioPorFiltro({
                 CookieConToken: COOKIE_CON_TOKEN,
-                idUsuario: usuario.idUsuario,
+                idUsuario: infUsuario.idUsuario,
                 filtro,
               });
         if (res.response) {

@@ -2,16 +2,13 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useUsuarios } from "../context/UsuariosContext";
-import { useGlobal } from "../context/GlobalContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarUsuariosParaAdministrarPorFiltro() {
-  const { BuscarUsuariosParaAdministrarPorFiltro } = useUsuarios();
-  const { usuario } = useGlobal();
-
+  const { infUsuario, BuscarUsuariosParaAdministrarPorFiltro } = useUsuarios();
   const [usuarios, establecerUsuarios] = useState([]);
   const [cargandoUsuarios, establecerCargandoUsuarios] = useState(true);
   const [filtroUsuario, establecerFiltroUsuario] = useState("");
@@ -24,7 +21,7 @@ export default function useBuscarUsuariosParaAdministrarPorFiltro() {
         const res = await BuscarUsuariosParaAdministrarPorFiltro({
           CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroUsuario,
-          idUsuario: usuario.idUsuario,
+          idUsuario: infUsuario.idUsuario,
         });
         if (res.response) {
           const { status, data } = res.response;

@@ -1,5 +1,6 @@
 // IMPORTAMOS LOS COMPONENTES REACT
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "sonner";
 
 // IMPORTAMOS LOS PROVEEDORES
 import AppProviders from "./AppProviders.jsx";
@@ -35,6 +36,7 @@ import ProteccionParaBienvenida from "./proteccion/ProteccionParaBienvenida";
 export default function App() {
   return (
     <AppProviders>
+      <Toaster richColors position="top-right" />
       <BrowserRouter>
         <Routes>
           {/* RUTAS SIN PROTECCIÓN */}

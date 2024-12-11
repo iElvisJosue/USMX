@@ -6,7 +6,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../../../context/GlobalContext";
+import { useUsuarios } from "../../../context/UsuariosContext";
 import { usePedidos } from "../../../context/PedidosContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
@@ -80,7 +80,7 @@ export default function InformacionDelPedido({
   }, [cargandoCargas]);
 
   // OBTENEMOS LA INFORMACIÓN DEL USUARIO
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   // OBTENEMOS LA FUNCIÓN PARA GUARDAR TODA LA INFORMACIÓN
   const { GuardarTodaLaInformacion } = usePedidos();
 
@@ -145,7 +145,7 @@ export default function InformacionDelPedido({
     for (let i = 1; i <= cantidadDeProductos; i++) {
       const nuevoProducto = {
         ...data, // Copia del objeto data
-        UsuarioResponsable: usuario?.Usuario,
+        UsuarioResponsable: infUsuario?.Usuario,
         idProducto: CalcularIdUnico(), // Usar nuevoPedido para mantener el id correcto
         CostoEnvio: CalcularCostoDelEnvio(
           Number(data.Peso),
@@ -274,8 +274,8 @@ export default function InformacionDelPedido({
       CookieConToken: COOKIE_CON_TOKEN,
       remitente,
       destinatario,
-      idUsuario: usuario.idUsuario,
-      NombreUsuario: usuario.Usuario,
+      idUsuario: infUsuario.idUsuario,
+      NombreUsuario: infUsuario.Usuario,
       idAgencia: agencia.idAgencia,
       NombreAgencia: agencia.NombreAgencia,
       pedido,

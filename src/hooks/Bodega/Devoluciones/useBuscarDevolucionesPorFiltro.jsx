@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useBodega } from "../../../context/BodegaContext";
-import { useGlobal } from "../../../context/GlobalContext";
+import { useUsuarios } from "../../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
@@ -13,7 +13,7 @@ export default function useBuscarDevolucionesPorFiltro() {
     BuscarTodasLasDevolucionesPorFiltro,
     BuscarDevolucionesDeUnBodegueroPorFiltro,
   } = useBodega();
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
 
   const [devoluciones, establecerDevoluciones] = useState([]);
   const [cargando, establecerCargando] = useState(true);
@@ -23,14 +23,14 @@ export default function useBuscarDevolucionesPorFiltro() {
     const buscarDevolucionesPorFiltro = async () => {
       try {
         const res =
-          usuario.Permisos === "Administrador"
+          infUsuario.Permisos === "Administrador"
             ? await BuscarTodasLasDevolucionesPorFiltro({
                 CookieConToken: COOKIE_CON_TOKEN,
                 filtro,
               })
             : await BuscarDevolucionesDeUnBodegueroPorFiltro({
                 CookieConToken: COOKIE_CON_TOKEN,
-                idUsuario: usuario.idUsuario,
+                idUsuario: infUsuario.idUsuario,
                 filtro,
               });
         if (res.response) {

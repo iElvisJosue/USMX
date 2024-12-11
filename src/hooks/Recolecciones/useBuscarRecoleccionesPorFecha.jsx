@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS
 import { useRecolecciones } from "../../context/RecoleccionesContext";
-import { useGlobal } from "../../context/GlobalContext";
+import { useUsuarios } from "../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
@@ -15,7 +15,7 @@ export default function useBuscarLasRecoleccionesPorFecha() {
     BuscarTodasLasRecoleccionesPorFecha,
     BuscarRecoleccionesDeUnChoferPorFecha,
   } = useRecolecciones();
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const [recoleccionesPorFecha, establecerRecoleccionesPorFecha] = useState([]);
   const [
     cargandoRecoleccionesPorFecha,
@@ -29,7 +29,7 @@ export default function useBuscarLasRecoleccionesPorFecha() {
     async function obtenerRecoleccionesPorFecha() {
       try {
         const res =
-          usuario.Permisos === "Administrador"
+          infUsuario.Permisos === "Administrador"
             ? await BuscarTodasLasRecoleccionesPorFecha({
                 CookieConToken: COOKIE_CON_TOKEN,
                 primeraFecha,
@@ -37,7 +37,7 @@ export default function useBuscarLasRecoleccionesPorFecha() {
               })
             : await BuscarRecoleccionesDeUnChoferPorFecha({
                 CookieConToken: COOKIE_CON_TOKEN,
-                idUsuario: usuario.idUsuario,
+                idUsuario: infUsuario.idUsuario,
                 primeraFecha,
                 segundaFecha,
               });

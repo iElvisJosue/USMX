@@ -1,13 +1,11 @@
-// IMPORTAMOS LAS LIBRERÍAS A USAR
-import { Toaster } from "sonner";
-
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 import Cargando from "../componentes/Cargando";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useGlobal } from "../context/GlobalContext";
+import { useSistema } from "../context/SistemaContext";
+import { useUsuarios } from "../context/UsuariosContext";
 import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
@@ -21,14 +19,15 @@ import {
 } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
-import { HOST } from "../helpers/Urls";
+import { HOST, HOST_IMAGENES } from "../helpers/Urls";
 import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/Bienvenida.css";
 
 export default function Bienvenida() {
-  const { usuario } = useGlobal();
+  const { infSistema } = useSistema();
+  const { infUsuario } = useUsuarios();
   const { idioma } = useConfiguracion();
   const {
     cargandoUltimosDiezPedidos,
@@ -70,8 +69,14 @@ export default function Bienvenida() {
       />
       <div className="Bienvenida">
         <section className="Bienvenida__Mensaje">
-          <img src="Logo-USMX.png" alt="Logo USMX" />
-          <p>{DICCIONARIO_BIENVENIDA[idioma].MensajeUno}</p>
+          <img
+            src={`${HOST_IMAGENES}/${infSistema.LogoSistema}`}
+            alt={infSistema.NombreSistema}
+          />
+          <p>
+            ¡{DICCIONARIO_BIENVENIDA[idioma].MensajeUno}
+            {infSistema.NombreSistema}!
+          </p>
           <p>{DICCIONARIO_BIENVENIDA[idioma].MensajeDos}</p>
           <p>{DICCIONARIO_BIENVENIDA[idioma].MensajeTres}</p>
         </section>
@@ -86,10 +91,10 @@ export default function Bienvenida() {
           <picture className="Bienvenida__Perfil--Icono">
             <img src="/Perfil.png" alt="Icono perfil" />
           </picture>
-          <p className="Bienvenida__Perfil--Nombre">{usuario.Usuario}</p>
-          {IconosPerfil[usuario.Permisos]}
+          <p className="Bienvenida__Perfil--Nombre">{infUsuario.Usuario}</p>
+          {IconosPerfil[infUsuario.Permisos]}
           <small className="Bienvenida__Perfil--Permisos">
-            {usuario.Permisos}
+            {infUsuario.Permisos}
           </small>
         </section>
         <h1 className="Bienvenida__Titulo">
@@ -203,7 +208,6 @@ export default function Bienvenida() {
           )}
         </section>
       </div>
-      <Toaster richColors position="top-right" />
     </main>
   );
 }

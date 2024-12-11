@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS
 import { usePedidos } from "../context/PedidosContext";
-import { useGlobal } from "../context/GlobalContext";
+import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
@@ -13,7 +13,7 @@ import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
 export default function useBuscarPedidosPorFecha() {
   const { BuscarTodosLosPedidosPorFecha, BuscarPedidosDeUnUsuarioPorFecha } =
     usePedidos();
-  const { usuario } = useGlobal();
+  const { infUsuario } = useUsuarios();
   const [pedidosPorFecha, establecerPedidosPorFecha] = useState([]);
   const [cargandoPedidosPorFecha, establecerCargandoPedidosPorFecha] =
     useState(true);
@@ -25,7 +25,7 @@ export default function useBuscarPedidosPorFecha() {
     async function obtenerPedidosPorFecha() {
       try {
         const res =
-          usuario.Permisos === "Administrador"
+          infUsuario.Permisos === "Administrador"
             ? await BuscarTodosLosPedidosPorFecha({
                 CookieConToken: COOKIE_CON_TOKEN,
                 primeraFecha,
@@ -33,7 +33,7 @@ export default function useBuscarPedidosPorFecha() {
               })
             : await BuscarPedidosDeUnUsuarioPorFecha({
                 CookieConToken: COOKIE_CON_TOKEN,
-                idUsuario: usuario.idUsuario,
+                idUsuario: infUsuario.idUsuario,
                 primeraFecha,
                 segundaFecha,
               });

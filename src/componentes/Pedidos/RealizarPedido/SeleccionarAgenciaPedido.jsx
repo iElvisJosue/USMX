@@ -27,7 +27,7 @@ import "../../../estilos/componentes/Pedidos/RealizarPedido/SeleccionarAgenciaPe
 export default function SeleccionarAgenciaPedido({
   idioma,
   establecerAgencia,
-  usuario,
+  infUsuario,
   FuncionParaRealizar,
   establecerPaso,
 }) {
@@ -46,7 +46,7 @@ export default function SeleccionarAgenciaPedido({
   } = usePaginacion();
 
   useEffect(() => {
-    if (usuario.Permisos != "Administrador" && agencias.length === 1) {
+    if (infUsuario.Permisos != "Administrador" && agencias.length === 1) {
       establecerAgencia(agencias[0]);
       establecerPaso(1);
       toast.success(
@@ -62,7 +62,7 @@ export default function SeleccionarAgenciaPedido({
       );
       establecerCantidadDePaginas(cantidadDePaginasEnAgencias);
     }
-  }, [agencias, usuario.Permisos]);
+  }, [agencias, infUsuario.Permisos]);
 
   const obtenerAgencias = (event) => {
     const valorIntroducido = event.target.value;
@@ -82,7 +82,7 @@ export default function SeleccionarAgenciaPedido({
       <h1 className="SeleccionarAgenciaPedido__Titulo">
         {DICCIONARIO_SELECCIONAR_AGENCIA_PEDIDO[idioma].SeleccionaUnaAgencia}
       </h1>
-      {usuario.Permisos === "Administrador" && (
+      {infUsuario.Permisos === "Administrador" && (
         <span className="SeleccionarAgenciaPedido__Buscar">
           <input
             type="text"
@@ -96,7 +96,7 @@ export default function SeleccionarAgenciaPedido({
           </span>
         </span>
       )}
-      {usuario.Permisos === "Administrador" &&
+      {infUsuario.Permisos === "Administrador" &&
         (agencias.length > 0 ? (
           <>
             <small className="SeleccionarAgenciaPedido__TextoResultados">
@@ -160,7 +160,7 @@ export default function SeleccionarAgenciaPedido({
             }
           />
         ))}
-      {usuario.Permisos !== "Administrador" && (
+      {infUsuario.Permisos !== "Administrador" && (
         <>
           {agencias.length === 0 && (
             <MensajeGeneral
