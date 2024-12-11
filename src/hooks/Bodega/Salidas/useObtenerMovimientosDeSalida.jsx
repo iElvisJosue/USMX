@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useBodega } from "../../../context/BodegaContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 
 export default function useObtenerMovimientosDeSalida() {
@@ -14,10 +13,7 @@ export default function useObtenerMovimientosDeSalida() {
   useEffect(() => {
     const obtenerMovsDeSalida = async () => {
       try {
-        const res = await ObtenerMovimientosDeSalida({
-          CookieConToken: COOKIE_CON_TOKEN,
-        });
-
+        const res = await ObtenerMovimientosDeSalida();
         if (res.response) {
           const { status, data } = res.response;
           ManejarMensajesDeRespuesta({ status, data });

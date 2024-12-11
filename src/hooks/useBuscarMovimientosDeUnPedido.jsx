@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { usePedidos } from "../context/PedidosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarMovimientosDeUnPedido(GuiaPedido) {
@@ -16,7 +15,6 @@ export default function useBuscarMovimientosDeUnPedido(GuiaPedido) {
     const obtenerMovimientos = async () => {
       try {
         const res = await BuscarMovimientosDeUnPedido({
-          CookieConToken: COOKIE_CON_TOKEN,
           GuiaPedido,
         });
         if (res.response) {

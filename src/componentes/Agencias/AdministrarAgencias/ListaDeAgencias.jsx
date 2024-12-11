@@ -16,7 +16,6 @@ import useBuscarAgenciasPorFiltro from "../../../hooks/useBuscarAgenciasPorFiltr
 import usePaginacion from "../../../hooks/usePaginacion";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import {
   ObtenerFechaActual,
@@ -91,7 +90,6 @@ export default function ListaDeAgencias({
       const res = await ActualizarEstadoAgencia({
         idAgencia: idAgencia,
         StatusAgencia: EstadoAgenciaParaBD,
-        CookieConToken: COOKIE_CON_TOKEN,
       });
       if (res.response) {
         const { status, data } = res.response;
@@ -121,7 +119,6 @@ export default function ListaDeAgencias({
     if (peticionPediente) return MensajePeticionPendiente();
     establecerPeticionPendiente(true);
     const solicitudPromise = CrearYDescargarExcelDeAgencias({
-      CookieConToken: COOKIE_CON_TOKEN,
       Agencias: agencias,
     });
     toast.promise(solicitudPromise, {

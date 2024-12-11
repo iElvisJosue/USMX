@@ -15,7 +15,6 @@ import GrupoDeBotonesInferior from "../../../../componentes/GrupoDeBotonesInferi
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS A USAR
@@ -38,7 +37,6 @@ export default function ListaSalidas({
     // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
     if (peticionPediente) return MensajePeticionPendiente();
     const infSalidas = {
-      CookieConToken: COOKIE_CON_TOKEN,
       idUsuario: infUsuario.idUsuario,
       infSalida: informacionDeLaSalida,
       salida,

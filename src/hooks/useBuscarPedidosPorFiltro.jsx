@@ -5,7 +5,6 @@ import { usePedidos } from "../context/PedidosContext";
 import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarPedidosPorFiltro() {
@@ -23,11 +22,9 @@ export default function useBuscarPedidosPorFiltro() {
         const res =
           infUsuario.Permisos === "Administrador"
             ? await BuscarTodosLosPedidosPorFiltro({
-                CookieConToken: COOKIE_CON_TOKEN,
                 filtro,
               })
             : await BuscarPedidosDeUnUsuarioPorFiltro({
-                CookieConToken: COOKIE_CON_TOKEN,
                 idUsuario: infUsuario.idUsuario,
                 filtro,
               });

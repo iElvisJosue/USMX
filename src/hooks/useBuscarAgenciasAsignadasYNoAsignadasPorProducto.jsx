@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useProductos } from "../context/ProductosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarAgenciasAsignadasYNoAsignadasPorProducto(
@@ -35,11 +34,9 @@ export default function useBuscarAgenciasAsignadasYNoAsignadasPorProducto(
     const obtenerAgenciasAsignadasYNoAsignadas = async () => {
       try {
         const resAsignadas = await BuscarAgenciasQueTieneUnProducto({
-          CookieConToken: COOKIE_CON_TOKEN,
           idProducto,
         });
         const resNoAsignadas = await BuscarAgenciasQueNoTieneUnProducto({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroAgenciasAsignadasYNoAsignadasDelProducto,
           idProducto,
         });

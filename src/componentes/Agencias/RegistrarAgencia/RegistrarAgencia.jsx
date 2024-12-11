@@ -13,7 +13,6 @@ import GoogleAPI from "../../GoogleAPI";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
   REGEX_SOLO_NUMEROS,
@@ -69,7 +68,6 @@ export default function RegistrarAgencia({ idioma }) {
       info.CiudadAgencia = detallesDeLaDireccion.CIUDAD;
       info.CodigoPostalAgencia = detallesDeLaDireccion.CODIGO_POSTAL;
       info.DireccionAgencia = detallesDeLaDireccion.DIRECCION;
-      info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarAgencia(info);
       if (res.response) {
         const { status, data } = res.response;

@@ -5,7 +5,6 @@ import { useRecolecciones } from "../../context/RecoleccionesContext";
 import { useUsuarios } from "../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 
 export default function useBuscarRecoleccionesPorFiltro() {
@@ -25,11 +24,9 @@ export default function useBuscarRecoleccionesPorFiltro() {
         const res =
           infUsuario.Permisos === "Administrador"
             ? await BuscarTodasLasRecoleccionesPorFiltro({
-                CookieConToken: COOKIE_CON_TOKEN,
                 filtro,
               })
             : await BuscarRecoleccionesDeUnChoferPorFiltro({
-                CookieConToken: COOKIE_CON_TOKEN,
                 idUsuario: infUsuario.idUsuario,
                 filtro,
               });

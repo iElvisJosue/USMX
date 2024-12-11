@@ -24,7 +24,6 @@ import usePaginacion from "../../../hooks/usePaginacion";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
@@ -98,7 +97,6 @@ export default function AdministrarAgenciasDelProducto({
     establecerPeticionPendiente(true);
     try {
       const res = await DesasignarAgenciaAlProducto({
-        CookieConToken: COOKIE_CON_TOKEN,
         idUnionAgenciasProductos,
       });
       if (res.response) {

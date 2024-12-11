@@ -8,7 +8,6 @@ import { ErrorMessage } from "@hookform/error-message";
 import { useOperaciones } from "../../context/OperacionesContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../helpers/Regexs";
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { MensajePeticionPendiente } from "../../helpers/FuncionesGenerales";
@@ -47,7 +46,6 @@ export default function RegistrarMovimiento({
     if (peticionPediente) return MensajePeticionPendiente();
     establecerPeticionPendiente(true);
     try {
-      info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarMovimiento(info);
       if (res.response) {
         const { status, data } = res.response;

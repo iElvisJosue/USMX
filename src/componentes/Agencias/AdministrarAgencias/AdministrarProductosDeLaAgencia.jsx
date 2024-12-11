@@ -12,7 +12,6 @@ import { useAgencias } from "../../../context/AgenciasContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -102,7 +101,6 @@ export default function AdministrarProductosDeLaAgencia({
     establecerPeticionPendiente(true);
     try {
       const res = await DesasignarProductoAgencia({
-        CookieConToken: COOKIE_CON_TOKEN,
         idUnionAgenciasProductos,
       });
       if (res.response) {

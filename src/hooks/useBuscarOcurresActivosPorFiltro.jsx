@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useOcurre } from "../context/OcurreContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarOcurresActivosPorFiltro() {
@@ -23,7 +22,6 @@ export default function useBuscarOcurresActivosPorFiltro() {
     const obtenerOcurresActivos = async () => {
       try {
         const res = await BuscarOcurresActivosPorFiltro({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroOcurresActivos,
         });
         if (res.response) {

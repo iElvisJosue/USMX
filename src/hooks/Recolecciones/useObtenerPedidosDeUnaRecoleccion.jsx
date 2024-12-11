@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useRecolecciones } from "../../context/RecoleccionesContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 
 export default function useObtenerPedidosDeUnaRecoleccion(idRecoleccion) {
@@ -16,7 +15,6 @@ export default function useObtenerPedidosDeUnaRecoleccion(idRecoleccion) {
     const buscarPedidosDeUnaRecoleccion = async () => {
       try {
         const res = await ObtenerPedidosDeUnaRecoleccion({
-          CookieConToken: COOKIE_CON_TOKEN,
           idRecoleccion,
         });
         if (res.response) {

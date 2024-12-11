@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useAgencias } from "../context/AgenciasContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarProductosAsignadosYNoAsignadosPorAgencia(
@@ -36,11 +35,9 @@ export default function useBuscarProductosAsignadosYNoAsignadosPorAgencia(
     const obtenerProductosAsignadosYNoAsignadosPorAgencia = async () => {
       try {
         const resAsignados = await BuscarProductosQueTieneLaAgencia({
-          CookieConToken: COOKIE_CON_TOKEN,
           idAgencia,
         });
         const resNoAsignadas = await BuscarProductosQueNoTieneLaAgencia({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroProductosAsignadosYNoAsignadosPorAgencia,
           idAgencia,
         });

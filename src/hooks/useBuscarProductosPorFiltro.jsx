@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useProductos } from "../context/ProductosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarProductosPorFiltro() {
@@ -20,7 +19,6 @@ export default function useBuscarProductosPorFiltro() {
     const obtenerProductos = async () => {
       try {
         const res = await BuscarProductosPorFiltro({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroProductos,
         });
         if (res.response) {

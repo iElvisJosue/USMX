@@ -18,7 +18,6 @@ import GrupoDeBotonesInferior from "../../../GrupoDeBotonesInferior";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../../helpers/FuncionesGenerales";
 import {
   ESTILOS_INFO,
@@ -70,7 +69,6 @@ export default function FormularioBusquedaEntradas({
     try {
       info.idMovimientoEntrada = informacionDeLaEntrada.idMovimientoEntrada;
       info.GuiaPedido = valorInput;
-      info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await ObtenerInformacionDeGuiaParaEntradas(info);
       if (res.response) {
         const { status, data } = res.response;

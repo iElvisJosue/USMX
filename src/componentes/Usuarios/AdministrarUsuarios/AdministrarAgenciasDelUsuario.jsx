@@ -20,7 +20,6 @@ import {
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS HOOKS A USAR
@@ -94,7 +93,6 @@ export default function AdministrarAgenciasDelUsuario({
     establecerPeticionPendiente(true);
     try {
       const res = await DesasignarAgenciaAlUsuario({
-        CookieConToken: COOKIE_CON_TOKEN,
         idUnionAgencia,
       });
       if (res.response) {

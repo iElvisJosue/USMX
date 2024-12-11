@@ -9,7 +9,6 @@ import { DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS } from "../../../diccionario/D
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
@@ -51,7 +50,6 @@ export default function ModalConfirmacionProductos({
       const res = await ActualizarEstadoDeUnProducto({
         idProducto: infProducto.idProducto,
         StatusProducto: EstadoProductoParaBD,
-        CookieConToken: COOKIE_CON_TOKEN,
       });
       if (res.response) {
         const { status, data } = res.response;

@@ -7,7 +7,6 @@ import { useOperaciones } from "../../context/OperacionesContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -50,7 +49,6 @@ export default function ModalConfirmacionMovimientos({
     establecerPeticionPendiente(true);
     try {
       const res = await ActualizarEstadoDeUnMovimiento({
-        CookieConToken: COOKIE_CON_TOKEN,
         idMovimiento: informacionDelMovimiento.idMovimiento,
         ActivoMovimiento: EstadoMovimientoParaBD,
       });

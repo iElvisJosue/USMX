@@ -17,7 +17,6 @@ import MensajeGeneral from "../componentes/MensajeGeneral";
 import useObtenerTiposDeCarga from "../hooks/useObtenerTiposDeCarga";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
@@ -64,7 +63,6 @@ export default function Cargas() {
     if (peticionPediente) return MensajePeticionPendiente();
     establecerPeticionPendiente(true);
     try {
-      info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarTipoDeCarga(info);
       if (res.response) {
         const { status, data } = res.response;
@@ -96,7 +94,6 @@ export default function Cargas() {
     establecerPeticionPendiente(true);
     try {
       const res = await EliminarTipoDeCarga({
-        CookieConToken: COOKIE_CON_TOKEN,
         idCarga,
       });
       if (res.response) {

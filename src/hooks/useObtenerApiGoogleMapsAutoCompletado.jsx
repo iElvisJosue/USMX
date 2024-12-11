@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerApiGoogleMapsAutoCompletado() {
@@ -15,9 +14,7 @@ export default function useObtenerApiGoogleMapsAutoCompletado() {
   useEffect(() => {
     const obtenerApiGoogleMapsAutoCompletado = async () => {
       try {
-        const res = await ObtenerApiGoogleMapsAutoCompletado({
-          CookieConToken: COOKIE_CON_TOKEN,
-        });
+        const res = await ObtenerApiGoogleMapsAutoCompletado();
         if (res.response) {
           const { status, data } = res.response;
           ManejarMensajesDeRespuesta({ status, data });

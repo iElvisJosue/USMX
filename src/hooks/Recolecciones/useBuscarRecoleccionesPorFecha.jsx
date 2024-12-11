@@ -7,7 +7,6 @@ import { useUsuarios } from "../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 import { ObtenerFechaActual } from "../../helpers/FuncionesGenerales";
 
 export default function useBuscarLasRecoleccionesPorFecha() {
@@ -31,12 +30,10 @@ export default function useBuscarLasRecoleccionesPorFecha() {
         const res =
           infUsuario.Permisos === "Administrador"
             ? await BuscarTodasLasRecoleccionesPorFecha({
-                CookieConToken: COOKIE_CON_TOKEN,
                 primeraFecha,
                 segundaFecha,
               })
             : await BuscarRecoleccionesDeUnChoferPorFecha({
-                CookieConToken: COOKIE_CON_TOKEN,
                 idUsuario: infUsuario.idUsuario,
                 primeraFecha,
                 segundaFecha,

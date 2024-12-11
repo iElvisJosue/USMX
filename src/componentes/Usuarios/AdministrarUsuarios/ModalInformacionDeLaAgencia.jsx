@@ -12,7 +12,6 @@ import {
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
@@ -35,7 +34,6 @@ export default function ModalInformacionDeLaAgencia({
     establecerPeticionPendiente(true);
     try {
       const res = await AsignarAgenciaAlUsuario({
-        CookieConToken: COOKIE_CON_TOKEN,
         idUsuario: informacionDelUsuario.idUsuario,
         idAgencia,
       });

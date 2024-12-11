@@ -73,7 +73,7 @@ export default function SeleccionarDestinatarioPedido({
     establecerDestinatario(destinatario);
     establecerPaso(paso + 1);
     toast.success(
-      `¡El destinatario ${destinatario.NombreDestinatario.toUpperCase()} ${destinatario.ApellidoPaternoDestinatario.toUpperCase()} ${destinatario.ApellidoMaternoDestinatario.toUpperCase()} ha sido seleccionado con éxito!`,
+      `¡El destinatario ${destinatario.NombreDestinatario.toUpperCase()} ${destinatario.ApellidosDestinatario.toUpperCase()} ha sido seleccionado con éxito!`,
       {
         style: ESTILOS_SUCCESS,
       }

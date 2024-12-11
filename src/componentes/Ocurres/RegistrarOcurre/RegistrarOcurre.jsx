@@ -21,7 +21,6 @@ import {
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
   REGEX_SOLO_NUMEROS,
@@ -69,7 +68,6 @@ export default function RegistrarOcurre({ idioma }) {
       info.CiudadOcurre = detallesDeLaDireccion.CIUDAD;
       info.CodigoPostalOcurre = detallesDeLaDireccion.CODIGO_POSTAL;
       info.DireccionOcurre = detallesDeLaDireccion.DIRECCION;
-      info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarOcurre(info);
       if (res.response) {
         const { status, data } = res.response;

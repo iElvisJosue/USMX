@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerTiposDeEnvio() {
@@ -17,9 +16,7 @@ export default function useObtenerTiposDeEnvio() {
   useEffect(() => {
     const obtenerTiposDeEnvio = async () => {
       try {
-        const res = await ObtenerTiposDeEnvio({
-          CookieConToken: COOKIE_CON_TOKEN,
-        });
+        const res = await ObtenerTiposDeEnvio();
         if (res.response) {
           const { status, data } = res.response;
           ManejarMensajesDeRespuesta({ status, data });

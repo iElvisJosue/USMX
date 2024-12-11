@@ -5,7 +5,6 @@ import { useBodega } from "../../../context/BodegaContext";
 import { useUsuarios } from "../../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 
 export default function useBuscarSalidasABodegaPorFiltro() {
@@ -25,11 +24,9 @@ export default function useBuscarSalidasABodegaPorFiltro() {
         const res =
           infUsuario.Permisos === "Administrador"
             ? await BuscarTodasLasSalidasABodegaPorFiltro({
-                CookieConToken: COOKIE_CON_TOKEN,
                 filtro,
               })
             : await BuscarTodasLasSalidasABodegaDeUnBodegueroPorFiltro({
-                CookieConToken: COOKIE_CON_TOKEN,
                 idUsuario: infUsuario.idUsuario,
                 filtro,
               });

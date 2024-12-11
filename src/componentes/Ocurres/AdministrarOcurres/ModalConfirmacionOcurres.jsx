@@ -10,7 +10,6 @@ import { DICCIONARIO_MODAL_CONFIRMACION_OCURRE } from "../../../diccionario/Dicc
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
@@ -52,7 +51,6 @@ export default function ModalConfirmacionOcurres({
       const res = await ActualizarEstadoOcurre({
         idOcurre: infOcurre.idOcurre,
         StatusOcurre: EstadoOcurreBD,
-        CookieConToken: COOKIE_CON_TOKEN,
       });
       if (res.response) {
         const { status, data } = res.response;

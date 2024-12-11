@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerInformacionDeUnUsuario(idUsuario) {
@@ -20,7 +19,6 @@ export default function useObtenerInformacionDeUnUsuario(idUsuario) {
       try {
         const res = await ObtenerInformacionDeUnUsuario({
           idUsuario,
-          CookieConToken: COOKIE_CON_TOKEN,
         });
         if (res.response) {
           const { status, data } = res.response;

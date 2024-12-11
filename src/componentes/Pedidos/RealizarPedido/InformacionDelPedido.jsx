@@ -35,7 +35,6 @@ import {
   CalcularIdUnico,
 } from "../../../helpers/RealizarPedido/Calculos";
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
   REGEX_SOLO_NUMEROS,
@@ -271,7 +270,6 @@ export default function InformacionDelPedido({
     // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
     if (peticionPediente) return MensajePeticionPendiente();
     const TodaLaInformacion = {
-      CookieConToken: COOKIE_CON_TOKEN,
       remitente,
       destinatario,
       idUsuario: infUsuario.idUsuario,

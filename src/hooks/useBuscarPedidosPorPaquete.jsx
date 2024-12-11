@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { usePedidos } from "../context/PedidosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarPedidosPorPaquete({
@@ -20,7 +19,6 @@ export default function useBuscarPedidosPorPaquete({
     const obtenerPaquete = async () => {
       try {
         const res = await BuscarPedidosPorPaquete({
-          CookieConToken: COOKIE_CON_TOKEN,
           CodigoRastreo,
           GuiaPedido,
         });

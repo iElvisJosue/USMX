@@ -17,7 +17,6 @@ import MensajeGeneral from "../componentes/MensajeGeneral";
 import useObtenerTiposDeEnvio from "../hooks/useObtenerTiposDeEnvio";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../helpers/Regexs";
 import { ESTILOS_ERROR } from "../helpers/SonnerEstilos";
@@ -61,7 +60,6 @@ export default function Envios() {
     if (peticionPediente) return MensajePeticionPendiente();
     establecerPeticionPendiente(true);
     try {
-      info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarTipoDeEnvio(info);
       if (res.response) {
         const { status, data } = res.response;
@@ -93,7 +91,6 @@ export default function Envios() {
     establecerPeticionPendiente(true);
     try {
       const res = await EliminarTipoDeEnvio({
-        CookieConToken: COOKIE_CON_TOKEN,
         idTipoEnvio,
       });
       if (res.response) {

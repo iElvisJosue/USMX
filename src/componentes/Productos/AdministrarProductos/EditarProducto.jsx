@@ -17,7 +17,6 @@ import {
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
   REGEX_SOLO_NUMEROS,
@@ -68,7 +67,6 @@ export default function EditarProducto({
     if (peticionPediente) return MensajePeticionPendiente();
     establecerPeticionPendiente(true);
     try {
-      info.CookieConToken = COOKIE_CON_TOKEN;
       info.idProducto = informacionDelProducto?.idProducto;
       const res = await ActualizarInformacionDeUnProducto(info);
       if (res.response) {

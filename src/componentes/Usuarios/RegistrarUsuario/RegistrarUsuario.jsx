@@ -18,7 +18,6 @@ import {
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { ESTILOS_WARNING } from "../../../helpers/SonnerEstilos";
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../../helpers/Regexs";
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
@@ -55,7 +54,6 @@ export default function InformacionDelUsuario({ idioma }) {
     }
     establecerPeticionPendiente(true);
     try {
-      info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarUsuario(info);
       if (res.response) {
         const { status, data } = res.response;

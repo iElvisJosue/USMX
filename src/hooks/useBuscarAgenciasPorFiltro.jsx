@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useAgencias } from "../context/AgenciasContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarAgenciasPorFiltro() {
@@ -20,7 +19,6 @@ export default function useBuscarAgenciasPorFiltro() {
     const obtenerAgencias = async () => {
       try {
         const res = await BuscarAgenciasPorFiltro({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroAgencias,
         });
         if (res.response) {

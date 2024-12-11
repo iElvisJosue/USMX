@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useProductos } from "../context/ProductosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerProductosPorAgencia(idAgencia) {
@@ -17,7 +16,6 @@ export default function useObtenerProductosPorAgencia(idAgencia) {
       try {
         const res = await ObtenerProductosPorAgencia({
           idAgencia,
-          CookieConToken: COOKIE_CON_TOKEN,
         });
         if (res.response) {
           const { status, data } = res.response;

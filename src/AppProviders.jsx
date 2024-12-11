@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import { ProveedorSistema } from "./providers/ProveedorSistema";
 import { ProveedorUsuarios } from "./providers/ProveedorUsuarios";
-import { ProveedorAgencias } from "./context/AgenciasContext";
-import { ProveedorPedidos } from "./context/PedidosContext";
-import { ProveedorProductos } from "./context/ProductosContext";
-import { ProveedorRecolecciones } from "./context/RecoleccionesContext";
-import { ProveedorBodega } from "./context/BodegaContext";
-import { ProveedorOperaciones } from "./context/OperacionesContext";
-import { ProveedorOcurre } from "./context/OcurreContext";
-import { ProveedorConfiguracion } from "./context/ConfiguracionContext";
+import { ProveedorConfiguracion } from "./providers/ProveedorConfiguracion";
+import { ProveedorAgencias } from "./providers/ProveedorAgencias";
+import { ProveedorPedidos } from "./providers/ProveedorPedidos";
+import { ProveedorProductos } from "./providers/ProveedorProductos";
+import { ProveedorRecolecciones } from "./providers/ProveedorRecolecciones";
+import { ProveedorBodega } from "./providers/ProveedorBodega";
+import { ProveedorOperaciones } from "./providers/ProveedorOperaciones";
+import { ProveedorOcurre } from "./providers/ProveedorOcurre";
 
 export default function AppProviders({ children }) {
   return (
@@ -16,17 +16,17 @@ export default function AppProviders({ children }) {
       <ProveedorUsuarios>
         <ProveedorConfiguracion>
           <ProveedorAgencias>
-            <ProveedorRecolecciones>
-              <ProveedorBodega>
-                <ProveedorPedidos>
-                  <ProveedorProductos>
+            <ProveedorPedidos>
+              <ProveedorProductos>
+                <ProveedorRecolecciones>
+                  <ProveedorBodega>
                     <ProveedorOperaciones>
                       <ProveedorOcurre>{children}</ProveedorOcurre>
                     </ProveedorOperaciones>
-                  </ProveedorProductos>
-                </ProveedorPedidos>
-              </ProveedorBodega>
-            </ProveedorRecolecciones>
+                  </ProveedorBodega>
+                </ProveedorRecolecciones>
+              </ProveedorProductos>
+            </ProveedorPedidos>
           </ProveedorAgencias>
         </ProveedorConfiguracion>
       </ProveedorUsuarios>

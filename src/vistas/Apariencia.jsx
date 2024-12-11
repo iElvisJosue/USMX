@@ -10,7 +10,6 @@ import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 import { MensajePeticionPendiente } from "../helpers/FuncionesGenerales";
 
@@ -41,7 +40,6 @@ export default function Apariencia() {
     establecerPeticionPendiente(true);
     try {
       const res = await ActualizarModoOscuro({
-        CookieConToken: COOKIE_CON_TOKEN,
         idUsuario: infUsuario.idUsuario,
         ModoOscuro: ValorModoOscuro,
       });
@@ -66,7 +64,6 @@ export default function Apariencia() {
     establecerPeticionPendiente(true);
     try {
       const res = await ActualizarIdioma({
-        CookieConToken: COOKIE_CON_TOKEN,
         idUsuario: infUsuario.idUsuario,
         Idioma: valorIdioma,
       });

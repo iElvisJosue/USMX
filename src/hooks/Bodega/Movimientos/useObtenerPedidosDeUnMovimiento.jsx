@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useBodega } from "../../../context/BodegaContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 
 export default function useObtenerPedidosDeUnMovimiento(idMovimientoBodega) {
@@ -16,7 +15,6 @@ export default function useObtenerPedidosDeUnMovimiento(idMovimientoBodega) {
     const buscarPedidosDeUnMovimiento = async () => {
       try {
         const res = await ObtenerPedidosDeUnMovimientoEnBodega({
-          CookieConToken: COOKIE_CON_TOKEN,
           idMovimientoBodega,
         });
         if (res.response) {

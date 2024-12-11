@@ -7,7 +7,6 @@ import { useUsuarios } from "../../../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { ObtenerFechaActual } from "../../../helpers/FuncionesGenerales";
 
 export default function useBuscarMovimientosBodegaPorFecha() {
@@ -29,12 +28,10 @@ export default function useBuscarMovimientosBodegaPorFecha() {
         const res =
           infUsuario.Permisos === "Administrador"
             ? await BuscarTodosLosMovimientosEnBodegaPorFecha({
-                CookieConToken: COOKIE_CON_TOKEN,
                 primeraFecha,
                 segundaFecha,
               })
             : await BuscarMovimientosEnBodegaDeUnBodegueroPorFecha({
-                CookieConToken: COOKIE_CON_TOKEN,
                 idUsuario: infUsuario.idUsuario,
                 primeraFecha,
                 segundaFecha,

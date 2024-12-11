@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useOperaciones } from "../context/OperacionesContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerMovimientos() {
@@ -20,7 +19,6 @@ export default function useObtenerMovimientos() {
     const obtenerMovimientos = async () => {
       try {
         const res = await ObtenerTodosLosMovimientos({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro,
         });
         if (res.response) {

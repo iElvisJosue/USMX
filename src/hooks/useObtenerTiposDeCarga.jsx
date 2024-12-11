@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerTiposDeCarga() {
@@ -18,10 +17,7 @@ export default function useObtenerTiposDeCarga() {
   useEffect(() => {
     const obtenerCargas = async () => {
       try {
-        const res = await ObtenerTiposDeCarga({
-          CookieConToken: COOKIE_CON_TOKEN,
-        });
-
+        const res = await ObtenerTiposDeCarga();
         if (res.response) {
           const { status, data } = res.response;
           ManejarMensajesDeRespuesta({ status, data });

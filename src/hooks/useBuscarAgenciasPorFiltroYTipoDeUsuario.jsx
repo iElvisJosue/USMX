@@ -5,7 +5,6 @@ import { useAgencias } from "../context/AgenciasContext";
 import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarAgenciasPorFiltroYTipoDeUsuario() {
@@ -22,7 +21,6 @@ export default function useBuscarAgenciasPorFiltroYTipoDeUsuario() {
     const obtenerAgencias = async () => {
       try {
         const res = await BuscarAgenciasPorFiltroYTipoDeUsuario({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroAgencias,
           tipoDeUsuario: infUsuario.Permisos,
           idDelUsuario: infUsuario.idUsuario,

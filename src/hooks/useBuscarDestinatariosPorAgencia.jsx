@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { usePedidos } from "../context/PedidosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarDestinatariosPorAgencia({ idAgencia }) {
@@ -18,7 +17,6 @@ export default function useBuscarDestinatariosPorAgencia({ idAgencia }) {
     const obtenerDestinatarios = async () => {
       try {
         const res = await BuscarDestinatariosPorAgencia({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro,
           idAgencia,
         });

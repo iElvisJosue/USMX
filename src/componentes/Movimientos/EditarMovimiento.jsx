@@ -18,7 +18,6 @@ import {
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../helpers/Regexs";
-import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS A USAR (ESTILOS RECICLADOS)
@@ -63,7 +62,6 @@ export default function EditarMovimiento({
     establecerPeticionPendiente(true);
     try {
       info.idMovimiento = informacionDelMovimiento?.idMovimiento;
-      info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await EditarMovimiento(info);
       if (res.response) {
         const { status, data } = res.response;

@@ -9,7 +9,6 @@ import { DICCIONARIO_MODAL_CONFIRMACION_USUARIO } from "../../../diccionario/Dic
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS ESTILOS
@@ -51,7 +50,6 @@ export default function ModalConfirmacion({
       const res = await ActualizarEstadoUsuario({
         idUsuario: infUsuario.idUsuario,
         EstadoUsuario: EstadoUsuarioParaBD,
-        CookieConToken: COOKIE_CON_TOKEN,
       });
       if (res.response) {
         const { status, data } = res.response;

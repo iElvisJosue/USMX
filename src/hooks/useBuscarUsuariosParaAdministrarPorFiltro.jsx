@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarUsuariosParaAdministrarPorFiltro() {
@@ -19,7 +18,6 @@ export default function useBuscarUsuariosParaAdministrarPorFiltro() {
     const obtenerUsuarios = async () => {
       try {
         const res = await BuscarUsuariosParaAdministrarPorFiltro({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroUsuario,
           idUsuario: infUsuario.idUsuario,
         });

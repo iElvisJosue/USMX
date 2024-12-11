@@ -7,7 +7,6 @@ import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
 
 export default function useBuscarPedidosPorFecha() {
@@ -27,12 +26,10 @@ export default function useBuscarPedidosPorFecha() {
         const res =
           infUsuario.Permisos === "Administrador"
             ? await BuscarTodosLosPedidosPorFecha({
-                CookieConToken: COOKIE_CON_TOKEN,
                 primeraFecha,
                 segundaFecha,
               })
             : await BuscarPedidosDeUnUsuarioPorFecha({
-                CookieConToken: COOKIE_CON_TOKEN,
                 idUsuario: infUsuario.idUsuario,
                 primeraFecha,
                 segundaFecha,

@@ -17,7 +17,6 @@ import {
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
   REGEX_SOLO_NUMEROS,
@@ -46,7 +45,6 @@ export default function RegistrarProducto({ idioma }) {
     if (peticionPediente) return MensajePeticionPendiente();
     establecerPeticionPendiente(true);
     try {
-      info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await RegistrarProducto(info);
       if (res.response) {
         const { status, data } = res.response;

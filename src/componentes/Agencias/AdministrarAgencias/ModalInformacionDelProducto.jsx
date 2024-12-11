@@ -9,7 +9,6 @@ import { useAgencias } from "../../../context/AgenciasContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
-import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -87,7 +86,6 @@ export default function ModalInformacionDelProducto({
     establecerPeticionPendiente(true);
     try {
       const InfProducto = {
-        CookieConToken: COOKIE_CON_TOKEN,
         idAgencia: agencia.idAgencia,
         idProducto: informacionDelProducto.idProducto,
         PrecioProducto: data.PrecioProducto,

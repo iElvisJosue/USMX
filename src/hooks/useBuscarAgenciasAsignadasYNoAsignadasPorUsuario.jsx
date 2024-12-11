@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
-import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarAgenciasAsignadasYNoAsignadasPorUsuario(
@@ -33,11 +32,9 @@ export default function useBuscarAgenciasAsignadasYNoAsignadasPorUsuario(
     const obtenerAgenciasAsignadasYNoAsignadas = async () => {
       try {
         const resAsignadas = await BuscarAgenciasQueTieneElUsuario({
-          CookieConToken: COOKIE_CON_TOKEN,
           idUsuario,
         });
         const resNoAsignadas = await BuscarAgenciasQueNoTieneElUsuario({
-          CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroAgenciasAsignadasYNoAsignadasDelUsuario,
           idUsuario,
         });
