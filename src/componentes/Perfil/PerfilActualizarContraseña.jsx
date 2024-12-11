@@ -20,7 +20,7 @@ import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { ESTILOS_WARNING } from "../../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/Componentes/Perfil/PerfilActualizarContraseña.css";
+import "../../estilos/componentes/Perfil/PerfilActualizarContraseña.css";
 
 export default function PerfilActualizarContraseña({
   idioma,

@@ -20,7 +20,7 @@ import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { REGEX_CORREO, REGEX_SOLO_NUMEROS } from "../../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/Componentes/Perfil/PerfilActualizarInformacion.css";
+import "../../estilos/componentes/Perfil/PerfilActualizarInformacion.css";
 
 export default function PerfilActualizarInformacion({
   idioma,

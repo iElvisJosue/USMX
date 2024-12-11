@@ -10,7 +10,7 @@ import { FormatearFecha } from "../../helpers/FuncionesGenerales";
 import { HOST_IMAGENES } from "../../helpers/Urls";
 
 // IMPORTAMOS LOS ESTILOS
-import "../../estilos/Componentes/Perfil/PerfilInformacion.css";
+import "../../estilos/componentes/Perfil/PerfilInformacion.css";
 export default function PerfilInformacion({
   idioma,
   infUsuario,
