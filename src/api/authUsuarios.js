@@ -14,6 +14,21 @@ export const SolicitudActualizarInformacionDeUnUsuario = (data) =>
     "/usuarios/ActualizarInformacionDeUnUsuario",
     AgregarCookiePeticion(data)
   );
+// SOLICITUD PARA ACTUALIZAR LA FOTO DE UN USUARIO
+export const SolicitudActualizarFotoUsuario = (data) =>
+  axios.put("/usuarios/ActualizarFotoUsuario", data);
+// SOLICITUD PARA ACTUALIZAR LA INFORMACION PERSONAL DE UN USUARIO
+export const SolicitudActualizarInformacionPersonalUsuario = (data) =>
+  axios.put(
+    "/usuarios/ActualizarInformacionPersonalUsuario",
+    AgregarCookiePeticion(data)
+  );
+// SOLICITUD PARA ACTUALIZAR LA CONTRASEÑA DE UN USUARIO
+export const SolicitudActualizarContraseñaUsuario = (data) =>
+  axios.put(
+    "/usuarios/ActualizarContrasenaUsuario",
+    AgregarCookiePeticion(data)
+  );
 // SOLICITUD PARA REGISTRAR UN USUARIO
 export const SolicitudRegistrarUsuario = (data) =>
   axios.post("/usuarios/RegistrarUsuario", AgregarCookiePeticion(data));

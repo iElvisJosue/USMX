@@ -20,7 +20,6 @@ export default function useCerrarSesion() {
     // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
     if (peticionPediente) return MensajePeticionPendiente();
     establecerPeticionPendiente(true);
-
     e.preventDefault();
 
     // Promesa para cerrar sesión

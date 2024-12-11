@@ -14,6 +14,9 @@ import {
   DICCIONARIO_PAGINACION,
 } from "../../../diccionario/Diccionario";
 
+// IMPORTAMOS LAS AYUDAS
+import { HOST_IMAGENES } from "../../../helpers/Urls";
+
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarUsuariosParaAdministrarPorFiltro from "../../../hooks/useBuscarUsuariosParaAdministrarPorFiltro";
 import usePaginacion from "../../../hooks/usePaginacion";
@@ -190,6 +193,10 @@ export default function ListaDeUsuarios({
                 key={infUsuario.idUsuario}
               >
                 <span className="ListaDeUsuarios__Usuario__Detalles">
+                  <img
+                    src={`${HOST_IMAGENES}/${infUsuario.Foto}`}
+                    alt="Imagen de perfil"
+                  />
                   {IconosPorTipoDeUsuario[infUsuario.Permisos]}
                   <p>{infUsuario.Usuario}</p>
                 </span>

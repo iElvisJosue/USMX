@@ -4,6 +4,9 @@ import Cookies from "js-cookie";
 import {
   SolicitudVerificarTokenUsuario,
   SolicitudIniciarSesionUsuario,
+  SolicitudActualizarFotoUsuario,
+  SolicitudActualizarInformacionPersonalUsuario,
+  SolicitudActualizarContraseñaUsuario,
   SolicitudRegistrarUsuario,
   SolicitudBuscarAgenciasQueTieneElUsuario,
   SolicitudBuscarAgenciasQueNoTieneElUsuario,
@@ -20,6 +23,8 @@ export const ProveedorUsuarios = ({ children }) => {
   const [cargandoInfUsuario, establecerCargandoInfUsuario] = useState(true);
   const [tieneCookie, establecerTieneCookie] = useState(false);
   const [infUsuario, establecerInfUsuario] = useState(null);
+  const [cargarInfUsuarioNuevamente, establecerCargarInfUsuarioNuevamente] =
+    useState(false);
 
   const QuitarValoresDeUsuario = () => {
     establecerInfUsuario(null);
@@ -54,7 +59,7 @@ export const ProveedorUsuarios = ({ children }) => {
       }
     }
     ValidarCookie();
-  }, []);
+  }, [cargarInfUsuarioNuevamente]);
   const IniciarSesionUsuario = async (data) => {
     try {
       const res = await SolicitudIniciarSesionUsuario(data);
@@ -65,6 +70,30 @@ export const ProveedorUsuarios = ({ children }) => {
         expires: 1,
       });
       return EstablecerValoresDeUsuario(res.data);
+    } catch (error) {
+      return error;
+    }
+  };
+  const ActualizarFotoUsuario = async (data) => {
+    try {
+      const res = await SolicitudActualizarFotoUsuario(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ActualizarInformacionPersonalUsuario = async (data) => {
+    try {
+      const res = await SolicitudActualizarInformacionPersonalUsuario(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ActualizarContraseñaUsuario = async (data) => {
+    try {
+      const res = await SolicitudActualizarContraseñaUsuario(data);
+      return res;
     } catch (error) {
       return error;
     }
@@ -149,7 +178,12 @@ export const ProveedorUsuarios = ({ children }) => {
         infUsuario,
         tieneCookie,
         cargandoInfUsuario,
+        cargarInfUsuarioNuevamente,
+        establecerCargarInfUsuarioNuevamente,
         IniciarSesionUsuario,
+        ActualizarFotoUsuario,
+        ActualizarInformacionPersonalUsuario,
+        ActualizarContraseñaUsuario,
         RegistrarUsuario,
         BuscarAgenciasQueTieneElUsuario,
         BuscarAgenciasQueNoTieneElUsuario,

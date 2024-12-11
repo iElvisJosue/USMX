@@ -1,0 +1,97 @@
+.PerfilActualizarInformacion {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.PerfilActualizarInformacion__Boton {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.PerfilActualizarInformacion__Boton button {
+  height: 50px;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.PerfilActualizarInformacion__Boton button ion-icon {
+  font-size: 20px;
+}
+.PerfilActualizarInformacion__Boton button:hover::after {
+  content: "Regresar";
+}
+.PerfilActualizarInformacion__Boton button:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.PerfilActualizarInformacion__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.PerfilActualizarInformacion__MensajeEncriptado {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--ColorRojo);
+  font-weight: bold;
+}
+.PerfilActualizarInformacion__MensajeDeError {
+  width: 100%;
+  font-size: 13px;
+  color: var(--ColorRojo);
+  font-weight: bold;
+}
+.PerfilActualizarInformacion__Footer {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.PerfilActualizarInformacion__Footer__Boton {
+  width: 150px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  border-radius: 25px;
+}
+.PerfilActualizarInformacion__Footer__Boton.Guardar {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.PerfilActualizarInformacion__Footer__Boton.Guardar:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+@media (width <= 800px) {
+  .PerfilActualizarInformacion {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .PerfilActualizarInformacion__Footer__Boton {
+    width: 100%;
+  }
+}

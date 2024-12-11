@@ -91,15 +91,87 @@ export const DICCIONARIO_BIENVENIDA = {
 export const DICCIONARIO_PERFIL = {
   es: {
     Perfil: "Perfil",
-    Correo: "Correo",
-    Telefono: "Teléfono",
-    FechaDeCreacion: "Fecha de creación",
   },
   en: {
     Perfil: "Profile",
+  },
+};
+export const DICCIONARIO_PERFIL_INFORMACION = {
+  es: {
+    FotoDePerfil: "Foto de perfil",
+    InformacionPersonal: "Información personal",
+    Usuario: "Usuario",
+    Correo: "Correo",
+    Telefono: "Teléfono",
+    FechaDeCreacion: "Fecha de creación",
+    Contraseña: "Contraseña",
+    MensajeContraseña:
+      "Si deseas cambiar tu contraseña, puedes hacerlo dando click en el siguiente botón.",
+  },
+  en: {
+    FotoDePerfil: "Profile picture",
+    InformacionPersonal: "Personal information",
+    Usuario: "User",
     Correo: "Email",
     Telefono: "Phone",
     FechaDeCreacion: "Creation date",
+    Contraseña: "Password",
+    MensajeContraseña:
+      "If you want to change your password, you can do it by clicking the following button.",
+  },
+};
+export const DICCIONARIO_PERFIL_FOTO = {
+  es: {
+    ActualizarFotoDePerfil: "Actualizar foto de perfil",
+    MensajeFotoDePerfilUno:
+      "Por favor, selecciona o arrastra la imagen que utilizaras de perfil.",
+    MensajeFotoDePerfilDos: "El tamaño máximo de la imagen es de 10MB.",
+  },
+  en: {
+    ActualizarFotoDePerfil: "Update profile picture",
+    MensajeFotoDePerfilUno:
+      "Please select or drag the image you will use for profile.",
+    MensajeFotoDePerfilDos: "The maximum image size is 10MB.",
+  },
+};
+export const DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION = {
+  es: {
+    ActualizarInformacionPersonal: "Actualizar información personal",
+    Usuario: "Usuario",
+    Correo: "Correo",
+    Telefono: "Teléfono",
+    MensajeActualizarUno: "¡ATENCIÓN!",
+    MensajeActualizarDos:
+      "Tu información personal es muy sensible, por favor actualiza tus datos con cuidado.",
+  },
+  en: {
+    ActualizarInformacionPersonal: "Update personal information",
+    Usuario: "User",
+    Correo: "Email",
+    Telefono: "Phone",
+    MensajeActualizarUno: "ATTENTION!",
+    MensajeActualizarDos:
+      "Your personal information is very sensitive, please update your data carefully.",
+  },
+};
+export const DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA = {
+  es: {
+    ActualizarContraseña: "Actualizar contrasena",
+    ContraseñaActual: "Contraseña actual",
+    ContraseñaNueva: "Contraseña nueva",
+    ConfirmarContraseña: "Confirmar contraseña",
+    MensajeActualizarUno: "¡ATENCIÓN!",
+    MensajeActualizarDos:
+      "Tu contraseña es muy importante, por favor actualiza tu contraseña con cuidado.",
+  },
+  en: {
+    ActualizarContraseña: "Update password",
+    ContraseñaActual: "Current password",
+    ContraseñaNueva: "New password",
+    ConfirmarContraseña: "Confirm password",
+    MensajeActualizarUno: "ATTENTION!",
+    MensajeActualizarDos:
+      "Your password is very important, please update it carefully.",
   },
 };
 /* TERMINA DICCIONARIO PARA LA VISTA DE PERFIL */
@@ -1852,6 +1924,7 @@ export const DICCIONARIO_BOTONES = {
     UltimaMilla: "Última milla",
     Finalizar: "Finalizar",
     Registrar: "Registrar",
+    Cambiar: "Cambiar",
   },
   en: {
     Guardar: "Save",
@@ -1874,6 +1947,7 @@ export const DICCIONARIO_BOTONES = {
     UltimaMilla: "Last Mile",
     Finalizar: "Finish",
     Registrar: "Register",
+    Cambiar: "Change",
   },
 };
 export const DICCIONARIO_PLACEHOLDERS = {
@@ -1902,6 +1976,7 @@ export const DICCIONARIO_MENSAJES_DE_ERROR = {
     Min10: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
     Max10: "¡Este campo no puede tener más de 10 caracteres! 🔠",
     Max100: "¡Este campo no puede tener más de 100 caracteres! 🔠",
+    Max255: "¡Este campo no puede tener más de 255 caracteres! 🔠",
     Max1000: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
   },
   en: {
@@ -1913,6 +1988,7 @@ export const DICCIONARIO_MENSAJES_DE_ERROR = {
     Min10: "¡This field cannot have less than 10 characters! 🔠",
     Max10: "¡This field cannot have more than 10 characters! 🔠",
     Max100: "¡This field cannot have more than 100 characters! 🔠",
+    Max255: "¡This field cannot have more than 255 characters! 🔠",
     Max1000: "¡This field cannot have more than 1000 characters! 🔠",
   },
 };
