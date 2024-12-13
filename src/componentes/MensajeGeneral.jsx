@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/componentes/MensajeGeneral.css";
@@ -8,9 +9,10 @@ export default function MensajeGeneral({
   Texto,
   Boton = false,
   TipoBoton = "Negro",
-  UrlBoton = "#",
+  UrlBoton = "",
   TextoBoton = "Botón",
 }) {
+  const navigate = useNavigate();
   return (
     <section className="MensajeGeneral">
       <img
@@ -20,9 +22,12 @@ export default function MensajeGeneral({
       />
       <p className="MensajeGeneral__Texto">{Texto}</p>
       {Boton && (
-        <a className={`MensajeGeneral__Boton ${TipoBoton}`} href={UrlBoton}>
+        <button
+          className={`MensajeGeneral__Boton ${TipoBoton}`}
+          onClick={() => navigate(UrlBoton)}
+        >
           {TextoBoton}
-        </a>
+        </button>
       )}
     </section>
   );

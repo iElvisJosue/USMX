@@ -154,12 +154,6 @@ export default function ListaPedidosPorFecha({
             .split("-")
             .reverse()
             .join("/")}.`}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Pedidos"}
-          TextoBoton={
-            DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].RealizarPedido
-          }
         />
       )}
     </div>

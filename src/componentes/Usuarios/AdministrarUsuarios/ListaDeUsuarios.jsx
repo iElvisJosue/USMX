@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useUsuarios } from "../../../context/UsuariosContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../../Cargando";
 import MensajeGeneral from "../../MensajeGeneral";
-import ModalConfirmacion from "./ModalConfirmacion";
+import AdministrarRegistro from "../../AdministrarRegistro";
 
 // IMPORTAMOS LOS DICCIONARIOS A USAR
 import {
@@ -13,9 +16,6 @@ import {
   DICCIONARIO_RESULTADOS,
   DICCIONARIO_PAGINACION,
 } from "../../../diccionario/Diccionario";
-
-// IMPORTAMOS LAS AYUDAS
-import { HOST_IMAGENES } from "../../../helpers/Urls";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarUsuariosParaAdministrarPorFiltro from "../../../hooks/useBuscarUsuariosParaAdministrarPorFiltro";
@@ -29,10 +29,6 @@ export default function ListaDeUsuarios({
   establecerVista,
   establecerInformacionDelUsuario,
 }) {
-  const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
-    useState(false);
-  const [activar, establecerActivar] = useState(true);
-  const [infUsuario, establecerInfUsuario] = useState(null);
   const {
     usuarios,
     cargandoUsuarios,
@@ -51,6 +47,7 @@ export default function ListaDeUsuarios({
     MostrarVeinticincoMenos,
     reiniciarValores,
   } = usePaginacion();
+  const { ActualizarEstadoUsuario } = useUsuarios();
 
   useEffect(() => {
     if (usuarios) {
@@ -73,23 +70,12 @@ export default function ListaDeUsuarios({
   };
 
   const IconosPorTipoDeUsuario = {
-    Usuario: <ion-icon name="person-circle"></ion-icon>,
-    Moderador: <ion-icon name="glasses"></ion-icon>,
-    Administrador: <ion-icon name="shield-checkmark"></ion-icon>,
-    Chofer: <ion-icon name="car"></ion-icon>,
-    Bodega: <ion-icon name="cube"></ion-icon>,
-    Desactivado: <ion-icon name="ban"></ion-icon>,
-  };
-
-  const MostrarModalActivar = (infUsuario) => {
-    establecerInfUsuario(infUsuario);
-    establecerActivar(true);
-    establecerMostrarModalConfirmacion(true);
-  };
-  const MostrarModalDesactivar = (infUsuario) => {
-    establecerInfUsuario(infUsuario);
-    establecerActivar(false);
-    establecerMostrarModalConfirmacion(true);
+    Usuario: "person-circle",
+    Moderador: "glasses",
+    Administrador: "shield-checkmark",
+    Chofer: "car",
+    Bodega: "cube",
+    Desactivado: "ban",
   };
 
   const EstablecerInformacionDelUsuarioSeleccionado = (infUsuario) => {
@@ -105,20 +91,6 @@ export default function ListaDeUsuarios({
 
   return (
     <div className="ListaDeUsuarios">
-      {mostrarModalConfirmacion && (
-        <ModalConfirmacion
-          Idioma={Idioma}
-          Activar={activar}
-          infUsuario={infUsuario}
-          establecerMostrarModalConfirmacion={
-            establecerMostrarModalConfirmacion
-          }
-          obtenerUsuariosNuevamente={obtenerUsuariosNuevamente}
-          establecerObtenerUsuariosNuevamente={
-            establecerObtenerUsuariosNuevamente
-          }
-        />
-      )}
       <h1 className="ListaDeUsuarios__Titulo">
         {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].AdministrarUsuarios}
       </h1>
@@ -143,23 +115,23 @@ export default function ListaDeUsuarios({
             {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].ClasificacionDePerfiles}
           </h2>
           <span className="ListaDeUsuarios__Colores">
-            <p className="ListaDeUsuarios__Clasificacion--Texto Usuario">
+            <p className="ListaDeUsuarios__Clasificacion--Texto">
               <ion-icon name="person-circle"></ion-icon>{" "}
               {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Usuario}
             </p>
-            <p className="ListaDeUsuarios__Clasificacion--Texto Moderador">
+            <p className="ListaDeUsuarios__Clasificacion--Texto">
               <ion-icon name="glasses"></ion-icon>{" "}
               {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Moderador}
             </p>
-            <p className="ListaDeUsuarios__Clasificacion--Texto Chofer">
+            <p className="ListaDeUsuarios__Clasificacion--Texto">
               <ion-icon name="car"></ion-icon>{" "}
               {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Chofer}
             </p>
-            <p className="ListaDeUsuarios__Clasificacion--Texto Bodega">
+            <p className="ListaDeUsuarios__Clasificacion--Texto">
               <ion-icon name="cube"></ion-icon>{" "}
               {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Bodega}
             </p>
-            <p className="ListaDeUsuarios__Clasificacion--Texto Administrador">
+            <p className="ListaDeUsuarios__Clasificacion--Texto">
               <ion-icon name="shield-checkmark"></ion-icon>{" "}
               {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Administrador}
             </p>
@@ -186,79 +158,42 @@ export default function ListaDeUsuarios({
               </button>
             )}
           </div>
-          {usuarios.slice(indiceInicial, indiceFinal).map((infUsuario) =>
-            infUsuario.EstadoUsuario === "Activo" ? (
-              <section
-                className={`ListaDeUsuarios__Usuario ${infUsuario.Permisos}`}
-                key={infUsuario.idUsuario}
-              >
-                <span className="ListaDeUsuarios__Usuario__Detalles">
-                  <img
-                    src={`${HOST_IMAGENES}/${infUsuario.Foto}`}
-                    alt="Imagen de perfil"
-                  />
-                  {IconosPorTipoDeUsuario[infUsuario.Permisos]}
-                  <p>{infUsuario.Usuario}</p>
-                </span>
-                {infUsuario.Permisos !== "Administrador" && (
-                  <span className="ListaDeUsuarios__Usuario__Opciones">
-                    <button
-                      className={`ListaDeUsuarios__Usuario__Opciones--Boton ${infUsuario.Permisos}`}
-                      title="Administrar Agencias"
-                      onClick={() =>
-                        EstablecerInformacionDelUsuarioSeleccionado(infUsuario)
-                      }
-                    >
-                      <p>
-                        <ion-icon name="business"></ion-icon>
-                      </p>
-                    </button>
-                    <button
-                      className={`ListaDeUsuarios__Usuario__Opciones--Boton ${infUsuario.Permisos}`}
-                      title="Editar usuario"
-                      onClick={() =>
-                        EstablecerInformacionDelUsuarioAEditar(infUsuario)
-                      }
-                    >
-                      <p>
-                        <ion-icon name="create"></ion-icon>
-                      </p>
-                    </button>
-                    <button
-                      className={`ListaDeUsuarios__Usuario__Opciones--Boton ${infUsuario.Permisos}`}
-                      onClick={() => MostrarModalDesactivar(infUsuario)}
-                      title="Desactivar usuario"
-                    >
-                      <p>
-                        <ion-icon name="ban"></ion-icon>
-                      </p>
-                    </button>
-                  </span>
-                )}
-              </section>
-            ) : (
-              <section
-                className="ListaDeUsuarios__Usuario Desactivado"
-                key={infUsuario.idUsuario}
-              >
-                <span className="ListaDeUsuarios__Usuario__Detalles">
-                  <ion-icon name="ban"></ion-icon>
-                  <p>{infUsuario.Usuario}</p>
-                </span>
-                <span className="ListaDeUsuarios__Usuario__Opciones">
-                  <button
-                    className="ListaDeUsuarios__Usuario__Opciones--Boton Activar"
-                    onClick={() => MostrarModalActivar(infUsuario)}
-                    title="Activar usuario"
-                  >
-                    <p>
-                      <ion-icon name="power"></ion-icon>
-                    </p>
-                  </button>
-                </span>
-              </section>
-            )
-          )}
+          {usuarios.slice(indiceInicial, indiceFinal).map((infUsuario) => (
+            <AdministrarRegistro
+              key={infUsuario.idUsuario}
+              Status={infUsuario.StatusUsuario}
+              idRegistro={infUsuario.idUsuario}
+              NombreRegistro={infUsuario.Permisos}
+              ImagenRegistro={infUsuario.Foto}
+              Secciones={[
+                {
+                  Icono: IconosPorTipoDeUsuario[infUsuario.Permisos],
+                  TextoUno: infUsuario.Permisos,
+                  TextoDos: infUsuario.Usuario,
+                },
+              ]}
+              OpcionesBotones={[
+                {
+                  TituloBoton: "Agencias",
+                  IconoBoton: "business",
+                  ColorBoton: "Verde",
+                  FuncionBoton: EstablecerInformacionDelUsuarioSeleccionado,
+                },
+                {
+                  TituloBoton: "Editar",
+                  IconoBoton: "create",
+                  ColorBoton: "Azul",
+                  FuncionBoton: EstablecerInformacionDelUsuarioAEditar,
+                },
+              ]}
+              infRegistro={infUsuario}
+              FuncionActivarDesactivar={ActualizarEstadoUsuario}
+              obtenerListaNuevamente={obtenerUsuariosNuevamente}
+              establecerObtenerListaNuevamente={
+                establecerObtenerUsuariosNuevamente
+              }
+            />
+          ))}
 
           <small className="ListaDeUsuarios__TextoPaginas">
             {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
@@ -269,10 +204,6 @@ export default function ListaDeUsuarios({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Usuarios"}
-          TextoBoton={DICCIONARIO_LISTA_DE_USUARIOS[Idioma].RegistrarUsuario}
         />
       )}
     </div>

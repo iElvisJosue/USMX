@@ -138,12 +138,6 @@ export default function ListaRecoleccionesCompleta({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Recolecciones"}
-          TextoBoton={
-            DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].CrearRecoleccion
-          }
         />
       )}
     </div>

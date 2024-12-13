@@ -1,0 +1,148 @@
+.AdministrarRegistro {
+  grid-column: span 1;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  height: auto;
+  border-radius: 20px;
+  transition: 0.3s ease-in-out all;
+  color: var(--ColorNegro);
+  background-color: var(--ColorSecundario);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.AdministrarRegistro.Desactivado {
+  background-color: var(--ColorRojo);
+}
+.AdministrarRegistro ion-icon {
+  font-size: 25px;
+}
+.AdministrarRegistro__Detalles {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.AdministrarRegistro__Detalles img {
+  min-width: 65px;
+  width: 65px;
+  max-width: 65px;
+  min-height: 65px;
+  height: 65px;
+  max-height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 2px dashed var(--ColorNegro);
+}
+.AdministrarRegistro.Desactivado .AdministrarRegistro__Detalles img {
+  border: 2px dashed var(--ColorBlanco);
+}
+.AdministrarRegistro__Detalles--Contenido {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+.AdministrarRegistro.Desactivado .AdministrarRegistro__Detalles--Contenido {
+  color: var(--ColorBlanco);
+}
+.AdministrarRegistro__Detalles--Switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  min-width: 40px;
+  min-height: 25px;
+  border-radius: 15px;
+  background-color: var(--ColorVerde);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.AdministrarRegistro__Detalles--Switch.Desactivado {
+  background-color: var(--ColorRojo);
+}
+.AdministrarRegistro__Detalles--Switch button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  transform: translateX(8px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.AdministrarRegistro__Detalles--Switch button ion-icon {
+  font-size: 10px;
+  color: var(--ColorVerde);
+}
+.AdministrarRegistro__Detalles--Switch.Desactivado button {
+  transform: translateX(-8px);
+  background: white;
+}
+.AdministrarRegistro__Detalles--Switch.Desactivado button ion-icon {
+  color: var(--ColorRojo);
+}
+.AdministrarRegistro__Opciones {
+  width: 100%;
+  min-height: 35px;
+
+  display: flex;
+}
+.AdministrarRegistro__Opciones--Boton {
+  width: 100%;
+  height: 100%;
+  background-color: var(--ColorNegro);
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.AdministrarRegistro__Opciones--Boton ion-icon {
+  transition: 0.3s ease-in-out all;
+  font-size: 18px;
+  color: var(--ColorBlanco);
+}
+.AdministrarRegistro__Opciones--Boton.Verde ion-icon {
+  color: var(--ColorVerde);
+}
+.AdministrarRegistro__Opciones--Boton.Azul ion-icon {
+  color: var(--ColorAzul);
+}
+.AdministrarRegistro__Opciones--Boton.Blanco ion-icon {
+  color: var(--ColorBlanco);
+}
+.AdministrarRegistro__Opciones--Boton.Rojo ion-icon {
+  color: var(--ColorRojo);
+}
+.AdministrarRegistro__Opciones--Boton.Naranja ion-icon {
+  color: var(--ColorNaranja);
+}
+.AdministrarRegistro__Opciones--Boton:hover ion-icon {
+  transform: scale(1.2);
+}
+@media (width <= 500px) {
+  .AdministrarRegistro {
+    font-size: 14px;
+  }
+}

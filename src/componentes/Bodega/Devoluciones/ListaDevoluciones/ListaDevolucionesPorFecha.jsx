@@ -152,12 +152,6 @@ export default function ListaDevolucionesPorFecha({
             .split("-")
             .reverse()
             .join("/")}.`}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Bodega-Devoluciones"}
-          TextoBoton={
-            DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].CrearDevolucion
-          }
         />
       )}
     </div>

@@ -155,12 +155,6 @@ export default function ListaDeMovimientosEnBodegaPorFecha({
             .split("-")
             .reverse()
             .join("/")}.`}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Bodega-Movimientos"}
-          TextoBoton={
-            DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[Idioma].CrearMovimiento
-          }
         />
       )}
     </div>

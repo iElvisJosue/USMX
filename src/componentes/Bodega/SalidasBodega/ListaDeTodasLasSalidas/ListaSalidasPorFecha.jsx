@@ -142,10 +142,6 @@ export default function ListaSalidasPorFecha({
             .split("-")
             .reverse()
             .join("/")}.`}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Bodega-Salidas"}
-          TextoBoton={DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].CrearSalida}
         />
       )}
     </div>

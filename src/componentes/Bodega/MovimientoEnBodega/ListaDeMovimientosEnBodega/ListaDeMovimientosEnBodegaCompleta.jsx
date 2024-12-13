@@ -136,12 +136,6 @@ export default function ListaDeMovimientosEnBodegaCompleta({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Bodega-Movimientos"}
-          TextoBoton={
-            DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].CrearMovimiento
-          }
         />
       )}
     </div>

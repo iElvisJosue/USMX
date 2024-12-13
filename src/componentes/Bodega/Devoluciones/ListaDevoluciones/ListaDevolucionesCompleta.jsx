@@ -135,12 +135,6 @@ export default function ListaDevolucionesCompleta({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Bodega-Devoluciones"}
-          TextoBoton={
-            DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[Idioma].CrearDevolucion
-          }
         />
       )}
     </div>

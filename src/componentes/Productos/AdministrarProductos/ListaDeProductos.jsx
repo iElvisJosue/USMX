@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useProductos } from "../../../context/ProductosContext";
 
 // IMPORTAMOS LOS DICCIONARIOS A USAR
 import {
@@ -12,7 +15,7 @@ import {
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../../Cargando";
 import MensajeGeneral from "../../MensajeGeneral";
-import ModalConfirmacionProductos from "./ModalConfirmacionProductos";
+import AdministrarRegistro from "../../AdministrarRegistro";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarProductosPorFiltro from "../../../hooks/useBuscarProductosPorFiltro";
@@ -26,10 +29,6 @@ export default function ListaDeProductos({
   establecerVistaProductos,
   establecerInformacionDelProducto,
 }) {
-  const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
-    useState(false);
-  const [activar, establecerActivar] = useState(true);
-  const [infProducto, establecerInfProducto] = useState(null);
   const {
     productos,
     cargandoProductos,
@@ -48,6 +47,7 @@ export default function ListaDeProductos({
     MostrarVeinticincoMenos,
     reiniciarValores,
   } = usePaginacion();
+  const { ActualizarEstadoDeUnProducto } = useProductos();
 
   useEffect(() => {
     if (productos) {
@@ -69,18 +69,7 @@ export default function ListaDeProductos({
     }
   };
 
-  const MostrarModalActivar = (infProducto) => {
-    establecerInfProducto(infProducto);
-    establecerActivar(true);
-    establecerMostrarModalConfirmacion(true);
-  };
-  const MostrarModalDesactivar = (infProducto) => {
-    establecerInfProducto(infProducto);
-    establecerActivar(false);
-    establecerMostrarModalConfirmacion(true);
-  };
-
-  const EstablecerInformacionDeLaAgenciaSeleccionada = (infProducto) => {
+  const EstablecerInformacionDelProductoSeleccionado = (infProducto) => {
     establecerInformacionDelProducto(infProducto);
     establecerVistaProductos(1);
   };
@@ -93,20 +82,6 @@ export default function ListaDeProductos({
 
   return (
     <div className="ListaDeProductos">
-      {mostrarModalConfirmacion && (
-        <ModalConfirmacionProductos
-          Idioma={Idioma}
-          Activar={activar}
-          infProducto={infProducto}
-          establecerMostrarModalConfirmacion={
-            establecerMostrarModalConfirmacion
-          }
-          buscarProductosNuevamente={buscarProductosNuevamente}
-          establecerBuscarProductosNuevamente={
-            establecerBuscarProductosNuevamente
-          }
-        />
-      )}
       <h1 className="ListaDeProductos__Titulo">
         {DICCIONARIO_LISTA_DE_PRODUCTOS[Idioma].AdministrarProductos}
       </h1>
@@ -158,74 +133,40 @@ export default function ListaDeProductos({
               </button>
             )}
           </div>
-          {productos.slice(indiceInicial, indiceFinal).map((infProducto) =>
-            infProducto.StatusProducto === "Activo" ? (
-              <section
-                className="ListaDeProductos__Producto"
-                key={infProducto.idProducto}
-              >
-                <span className="ListaDeProductos__Producto__Detalles">
-                  <ion-icon name="basket"></ion-icon>
-                  <p>{infProducto.NombreProducto}</p>
-                </span>
-
-                <span className="ListaDeProductos__Producto__Opciones">
-                  <button
-                    className="ListaDeProductos__Producto__Opciones--Boton Administrar"
-                    title="Administrar Agencias"
-                    onClick={() =>
-                      EstablecerInformacionDeLaAgenciaSeleccionada(infProducto)
-                    }
-                  >
-                    <p>
-                      <ion-icon name="business"></ion-icon>
-                    </p>
-                  </button>
-                  <button
-                    className="ListaDeProductos__Producto__Opciones--Boton Editar"
-                    title="Editar producto"
-                    onClick={() =>
-                      EstablecerInformacionDelProductoAEditar(infProducto)
-                    }
-                  >
-                    <p>
-                      <ion-icon name="create"></ion-icon>
-                    </p>
-                  </button>
-                  <button
-                    className="ListaDeProductos__Producto__Opciones--Boton Desactivar"
-                    onClick={() => MostrarModalDesactivar(infProducto)}
-                    title="Desactivar producto"
-                  >
-                    <p>
-                      <ion-icon name="ban"></ion-icon>
-                    </p>
-                  </button>
-                </span>
-              </section>
-            ) : (
-              <section
-                className="ListaDeProductos__Producto Desactivado"
-                key={infProducto.idProducto}
-              >
-                <span className="ListaDeProductos__Producto__Detalles">
-                  <ion-icon name="basket"></ion-icon>
-                  <p>{infProducto.NombreProducto}</p>
-                </span>
-                <span className="ListaDeProductos__Producto__Opciones">
-                  <button
-                    className="ListaDeProductos__Producto__Opciones--Boton Activar"
-                    title="Activar Producto"
-                    onClick={() => MostrarModalActivar(infProducto)}
-                  >
-                    <p>
-                      <ion-icon name="power"></ion-icon>
-                    </p>
-                  </button>
-                </span>
-              </section>
-            )
-          )}
+          {productos.slice(indiceInicial, indiceFinal).map((infProducto) => (
+            <AdministrarRegistro
+              key={infProducto.idProducto}
+              Status={infProducto.StatusProducto}
+              idRegistro={infProducto.idProducto}
+              NombreRegistro={infProducto.NombreProducto}
+              Secciones={[
+                {
+                  Icono: "basket",
+                  TextoUno: infProducto.NombreProducto,
+                },
+              ]}
+              OpcionesBotones={[
+                {
+                  TituloBoton: "Agencias",
+                  IconoBoton: "Business",
+                  ColorBoton: "Verde",
+                  FuncionBoton: EstablecerInformacionDelProductoSeleccionado,
+                },
+                {
+                  TituloBoton: "Editar",
+                  IconoBoton: "create",
+                  ColorBoton: "Azul",
+                  FuncionBoton: EstablecerInformacionDelProductoAEditar,
+                },
+              ]}
+              infRegistro={infProducto}
+              FuncionActivarDesactivar={ActualizarEstadoDeUnProducto}
+              obtenerListaNuevamente={buscarProductosNuevamente}
+              establecerObtenerListaNuevamente={
+                establecerBuscarProductosNuevamente
+              }
+            />
+          ))}
 
           <small className="ListaDeProductos__TextoPaginas">
             {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
@@ -236,10 +177,6 @@ export default function ListaDeProductos({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Productos"}
-          TextoBoton={DICCIONARIO_LISTA_DE_PRODUCTOS[Idioma].RegistrarProducto}
         />
       )}
     </div>

@@ -10,6 +10,7 @@ import { useAgencias } from "../../../context/AgenciasContext";
 import Cargando from "../../Cargando";
 import MensajeGeneral from "../../MensajeGeneral";
 import ModalSubirArchivo from "./ModalSubirArchivo";
+import AdministrarRegistro from "../../AdministrarRegistro";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarAgenciasPorFiltro from "../../../hooks/useBuscarAgenciasPorFiltro";
@@ -80,30 +81,6 @@ export default function ListaDeAgencias({
     if (regex.test(valorIntroducido)) {
       establecerFiltroAgencias(valorIntroducido);
       reiniciarValores();
-    }
-  };
-  const ActivarDesactivarAgencia = async (idAgencia, EstadoAgenciaParaBD) => {
-    // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
-    if (peticionPediente) return MensajePeticionPendiente();
-    establecerPeticionPendiente(true);
-    try {
-      const res = await ActualizarEstadoAgencia({
-        idAgencia: idAgencia,
-        StatusAgencia: EstadoAgenciaParaBD,
-      });
-      if (res.response) {
-        const { status, data } = res.response;
-        ManejarMensajesDeRespuesta({ status, data });
-      } else {
-        const { status, data } = res;
-        ManejarMensajesDeRespuesta({ status, data });
-        establecerObtenerAgenciasNuevamente(!obtenerAgenciasNuevamente);
-      }
-    } catch (error) {
-      const { status, data } = error.response;
-      ManejarMensajesDeRespuesta({ status, data });
-    } finally {
-      establecerPeticionPendiente(false);
     }
   };
   const EstablecerInformacionDeLaAgenciaSeleccionada = (infAgencia) => {
@@ -258,99 +235,54 @@ export default function ListaDeAgencias({
             )}
           </div>
           {agencias.slice(indiceInicial, indiceFinal).map((infAgencia) => (
-            <section
-              className={`ListaDeAgencias__Contenedor__Agencia ${
-                infAgencia.StatusAgencia !== "Activa" && "Desactivada"
-              }`}
+            <AdministrarRegistro
               key={infAgencia.idAgencia}
-            >
-              <span className="ListaDeAgencias__Contenedor__Agencia__Detalles">
-                <ion-icon name="business"></ion-icon>
-                <p>
-                  {infAgencia.idEspecial}
-                  <br /> {infAgencia.NombreAgencia}
-                </p>
-                <ion-icon name="earth"></ion-icon>
-                <p>{infAgencia.PaisAgencia}</p>
-                <ion-icon name="location"></ion-icon>
-                <p>
-                  {infAgencia.EstadoAgencia}, {infAgencia.CiudadAgencia}
-                </p>
-                <p>
-                  {infAgencia.DireccionAgencia} {infAgencia.CodigoPostalAgencia}
-                </p>
-                {infAgencia.NombreAgencia !== "USMX Express" && (
-                  <span
-                    className={`ListaDeAgencias__Contenedor__Agencia__Detalles--Activa ${
-                      infAgencia.StatusAgencia === "Activa" ? "Si" : "No"
-                    }`}
-                  >
-                    {infAgencia.StatusAgencia === "Activa" ? (
-                      <button
-                        title="Desactivar Agencia"
-                        onClick={() =>
-                          ActivarDesactivarAgencia(
-                            infAgencia.idAgencia,
-                            "Desactivada"
-                          )
-                        }
-                      >
-                        <ion-icon name="business"></ion-icon>
-                      </button>
-                    ) : (
-                      <button
-                        title="Activar Agencia"
-                        onClick={() =>
-                          ActivarDesactivarAgencia(
-                            infAgencia.idAgencia,
-                            "Activa"
-                          )
-                        }
-                      >
-                        <ion-icon name="ban"></ion-icon>
-                      </button>
-                    )}
-                  </span>
-                )}
-              </span>
-              {infAgencia.StatusAgencia === "Activa" && (
-                <span className="ListaDeAgencias__Contenedor__Agencia__Opciones">
-                  <button
-                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Administrar"
-                    title="Administrar Productos"
-                    onClick={() =>
-                      EstablecerInformacionDeLaAgenciaSeleccionada(infAgencia)
-                    }
-                  >
-                    <p>
-                      <ion-icon name="basket"></ion-icon>
-                    </p>
-                  </button>
-                  <button
-                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton Editar"
-                    title="Editar Agencia"
-                    onClick={() =>
-                      EstablecerInformacionDeLaAgenciaAEditar(infAgencia)
-                    }
-                  >
-                    <p>
-                      <ion-icon name="create"></ion-icon>
-                    </p>
-                  </button>
-                  <button
-                    className="ListaDeAgencias__Contenedor__Agencia__Opciones--Boton SubirArchivo"
-                    title="Subir Archivo"
-                    onClick={() =>
-                      EstablecerInformacionParaElTipoDeArchivo(infAgencia)
-                    }
-                  >
-                    <p>
-                      <ion-icon name="document-attach"></ion-icon>
-                    </p>
-                  </button>
-                </span>
-              )}
-            </section>
+              Status={infAgencia.StatusAgencia}
+              idRegistro={infAgencia.idAgencia}
+              NombreRegistro={infAgencia.NombreAgencia}
+              Secciones={[
+                {
+                  Icono: "business",
+                  TextoUno: infAgencia.idEspecial,
+                  TextoDos: infAgencia.NombreAgencia,
+                },
+                {
+                  Icono: "earth",
+                  TextoUno: infAgencia.PaisAgencia,
+                },
+                {
+                  Icono: "location",
+                  TextoUno: `${infAgencia.EstadoAgencia}, ${infAgencia.CiudadAgencia}`,
+                  TextoDos: `${infAgencia.DireccionAgencia}, ${infAgencia.CodigoPostalAgencia}`,
+                },
+              ]}
+              OpcionesBotones={[
+                {
+                  TituloBoton: "Productos",
+                  IconoBoton: "basket",
+                  ColorBoton: "Verde",
+                  FuncionBoton: EstablecerInformacionDeLaAgenciaSeleccionada,
+                },
+                {
+                  TituloBoton: "Editar",
+                  IconoBoton: "create",
+                  ColorBoton: "Azul",
+                  FuncionBoton: EstablecerInformacionDeLaAgenciaAEditar,
+                },
+                {
+                  TituloBoton: "Subir Archivo",
+                  IconoBoton: "document-attach",
+                  ColorBoton: "Blanco",
+                  FuncionBoton: EstablecerInformacionParaElTipoDeArchivo,
+                },
+              ]}
+              infRegistro={infAgencia}
+              FuncionActivarDesactivar={ActualizarEstadoAgencia}
+              obtenerListaNuevamente={obtenerAgenciasNuevamente}
+              establecerObtenerListaNuevamente={
+                establecerObtenerAgenciasNuevamente
+              }
+            />
           ))}
           <small className="ListaDeAgencias__Contenedor__TextoPaginas">
             {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
@@ -361,10 +293,6 @@ export default function ListaDeAgencias({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Agencias"}
-          TextoBoton={DICCIONARIO_LISTA_DE_AGENCIAS[Idioma].RegistrarAgencia}
         />
       )}
     </div>

@@ -136,10 +136,6 @@ export default function ListaDePedidosCompleta({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Pedidos"}
-          TextoBoton={DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].RealizarPedido}
         />
       )}
     </div>

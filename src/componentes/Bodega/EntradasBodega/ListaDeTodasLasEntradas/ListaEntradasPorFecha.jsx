@@ -142,10 +142,6 @@ export default function ListaEntradasPorFecha({
             .split("-")
             .reverse()
             .join("/")}.`}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Bodega-Entradas"}
-          TextoBoton={DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].CrearEntrada}
         />
       )}
     </div>

@@ -24,6 +24,7 @@
   font-weight: bold;
   font-size: 16px;
   transition: 0.3s ease-in-out all;
+  cursor: pointer;
 }
 .MensajeGeneral__Boton.Azul {
   background-color: var(--ColorAzul);

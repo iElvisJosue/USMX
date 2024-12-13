@@ -126,10 +126,6 @@ export default function ListaEntradasCompleta({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Bodega-Entradas"}
-          TextoBoton={DICCIONARIO_LISTA_ENTRADAS_COMPLETA[Idioma].CrearEntrada}
         />
       )}
     </div>

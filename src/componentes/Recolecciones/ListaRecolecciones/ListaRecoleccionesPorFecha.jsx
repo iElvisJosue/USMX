@@ -155,12 +155,6 @@ export default function ListaRecoleccionesPorFecha({
             .split("-")
             .reverse()
             .join("/")}.`}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Recolecciones"}
-          TextoBoton={
-            DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma].CrearRecoleccion
-          }
         />
       )}
     </div>

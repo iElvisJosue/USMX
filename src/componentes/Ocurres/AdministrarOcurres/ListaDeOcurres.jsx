@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useOcurre } from "../../../context/OcurreContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../../Cargando";
 import MensajeGeneral from "../../MensajeGeneral";
-import ModalConfirmacionOcurres from "./ModalConfirmacionOcurres";
+import AdministrarRegistro from "../../AdministrarRegistro";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarOcurresPorFiltro from "../../../hooks/useBuscarOcurresPorFiltro";
@@ -25,10 +28,6 @@ export default function ListaDeOcurres({
   establecerVistaOcurres,
   establecerInformacionDelOcurre,
 }) {
-  const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
-    useState(false);
-  const [activar, establecerActivar] = useState(true);
-  const [infOcurre, establecerInfOcurre] = useState(null);
   const {
     ocurres,
     cargandoOcurres,
@@ -47,6 +46,7 @@ export default function ListaDeOcurres({
     MostrarVeinticincoMenos,
     reiniciarValores,
   } = usePaginacion();
+  const { ActualizarEstadoOcurre } = useOcurre();
 
   useEffect(() => {
     if (ocurres) {
@@ -67,17 +67,6 @@ export default function ListaDeOcurres({
       reiniciarValores();
     }
   };
-
-  const MostrarModalActivar = (infOcurre) => {
-    establecerInfOcurre(infOcurre);
-    establecerActivar(true);
-    establecerMostrarModalConfirmacion(true);
-  };
-  const MostrarModalDesactivar = (infOcurre) => {
-    establecerInfOcurre(infOcurre);
-    establecerActivar(false);
-    establecerMostrarModalConfirmacion(true);
-  };
   const EstablecerInformacionDelOcurreAEditar = (infOcurre) => {
     establecerInformacionDelOcurre(infOcurre);
     establecerVistaOcurres(1);
@@ -87,20 +76,6 @@ export default function ListaDeOcurres({
 
   return (
     <div className="ListaDeOcurres">
-      {mostrarModalConfirmacion && (
-        <ModalConfirmacionOcurres
-          Idioma={Idioma}
-          Activar={activar}
-          infOcurre={infOcurre}
-          establecerMostrarModalConfirmacion={
-            establecerMostrarModalConfirmacion
-          }
-          obtenerOcurresNuevamente={obtenerOcurresNuevamente}
-          establecerObtenerOcurresNuevamente={
-            establecerObtenerOcurresNuevamente
-          }
-        />
-      )}
       <h1 className="ListaDeOcurres__Titulo">
         {DICCIONARIO_LISTA_DE_OCURRES[Idioma].AdministrarOcurres}
       </h1>
@@ -152,83 +127,46 @@ export default function ListaDeOcurres({
               </button>
             )}
           </div>
-          {ocurres.slice(indiceInicial, indiceFinal).map((infOcurre) =>
-            infOcurre.StatusOcurre === "Activa" ? (
-              <section
-                className="ListaDeOcurres__Ocurre"
-                key={infOcurre.idOcurre}
-              >
-                <span className="ListaDeOcurres__Ocurre__Detalles">
-                  <ion-icon name="alert-circle"></ion-icon>
-                  <p>{infOcurre.NombreOcurre}</p>
-                  <ion-icon name="business"></ion-icon>
-                  <p>{infOcurre.OperadorLogisticoOcurre}</p>
-                  <ion-icon name="location"></ion-icon>
-                  <p>
-                    {infOcurre.PaisOcurre}
-                    <br />
-                    {infOcurre.EstadoOcurre}, {infOcurre.CiudadOcurre}
-                    <br />
-                    {infOcurre.DireccionOcurre} {infOcurre.CodigoPostalOcurre}
-                  </p>
-                </span>
-                <span className="ListaDeOcurres__Ocurre__Opciones">
-                  <button
-                    className="ListaDeOcurres__Ocurre__Opciones--Boton Editar"
-                    title="Editar ocurre"
-                    onClick={() =>
-                      EstablecerInformacionDelOcurreAEditar(infOcurre)
-                    }
-                  >
-                    <p>
-                      <ion-icon name="create"></ion-icon>
-                    </p>
-                  </button>
-                  <button
-                    className="ListaDeOcurres__Ocurre__Opciones--Boton Desactivar"
-                    onClick={() => MostrarModalDesactivar(infOcurre)}
-                    title="Desactivar ocurre"
-                  >
-                    <p>
-                      <ion-icon name="ban"></ion-icon>
-                    </p>
-                  </button>
-                </span>
-              </section>
-            ) : (
-              <section
-                className="ListaDeOcurres__Ocurre Desactivada"
-                key={infOcurre.idOcurre}
-              >
-                <span className="ListaDeOcurres__Ocurre__Detalles">
-                  <ion-icon name="alert-circle"></ion-icon>
-                  <p>{infOcurre.NombreOcurre}</p>
-                  <ion-icon name="business"></ion-icon>
-                  <p>{infOcurre.OperadorLogisticoOcurre}</p>
-                  <ion-icon name="location"></ion-icon>
-                  <p>
-                    {infOcurre.PaisOcurre}
-                    <br />
-                    {infOcurre.EstadoOcurre}, {infOcurre.CiudadOcurre}
-                    <br />
-                    {infOcurre.DireccionOcurre} {infOcurre.CodigoPostalOcurre}
-                  </p>
-                </span>
-                <span className="ListaDeOcurres__Ocurre__Opciones">
-                  <button
-                    className="ListaDeOcurres__Ocurre__Opciones--Boton Activar"
-                    onClick={() => MostrarModalActivar(infOcurre)}
-                    title="Activar ocurre"
-                  >
-                    <p>
-                      <ion-icon name="power"></ion-icon>
-                    </p>
-                  </button>
-                </span>
-              </section>
-            )
-          )}
-
+          {ocurres.slice(indiceInicial, indiceFinal).map((infOcurre) => (
+            <AdministrarRegistro
+              key={infOcurre.idOcurre}
+              Status={infOcurre.StatusOcurre}
+              idRegistro={infOcurre.idOcurre}
+              NombreRegistro={infOcurre.NombreOcurre}
+              Secciones={[
+                {
+                  Icono: "alert-circle",
+                  TextoUno: infOcurre.NombreOcurre,
+                },
+                {
+                  Icono: "business",
+                  TextoUno: infOcurre.OperadorLogisticoOcurre,
+                },
+                {
+                  Icono: "location",
+                  TextoUno: infOcurre.PaisOcurre,
+                  TextoDos: `${infOcurre.EstadoOcurre}, ${infOcurre.CiudadOcurre}`,
+                },
+                {
+                  TextoUno: `${infOcurre.DireccionOcurre}, ${infOcurre.CodigoPostalOcurre}`,
+                },
+              ]}
+              OpcionesBotones={[
+                {
+                  TituloBoton: "Editar",
+                  IconoBoton: "create",
+                  ColorBoton: "Azul",
+                  FuncionBoton: EstablecerInformacionDelOcurreAEditar,
+                },
+              ]}
+              infRegistro={infOcurre}
+              FuncionActivarDesactivar={ActualizarEstadoOcurre}
+              obtenerListaNuevamente={obtenerOcurresNuevamente}
+              establecerObtenerListaNuevamente={
+                establecerObtenerOcurresNuevamente
+              }
+            />
+          ))}
           <small className="ListaDeOcurres__TextoPaginas">
             Página {paginaParaMostrar} de {cantidadDePaginas}
           </small>
@@ -237,10 +175,6 @@ export default function ListaDeOcurres({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-          Boton={true}
-          TipoBoton={"Azul"}
-          UrlBoton={"/Ocurres"}
-          TextoBoton={DICCIONARIO_LISTA_DE_OCURRES[Idioma].RegistrarOcurre}
         />
       )}
     </div>

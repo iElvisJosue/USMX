@@ -2,7 +2,7 @@
   padding: 10px;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 .ListaDeUsuarios__Titulo {
@@ -14,7 +14,7 @@
   margin-top: 20px;
 }
 .ListaDeUsuarios__Buscar {
-  grid-column: 3/4;
+  grid-column: 4/ -1;
   display: flex;
 }
 .ListaDeUsuarios__Buscar input {
@@ -117,148 +117,20 @@
   font-size: 14px;
   border-radius: 15px;
   font-weight: bold;
-  color: var(--ColorBlanco);
+  background-color: var(--ColorSecundario);
+  color: var(--ColorNegro);
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2px;
 }
-.ListaDeUsuarios__Clasificacion--Texto.Usuario {
-  background-color: var(--ColorAzul);
-}
-.ListaDeUsuarios__Clasificacion--Texto.Moderador {
-  background-color: var(--ColorVerde);
-}
-.ListaDeUsuarios__Clasificacion--Texto.Chofer {
-  background-color: var(--ColorDurazno);
-}
-.ListaDeUsuarios__Clasificacion--Texto.Bodega {
-  background-color: var(--ColorCafe);
-}
-.ListaDeUsuarios__Clasificacion--Texto.Administrador {
-  background-color: var(--ColorNaranja);
-}
-.ListaDeUsuarios__Clasificacion--Texto.Desactivado {
-  background-color: var(--ColorRojo);
-}
 .ListaDeUsuarios__Clasificacion--Texto ion-icon {
   font-size: 16px;
 }
-.ListaDeUsuarios__Usuario {
-  grid-column: span 1;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  height: auto;
-  border-radius: 20px;
-  transition: 0.3s ease-in-out all;
-  color: var(--ColorNegro);
-  background-color: var(--ColorSecundario);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-.ListaDeUsuarios__Usuario.Usuario {
-  background-color: var(--ColorAzul);
-}
-.ListaDeUsuarios__Usuario.Moderador {
-  background-color: var(--ColorVerde);
-}
-.ListaDeUsuarios__Usuario.Chofer {
-  background-color: var(--ColorDurazno);
-}
-.ListaDeUsuarios__Usuario.Bodega {
-  background-color: var(--ColorCafe);
-}
-.ListaDeUsuarios__Usuario.Administrador {
-  background-color: var(--ColorNaranja);
-}
-.ListaDeUsuarios__Usuario.Desactivado {
+.ListaDeUsuarios__Clasificacion--Texto.Desactivado {
   background-color: var(--ColorRojo);
-}
-.ListaDeUsuarios__Usuario ion-icon {
-  font-size: 25px;
-}
-.ListaDeUsuarios__Usuario__Detalles {
-  width: 100%;
-  height: 100%;
-  padding: 10px;
   color: var(--ColorBlanco);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-.ListaDeUsuarios__Usuario__Detalles img {
-  min-width: 75px;
-  width: 75px;
-  max-width: 75px;
-  min-height: 75px;
-  height: 75px;
-  max-height: 75px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
-  border: 2px dashed white;
-}
-.ListaDeUsuarios__Usuario__Opciones {
-  width: 100%;
-  min-height: 35px;
-
-  display: flex;
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton {
-  width: 100%;
-  height: 100%;
-  background-color: var(--ColorSecundario);
-  border: none;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton ion-icon {
-  font-size: 18px;
-  transition: 0.3s ease-in-out all;
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton.Usuario p ion-icon {
-  color: var(--ColorAzul);
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton.Moderador p ion-icon {
-  color: var(--ColorVerde);
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton.Chofer p ion-icon {
-  color: var(--ColorDurazno);
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton.Bodega p ion-icon {
-  color: var(--ColorCafe);
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton.Administrador p ion-icon {
-  color: var(--ColorNaranja);
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton.Desactivado p ion-icon {
-  color: var(--ColorRojo);
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton.Activar p ion-icon {
-  color: var(--ColorVerde);
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton:first-child {
-  border-radius: 0 0 0 20px;
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton:last-child {
-  border-radius: 0 0 20px 0;
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton.Activar {
-  border-radius: 0 0 20px 20px;
-}
-.ListaDeUsuarios__Usuario__Opciones--Boton:hover ion-icon {
-  transform: scale(1.2);
 }
 .ListaDeUsuarios__TextoPaginas {
   grid-column: 1 / -1;
@@ -268,10 +140,10 @@
 }
 @media (width <= 1120px) {
   .ListaDeUsuarios__Buscar {
-    grid-column: 1 / -1;
+    grid-column: 2 / -1;
   }
   .ListaDeUsuarios {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (width <= 1000px) {
@@ -283,12 +155,14 @@
     grid-column: span 1;
   }
 }
-@media (width <= 500px) {
+@media (width <= 600px) {
   .ListaDeUsuarios {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
-  .ListaDeUsuarios__Usuario {
-    font-size: 12px;
+}
+@media (width <= 500px) {
+  .ListaDeUsuarios__Buscar {
+    grid-column: 1 / -1;
   }
   .ListaDeUsuarios__Titulo {
     font-size: 20px;
@@ -301,14 +175,6 @@
   }
   .ListaDeUsuarios__Clasificacion--Texto {
     font-size: 12px;
-  }
-  .ListaDeUsuarios__Usuario__Detalles img {
-    min-width: 55px;
-    width: 55px;
-    max-width: 55px;
-    min-height: 55px;
-    height: 55px;
-    max-height: 55px;
   }
 }
 @media (width <= 435px) {
