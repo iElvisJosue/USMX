@@ -22,7 +22,7 @@ import usePaginacion from "../../../hooks/usePaginacion";
 import "../../../estilos/componentes/Productos/AdministrarProductos/ListaDeProductos.css";
 
 export default function ListaDeProductos({
-  idioma,
+  Idioma,
   establecerVistaProductos,
   establecerInformacionDelProducto,
 }) {
@@ -95,7 +95,7 @@ export default function ListaDeProductos({
     <div className="ListaDeProductos">
       {mostrarModalConfirmacion && (
         <ModalConfirmacionProductos
-          idioma={idioma}
+          Idioma={Idioma}
           Activar={activar}
           infProducto={infProducto}
           establecerMostrarModalConfirmacion={
@@ -108,12 +108,12 @@ export default function ListaDeProductos({
         />
       )}
       <h1 className="ListaDeProductos__Titulo">
-        {DICCIONARIO_LISTA_DE_PRODUCTOS[idioma].AdministrarProductos}
+        {DICCIONARIO_LISTA_DE_PRODUCTOS[Idioma].AdministrarProductos}
       </h1>
       <span className="ListaDeProductos__Buscar">
         <input
           type="text"
-          placeholder={DICCIONARIO_LISTA_DE_PRODUCTOS[idioma].BuscarProducto}
+          placeholder={DICCIONARIO_LISTA_DE_PRODUCTOS[Idioma].BuscarProducto}
           onChange={ObtenerLosProductos}
         />
         <span className="ListaDeProductos__Buscar__Lupa">
@@ -124,20 +124,20 @@ export default function ListaDeProductos({
         <>
           <small className="ListaDeProductos__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {productos.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {productos.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <h2 className="ListaDeProductos__Clasificacion">
-            {DICCIONARIO_LISTA_DE_PRODUCTOS[idioma].EstatusDeLosProductos}
+            {DICCIONARIO_LISTA_DE_PRODUCTOS[Idioma].EstatusDeLosProductos}
           </h2>
           <span className="ListaDeProductos__Colores">
             <p className="ListaDeProductos__Clasificacion--Texto Activa">
               <ion-icon name="basket"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_PRODUCTOS[idioma].Activo}
+              {DICCIONARIO_LISTA_DE_PRODUCTOS[Idioma].Activo}
             </p>
             <p className="ListaDeProductos__Clasificacion--Texto Desactivada">
               <ion-icon name="ban"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_PRODUCTOS[idioma].Desactivado}
+              {DICCIONARIO_LISTA_DE_PRODUCTOS[Idioma].Desactivado}
             </p>
           </span>
           <div className="ListaDeProductos__BotonesDePaginacion">
@@ -228,18 +228,18 @@ export default function ListaDeProductos({
           )}
 
           <small className="ListaDeProductos__TextoPaginas">
-            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
-            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[Idioma].De} {cantidadDePaginas}
           </small>
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Productos"}
-          TextoBoton={DICCIONARIO_LISTA_DE_PRODUCTOS[idioma].RegistrarProducto}
+          TextoBoton={DICCIONARIO_LISTA_DE_PRODUCTOS[Idioma].RegistrarProducto}
         />
       )}
     </div>

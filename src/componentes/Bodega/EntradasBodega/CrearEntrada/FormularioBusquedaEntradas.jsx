@@ -29,7 +29,7 @@ import {
 import "../../../../estilos/componentes/Bodega/EntradasBodega/CrearEntrada/FormularioBusquedaEntradas.css";
 
 export default function FormularioBusquedaEntradas({
-  idioma,
+  Idioma,
   informacionDeLaEntrada,
   entrada,
   establecerEntrada,
@@ -114,12 +114,12 @@ export default function FormularioBusquedaEntradas({
         </button>
       </section>
       <h1 className="FormularioBusquedaEntradas__Titulo">
-        {DICCIONARIO_FORMULARIO_BUSQUEDA_ENTRADAS[idioma].CrearEntrada}
+        {DICCIONARIO_FORMULARIO_BUSQUEDA_ENTRADAS[Idioma].CrearEntrada}
       </h1>
       <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="scan-circle"></ion-icon>{" "}
-          {DICCIONARIO_FORMULARIO_BUSQUEDA_ENTRADAS[idioma].IngresaEscaneaGuia}
+          {DICCIONARIO_FORMULARIO_BUSQUEDA_ENTRADAS[Idioma].IngresaEscaneaGuia}
         </p>
         <input
           {...register("GuiaPedido")}
@@ -127,11 +127,11 @@ export default function FormularioBusquedaEntradas({
           type="text"
           name="GuiaPedido"
           autoComplete="off"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           onKeyUp={(e) => establecerValorInput(e.target.value.trim())}
         />
       </span>
-      <GrupoDeBotonesInferior idioma={idioma} BotonBuscar={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonBuscar={true} />
     </form>
   );
 }

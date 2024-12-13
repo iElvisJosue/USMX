@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import { DICCIONARIO_USUARIOS } from "../diccionario/Diccionario";
@@ -15,23 +15,24 @@ import RegistrarUsuario from "../componentes/Usuarios/RegistrarUsuario/Registrar
 import AdministrarUsuarios from "../componentes/Usuarios/AdministrarUsuarios/AdministrarUsuarios";
 
 export default function Usuarios() {
-  const { idioma } = useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
   const [vistaUsuario, establecerVistaUsuario] = useState(0);
 
   const OpcionesSubMenu = [
     {
-      Texto: DICCIONARIO_USUARIOS[idioma].RegistrarUsuario,
+      Texto: DICCIONARIO_USUARIOS[Idioma].RegistrarUsuario,
       Icono: "person-add",
     },
     {
-      Texto: DICCIONARIO_USUARIOS[idioma].AdministrarUsuarios,
+      Texto: DICCIONARIO_USUARIOS[Idioma].AdministrarUsuarios,
       Icono: "cog",
     },
   ];
 
   // VALORES COMPARTIDOS ENTRE LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
   };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
@@ -41,8 +42,8 @@ export default function Usuarios() {
   };
 
   const TituloSubseccion = {
-    0: DICCIONARIO_USUARIOS[idioma].RegistrarUsuario,
-    1: DICCIONARIO_USUARIOS[idioma].AdministrarUsuarios,
+    0: DICCIONARIO_USUARIOS[Idioma].RegistrarUsuario,
+    1: DICCIONARIO_USUARIOS[Idioma].AdministrarUsuarios,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -54,7 +55,7 @@ export default function Usuarios() {
       <Menu />
       <Encabezado
         icono="people-circle"
-        seccion={DICCIONARIO_USUARIOS[idioma].Usuarios}
+        seccion={DICCIONARIO_USUARIOS[Idioma].Usuarios}
         subseccion={TituloSubseccion[vistaUsuario]}
       />
       <SubMenu

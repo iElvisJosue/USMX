@@ -29,7 +29,7 @@ import {
 import "../../../estilos/componentes/Recolecciones/CrearRecoleccion/FormularioRecoleccion.css";
 
 export default function FormularioRecoleccion({
-  idioma,
+  Idioma,
   recoleccion,
   establecerRecoleccion,
 }) {
@@ -102,12 +102,12 @@ export default function FormularioRecoleccion({
       onSubmit={BuscarInformacionDeGuiaParaReloccion}
     >
       <h1 className="FormularioRecoleccion__Titulo">
-        {DICCIONARIO_FORMULARIO_RECOLECCIONES[idioma].CrearRecoleccion}
+        {DICCIONARIO_FORMULARIO_RECOLECCIONES[Idioma].CrearRecoleccion}
       </h1>
       <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="scan-circle"></ion-icon>{" "}
-          {DICCIONARIO_FORMULARIO_RECOLECCIONES[idioma].IngresaEscaneaGuia}
+          {DICCIONARIO_FORMULARIO_RECOLECCIONES[Idioma].IngresaEscaneaGuia}
         </p>
         <input
           {...register("GuiaPedido")}
@@ -115,11 +115,11 @@ export default function FormularioRecoleccion({
           type="text"
           name="GuiaPedido"
           autoComplete="off"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           onKeyUp={(e) => establecerValorInput(e.target.value.trim())}
         />
       </span>
-      <GrupoDeBotonesInferior idioma={idioma} BotonBuscar={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonBuscar={true} />
     </form>
   );
 }

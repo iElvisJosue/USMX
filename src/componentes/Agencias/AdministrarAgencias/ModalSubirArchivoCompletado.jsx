@@ -7,7 +7,7 @@ import {
 
 // LOS ESTILOS ESTÁN EN ModalSubirArchivo.css
 export default function ModalSubirArchivoCompletado({
-  idioma,
+  Idioma,
   esRemitente,
   establecerContenidoModal,
 }) {
@@ -19,20 +19,20 @@ export default function ModalSubirArchivoCompletado({
         className="ModalSubirArchivo__Contenido--Completado--Imagen"
       />
       <p className="ModalSubirArchivo__Contenido--Completado--Texto">
-        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[idioma].MensajeParteUno}{" "}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[Idioma].MensajeParteUno}{" "}
         <b>
           {esRemitente
-            ? `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[idioma].Remitentes} `
-            : `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[idioma].Destinatarios} `}
+            ? `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[Idioma].Remitentes} `
+            : `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[Idioma].Destinatarios} `}
         </b>
-        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[idioma].MensajeParteDos}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_COMPLETADO[Idioma].MensajeParteDos}
       </p>
       <button
         className="ModalSubirArchivo__Contenido--Completado--Boton"
         type="button"
         onClick={() => establecerContenidoModal(0)}
       >
-        {DICCIONARIO_BOTONES[idioma].Regresar}
+        {DICCIONARIO_BOTONES[Idioma].Regresar}
       </button>
     </section>
   );

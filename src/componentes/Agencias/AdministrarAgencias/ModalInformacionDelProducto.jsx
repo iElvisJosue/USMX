@@ -21,7 +21,7 @@ import {
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ModalInformacionDelProducto.css";
 
 export default function ModalInformacionDelProducto({
-  idioma,
+  Idioma,
   agencia,
   informacionDelProducto,
   establecerMostrarModal,
@@ -159,19 +159,19 @@ export default function ModalInformacionDelProducto({
         </button>
         <h1 className="ModalInformacionDelProducto__Contenido--Titulo">
           {
-            DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma]
+            DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma]
               .DetallesDelProducto
           }
         </h1>
         <small className="ModalInformacionDelProducto__Contenido--Informacion Col2">
           <ion-icon name="basket"></ion-icon>{" "}
-          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Producto}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].Producto}</b>
           {informacionDelProducto.NombreProducto}
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
           <ion-icon name="cash"></ion-icon>{" "}
           <b>
-            {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].PrecioPublico}
+            {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].PrecioPublico}
           </b>
           <input
             className={ClaseInputs}
@@ -185,7 +185,7 @@ export default function ModalInformacionDelProducto({
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
           <ion-icon name="cash"></ion-icon>{" "}
-          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Comision}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].Comision}</b>
           <input
             className={ClaseInputs}
             type="text"
@@ -198,7 +198,7 @@ export default function ModalInformacionDelProducto({
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
           <ion-icon name="scale"></ion-icon>{" "}
-          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].LibraExtra}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].LibraExtra}</b>
           <input
             className={ClaseInputs}
             type="text"
@@ -212,7 +212,7 @@ export default function ModalInformacionDelProducto({
         <small className="ModalInformacionDelProducto__Contenido--Informacion">
           <ion-icon name="thumbs-up"></ion-icon>{" "}
           <b>
-            {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].PesoSinCobro}
+            {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].PesoSinCobro}
           </b>
           <input
             className={ClaseInputs}
@@ -226,7 +226,7 @@ export default function ModalInformacionDelProducto({
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion Col2">
           <ion-icon name="warning"></ion-icon>{" "}
-          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].PesoMaximo}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].PesoMaximo}</b>
           <input
             className={ClaseInputs}
             type="text"
@@ -239,12 +239,12 @@ export default function ModalInformacionDelProducto({
         </small>
         <small className="ModalInformacionDelProducto__Contenido--Informacion Col2">
           <ion-icon name="expand"></ion-icon>{" "}
-          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Medidas}</b>
-          {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Ancho}{" "}
+          <b>{DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].Medidas}</b>
+          {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].Ancho}{" "}
           {informacionDelProducto.AnchoProducto} -{" "}
-          {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Alto}{" "}
+          {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].Alto}{" "}
           {informacionDelProducto.AltoProducto} -{" "}
-          {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[idioma].Largo}{" "}
+          {DICCIONARIO_MODAL_INFORMACION_DEL_PRODUCTO[Idioma].Largo}{" "}
           {informacionDelProducto.LargoProducto}
         </small>
         {informacionDelProducto.Editable && (
@@ -253,8 +253,8 @@ export default function ModalInformacionDelProducto({
             className="ModalInformacionDelProducto__Contenido--Boton"
           >
             {informacionDelProducto.Actualizar
-              ? `${DICCIONARIO_BOTONES[idioma].Actualizar}`
-              : `${DICCIONARIO_BOTONES[idioma].Asignar}`}
+              ? `${DICCIONARIO_BOTONES[Idioma].Actualizar}`
+              : `${DICCIONARIO_BOTONES[Idioma].Asignar}`}
           </button>
         )}
       </form>

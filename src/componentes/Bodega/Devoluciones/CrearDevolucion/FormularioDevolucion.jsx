@@ -29,7 +29,7 @@ import {
 import "../../../../estilos/componentes/Bodega/Devoluciones/CrearDevolucion/FormularioDevolucion.css";
 
 export default function FormularioDevolucion({
-  idioma,
+  Idioma,
   devolucion,
   establecerDevolucion,
 }) {
@@ -102,12 +102,12 @@ export default function FormularioDevolucion({
       onSubmit={BuscarInformacionDeGuiaParaDevolucion}
     >
       <h1 className="FormularioDevolucion__Titulo">
-        {DICCIONARIO_FORMULARIO_DEVOLUCIONES[idioma].CrearDevolucion}
+        {DICCIONARIO_FORMULARIO_DEVOLUCIONES[Idioma].CrearDevolucion}
       </h1>
       <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="scan-circle"></ion-icon>{" "}
-          {DICCIONARIO_FORMULARIO_DEVOLUCIONES[idioma].IngresaEscaneaGuia}
+          {DICCIONARIO_FORMULARIO_DEVOLUCIONES[Idioma].IngresaEscaneaGuia}
         </p>
         <input
           {...register("GuiaPedido")}
@@ -115,11 +115,11 @@ export default function FormularioDevolucion({
           type="text"
           name="GuiaPedido"
           autoComplete="off"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           onKeyUp={(e) => establecerValorInput(e.target.value.trim())}
         />
       </span>
-      <GrupoDeBotonesInferior idioma={idioma} BotonBuscar={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonBuscar={true} />
     </form>
   );
 }

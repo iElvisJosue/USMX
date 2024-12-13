@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Menu/MenuOpciones.css";
@@ -9,6 +10,7 @@ export default function MenuOpciones({ OpcionPrincipal, OpcionSecundaria }) {
   const [iconoMostrar, establecerIconoMostrar] = useState(true);
   const [fondo, establecerFondo] = useState(true);
   const [altura, establecerAltura] = useState(true);
+  const navigate = useNavigate();
 
   //   OBTENEMOS LAS INFORMACION DE LA OPCION PRINCIPAL
   const { icono, nombre, url } = OpcionPrincipal;
@@ -26,11 +28,12 @@ export default function MenuOpciones({ OpcionPrincipal, OpcionSecundaria }) {
     establecerIconoMostrar(!iconoMostrar);
     establecerFondo(!fondo);
     establecerAltura(!altura);
+    navigate(url);
   };
 
   return (
     <div className={ClaseDeCuerpoContenido}>
-      <a className={ClaseDeFondo} onClick={modificarOpcion} href={url ?? "#"}>
+      <a className={ClaseDeFondo} onClick={() => modificarOpcion(url || "")}>
         <ion-icon name={icono ?? "folder"}></ion-icon>
         <p className="Menu__Cuerpo__Contenido--Opcion--Texto">
           {nombre ?? "Opción"}
@@ -43,7 +46,7 @@ export default function MenuOpciones({ OpcionPrincipal, OpcionSecundaria }) {
         <span className="Menu__Cuerpo__Contenido--SubOpcion" key={index}>
           <a
             className="Menu__Cuerpo__Contenido--SubOpcion--Link"
-            href={url ?? "#"}
+            onClick={() => navigate(url)}
           >
             <ion-icon name={icono ?? "folder"}></ion-icon>
             <p className="Menu__Cuerpo__Contenido--SubOpcion--Link--Texto">

@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Pedidos/ListaPedidos/ListaPedidosPorFecha.css";
 
 export default function ListaPedidosPorFecha({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDelPedido,
 }) {
   const {
@@ -44,7 +44,7 @@ export default function ListaPedidosPorFecha({
   return (
     <div className="ListaPedidosPorFecha">
       <h1 className="ListaPedidosPorFecha__Titulo">
-        {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[idioma].BuscarPedidosPorFecha}
+        {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].BuscarPedidosPorFecha}
         <small className="ListaPedidosPorFecha__Titulo--Fechas">
           ({FormatearFecha(primeraFecha)} - {FormatearFecha(segundaFecha)})
         </small>
@@ -71,8 +71,8 @@ export default function ListaPedidosPorFecha({
         <>
           <small className="ListaPedidosPorFecha__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {pedidosPorFecha.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {pedidosPorFecha.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaPedidosPorFecha__Cuerpo">
             <table className="ListaPedidosPorFecha__Cuerpo__Tabla">
@@ -81,37 +81,37 @@ export default function ListaPedidosPorFecha({
                   <th>
                     <ion-icon name="document-text"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[idioma].Guia}
+                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].Guia}
                   </th>
                   <th>
                     <ion-icon name="paper-plane"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[idioma].Remitente}
+                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].Remitente}
                   </th>
                   <th>
                     <ion-icon name="location"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[idioma].Destinatario}
+                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].Destinatario}
                   </th>
                   <th>
                     <ion-icon name="business"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[idioma].Agencia}
+                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].Agencia}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[idioma].FechaCreacion}
+                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].FechaCreacion}
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -136,7 +136,7 @@ export default function ListaPedidosPorFecha({
                         className="ListaPedidosPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles"
                         onClick={() => EstablecerLosDetallesDelPedido(pedido)}
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -149,7 +149,7 @@ export default function ListaPedidosPorFecha({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={`${
-            DICCIONARIO_RESULTADOS[idioma].NoResultadoPorFecha
+            DICCIONARIO_RESULTADOS[Idioma].NoResultadoPorFecha
           } ${primeraFecha.split("-").reverse().join("/")} - ${segundaFecha
             .split("-")
             .reverse()
@@ -158,7 +158,7 @@ export default function ListaPedidosPorFecha({
           TipoBoton={"Azul"}
           UrlBoton={"/Pedidos"}
           TextoBoton={
-            DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[idioma].RealizarPedido
+            DICCIONARIO_LISTA_PEDIDOS_POR_FECHA[Idioma].RealizarPedido
           }
         />
       )}

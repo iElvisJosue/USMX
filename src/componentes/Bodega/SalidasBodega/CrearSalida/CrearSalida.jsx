@@ -9,7 +9,7 @@ import ListaSalidas from "./ListaSalidas";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../../estilos/componentes/Bodega/SalidasBodega/CrearSalida/CrearSalida.css";
 
-export default function CrearSalida({ idioma }) {
+export default function CrearSalida({ Idioma }) {
   const [vista, establecerVista] = useState(0);
   const [salida, establecerSalida] = useState([]);
   const [informacionDeLaSalida, establecerInformacionDeLaSalida] =
@@ -17,7 +17,7 @@ export default function CrearSalida({ idioma }) {
 
   // VALORES COMPARTIDOS
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     salida,
     establecerSalida,
     vista,

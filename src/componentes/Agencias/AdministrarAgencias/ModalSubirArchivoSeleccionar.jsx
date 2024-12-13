@@ -7,7 +7,7 @@ import {
 } from "../../../diccionario/Diccionario";
 
 export default function ModalSubirArchivoSeleccionar({
-  idioma,
+  Idioma,
   informacionArchivo,
   esRemitente,
   establecerEsRemitente,
@@ -28,7 +28,7 @@ export default function ModalSubirArchivoSeleccionar({
           onClick={() => establecerEsRemitente(true)}
         >
           <ion-icon name="person-circle"></ion-icon>
-          {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].Remitentes}
+          {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[Idioma].Remitentes}
         </button>
         <button
           className="ModalSubirArchivo__Contenido--Opciones--Boton"
@@ -36,12 +36,12 @@ export default function ModalSubirArchivoSeleccionar({
           onClick={() => establecerEsRemitente(false)}
         >
           <ion-icon name="location"></ion-icon>
-          {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].Destinatarios}
+          {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[Idioma].Destinatarios}
         </button>
       </section>
       <h1 className="ModalSubirArchivo__Contenido--Titulo">
         {
-          DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma]
+          DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[Idioma]
             .SeleccionarArchivos
         }
       </h1>
@@ -49,15 +49,15 @@ export default function ModalSubirArchivoSeleccionar({
         <img src="SubirExcel.png" alt="Icono de subir excel" />
       </picture>
       <small className="ModalSubirArchivo__Contenido--Texto">
-        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].MensajeParteUno}{" "}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[Idioma].MensajeParteUno}{" "}
         <b>
           {esRemitente
-            ? `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].Remitentes}`
-            : `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].Destinatarios}`}
+            ? `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[Idioma].Remitentes}`
+            : `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[Idioma].Destinatarios}`}
         </b>{" "}
-        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].MensajeParteDos}{" "}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[Idioma].MensajeParteDos}{" "}
         <b>{informacionArchivo.NombreAgencia || "N/A"}</b>,{" "}
-        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[idioma].MensajeParteTres}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_SELECCIONAR[Idioma].MensajeParteTres}
       </small>
       <label className="ModalSubirArchivo__Contenido--Archivo">
         <input
@@ -68,15 +68,15 @@ export default function ModalSubirArchivoSeleccionar({
         />
         {hayArchivo
           ? hayArchivo?.name
-          : `${DICCIONARIO_BOTONES[idioma].Seleccionar}`}
+          : `${DICCIONARIO_BOTONES[Idioma].Seleccionar}`}
       </label>
       {mostrarError && (
         <span className="ModalSubirArchivo__Contenido--Archivo--MensajeDeError">
-          {DICCIONARIO_MENSAJES_DE_ERROR[idioma].Archivo}
+          {DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Archivo}
         </span>
       )}
       <button className="ModalSubirArchivo__Contenido--Boton">
-        {DICCIONARIO_BOTONES[idioma].Subir}
+        {DICCIONARIO_BOTONES[Idioma].Subir}
       </button>
     </>
   );

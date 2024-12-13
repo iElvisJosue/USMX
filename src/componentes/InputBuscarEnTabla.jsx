@@ -4,7 +4,7 @@ import { DICCIONARIO_PLACEHOLDERS } from "../diccionario/Diccionario";
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/componentes/InputBuscarEnTabla.css";
 export default function InputBuscarEnTabla({
-  idioma = "es",
+  Idioma = "es",
   ArrayDeBusqueda = [],
   FuncionDeEstablecimiento,
 }) {
@@ -25,7 +25,7 @@ export default function InputBuscarEnTabla({
     <span className="InputBuscarEnTabla">
       <input
         type="text"
-        placeholder={DICCIONARIO_PLACEHOLDERS[idioma].BuscarGuia}
+        placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].BuscarGuia}
         onChange={BuscarPedidoEnArray}
       />
       <span className="InputBuscarEnTabla__Lupa">

@@ -27,7 +27,7 @@ import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Productos/RegistrarProducto/RegistrarProducto.css";
 
-export default function RegistrarProducto({ idioma }) {
+export default function RegistrarProducto({ Idioma }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { RegistrarProducto } = useProductos();
 
@@ -90,23 +90,23 @@ export default function RegistrarProducto({ idioma }) {
         onSubmit={GuardaInformacionDelProducto}
       >
         <h1 className="RegistrarProducto__InformacionDelProducto__Titulo">
-          {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].RegistrarProducto}
+          {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].RegistrarProducto}
         </h1>
         <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
           <p>
             <ion-icon name="basket"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].Nombre}
+            {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Nombre}
           </p>
           <input
             id="NombreProducto"
             name="NombreProducto"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("NombreProducto", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
               },
             })}
           ></input>
@@ -115,17 +115,17 @@ export default function RegistrarProducto({ idioma }) {
         <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
           <p>
             <ion-icon name="swap-horizontal"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].Ancho}
+            {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Ancho}
           </p>
           <input
             id="AnchoProducto"
             name="AnchoProducto"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("AnchoProducto", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           ></input>
@@ -134,17 +134,17 @@ export default function RegistrarProducto({ idioma }) {
         <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
           <p>
             <ion-icon name="swap-vertical"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].Largo}
+            {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Largo}
           </p>
           <input
             id="LargoProducto"
             name="LargoProducto"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("LargoProducto", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           ></input>
@@ -153,17 +153,17 @@ export default function RegistrarProducto({ idioma }) {
         <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
           <p>
             <ion-icon name="arrow-up"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].Alto}
+            {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Alto}
           </p>
           <input
             id="AltoProducto"
             name="AltoProducto"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("AltoProducto", {
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           ></input>
@@ -172,18 +172,18 @@ export default function RegistrarProducto({ idioma }) {
         <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
           <p>
             <ion-icon name="cash"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].Precio}
+            {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Precio}
           </p>
           <input
             id="PrecioProducto"
             name="PrecioProducto"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("PrecioProducto", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           ></input>
@@ -192,18 +192,18 @@ export default function RegistrarProducto({ idioma }) {
         <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
           <p>
             <ion-icon name="scale"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].CostoLibraExtra}
+            {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].CostoLibraExtra}
           </p>
           <input
             id="CostoLibraExtraProducto"
             name="CostoLibraExtraProducto"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("CostoLibraExtraProducto", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_DECIMALES,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           ></input>
@@ -212,18 +212,18 @@ export default function RegistrarProducto({ idioma }) {
         <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
           <p>
             <ion-icon name="thumbs-up"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].PesoSinCobro}
+            {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].PesoSinCobro}
           </p>
           <input
             id="PesoSinCobroProducto"
             name="PesoSinCobroProducto"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("PesoSinCobroProducto", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           ></input>
@@ -232,18 +232,18 @@ export default function RegistrarProducto({ idioma }) {
         <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
           <p>
             <ion-icon name="warning"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].PesoMaximo}
+            {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].PesoMaximo}
           </p>
           <input
             id="PesoMaximoProducto"
             name="PesoMaximoProducto"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("PesoMaximoProducto", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           ></input>
@@ -252,18 +252,18 @@ export default function RegistrarProducto({ idioma }) {
         <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo Comision">
           <p>
             <ion-icon name="receipt"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_PRODUCTO[idioma].Comision}
+            {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Comision}
           </p>
           <input
             id="ComisionProducto"
             name="ComisionProducto"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("ComisionProducto", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           ></input>
@@ -275,13 +275,13 @@ export default function RegistrarProducto({ idioma }) {
             className="RegistrarProducto__InformacionDelProducto__Footer__Boton Cancelar"
             onClick={ReiniciarFormulario}
           >
-            {DICCIONARIO_BOTONES[idioma].Cancelar}
+            {DICCIONARIO_BOTONES[Idioma].Cancelar}
           </button>
           <button
             type="submit"
             className="RegistrarProducto__InformacionDelProducto__Footer__Boton Guardar"
           >
-            {DICCIONARIO_BOTONES[idioma].Guardar}
+            {DICCIONARIO_BOTONES[Idioma].Guardar}
           </button>
         </footer>
       </form>

@@ -30,7 +30,7 @@ import usePaginacion from "../../../hooks/usePaginacion";
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/AdministrarAgenciasDelUsuario.css";
 
 export default function AdministrarAgenciasDelUsuario({
-  idioma,
+  Idioma,
   establecerVista,
   informacionDelUsuario,
   informacionDeLaAgencia,
@@ -122,7 +122,7 @@ export default function AdministrarAgenciasDelUsuario({
     <div className="AdministrarAgenciasDelUsuario">
       {mostrarModal && (
         <ModalInformacionDeLaAgencia
-          idioma={idioma}
+          Idioma={Idioma}
           informacionDelUsuario={informacionDelUsuario}
           informacionDeLaAgencia={informacionDeLaAgencia}
           establecerMostrarModal={establecerMostrarModal}
@@ -143,7 +143,7 @@ export default function AdministrarAgenciasDelUsuario({
         </button>
         <small className="AdministrarAgenciasDelUsuario__Regresar__Usuario">
           {
-            DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[idioma]
+            DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[Idioma]
               .UsuarioSeleccionado
           }
           <b>{informacionDelUsuario.Usuario.toUpperCase()}</b>
@@ -153,7 +153,7 @@ export default function AdministrarAgenciasDelUsuario({
         <>
           <h1 className="AdministrarAgenciasDelUsuario__Titulo">
             {
-              DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[idioma]
+              DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[Idioma]
                 .AgenciasAsignadas
             }
           </h1>
@@ -190,7 +190,7 @@ export default function AdministrarAgenciasDelUsuario({
       )}
       <h1 className="AdministrarAgenciasDelUsuario__Titulo">
         {
-          DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[idioma]
+          DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[Idioma]
             .AsignarNuevaAgencia
         }
       </h1>
@@ -198,7 +198,7 @@ export default function AdministrarAgenciasDelUsuario({
         <input
           type="text"
           placeholder={
-            DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[idioma].BuscarAgencia
+            DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[Idioma].BuscarAgencia
           }
           onChange={obtenerAgencias}
         />
@@ -210,9 +210,9 @@ export default function AdministrarAgenciasDelUsuario({
         <>
           <small className="AdministrarAgenciasDelUsuario__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos}{" "}
             {AgenciasNoAsignadas.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="AdministrarAgenciasDelUsuario__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
@@ -255,19 +255,19 @@ export default function AdministrarAgenciasDelUsuario({
             )
           )}
           <small className="AdministrarAgenciasDelUsuario__TextoPaginas">
-            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
-            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[Idioma].De} {cantidadDePaginas}
           </small>
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Agencias"}
           TextoBoton={
-            DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[idioma]
+            DICCIONARIO_ADMINISTRAR_AGENCIAS_DEL_USUARIO[Idioma]
               .RegistrarAgencia
           }
         />

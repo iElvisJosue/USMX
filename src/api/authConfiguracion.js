@@ -5,18 +5,6 @@ import {
   COOKIE_CON_TOKEN,
 } from "../helpers/AgregarCookiePeticion";
 
-// PETICIÓN PARA OBTENER EL MODO OSCURO DEL USUARIO
-export const SolicitudObtenerModoOscuro = (idUsuario) =>
-  axios.get(`/configuracion/ObtenerModoOscuro/${idUsuario}`);
-// PETICIÓN PARA ACTUALIZAR EL MODO OSCURO DEL USUARIO
-export const SolicitudActualizarModoOscuro = (data) =>
-  axios.put("/configuracion/ActualizarModoOscuro", AgregarCookiePeticion(data));
-// PETICIÓN PARA OBTENER IDIOMAS DEL USUARIO
-export const SolicitudObtenerIdioma = (idUsuario) =>
-  axios.get(`/configuracion/ObtenerIdioma/${idUsuario}`);
-// PETICIÓN PARA ACTUALIZAR IDIOMAS DEL USUARIO
-export const SolicitudActualizarIdioma = (data) =>
-  axios.put("/configuracion/ActualizarIdioma", AgregarCookiePeticion(data));
 // PETICIÓN PARA REGISTRAR UN NUEVO TIPO DE CARGA
 export const SolicitudRegistrarTipoDeCarga = (data) =>
   axios.post(

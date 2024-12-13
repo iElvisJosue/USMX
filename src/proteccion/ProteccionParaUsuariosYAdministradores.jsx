@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useUsuarios } from "../context/UsuariosContext";
+import { useSistema } from "../context/SistemaContext";
 
 export default function ProteccionParaUsuariosYAdministradores() {
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
 
   if (
     infUsuario.Permisos !== "Usuario" &&

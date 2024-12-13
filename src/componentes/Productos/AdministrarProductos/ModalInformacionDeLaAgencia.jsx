@@ -19,7 +19,7 @@ import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Productos/AdministrarProductos/ModalInformacionDeLaAgencia.css";
 
 export default function ModalInformacionDeLaAgencia({
-  idioma,
+  Idioma,
   informacionDelProducto,
   informacionDeLaAgencia,
   establecerMostrarModal,
@@ -73,7 +73,7 @@ export default function ModalInformacionDeLaAgencia({
         </button>
         <h1 className="ModalInformacionDeLaAgenciaProductos__Contenido--Titulo">
           {
-            DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[idioma]
+            DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[Idioma]
               .InformacionDeLaAgencia
           }
         </h1>
@@ -81,7 +81,7 @@ export default function ModalInformacionDeLaAgencia({
           <ion-icon name="business"></ion-icon>
           <b>
             {
-              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[idioma]
+              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[Idioma]
                 .Agencia
             }
           </b>
@@ -98,7 +98,7 @@ export default function ModalInformacionDeLaAgencia({
           <ion-icon name="person-circle"></ion-icon>
           <b>
             {
-              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[idioma]
+              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[Idioma]
                 .Representante
             }
           </b>{" "}
@@ -111,7 +111,7 @@ export default function ModalInformacionDeLaAgencia({
           <ion-icon name="call"></ion-icon>
           <b>
             {
-              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[idioma]
+              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[Idioma]
                 .TelAgencia
             }
           </b>{" "}
@@ -121,7 +121,7 @@ export default function ModalInformacionDeLaAgencia({
           <ion-icon name="mail"></ion-icon>
           <b>
             {
-              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[idioma]
+              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[Idioma]
                 .Correos
             }
           </b>{" "}
@@ -137,7 +137,7 @@ export default function ModalInformacionDeLaAgencia({
           <ion-icon name="location"></ion-icon>
           <b>
             {
-              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[idioma]
+              DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA_DEL_PRODUCTO[Idioma]
                 .Locacion
             }
           </b>
@@ -155,7 +155,7 @@ export default function ModalInformacionDeLaAgencia({
               PeticionAsignarAgenciaAlProducto(informacionDeLaAgencia.idAgencia)
             }
           >
-            {DICCIONARIO_BOTONES[idioma].Asignar}
+            {DICCIONARIO_BOTONES[Idioma].Asignar}
           </button>
         )}
       </article>

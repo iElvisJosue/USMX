@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import Cookies from "js-cookie";
 
 // CONTEXTOS A USAR
-import { useUsuarios } from "../context/UsuariosContext";
+import { useSistema } from "../context/SistemaContext";
 
 // AYUDAS
 import { ESTILOS_PROMISE } from "../helpers/SonnerEstilos";
@@ -13,7 +13,7 @@ import { MensajePeticionPendiente } from "../helpers/FuncionesGenerales";
 export default function useCerrarSesion() {
   // ESTADOS AQUI
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { CerrarSesionUsuario } = useUsuarios();
+  const { CerrarSesion } = useSistema();
 
   const NOMBRE_COOKIE = "TOKEN_DE_ACCESO_USMX";
   const CerrandoSesion = (e) => {
@@ -26,7 +26,7 @@ export default function useCerrarSesion() {
     const promesaCerrandoSesion = new Promise((resolve, reject) => {
       setTimeout(() => {
         try {
-          CerrarSesionUsuario();
+          CerrarSesion();
           Cookies.remove(NOMBRE_COOKIE);
           establecerPeticionPendiente(false);
           resolve(); // Marca la promesa como resuelta

@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import {
-  SolicitudVerificarTokenUsuario,
   SolicitudIniciarSesionUsuario,
   SolicitudActualizarFotoUsuario,
   SolicitudActualizarInformacionPersonalUsuario,
@@ -15,61 +13,19 @@ import {
   SolicitudBuscarUsuariosParaAdministrarPorFiltro,
   SolicitudActualizarEstadoUsuario,
   SolicitudActualizarInformacionDeUnUsuario,
-  SolicitudCerrarSesionUsuario,
 } from "../api/authUsuarios";
 import { UsuariosContext } from "../context/UsuariosContext";
 
 export const ProveedorUsuarios = ({ children }) => {
-  const [cargandoInfUsuario, establecerCargandoInfUsuario] = useState(true);
-  const [tieneCookie, establecerTieneCookie] = useState(false);
-  const [infUsuario, establecerInfUsuario] = useState(null);
-  const [cargarInfUsuarioNuevamente, establecerCargarInfUsuarioNuevamente] =
-    useState(false);
-
-  const QuitarValoresDeUsuario = () => {
-    establecerInfUsuario(null);
-    establecerCargandoInfUsuario(false);
-    establecerTieneCookie(false);
-  };
-
-  const EstablecerValoresDeUsuario = (res) => {
-    establecerInfUsuario(res);
-    establecerCargandoInfUsuario(false);
-    establecerTieneCookie(true);
-    return res;
-  };
-  useEffect(() => {
-    async function ValidarCookie() {
-      const cookies = Cookies.get();
-      if (!cookies.TOKEN_DE_ACCESO_USMX) {
-        console.log("NO HAY COOKIE :(");
-        QuitarValoresDeUsuario();
-        return;
-      }
-      try {
-        const res = await SolicitudVerificarTokenUsuario({
-          TOKEN_DE_ACCESO_USMX: cookies.TOKEN_DE_ACCESO_USMX,
-        });
-        if (res.data) {
-          EstablecerValoresDeUsuario(res.data);
-        }
-      } catch (err) {
-        console.log(err);
-        QuitarValoresDeUsuario();
-      }
-    }
-    ValidarCookie();
-  }, [cargarInfUsuarioNuevamente]);
   const IniciarSesionUsuario = async (data) => {
     try {
       const res = await SolicitudIniciarSesionUsuario(data);
-      if (!res.data) {
-        return QuitarValoresDeUsuario();
+      if (res.data) {
+        Cookies.set("TOKEN_DE_ACCESO_USMX", res.data, {
+          expires: 1,
+        });
+        return res.data;
       }
-      Cookies.set("TOKEN_DE_ACCESO_USMX", res.data.TOKEN_DE_ACCESO_USMX, {
-        expires: 1,
-      });
-      return EstablecerValoresDeUsuario(res.data);
     } catch (error) {
       return error;
     }
@@ -162,24 +118,10 @@ export const ProveedorUsuarios = ({ children }) => {
       return error;
     }
   };
-  const CerrarSesionUsuario = async () => {
-    try {
-      await SolicitudCerrarSesionUsuario();
-      return QuitarValoresDeUsuario();
-    } catch (error) {
-      console.log(error);
-      return QuitarValoresDeUsuario();
-    }
-  };
 
   return (
     <UsuariosContext.Provider
       value={{
-        infUsuario,
-        tieneCookie,
-        cargandoInfUsuario,
-        cargarInfUsuarioNuevamente,
-        establecerCargarInfUsuarioNuevamente,
         IniciarSesionUsuario,
         ActualizarFotoUsuario,
         ActualizarInformacionPersonalUsuario,
@@ -192,7 +134,6 @@ export const ProveedorUsuarios = ({ children }) => {
         BuscarUsuariosParaAdministrarPorFiltro,
         ActualizarEstadoUsuario,
         ActualizarInformacionDeUnUsuario,
-        CerrarSesionUsuario,
       }}
     >
       {children}

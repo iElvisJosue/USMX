@@ -2,8 +2,7 @@
 import { useState } from "react";
 
 // CONTEXTOS A USAR
-import { useUsuarios } from "../context/UsuariosContext";
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS COMPONENTES
 import Menu from "../componentes/Menu/Menu";
@@ -21,18 +20,18 @@ import "../estilos/vistas/Perfil.css";
 
 export default function Perfil() {
   const {
-    cargarInfUsuarioNuevamente,
-    establecerCargarInfUsuarioNuevamente,
     infUsuario,
-  } = useUsuarios();
-  const { idioma } = useConfiguracion();
+    obtenerInformacionNuevamente,
+    establecerObtenerInformacionNuevamente,
+  } = useSistema();
+  const { Idioma } = infUsuario;
   const [vistaPerfil, establecerVistaPerfil] = useState(0);
 
   // VALORES COMPARTIDOS ENTRE VISTAS
   const ValoresCompartidos = {
-    idioma,
-    cargarInfUsuarioNuevamente,
-    establecerCargarInfUsuarioNuevamente,
+    Idioma,
+    obtenerInformacionNuevamente,
+    establecerObtenerInformacionNuevamente,
     infUsuario,
     establecerVistaPerfil,
   };
@@ -53,7 +52,7 @@ export default function Perfil() {
       <Menu />
       <Encabezado
         icono="person-circle"
-        seccion={DICCIONARIO_PERFIL[idioma].Perfil}
+        seccion={DICCIONARIO_PERFIL[Idioma].Perfil}
       />
       <div className="Perfil">
         <ComponenteParaRenderizar {...ValoresCompartidos} />

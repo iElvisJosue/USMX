@@ -23,7 +23,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/MovimientosEnBodega/ListaDeMovimientosEnBodega/DetallesMovimientoEnBodega.css";
 
 export default function DetallesMovimientoEnBodega({
-  idioma,
+  Idioma,
   informacionDelMovimiento,
   establecerVista,
   esCompleta,
@@ -51,26 +51,26 @@ export default function DetallesMovimientoEnBodega({
       </section>
       <section className="DetallesMovimientoEnBodega__Seccion">
         <img src="LogoDetalles.png" alt="Logo Detalles" />
-        <h1>{DICCIONARIO_DETALLES_MOVIMIENTO[idioma].Detalles}</h1>
+        <h1>{DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].Detalles}</h1>
       </section>
       <div className="DetallesMovimientoEnBodega__Detalles MovimientosB">
         <ion-icon name="folder"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_MOVIMIENTO[idioma].idMovimientoBodega}</b>
+        <b>{DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].idMovimientoBodega}</b>
         {informacionDelMovimiento.idMovimientoBodega}
       </div>
       <div className="DetallesMovimientoEnBodega__Detalles">
         <ion-icon name="apps"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_MOVIMIENTO[idioma].CantidadDeGuias}</b>
+        <b>{DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].CantidadDeGuias}</b>
         {pedidos.length}
       </div>
       <div className="DetallesMovimientoEnBodega__Detalles">
         <ion-icon name="person-circle"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_MOVIMIENTO[idioma].Usuario}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].Usuario}</b>{" "}
         {informacionDelMovimiento.Usuario}
       </div>
       <div className="DetallesMovimientoEnBodega__Detalles">
         <ion-icon name="calendar"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_MOVIMIENTO[idioma].FechaDeCreacion}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].FechaDeCreacion}</b>{" "}
         {FormatearFecha(
           informacionDelMovimiento.FechaCreacionMovimientoBodega.slice(0, 10)
         )}{" "}
@@ -78,10 +78,10 @@ export default function DetallesMovimientoEnBodega({
       </div>
       <section className="DetallesMovimientoEnBodega__Seccion">
         <img src="ListaDeGuias.png" alt="Logo Lista De Guias" />
-        <h1>{DICCIONARIO_DETALLES_MOVIMIENTO[idioma].ListaDeGuias}</h1>
+        <h1>{DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].ListaDeGuias}</h1>
       </section>
       <InputBuscarEnTabla
-        idioma={idioma}
+        Idioma={Idioma}
         FuncionDeEstablecimiento={establecerArrayDePedidos}
         ArrayDeBusqueda={pedidos}
       />
@@ -97,22 +97,22 @@ export default function DetallesMovimientoEnBodega({
                 <th>
                   <ion-icon name="bag-check"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_MOVIMIENTO[idioma].Guia}
+                  {DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].Guia}
                 </th>
                 <th>
                   <ion-icon name="document-text"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_MOVIMIENTO[idioma].Contenido}
+                  {DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].Contenido}
                 </th>
                 <th>
                   <ion-icon name="expand"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_MOVIMIENTO[idioma].Medidas}
+                  {DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].Medidas}
                 </th>
                 <th>
                   <ion-icon name="scale"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_MOVIMIENTO[idioma].Peso}
+                  {DICCIONARIO_DETALLES_MOVIMIENTO[Idioma].Peso}
                 </th>
               </tr>
             </thead>
@@ -143,7 +143,7 @@ export default function DetallesMovimientoEnBodega({
       ) : (
         <MensajeGeneral
           Imagen="SinResultados.png"
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
         />
       )}
     </div>

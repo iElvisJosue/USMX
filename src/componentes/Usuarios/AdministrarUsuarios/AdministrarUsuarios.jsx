@@ -10,7 +10,7 @@ import EditarUsuario from "./EditarUsuario";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/AdministrarUsuarios.css";
 
-export default function AdministrarUsuarios({ idioma }) {
+export default function AdministrarUsuarios({ Idioma }) {
   const [informacionDelUsuario, establecerInformacionDelUsuario] =
     useState(null);
   const [informacionDeLaAgencia, establecerInformacionDeLaAgencia] =
@@ -19,7 +19,7 @@ export default function AdministrarUsuarios({ idioma }) {
   const [vista, establecerVista] = useState(0);
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     vista,
     establecerVista,
     informacionDelUsuario,

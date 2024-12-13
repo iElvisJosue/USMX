@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
@@ -15,23 +15,24 @@ import AdministrarAgencias from "../componentes/Agencias/AdministrarAgencias/Adm
 import { DICCIONARIO_AGENCIAS } from "../diccionario/Diccionario";
 
 export default function Agencias() {
-  const { idioma } = useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
   const [vistaAgencias, establecerVistaAgencias] = useState(0);
 
   const OpcionesSubMenu = [
     {
-      Texto: DICCIONARIO_AGENCIAS[idioma].RegistrarAgencia,
+      Texto: DICCIONARIO_AGENCIAS[Idioma].RegistrarAgencia,
       Icono: "add-circle",
     },
     {
-      Texto: DICCIONARIO_AGENCIAS[idioma].AdministrarAgencias,
+      Texto: DICCIONARIO_AGENCIAS[Idioma].AdministrarAgencias,
       Icono: "cog",
     },
   ];
 
   // VALORES COMPARTIDOS ENTRE LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
   };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
@@ -41,8 +42,8 @@ export default function Agencias() {
   };
 
   const TituloSubseccion = {
-    0: DICCIONARIO_AGENCIAS[idioma].RegistrarAgencia,
-    1: DICCIONARIO_AGENCIAS[idioma].AdministrarAgencias,
+    0: DICCIONARIO_AGENCIAS[Idioma].RegistrarAgencia,
+    1: DICCIONARIO_AGENCIAS[Idioma].AdministrarAgencias,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -54,7 +55,7 @@ export default function Agencias() {
       <Menu />
       <Encabezado
         icono="business"
-        seccion={DICCIONARIO_AGENCIAS[idioma].Agencias}
+        seccion={DICCIONARIO_AGENCIAS[Idioma].Agencias}
         subseccion={TituloSubseccion[vistaAgencias]}
       />
       <SubMenu

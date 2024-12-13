@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { usePedidos } from "../context/PedidosContext";
-import { useUsuarios } from "../context/UsuariosContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
@@ -10,7 +10,7 @@ import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 export default function useBuscarPedidosPorFiltro() {
   const { BuscarTodosLosPedidosPorFiltro, BuscarPedidosDeUnUsuarioPorFiltro } =
     usePedidos();
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
 
   const [pedidos, establecerPedidos] = useState([]);
   const [cargando, establecerCargando] = useState(true);

@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useUsuarios } from "../context/UsuariosContext";
+import { useSistema } from "../context/SistemaContext";
 
 export default function ProteccionParaAdministradores() {
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
 
   if (infUsuario.Permisos !== "Administrador")
     return <Navigate to="/Bienvenida" replace />;

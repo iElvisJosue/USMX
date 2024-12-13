@@ -24,6 +24,7 @@ import Ocurres from "./vistas/Ocurres";
 import Cargas from "./vistas/Cargas";
 import Envios from "./vistas/Envios";
 import Apariencia from "./vistas/Apariencia";
+import Ajustes from "./vistas/Ajustes";
 
 // PROTECCIÓN DE RUTAS
 import ProteccionPorCookies from "./proteccion/ProteccionPorCookies";
@@ -70,6 +71,7 @@ export default function App() {
               <Route path="/Ocurres" element={<Ocurres />} />
               <Route path="/Cargas" element={<Cargas />} />
               <Route path="/Envios" element={<Envios />} />
+              <Route path="/Ajustes" element={<Ajustes />} />
             </Route>
             {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
 

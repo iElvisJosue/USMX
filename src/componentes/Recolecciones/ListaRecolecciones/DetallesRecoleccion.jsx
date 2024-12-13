@@ -23,7 +23,7 @@ import { FormatearFecha } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Recolecciones/ListaRecolecciones/DetallesRecoleccion.css";
 
 export default function DetallesRecoleccion({
-  idioma,
+  Idioma,
   informacionDeLaRecoleccion,
   establecerVista,
   esCompleta,
@@ -50,26 +50,26 @@ export default function DetallesRecoleccion({
       </section>
       <section className="DetallesRecoleccion__Seccion">
         <img src="LogoDetalles.png" alt="Logo Detalles" />
-        <h1>{DICCIONARIO_DETALLES_RECOLECCION[idioma].Detalles}</h1>
+        <h1>{DICCIONARIO_DETALLES_RECOLECCION[Idioma].Detalles}</h1>
       </section>
       <div className="DetallesRecoleccion__Detalles Recoleccion">
         <ion-icon name="folder"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_RECOLECCION[idioma].IDRecoleccion}</b>
+        <b>{DICCIONARIO_DETALLES_RECOLECCION[Idioma].IDRecoleccion}</b>
         {informacionDeLaRecoleccion.idRecoleccion}
       </div>
       <div className="DetallesRecoleccion__Detalles">
         <ion-icon name="apps"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_RECOLECCION[idioma].CantidadDeGuias}</b>
+        <b>{DICCIONARIO_DETALLES_RECOLECCION[Idioma].CantidadDeGuias}</b>
         {pedidos.length}
       </div>
       <div className="DetallesRecoleccion__Detalles">
         <ion-icon name="person-circle"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_RECOLECCION[idioma].Usuario}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_RECOLECCION[Idioma].Usuario}</b>{" "}
         {informacionDeLaRecoleccion.Usuario}
       </div>
       <div className="DetallesRecoleccion__Detalles">
         <ion-icon name="calendar"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_RECOLECCION[idioma].FechaDeCreacion}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_RECOLECCION[Idioma].FechaDeCreacion}</b>{" "}
         {FormatearFecha(
           informacionDeLaRecoleccion.FechaCreacionRecoleccion.slice(0, 10)
         )}{" "}
@@ -77,10 +77,10 @@ export default function DetallesRecoleccion({
       </div>
       <section className="DetallesRecoleccion__Seccion">
         <img src="ListaDeGuias.png" alt="Logo Lista De Guias" />
-        <h1>{DICCIONARIO_DETALLES_RECOLECCION[idioma].ListaDeGuias}</h1>
+        <h1>{DICCIONARIO_DETALLES_RECOLECCION[Idioma].ListaDeGuias}</h1>
       </section>
       <InputBuscarEnTabla
-        idioma={idioma}
+        Idioma={Idioma}
         FuncionDeEstablecimiento={establecerArrayDePedidos}
         ArrayDeBusqueda={pedidos}
       />
@@ -93,22 +93,22 @@ export default function DetallesRecoleccion({
                 <th>
                   <ion-icon name="bag-check"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_RECOLECCION[idioma].Guia}
+                  {DICCIONARIO_DETALLES_RECOLECCION[Idioma].Guia}
                 </th>
                 <th>
                   <ion-icon name="document-text"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_RECOLECCION[idioma].Contenido}
+                  {DICCIONARIO_DETALLES_RECOLECCION[Idioma].Contenido}
                 </th>
                 <th>
                   <ion-icon name="expand"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_RECOLECCION[idioma].Medidas}
+                  {DICCIONARIO_DETALLES_RECOLECCION[Idioma].Medidas}
                 </th>
                 <th>
                   <ion-icon name="scale"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_RECOLECCION[idioma].Peso}
+                  {DICCIONARIO_DETALLES_RECOLECCION[Idioma].Peso}
                 </th>
               </tr>
             </thead>
@@ -137,7 +137,7 @@ export default function DetallesRecoleccion({
       ) : (
         <MensajeGeneral
           Imagen="SinResultados.png"
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
         />
       )}
     </div>

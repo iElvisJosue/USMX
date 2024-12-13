@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS
 import { useRecolecciones } from "../../context/RecoleccionesContext";
-import { useUsuarios } from "../../context/UsuariosContext";
+import { useSistema } from "../../context/SistemaContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
@@ -14,7 +14,7 @@ export default function useBuscarLasRecoleccionesPorFecha() {
     BuscarTodasLasRecoleccionesPorFecha,
     BuscarRecoleccionesDeUnChoferPorFecha,
   } = useRecolecciones();
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   const [recoleccionesPorFecha, establecerRecoleccionesPorFecha] = useState([]);
   const [
     cargandoRecoleccionesPorFecha,

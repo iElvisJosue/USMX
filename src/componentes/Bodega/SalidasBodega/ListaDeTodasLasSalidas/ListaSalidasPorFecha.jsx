@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/SalidasBodega/ListaDeTodasLasSalidas/ListaSalidasPorFecha.css";
 
 export default function ListaSalidasPorFecha({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDeLaSalida,
 }) {
   const {
@@ -44,7 +44,7 @@ export default function ListaSalidasPorFecha({
   return (
     <div className="ListaSalidasPorFecha">
       <h1 className="ListaSalidasPorFecha__Titulo">
-        {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[idioma].BuscarSalidasPorFecha}
+        {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].BuscarSalidasPorFecha}
         <small className="ListaSalidasPorFecha__Titulo--Fechas">
           ({FormatearFecha(primeraFecha)} - {FormatearFecha(segundaFecha)})
         </small>
@@ -71,8 +71,8 @@ export default function ListaSalidasPorFecha({
         <>
           <small className="ListaSalidasPorFecha__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {salidasPorFecha.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {salidasPorFecha.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaSalidasPorFecha__Cuerpo">
             <table className="ListaSalidasPorFecha__Cuerpo__Tabla">
@@ -81,27 +81,27 @@ export default function ListaSalidasPorFecha({
                   <th>
                     <ion-icon name="document-text"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[idioma].idSalida}
+                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].idSalida}
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[idioma].CPedidos}
+                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].CPedidos}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[idioma].FechaCreacion}
+                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].FechaCreacion}
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -124,7 +124,7 @@ export default function ListaSalidasPorFecha({
                           EstablecerLosDetallesDeLaSalida(infSalida)
                         }
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -137,7 +137,7 @@ export default function ListaSalidasPorFecha({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={`${
-            DICCIONARIO_RESULTADOS[idioma].NoResultadoPorFecha
+            DICCIONARIO_RESULTADOS[Idioma].NoResultadoPorFecha
           } ${primeraFecha.split("-").reverse().join("/")} - ${segundaFecha
             .split("-")
             .reverse()
@@ -145,7 +145,7 @@ export default function ListaSalidasPorFecha({
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Bodega-Salidas"}
-          TextoBoton={DICCIONARIO_LISTA_SALIDAS_POR_FECHA[idioma].CrearSalida}
+          TextoBoton={DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].CrearSalida}
         />
       )}
     </div>

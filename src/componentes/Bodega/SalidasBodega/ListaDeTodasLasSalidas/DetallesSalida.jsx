@@ -23,7 +23,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/SalidasBodega/ListaDeTodasLasSalidas/DetallesSalida.css";
 
 export default function DetallesSalida({
-  idioma,
+  Idioma,
   informacionSalida,
   establecerVista,
   esCompleta,
@@ -51,59 +51,59 @@ export default function DetallesSalida({
       </section>
       <section className="DetallesSalida__Seccion">
         <img src="LogoDetalles.png" alt="Logo Detalles" />
-        <h1>{DICCIONARIO_DETALLES_SALIDA[idioma].Detalles}</h1>
+        <h1>{DICCIONARIO_DETALLES_SALIDA[Idioma].Detalles}</h1>
       </section>
       <div className="DetallesSalida__Detalles Salida">
         <ion-icon name="folder"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_SALIDA[idioma].idSalidaBodega}</b>
+        <b>{DICCIONARIO_DETALLES_SALIDA[Idioma].idSalidaBodega}</b>
         {informacionSalida.idSalidaBodega}
       </div>
       <div className="DetallesSalida__Detalles">
         <ion-icon name="apps"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_SALIDA[idioma].CantidadDeGuias}</b>
+        <b>{DICCIONARIO_DETALLES_SALIDA[Idioma].CantidadDeGuias}</b>
         {pedidos.length}
       </div>
       <div className="DetallesSalida__Detalles">
         <ion-icon name="person-circle"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_SALIDA[idioma].Usuario}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_SALIDA[Idioma].Usuario}</b>{" "}
         {informacionSalida.Usuario}
       </div>
       <div className="DetallesSalida__Detalles">
         <ion-icon name="calendar"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_SALIDA[idioma].FechaDeCreacion}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_SALIDA[Idioma].FechaDeCreacion}</b>{" "}
         {FormatearFecha(informacionSalida.FechaCreacionSalida.slice(0, 10))}{" "}
         {informacionSalida.HoraCreacionSalida}
       </div>
       <div className="DetallesSalida__Detalles Completo">
         <ion-icon name="person"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_SALIDA[idioma].NombreTransportista}</b>
+        <b>{DICCIONARIO_DETALLES_SALIDA[Idioma].NombreTransportista}</b>
         {pedidos[0].NombreTransportista}
       </div>
       <div className="DetallesSalida__Detalles">
         <ion-icon name="build"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_SALIDA[idioma].Remolque}</b>
+        <b>{DICCIONARIO_DETALLES_SALIDA[Idioma].Remolque}</b>
         {pedidos[0].Remolque}
       </div>
       <div className="DetallesSalida__Detalles">
         <ion-icon name="build"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_SALIDA[idioma].Tracto}</b> {pedidos[0].Tracto}
+        <b>{DICCIONARIO_DETALLES_SALIDA[Idioma].Tracto}</b> {pedidos[0].Tracto}
       </div>
       <div className="DetallesSalida__Detalles">
         <ion-icon name="lock-closed"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_SALIDA[idioma].Candado}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_SALIDA[Idioma].Candado}</b>{" "}
         {pedidos[0].Candado}
       </div>
       <div className="DetallesSalida__Detalles">
         <ion-icon name="time"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_SALIDA[idioma].HoraDeSalida}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_SALIDA[Idioma].HoraDeSalida}</b>{" "}
         {pedidos[0].HoraSalida}
       </div>
       <section className="DetallesSalida__Seccion">
         <img src="ListaDeGuias.png" alt="Logo Lista De Guias" />
-        <h1>{DICCIONARIO_DETALLES_SALIDA[idioma].ListaDeGuias}</h1>
+        <h1>{DICCIONARIO_DETALLES_SALIDA[Idioma].ListaDeGuias}</h1>
       </section>
       <InputBuscarEnTabla
-        idioma={idioma}
+        Idioma={Idioma}
         FuncionDeEstablecimiento={establecerArrayDePedidos}
         ArrayDeBusqueda={pedidos}
       />
@@ -116,22 +116,22 @@ export default function DetallesSalida({
                 <th>
                   <ion-icon name="bag-check"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_SALIDA[idioma].Guia}
+                  {DICCIONARIO_DETALLES_SALIDA[Idioma].Guia}
                 </th>
                 <th>
                   <ion-icon name="document-text"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_SALIDA[idioma].Contenido}
+                  {DICCIONARIO_DETALLES_SALIDA[Idioma].Contenido}
                 </th>
                 <th>
                   <ion-icon name="expand"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_SALIDA[idioma].Medidas}
+                  {DICCIONARIO_DETALLES_SALIDA[Idioma].Medidas}
                 </th>
                 <th>
                   <ion-icon name="scale"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_SALIDA[idioma].Peso}
+                  {DICCIONARIO_DETALLES_SALIDA[Idioma].Peso}
                 </th>
               </tr>
             </thead>
@@ -160,7 +160,7 @@ export default function DetallesSalida({
       ) : (
         <MensajeGeneral
           Imagen="SinResultados.png"
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
         />
       )}
     </div>

@@ -27,7 +27,7 @@ import { TIPOS_DE_USUARIOS } from "../../../helpers/TiposDeUsuario";
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/EditarUsuario.css";
 
 export default function EditarUsuario({
-  idioma,
+  Idioma,
   informacionDelUsuario,
   establecerVista,
 }) {
@@ -136,24 +136,24 @@ export default function EditarUsuario({
         </button>
       </div>
       <h1 className="EditarUsuario__Titulo">
-        {DICCIONARIO_EDITAR_USUARIO[idioma].EditarUsuario}
+        {DICCIONARIO_EDITAR_USUARIO[Idioma].EditarUsuario}
       </h1>
       <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_USUARIO[idioma].NombreDelUsuario}
+          {DICCIONARIO_EDITAR_USUARIO[Idioma].NombreDelUsuario}
         </p>
         <input
           id="Usuario"
           type="text"
           name="Usuario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("Usuario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -162,7 +162,7 @@ export default function EditarUsuario({
       <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
         <p>
           <ion-icon name="hand-left"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_USUARIO[idioma].Permisos}
+          {DICCIONARIO_EDITAR_USUARIO[Idioma].Permisos}
         </p>
         <select id="Permisos" name="Permisos" {...register("Permisos")}>
           {TIPOS_DE_USUARIOS.map((permiso) => (
@@ -176,22 +176,22 @@ export default function EditarUsuario({
       <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
         <p>
           <ion-icon name="lock-closed"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_USUARIO[idioma].Contrasena}
+          {DICCIONARIO_EDITAR_USUARIO[Idioma].Contrasena}
         </p>
         <input
           id="Contraseña"
           type="password"
           name="Contraseña"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("Contraseña", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
             minLength: {
               value: 4,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min4,
             },
           })}
         />
@@ -200,22 +200,22 @@ export default function EditarUsuario({
       <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
         <p>
           <ion-icon name="checkmark-done-circle"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_USUARIO[idioma].ConfirmarContrasena}
+          {DICCIONARIO_EDITAR_USUARIO[Idioma].ConfirmarContrasena}
         </p>
         <input
           id="ContraseñaConfirmar"
           type="password"
           name="ContraseñaConfirmar"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("ContraseñaConfirmar", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
             minLength: {
               value: 4,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min4,
             },
           })}
         />
@@ -223,7 +223,7 @@ export default function EditarUsuario({
       </span>
       <footer className="EditarUsuario__Footer">
         <button type="submit" className="EditarUsuario__Footer__Boton Guardar">
-          {DICCIONARIO_BOTONES[idioma].Actualizar}
+          {DICCIONARIO_BOTONES[Idioma].Actualizar}
         </button>
       </footer>
     </form>

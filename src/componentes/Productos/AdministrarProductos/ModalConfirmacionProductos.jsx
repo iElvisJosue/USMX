@@ -15,7 +15,7 @@ import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Productos/AdministrarProductos/ModalConfirmacionProductos.css";
 
 export default function ModalConfirmacionProductos({
-  idioma,
+  Idioma,
   Activar = true,
   infProducto,
   establecerMostrarModalConfirmacion,
@@ -29,14 +29,14 @@ export default function ModalConfirmacionProductos({
     ? "ModalConfirmacionProductos__Contenido--Titulo Activar"
     : "ModalConfirmacionProductos__Contenido--Titulo Desactivar";
   const TituloModal = Activar
-    ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].ActivarProducto
-    : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].DesactivarProducto;
+    ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma].ActivarProducto
+    : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma].DesactivarProducto;
   const ClaseBotonModal = Activar
     ? "ModalConfirmacionProductos__Contenido--Boton Activar"
     : "ModalConfirmacionProductos__Contenido--Boton Desactivar";
   const TextoBotonModal = Activar
-    ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].Activar
-    : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].Desactivar;
+    ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma].Activar
+    : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma].Desactivar;
   const ClaseTextoModal = Activar
     ? "ModalConfirmacionProductos__Contenido--Texto Activar"
     : "ModalConfirmacionProductos__Contenido--Texto Desactivar";
@@ -79,18 +79,18 @@ export default function ModalConfirmacionProductos({
         </button>
         <h1 className={ClaseTituloModal}>{TituloModal}</h1>
         <small className={ClaseTextoModal}>
-          {DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].MensajeParteUno}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma].MensajeParteUno}{" "}
           {Activar
-            ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].Activar
-            : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].Desactivar}{" "}
-          {DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].MensajeParteDos}{" "}
+            ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma].Activar
+            : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma].Desactivar}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma].MensajeParteDos}{" "}
           <b>{infProducto.NombreProducto}</b>?
           <br />
           <br />
           <i>
             {Activar
-              ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma].MensajeActivar
-              : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[idioma]
+              ? DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma].MensajeActivar
+              : DICCIONARIO_MODAL_CONFIRMACION_PRODUCTOS[Idioma]
                   .MensajeDesactivar}
           </i>
         </small>

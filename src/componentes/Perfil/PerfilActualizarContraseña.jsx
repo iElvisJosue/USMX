@@ -23,10 +23,10 @@ import { ESTILOS_WARNING } from "../../helpers/SonnerEstilos";
 import "../../estilos/componentes/Perfil/PerfilActualizarContraseña.css";
 
 export default function PerfilActualizarContraseña({
-  idioma,
+  Idioma,
   infUsuario,
-  cargarInfUsuarioNuevamente,
-  establecerCargarInfUsuarioNuevamente,
+  obtenerInformacionNuevamente,
+  establecerObtenerInformacionNuevamente,
   establecerVistaPerfil,
 }) {
   const { ActualizarContraseñaUsuario } = useUsuarios();
@@ -65,7 +65,7 @@ export default function PerfilActualizarContraseña({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
-        establecerCargarInfUsuarioNuevamente(!cargarInfUsuarioNuevamente);
+        establecerObtenerInformacionNuevamente(!obtenerInformacionNuevamente);
         establecerVistaPerfil(0);
       }
     } catch (error) {
@@ -107,27 +107,27 @@ export default function PerfilActualizarContraseña({
       <h1 className="PerfilActualizarInformacion__Titulo">
         🔐
         <br />
-        {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[idioma].ActualizarContraseña}
+        {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[Idioma].ActualizarContraseña}
       </h1>
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="time"></ion-icon>{" "}
-          {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[idioma].ContraseñaActual}
+          {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[Idioma].ContraseñaActual}
         </p>
         <input
           id="ContraseñaActual"
           type="password"
           name="ContraseñaActual"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("ContraseñaActual", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
             minLength: {
               value: 4,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min4,
             },
           })}
         />
@@ -136,22 +136,22 @@ export default function PerfilActualizarContraseña({
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="lock-closed"></ion-icon>{" "}
-          {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[idioma].ContraseñaNueva}
+          {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[Idioma].ContraseñaNueva}
         </p>
         <input
           id="ContraseñaNuevaUsuario"
           type="password"
           name="ContraseñaNuevaUsuario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("ContraseñaNuevaUsuario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
             minLength: {
               value: 4,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min4,
             },
           })}
         />
@@ -160,22 +160,22 @@ export default function PerfilActualizarContraseña({
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="checkmark-circle"></ion-icon>{" "}
-          {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[idioma].ConfirmarContraseña}
+          {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[Idioma].ConfirmarContraseña}
         </p>
         <input
           id="ConfirmarContraseñaUsuario"
           type="password"
           name="ConfirmarContraseñaUsuario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("ConfirmarContraseñaUsuario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
             minLength: {
               value: 4,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min4,
             },
           })}
         />
@@ -184,16 +184,16 @@ export default function PerfilActualizarContraseña({
       <small className="PerfilActualizarContraseña__MensajeEncriptado">
         📣
         <br />
-        {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[idioma].MensajeActualizarUno}
+        {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[Idioma].MensajeActualizarUno}
         <br />
-        {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[idioma].MensajeActualizarDos}
+        {DICCIONARIO_PERFIL_ACTUALIZAR_CONTRASEÑA[Idioma].MensajeActualizarDos}
       </small>
       <footer className="PerfilActualizarInformacion__Footer">
         <button
           type="submit"
           className="PerfilActualizarInformacion__Footer__Boton Guardar"
         >
-          {DICCIONARIO_BOTONES[idioma].Guardar}
+          {DICCIONARIO_BOTONES[Idioma].Guardar}
         </button>
       </footer>
     </form>

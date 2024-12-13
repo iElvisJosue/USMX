@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Recolecciones/ListaRecolecciones/ListaRecoleccionesCompleta.css";
 
 export default function ListaRecoleccionesCompleta({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDeLaRecoleccion,
 }) {
   const { recolecciones, cargando, filtro, establecerFiltro } =
@@ -42,7 +42,7 @@ export default function ListaRecoleccionesCompleta({
     <div className="ListaRecoleccionesCompleta">
       <h1 className="ListaRecoleccionesCompleta__Titulo">
         {
-          DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[idioma]
+          DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma]
             .ListaCompletaDeRecolecciones
         }
       </h1>
@@ -51,7 +51,7 @@ export default function ListaRecoleccionesCompleta({
           value={filtro}
           type="text"
           placeholder={
-            DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[idioma].BuscarRecoleccion
+            DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].BuscarRecoleccion
           }
           onChange={BuscarRecolecciones}
         />
@@ -63,8 +63,8 @@ export default function ListaRecoleccionesCompleta({
         <>
           <small className="ListaRecoleccionesCompleta__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {recolecciones.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {recolecciones.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaRecoleccionesCompleta__Cuerpo">
             <table className="ListaRecoleccionesCompleta__Cuerpo__Tabla">
@@ -74,32 +74,32 @@ export default function ListaRecoleccionesCompleta({
                     <ion-icon name="document-text"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[idioma]
+                      DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma]
                         .idRecoleccion
                     }
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[idioma].CPedidos}
+                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].CPedidos}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[idioma]
+                      DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma]
                         .FechaCreacion
                     }
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -125,7 +125,7 @@ export default function ListaRecoleccionesCompleta({
                           )
                         }
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -137,12 +137,12 @@ export default function ListaRecoleccionesCompleta({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Recolecciones"}
           TextoBoton={
-            DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[idioma].CrearRecoleccion
+            DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].CrearRecoleccion
           }
         />
       )}

@@ -16,7 +16,7 @@ import MensajeGeneral from "../MensajeGeneral";
 import "../../estilos/componentes/Movimientos/ListaDeMovimientos.css";
 
 export default function ListaDeMovimientos({
-  idioma,
+  Idioma,
   movimientos,
   establecerVista,
   filtro,
@@ -59,7 +59,7 @@ export default function ListaDeMovimientos({
     <div className="ListaDeMovimientos">
       {mostrarModalConfirmacion && (
         <ModalConfirmacionMovimientos
-          idioma={idioma}
+          Idioma={Idioma}
           Activar={activar}
           movimientos={movimientos}
           establecerMostrarModalConfirmacion={
@@ -73,14 +73,14 @@ export default function ListaDeMovimientos({
         />
       )}
       <h1 className="ListaDeMovimientos__Titulo">
-        {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].ListaCompletaDeMovimientos}
+        {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].ListaCompletaDeMovimientos}
       </h1>
       <span className="ListaDeMovimientos__Buscar">
         <input
           value={filtro}
           type="text"
           placeholder={
-            DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].BuscarMovimientos
+            DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].BuscarMovimientos
           }
           onChange={BuscarMovimientos}
         />
@@ -92,8 +92,8 @@ export default function ListaDeMovimientos({
         <>
           <small className="ListaDeMovimientos__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {movimientos.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {movimientos.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaDeMovimientos__Cuerpo">
             <table className="ListaDeMovimientos__Cuerpo__Tabla">
@@ -102,27 +102,27 @@ export default function ListaDeMovimientos({
                   <th>
                     <ion-icon name="bag-check"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Estado}
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Estado}
                   </th>
                   <th>
                     <ion-icon name="document-text"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Detalles}
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Detalles}
                   </th>
                   <th>
                     <ion-icon name="locate"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Origen}
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Origen}
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Categoria}
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Categoria}
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[idioma].Acciones}
+                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -176,7 +176,7 @@ export default function ListaDeMovimientos({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
         />
       )}
     </div>

@@ -10,7 +10,7 @@ import DetallesSalida from "./DetallesSalida";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../../estilos/componentes/Bodega/SalidasBodega/ListaDeTodasLasSalidas/ListaDeTodasLasSalidas.css";
 
-export default function ListaDeTodasLasSalidas({ idioma }) {
+export default function ListaDeTodasLasSalidas({ Idioma }) {
   const [vista, establecerVista] = useState(0);
   const [esCompleta, establecerEsCompleta] = useState(true);
   const [informacionSalida, establecerInformacionDeLaSalida] = useState(null);
@@ -23,7 +23,7 @@ export default function ListaDeTodasLasSalidas({ idioma }) {
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     esCompleta,
     establecerVista,
     informacionSalida,

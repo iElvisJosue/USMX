@@ -9,13 +9,13 @@ import EditarOcurre from "./EditarOcurre";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Ocurres/AdministrarOcurres/AdministrarOcurres.css";
 
-export default function AdministrarOcurres({ idioma }) {
+export default function AdministrarOcurres({ Idioma }) {
   const [informacionDelOcurre, establecerInformacionDelOcurre] = useState(null);
   const [vistaOcurres, establecerVistaOcurres] = useState(0);
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     vistaOcurres,
     establecerVistaOcurres,
     informacionDelOcurre,

@@ -5,6 +5,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
+import { useSistema } from "../context/SistemaContext";
 import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
@@ -37,8 +38,9 @@ import "../estilos/vistas/Envios.css";
 export default function Envios() {
   // ESTADOS AQUI
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { idioma, RegistrarTipoDeEnvio, EliminarTipoDeEnvio } =
-    useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
+  const { RegistrarTipoDeEnvio, EliminarTipoDeEnvio } = useConfiguracion();
   const {
     envios,
     cargandoEnvios,
@@ -132,38 +134,39 @@ export default function Envios() {
     <main className="Main">
       <Menu />
       <Encabezado
-        icono="airplane"
-        seccion={DICCIONARIO_ENVIOS[idioma].Envios}
+        icono="code-working"
+        seccion={DICCIONARIO_ENVIOS[Idioma].Operaciones}
+        subseccion={DICCIONARIO_ENVIOS[Idioma].Envios}
       />
       <form className="Envios" onSubmit={RegistrarNuevoEnvio}>
-        <h2 className="Envios__Titulo">{DICCIONARIO_ENVIOS[idioma].Envios}</h2>
+        <h2 className="Envios__Titulo">{DICCIONARIO_ENVIOS[Idioma].Envios}</h2>
         <h4 className="Envios__Subtitulo">
-          {DICCIONARIO_ENVIOS[idioma].DescripcionEnvios}
+          {DICCIONARIO_ENVIOS[Idioma].DescripcionEnvios}
         </h4>
         <hr className="Envios__Separador" />
         {envios.length > 0 ? (
           <div className="Envios__Cuerpo">
             <section className="Envios__Formulario">
               <b className="Envios__Formulario--Titulo">
-                {DICCIONARIO_ENVIOS[idioma].TiposDeEnvios}
+                {DICCIONARIO_ENVIOS[Idioma].TiposDeEnvios}
               </b>
               <p className="Envios__Formulario--Subtitulo">
-                {DICCIONARIO_ENVIOS[idioma].DescripcionTiposDeEnvios}
+                {DICCIONARIO_ENVIOS[Idioma].DescripcionTiposDeEnvios}
               </p>
               <div className="Envios__Formulario--Inputs">
                 <span className="Envios__Cuerpo__Inputs--Span">
                   <input
                     type="text"
                     name="TipoEnvio"
-                    placeholder={DICCIONARIO_PLACEHOLDERS[idioma].Envio}
+                    placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].Envio}
                     {...register("TipoEnvio", {
-                      required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+                      required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
                       pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                     })}
                   />
                   {MensajeDeError("TipoEnvio")}
                 </span>
-                <button>{DICCIONARIO_BOTONES[idioma].Añadir}</button>
+                <button>{DICCIONARIO_BOTONES[Idioma].Añadir}</button>
               </div>
             </section>
             <section className="Envios__Lista">
@@ -185,7 +188,7 @@ export default function Envios() {
         ) : (
           <MensajeGeneral
             Imagen="SinResultados.png"
-            Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+            Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           />
         )}
       </form>

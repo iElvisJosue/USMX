@@ -9,7 +9,7 @@ import ListaEntradas from "./ListaEntradas";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../../estilos/componentes/Bodega/EntradasBodega/CrearEntrada/CrearEntrada.css";
 
-export default function CrearEntrada({ idioma }) {
+export default function CrearEntrada({ Idioma }) {
   const [vista, establecerVista] = useState(0);
   const [entrada, establecerEntrada] = useState([]);
   const [informacionDeLaEntrada, establecerInformacionDeLaEntrada] =
@@ -17,7 +17,7 @@ export default function CrearEntrada({ idioma }) {
 
   // VALORES COMPARTIDOS
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     entrada,
     establecerEntrada,
     vista,

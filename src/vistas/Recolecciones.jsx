@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS DICCIONARIOS A USAR
 import { DICCIONARIO_RECOLECCIONES } from "../diccionario/Diccionario";
@@ -19,22 +19,23 @@ import "../estilos/generales/GrupoDeInputs.css";
 
 export default function Recolecciones() {
   const [vistaRecoleccion, establecerVistaRecoleccion] = useState(0);
-  const { idioma } = useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
 
   const OpcionesSubMenu = [
     {
-      Texto: DICCIONARIO_RECOLECCIONES[idioma].CrearRecoleccion,
+      Texto: DICCIONARIO_RECOLECCIONES[Idioma].CrearRecoleccion,
       Icono: "add-circle",
     },
     {
-      Texto: DICCIONARIO_RECOLECCIONES[idioma].ListaDeRecolecciones,
+      Texto: DICCIONARIO_RECOLECCIONES[Idioma].ListaDeRecolecciones,
       Icono: "list",
     },
   ];
 
   //   VALORES COMPARTIDOS ENTRE LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
   };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
@@ -44,8 +45,8 @@ export default function Recolecciones() {
   };
 
   const TituloSubseccion = {
-    0: DICCIONARIO_RECOLECCIONES[idioma].CrearRecoleccion,
-    1: DICCIONARIO_RECOLECCIONES[idioma].ListaDeRecolecciones,
+    0: DICCIONARIO_RECOLECCIONES[Idioma].CrearRecoleccion,
+    1: DICCIONARIO_RECOLECCIONES[Idioma].ListaDeRecolecciones,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -57,7 +58,7 @@ export default function Recolecciones() {
       <Menu />
       <Encabezado
         icono="bag-check"
-        seccion={DICCIONARIO_RECOLECCIONES[idioma].Recolecciones}
+        seccion={DICCIONARIO_RECOLECCIONES[Idioma].Recolecciones}
         subseccion={TituloSubseccion[vistaRecoleccion]}
       />
       <SubMenu

@@ -23,9 +23,9 @@ import { ESTILOS_WARNING } from "../../helpers/SonnerEstilos";
 import "../../estilos/componentes/Perfil/PerfilActualizarFoto.css";
 
 export default function PerfilActualizarImagen({
-  idioma,
-  cargarInfUsuarioNuevamente,
-  establecerCargarInfUsuarioNuevamente,
+  Idioma,
+  obtenerInformacionNuevamente,
+  establecerObtenerInformacionNuevamente,
   infUsuario,
   establecerVistaPerfil,
 }) {
@@ -81,7 +81,7 @@ export default function PerfilActualizarImagen({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
-        establecerCargarInfUsuarioNuevamente(!cargarInfUsuarioNuevamente);
+        establecerObtenerInformacionNuevamente(!obtenerInformacionNuevamente);
         establecerVistaPerfil(0);
       }
     } catch (error) {
@@ -103,7 +103,7 @@ export default function PerfilActualizarImagen({
       </span>
       <h1 className="PerfilActualizarFoto__Titulo">
         📷 <br />
-        {DICCIONARIO_PERFIL_FOTO[idioma].ActualizarFotoDePerfil}
+        {DICCIONARIO_PERFIL_FOTO[Idioma].ActualizarFotoDePerfil}
       </h1>
       <span className="PerfilActualizarFoto__SeleccionarImagen">
         <div
@@ -123,13 +123,13 @@ export default function PerfilActualizarImagen({
         </div>
       </span>
       <small className="PerfilActualizarFoto__Texto">
-        {DICCIONARIO_PERFIL_FOTO[idioma].MensajeFotoDePerfilUno}
+        {DICCIONARIO_PERFIL_FOTO[Idioma].MensajeFotoDePerfilUno}
         <br />
-        {DICCIONARIO_PERFIL_FOTO[idioma].MensajeFotoDePerfilDos}
+        {DICCIONARIO_PERFIL_FOTO[Idioma].MensajeFotoDePerfilDos}
       </small>
       {imagenSeleccionada && (
         <span className="PerfilActualizarFoto__Boton Centro">
-          <button type="submit">{DICCIONARIO_BOTONES[idioma].Guardar}</button>
+          <button type="submit">{DICCIONARIO_BOTONES[Idioma].Guardar}</button>
         </span>
       )}
     </form>

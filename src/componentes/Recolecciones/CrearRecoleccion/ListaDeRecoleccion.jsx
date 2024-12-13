@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useUsuarios } from "../../../context/UsuariosContext";
+import { useSistema } from "../../../context/SistemaContext";
 import { useRecolecciones } from "../../../context/RecoleccionesContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -21,12 +21,12 @@ import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Recolecciones/CrearRecoleccion/ListaDeRecoleccion.css";
 
 export default function ListaDeRecoleccion({
-  idioma,
+  Idioma,
   recoleccion,
   establecerRecoleccion,
 }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   const { CrearRecoleccion } = useRecolecciones();
   const { handleSubmit } = useForm({
     criteriaMode: "all",
@@ -69,7 +69,7 @@ export default function ListaDeRecoleccion({
       onSubmit={PeticionParaCrearRecoleccion}
     >
       <h1 className="Recolecciones__Lista__Titulo">
-        {DICCIONARIO_LISTA_DE_RECOLECCION[idioma].ListaDeGuias} (
+        {DICCIONARIO_LISTA_DE_RECOLECCION[Idioma].ListaDeGuias} (
         {recoleccion.length})
       </h1>
       <div className="Recolecciones__Lista__Cuerpo" key={recoleccion.length}>
@@ -79,27 +79,27 @@ export default function ListaDeRecoleccion({
               <th>
                 <ion-icon name="bag-check"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DE_RECOLECCION[idioma].Guia}
+                {DICCIONARIO_LISTA_DE_RECOLECCION[Idioma].Guia}
               </th>
               <th>
                 <ion-icon name="document-text"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DE_RECOLECCION[idioma].Contenido}
+                {DICCIONARIO_LISTA_DE_RECOLECCION[Idioma].Contenido}
               </th>
               <th>
                 <ion-icon name="expand"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DE_RECOLECCION[idioma].Medidas}
+                {DICCIONARIO_LISTA_DE_RECOLECCION[Idioma].Medidas}
               </th>
               <th>
                 <ion-icon name="scale"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DE_RECOLECCION[idioma].Peso}
+                {DICCIONARIO_LISTA_DE_RECOLECCION[Idioma].Peso}
               </th>
               <th>
                 <ion-icon name="code-working"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DE_RECOLECCION[idioma].Acciones}
+                {DICCIONARIO_LISTA_DE_RECOLECCION[Idioma].Acciones}
               </th>
             </tr>
           </thead>
@@ -133,7 +133,7 @@ export default function ListaDeRecoleccion({
           </tbody>
         </table>
       </div>
-      <GrupoDeBotonesInferior idioma={idioma} BotonFinalizar={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonFinalizar={true} />
     </form>
   );
 }

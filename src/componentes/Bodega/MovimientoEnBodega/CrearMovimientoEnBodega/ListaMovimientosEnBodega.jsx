@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useUsuarios } from "../../../../context/UsuariosContext";
+import { useSistema } from "../../../../context/SistemaContext";
 import { useBodega } from "../../../../context/BodegaContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -21,12 +21,12 @@ import { MensajePeticionPendiente } from "../../../../helpers/FuncionesGenerales
 import "../../../../estilos/componentes/Bodega/MovimientosEnBodega/CrearMovimientoEnBodega/ListaMovimientosEnBodega.css";
 
 export default function ListaMovimientosEnBodega({
-  idioma,
+  Idioma,
   movimiento,
   establecerMovimiento,
 }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   const { CrearMovimientoEnBodega } = useBodega();
   const { handleSubmit } = useForm({
     criteriaMode: "all",
@@ -69,7 +69,7 @@ export default function ListaMovimientosEnBodega({
       onSubmit={PeticionParaCrearMovimientosEnBodega}
     >
       <h1 className="ListaMovimientosEnBodega__Titulo">
-        {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[idioma].ListaDeGuias} (
+        {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[Idioma].ListaDeGuias} (
         {movimiento.length})
       </h1>
       <div className="ListaMovimientosEnBodega__Cuerpo" key={movimiento.length}>
@@ -79,27 +79,27 @@ export default function ListaMovimientosEnBodega({
               <th>
                 <ion-icon name="bag-check"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[idioma].Guia}
+                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[Idioma].Guia}
               </th>
               <th>
                 <ion-icon name="document-text"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[idioma].Contenido}
+                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[Idioma].Contenido}
               </th>
               <th>
                 <ion-icon name="expand"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[idioma].Medidas}
+                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[Idioma].Medidas}
               </th>
               <th>
                 <ion-icon name="scale"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[idioma].Peso}
+                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[Idioma].Peso}
               </th>
               <th>
                 <ion-icon name="code-working"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[idioma].Acciones}
+                {DICCIONARIO_LISTA_MOVIMIENTOS_BODEGA[Idioma].Acciones}
               </th>
             </tr>
           </thead>
@@ -135,7 +135,7 @@ export default function ListaMovimientosEnBodega({
           </tbody>
         </table>
       </div>
-      <GrupoDeBotonesInferior idioma={idioma} BotonFinalizar={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonFinalizar={true} />
     </form>
   );
 }

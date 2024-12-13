@@ -29,7 +29,7 @@ import {
 import "../../../../estilos/componentes/Bodega/MovimientosEnBodega/CrearMovimientoEnBodega/FormularioMovimientoEnBodega.css";
 
 export default function FormularioMovimientoEnBodega({
-  idioma,
+  Idioma,
   movimiento,
   establecerMovimiento,
 }) {
@@ -102,12 +102,12 @@ export default function FormularioMovimientoEnBodega({
       onSubmit={BuscarInformacionDeGuiaParaMovimiento}
     >
       <h1 className="FormularioMovimientoEnBodega__Titulo">
-        {DICCIONARIO_FORMULARIO_MOVIMIENTOS[idioma].CrearMovimiento}
+        {DICCIONARIO_FORMULARIO_MOVIMIENTOS[Idioma].CrearMovimiento}
       </h1>
       <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="scan-circle"></ion-icon>{" "}
-          {DICCIONARIO_FORMULARIO_MOVIMIENTOS[idioma].IngresaEscaneaGuia}
+          {DICCIONARIO_FORMULARIO_MOVIMIENTOS[Idioma].IngresaEscaneaGuia}
         </p>
         <input
           {...register("GuiaPedido")}
@@ -115,11 +115,11 @@ export default function FormularioMovimientoEnBodega({
           type="text"
           name="GuiaPedido"
           autoComplete="off"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           onKeyUp={(e) => establecerValorInput(e.target.value.trim())}
         />
       </span>
-      <GrupoDeBotonesInferior idioma={idioma} BotonBuscar={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonBuscar={true} />
     </form>
   );
 }

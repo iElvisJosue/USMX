@@ -28,7 +28,7 @@ import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Productos/AdministrarProductos/EditarProducto.css";
 
 export default function EditarProducto({
-  idioma,
+  Idioma,
   informacionDelProducto,
   establecerVistaProductos,
 }) {
@@ -117,23 +117,23 @@ export default function EditarProducto({
         </button>
       </div>
       <h1 className="EditarProducto__Titulo">
-        {DICCIONARIO_EDITAR_PRODUCTO[idioma].EditarProducto}
+        {DICCIONARIO_EDITAR_PRODUCTO[Idioma].EditarProducto}
       </h1>
       <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
         <p>
           <ion-icon name="basket"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_PRODUCTO[idioma].Nombre}
+          {DICCIONARIO_EDITAR_PRODUCTO[Idioma].Nombre}
         </p>
         <input
           id="NombreProducto"
           name="NombreProducto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NombreProducto", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -142,17 +142,17 @@ export default function EditarProducto({
       <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
         <p>
           <ion-icon name="swap-horizontal"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_PRODUCTO[idioma].Ancho}
+          {DICCIONARIO_EDITAR_PRODUCTO[Idioma].Ancho}
         </p>
         <input
           id="AnchoProducto"
           name="AnchoProducto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("AnchoProducto", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 5,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
             },
           })}
         ></input>
@@ -161,17 +161,17 @@ export default function EditarProducto({
       <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
         <p>
           <ion-icon name="swap-vertical"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_PRODUCTO[idioma].Largo}
+          {DICCIONARIO_EDITAR_PRODUCTO[Idioma].Largo}
         </p>
         <input
           id="LargoProducto"
           name="LargoProducto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("LargoProducto", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 5,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
             },
           })}
         ></input>
@@ -180,17 +180,17 @@ export default function EditarProducto({
       <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
         <p>
           <ion-icon name="arrow-up"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_PRODUCTO[idioma].Alto}
+          {DICCIONARIO_EDITAR_PRODUCTO[Idioma].Alto}
         </p>
         <input
           id="AltoProducto"
           name="AltoProducto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("AltoProducto", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 5,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
             },
           })}
         ></input>
@@ -199,18 +199,18 @@ export default function EditarProducto({
       <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
         <p>
           <ion-icon name="cash"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_PRODUCTO[idioma].Precio}
+          {DICCIONARIO_EDITAR_PRODUCTO[Idioma].Precio}
         </p>
         <input
           id="PrecioProducto"
           name="PrecioProducto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("PrecioProducto", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 5,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
             },
           })}
         ></input>
@@ -219,18 +219,18 @@ export default function EditarProducto({
       <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
         <p>
           <ion-icon name="scale"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_PRODUCTO[idioma].CostoLibraExtra}
+          {DICCIONARIO_EDITAR_PRODUCTO[Idioma].CostoLibraExtra}
         </p>
         <input
           id="CostoLibraExtraProducto"
           name="CostoLibraExtraProducto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("CostoLibraExtraProducto", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_DECIMALES,
             maxLength: {
               value: 5,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
             },
           })}
         ></input>
@@ -239,18 +239,18 @@ export default function EditarProducto({
       <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
         <p>
           <ion-icon name="thumbs-up"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_PRODUCTO[idioma].PesoSinCobro}
+          {DICCIONARIO_EDITAR_PRODUCTO[Idioma].PesoSinCobro}
         </p>
         <input
           id="PesoSinCobroProducto"
           name="PesoSinCobroProducto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("PesoSinCobroProducto", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 5,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
             },
           })}
         ></input>
@@ -259,18 +259,18 @@ export default function EditarProducto({
       <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
         <p>
           <ion-icon name="warning"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_PRODUCTO[idioma].PesoMaximo}
+          {DICCIONARIO_EDITAR_PRODUCTO[Idioma].PesoMaximo}
         </p>
         <input
           id="PesoMaximoProducto"
           name="PesoMaximoProducto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("PesoMaximoProducto", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 5,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
             },
           })}
         ></input>
@@ -279,18 +279,18 @@ export default function EditarProducto({
       <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo Comision">
         <p>
           <ion-icon name="receipt"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_PRODUCTO[idioma].Comision}
+          {DICCIONARIO_EDITAR_PRODUCTO[Idioma].Comision}
         </p>
         <input
           id="ComisionProducto"
           name="ComisionProducto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("ComisionProducto", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 5,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
             },
           })}
         ></input>
@@ -298,7 +298,7 @@ export default function EditarProducto({
       </span>
       <footer className="EditarProducto__Footer">
         <button type="submit" className="EditarProducto__Footer__Boton Guardar">
-          {DICCIONARIO_BOTONES[idioma].Actualizar}
+          {DICCIONARIO_BOTONES[Idioma].Actualizar}
         </button>
       </footer>
     </form>

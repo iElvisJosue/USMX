@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useBodega } from "../../../context/BodegaContext";
-import { useUsuarios } from "../../../context/UsuariosContext";
+import { useSistema } from "../../../context/SistemaContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -12,7 +12,7 @@ export default function useBuscarDevolucionesPorFiltro() {
     BuscarTodasLasDevolucionesPorFiltro,
     BuscarDevolucionesDeUnBodegueroPorFiltro,
   } = useBodega();
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
 
   const [devoluciones, establecerDevoluciones] = useState([]);
   const [cargando, establecerCargando] = useState(true);

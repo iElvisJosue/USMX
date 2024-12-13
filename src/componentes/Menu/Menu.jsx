@@ -1,20 +1,19 @@
 // IMPORTAMOS LAS LIBRERías A USAR
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import MenuOpciones from "./MenuOpciones";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useSistema } from "../../context/SistemaContext";
-import { useUsuarios } from "../../context/UsuariosContext";
-import { useConfiguracion } from "../../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useCerrarSesion from "../../hooks/useCerrarSesion";
 import OpcionesDelMenu from "../../helpers/OpcionesDelMenu";
 
 // IMPORTAMOS LAS AYUDAS
-import { HOST, HOST_IMAGENES } from "../../helpers/Urls";
+import { HOST_IMAGENES } from "../../helpers/Urls";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import { DICCIONARIO_BOTONES } from "../../diccionario/Diccionario";
@@ -23,11 +22,11 @@ import { DICCIONARIO_BOTONES } from "../../diccionario/Diccionario";
 import "../../estilos/componentes/Menu/Menu.css";
 
 export default function Menu() {
-  const { infSistema } = useSistema();
-  const { infUsuario } = useUsuarios();
-  const { idioma } = useConfiguracion();
+  const { infSistema, infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
+  const navigate = useNavigate();
   const { CerrandoSesion } = useCerrarSesion();
-  const { OpcionesMenu } = OpcionesDelMenu(idioma);
+  const { OpcionesMenu } = OpcionesDelMenu(Idioma);
   const [mostrarMenu, setMostrarMenu] = useState(false);
 
   const ClaseMenu = mostrarMenu ? "Menu Activo" : "Menu";
@@ -38,9 +37,11 @@ export default function Menu() {
         <img
           src={`${HOST_IMAGENES}/${infSistema.LogoSistema}`}
           alt={infSistema.NombreSistema}
-          onClick={() => (window.location.href = `${HOST}Bienvenida`)}
+          onClick={() => navigate("/Bienvenida")}
         />
-        <a href={`${HOST}Bienvenida`}>{infSistema.NombreSistema}</a>
+        <a onClick={() => navigate("/Bienvenida")}>
+          {infSistema.NombreSistema}
+        </a>
         <ion-icon
           name="close-circle"
           class="Menu__Encabezado--MostrarMenu"
@@ -69,7 +70,7 @@ export default function Menu() {
       ></ion-icon>
       <button className="Menu__CerrarSesion" onClick={CerrandoSesion}>
         <ion-icon name="log-out"></ion-icon>{" "}
-        {DICCIONARIO_BOTONES[idioma].CerrarSesion}
+        {DICCIONARIO_BOTONES[Idioma].CerrarSesion}
       </button>
     </aside>
   );

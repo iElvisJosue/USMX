@@ -29,7 +29,7 @@ import usePaginacion from "../../../hooks/usePaginacion";
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/AdministrarProductosDeLaAgencia.css";
 
 export default function AdministrarProductosDeLaAgencia({
-  idioma,
+  Idioma,
   informacionDeLaAgencia,
   establecerVista,
 }) {
@@ -130,7 +130,7 @@ export default function AdministrarProductosDeLaAgencia({
     <div className="AdministrarProductosDeLaAgencia">
       {mostrarModal && (
         <ModalInformacionDelProducto
-          idioma={idioma}
+          Idioma={Idioma}
           agencia={informacionDeLaAgencia}
           informacionDelProducto={informacionDelProducto}
           establecerMostrarModal={establecerMostrarModal}
@@ -151,7 +151,7 @@ export default function AdministrarProductosDeLaAgencia({
         </button>
         <small className="AdministrarProductosDeLaAgencia__Regresar__Usuario">
           {
-            DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
+            DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[Idioma]
               .AgenciaSeleccionada
           }{" "}
           <b>{informacionDeLaAgencia.NombreAgencia.toUpperCase()}</b>
@@ -161,7 +161,7 @@ export default function AdministrarProductosDeLaAgencia({
         <>
           <h1 className="AdministrarProductosDeLaAgencia__Titulo">
             {
-              DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
+              DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[Idioma]
                 .ProductosAsignados
             }
           </h1>
@@ -205,7 +205,7 @@ export default function AdministrarProductosDeLaAgencia({
 
       <h1 className="AdministrarProductosDeLaAgencia__Titulo">
         {
-          DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
+          DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[Idioma]
             .AsignarNuevoProducto
         }
       </h1>
@@ -213,7 +213,7 @@ export default function AdministrarProductosDeLaAgencia({
         <input
           type="text"
           placeholder={
-            DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
+            DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[Idioma]
               .BuscarProducto
           }
           onChange={obtenerProductos}
@@ -226,9 +226,9 @@ export default function AdministrarProductosDeLaAgencia({
         <>
           <small className="AdministrarProductosDeLaAgencia__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos}{" "}
             {ProductosNoAsignados.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="AdministrarProductosDeLaAgencia__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
@@ -263,19 +263,19 @@ export default function AdministrarProductosDeLaAgencia({
             )
           )}
           <small className="AdministrarProductosDeLaAgencia__TextoPaginas">
-            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
-            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[Idioma].De} {cantidadDePaginas}
           </small>
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Productos"}
           TextoBoton={
-            DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[idioma]
+            DICCIONARIO_ADMINISTRAR_PRODUCTOS_DE_LA_AGENCIA[Idioma]
               .RegistrarProducto
           }
         />

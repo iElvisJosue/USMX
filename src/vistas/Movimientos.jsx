@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS DICCIONARIOS A USAR
 import { DICCIONARIO_MOVIMIENTOS } from "../diccionario/Diccionario";
@@ -22,7 +22,8 @@ import useObtenerMovimientos from "../hooks/useObtenerMovimientos";
 import "../estilos/vistas/Movimientos.css";
 
 export default function Movimientos() {
-  const { idioma } = useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
   const {
     movimientos,
     cargandoMovimientos,
@@ -36,7 +37,7 @@ export default function Movimientos() {
     useState(null);
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     vista,
     establecerVista,
     movimientos,
@@ -49,8 +50,8 @@ export default function Movimientos() {
   };
 
   const TituloSubseccion = {
-    0: "",
-    1: DICCIONARIO_MOVIMIENTOS[idioma].EditarMovimiento,
+    0: DICCIONARIO_MOVIMIENTOS[Idioma].Movimientos,
+    1: DICCIONARIO_MOVIMIENTOS[Idioma].EditarMovimiento,
   };
 
   if (cargandoMovimientos) return <Cargando />;
@@ -60,8 +61,8 @@ export default function Movimientos() {
     <main className="Main">
       <Menu />
       <Encabezado
-        icono="car"
-        seccion={DICCIONARIO_MOVIMIENTOS[idioma].Movimientos}
+        icono="code-working"
+        seccion={DICCIONARIO_MOVIMIENTOS[Idioma].Operaciones}
         subseccion={TituloSubseccion[vista]}
       />
       <div className="Movimientos">

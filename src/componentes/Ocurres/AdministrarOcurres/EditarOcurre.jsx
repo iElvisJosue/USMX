@@ -33,7 +33,7 @@ import {
 import "../../../estilos/componentes/Ocurres/AdministrarOcurres/EditarOcurre.css";
 
 export default function EditarOcurre({
-  idioma,
+  Idioma,
   informacionDelOcurre,
   establecerVistaOcurres,
 }) {
@@ -146,24 +146,24 @@ export default function EditarOcurre({
         </button>
       </div>
       <h1 className="EditarOcurre__Titulo">
-        {DICCIONARIO_EDITAR_OCURRE[idioma].EditarOcurre}
+        {DICCIONARIO_EDITAR_OCURRE[Idioma].EditarOcurre}
       </h1>
       <span className="EditarOcurre__Campo">
         <p>
           <ion-icon name="alert-circle"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_OCURRE[idioma].NombreDelOcurre}
+          {DICCIONARIO_EDITAR_OCURRE[Idioma].NombreDelOcurre}
         </p>
         <input
           id="NombreOcurre"
           type="text"
           name="NombreOcurre"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NombreOcurre", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -172,7 +172,7 @@ export default function EditarOcurre({
       <span className="EditarOcurre__Campo">
         <p>
           <ion-icon name="business"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_OCURRE[idioma].OperadorLogistico}
+          {DICCIONARIO_EDITAR_OCURRE[Idioma].OperadorLogistico}
         </p>
         <select
           name="OperadorLogisticoOcurre"
@@ -191,22 +191,22 @@ export default function EditarOcurre({
       <span className="EditarOcurre__Campo">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_OCURRE[idioma].TelefonoUno}
+          {DICCIONARIO_EDITAR_OCURRE[Idioma].TelefonoUno}
         </p>
         <input
           id="TelefonoUnoOcurre"
           type="text"
           name="TelefonoUnoOcurre"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("TelefonoUnoOcurre", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min10,
             },
           })}
         />
@@ -215,22 +215,22 @@ export default function EditarOcurre({
       <span className="EditarOcurre__Campo">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_OCURRE[idioma].TelefonoDos}
+          {DICCIONARIO_EDITAR_OCURRE[Idioma].TelefonoDos}
         </p>
         <input
           id="TelefonoDosOcurre"
           type="text"
           name="TelefonoDosOcurre"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("TelefonoDosOcurre", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min10,
             },
           })}
         />
@@ -239,19 +239,19 @@ export default function EditarOcurre({
       <span className="EditarOcurre__Campo Dos">
         <p>
           <ion-icon name="mail"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_OCURRE[idioma].CorreoElectronico}
+          {DICCIONARIO_EDITAR_OCURRE[Idioma].CorreoElectronico}
         </p>
         <input
           id="CorreoOcurre"
           type="text"
           name="CorreoOcurre"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("CorreoOcurre", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_CORREO,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -260,17 +260,17 @@ export default function EditarOcurre({
       <span className="EditarOcurre__Campo Tres">
         <p>
           <ion-icon name="search"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_OCURRE[idioma].Observaciones}
+          {DICCIONARIO_EDITAR_OCURRE[Idioma].Observaciones}
         </p>
         <input
           name="ObservacionesOcurre"
           id="ObservacionesOcurre"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("ObservacionesOcurre", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max1000,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max1000,
             },
           })}
         ></input>
@@ -279,7 +279,7 @@ export default function EditarOcurre({
       <GoogleAPI {...PropsGoogleAPI} />
       <footer className="EditarOcurre__Footer">
         <button type="submit" className="EditarOcurre__Footer__Boton Siguiente">
-          {DICCIONARIO_BOTONES[idioma].Actualizar}
+          {DICCIONARIO_BOTONES[Idioma].Actualizar}
         </button>
       </footer>
     </form>

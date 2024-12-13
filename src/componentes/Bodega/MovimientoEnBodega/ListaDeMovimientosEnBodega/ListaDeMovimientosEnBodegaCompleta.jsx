@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/MovimientosEnBodega/ListaDeMovimientosEnBodega/ListaDeMovimientosEnBodegaCompleta.css";
 
 export default function ListaDeMovimientosEnBodegaCompleta({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDelMovimiento,
 }) {
   const { movimientosBodega, cargando, filtro, establecerFiltro } =
@@ -42,7 +42,7 @@ export default function ListaDeMovimientosEnBodegaCompleta({
     <div className="ListaDeMovimientosEnBodegaCompleta">
       <h1 className="ListaDeMovimientosEnBodegaCompleta__Titulo">
         {
-          DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[idioma]
+          DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma]
             .ListaCompletaDeMovimientos
         }
       </h1>
@@ -51,7 +51,7 @@ export default function ListaDeMovimientosEnBodegaCompleta({
           value={filtro}
           type="text"
           placeholder={
-            DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[idioma].BuscarMovimiento
+            DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].BuscarMovimiento
           }
           onChange={BuscarMovimientosEnBodega}
         />
@@ -63,9 +63,9 @@ export default function ListaDeMovimientosEnBodegaCompleta({
         <>
           <small className="ListaDeMovimientosEnBodegaCompleta__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos}{" "}
             {movimientosBodega.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaDeMovimientosEnBodegaCompleta__Cuerpo">
             <table className="ListaDeMovimientosEnBodegaCompleta__Cuerpo__Tabla">
@@ -75,32 +75,32 @@ export default function ListaDeMovimientosEnBodegaCompleta({
                     <ion-icon name="document-text"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[idioma]
+                      DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma]
                         .idMovimientoB
                     }
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[idioma].CPedidos}
+                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].CPedidos}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[idioma]
+                      DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma]
                         .FechaCreacion
                     }
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -123,7 +123,7 @@ export default function ListaDeMovimientosEnBodegaCompleta({
                           EstablecerLosDetallesDelMovimiento(movBodega, true)
                         }
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -135,12 +135,12 @@ export default function ListaDeMovimientosEnBodegaCompleta({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Bodega-Movimientos"}
           TextoBoton={
-            DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[idioma].CrearMovimiento
+            DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].CrearMovimiento
           }
         />
       )}

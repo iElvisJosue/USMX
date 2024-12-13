@@ -2,8 +2,7 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
-import { useUsuarios } from "../context/UsuariosContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
@@ -22,17 +21,13 @@ import "../estilos/vistas/Apariencia.css";
 export default function Apariencia() {
   // ESTADOS AQUI
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { infUsuario } = useUsuarios();
   const {
-    modoOscuro,
-    obtenerModoOscuro,
-    establecerObtenerModoOscuro,
+    infUsuario,
     ActualizarModoOscuro,
-    idioma,
-    obtenerIdioma,
-    establecerObtenerIdioma,
     ActualizarIdioma,
-  } = useConfiguracion();
+    obtenerInformacionNuevamente,
+    establecerObtenerInformacionNuevamente,
+  } = useSistema();
 
   const ActualizarElModoOscuroDelUsuario = async (ValorModoOscuro) => {
     // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
@@ -49,7 +44,7 @@ export default function Apariencia() {
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
-        establecerObtenerModoOscuro(!obtenerModoOscuro);
+        establecerObtenerInformacionNuevamente(!obtenerInformacionNuevamente);
       }
     } catch (error) {
       const { status, data } = error.response;
@@ -73,7 +68,7 @@ export default function Apariencia() {
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
-        establecerObtenerIdioma(!obtenerIdioma);
+        establecerObtenerInformacionNuevamente(!obtenerInformacionNuevamente);
       }
     } catch (error) {
       const { status, data } = error.response;
@@ -87,83 +82,91 @@ export default function Apariencia() {
     <main className="Main">
       <Menu />
       <Encabezado
-        icono="color-palette"
-        seccion={DICCIONARIO_APARIENCIA[idioma].Apariencia}
+        icono="desktop"
+        seccion={DICCIONARIO_APARIENCIA[infUsuario.Idioma].Sistema}
+        subseccion={DICCIONARIO_APARIENCIA[infUsuario.Idioma].Apariencia}
       />
       <div className="Apariencia">
         <h2 className="Apariencia__Titulo">
-          {DICCIONARIO_APARIENCIA[idioma].Apariencia}
+          {DICCIONARIO_APARIENCIA[infUsuario.Idioma].Apariencia}
         </h2>
         <h4 className="Apariencia__Subtitulo">
-          {DICCIONARIO_APARIENCIA[idioma].DescripcionApariencia}
+          {DICCIONARIO_APARIENCIA[infUsuario.Idioma].DescripcionApariencia}
         </h4>
         <hr className="Apariencia__Separador" />
         <section className="Apariencia__Cuerpo">
           <div className="Apariencia__Cuerpo__Texto">
-            <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaSistema}</b>
-            <p>{DICCIONARIO_APARIENCIA[idioma].DescripcionIdiomaSistema}</p>
+            <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].IdiomaSistema}</b>
+            <p>
+              {
+                DICCIONARIO_APARIENCIA[infUsuario.Idioma]
+                  .DescripcionIdiomaSistema
+              }
+            </p>
           </div>
           <div className="Apariencia__Cuerpo__Ejemplos">
             <picture
               className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
-                idioma === "es" && "Seleccionado"
+                infUsuario.Idioma === "es" && "Seleccionado"
               }`}
               onClick={
-                idioma === "es"
+                infUsuario.Idioma === "es"
                   ? undefined
                   : () => ActualizarElIdiomaDelUsuario("es")
               }
             >
               <img src="BanderaMexico.png" alt="Idioma español" />
-              <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaEspanol}</b>
+              <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].IdiomaEspanol}</b>
             </picture>
             <picture
               className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
-                idioma === "en" && "Seleccionado"
+                infUsuario.Idioma === "en" && "Seleccionado"
               }`}
               onClick={
-                idioma === "en"
+                infUsuario.Idioma === "en"
                   ? undefined
                   : () => ActualizarElIdiomaDelUsuario("en")
               }
             >
               <img src="BanderaUSA.png" alt="Idioma inglés" />
-              <b>{DICCIONARIO_APARIENCIA[idioma].IdiomaIngles}</b>
+              <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].IdiomaIngles}</b>
             </picture>
           </div>
         </section>
         <hr className="Apariencia__Separador" />
         <section className="Apariencia__Cuerpo">
           <div className="Apariencia__Cuerpo__Texto">
-            <b>{DICCIONARIO_APARIENCIA[idioma].TemaSistema}</b>
-            <p>{DICCIONARIO_APARIENCIA[idioma].DescripcionTemaSistema}</p>
+            <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].TemaSistema}</b>
+            <p>
+              {DICCIONARIO_APARIENCIA[infUsuario.Idioma].DescripcionTemaSistema}
+            </p>
           </div>
           <div className="Apariencia__Cuerpo__Ejemplos">
             <picture
               className={`Apariencia__Cuerpo__Ejemplo--Imagen ${
-                modoOscuro === 0 && "Oscuro"
+                infUsuario.ModoOscuro === 0 && "Oscuro"
               }`}
               onClick={
-                modoOscuro === 0
+                infUsuario.ModoOscuro === 0
                   ? undefined
                   : () => ActualizarElModoOscuroDelUsuario(false)
               }
             >
               <img src="TemaClaro.png" alt="Tema Claro" />
-              <b>{DICCIONARIO_APARIENCIA[idioma].TemaClaro}</b>
+              <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].TemaClaro}</b>
             </picture>
             <picture
               className={`Apariencia__Cuerpo__Ejemplo--Imagen ${
-                modoOscuro === 1 && "Oscuro"
+                infUsuario.ModoOscuro === 1 && "Oscuro"
               }`}
               onClick={
-                modoOscuro === 1
+                infUsuario.ModoOscuro === 1
                   ? undefined
                   : () => ActualizarElModoOscuroDelUsuario(true)
               }
             >
               <img src="TemaOscuro.png" alt="Tema Oscuro" />
-              <b>{DICCIONARIO_APARIENCIA[idioma].TemaOscuro}</b>
+              <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].TemaOscuro}</b>
             </picture>
           </div>
         </section>

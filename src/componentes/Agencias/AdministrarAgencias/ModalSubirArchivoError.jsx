@@ -7,7 +7,7 @@ import {
 
 // LOS ESTILOS ESTÁN EN ModalSubirArchivo.css
 export default function ModalSubirArchivoError({
-  idioma,
+  Idioma,
   esRemitente,
   establecerContenidoModal,
 }) {
@@ -19,20 +19,20 @@ export default function ModalSubirArchivoError({
         className="ModalSubirArchivo__Contenido--Error--Imagen"
       />
       <p className="ModalSubirArchivo__Contenido--Error--Texto">
-        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[idioma].MensajeParteUno}{" "}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[Idioma].MensajeParteUno}{" "}
         <b>
           {esRemitente
-            ? `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[idioma].Remitentes} `
-            : `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[idioma].Destinatarios} `}
+            ? `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[Idioma].Remitentes} `
+            : `${DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[Idioma].Destinatarios} `}
         </b>
-        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[idioma].MensajeParteDos}
+        {DICCIONARIO_MODAL_SUBIR_ARCHIVO_ERROR[Idioma].MensajeParteDos}
       </p>
       <button
         className="ModalSubirArchivo__Contenido--Error--Boton"
         type="button"
         onClick={() => establecerContenidoModal(0)}
       >
-        {DICCIONARIO_BOTONES[idioma].Regresar}
+        {DICCIONARIO_BOTONES[Idioma].Regresar}
       </button>
     </section>
   );

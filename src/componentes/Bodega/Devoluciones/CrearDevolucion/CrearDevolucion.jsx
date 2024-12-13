@@ -8,12 +8,12 @@ import ListaDevoluciones from "./ListaDevoluciones";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../../estilos/componentes/Bodega/Devoluciones/CrearDevolucion/CrearDevolucion.css";
 
-export default function CrearDevolucion({ idioma }) {
+export default function CrearDevolucion({ Idioma }) {
   const [devolucion, establecerDevolucion] = useState([]);
 
   // VALORES COMPARTIDOS
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     devolucion,
     establecerDevolucion,
   };

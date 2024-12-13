@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/MovimientosEnBodega/ListaDeMovimientosEnBodega/ListaDeMovimientosEnBodegaPorFecha.css";
 
 export default function ListaDeMovimientosEnBodegaPorFecha({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDelMovimiento,
 }) {
   const {
@@ -45,7 +45,7 @@ export default function ListaDeMovimientosEnBodegaPorFecha({
     <div className="ListaDeMovimientosEnBodegaPorFecha">
       <h1 className="ListaDeMovimientosEnBodegaPorFecha__Titulo">
         {
-          DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[idioma]
+          DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[Idioma]
             .BuscarMovimientosPorFecha
         }
         <small className="ListaDeMovimientosEnBodegaPorFecha__Titulo--Fechas">
@@ -74,9 +74,9 @@ export default function ListaDeMovimientosEnBodegaPorFecha({
         <>
           <small className="ListaDeMovimientosEnBodegaPorFecha__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos}{" "}
             {movimientosPorFecha.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaDeMovimientosEnBodegaPorFecha__Cuerpo">
             <table className="ListaDeMovimientosEnBodegaPorFecha__Cuerpo__Tabla">
@@ -86,32 +86,32 @@ export default function ListaDeMovimientosEnBodegaPorFecha({
                     <ion-icon name="document-text"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[idioma]
+                      DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[Idioma]
                         .idMovimientoB
                     }
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[idioma].CPedidos}
+                    {DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[Idioma].CPedidos}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[idioma]
+                      DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[Idioma]
                         .FechaCreacion
                     }
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -137,7 +137,7 @@ export default function ListaDeMovimientosEnBodegaPorFecha({
                           )
                         }
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -150,7 +150,7 @@ export default function ListaDeMovimientosEnBodegaPorFecha({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={`${
-            DICCIONARIO_RESULTADOS[idioma].NoResultadoPorFecha
+            DICCIONARIO_RESULTADOS[Idioma].NoResultadoPorFecha
           } ${primeraFecha.split("-").reverse().join("/")} - ${segundaFecha
             .split("-")
             .reverse()
@@ -159,7 +159,7 @@ export default function ListaDeMovimientosEnBodegaPorFecha({
           TipoBoton={"Azul"}
           UrlBoton={"/Bodega-Movimientos"}
           TextoBoton={
-            DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[idioma].CrearMovimiento
+            DICCIONARIO_LISTA_MOVIMIENTOS_POR_FECHA[Idioma].CrearMovimiento
           }
         />
       )}

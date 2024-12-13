@@ -10,7 +10,7 @@ import EditarProducto from "./EditarProducto";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Productos/AdministrarProductos/AdministrarProductos.css";
 
-export default function AdministrarProductos({ idioma }) {
+export default function AdministrarProductos({ Idioma }) {
   const [informacionDelProducto, establecerInformacionDelProducto] =
     useState(null);
   const [informacionDeLaAgencia, establecerInformacionDeLaAgencia] =
@@ -18,7 +18,7 @@ export default function AdministrarProductos({ idioma }) {
   const [vistaProductos, establecerVistaProductos] = useState(0);
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     vistaProductos,
     establecerVistaProductos,
     informacionDelProducto,

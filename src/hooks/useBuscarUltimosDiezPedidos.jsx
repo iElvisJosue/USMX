@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useUsuarios } from "../context/UsuariosContext";
+import { useSistema } from "../context/SistemaContext";
 import { usePedidos } from "../context/PedidosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarUltimosDiezPedidos() {
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   const {
     BuscarUltimosDiezPedidosGenerales,
     BuscarUltimosDiezPedidosDeUnUsuario,

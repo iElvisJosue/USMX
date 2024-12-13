@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import { DICCIONARIO_PRODUCTOS } from "../diccionario/Diccionario";
@@ -15,23 +15,24 @@ import RegistrarProducto from "../componentes/Productos/RegistrarProducto/Regist
 import AdministrarProductos from "../componentes/Productos/AdministrarProductos/AdministrarProductos";
 
 export default function Productos() {
-  const { idioma } = useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
   const [vistaProductos, establecerVistaProductos] = useState(0);
 
   const OpcionesSubMenu = [
     {
-      Texto: DICCIONARIO_PRODUCTOS[idioma].RegistrarProducto,
+      Texto: DICCIONARIO_PRODUCTOS[Idioma].RegistrarProducto,
       Icono: "add-circle",
     },
     {
-      Texto: DICCIONARIO_PRODUCTOS[idioma].AdministrarProductos,
+      Texto: DICCIONARIO_PRODUCTOS[Idioma].AdministrarProductos,
       Icono: "cog",
     },
   ];
 
   // VALORES COMPARTIDOS ENTRE LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
   };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
@@ -41,8 +42,8 @@ export default function Productos() {
   };
 
   const TituloSubseccion = {
-    0: DICCIONARIO_PRODUCTOS[idioma].RegistrarProducto,
-    1: DICCIONARIO_PRODUCTOS[idioma].AdministrarProductos,
+    0: DICCIONARIO_PRODUCTOS[Idioma].RegistrarProducto,
+    1: DICCIONARIO_PRODUCTOS[Idioma].AdministrarProductos,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -54,7 +55,7 @@ export default function Productos() {
       <Menu />
       <Encabezado
         icono="basket"
-        seccion={DICCIONARIO_PRODUCTOS[idioma].Productos}
+        seccion={DICCIONARIO_PRODUCTOS[Idioma].Productos}
         subseccion={TituloSubseccion[vistaProductos]}
       />
       <SubMenu

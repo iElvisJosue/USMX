@@ -16,7 +16,7 @@ import { DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS } from "../../diccionario/Di
 import "../../estilos/componentes/Movimientos/ModalConfirmacionMovimientos.css";
 
 export default function ModalConfirmacionMovimientos({
-  idioma,
+  Idioma,
   Activar = true,
   informacionDelMovimiento,
   establecerMostrarModalConfirmacion,
@@ -30,14 +30,14 @@ export default function ModalConfirmacionMovimientos({
     ? "ModalConfirmacionMovimientos__Contenido--Titulo Activar"
     : "ModalConfirmacionMovimientos__Contenido--Titulo Desactivar";
   const TituloModal = Activar
-    ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].ActivarMovimiento
-    : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].DesactivarMovimiento;
+    ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma].ActivarMovimiento
+    : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma].DesactivarMovimiento;
   const ClaseBotonModal = Activar
     ? "ModalConfirmacionMovimientos__Contenido--Boton Activar"
     : "ModalConfirmacionMovimientos__Contenido--Boton Desactivar";
   const TextoBotonModal = Activar
-    ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].Activar
-    : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].Desactivar;
+    ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma].Activar
+    : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma].Desactivar;
   const ClaseTextoModal = Activar
     ? "ModalConfirmacionMovimientos__Contenido--Texto Activar"
     : "ModalConfirmacionMovimientos__Contenido--Texto Desactivar";
@@ -80,20 +80,20 @@ export default function ModalConfirmacionMovimientos({
         </button>
         <h1 className={ClaseTituloModal}>{TituloModal}</h1>
         <small className={ClaseTextoModal}>
-          {DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].MensajeParteUno}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma].MensajeParteUno}{" "}
           {Activar
-            ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].Activar
-            : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma]
+            ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma].Activar
+            : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma]
                 .Desactivar}{" "}
-          {DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma].MensajeParteDos}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma].MensajeParteDos}{" "}
           <b>{informacionDelMovimiento.DetallesMovimiento}</b>?
           <br />
           <br />
           <i>
             {Activar
-              ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma]
+              ? DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma]
                   .MensajeActivar
-              : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[idioma]
+              : DICCIONARIO_MODAL_CONFIRMACION_MOVIMIENTOS[Idioma]
                   .MensajeDesactivar}
           </i>
         </small>

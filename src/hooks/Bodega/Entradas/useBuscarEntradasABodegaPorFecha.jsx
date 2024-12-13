@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS
 import { useBodega } from "../../../context/BodegaContext";
-import { useUsuarios } from "../../../context/UsuariosContext";
+import { useSistema } from "../../../context/SistemaContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -14,7 +14,7 @@ export default function useBuscarEntradasABodegaPorFecha() {
     BuscarTodasLasEntradasABodegaPorFecha,
     BuscarTodasLasEntradasABodegaDeUnBodegueroPorFecha,
   } = useBodega();
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   const [entradasPorFecha, establecerEntradasPorFecha] = useState([]);
   const [cargandoEntradasPorFecha, establecerCargandoEntradasPorFecha] =
     useState(true);

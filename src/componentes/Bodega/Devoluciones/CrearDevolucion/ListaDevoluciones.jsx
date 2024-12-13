@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useUsuarios } from "../../../../context/UsuariosContext";
+import { useSistema } from "../../../../context/SistemaContext";
 import { useBodega } from "../../../../context/BodegaContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -21,12 +21,12 @@ import { MensajePeticionPendiente } from "../../../../helpers/FuncionesGenerales
 import "../../../../estilos/componentes/Bodega/Devoluciones/CrearDevolucion/ListaDevoluciones.css";
 
 export default function ListaDevoluciones({
-  idioma,
+  Idioma,
   devolucion,
   establecerDevolucion,
 }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   const { CrearDevolucion } = useBodega();
   const { handleSubmit } = useForm({
     criteriaMode: "all",
@@ -66,7 +66,7 @@ export default function ListaDevoluciones({
   return (
     <form className="ListaDevoluciones" onSubmit={PeticionParaCrearDevolucion}>
       <h1 className="ListaDevoluciones__Titulo">
-        {DICCIONARIO_LISTA_DEVOLUCIONES[idioma].ListaDeGuias} (
+        {DICCIONARIO_LISTA_DEVOLUCIONES[Idioma].ListaDeGuias} (
         {devolucion.length})
       </h1>
       <div className="ListaDevoluciones__Cuerpo" key={devolucion.length}>
@@ -76,27 +76,27 @@ export default function ListaDevoluciones({
               <th>
                 <ion-icon name="bag-check"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DEVOLUCIONES[idioma].Guia}
+                {DICCIONARIO_LISTA_DEVOLUCIONES[Idioma].Guia}
               </th>
               <th>
                 <ion-icon name="document-text"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DEVOLUCIONES[idioma].Contenido}
+                {DICCIONARIO_LISTA_DEVOLUCIONES[Idioma].Contenido}
               </th>
               <th>
                 <ion-icon name="expand"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DEVOLUCIONES[idioma].Medidas}
+                {DICCIONARIO_LISTA_DEVOLUCIONES[Idioma].Medidas}
               </th>
               <th>
                 <ion-icon name="scale"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DEVOLUCIONES[idioma].Peso}
+                {DICCIONARIO_LISTA_DEVOLUCIONES[Idioma].Peso}
               </th>
               <th>
                 <ion-icon name="code-working"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_DEVOLUCIONES[idioma].Acciones}
+                {DICCIONARIO_LISTA_DEVOLUCIONES[Idioma].Acciones}
               </th>
             </tr>
           </thead>
@@ -130,7 +130,7 @@ export default function ListaDevoluciones({
           </tbody>
         </table>
       </div>
-      <GrupoDeBotonesInferior idioma={idioma} BotonFinalizar={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonFinalizar={true} />
     </form>
   );
 }

@@ -1,0 +1,104 @@
+.AjustesInformacion {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.AjustesInformacion__Seccion {
+  position: relative;
+  padding: 10px;
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.AjustesInformacion__Seccion img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 2px dashed var(--ColorAzul);
+}
+.AjustesInformacion__Seccion--ActualizarFoto {
+  position: absolute;
+  bottom: -3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorBlanco);
+  color: var(--ColorBlanco);
+  font-size: 14px;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.AjustesInformacion__Seccion--ActualizarFoto:hover {
+  cursor: pointer;
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+  border-color: var(--ColorAzul);
+}
+.AjustesInformacion__Seccion--Titulo {
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--ColorAzul);
+}
+.AjustesInformacion__Divisor {
+  grid-column: 2 /2;
+  height: 0;
+  border: 1px dashed var(--ColorAzul);
+}
+.AjustesInformacion__Seccion--Texto {
+  text-align: center;
+  font-size: 16px;
+  color: var(--ColorNegro);
+}
+.AjustesInformacion__Seccion--Texto b {
+  color: var(--ColorAzul);
+}
+.AjustesInformacion__BotonActualizar {
+  min-height: 30px;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+  border: none;
+  color: var(--ColorBlanco);
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  border-radius: 15px;
+  transition: 0.3s ease-in-out all;
+  padding: 5px 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.AjustesInformacion__BotonActualizar ion-icon {
+  font-size: 14px;
+}
+.AjustesInformacion__BotonActualizar:hover {
+  cursor: pointer;
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+  border-color: var(--ColorAzul);
+}
+@media (width <= 800px) {
+  .AjustesInformacion {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .AjustesInformacion__Divisor {
+    grid-column: 1 / -1;
+  }
+}

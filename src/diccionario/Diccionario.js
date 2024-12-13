@@ -8,6 +8,7 @@ export const DICCIONARIO_OPCIONES_DEL_MENU = {
     Usuarios: "Usuarios",
     Operaciones: "Operaciones",
     Movimientos: "Movimientos",
+    Cargas: "Cargas",
     Pedidos: "Pedidos",
     Recolecciones: "Recolecciones",
     Bodega: "Bodega",
@@ -15,11 +16,10 @@ export const DICCIONARIO_OPCIONES_DEL_MENU = {
     Salida: "Salida",
     Devolucion: "Devolucion",
     Ocurres: "Ocurres",
-    Configuracion: "Configuración",
-    Cargas: "Cargas",
     Envios: "Envios",
-    Ubicaciones: "Ubicaciones",
+    Sistema: "Sistema",
     Apariencia: "Apariencia",
+    Ajustes: "Ajustes",
   },
   en: {
     Perfil: "Profile",
@@ -30,17 +30,17 @@ export const DICCIONARIO_OPCIONES_DEL_MENU = {
     Usuarios: "Users",
     Operaciones: "Operations",
     Movimientos: "Movements",
+    Cargas: "Loads",
+    Envios: "Deliveries",
     Recolecciones: "Collections",
     Bodega: "Warehouse",
     Entrada: "Entry",
     Salida: "Exit",
     Devolucion: "Return",
     Ocurres: "Ocurrences",
-    Configuracion: "Configuration",
-    Cargas: "Loads",
-    Envios: "Deliveries",
-    Ubicaciones: "Locations",
+    Sistema: "System",
     Apariencia: "Appearance",
+    Ajustes: "Settings",
   },
 };
 /* TERMINA DICCIONARIO PARA LAS VISTAS DEL MENU */
@@ -1617,10 +1617,12 @@ export const DICCIONARIO_DETALLES_SALIDA = {
 /* INICIA DICCIONARIO PARA LA VISTA MOVIMIENTOS */
 export const DICCIONARIO_MOVIMIENTOS = {
   es: {
+    Operaciones: "Operaciones",
     Movimientos: "Movimientos",
     EditarMovimiento: "Editar movimiento",
   },
   en: {
+    Operaciones: "Operations",
     Movimientos: "Movements",
     EditarMovimiento: "Edit movement",
   },
@@ -1809,6 +1811,7 @@ export const DICCIONARIO_EDITAR_OCURRE = {
 /* INICIA DICCIONARIO PARA LAS VISTAS DE CONFIGURACION */
 export const DICCIONARIO_CARGAS = {
   es: {
+    Operaciones: "Operaciones",
     Cargas: "Cargas",
     DescripcionCargas:
       "Administre la cantidad de cargas que maneja el sistema para sus pedidos.",
@@ -1817,6 +1820,7 @@ export const DICCIONARIO_CARGAS = {
       "Registra los tipos de cargas con los que trabajan.",
   },
   en: {
+    Operaciones: "Operations",
     Cargas: "Loads",
     DescripcionCargas:
       "Manage the number of loads that the system handles for your orders.",
@@ -1826,6 +1830,7 @@ export const DICCIONARIO_CARGAS = {
 };
 export const DICCIONARIO_ENVIOS = {
   es: {
+    Operaciones: "Operaciones",
     Envios: "Envíos",
     DescripcionEnvios:
       "Administre la cantidad de envios que maneja el sistema para sus pedidos.",
@@ -1834,6 +1839,7 @@ export const DICCIONARIO_ENVIOS = {
       "Registra los tipos de envios con los que trabajan.",
   },
   en: {
+    Operaciones: "Operations",
     Envios: "Deliveries",
     DescripcionEnvios:
       "Manage the number of deliveries that the system handles for your orders.",
@@ -1847,6 +1853,7 @@ export const DICCIONARIO_ENVIOS = {
 /* INICIA DICCIONARIO PARA LA VISTA DE APARIENCIA */
 export const DICCIONARIO_APARIENCIA = {
   es: {
+    Sistema: "Sistema",
     Apariencia: "Apariencia",
     DescripcionApariencia:
       "Administre la configuración y preferencias de la apariencia del sistema.",
@@ -1861,6 +1868,7 @@ export const DICCIONARIO_APARIENCIA = {
     IdiomaEspanol: "Español",
   },
   en: {
+    Sistema: "System",
     Apariencia: "Appearance",
     DescripcionApariencia:
       "Manage the appearance and preferences of the system.",
@@ -1873,6 +1881,67 @@ export const DICCIONARIO_APARIENCIA = {
     DescripcionIdiomaSistema: "Select the language of the application.",
     IdiomaIngles: "English",
     IdiomaEspanol: "Spanish",
+  },
+};
+
+export const DICCIONARIO_AJUSTES = {
+  es: {
+    Sistema: "Sistema",
+    Ajustes: "Ajustes",
+  },
+  en: {
+    Sistema: "System",
+    Ajustes: "Settings",
+  },
+};
+export const DICCIONARIO_AJUSTES_INFORMACION = {
+  es: {
+    LogoDelSistema: "Logo del sistema",
+    InformacionDelSistema: "Información del sistema",
+    Nombre: "Nombre",
+    CorreoDeContacto: "Correo de contacto",
+    ContrasenaCorreoDeContacto: "Contraseña del correo de contacto",
+  },
+  en: {
+    LogoDelSistema: "System logo",
+    InformacionDelSistema: "System information",
+    Nombre: "Name",
+    CorreoDeContacto: "Contact email",
+    ContrasenaCorreoDeContacto: "Contact email password",
+  },
+};
+export const DICCIONARIO_AJUSTES_LOGO = {
+  es: {
+    ActualizarLogoDelSistema: "Actualizar logo del sistema",
+    MensajeActualizarLogoUno:
+      "Por favor, selecciona o arrastra la imagen que utilizaras como logo del sistema.",
+    MensajeActualizarLogoDos: "El tamaño máximo de la imagen es de 10MB.",
+  },
+  en: {
+    ActualizarLogoDelSistema: "Update system logo",
+    MensajeActualizarLogoUno:
+      "Please select or drag the image you will use as the system logo.",
+    MensajeActualizarLogoDos: "The maximum image size is 10MB.",
+  },
+};
+export const DICCIONARIO_AJUSTES_INFORMACION_SISTEMA = {
+  es: {
+    ActualizarInformacionDelSistema: "Actualizar información del sistema",
+    NombreDelSistema: "Nombre del sistema",
+    CorreoDeContacto: "Correo de contacto",
+    ContrasenaCorreoDeContacto: "Contraseña del correo de contacto",
+    MensajeActualizarUno: "¡ATENCIÓN!",
+    MensajeActualizarDos:
+      "La información del sistema es muy sensible, por favor actualiza estos datos con mucho cuidado.",
+  },
+  en: {
+    ActualizarInformacionDelSistema: "Update system information",
+    NombreDelSistema: "System name",
+    CorreoDeContacto: "Contact email",
+    ContrasenaCorreoDeContacto: "Contact email password",
+    MensajeActualizarUno: "ATTENTION!",
+    MensajeActualizarDos:
+      "The system information is very sensitive, please update these data carefully.",
   },
 };
 /* TERMINA DICCIONARIO PARA LA VISTA DE APARIENCIA */

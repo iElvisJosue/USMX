@@ -23,7 +23,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/Devoluciones/ListaDevoluciones/DetallesDevolucion.css";
 
 export default function DetallesDevolucion({
-  idioma,
+  Idioma,
   informacionDeLaDevolucion,
   establecerVista,
   esCompleta,
@@ -51,26 +51,26 @@ export default function DetallesDevolucion({
       </section>
       <section className="DetallesDevolucion__Seccion">
         <img src="LogoDetallesDevolucion.png" alt="Logo Detalles" />
-        <h1>{DICCIONARIO_DETALLES_DEVOLUCION[idioma].Detalles}</h1>
+        <h1>{DICCIONARIO_DETALLES_DEVOLUCION[Idioma].Detalles}</h1>
       </section>
       <div className="DetallesDevolucion__Detalles Devolucion">
         <ion-icon name="folder"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_DEVOLUCION[idioma].idDevolucion}</b>
+        <b>{DICCIONARIO_DETALLES_DEVOLUCION[Idioma].idDevolucion}</b>
         {informacionDeLaDevolucion.idDevolucion}
       </div>
       <div className="DetallesDevolucion__Detalles">
         <ion-icon name="apps"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_DEVOLUCION[idioma].CantidadDeGuias}</b>
+        <b>{DICCIONARIO_DETALLES_DEVOLUCION[Idioma].CantidadDeGuias}</b>
         {pedidos.length}
       </div>
       <div className="DetallesDevolucion__Detalles">
         <ion-icon name="person-circle"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_DEVOLUCION[idioma].Usuario}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_DEVOLUCION[Idioma].Usuario}</b>{" "}
         {informacionDeLaDevolucion.Usuario}
       </div>
       <div className="DetallesDevolucion__Detalles">
         <ion-icon name="calendar"></ion-icon>{" "}
-        <b>{DICCIONARIO_DETALLES_DEVOLUCION[idioma].FechaDeCreacion}</b>{" "}
+        <b>{DICCIONARIO_DETALLES_DEVOLUCION[Idioma].FechaDeCreacion}</b>{" "}
         {FormatearFecha(
           informacionDeLaDevolucion.FechaCreacionDevolucion.slice(0, 10)
         )}{" "}
@@ -78,10 +78,10 @@ export default function DetallesDevolucion({
       </div>
       <section className="DetallesDevolucion__Seccion">
         <img src="ListaDeGuiasDevoluciones.png" alt="Logo Lista De Guias" />
-        <h1>{DICCIONARIO_DETALLES_DEVOLUCION[idioma].ListaDeGuias}</h1>
+        <h1>{DICCIONARIO_DETALLES_DEVOLUCION[Idioma].ListaDeGuias}</h1>
       </section>
       <InputBuscarEnTabla
-        idioma={idioma}
+        Idioma={Idioma}
         FuncionDeEstablecimiento={establecerArrayDePedidos}
         ArrayDeBusqueda={pedidos}
       />
@@ -94,22 +94,22 @@ export default function DetallesDevolucion({
                 <th>
                   <ion-icon name="bag-check"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_DEVOLUCION[idioma].Guia}
+                  {DICCIONARIO_DETALLES_DEVOLUCION[Idioma].Guia}
                 </th>
                 <th>
                   <ion-icon name="document-text"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_DEVOLUCION[idioma].Contenido}
+                  {DICCIONARIO_DETALLES_DEVOLUCION[Idioma].Contenido}
                 </th>
                 <th>
                   <ion-icon name="expand"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_DEVOLUCION[idioma].Medidas}
+                  {DICCIONARIO_DETALLES_DEVOLUCION[Idioma].Medidas}
                 </th>
                 <th>
                   <ion-icon name="scale"></ion-icon>
                   <br />
-                  {DICCIONARIO_DETALLES_DEVOLUCION[idioma].Peso}
+                  {DICCIONARIO_DETALLES_DEVOLUCION[Idioma].Peso}
                 </th>
               </tr>
             </thead>
@@ -138,7 +138,7 @@ export default function DetallesDevolucion({
       ) : (
         <MensajeGeneral
           Imagen="SinResultados.png"
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
         />
       )}
     </div>

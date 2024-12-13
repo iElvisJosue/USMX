@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/Devoluciones/ListaDevoluciones/ListaDevolucionesCompleta.css";
 
 export default function ListaDevolucionesCompleta({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDeLaDevolucion,
 }) {
   const { devoluciones, cargando, filtro, establecerFiltro } =
@@ -42,7 +42,7 @@ export default function ListaDevolucionesCompleta({
     <div className="ListaDevolucionesCompleta">
       <h1 className="ListaDevolucionesCompleta__Titulo">
         {
-          DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[idioma]
+          DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[Idioma]
             .ListaCompletaDeDevoluciones
         }
       </h1>
@@ -51,7 +51,7 @@ export default function ListaDevolucionesCompleta({
           value={filtro}
           type="text"
           placeholder={
-            DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[idioma].BuscarDevolucion
+            DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[Idioma].BuscarDevolucion
           }
           onChange={BuscarDevoluciones}
         />
@@ -63,8 +63,8 @@ export default function ListaDevolucionesCompleta({
         <>
           <small className="ListaDevolucionesCompleta__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {devoluciones.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {devoluciones.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaDevolucionesCompleta__Cuerpo">
             <table className="ListaDevolucionesCompleta__Cuerpo__Tabla">
@@ -74,32 +74,32 @@ export default function ListaDevolucionesCompleta({
                     <ion-icon name="document-text"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[idioma]
+                      DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[Idioma]
                         .idDevolucion
                     }
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[idioma].CPedidos}
+                    {DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[Idioma].CPedidos}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[idioma]
+                      DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[Idioma]
                         .FechaCreacion
                     }
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -122,7 +122,7 @@ export default function ListaDevolucionesCompleta({
                           EstablecerLosDetallesDeLaDevolucion(devolucion, true)
                         }
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -134,12 +134,12 @@ export default function ListaDevolucionesCompleta({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Bodega-Devoluciones"}
           TextoBoton={
-            DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[idioma].CrearDevolucion
+            DICCIONARIO_LISTA_DEVOLUCIONES_COMPLETA[Idioma].CrearDevolucion
           }
         />
       )}

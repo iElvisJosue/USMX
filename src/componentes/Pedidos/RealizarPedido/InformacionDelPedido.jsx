@@ -6,7 +6,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useUsuarios } from "../../../context/UsuariosContext";
+import { useSistema } from "../../../context/SistemaContext";
 import { usePedidos } from "../../../context/PedidosContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
@@ -49,7 +49,7 @@ import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Pedidos/RealizarPedido/InformacionDelPedido.css";
 
 export default function InformacionDelPedido({
-  idioma,
+  Idioma,
   agencia,
   remitente,
   destinatario,
@@ -79,7 +79,7 @@ export default function InformacionDelPedido({
   }, [cargandoCargas]);
 
   // OBTENEMOS LA INFORMACIÓN DEL USUARIO
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   // OBTENEMOS LA FUNCIÓN PARA GUARDAR TODA LA INFORMACIÓN
   const { GuardarTodaLaInformacion } = usePedidos();
 
@@ -323,7 +323,7 @@ export default function InformacionDelPedido({
         onSubmit={GuardarInformacionDelProducto}
       >
         <h1 className="InformacionDelPedido__Titulo">
-          {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].InformacionDelPedido}
+          {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].InformacionDelPedido}
         </h1>
         <span
           className="InformacionDelPedido__Campo"
@@ -331,17 +331,17 @@ export default function InformacionDelPedido({
         >
           <p>
             <ion-icon name="basket"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Producto}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Producto}
           </p>
           <select
             name="Producto"
             id="Producto"
             {...register("Producto", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             })}
           >
             <option value="Invalido">
-              {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].SeleccionaUnProducto}
+              {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].SeleccionaUnProducto}
             </option>
             {productos.map((producto) => (
               <option
@@ -358,19 +358,19 @@ export default function InformacionDelPedido({
         <span className="InformacionDelPedido__Campo">
           <p>
             <ion-icon name="apps"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Cantidad}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Cantidad}
           </p>
           <input
             id="Cantidad"
             type="text"
             name="Cantidad"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("Cantidad", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           />
@@ -382,18 +382,18 @@ export default function InformacionDelPedido({
         >
           <p>
             <ion-icon name="cube"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].TipoDeCarga}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].TipoDeCarga}
           </p>
           <select
             name="TipoDeCarga"
             id="TipoDeCarga"
             {...register("TipoDeCarga", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             })}
           >
             <option value="Invalido">
               {
-                DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma]
+                DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma]
                   .SeleccionaUnTipoDeCarga
               }
             </option>
@@ -412,18 +412,18 @@ export default function InformacionDelPedido({
         <span className="InformacionDelPedido__Campo">
           <p>
             <ion-icon name="airplane"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].TipoDeEnvio}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].TipoDeEnvio}
           </p>
           <select
             name="TipoDeEnvio"
             id="TipoDeEnvio"
             {...register("TipoDeEnvio", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             })}
           >
             <option value="Invalido">
               {
-                DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma]
+                DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma]
                   .SeleccionaUnTipoDeEnvio
               }
             </option>
@@ -442,19 +442,19 @@ export default function InformacionDelPedido({
         <span className="InformacionDelPedido__Campo Individual">
           <p>
             <ion-icon name="scale"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Peso}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Peso}
           </p>
           <input
             id="Peso"
             type="text"
             name="Peso"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("Peso", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           />
@@ -463,20 +463,20 @@ export default function InformacionDelPedido({
         <span className="InformacionDelPedido__Campo Individual">
           <p>
             <ion-icon name="swap-horizontal"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Ancho}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Ancho}
           </p>
           <input
             id="Ancho"
             type="text"
             name="Ancho"
             tabIndex="-1"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("Ancho", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           />
@@ -485,20 +485,20 @@ export default function InformacionDelPedido({
         <span className="InformacionDelPedido__Campo Individual">
           <p>
             <ion-icon name="swap-vertical"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Largo}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Largo}
           </p>
           <input
             id="Largo"
             type="text"
             name="Largo"
             tabIndex="-1"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("Largo", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           />
@@ -507,20 +507,20 @@ export default function InformacionDelPedido({
         <span className="InformacionDelPedido__Campo Individual">
           <p>
             <ion-icon name="arrow-up"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Alto}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Alto}
           </p>
           <input
             id="Alto"
             type="text"
             name="Alto"
             tabIndex="-1"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("Alto", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 5,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max5,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max5,
               },
             })}
           />
@@ -529,19 +529,19 @@ export default function InformacionDelPedido({
         <span className="InformacionDelPedido__Campo Completo">
           <p>
             <ion-icon name="document-text"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].ContenidoDelEnvio}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].ContenidoDelEnvio}
           </p>
           <input
             id="ContenidoDeEnvio"
             type="text"
             name="ContenidoDeEnvio"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("ContenidoDeEnvio", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 1000,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max1000,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max1000,
               },
             })}
           />
@@ -550,19 +550,19 @@ export default function InformacionDelPedido({
         <span className="InformacionDelPedido__Campo Individual">
           <p>
             <ion-icon name="cash"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].ValorDeclarado}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].ValorDeclarado}
           </p>
           <input
             id="ValorDeclarado"
             type="text"
             name="ValorDeclarado"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("ValorDeclarado", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
               },
             })}
           />
@@ -571,29 +571,29 @@ export default function InformacionDelPedido({
         <span className="InformacionDelPedido__Campo Individual">
           <p>
             <ion-icon name="shield-checkmark"></ion-icon>{" "}
-            {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].ValorAsegurado}
+            {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].ValorAsegurado}
           </p>
           <input
             id="ValorAsegurado"
             type="text"
             name="ValorAsegurado"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("ValorAsegurado", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_SOLO_NUMEROS,
               maxLength: {
                 value: 10,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
               },
             })}
           />
           {MensajeDeError("ValorAsegurado")}
         </span>
         <div className="InformacionDelPedido__BotonPedido">
-          <button>{DICCIONARIO_BOTONES[idioma].AgregarProducto}</button>
+          <button>{DICCIONARIO_BOTONES[Idioma].AgregarProducto}</button>
         </div>
         <AgenciaSeleccionadaPedido
-          idioma={idioma}
+          Idioma={Idioma}
           NombreAgencia={agencia?.NombreAgencia}
         />
       </form>
@@ -603,19 +603,19 @@ export default function InformacionDelPedido({
             <p className="InformacionDelPedido__ListaProductos__Titulo__Texto">
               <ion-icon name="cube"></ion-icon>
               {
-                DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].ProductosAgregados
+                DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].ProductosAgregados
               }{" "}
               {pedido.length}
             </p>
             <p className="InformacionDelPedido__ListaProductos__Titulo__Texto">
-              {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Total}{" "}
+              {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Total}{" "}
               {CalcularTotalPedido(pedido)}
             </p>
           </span>
           <div className="InformacionDelPedido__ListaProductos__Encabezado">
-            <p>{DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Detalles}</p>
-            <p>{DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Importe}</p>
-            <p>{DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Opciones}</p>
+            <p>{DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Detalles}</p>
+            <p>{DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Importe}</p>
+            <p>{DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Opciones}</p>
           </div>
           {pedido.map(
             (
@@ -644,20 +644,20 @@ export default function InformacionDelPedido({
                   <p>
                     <ion-icon name="basket"></ion-icon>{" "}
                     <b>
-                      {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Producto}:
+                      {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Producto}:
                     </b>{" "}
                     {Producto}
                   </p>
                   <p>
                     <ion-icon name="expand"></ion-icon>{" "}
-                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Medidas}:</b>{" "}
+                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Medidas}:</b>{" "}
                     {Ancho}x{Largo}x{Alto}
                   </p>
                   <p>
                     <ion-icon name="document-text"></ion-icon>{" "}
                     <b>
                       {
-                        DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma]
+                        DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma]
                           .ContenidoDelEnvio
                       }
                       :
@@ -666,12 +666,12 @@ export default function InformacionDelPedido({
                   </p>
                   <p>
                     <ion-icon name="scale"></ion-icon>{" "}
-                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Peso}:</b>{" "}
+                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Peso}:</b>{" "}
                     {Peso}
                   </p>
                   <p>
                     <ion-icon name="cube"></ion-icon>{" "}
-                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].FT}: </b>
+                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].FT}: </b>
                     {PieCubico}
                   </p>
                 </span>
@@ -679,7 +679,7 @@ export default function InformacionDelPedido({
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto">
                     <ion-icon name="cash"></ion-icon>{" "}
                     <b>
-                      {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Declarado}:
+                      {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Declarado}:
                     </b>{" "}
                     {Number(ValorDeclarado).toLocaleString("en-US", {
                       style: "currency",
@@ -689,7 +689,7 @@ export default function InformacionDelPedido({
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto Rojo">
                     <ion-icon name="shield-checkmark"></ion-icon>{" "}
                     <b>
-                      {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Asegurado}:
+                      {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Asegurado}:
                     </b>{" "}
                     {Number(ValorAsegurado).toLocaleString("en-US", {
                       style: "currency",
@@ -698,12 +698,12 @@ export default function InformacionDelPedido({
                   </p>
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto">
                     <ion-icon name="cash"></ion-icon>{" "}
-                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].TCF}:</b>{" "}
+                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].TCF}:</b>{" "}
                     $0.00
                   </p>
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto Verde">
                     <ion-icon name="airplane"></ion-icon>{" "}
-                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].Envio}:</b>{" "}
+                    <b>{DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].Envio}:</b>{" "}
                     {CostoEnvio.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
@@ -712,7 +712,7 @@ export default function InformacionDelPedido({
                   <p className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles--Texto Verde">
                     <ion-icon name="shield"></ion-icon>{" "}
                     <b>
-                      {DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma].CostoSeguro}:
+                      {DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma].CostoSeguro}:
                     </b>{" "}
                     {CostoSeguro.toLocaleString("en-US", {
                       style: "currency",
@@ -723,7 +723,7 @@ export default function InformacionDelPedido({
                     <ion-icon name="scale"></ion-icon>{" "}
                     <b>
                       {
-                        DICCIONARIO_INFORMACION_DEL_PEDIDO[idioma]
+                        DICCIONARIO_INFORMACION_DEL_PEDIDO[Idioma]
                           .CargoSobrePeso
                       }
                       :
@@ -741,10 +741,10 @@ export default function InformacionDelPedido({
                       EliminarProductoDelPedido(Producto, idProducto)
                     }
                   >
-                    {DICCIONARIO_BOTONES[idioma].Eliminar}
+                    {DICCIONARIO_BOTONES[Idioma].Eliminar}
                   </button>
                   <button className="InformacionDelPedido__ListaProductos__Cuerpo__Detalles__Boton UltimaMilla">
-                    {DICCIONARIO_BOTONES[idioma].UltimaMilla}
+                    {DICCIONARIO_BOTONES[Idioma].UltimaMilla}
                   </button>
                 </span>
               </div>
@@ -758,14 +758,14 @@ export default function InformacionDelPedido({
           onClick={() => establecerPaso(paso - 1)}
           type="button"
         >
-          {DICCIONARIO_BOTONES[idioma].Regresar}
+          {DICCIONARIO_BOTONES[Idioma].Regresar}
         </button>
         {pedido.length > 0 && (
           <button
             className="InformacionDelPedido__Footer__Boton Finalizar"
             onClick={GuardarTodaLaInformacionEnLaBD}
           >
-            {DICCIONARIO_BOTONES[idioma].Finalizar}
+            {DICCIONARIO_BOTONES[Idioma].Finalizar}
           </button>
         )}
       </footer>

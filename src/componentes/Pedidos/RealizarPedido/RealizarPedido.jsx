@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useUsuarios } from "../../../context/UsuariosContext";
+import { useSistema } from "../../../context/SistemaContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import { DICCIONARIO_REALIZAR_PEDIDO } from "../../../diccionario/Diccionario";
@@ -24,7 +24,7 @@ import { ESTILOS_SUCCESS } from "../../../helpers/SonnerEstilos";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Pedidos/RealizarPedido/RealizarPedido.css";
 
-export default function RealizarPedido({ idioma }) {
+export default function RealizarPedido({ Idioma }) {
   const [paso, establecerPaso] = useState(0);
   const [progreso, establecerProgreso] = useState([]);
   const [agencia, establecerAgencia] = useState(null);
@@ -32,7 +32,7 @@ export default function RealizarPedido({ idioma }) {
   const [destinatario, establecerDestinatario] = useState(null);
   const [pedido, establecerPedido] = useState([]);
   const [detallesPedido, establecerDetallesPedido] = useState(null);
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
 
   useEffect(() => {
     establecerProgreso(LISTA_DE_PROGRESOS[paso]);
@@ -60,7 +60,7 @@ export default function RealizarPedido({ idioma }) {
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     agencia,
     establecerAgencia,
     paso,
@@ -96,11 +96,11 @@ export default function RealizarPedido({ idioma }) {
       <BarraDeProgresoPedido
         Progreso={progreso}
         IconoUno="person-circle"
-        TextoUno={DICCIONARIO_REALIZAR_PEDIDO[idioma].Remitente}
+        TextoUno={DICCIONARIO_REALIZAR_PEDIDO[Idioma].Remitente}
         IconoDos="location"
-        TextoDos={DICCIONARIO_REALIZAR_PEDIDO[idioma].Destinatario}
+        TextoDos={DICCIONARIO_REALIZAR_PEDIDO[Idioma].Destinatario}
         IconoTres="cube"
-        TextoTres={DICCIONARIO_REALIZAR_PEDIDO[idioma].Pedido}
+        TextoTres={DICCIONARIO_REALIZAR_PEDIDO[Idioma].Pedido}
       />
       <ComponenteParaRenderizar {...valoresParaLosComponentes} />
     </div>

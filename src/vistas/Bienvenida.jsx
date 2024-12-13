@@ -5,8 +5,6 @@ import Cargando from "../componentes/Cargando";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useSistema } from "../context/SistemaContext";
-import { useUsuarios } from "../context/UsuariosContext";
-import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarUltimosDiezPedidos from "../hooks/useBuscarUltimosDiezPedidos";
@@ -26,9 +24,8 @@ import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
 import "../estilos/vistas/Bienvenida.css";
 
 export default function Bienvenida() {
-  const { infSistema } = useSistema();
-  const { infUsuario } = useUsuarios();
-  const { idioma } = useConfiguracion();
+  const { infSistema, infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
   const {
     cargandoUltimosDiezPedidos,
     ultimosDiezPedidos,
@@ -65,7 +62,7 @@ export default function Bienvenida() {
       <Menu />
       <Encabezado
         icono="sparkles"
-        seccion={DICCIONARIO_BIENVENIDA[idioma].Bienvenido}
+        seccion={DICCIONARIO_BIENVENIDA[Idioma].Bienvenido}
       />
       <div className="Bienvenida">
         <section className="Bienvenida__Mensaje">
@@ -74,15 +71,15 @@ export default function Bienvenida() {
             alt={infSistema.NombreSistema}
           />
           <p>
-            ¡{DICCIONARIO_BIENVENIDA[idioma].MensajeUno}
+            ¡{DICCIONARIO_BIENVENIDA[Idioma].MensajeUno}
             {infSistema.NombreSistema}!
           </p>
-          <p>{DICCIONARIO_BIENVENIDA[idioma].MensajeDos}</p>
-          <p>{DICCIONARIO_BIENVENIDA[idioma].MensajeTres}</p>
+          <p>{DICCIONARIO_BIENVENIDA[Idioma].MensajeDos}</p>
+          <p>{DICCIONARIO_BIENVENIDA[Idioma].MensajeTres}</p>
         </section>
         <section className="Bienvenida__Perfil">
           <span className="Bienvenida__Perfil--Encabezado">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].Perfil}</p>
+            <p>{DICCIONARIO_BIENVENIDA[Idioma].Perfil}</p>
             <ion-icon
               name="open"
               onClick={() => (window.location.href = `${HOST}Perfil`)}
@@ -101,12 +98,12 @@ export default function Bienvenida() {
           </small>
         </section>
         <h1 className="Bienvenida__Titulo">
-          {DICCIONARIO_BIENVENIDA[idioma].ResumenDeHoy}
+          {DICCIONARIO_BIENVENIDA[Idioma].ResumenDeHoy}
           <small>{ObtenerFechaActual().split("-").reverse().join("/")}</small>
         </h1>
         <section className="Secciones__Hoy Pedidos">
           <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].Pedidos}</p>
+            <p>{DICCIONARIO_BIENVENIDA[Idioma].Pedidos}</p>
           </span>
           <div className="Secciones__Hoy--Cantidad">
             <p>{resumen.PedidosDeHoy}</p>
@@ -114,7 +111,7 @@ export default function Bienvenida() {
         </section>
         <section className="Secciones__Hoy Recolecciones">
           <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].Recolecciones}</p>
+            <p>{DICCIONARIO_BIENVENIDA[Idioma].Recolecciones}</p>
           </span>
           <div className="Secciones__Hoy--Cantidad">
             <p>{resumen.RecoleccionesDeHoy}</p>
@@ -122,7 +119,7 @@ export default function Bienvenida() {
         </section>
         <section className="Secciones__Hoy Entradas">
           <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].EntradasBodega}</p>
+            <p>{DICCIONARIO_BIENVENIDA[Idioma].EntradasBodega}</p>
           </span>
           <div className="Secciones__Hoy--Cantidad">
             <p>{resumen.EntradasDeHoy}</p>
@@ -130,7 +127,7 @@ export default function Bienvenida() {
         </section>
         <section className="Secciones__Hoy MovimientosBodega">
           <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].MovimientosBodega}</p>
+            <p>{DICCIONARIO_BIENVENIDA[Idioma].MovimientosBodega}</p>
           </span>
           <div className="Secciones__Hoy--Cantidad">
             <p>{resumen.MovimientosDeHoy}</p>
@@ -138,7 +135,7 @@ export default function Bienvenida() {
         </section>
         <section className="Secciones__Hoy Salidas">
           <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].SalidasBodega}</p>
+            <p>{DICCIONARIO_BIENVENIDA[Idioma].SalidasBodega}</p>
           </span>
           <div className="Secciones__Hoy--Cantidad">
             <p>{resumen.SalidasDeHoy}</p>
@@ -146,19 +143,19 @@ export default function Bienvenida() {
         </section>
         <section className="Secciones__Hoy Devoluciones">
           <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].Devoluciones}</p>
+            <p>{DICCIONARIO_BIENVENIDA[Idioma].Devoluciones}</p>
           </span>
           <div className="Secciones__Hoy--Cantidad">
             <p>{resumen.DevolucionesDeHoy}</p>
           </div>
         </section>
         <h1 className="Bienvenida__Titulo">
-          {DICCIONARIO_BIENVENIDA[idioma].UltimosDiezPedidos}
-          <small>{DICCIONARIO_BIENVENIDA[idioma].General}</small>
+          {DICCIONARIO_BIENVENIDA[Idioma].UltimosDiezPedidos}
+          <small>{DICCIONARIO_BIENVENIDA[Idioma].General}</small>
         </h1>
         <section className="Bienvenida__UltimasGuias">
           <ul className="Bienvenida__UltimasGuias--Encabezado">
-            <p>{DICCIONARIO_BIENVENIDA[idioma].ListaDePedidos}</p>
+            <p>{DICCIONARIO_BIENVENIDA[Idioma].ListaDePedidos}</p>
             <button
               onClick={() => (window.location.href = `${HOST}Pedidos`)}
               title="Ver todos los pedidos"
@@ -202,10 +199,10 @@ export default function Bienvenida() {
             <div className="Bienvenida__UltimasGuias--Cuerpo SinResultados">
               <img src="SinResultados.png" alt="No hay resultados" />
               <small>
-                {DICCIONARIO_RESULTADOS[idioma].NoResultadosPedidos}
+                {DICCIONARIO_RESULTADOS[Idioma].NoResultadosPedidos}
               </small>
               <a href={`${HOST}Pedidos`}>
-                {DICCIONARIO_BIENVENIDA[idioma].RealizarPedido}
+                {DICCIONARIO_BIENVENIDA[Idioma].RealizarPedido}
               </a>
             </div>
           )}

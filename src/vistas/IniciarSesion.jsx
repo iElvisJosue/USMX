@@ -2,17 +2,16 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 // CONTEXTOS A USAR
-import { useSistema } from "../context/SistemaContext";
 import { useUsuarios } from "../context/UsuariosContext";
 
 // COMPONENTES A USAR
 import Cargando from "../componentes/Cargando";
 
 // HOOKS A USAR
+import useObtenerLogoYNombreDelSistema from "../hooks/IniciarSesion/useObtenerLogoYNombreDelSistema";
 import useContraseña from "../hooks/useContraseña";
 
 // AYUDAS A USAR
@@ -21,6 +20,7 @@ import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 import { ESTILOS_SUCCESS, ESTILOS_INFO } from "../helpers/SonnerEstilos";
 import { MensajePeticionPendiente } from "../helpers/FuncionesGenerales";
 import { HOST_IMAGENES } from "../helpers/Urls";
+import { ColocarIconoYNombreDelSitio } from "../helpers/EstablecerLogoYNombreDelSistema";
 
 // ESTILOS A USAR
 import "../estilos/vistas/IniciarSesion.css";
@@ -28,7 +28,8 @@ import "../estilos/vistas/IniciarSesion.css";
 export default function IniciarSesion() {
   // ESTADOS AQUI
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { cargandoInfSistema, infSistema } = useSistema();
+  const { cargandoLogoNombreSistema, logoNombreSistema } =
+    useObtenerLogoYNombreDelSistema();
   const { IniciarSesionUsuario } = useUsuarios();
   const { iconoDeContraseña } = useContraseña();
   const {
@@ -36,7 +37,6 @@ export default function IniciarSesion() {
     register,
     formState: { errors },
   } = useForm();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const cookies = Cookies.get();
@@ -54,18 +54,11 @@ export default function IniciarSesion() {
     }
   }, []);
 
-  const ManejarRespuestaExitosa = (res) => {
-    toast.success(`¡Se ha iniciado sesión, bienvenido ${res.Usuario}!`, {
+  const ManejarRespuestaExitosa = () => {
+    toast.success(`¡Se ha iniciado sesión, bienvenido! 🫡`, {
       style: ESTILOS_SUCCESS,
     });
-    if (res.Permisos === "Chofer") {
-      return setTimeout(() => navigate("/Recolecciones"), 1000);
-    }
-    if (res.Permisos === "Bodega") {
-      return setTimeout(() => navigate("/Bodega-Entradas"), 1000);
-    }
-
-    return setTimeout(() => navigate("/Bienvenida"), 1000);
+    return setTimeout(() => (window.location.href = "/Bienvenida"), 1000);
   };
 
   const verificarInicioDeSesion = handleSubmit(async (data) => {
@@ -78,7 +71,7 @@ export default function IniciarSesion() {
         const { status, data } = res.response;
         ManejarMensajesDeRespuesta({ status, data });
       } else {
-        ManejarRespuestaExitosa(res);
+        ManejarRespuestaExitosa();
       }
     } catch (error) {
       const { status, data } = error.response;
@@ -88,18 +81,23 @@ export default function IniciarSesion() {
     }
   });
 
-  if (cargandoInfSistema) return <Cargando />;
+  if (cargandoLogoNombreSistema) return <Cargando />;
+
+  ColocarIconoYNombreDelSitio(
+    logoNombreSistema.LogoSistema,
+    logoNombreSistema.NombreSistema
+  );
 
   return (
     <main className="IniciarSesion">
       <form onSubmit={verificarInicioDeSesion} className="IniciarSesion__Form">
         <img
-          src={`${HOST_IMAGENES}/${infSistema.LogoSistema}`}
-          alt={infSistema.NombreSistema}
+          src={`${HOST_IMAGENES}/${logoNombreSistema.LogoSistema}`}
+          alt={logoNombreSistema.NombreSistema}
           className="IniciarSesion__Form--Img"
         />
         <h2 className="IniciarSesion__Form--Title">
-          ¡Bienvenido a {infSistema.NombreSistema}!
+          ¡Bienvenido a {logoNombreSistema.NombreSistema}!
         </h2>
         {/* <hr className="IniciarSesion__Form--Divisor" /> */}
         {IniciarSesionCampos.map(

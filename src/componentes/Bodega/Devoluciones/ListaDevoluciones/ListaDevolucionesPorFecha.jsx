@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/Devoluciones/ListaDevoluciones/ListaDevolucionesPorFecha.css";
 
 export default function ListaDevolucionesPorFecha({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDeLaDevolucion,
 }) {
   const {
@@ -45,7 +45,7 @@ export default function ListaDevolucionesPorFecha({
     <div className="ListaDevolucionesPorFecha">
       <h1 className="ListaDevolucionesPorFecha__Titulo">
         {
-          DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[idioma]
+          DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma]
             .BuscarDevolucionesPorFecha
         }
         <small className="ListaDevolucionesPorFecha__Titulo--Fechas">
@@ -74,9 +74,9 @@ export default function ListaDevolucionesPorFecha({
         <>
           <small className="ListaDevolucionesPorFecha__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos}{" "}
             {devolucionesPorFecha.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaDevolucionesPorFecha__Cuerpo">
             <table className="ListaDevolucionesPorFecha__Cuerpo__Tabla">
@@ -86,32 +86,32 @@ export default function ListaDevolucionesPorFecha({
                     <ion-icon name="document-text"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[idioma]
+                      DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma]
                         .idDevolucion
                     }
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[idioma].CPedidos}
+                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].CPedidos}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
                     {
-                      DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[idioma]
+                      DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma]
                         .FechaCreacion
                     }
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -134,7 +134,7 @@ export default function ListaDevolucionesPorFecha({
                           EstablecerLosDetallesDeLaDevolucion(devolucion, false)
                         }
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -147,7 +147,7 @@ export default function ListaDevolucionesPorFecha({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={`${
-            DICCIONARIO_RESULTADOS[idioma].NoResultadoPorFecha
+            DICCIONARIO_RESULTADOS[Idioma].NoResultadoPorFecha
           } ${primeraFecha.split("-").reverse().join("/")} - ${segundaFecha
             .split("-")
             .reverse()
@@ -156,7 +156,7 @@ export default function ListaDevolucionesPorFecha({
           TipoBoton={"Azul"}
           UrlBoton={"/Bodega-Devoluciones"}
           TextoBoton={
-            DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[idioma].CrearDevolucion
+            DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].CrearDevolucion
           }
         />
       )}

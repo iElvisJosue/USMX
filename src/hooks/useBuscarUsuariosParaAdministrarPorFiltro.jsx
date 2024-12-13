@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
+import { useSistema } from "../context/SistemaContext";
 import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarUsuariosParaAdministrarPorFiltro() {
-  const { infUsuario, BuscarUsuariosParaAdministrarPorFiltro } = useUsuarios();
+  const { infUsuario } = useSistema();
+  const { BuscarUsuariosParaAdministrarPorFiltro } = useUsuarios();
   const [usuarios, establecerUsuarios] = useState([]);
   const [cargandoUsuarios, establecerCargandoUsuarios] = useState(true);
   const [filtroUsuario, establecerFiltroUsuario] = useState("");

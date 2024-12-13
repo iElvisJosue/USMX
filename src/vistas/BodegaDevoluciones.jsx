@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS DICCIONARIOS A USAR
 import { DICCIONARIO_BODEGA_DEVOLUCIONES } from "../diccionario/Diccionario";
@@ -19,22 +19,23 @@ import "../estilos/generales/GrupoDeInputs.css";
 
 export default function BodegaDevoluciones() {
   const [vistaBodega, establecerVistaBodega] = useState(0);
-  const { idioma } = useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
 
   const OpcionesSubMenu = [
     {
-      Texto: DICCIONARIO_BODEGA_DEVOLUCIONES[idioma].CrearDevolucion,
+      Texto: DICCIONARIO_BODEGA_DEVOLUCIONES[Idioma].CrearDevolucion,
       Icono: "add-circle",
     },
     {
-      Texto: DICCIONARIO_BODEGA_DEVOLUCIONES[idioma].ListaDeDevoluciones,
+      Texto: DICCIONARIO_BODEGA_DEVOLUCIONES[Idioma].ListaDeDevoluciones,
       Icono: "list",
     },
   ];
 
   //   VALORES COMPARTIDOS ENTRE LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
   };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
@@ -44,8 +45,8 @@ export default function BodegaDevoluciones() {
   };
 
   const TituloSubseccion = {
-    0: DICCIONARIO_BODEGA_DEVOLUCIONES[idioma].CrearDevolucion,
-    1: DICCIONARIO_BODEGA_DEVOLUCIONES[idioma].ListaDeDevoluciones,
+    0: DICCIONARIO_BODEGA_DEVOLUCIONES[Idioma].CrearDevolucion,
+    1: DICCIONARIO_BODEGA_DEVOLUCIONES[Idioma].ListaDeDevoluciones,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -57,7 +58,7 @@ export default function BodegaDevoluciones() {
       <Menu />
       <Encabezado
         icono="cube"
-        seccion={DICCIONARIO_BODEGA_DEVOLUCIONES[idioma].Bodega}
+        seccion={DICCIONARIO_BODEGA_DEVOLUCIONES[Idioma].Bodega}
         subseccion={TituloSubseccion[vistaBodega]}
       />
       <SubMenu

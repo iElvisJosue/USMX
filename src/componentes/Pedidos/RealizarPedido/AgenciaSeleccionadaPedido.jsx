@@ -5,12 +5,12 @@
 import { DICCIONARIO_AGENCIA_SELECCIONADA_PEDIDO } from "../../../diccionario/Diccionario";
 
 export default function AgenciaSeleccionadaPedido({
-  idioma = "es",
+  Idioma = "es",
   NombreAgencia,
 }) {
   return (
     <small className="RealizarPedido__AgenciaSeleccionadaPedido">
-      {DICCIONARIO_AGENCIA_SELECCIONADA_PEDIDO[idioma].PedidoParaLaAgencia}{" "}
+      {DICCIONARIO_AGENCIA_SELECCIONADA_PEDIDO[Idioma].PedidoParaLaAgencia}{" "}
       <b>{NombreAgencia}</b>
     </small>
   );

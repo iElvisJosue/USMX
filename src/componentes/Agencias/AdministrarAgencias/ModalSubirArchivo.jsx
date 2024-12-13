@@ -20,7 +20,7 @@ import { COOKIE_CON_TOKEN } from "../../../helpers/ObtenerCookie";
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ModalSubirArchivo.css";
 
 export default function ModalSubirArchivo({
-  idioma,
+  Idioma,
   informacionArchivo,
   establecerMostrarModalSubirArchivo,
 }) {
@@ -91,7 +91,7 @@ export default function ModalSubirArchivo({
   };
 
   const ValoresParaLosComponentes = {
-    idioma,
+    Idioma,
     informacionArchivo,
     esRemitente,
     establecerEsRemitente,

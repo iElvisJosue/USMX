@@ -350,12 +350,6 @@
   }
 }
 @media (width <= 500px) {
-  .Bienvenida__Mensaje,
-  .Bienvenida__UltimasGuias,
-  .Bienvenida__UltimasGuias--Cuerpo,
-  .Secciones__Hoy {
-    border-radius: 15px;
-  }
   .Bienvenida__Mensaje p {
     font-size: 14px;
   }

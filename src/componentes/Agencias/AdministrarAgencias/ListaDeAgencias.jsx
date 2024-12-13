@@ -35,7 +35,7 @@ import {
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/ListaDeAgencias.css";
 
 export default function ListaDeAgencias({
-  idioma,
+  Idioma,
   establecerVista,
   establecerInformacionDeLaAgencia,
 }) {
@@ -187,7 +187,7 @@ export default function ListaDeAgencias({
     <div className="ListaDeAgencias">
       {mostrarModalSubirArchivo && (
         <ModalSubirArchivo
-          idioma={idioma}
+          Idioma={Idioma}
           informacionArchivo={informacionArchivo}
           establecerMostrarModalSubirArchivo={
             establecerMostrarModalSubirArchivo
@@ -195,12 +195,12 @@ export default function ListaDeAgencias({
         />
       )}
       <h1 className="ListaDeAgencias__Titulo">
-        {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].AdministrarAgencias}
+        {DICCIONARIO_LISTA_DE_AGENCIAS[Idioma].AdministrarAgencias}
       </h1>
       <span className="ListaDeAgencias__Buscar">
         <input
           type="text"
-          placeholder={DICCIONARIO_LISTA_DE_AGENCIAS[idioma].BuscarAgencia}
+          placeholder={DICCIONARIO_LISTA_DE_AGENCIAS[Idioma].BuscarAgencia}
           onChange={ObtenerLasAgencias}
         />
         <span className="ListaDeAgencias__Buscar__Lupa">
@@ -211,24 +211,24 @@ export default function ListaDeAgencias({
         <div className="ListaDeAgencias__Contenedor">
           <small className="ListaDeAgencias__Contenedor__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {agencias.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {agencias.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}
           </small>
           <h2 className="ListaDeAgencias__Contenedor__Clasificacion">
-            {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].EstatusDeLasAgencia}
+            {DICCIONARIO_LISTA_DE_AGENCIAS[Idioma].EstatusDeLasAgencia}
           </h2>
           <span className="ListaDeAgencias__Contenedor__Colores">
             <p className="ListaDeAgencias__Contenedor__Clasificacion--Texto Activa">
               <ion-icon name="business"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].Activa}
+              {DICCIONARIO_LISTA_DE_AGENCIAS[Idioma].Activa}
             </p>
             <p className="ListaDeAgencias__Contenedor__Clasificacion--Texto Desactivada">
               <ion-icon name="ban"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].Desactivada}
+              {DICCIONARIO_LISTA_DE_AGENCIAS[Idioma].Desactivada}
             </p>
           </span>
           <h2 className="ListaDeAgencias__Contenedor__Operaciones">
-            {DICCIONARIO_LISTA_DE_AGENCIAS[idioma].Operaciones}
+            {DICCIONARIO_LISTA_DE_AGENCIAS[Idioma].Operaciones}
           </h2>
           <span className="ListaDeAgencias__Contenedor__Colores">
             <button
@@ -236,7 +236,7 @@ export default function ListaDeAgencias({
               onClick={EstablecerAgenciasParaElExcel}
             >
               <ion-icon name="download"></ion-icon>{" "}
-              {DICCIONARIO_BOTONES[idioma].DescargarExcel}
+              {DICCIONARIO_BOTONES[Idioma].DescargarExcel}
             </button>
           </span>
           <div className="ListaDeAgencias__Contenedor__BotonesDePaginacion">
@@ -353,18 +353,18 @@ export default function ListaDeAgencias({
             </section>
           ))}
           <small className="ListaDeAgencias__Contenedor__TextoPaginas">
-            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
-            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[Idioma].De} {cantidadDePaginas}
           </small>
         </div>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Agencias"}
-          TextoBoton={DICCIONARIO_LISTA_DE_AGENCIAS[idioma].RegistrarAgencia}
+          TextoBoton={DICCIONARIO_LISTA_DE_AGENCIAS[Idioma].RegistrarAgencia}
         />
       )}
     </div>

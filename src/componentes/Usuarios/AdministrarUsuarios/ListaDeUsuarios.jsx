@@ -25,7 +25,7 @@ import usePaginacion from "../../../hooks/usePaginacion";
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/ListaDeUsuarios.css";
 
 export default function ListaDeUsuarios({
-  idioma,
+  Idioma,
   establecerVista,
   establecerInformacionDelUsuario,
 }) {
@@ -107,7 +107,7 @@ export default function ListaDeUsuarios({
     <div className="ListaDeUsuarios">
       {mostrarModalConfirmacion && (
         <ModalConfirmacion
-          idioma={idioma}
+          Idioma={Idioma}
           Activar={activar}
           infUsuario={infUsuario}
           establecerMostrarModalConfirmacion={
@@ -120,12 +120,12 @@ export default function ListaDeUsuarios({
         />
       )}
       <h1 className="ListaDeUsuarios__Titulo">
-        {DICCIONARIO_LISTA_DE_USUARIOS[idioma].AdministrarUsuarios}
+        {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].AdministrarUsuarios}
       </h1>
       <span className="ListaDeUsuarios__Buscar">
         <input
           type="text"
-          placeholder={DICCIONARIO_LISTA_DE_USUARIOS[idioma].BuscarUsuario}
+          placeholder={DICCIONARIO_LISTA_DE_USUARIOS[Idioma].BuscarUsuario}
           onChange={obtenerUsuarios}
         />
         <span className="ListaDeUsuarios__Buscar__Lupa">
@@ -136,36 +136,36 @@ export default function ListaDeUsuarios({
         <>
           <small className="ListaDeUsuarios__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {usuarios.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {usuarios.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <h2 className="ListaDeUsuarios__Clasificacion">
-            {DICCIONARIO_LISTA_DE_USUARIOS[idioma].ClasificacionDePerfiles}
+            {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].ClasificacionDePerfiles}
           </h2>
           <span className="ListaDeUsuarios__Colores">
             <p className="ListaDeUsuarios__Clasificacion--Texto Usuario">
               <ion-icon name="person-circle"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_USUARIOS[idioma].Usuario}
+              {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Usuario}
             </p>
             <p className="ListaDeUsuarios__Clasificacion--Texto Moderador">
               <ion-icon name="glasses"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_USUARIOS[idioma].Moderador}
+              {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Moderador}
             </p>
             <p className="ListaDeUsuarios__Clasificacion--Texto Chofer">
               <ion-icon name="car"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_USUARIOS[idioma].Chofer}
+              {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Chofer}
             </p>
             <p className="ListaDeUsuarios__Clasificacion--Texto Bodega">
               <ion-icon name="cube"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_USUARIOS[idioma].Bodega}
+              {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Bodega}
             </p>
             <p className="ListaDeUsuarios__Clasificacion--Texto Administrador">
               <ion-icon name="shield-checkmark"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_USUARIOS[idioma].Administrador}
+              {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Administrador}
             </p>
             <p className="ListaDeUsuarios__Clasificacion--Texto Desactivado">
               <ion-icon name="ban"></ion-icon>{" "}
-              {DICCIONARIO_LISTA_DE_USUARIOS[idioma].Desactivado}
+              {DICCIONARIO_LISTA_DE_USUARIOS[Idioma].Desactivado}
             </p>
           </span>
           <div className="ListaDeUsuarios__BotonesDePaginacion">
@@ -261,18 +261,18 @@ export default function ListaDeUsuarios({
           )}
 
           <small className="ListaDeUsuarios__TextoPaginas">
-            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
-            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[Idioma].De} {cantidadDePaginas}
           </small>
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Usuarios"}
-          TextoBoton={DICCIONARIO_LISTA_DE_USUARIOS[idioma].RegistrarUsuario}
+          TextoBoton={DICCIONARIO_LISTA_DE_USUARIOS[Idioma].RegistrarUsuario}
         />
       )}
     </div>

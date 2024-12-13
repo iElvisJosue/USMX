@@ -33,7 +33,7 @@ import {
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/EditarAgencia.css";
 
 export default function EditarAgencia({
-  idioma,
+  Idioma,
   informacionDeLaAgencia,
   establecerVista,
 }) {
@@ -189,24 +189,24 @@ export default function EditarAgencia({
         </button>
       </div>
       <h1 className="EditarAgencia__Titulo">
-        {DICCIONARIO_EDITAR_AGENCIA[idioma].EditarAgencia}
+        {DICCIONARIO_EDITAR_AGENCIA[Idioma].EditarAgencia}
       </h1>
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="business"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].NombreDeLaAgencia}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreDeLaAgencia}
         </p>
         <input
           id="NombreAgencia"
           name="NombreAgencia"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           tabIndex={-1}
           {...register("NombreAgencia", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -215,17 +215,17 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="briefcase"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].NombreLegalDeLaAgencia}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreLegalDeLaAgencia}
         </p>
         <input
           id="NombreLegalAgencia"
           name="NombreLegalAgencia"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NombreLegalAgencia", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -235,22 +235,22 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].TelAgencia}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].TelAgencia}
         </p>
         <input
           id="TelefonoAgencia"
           name="TelefonoAgencia"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("TelefonoAgencia", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min10,
             },
           })}
         ></input>
@@ -259,21 +259,21 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo">
         <p>
           <ion-icon name="print"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].Fax}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].Fax}
         </p>
         <input
           id="FaxAgencia"
           name="FaxAgencia"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("FaxAgencia", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min10,
             },
           })}
         ></input>
@@ -282,18 +282,18 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo">
         <p>
           <ion-icon name="mail"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].CorreoAgencia}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].CorreoAgencia}
         </p>
         <input
           id="CorreoAgencia"
           name="CorreoAgencia"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("CorreoAgencia", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_CORREO,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -302,17 +302,17 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo">
         <p>
           <ion-icon name="mail"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].CorreoAgencia2}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].CorreoAgencia2}
         </p>
         <input
           id="CorreoAgenciaSecundario"
           name="CorreoAgenciaSecundario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("CorreoAgenciaSecundario", {
             pattern: REGEX_CORREO,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -321,18 +321,18 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].NombreRepresentanteVentas}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreRepresentanteVentas}
         </p>
         <input
           id="RepresentanteVentas"
           name="RepresentanteVentas"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("RepresentanteVentas", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -341,22 +341,22 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].TelRepresentante}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].TelRepresentante}
         </p>
         <input
           id="TelefonoRepresentanteVentas"
           name="TelefonoRepresentanteVentas"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("TelefonoRepresentanteVentas", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min10,
             },
           })}
         ></input>
@@ -365,17 +365,17 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].NombreDelDueño}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreDelDueño}
         </p>
         <input
           id="NombreDueno"
           name="NombreDueno"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NombreDueno", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -384,21 +384,21 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].TelDueño}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].TelDueño}
         </p>
         <input
           id="TelefonoDueno"
           name="TelefonoDueno"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("TelefonoDueno", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min10,
             },
           })}
         ></input>
@@ -407,17 +407,17 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].NombreDelManager}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreDelManager}
         </p>
         <input
           id="NombreManager"
           name="NombreManager"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NombreManager", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -426,21 +426,21 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].TelManager}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].TelManager}
         </p>
         <input
           id="TelefonoManager"
           name="TelefonoManager"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("TelefonoManager", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min10,
             },
           })}
         ></input>
@@ -449,12 +449,12 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo">
         <p>
           <ion-icon name="reader"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].NoLicencia}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].NoLicencia}
         </p>
         <input
           id="NumeroLicenciaAgencia"
           name="NumeroLicenciaAgencia"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NumeroLicenciaAgencia", {
             pattern: REGEX_SOLO_NUMEROS,
           })}
@@ -464,12 +464,12 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo">
         <p>
           <ion-icon name="reader"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].NoSalesTax}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].NoSalesTax}
         </p>
         <input
           id="NumeroImpuestosVenta"
           name="NumeroImpuestosVenta"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NumeroImpuestosVenta", {
             pattern: REGEX_SOLO_NUMEROS,
           })}
@@ -479,12 +479,12 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="reader"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].SS}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].SS}
         </p>
         <input
           id="SS"
           name="SS"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("SS", {
             pattern: REGEX_SOLO_NUMEROS,
           })}
@@ -494,7 +494,7 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo">
         <p>
           <ion-icon name="copy"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].CopiaID}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].CopiaID}
         </p>
         <select name="CopiaID" id="CopiaID" {...register("CopiaID")}>
           <option value="No">No</option>
@@ -505,7 +505,7 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo Dos">
         <p>
           <ion-icon name="copy"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].CopiaLicencia}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].CopiaLicencia}
         </p>
         <select
           name="CopiaLicenciaNegocio"
@@ -520,7 +520,7 @@ export default function EditarAgencia({
       <span className="EditarAgencia__Titulo__Campo">
         <p>
           <ion-icon name="copy"></ion-icon>{" "}
-          {DICCIONARIO_EDITAR_AGENCIA[idioma].CopiaSalesTax}
+          {DICCIONARIO_EDITAR_AGENCIA[Idioma].CopiaSalesTax}
         </p>
         <select
           name="CopiaImpuestosVenta"
@@ -534,7 +534,7 @@ export default function EditarAgencia({
       </span>
       <footer className="EditarAgencia__Footer">
         <button type="submit" className="EditarAgencia__Footer__Boton Guardar">
-          {DICCIONARIO_BOTONES[idioma].Actualizar}
+          {DICCIONARIO_BOTONES[Idioma].Actualizar}
         </button>
       </footer>
     </form>

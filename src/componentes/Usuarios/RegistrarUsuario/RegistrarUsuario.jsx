@@ -26,7 +26,7 @@ import { TIPOS_DE_USUARIOS } from "../../../helpers/TiposDeUsuario";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Usuarios/RegistrarUsuario/RegistrarUsuario.css";
 
-export default function InformacionDelUsuario({ idioma }) {
+export default function InformacionDelUsuario({ Idioma }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const [mostrarContraseña, establecerMostrarContraseña] = useState(false);
   const { RegistrarUsuario } = useUsuarios();
@@ -123,24 +123,24 @@ export default function InformacionDelUsuario({ idioma }) {
           </button>
         </div>
         <h1 className="RegistrarUsuario__InformacionDelUsuario__Titulo">
-          {DICCIONARIO_REGISTRAR_USUARIO[idioma].RegistrarUsuario}
+          {DICCIONARIO_REGISTRAR_USUARIO[Idioma].RegistrarUsuario}
         </h1>
         <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
           <p>
             <ion-icon name="person"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_USUARIO[idioma].NombreDelUsuario}
+            {DICCIONARIO_REGISTRAR_USUARIO[Idioma].NombreDelUsuario}
           </p>
           <input
             id="Usuario"
             type="text"
             name="Usuario"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("Usuario", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
               maxLength: {
                 value: 100,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
               },
             })}
           />
@@ -149,7 +149,7 @@ export default function InformacionDelUsuario({ idioma }) {
         <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
           <p>
             <ion-icon name="hand-left"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_USUARIO[idioma].Permisos}
+            {DICCIONARIO_REGISTRAR_USUARIO[Idioma].Permisos}
           </p>
           <select id="Permisos" name="Permisos" {...register("Permisos")}>
             {TIPOS_DE_USUARIOS.map((permiso) => (
@@ -163,22 +163,22 @@ export default function InformacionDelUsuario({ idioma }) {
         <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
           <p>
             <ion-icon name="lock-closed"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_USUARIO[idioma].Contrasena}
+            {DICCIONARIO_REGISTRAR_USUARIO[Idioma].Contrasena}
           </p>
           <input
             id="Contraseña"
             type="password"
             name="Contraseña"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("Contraseña", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               maxLength: {
                 value: 100,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
               },
               minLength: {
                 value: 4,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min4,
               },
             })}
           />
@@ -187,22 +187,22 @@ export default function InformacionDelUsuario({ idioma }) {
         <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
           <p>
             <ion-icon name="checkmark-done-circle"></ion-icon>{" "}
-            {DICCIONARIO_REGISTRAR_USUARIO[idioma].ConfirmarContrasena}
+            {DICCIONARIO_REGISTRAR_USUARIO[Idioma].ConfirmarContrasena}
           </p>
           <input
             id="ContraseñaConfirmar"
             type="password"
             name="ContraseñaConfirmar"
-            placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+            placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
             {...register("ContraseñaConfirmar", {
-              required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+              required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
               maxLength: {
                 value: 100,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
               },
               minLength: {
                 value: 4,
-                message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min4,
+                message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min4,
               },
             })}
           />
@@ -214,13 +214,13 @@ export default function InformacionDelUsuario({ idioma }) {
             className="RegistrarUsuario__InformacionDelUsuario__Footer__Boton Cancelar"
             onClick={ReiniciarFormulario}
           >
-            {DICCIONARIO_BOTONES[idioma].Cancelar}
+            {DICCIONARIO_BOTONES[Idioma].Cancelar}
           </button>
           <button
             type="submit"
             className="RegistrarUsuario__InformacionDelUsuario__Footer__Boton Guardar"
           >
-            {DICCIONARIO_BOTONES[idioma].Guardar}
+            {DICCIONARIO_BOTONES[Idioma].Guardar}
           </button>
         </footer>
       </form>

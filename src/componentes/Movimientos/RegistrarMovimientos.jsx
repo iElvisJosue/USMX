@@ -24,7 +24,7 @@ import {
 import "../../estilos/componentes/Movimientos/RegistrarMovimientos.css";
 
 export default function RegistrarMovimiento({
-  idioma,
+  Idioma,
   obtenerMovimientosNuevamente,
   establecerObtenerMovimientosNuevamente,
 }) {
@@ -91,24 +91,24 @@ export default function RegistrarMovimiento({
       onSubmit={GuardarInformacionDelMovimiento}
     >
       <h1 className="RegistrarMovimiento__Titulo">
-        {DICCIONARIO_REGISTRAR_MOVIMIENTO[idioma].RegistrarMovimiento}
+        {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].RegistrarMovimiento}
       </h1>
       <span className="RegistrarMovimiento__Titulo__Campo">
         <p>
           <ion-icon name="bag-check"></ion-icon>{" "}
-          {DICCIONARIO_REGISTRAR_MOVIMIENTO[idioma].EstadoDelMovimiento}
+          {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].EstadoDelMovimiento}
         </p>
         <input
           id="EstadoMovimiento"
           type="text"
           name="EstadoMovimiento"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("EstadoMovimiento", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -117,19 +117,19 @@ export default function RegistrarMovimiento({
       <span className="RegistrarMovimiento__Titulo__Campo">
         <p>
           <ion-icon name="locate"></ion-icon>{" "}
-          {DICCIONARIO_REGISTRAR_MOVIMIENTO[idioma].OrigenDelMovimiento}
+          {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].OrigenDelMovimiento}
         </p>
         <input
           id="OrigenMovimiento"
           type="text"
           name="OrigenMovimiento"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("OrigenMovimiento", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -138,13 +138,13 @@ export default function RegistrarMovimiento({
       <span className="RegistrarMovimiento__Titulo__Campo">
         <p>
           <ion-icon name="apps"></ion-icon>{" "}
-          {DICCIONARIO_REGISTRAR_MOVIMIENTO[idioma].CategoriaDelMovimiento}
+          {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].CategoriaDelMovimiento}
         </p>
         <select
           name="CategoriaMovimiento"
           id="CategoriaMovimiento"
           {...register("CategoriaMovimiento", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
           })}
         >
           <option value="Inicial">Inicial</option>
@@ -159,19 +159,19 @@ export default function RegistrarMovimiento({
       <span className="RegistrarMovimiento__Titulo__Campo Dos">
         <p>
           <ion-icon name="document-text"></ion-icon>{" "}
-          {DICCIONARIO_REGISTRAR_MOVIMIENTO[idioma].DetallesDelMovimiento}
+          {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].DetallesDelMovimiento}
         </p>
         <input
           id="DetallesMovimiento"
           type="text"
           name="DetallesMovimiento"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("DetallesMovimiento", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max1000,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max1000,
             },
           })}
         />
@@ -183,13 +183,13 @@ export default function RegistrarMovimiento({
           className="RegistrarMovimiento__Footer__Boton Cancelar"
           onClick={ReiniciarFormulario}
         >
-          {DICCIONARIO_BOTONES[idioma].Cancelar}
+          {DICCIONARIO_BOTONES[Idioma].Cancelar}
         </button>
         <button
           type="submit"
           className="RegistrarMovimiento__Footer__Boton Guardar"
         >
-          {DICCIONARIO_BOTONES[idioma].Guardar}
+          {DICCIONARIO_BOTONES[Idioma].Guardar}
         </button>
       </footer>
     </form>

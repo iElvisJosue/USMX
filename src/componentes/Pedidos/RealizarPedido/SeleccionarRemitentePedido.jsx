@@ -25,7 +25,7 @@ import { ESTILOS_SUCCESS } from "../../../helpers/SonnerEstilos";
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Pedidos/RealizarPedido/SeleccionarRemitentePedido.css";
 export default function SeleccionarRemitente({
-  idioma,
+  Idioma,
   establecerVistaRemitente,
   establecerRemitente,
   establecerPaso,
@@ -94,13 +94,13 @@ export default function SeleccionarRemitente({
         </button>
       </span>
       <h1 className="SeleccionarRemitentePedido__Titulo">
-        {DICCIONARIO_SELECCIONAR_REMITENTE_PEDIDO[idioma].SeleccionarRemitente}
+        {DICCIONARIO_SELECCIONAR_REMITENTE_PEDIDO[Idioma].SeleccionarRemitente}
       </h1>
       <span className="SeleccionarRemitentePedido__Buscar">
         <input
           type="text"
           placeholder={
-            DICCIONARIO_SELECCIONAR_REMITENTE_PEDIDO[idioma].BuscarRemitente
+            DICCIONARIO_SELECCIONAR_REMITENTE_PEDIDO[Idioma].BuscarRemitente
           }
           onChange={ObtenerRemitentes}
         />
@@ -112,8 +112,8 @@ export default function SeleccionarRemitente({
         <>
           <small className="SeleccionarRemitentePedido__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {remitentes.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {remitentes.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}
           </small>
           <div className="SeleccionarRemitentePedido__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
@@ -157,18 +157,18 @@ export default function SeleccionarRemitente({
               </section>
             ))}
           <small className="SeleccionarRemitentePedido__TextoPaginas">
-            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
-            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[Idioma].De} {cantidadDePaginas}
           </small>
           <AgenciaSeleccionadaPedido
-            idioma={idioma}
+            Idioma={Idioma}
             NombreAgencia={agencia?.NombreAgencia}
           />
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
         />
       )}
     </section>

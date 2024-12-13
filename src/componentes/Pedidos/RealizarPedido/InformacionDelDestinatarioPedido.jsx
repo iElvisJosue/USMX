@@ -8,7 +8,7 @@ import SeleccionarDestinatarioPedido from "./SeleccionarDestinatarioPedido";
 import SeleccionarOcurrePedido from "./SeleccionarOcurrePedido";
 
 export default function InformacionDelDestinatario({
-  idioma,
+  Idioma,
   paso,
   establecerPaso,
   destinatario,
@@ -19,7 +19,7 @@ export default function InformacionDelDestinatario({
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     establecerVistaDestinatario,
     destinatario,
     establecerDestinatario,

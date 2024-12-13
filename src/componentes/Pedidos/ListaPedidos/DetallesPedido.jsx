@@ -24,7 +24,7 @@ import { HOST_PDF } from "../../../helpers/Urls";
 import "../../../estilos/componentes/Pedidos/ListaPedidos/DetallesPedido.css";
 
 export default function DetallesPedido({
-  idioma,
+  Idioma,
   detallesPedido,
   establecerVista,
   ReiniciarRealizarPedido,
@@ -103,9 +103,9 @@ export default function DetallesPedido({
           {paquete.length > 1 && (
             <section className="DetallesPedido__OtrosPedidos">
               <small className="DetallesDelPedido__OtrosPedidos--Texto">
-                {DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].MensajeParteUno}{" "}
+                {DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].MensajeParteUno}{" "}
                 {paquete.length - 1}{" "}
-                {DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].MensajeParteDos}{" "}
+                {DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].MensajeParteDos}{" "}
                 <ion-icon name="documents"></ion-icon>
               </small>
               <div className="DetallesPedido__OtrosPedidos--Botones">
@@ -133,38 +133,38 @@ export default function DetallesPedido({
           )}
           <section className="DetallesPedido__Seccion">
             <img src="LogoEnvio.png" alt="Logo Envio" />
-            <h1>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].DetallesDeEnvio}</h1>
+            <h1>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].DetallesDeEnvio}</h1>
           </section>
           <div className="DetallesPedido__Detalles Folio">
             <ion-icon name="folder"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Folio}</b> USMX
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Folio}</b> USMX
             {paquete[indicePedido].idPedido}
           </div>
           <div className="DetallesPedido__Detalles Guia">
             <ion-icon name="document-text"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Guia}</b>{" "}
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Guia}</b>{" "}
             {paquete[indicePedido].GuiaPedido}
           </div>
           <div className="DetallesPedido__Detalles Usuario">
             <ion-icon name="person-circle"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Usuario}</b>{" "}
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Usuario}</b>{" "}
             {paquete[indicePedido].Usuario}
           </div>
           <div
             className={`DetallesPedido__Detalles ${paquete[indicePedido].EstadoPedido}`}
           >
             <ion-icon name="cash"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].EstadoDePago}</b>{" "}
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].EstadoDePago}</b>{" "}
             {paquete[indicePedido].EstadoPedido}
           </div>
           <div className="DetallesPedido__Detalles Agencia">
             <ion-icon name="business"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Agencia}</b>{" "}
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Agencia}</b>{" "}
             {paquete[indicePedido].NombreAgencia}
           </div>
           <div className="DetallesPedido__Detalles Fecha">
             <ion-icon name="calendar"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].FechaCreacion}</b>{" "}
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].FechaCreacion}</b>{" "}
             {FormatearFecha(
               paquete[indicePedido].FechaCreacionPedido.slice(0, 10)
             )}{" "}
@@ -175,20 +175,20 @@ export default function DetallesPedido({
               <ion-icon name="paper-plane"></ion-icon>{" "}
               <b>
                 {
-                  DICCIONARIO_DETALLES_DEL_PEDIDO[idioma]
+                  DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma]
                     .InformacionDelRemitente
                 }
               </b>
             </p>
             <p>
-              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Nombre} </b>
+              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Nombre} </b>
               {paquete[indicePedido].NombreRemitente}{" "}
               {paquete[indicePedido].ApellidosRemitente}
             </p>
             {(paquete[indicePedido].TelefonoUnoRemitente !== "" ||
               paquete[indicePedido].TelefonoDosRemitente !== "") && (
               <p>
-                <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Telefonos} </b>
+                <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Telefonos} </b>
                 {paquete[indicePedido].TelefonoUnoRemitente &&
                   paquete[indicePedido].TelefonoUnoRemitente}
                 {paquete[indicePedido].TelefonoDosRemitente &&
@@ -196,11 +196,11 @@ export default function DetallesPedido({
               </p>
             )}
             <p>
-              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Correo} </b>
+              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Correo} </b>
               {paquete[indicePedido].CorreoRemitente}
             </p>
             <p>
-              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Direccion} </b>
+              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Direccion} </b>
               <br />
               {paquete[indicePedido].PaisRemitente} <br />{" "}
               {paquete[indicePedido].EstadoRemitente} -{" "}
@@ -210,7 +210,7 @@ export default function DetallesPedido({
             </p>
             {paquete[indicePedido].ReferenciaRemitente && (
               <p>
-                <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Referencia}: </b>
+                <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Referencia}: </b>
                 {paquete[indicePedido].ReferenciaRemitente}
               </p>
             )}
@@ -220,20 +220,20 @@ export default function DetallesPedido({
               <ion-icon name="location"></ion-icon>{" "}
               <b>
                 {
-                  DICCIONARIO_DETALLES_DEL_PEDIDO[idioma]
+                  DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma]
                     .InformacionDelDestinatario
                 }
               </b>
             </p>
             <p>
-              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Nombre} </b>
+              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Nombre} </b>
               {paquete[indicePedido].NombreDestinatario}{" "}
               {paquete[indicePedido].ApellidosDestinatario}
             </p>
             {(paquete[indicePedido].TelefonoUnoDestinatario !== "" ||
               paquete[indicePedido].TelefonoDosDestinatario !== "") && (
               <p>
-                <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Telefonos} </b>
+                <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Telefonos} </b>
                 {paquete[indicePedido].TelefonoUnoDestinatario &&
                   paquete[indicePedido].TelefonoUnoDestinatario}
                 {paquete[indicePedido].TelefonoDosDestinatario &&
@@ -241,11 +241,11 @@ export default function DetallesPedido({
               </p>
             )}
             <p>
-              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Correo} </b>
+              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Correo} </b>
               {paquete[indicePedido].CorreoDestinatario}
             </p>
             <p>
-              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Direccion}</b>
+              <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Direccion}</b>
               <br />
               {paquete[indicePedido].PaisDestinatario} <br />{" "}
               {paquete[indicePedido].EstadoDestinatario} -{" "}
@@ -255,7 +255,7 @@ export default function DetallesPedido({
             </p>
             {paquete[indicePedido].ReferenciaDestinatario && (
               <p>
-                <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Referencia} </b>
+                <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Referencia} </b>
                 {paquete[indicePedido].ReferenciaDestinatario}
               </p>
             )}
@@ -263,53 +263,53 @@ export default function DetallesPedido({
           <section className="DetallesPedido__Seccion">
             <img src="LogoPaquete.png" alt="Logo Paquete" />
             <h1>
-              {DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].DetallesDelPaquete}
+              {DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].DetallesDelPaquete}
             </h1>
           </section>
           <div className="DetallesPedido__Detalles Largo">
             <ion-icon name="swap-vertical"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Largo}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Largo}</b>
             {paquete[indicePedido].LargoPedido}
           </div>
           <div className="DetallesPedido__Detalles Ancho">
             <ion-icon name="swap-horizontal"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Ancho}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Ancho}</b>
             {paquete[indicePedido].AnchoPedido}
           </div>
           <div className="DetallesPedido__Detalles Alto">
             <ion-icon name="arrow-up"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Alto}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Alto}</b>
             {paquete[indicePedido].AltoPedido}
           </div>
           <div className="DetallesPedido__Detalles PieCubico">
             <ion-icon name="cube"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].PieCubico}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].PieCubico}</b>
             {paquete[indicePedido].PieCubicoPedido}
           </div>
           <div className="DetallesPedido__Detalles Volumen">
             <ion-icon name="cube"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Volumen}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Volumen}</b>
             {paquete[indicePedido].LargoPedido} x{" "}
             {paquete[indicePedido].AnchoPedido} x{" "}
             {paquete[indicePedido].AltoPedido}
           </div>
           <div className="DetallesPedido__Detalles Peso">
             <ion-icon name="scale"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Peso}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Peso}</b>
             {paquete[indicePedido].PesoPedido}
           </div>
           <div className="DetallesPedido__Detalles Contenido">
             <ion-icon name="document-text"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Contenido}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Contenido}</b>
             {paquete[indicePedido].ContenidoPedido}
           </div>
           <section className="DetallesPedido__Seccion">
             <img src="LogoImportes.png" alt="Logo Importes" />
-            <h1>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Importes}</h1>
+            <h1>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Importes}</h1>
           </section>
           <div className="DetallesPedido__Detalles ValorDeclarado">
             <ion-icon name="cash"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].ValorDeclarado}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].ValorDeclarado}</b>
             {paquete[indicePedido].ValorDeclaradoPedido.toLocaleString(
               "en-US",
               {
@@ -320,7 +320,7 @@ export default function DetallesPedido({
           </div>
           <div className="DetallesPedido__Detalles ValorAsegurado">
             <ion-icon name="shield-checkmark"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].ValorAsegurado}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].ValorAsegurado}</b>
             {paquete[indicePedido].ValorAseguradoPedido.toLocaleString(
               "en-US",
               {
@@ -331,7 +331,7 @@ export default function DetallesPedido({
           </div>
           <div className="DetallesPedido__Detalles TCF">
             <ion-icon name="cash"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].TCF}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].TCF}</b>
             {paquete[indicePedido].TCFPedido.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
@@ -339,7 +339,7 @@ export default function DetallesPedido({
           </div>
           <div className="DetallesPedido__Detalles CostoEnvio">
             <ion-icon name="airplane"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].CostoDeEnvio}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].CostoDeEnvio}</b>
             {paquete[indicePedido].CostoEnvioPedido.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
@@ -347,7 +347,7 @@ export default function DetallesPedido({
           </div>
           <div className="DetallesPedido__Detalles CostoSeguro">
             <ion-icon name="shield"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].CostoDeSeguro}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].CostoDeSeguro}</b>
             {paquete[indicePedido].CostoSeguroPedido.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
@@ -355,7 +355,7 @@ export default function DetallesPedido({
           </div>
           <div className="DetallesPedido__Detalles CostoSobrePeso">
             <ion-icon name="scale"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].CostoSobrepeso}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].CostoSobrepeso}</b>
             {paquete[indicePedido].CostoSobrePesoPedido.toLocaleString(
               "en-US",
               {
@@ -366,7 +366,7 @@ export default function DetallesPedido({
           </div>
           <div className="DetallesPedido__Detalles Total">
             <ion-icon name="cash"></ion-icon>{" "}
-            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].TotalAPagar}</b>
+            <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].TotalAPagar}</b>
             {paquete[indicePedido].TotalPedido.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
@@ -375,7 +375,7 @@ export default function DetallesPedido({
           <section className="DetallesPedido__Seccion">
             <img src="LogoRastreo.png" alt="Logo Rastreo" />
             <h1>
-              {DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].MovimientosDelPedido}
+              {DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].MovimientosDelPedido}
             </h1>
           </section>
           <div className="DetallesPedido__Detalles Movimiento">
@@ -386,21 +386,21 @@ export default function DetallesPedido({
                 <span className="DetallesPedido__Detalles__Movimiento--Encabezado">
                   <p className="DetallesPedido__Detalles__Movimiento--Encabezado--Descripcion">
                     <ion-icon name="bag-check"></ion-icon>{" "}
-                    {DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].EstadoDelPedido}
+                    {DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].EstadoDelPedido}
                   </p>
                   <p className="DetallesPedido__Detalles__Movimiento--Encabezado--Descripcion">
                     <ion-icon name="car"></ion-icon>{" "}
-                    <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Movimiento}</b>
+                    <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Movimiento}</b>
                   </p>
                   <p className="DetallesPedido__Detalles__Movimiento--Encabezado--Descripcion">
                     <ion-icon name="calendar"></ion-icon>{" "}
                     <b>
-                      {DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].FechaCreacion}
+                      {DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].FechaCreacion}
                     </b>
                   </p>
                   <p className="DetallesPedido__Detalles__Movimiento--Encabezado--Descripcion">
                     <ion-icon name="locate"></ion-icon>{" "}
-                    <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[idioma].Origen}</b>
+                    <b>{DICCIONARIO_DETALLES_DEL_PEDIDO[Idioma].Origen}</b>
                   </p>
                 </span>
                 {movimientos.length > 0 ? (
@@ -430,7 +430,7 @@ export default function DetallesPedido({
                 ) : (
                   <MensajeGeneral
                     Imagen={"SinResultados.png"}
-                    Texto={DICCIONARIO_RESULTADOS[idioma].NoResultado}
+                    Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultado}
                   />
                 )}
               </>
@@ -440,7 +440,7 @@ export default function DetallesPedido({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultado}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultado}
         />
       )}
     </div>

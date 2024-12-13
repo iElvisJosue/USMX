@@ -10,7 +10,7 @@ import DetallesPedido from "./DetallesPedido";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Pedidos/ListaPedidos/ListaPedidos.css";
 
-export default function ListaPedidos({ idioma }) {
+export default function ListaPedidos({ Idioma }) {
   const [vista, establecerVista] = useState(0);
   const [esCompleta, establecerEsCompleta] = useState(true);
   const [detallesPedido, establecerDetallesPedido] = useState(null);
@@ -23,7 +23,7 @@ export default function ListaPedidos({ idioma }) {
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     esCompleta,
     establecerVista,
     detallesPedido,

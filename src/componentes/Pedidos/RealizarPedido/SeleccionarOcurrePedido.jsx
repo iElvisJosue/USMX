@@ -34,7 +34,7 @@ import {
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Pedidos/RealizarPedido/SeleccionarOcurrePedido.css";
 export default function SeleccionarOcurrePedido({
-  idioma,
+  Idioma,
   establecerVistaDestinatario,
   establecerDestinatario,
   establecerPaso,
@@ -173,24 +173,24 @@ export default function SeleccionarOcurrePedido({
         </button>
       </span>
       <h1 className="SeleccionarOcurrePedido__Titulo">
-        {DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[idioma].IngresaElNombre}
+        {DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[Idioma].IngresaElNombre}
       </h1>
       <span className="SeleccionarOcurrePedido__Campo Dos">
         <p>
           <ion-icon name="person"></ion-icon>
-          {DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[idioma].Nombre}
+          {DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[Idioma].Nombre}
         </p>
         <input
           id="NombreDestinatario"
           type="text"
           name="NombreDestinatario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NombreDestinatario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -199,32 +199,32 @@ export default function SeleccionarOcurrePedido({
       <span className="SeleccionarOcurrePedido__Campo Dos">
         <p>
           <ion-icon name="person"></ion-icon>
-          {DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[idioma].Apellidos}
+          {DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[Idioma].Apellidos}
         </p>
         <input
           id="ApellidosDestinatario"
           type="text"
           name="ApellidosDestinatario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("ApellidosDestinatario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
         {MensajeError("ApellidosDestinatario")}
       </span>
       <h1 className="SeleccionarOcurrePedido__Titulo">
-        {DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[idioma].SeleccionarOcurre}
+        {DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[Idioma].SeleccionarOcurre}
       </h1>
       <span className="SeleccionarOcurrePedido__Buscar">
         <input
           type="text"
           placeholder={
-            DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[idioma].BuscarOcurre
+            DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[Idioma].BuscarOcurre
           }
           onChange={ObtenerOcurres}
         />
@@ -236,8 +236,8 @@ export default function SeleccionarOcurrePedido({
         <>
           <small className="SeleccionarOcurrePedido__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {ocurresActivos.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {ocurresActivos.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}
           </small>
           <div className="SeleccionarOcurrePedido__BotonesDePaginacion">
             {indiceInicial >= CantidadParaMostrar && (
@@ -283,19 +283,19 @@ export default function SeleccionarOcurrePedido({
               </section>
             ))}
           <small className="SeleccionarOcurrePedido__TextoPaginas">
-            {DICCIONARIO_PAGINACION[idioma].Pagina} {paginaParaMostrar}{" "}
-            {DICCIONARIO_PAGINACION[idioma].De} {cantidadDePaginas}
+            {DICCIONARIO_PAGINACION[Idioma].Pagina} {paginaParaMostrar}{" "}
+            {DICCIONARIO_PAGINACION[Idioma].De} {cantidadDePaginas}
           </small>
         </>
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Ocurres"}
           TextoBoton={
-            DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[idioma].RegistrarOcurre
+            DICCIONARIO_SELECCIONAR_OCURRE_PEDIDO[Idioma].RegistrarOcurre
           }
         />
       )}
@@ -305,17 +305,17 @@ export default function SeleccionarOcurrePedido({
           onClick={() => establecerPaso(paso - 1)}
           type="button"
         >
-          {DICCIONARIO_BOTONES[idioma].Regresar}
+          {DICCIONARIO_BOTONES[Idioma].Regresar}
         </button>
         <button
           type="submit"
           className="SeleccionarOcurrePedido__Footer__Boton Siguiente"
         >
-          {DICCIONARIO_BOTONES[idioma].Siguiente}
+          {DICCIONARIO_BOTONES[Idioma].Siguiente}
         </button>
       </footer>
       <AgenciaSeleccionadaPedido
-        idioma={idioma}
+        Idioma={Idioma}
         NombreAgencia={agencia?.NombreAgencia}
       />
     </form>

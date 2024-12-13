@@ -10,7 +10,7 @@ import DetallesRecoleccion from "./DetallesRecoleccion";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Recolecciones/ListaRecolecciones/ListaRecolecciones.css";
 
-export default function ListaRecolecciones({ idioma }) {
+export default function ListaRecolecciones({ Idioma }) {
   const [vista, establecerVista] = useState(0);
   const [esCompleta, establecerEsCompleta] = useState(true);
   const [informacionDeLaRecoleccion, establecerInformacionDeLaRecoleccion] =
@@ -24,7 +24,7 @@ export default function ListaRecolecciones({ idioma }) {
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     esCompleta,
     establecerVista,
     informacionDeLaRecoleccion,

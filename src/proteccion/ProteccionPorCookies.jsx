@@ -1,14 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useSistema } from "../context/SistemaContext";
-import { useUsuarios } from "../context/UsuariosContext";
 import Cargando from "../componentes/Cargando";
 
 export default function ProteccionPorCookies() {
-  const { cargandoInfSistema } = useSistema();
-  const { cargandoInfUsuario, tieneCookie } = useUsuarios();
+  const { cargandoInformacion, tieneCookie } = useSistema();
 
-  if (cargandoInfUsuario || cargandoInfSistema) return <Cargando />;
-  if (!cargandoInfUsuario && !tieneCookie) return <Navigate to="/" replace />;
+  if (cargandoInformacion) return <Cargando />;
+  if (!tieneCookie) return <Navigate to="/" replace />;
 
   return <Outlet />;
 }

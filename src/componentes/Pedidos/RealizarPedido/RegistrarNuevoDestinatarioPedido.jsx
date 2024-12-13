@@ -32,7 +32,7 @@ import {
 import "../../../estilos/componentes/Pedidos/RealizarPedido/RegistrarNuevoDestinatarioPedido.css";
 
 export default function RegistrarNuevoDestinatarioPedido({
-  idioma,
+  Idioma,
   establecerVistaDestinatario,
   destinatario,
   establecerDestinatario,
@@ -145,25 +145,25 @@ export default function RegistrarNuevoDestinatarioPedido({
       </span>
       <h1 className="RegistrarNuevoDestinatarioPedido__Titulo">
         {
-          DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[idioma]
+          DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[Idioma]
             .RegistrarNuevoDestinatario
         }
       </h1>
       <span className="RegistrarNuevoDestinatarioPedido__Campo">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
-          {DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[idioma].Nombre}
+          {DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[Idioma].Nombre}
         </p>
         <input
           name="NombreDestinatario"
           id="NombreDestinatario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NombreDestinatario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -172,18 +172,18 @@ export default function RegistrarNuevoDestinatarioPedido({
       <span className="RegistrarNuevoDestinatarioPedido__Campo">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
-          {DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[idioma].Apellidos}
+          {DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[Idioma].Apellidos}
         </p>
         <input
           name="ApellidosDestinatario"
           id="ApellidosDestinatario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("ApellidosDestinatario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -192,22 +192,22 @@ export default function RegistrarNuevoDestinatarioPedido({
       <span className="RegistrarNuevoDestinatarioPedido__Campo">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
-          {DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[idioma].TelefonoUno}
+          {DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[Idioma].TelefonoUno}
         </p>
         <input
           name="TelefonoUnoDestinatario"
           id="TelefonoUnoDestinatario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("TelefonoUnoDestinatario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min10,
             },
           })}
         ></input>
@@ -216,21 +216,21 @@ export default function RegistrarNuevoDestinatarioPedido({
       <span className="RegistrarNuevoDestinatarioPedido__Campo">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
-          {DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[idioma].TelefonoDos}
+          {DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[Idioma].TelefonoDos}
         </p>
         <input
           name="TelefonoDosDestinatario"
           id="TelefonoDosDestinatario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("TelefonoDosDestinatario", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             minLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Min10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Min10,
             },
           })}
         ></input>
@@ -240,20 +240,20 @@ export default function RegistrarNuevoDestinatarioPedido({
         <p>
           <ion-icon name="mail"></ion-icon>{" "}
           {
-            DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[idioma]
+            DICCIONARIO_REGISTRAR_NUEVO_DESTINATARIO_PEDIDO[Idioma]
               .CorreoElectronico
           }
         </p>
         <input
           name="CorreoDestinatario"
           id="CorreoDestinatario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("CorreoDestinatario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_CORREO,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         ></input>
@@ -266,17 +266,17 @@ export default function RegistrarNuevoDestinatarioPedido({
           onClick={() => establecerPaso(paso - 1)}
           type="button"
         >
-          {DICCIONARIO_BOTONES[idioma].Regresar}
+          {DICCIONARIO_BOTONES[Idioma].Regresar}
         </button>
         <button
           type="submit"
           className="RegistrarNuevoDestinatarioPedido__Footer__Boton Siguiente"
         >
-          {DICCIONARIO_BOTONES[idioma].Siguiente}
+          {DICCIONARIO_BOTONES[Idioma].Siguiente}
         </button>
       </footer>
       <AgenciaSeleccionadaPedido
-        idioma={idioma}
+        Idioma={Idioma}
         NombreAgencia={agencia?.NombreAgencia}
       />
     </form>

@@ -29,7 +29,7 @@ import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../../../helpers/Regex
 import "../../../../estilos/componentes/Bodega/SalidasBodega/CrearSalida/FormularioDatosDeSalida.css";
 
 export default function FormularioDatosDeSalida({
-  idioma,
+  Idioma,
   informacionDeLaSalida,
   establecerInformacionDeLaSalida,
   establecerVista,
@@ -96,12 +96,12 @@ export default function FormularioDatosDeSalida({
       onSubmit={EstablecerInformacionDelFormulario}
     >
       <h1 className="FormularioDatosDeSalida__Titulo">
-        {DICCIONARIO_FORMULARIO_DATOS_SALIDA[idioma].SalidaBodega}
+        {DICCIONARIO_FORMULARIO_DATOS_SALIDA[Idioma].SalidaBodega}
       </h1>
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="swap-horizontal"></ion-icon>
-          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[idioma].SeleccionaElMovimiento}
+          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[Idioma].SeleccionaElMovimiento}
         </p>
         <select
           id="idMovimientoSalida"
@@ -109,7 +109,7 @@ export default function FormularioDatosDeSalida({
           {...register("idMovimientoSalida")}
         >
           <option value="Invalido" defaultValue={true}>
-            {DICCIONARIO_FORMULARIO_DATOS_SALIDA[idioma].Seleccionar}
+            {DICCIONARIO_FORMULARIO_DATOS_SALIDA[Idioma].Seleccionar}
           </option>
           {movimientosSalida?.map((movSalida) => (
             <option key={movSalida.idMovimiento} value={movSalida.idMovimiento}>
@@ -121,19 +121,19 @@ export default function FormularioDatosDeSalida({
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="person"></ion-icon>
-          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[idioma].NombreDelTransportista}
+          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[Idioma].NombreDelTransportista}
         </p>
         <input
           type="text"
           id="NombreTransportista"
           name="NombreTransportista"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("NombreTransportista", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -142,18 +142,18 @@ export default function FormularioDatosDeSalida({
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="build"></ion-icon>
-          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[idioma].Remolque}
+          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[Idioma].Remolque}
         </p>
         <input
           type="text"
           id="Remolque"
           name="Remolque"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("Remolque", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -162,18 +162,18 @@ export default function FormularioDatosDeSalida({
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="build"></ion-icon>
-          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[idioma].Tracto}
+          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[Idioma].Tracto}
         </p>
         <input
           type="text"
           id="Tracto"
           name="Tracto"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("Tracto", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -182,18 +182,18 @@ export default function FormularioDatosDeSalida({
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="lock-closed"></ion-icon>
-          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[idioma].Candado}
+          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[Idioma].Candado}
         </p>
         <input
           type="text"
           id="Candado"
           name="Candado"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("Candado", {
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
@@ -202,26 +202,26 @@ export default function FormularioDatosDeSalida({
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="lock-closed"></ion-icon>
-          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[idioma].HoraSalida}
+          {DICCIONARIO_FORMULARIO_DATOS_SALIDA[Idioma].HoraSalida}
         </p>
         <input
           type="time"
           id="HoraSalida"
           name="HoraSalida"
           step="1"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("HoraSalida", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 100,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max100,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max100,
             },
           })}
         />
         {MensajeError("HoraSalida")}
       </span>
-      <GrupoDeBotonesInferior idioma={idioma} BotonSiguiente={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonSiguiente={true} />
     </form>
   );
 }

@@ -10,7 +10,7 @@ import DetallesDevolucion from "./DetallesDevolucion";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../../estilos/componentes/Bodega/Devoluciones/ListaDevoluciones/ListaDevoluciones.css";
 
-export default function ListaDevoluciones({ idioma }) {
+export default function ListaDevoluciones({ Idioma }) {
   const [vista, establecerVista] = useState(0);
   const [esCompleta, establecerEsCompleta] = useState(true);
   const [informacionDeLaDevolucion, establecerInformacionDeLaDevolucion] =
@@ -24,7 +24,7 @@ export default function ListaDevoluciones({ idioma }) {
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     esCompleta,
     establecerVista,
     informacionDeLaDevolucion,

@@ -23,10 +23,10 @@ import { REGEX_CORREO, REGEX_SOLO_NUMEROS } from "../../helpers/Regexs";
 import "../../estilos/componentes/Perfil/PerfilActualizarInformacion.css";
 
 export default function PerfilActualizarInformacion({
-  idioma,
+  Idioma,
   infUsuario,
-  cargarInfUsuarioNuevamente,
-  establecerCargarInfUsuarioNuevamente,
+  obtenerInformacionNuevamente,
+  establecerObtenerInformacionNuevamente,
   establecerVistaPerfil,
 }) {
   const { ActualizarInformacionPersonalUsuario } = useUsuarios();
@@ -59,7 +59,7 @@ export default function PerfilActualizarInformacion({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
-        establecerCargarInfUsuarioNuevamente(!cargarInfUsuarioNuevamente);
+        establecerObtenerInformacionNuevamente(!obtenerInformacionNuevamente);
         establecerVistaPerfil(0);
       }
     } catch (error) {
@@ -102,25 +102,25 @@ export default function PerfilActualizarInformacion({
         👤
         <br />
         {
-          DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[idioma]
+          DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[Idioma]
             .ActualizarInformacionPersonal
         }
       </h1>
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
-          {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[idioma].Usuario}
+          {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[Idioma].Usuario}
         </p>
         <input
           id="Usuario"
           type="text"
           name="Usuario"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("Usuario", {
-            required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+            required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
             maxLength: {
               value: 255,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max255,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max255,
             },
           })}
         />
@@ -129,17 +129,17 @@ export default function PerfilActualizarInformacion({
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="mail"></ion-icon>{" "}
-          {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[idioma].Correo}
+          {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[Idioma].Correo}
         </p>
         <input
           id="Correo"
           type="text"
           name="Correo"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("Correo", {
             maxLength: {
               value: 255,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max255,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max255,
             },
             pattern: REGEX_CORREO,
           })}
@@ -149,17 +149,17 @@ export default function PerfilActualizarInformacion({
       <span className="GrupoDeInputs">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
-          {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[idioma].Telefono}
+          {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[Idioma].Telefono}
         </p>
         <input
           id="Telefono"
           type="text"
           name="Telefono"
-          placeholder={DICCIONARIO_PLACEHOLDERS[idioma].EscribeAqui}
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
           {...register("Telefono", {
             maxLength: {
               value: 10,
-              message: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max10,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max10,
             },
             pattern: REGEX_SOLO_NUMEROS,
           })}
@@ -169,16 +169,16 @@ export default function PerfilActualizarInformacion({
       <small className="PerfilActualizarInformacion__MensajeEncriptado">
         📣
         <br />
-        {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[idioma].MensajeActualizarUno}
+        {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[Idioma].MensajeActualizarUno}
         <br />
-        {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[idioma].MensajeActualizarDos}
+        {DICCIONARIO_PERFIL_ACTUALIZAR_INFORMACION[Idioma].MensajeActualizarDos}
       </small>
       <footer className="PerfilActualizarInformacion__Footer">
         <button
           type="submit"
           className="PerfilActualizarInformacion__Footer__Boton Guardar"
         >
-          {DICCIONARIO_BOTONES[idioma].Guardar}
+          {DICCIONARIO_BOTONES[Idioma].Guardar}
         </button>
       </footer>
     </form>

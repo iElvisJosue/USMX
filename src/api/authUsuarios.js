@@ -2,9 +2,6 @@ import axios from "./axios";
 // IMPORTAMOS LAS AYUDAS
 import { AgregarCookiePeticion } from "../helpers/AgregarCookiePeticion";
 
-// SOLICITUD PARA VERIFICAR EL TOKEN DE ACCESO DE UN USUARIO
-export const SolicitudVerificarTokenUsuario = (data) =>
-  axios.post("/usuarios/VerificarTokenUsuario", data);
 // SOLICITUD PARA INICIAR SESION
 export const SolicitudIniciarSesionUsuario = (data) =>
   axios.post("/usuarios/IniciarSesionUsuario", data);

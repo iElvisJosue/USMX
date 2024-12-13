@@ -15,7 +15,7 @@ import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/ModalConfirmacion.css";
 
 export default function ModalConfirmacion({
-  idioma,
+  Idioma,
   Activar = true,
   infUsuario,
   establecerMostrarModalConfirmacion,
@@ -29,14 +29,14 @@ export default function ModalConfirmacion({
     ? "ModalConfirmacion__Contenido--Titulo Activar"
     : "ModalConfirmacion__Contenido--Titulo Desactivar";
   const TituloModal = Activar
-    ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].ActivarUsuario
-    : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].DesactivarUsuario;
+    ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma].ActivarUsuario
+    : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma].DesactivarUsuario;
   const ClaseBotonModal = Activar
     ? "ModalConfirmacion__Contenido--Boton Activar"
     : "ModalConfirmacion__Contenido--Boton Desactivar";
   const TextoBotonModal = Activar
-    ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].Activar
-    : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].Desactivar;
+    ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma].Activar
+    : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma].Desactivar;
   const ClaseTextoModal = Activar
     ? "ModalConfirmacion__Contenido--Texto Activar"
     : "ModalConfirmacion__Contenido--Texto Desactivar";
@@ -79,18 +79,18 @@ export default function ModalConfirmacion({
         </button>
         <h1 className={ClaseTituloModal}>{TituloModal}</h1>
         <small className={ClaseTextoModal}>
-          {DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].MensajeParteUno}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma].MensajeParteUno}{" "}
           {Activar
-            ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].Activar
-            : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].Desactivar}{" "}
-          {DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].MensajeParteDos}{" "}
+            ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma].Activar
+            : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma].Desactivar}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma].MensajeParteDos}{" "}
           <b>{infUsuario.Usuario}</b>?
           <br />
           <br />
           <i>
             {Activar
-              ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma].MensajeActivar
-              : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[idioma]
+              ? DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma].MensajeActivar
+              : DICCIONARIO_MODAL_CONFIRMACION_USUARIO[Idioma]
                   .MensajeDesactivar}
           </i>
         </small>

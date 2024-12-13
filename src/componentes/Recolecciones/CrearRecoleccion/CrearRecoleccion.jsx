@@ -8,12 +8,12 @@ import ListaDeRecoleccion from "./ListaDeRecoleccion";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Recolecciones/CrearRecoleccion/CrearRecoleccion.css";
 
-export default function CrearRecoleccion({ idioma }) {
+export default function CrearRecoleccion({ Idioma }) {
   const [recoleccion, establecerRecoleccion] = useState([]);
 
   // VALORES COMPARTIDOS
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     recoleccion,
     establecerRecoleccion,
   };

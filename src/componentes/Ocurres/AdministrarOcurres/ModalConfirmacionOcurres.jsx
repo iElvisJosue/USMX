@@ -16,7 +16,7 @@ import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Ocurres/AdministrarOcurres/ModalConfirmacionOcurres.css";
 
 export default function ModalConfirmacionOcurres({
-  idioma,
+  Idioma,
   Activar = true,
   infOcurre,
   establecerMostrarModalConfirmacion,
@@ -30,14 +30,14 @@ export default function ModalConfirmacionOcurres({
     ? "ModalConfirmacionOcurres__Contenido--Titulo Activar"
     : "ModalConfirmacionOcurres__Contenido--Titulo Desactivar";
   const TituloModal = Activar
-    ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].ActivarOcurre
-    : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].DesactivarOcurre;
+    ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma].ActivarOcurre
+    : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma].DesactivarOcurre;
   const ClaseBotonModal = Activar
     ? "ModalConfirmacionOcurres__Contenido--Boton Activar"
     : "ModalConfirmacionOcurres__Contenido--Boton Desactivar";
   const TextoBotonModal = Activar
-    ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].Activar
-    : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].Desactivar;
+    ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma].Activar
+    : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma].Desactivar;
   const ClaseTextoModal = Activar
     ? "ModalConfirmacionOcurres__Contenido--Texto Activar"
     : "ModalConfirmacionOcurres__Contenido--Texto Desactivar";
@@ -80,19 +80,19 @@ export default function ModalConfirmacionOcurres({
         </button>
         <h1 className={ClaseTituloModal}>{TituloModal}</h1>
         <small className={ClaseTextoModal}>
-          {DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].MensajeParteUno}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma].MensajeParteUno}{" "}
           {Activar
-            ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].Activar
-            : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].Desactivar}{" "}
-          {DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma].MensajeParteDos}{" "}
+            ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma].Activar
+            : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma].Desactivar}{" "}
+          {DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma].MensajeParteDos}{" "}
           <b>{infOcurre.NombreOcurre}</b>?
           <br />
           <br />
           <i>
             {Activar
-              ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma]
+              ? DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma]
                   .AdvertenciaUnoOcurre
-              : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[idioma]
+              : DICCIONARIO_MODAL_CONFIRMACION_OCURRE[Idioma]
                   .AdvertenciaDosOcurre}
           </i>
         </small>

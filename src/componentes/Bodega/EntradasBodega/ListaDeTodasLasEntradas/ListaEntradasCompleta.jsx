@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/EntradasBodega/ListaDeTodasLasEntradas/ListaEntradasCompleta.css";
 
 export default function ListaEntradasCompleta({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDeLaEntrada,
 }) {
   const { entradas, cargando, filtro, establecerFiltro } =
@@ -41,14 +41,14 @@ export default function ListaEntradasCompleta({
   return (
     <div className="ListaEntradasCompleta">
       <h1 className="ListaEntradasCompleta__Titulo">
-        {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].ListaCompletaDeEntradas}
+        {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[Idioma].ListaCompletaDeEntradas}
       </h1>
       <span className="ListaEntradasCompleta__Buscar">
         <input
           value={filtro}
           type="text"
           placeholder={
-            DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].BuscarEntrada
+            DICCIONARIO_LISTA_ENTRADAS_COMPLETA[Idioma].BuscarEntrada
           }
           onChange={BuscarEntradas}
         />
@@ -60,8 +60,8 @@ export default function ListaEntradasCompleta({
         <>
           <small className="ListaEntradasCompleta__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {entradas.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {entradas.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaEntradasCompleta__Cuerpo">
             <table className="ListaEntradasCompleta__Cuerpo__Tabla">
@@ -70,27 +70,27 @@ export default function ListaEntradasCompleta({
                   <th>
                     <ion-icon name="document-text"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].idEntrada}
+                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[Idioma].idEntrada}
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].CPedidos}
+                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[Idioma].CPedidos}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].FechaCreacion}
+                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[Idioma].FechaCreacion}
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_ENTRADAS_COMPLETA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -113,7 +113,7 @@ export default function ListaEntradasCompleta({
                           EstablecerLosDetallesDeLaEntrada(infEntrada, true)
                         }
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -125,11 +125,11 @@ export default function ListaEntradasCompleta({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Bodega-Entradas"}
-          TextoBoton={DICCIONARIO_LISTA_ENTRADAS_COMPLETA[idioma].CrearEntrada}
+          TextoBoton={DICCIONARIO_LISTA_ENTRADAS_COMPLETA[Idioma].CrearEntrada}
         />
       )}
     </div>

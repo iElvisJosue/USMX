@@ -18,7 +18,7 @@ import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/ModalInformacionDeLaAgencia.css";
 
 export default function ModalInformacionDeLaAgencia({
-  idioma,
+  Idioma,
   informacionDelUsuario,
   informacionDeLaAgencia,
   establecerMostrarModal,
@@ -67,13 +67,13 @@ export default function ModalInformacionDeLaAgencia({
         </button>
         <h1 className="ModalInformacionDeLaAgencia__Contenido--Titulo">
           {
-            DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma]
+            DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[Idioma]
               .InformacionDeLaAgencia
           }
         </h1>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
           <ion-icon name="business"></ion-icon>
-          <b>{DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].Agencia}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[Idioma].Agencia}</b>
           {informacionDeLaAgencia.NombreAgencia}
           {informacionDeLaAgencia.NombreLegalAgencia && (
             <>
@@ -85,7 +85,7 @@ export default function ModalInformacionDeLaAgencia({
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion">
           <ion-icon name="person-circle"></ion-icon>
           <b>
-            {DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].Representante}
+            {DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[Idioma].Representante}
           </b>{" "}
           {informacionDeLaAgencia.RepresentanteVentas || "N/A"} <br />
           {informacionDeLaAgencia.TelefonoRepresentanteVentas && (
@@ -95,14 +95,14 @@ export default function ModalInformacionDeLaAgencia({
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion">
           <ion-icon name="call"></ion-icon>
           <b>
-            {DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].TelAgencia}
+            {DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[Idioma].TelAgencia}
           </b>{" "}
           {informacionDeLaAgencia.TelefonoAgencia}
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
           <ion-icon name="mail"></ion-icon>
           <b>
-            {DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].Correos}
+            {DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[Idioma].Correos}
           </b>{" "}
           {informacionDeLaAgencia.CorreoAgencia}
           {informacionDeLaAgencia.CorreoAgenciaSecundario && (
@@ -114,7 +114,7 @@ export default function ModalInformacionDeLaAgencia({
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
           <ion-icon name="location"></ion-icon>
-          <b>{DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[idioma].Locacion}</b>
+          <b>{DICCIONARIO_MODAL_INFORMACION_DE_LA_AGENCIA[Idioma].Locacion}</b>
           {informacionDeLaAgencia.PaisAgencia}
           <br />
           {informacionDeLaAgencia.CiudadAgencia},{" "}
@@ -129,7 +129,7 @@ export default function ModalInformacionDeLaAgencia({
               PeticionAsignarAgenciaAlUsuario(informacionDeLaAgencia.idAgencia)
             }
           >
-            {DICCIONARIO_BOTONES[idioma].Asignar}
+            {DICCIONARIO_BOTONES[Idioma].Asignar}
           </button>
         )}
       </article>

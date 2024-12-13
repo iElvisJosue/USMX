@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../context/AgenciasContext";
-import { useUsuarios } from "../context/UsuariosContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarAgenciasPorFiltroYTipoDeUsuario() {
   const { BuscarAgenciasPorFiltroYTipoDeUsuario } = useAgencias();
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
 
   const [agencias, establecerAgencias] = useState([]);
   const [cargandoAgencias, establecerCargandoAgencias] = useState(true);

@@ -12,7 +12,7 @@ import { HOST_IMAGENES } from "../../helpers/Urls";
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Perfil/PerfilInformacion.css";
 export default function PerfilInformacion({
-  idioma,
+  Idioma,
   infUsuario,
   establecerVistaPerfil,
 }) {
@@ -20,7 +20,7 @@ export default function PerfilInformacion({
     <div className="PerfilInformacion">
       <section className="PerfilInformacion__Seccion">
         <p className="PerfilInformacion__Seccion--Titulo">
-          {DICCIONARIO_PERFIL_INFORMACION[idioma].FotoDePerfil} <br />
+          {DICCIONARIO_PERFIL_INFORMACION[Idioma].FotoDePerfil} <br />
           📷
         </p>
         <img
@@ -38,27 +38,27 @@ export default function PerfilInformacion({
       <hr className="PerfilInformacion__Divisor" />
       <section className="PerfilInformacion__Seccion">
         <p className="PerfilInformacion__Seccion--Titulo">
-          {DICCIONARIO_PERFIL_INFORMACION[idioma].InformacionPersonal}
+          {DICCIONARIO_PERFIL_INFORMACION[Idioma].InformacionPersonal}
           <br />
           👤
         </p>
         <p className="PerfilInformacion__Seccion--Texto">
-          <b>{DICCIONARIO_PERFIL_INFORMACION[idioma].Usuario}</b>
+          <b>{DICCIONARIO_PERFIL_INFORMACION[Idioma].Usuario}</b>
           <br />
           {infUsuario.Usuario} <br /> {infUsuario.Permisos}
         </p>
         <p className="PerfilInformacion__Seccion--Texto">
-          <b>{DICCIONARIO_PERFIL_INFORMACION[idioma].Correo}</b>
+          <b>{DICCIONARIO_PERFIL_INFORMACION[Idioma].Correo}</b>
           <br />
           {infUsuario.Correo || "N/A"}
         </p>
         <p className="PerfilInformacion__Seccion--Texto">
-          <b>{DICCIONARIO_PERFIL_INFORMACION[idioma].Telefono}</b>
+          <b>{DICCIONARIO_PERFIL_INFORMACION[Idioma].Telefono}</b>
           <br />
           {infUsuario.Telefono || "N/A"}
         </p>
         <p className="PerfilInformacion__Seccion--Texto">
-          <b>{DICCIONARIO_PERFIL_INFORMACION[idioma].FechaDeCreacion}</b>
+          <b>{DICCIONARIO_PERFIL_INFORMACION[Idioma].FechaDeCreacion}</b>
           <br />
           {FormatearFecha(infUsuario.FechaCreacionUsuario.slice(0, 10))} a las{" "}
           {infUsuario.HoraCreacionUsuario}
@@ -68,23 +68,7 @@ export default function PerfilInformacion({
           onClick={() => establecerVistaPerfil(2)}
           title="Actualizar información personal"
         >
-          {DICCIONARIO_BOTONES[idioma].Actualizar}
-        </button>
-      </section>
-      <hr className="PerfilInformacion__Divisor" />
-      <section className="PerfilInformacion__Seccion">
-        <p className="PerfilInformacion__Seccion--Titulo">
-          {DICCIONARIO_PERFIL_INFORMACION[idioma].Contraseña} <br />
-          🔐
-        </p>
-        <p className="PerfilInformacion__Seccion--Texto">
-          {DICCIONARIO_PERFIL_INFORMACION[idioma].MensajeContraseña}
-        </p>
-        <button
-          className="PerfilInformacion__BotonActualizar"
-          onClick={() => establecerVistaPerfil(3)}
-        >
-          {DICCIONARIO_BOTONES[idioma].Cambiar}
+          {DICCIONARIO_BOTONES[Idioma].Actualizar}
         </button>
       </section>
     </div>

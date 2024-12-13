@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useUsuarios } from "../../../../context/UsuariosContext";
+import { useSistema } from "../../../../context/SistemaContext";
 import { useBodega } from "../../../../context/BodegaContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -21,13 +21,13 @@ import { MensajePeticionPendiente } from "../../../../helpers/FuncionesGenerales
 import "../../../../estilos/componentes/Bodega/SalidasBodega/CrearSalida/ListaSalidas.css";
 
 export default function ListaSalidas({
-  idioma,
+  Idioma,
   informacionDeLaSalida,
   salida,
   establecerSalida,
 }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   const { CrearSalida } = useBodega();
   const { handleSubmit } = useForm({
     criteriaMode: "all",
@@ -66,7 +66,7 @@ export default function ListaSalidas({
   return (
     <form className="ListaSalidas" onSubmit={PeticionParaCrearSalidas}>
       <h1 className="ListaSalidas__Titulo">
-        {DICCIONARIO_LISTA_SALIDAS[idioma].ListaDeGuias} ({salida.length})
+        {DICCIONARIO_LISTA_SALIDAS[Idioma].ListaDeGuias} ({salida.length})
       </h1>
       <div className="ListaSalidas__Cuerpo" key={salida.length}>
         <table className="ListaSalidas__Cuerpo--Tabla">
@@ -75,27 +75,27 @@ export default function ListaSalidas({
               <th>
                 <ion-icon name="analytics"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_SALIDAS[idioma].Guia}
+                {DICCIONARIO_LISTA_SALIDAS[Idioma].Guia}
               </th>
               <th>
                 <ion-icon name="document-text"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_SALIDAS[idioma].Contenido}
+                {DICCIONARIO_LISTA_SALIDAS[Idioma].Contenido}
               </th>
               <th>
                 <ion-icon name="expand"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_SALIDAS[idioma].Medidas}
+                {DICCIONARIO_LISTA_SALIDAS[Idioma].Medidas}
               </th>
               <th>
                 <ion-icon name="scale"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_SALIDAS[idioma].Peso}
+                {DICCIONARIO_LISTA_SALIDAS[Idioma].Peso}
               </th>
               <th>
                 <ion-icon name="code-working"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_SALIDAS[idioma].Acciones}
+                {DICCIONARIO_LISTA_SALIDAS[Idioma].Acciones}
               </th>
             </tr>
           </thead>
@@ -129,7 +129,7 @@ export default function ListaSalidas({
           </tbody>
         </table>
       </div>
-      <GrupoDeBotonesInferior idioma={idioma} BotonFinalizar={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonFinalizar={true} />
     </form>
   );
 }

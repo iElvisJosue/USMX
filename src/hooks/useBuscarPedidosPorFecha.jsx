@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS
 import { usePedidos } from "../context/PedidosContext";
-import { useUsuarios } from "../context/UsuariosContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
@@ -12,7 +12,7 @@ import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
 export default function useBuscarPedidosPorFecha() {
   const { BuscarTodosLosPedidosPorFecha, BuscarPedidosDeUnUsuarioPorFecha } =
     usePedidos();
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   const [pedidosPorFecha, establecerPedidosPorFecha] = useState([]);
   const [cargandoPedidosPorFecha, establecerCargandoPedidosPorFecha] =
     useState(true);

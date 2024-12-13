@@ -10,14 +10,14 @@ import EditarAgencia from "./EditarAgencia";
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/AdministrarAgencias.css";
 
-export default function AdministrarAgencias({ idioma }) {
+export default function AdministrarAgencias({ Idioma }) {
   const [informacionDeLaAgencia, establecerInformacionDeLaAgencia] =
     useState(null);
 
   const [vista, establecerVista] = useState(0);
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
     vista,
     establecerVista,
     informacionDeLaAgencia,

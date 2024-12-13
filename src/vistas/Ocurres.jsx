@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useSistema } from "../context/SistemaContext.jsx";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import { DICCIONARIO_OCURRES } from "../diccionario/Diccionario";
@@ -15,23 +15,24 @@ import RegistrarOcurre from "../componentes/Ocurres/RegistrarOcurre/RegistrarOcu
 import AdministrarOcurres from "../componentes/Ocurres/AdministrarOcurres/AdministrarOcurres";
 
 export default function Ocurres() {
-  const { idioma } = useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
   const [vistaOcurres, establecerVistaOcurres] = useState(0);
 
   const OpcionesSubMenu = [
     {
-      Texto: DICCIONARIO_OCURRES[idioma].RegistrarOcurre,
+      Texto: DICCIONARIO_OCURRES[Idioma].RegistrarOcurre,
       Icono: "add-circle",
     },
     {
-      Texto: DICCIONARIO_OCURRES[idioma].AdministrarOcurres,
+      Texto: DICCIONARIO_OCURRES[Idioma].AdministrarOcurres,
       Icono: "cog",
     },
   ];
 
   // VALORES COMPARTIDOS ENTRE LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
   };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
@@ -41,8 +42,8 @@ export default function Ocurres() {
   };
 
   const TituloSubseccion = {
-    0: DICCIONARIO_OCURRES[idioma].RegistrarOcurre,
-    1: DICCIONARIO_OCURRES[idioma].AdministrarOcurres,
+    0: DICCIONARIO_OCURRES[Idioma].RegistrarOcurre,
+    1: DICCIONARIO_OCURRES[Idioma].AdministrarOcurres,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -54,7 +55,7 @@ export default function Ocurres() {
       <Menu />
       <Encabezado
         icono="alert-circle"
-        seccion={DICCIONARIO_OCURRES[idioma].Ocurres}
+        seccion={DICCIONARIO_OCURRES[Idioma].Ocurres}
         subseccion={TituloSubseccion[vistaOcurres]}
       />
       <SubMenu

@@ -5,6 +5,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
+import { useSistema } from "../context/SistemaContext";
 import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
@@ -40,8 +41,9 @@ import "../estilos/vistas/Cargas.css";
 export default function Cargas() {
   // ESTADOS AQUI
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { idioma, RegistrarTipoDeCarga, EliminarTipoDeCarga } =
-    useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
+  const { RegistrarTipoDeCarga, EliminarTipoDeCarga } = useConfiguracion();
   const {
     cargas,
     cargandoCargas,
@@ -134,30 +136,34 @@ export default function Cargas() {
   return (
     <main className="Main">
       <Menu />
-      <Encabezado icono="archive" seccion={DICCIONARIO_CARGAS[idioma].Cargas} />
+      <Encabezado
+        icono="code-working"
+        seccion={DICCIONARIO_CARGAS[Idioma].Operaciones}
+        subseccion={DICCIONARIO_CARGAS[Idioma].Cargas}
+      />
       <form className="Cargas" onSubmit={RegistrarNuevaCarga}>
-        <h2 className="Cargas__Titulo">{DICCIONARIO_CARGAS[idioma].Cargas}</h2>
+        <h2 className="Cargas__Titulo">{DICCIONARIO_CARGAS[Idioma].Cargas}</h2>
         <h4 className="Cargas__Subtitulo">
-          {DICCIONARIO_CARGAS[idioma].DescripcionCargas}
+          {DICCIONARIO_CARGAS[Idioma].DescripcionCargas}
         </h4>
         <hr className="Cargas__Separador" />
         {cargas.length > 0 ? (
           <div className="Cargas__Cuerpo">
             <section className="Cargas__Formulario">
               <b className="Cargas__Formulario--Titulo">
-                {DICCIONARIO_CARGAS[idioma].TiposDeCargas}
+                {DICCIONARIO_CARGAS[Idioma].TiposDeCargas}
               </b>
               <p className="Cargas__Formulario--Subtitulo">
-                {DICCIONARIO_CARGAS[idioma].DescripcionTiposDeCargas}
+                {DICCIONARIO_CARGAS[Idioma].DescripcionTiposDeCargas}
               </p>
               <div className="Cargas__Formulario--Inputs">
                 <span className="Cargas__Cuerpo__Inputs--Span">
                   <input
                     type="text"
                     name="TipoCarga"
-                    placeholder={DICCIONARIO_PLACEHOLDERS[idioma].Carga}
+                    placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].Carga}
                     {...register("TipoCarga", {
-                      required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+                      required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
                       pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
                     })}
                   />
@@ -167,20 +173,20 @@ export default function Cargas() {
                   <input
                     type="text"
                     name="PorcentajeCarga"
-                    placeholder={DICCIONARIO_PLACEHOLDERS[idioma].Porcentaje}
+                    placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].Porcentaje}
                     {...register("PorcentajeCarga", {
-                      required: DICCIONARIO_MENSAJES_DE_ERROR[idioma].Requerido,
+                      required: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Requerido,
                       pattern: REGEX_SOLO_NUMEROS,
                       maxLength: {
                         value: 3,
                         message:
-                          DICCIONARIO_MENSAJES_DE_ERROR[idioma].Max3Numeros,
+                          DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max3Numeros,
                       },
                     })}
                   />
                   {MensajeDeError("PorcentajeCarga")}
                 </span>
-                <button>{DICCIONARIO_BOTONES[idioma].Añadir}</button>
+                <button>{DICCIONARIO_BOTONES[Idioma].Añadir}</button>
               </div>
             </section>
             <section className="Cargas__Lista">
@@ -203,7 +209,7 @@ export default function Cargas() {
         ) : (
           <MensajeGeneral
             Imagen="SinResultados.png"
-            Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+            Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           />
         )}
       </form>

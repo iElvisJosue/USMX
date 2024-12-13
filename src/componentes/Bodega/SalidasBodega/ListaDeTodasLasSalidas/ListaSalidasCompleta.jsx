@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/SalidasBodega/ListaDeTodasLasSalidas/ListaSalidasCompleta.css";
 
 export default function ListaSalidasCompleta({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDeLaSalida,
 }) {
   const { salidas, cargando, filtro, establecerFiltro } =
@@ -41,13 +41,13 @@ export default function ListaSalidasCompleta({
   return (
     <div className="ListaSalidasCompleta">
       <h1 className="ListaSalidasCompleta__Titulo">
-        {DICCIONARIO_LISTA_SALIDAS_COMPLETA[idioma].ListaCompletaDeSalidas}
+        {DICCIONARIO_LISTA_SALIDAS_COMPLETA[Idioma].ListaCompletaDeSalidas}
       </h1>
       <span className="ListaSalidasCompleta__Buscar">
         <input
           value={filtro}
           type="text"
-          placeholder={DICCIONARIO_LISTA_SALIDAS_COMPLETA[idioma].BuscarSalida}
+          placeholder={DICCIONARIO_LISTA_SALIDAS_COMPLETA[Idioma].BuscarSalida}
           onChange={BuscarSalidas}
         />
         <span className="ListaSalidasCompleta__Buscar__Lupa">
@@ -58,8 +58,8 @@ export default function ListaSalidasCompleta({
         <>
           <small className="ListaSalidasCompleta__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {salidas.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {salidas.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaSalidasCompleta__Cuerpo">
             <table className="ListaSalidasCompleta__Cuerpo__Tabla">
@@ -68,27 +68,27 @@ export default function ListaSalidasCompleta({
                   <th>
                     <ion-icon name="document-text"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[idioma].idSalida}
+                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[Idioma].idSalida}
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[idioma].CPedidos}
+                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[Idioma].CPedidos}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[idioma].FechaCreacion}
+                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[Idioma].FechaCreacion}
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_SALIDAS_COMPLETA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -111,7 +111,7 @@ export default function ListaSalidasCompleta({
                           EstablecerLosDetallesDeLaSalida(infSalida, true)
                         }
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -123,11 +123,11 @@ export default function ListaSalidasCompleta({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[idioma].NoResultados}
+          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Bodega-Salidas"}
-          TextoBoton={DICCIONARIO_LISTA_SALIDAS_COMPLETA[idioma].CrearSalida}
+          TextoBoton={DICCIONARIO_LISTA_SALIDAS_COMPLETA[Idioma].CrearSalida}
         />
       )}
     </div>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useUsuarios } from "../../../../context/UsuariosContext";
+import { useSistema } from "../../../../context/SistemaContext";
 import { useBodega } from "../../../../context/BodegaContext";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -21,13 +21,13 @@ import { MensajePeticionPendiente } from "../../../../helpers/FuncionesGenerales
 import "../../../../estilos/componentes/Bodega/EntradasBodega/CrearEntrada/ListaEntradas.css";
 
 export default function ListaEntradas({
-  idioma,
+  Idioma,
   informacionDeLaEntrada,
   entrada,
   establecerEntrada,
 }) {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
-  const { infUsuario } = useUsuarios();
+  const { infUsuario } = useSistema();
   const { CrearEntrada } = useBodega();
   const { handleSubmit } = useForm({
     criteriaMode: "all",
@@ -66,7 +66,7 @@ export default function ListaEntradas({
   return (
     <form className="ListaEntradas" onSubmit={PeticionParaCrearEntradas}>
       <h1 className="ListaEntradas__Titulo">
-        {DICCIONARIO_LISTA_ENTRADAS[idioma].ListaDeGuias} ({entrada.length})
+        {DICCIONARIO_LISTA_ENTRADAS[Idioma].ListaDeGuias} ({entrada.length})
       </h1>
       <div className="ListaEntradas__Cuerpo" key={entrada.length}>
         <table className="ListaEntradas__Cuerpo--Tabla">
@@ -75,27 +75,27 @@ export default function ListaEntradas({
               <th>
                 <ion-icon name="analytics"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_ENTRADAS[idioma].Guia}
+                {DICCIONARIO_LISTA_ENTRADAS[Idioma].Guia}
               </th>
               <th>
                 <ion-icon name="document-text"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_ENTRADAS[idioma].Contenido}
+                {DICCIONARIO_LISTA_ENTRADAS[Idioma].Contenido}
               </th>
               <th>
                 <ion-icon name="expand"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_ENTRADAS[idioma].Medidas}
+                {DICCIONARIO_LISTA_ENTRADAS[Idioma].Medidas}
               </th>
               <th>
                 <ion-icon name="scale"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_ENTRADAS[idioma].Peso}
+                {DICCIONARIO_LISTA_ENTRADAS[Idioma].Peso}
               </th>
               <th>
                 <ion-icon name="code-working"></ion-icon>
                 <br />
-                {DICCIONARIO_LISTA_ENTRADAS[idioma].Acciones}
+                {DICCIONARIO_LISTA_ENTRADAS[Idioma].Acciones}
               </th>
             </tr>
           </thead>
@@ -129,7 +129,7 @@ export default function ListaEntradas({
           </tbody>
         </table>
       </div>
-      <GrupoDeBotonesInferior idioma={idioma} BotonFinalizar={true} />
+      <GrupoDeBotonesInferior Idioma={Idioma} BotonFinalizar={true} />
     </form>
   );
 }

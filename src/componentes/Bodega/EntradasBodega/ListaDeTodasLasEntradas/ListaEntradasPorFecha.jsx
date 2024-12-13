@@ -20,7 +20,7 @@ import { FormatearFecha } from "../../../../helpers/FuncionesGenerales";
 import "../../../../estilos/componentes/Bodega/EntradasBodega/ListaDeTodasLasEntradas/ListaEntradasPorFecha.css";
 
 export default function ListaEntradasPorFecha({
-  idioma,
+  Idioma,
   EstablecerLosDetallesDeLaEntrada,
 }) {
   const {
@@ -44,7 +44,7 @@ export default function ListaEntradasPorFecha({
   return (
     <div className="ListaEntradasPorFecha">
       <h1 className="ListaEntradasPorFecha__Titulo">
-        {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[idioma].BuscarEntradasPorFecha}
+        {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].BuscarEntradasPorFecha}
         <small className="ListaEntradasPorFecha__Titulo--Fechas">
           ({FormatearFecha(primeraFecha)} - {FormatearFecha(segundaFecha)})
         </small>
@@ -71,8 +71,8 @@ export default function ListaEntradasPorFecha({
         <>
           <small className="ListaEntradasPorFecha__TextoResultados">
             <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[idioma].Obtuvimos} {entradasPorFecha.length}{" "}
-            {DICCIONARIO_RESULTADOS[idioma].Resultados}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {entradasPorFecha.length}{" "}
+            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
           <div className="ListaEntradasPorFecha__Cuerpo">
             <table className="ListaEntradasPorFecha__Cuerpo__Tabla">
@@ -81,27 +81,27 @@ export default function ListaEntradasPorFecha({
                   <th>
                     <ion-icon name="document-text"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[idioma].idEntrada}
+                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].idEntrada}
                   </th>
                   <th>
                     <ion-icon name="apps"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[idioma].CPedidos}
+                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].CPedidos}
                   </th>
                   <th>
                     <ion-icon name="person-circle"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[idioma].Usuario}
+                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].Usuario}
                   </th>
                   <th>
                     <ion-icon name="calendar"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[idioma].FechaCreacion}
+                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].FechaCreacion}
                   </th>
                   <th>
                     <ion-icon name="code-working"></ion-icon>
                     <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[idioma].Acciones}
+                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].Acciones}
                   </th>
                 </tr>
               </thead>
@@ -124,7 +124,7 @@ export default function ListaEntradasPorFecha({
                           EstablecerLosDetallesDeLaEntrada(infEntrada, false)
                         }
                       >
-                        {DICCIONARIO_BOTONES[idioma].Ver}
+                        {DICCIONARIO_BOTONES[Idioma].Ver}
                       </button>
                     </td>
                   </tr>
@@ -137,7 +137,7 @@ export default function ListaEntradasPorFecha({
         <MensajeGeneral
           Imagen={"SinResultados.png"}
           Texto={`${
-            DICCIONARIO_RESULTADOS[idioma].NoResultadoPorFecha
+            DICCIONARIO_RESULTADOS[Idioma].NoResultadoPorFecha
           } ${primeraFecha.split("-").reverse().join("/")} - ${segundaFecha
             .split("-")
             .reverse()
@@ -145,7 +145,7 @@ export default function ListaEntradasPorFecha({
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Bodega-Entradas"}
-          TextoBoton={DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[idioma].CrearEntrada}
+          TextoBoton={DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].CrearEntrada}
         />
       )}
     </div>

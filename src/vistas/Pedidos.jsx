@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS DICCIONARIOS A USAR
 import { DICCIONARIO_PEDIDOS } from "../diccionario/Diccionario";
@@ -15,21 +15,22 @@ import RealizarPedido from "../componentes/Pedidos/RealizarPedido/RealizarPedido
 import ListaPedidos from "../componentes/Pedidos/ListaPedidos/ListaPedidos";
 
 export default function Ocurres() {
-  const { idioma } = useConfiguracion();
+  const { infUsuario } = useSistema();
+  const { Idioma } = infUsuario;
   const [vistaOcurres, establecerVistaOcurres] = useState(0);
 
   // VALORES COMPARTIDOS ENTRE LOS COMPONENTES
   const valoresParaLosComponentes = {
-    idioma,
+    Idioma,
   };
 
   const OpcionesSubMenu = [
     {
-      Texto: DICCIONARIO_PEDIDOS[idioma].RealizarPedido,
+      Texto: DICCIONARIO_PEDIDOS[Idioma].RealizarPedido,
       Icono: "cube",
     },
     {
-      Texto: DICCIONARIO_PEDIDOS[idioma].ListaDePedidos,
+      Texto: DICCIONARIO_PEDIDOS[Idioma].ListaDePedidos,
       Icono: "list",
     },
   ];
@@ -41,8 +42,8 @@ export default function Ocurres() {
   };
 
   const TituloSubseccion = {
-    0: DICCIONARIO_PEDIDOS[idioma].RealizarPedido,
-    1: DICCIONARIO_PEDIDOS[idioma].ListaDePedidos,
+    0: DICCIONARIO_PEDIDOS[Idioma].RealizarPedido,
+    1: DICCIONARIO_PEDIDOS[Idioma].ListaDePedidos,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
@@ -54,7 +55,7 @@ export default function Ocurres() {
       <Menu />
       <Encabezado
         icono="storefront"
-        seccion={DICCIONARIO_PEDIDOS[idioma].Paqueteria}
+        seccion={DICCIONARIO_PEDIDOS[Idioma].Paqueteria}
         subseccion={TituloSubseccion[vistaOcurres]}
       />
       <SubMenu
