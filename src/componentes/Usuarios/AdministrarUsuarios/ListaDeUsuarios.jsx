@@ -192,6 +192,12 @@ export default function ListaDeUsuarios({
               establecerObtenerListaNuevamente={
                 establecerObtenerUsuariosNuevamente
               }
+              MostrarBotonActivarDesactivar={
+                infUsuario.Permisos === "Administrador" ? false : true
+              }
+              MostrarOpciones={
+                infUsuario.Permisos === "Administrador" ? false : true
+              }
             />
           ))}
 

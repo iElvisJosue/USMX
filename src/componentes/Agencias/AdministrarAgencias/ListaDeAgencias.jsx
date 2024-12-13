@@ -282,6 +282,9 @@ export default function ListaDeAgencias({
               establecerObtenerListaNuevamente={
                 establecerObtenerAgenciasNuevamente
               }
+              MostrarBotonActivarDesactivar={
+                infAgencia.NombreAgencia !== "USMX Express" ? true : false
+              }
             />
           ))}
           <small className="ListaDeAgencias__Contenedor__TextoPaginas">

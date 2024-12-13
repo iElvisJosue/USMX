@@ -22,6 +22,8 @@ export default function AdministrarRegistro({
   FuncionActivarDesactivar,
   obtenerListaNuevamente,
   establecerObtenerListaNuevamente,
+  MostrarBotonActivarDesactivar = true,
+  MostrarOpciones = true,
 }) {
   // ESTADOS AQUI
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
@@ -77,8 +79,7 @@ export default function AdministrarRegistro({
             </span>
           ))}
         </div>
-        {NombreRegistro !== "USMX Express" &&
-        NombreRegistro !== "Administrador" ? (
+        {MostrarBotonActivarDesactivar && (
           <span className={CLASE_CONTENEDOR_DETALLES}>
             {Status === 1 ? (
               <button
@@ -96,28 +97,26 @@ export default function AdministrarRegistro({
               </button>
             )}
           </span>
-        ) : null}
-        {NombreRegistro !== "Administrador" &&
-          Status === 1 &&
-          OpcionesBotones.length > 0 && (
-            <span className="AdministrarRegistro__Opciones">
-              {OpcionesBotones.map(
-                (
-                  { TituloBoton, IconoBoton, ColorBoton, FuncionBoton },
-                  index
-                ) => (
-                  <button
-                    className={`AdministrarRegistro__Opciones--Boton ${ColorBoton}`}
-                    title={TituloBoton || "Presionar"}
-                    onClick={() => FuncionBoton(infRegistro)}
-                    key={index}
-                  >
-                    <ion-icon name={IconoBoton}></ion-icon>
-                  </button>
-                )
-              )}
-            </span>
-          )}
+        )}
+        {MostrarOpciones && (
+          <span className="AdministrarRegistro__Opciones">
+            {OpcionesBotones.map(
+              (
+                { TituloBoton, IconoBoton, ColorBoton, FuncionBoton },
+                index
+              ) => (
+                <button
+                  className={`AdministrarRegistro__Opciones--Boton ${ColorBoton}`}
+                  title={TituloBoton || "Presionar"}
+                  onClick={() => FuncionBoton(infRegistro)}
+                  key={index}
+                >
+                  <ion-icon name={IconoBoton}></ion-icon>
+                </button>
+              )
+            )}
+          </span>
+        )}
       </span>
     </section>
   );
