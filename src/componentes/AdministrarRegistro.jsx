@@ -98,7 +98,7 @@ export default function AdministrarRegistro({
             )}
           </span>
         )}
-        {MostrarOpciones && (
+        {Status === 1 && MostrarOpciones && (
           <span className="AdministrarRegistro__Opciones">
             {OpcionesBotones.map(
               (
