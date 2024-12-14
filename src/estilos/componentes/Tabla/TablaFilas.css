@@ -1,0 +1,72 @@
+.Tabla__Cuerpo__Filas--TR:nth-child(odd) {
+  background-color: var(--ColorSecundario);
+}
+.Tabla__Cuerpo__Filas {
+  background-color: var(--ColorBlanco);
+  text-align: center;
+}
+.Tabla__Cuerpo__Filas--TR--TD {
+  padding: 10px;
+  font-size: 14px;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  text-align: center;
+}
+.Tabla__Cuerpo__Filas--TR--TD.Botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton {
+  cursor: pointer;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  width: 30px;
+  height: 30px;
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 50%;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton.Negro {
+  background-color: var(--ColorNegro);
+  border: 2px solid var(--ColorNegro);
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton.Negro:hover {
+  background-color: transparent;
+  color: var(--ColorNegro);
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton.Rojo {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton.Rojo:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton.Verde {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton.Verde:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton.Naranja {
+  background-color: var(--ColorNaranja);
+  border: 2px solid var(--ColorNaranja);
+}
+.Tabla__Cuerpo__Filas--TR--TD--Boton.Naranja:hover {
+  background-color: transparent;
+  color: var(--ColorNaranja);
+}

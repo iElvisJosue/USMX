@@ -44,7 +44,7 @@ export default function DetallesMovimientoEnBodega({
       <section className="DetallesMovimientoEnBodega__Opciones">
         <button
           className="DetallesMovimientoEnBodega__Opciones--Boton"
-          onClick={() => (esCompleta ? establecerVista(0) : establecerVista(1))}
+          onClick={() => establecerVista(esCompleta ? 0 : 1)}
         >
           <ion-icon name="arrow-back"></ion-icon>
         </button>

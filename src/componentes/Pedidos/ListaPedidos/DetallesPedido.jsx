@@ -25,6 +25,7 @@ import "../../../estilos/componentes/Pedidos/ListaPedidos/DetallesPedido.css";
 
 export default function DetallesPedido({
   Idioma,
+  esCompleta,
   detallesPedido,
   establecerVista,
   ReiniciarRealizarPedido,
@@ -69,7 +70,7 @@ export default function DetallesPedido({
             ) : (
               <button
                 className="DetallesPedido__Opciones--Boton Regresar"
-                onClick={() => establecerVista(0)}
+                onClick={() => establecerVista(esCompleta ? 0 : 1)}
               >
                 <ion-icon name="arrow-back"></ion-icon>
               </button>

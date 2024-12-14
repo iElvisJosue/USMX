@@ -1,0 +1,33 @@
+.Tabla__Cuerpo__Encabezado--TR--TH {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  min-width: 200px;
+  text-align: center;
+}
+.Tabla__Cuerpo__Encabezado--TR--TH.Negro {
+  background-color: var(--ColorNegro);
+}
+.Tabla__Cuerpo__Encabezado--TR--TH.Rojo {
+  background-color: var(--ColorRojo);
+}
+.Tabla__Cuerpo__Encabezado--TR--TH.Verde {
+  background-color: var(--ColorVerde);
+}
+.Tabla__Cuerpo__Encabezado--TR--TH.Naranja {
+  background-color: var(--ColorNaranja);
+}
+.Tabla__Cuerpo__Encabezado--TR--TH ion-icon {
+  font-size: 20px;
+}
+@media (max-width: 500px) {
+  .Tabla__Cuerpo__Encabezado--TR--TH td {
+    font-size: 12px;
+  }
+  .Tabla__Cuerpo__Encabezado--TR--TH td {
+    padding: 5px;
+  }
+}

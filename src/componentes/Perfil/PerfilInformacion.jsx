@@ -71,6 +71,22 @@ export default function PerfilInformacion({
           {DICCIONARIO_BOTONES[Idioma].Actualizar}
         </button>
       </section>
+      <hr className="PerfilInformacion__Divisor" />
+      <section className="PerfilInformacion__Seccion">
+        <p className="PerfilInformacion__Seccion--Titulo">
+          {DICCIONARIO_PERFIL_INFORMACION[Idioma].Contraseña} <br />
+          🔐
+        </p>
+        <p className="PerfilInformacion__Seccion--Texto">
+          {DICCIONARIO_PERFIL_INFORMACION[Idioma].MensajeContraseña}
+        </p>
+        <button
+          className="PerfilInformacion__BotonActualizar"
+          onClick={() => establecerVistaPerfil(3)}
+        >
+          {DICCIONARIO_BOTONES[Idioma].Cambiar}
+        </button>
+      </section>
     </div>
   );
 }

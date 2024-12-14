@@ -44,7 +44,7 @@ export default function DetallesEntrada({
       <section className="DetallesEntrada__Opciones">
         <button
           className="DetallesEntrada__Opciones--Boton"
-          onClick={() => (esCompleta ? establecerVista(0) : establecerVista(1))}
+          onClick={() => establecerVista(esCompleta ? 0 : 1)}
         >
           <ion-icon name="arrow-back"></ion-icon>
         </button>

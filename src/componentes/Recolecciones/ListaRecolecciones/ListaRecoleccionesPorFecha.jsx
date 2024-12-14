@@ -6,11 +6,13 @@ import MensajeGeneral from "../../MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarRecoleccionesPorFecha from "../../../hooks/Recolecciones/useBuscarRecoleccionesPorFecha";
 
+// COMPONENTES A USAR
+import Tabla from "../../Tabla/Tabla";
+
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA,
   DICCIONARIO_RESULTADOS,
-  DICCIONARIO_BOTONES,
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -37,6 +39,16 @@ export default function ListaRecoleccionesPorFecha({
   };
   const ManejarSegundaFecha = (event) => {
     establecerSegundaFecha(event.target.value);
+  };
+
+  const FormatearFechaDeLasRecolecciones = () => {
+    recoleccionesPorFecha.map(
+      (recoleccion) =>
+        (recoleccion.FechaCreacionRecoleccion = FormatearFecha(
+          recoleccion.FechaCreacionRecoleccion.slice(0, 10)
+        ))
+    );
+    return recoleccionesPorFecha;
   };
 
   if (cargandoRecoleccionesPorFecha) return <Cargando />;
@@ -78,73 +90,63 @@ export default function ListaRecoleccionesPorFecha({
             {recoleccionesPorFecha.length}{" "}
             {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
-          <div className="ListaRecoleccionesPorFecha__Cuerpo">
-            <table className="ListaRecoleccionesPorFecha__Cuerpo__Tabla">
-              <thead className="ListaRecoleccionesPorFecha__Cuerpo__Tabla__Encabezado">
-                <tr>
-                  <th>
-                    <ion-icon name="document-text"></ion-icon>
-                    <br />
-                    {
-                      DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma]
-                        .idRecoleccion
-                    }
-                  </th>
-                  <th>
-                    <ion-icon name="apps"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma].CPedidos}
-                  </th>
-                  <th>
-                    <ion-icon name="person-circle"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma].Usuario}
-                  </th>
-                  <th>
-                    <ion-icon name="calendar"></ion-icon>
-                    <br />
-                    {
-                      DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma]
-                        .FechaCreacion
-                    }
-                  </th>
-                  <th>
-                    <ion-icon name="code-working"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma].Acciones}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="ListaRecoleccionesPorFecha__Cuerpo__Tabla__Cuerpo">
-                {recoleccionesPorFecha.map((recoleccion, index) => (
-                  <tr key={index}>
-                    <td>{recoleccion.idRecoleccion}</td>
-                    <td>{recoleccion.CantidadRecoleccion}</td>
-                    <td>{recoleccion.Usuario}</td>
-                    <td>
-                      {FormatearFecha(
-                        recoleccion.FechaCreacionRecoleccion.slice(0, 10)
-                      )}{" "}
-                      {recoleccion.HoraCreacionRecoleccion}
-                    </td>
-                    <td>
-                      <button
-                        className="ListaRecoleccionesPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles"
-                        onClick={() =>
-                          EstablecerLosDetallesDeLaRecoleccion(
-                            recoleccion,
-                            false
-                          )
-                        }
-                      >
-                        {DICCIONARIO_BOTONES[Idioma].Ver}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Tabla
+            ContenidoTabla={FormatearFechaDeLasRecolecciones()}
+            EncabezadoTabla={[
+              {
+                Icono: "document-text",
+                Texto:
+                  DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma]
+                    .idRecoleccion,
+              },
+              {
+                Icono: "apps",
+                Texto:
+                  DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma].CPedidos,
+              },
+              {
+                Icono: "person-circle",
+                Texto:
+                  DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma].Usuario,
+              },
+              {
+                Icono: "calendar",
+                Texto:
+                  DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma]
+                    .FechaCreacion,
+              },
+              {
+                Icono: "code-working",
+                Texto:
+                  DICCIONARIO_LISTA_RECOLECCIONES_POR_FECHA[Idioma].Acciones,
+              },
+            ]}
+            FilasTabla={[
+              {
+                TextoUno: "idRecoleccion",
+              },
+              {
+                TextoUno: "CantidadRecoleccion",
+              },
+              {
+                TextoUno: "Usuario",
+              },
+              {
+                TextoUno: "FechaCreacionRecoleccion",
+                TextoDos: "HoraCreacionRecoleccion",
+              },
+              {
+                Botones: [
+                  {
+                    FuncionBoton: EstablecerLosDetallesDeLaRecoleccion,
+                    IconoBoton: "eye",
+                    TituloBoton: "Ver detalles",
+                    Completa: false,
+                  },
+                ],
+              },
+            ]}
+          />
         </>
       ) : (
         <MensajeGeneral

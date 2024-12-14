@@ -6,11 +6,13 @@ import MensajeGeneral from "../../../MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarSalidasABodegaPorFecha from "../../../../hooks/Bodega/Salidas/useBuscarSalidasABodegaPorFecha";
 
+// COMPONENTES A USAR
+import Tabla from "../../../Tabla/Tabla";
+
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_LISTA_SALIDAS_POR_FECHA,
   DICCIONARIO_RESULTADOS,
-  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -37,6 +39,16 @@ export default function ListaSalidasPorFecha({
   };
   const ManejarSegundaFecha = (event) => {
     establecerSegundaFecha(event.target.value);
+  };
+
+  const FormatearFechaDeLasSalidas = () => {
+    salidasPorFecha.map(
+      (salida) =>
+        (salida.FechaCreacionSalida = FormatearFecha(
+          salida.FechaCreacionSalida.slice(0, 10)
+        ))
+    );
+    return salidasPorFecha;
   };
 
   if (cargandoSalidasPorFecha) return <Cargando />;
@@ -74,64 +86,59 @@ export default function ListaSalidasPorFecha({
             {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {salidasPorFecha.length}{" "}
             {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
-          <div className="ListaSalidasPorFecha__Cuerpo">
-            <table className="ListaSalidasPorFecha__Cuerpo__Tabla">
-              <thead className="ListaSalidasPorFecha__Cuerpo__Tabla__Encabezado">
-                <tr>
-                  <th>
-                    <ion-icon name="document-text"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].idSalida}
-                  </th>
-                  <th>
-                    <ion-icon name="apps"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].CPedidos}
-                  </th>
-                  <th>
-                    <ion-icon name="person-circle"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].Usuario}
-                  </th>
-                  <th>
-                    <ion-icon name="calendar"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].FechaCreacion}
-                  </th>
-                  <th>
-                    <ion-icon name="code-working"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].Acciones}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="ListaSalidasPorFecha__Cuerpo__Tabla__Cuerpo">
-                {salidasPorFecha.map((infSalida, index) => (
-                  <tr key={index}>
-                    <td>{infSalida.idSalidaBodega}</td>
-                    <td>{infSalida.CantidadSalidas}</td>
-                    <td>{infSalida.Usuario}</td>
-                    <td>
-                      {FormatearFecha(
-                        infSalida.FechaCreacionSalida.slice(0, 10)
-                      )}{" "}
-                      {infSalida.HoraCreacionSalida}
-                    </td>
-                    <td>
-                      <button
-                        className="ListaSalidasPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles"
-                        onClick={() =>
-                          EstablecerLosDetallesDeLaSalida(infSalida)
-                        }
-                      >
-                        {DICCIONARIO_BOTONES[Idioma].Ver}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Tabla
+            ColorTabla="Negro"
+            ContenidoTabla={FormatearFechaDeLasSalidas()}
+            EncabezadoTabla={[
+              {
+                Icono: "document-text",
+                Texto: DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].idSalida,
+              },
+              {
+                Icono: "apps",
+                Texto: DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].CPedidos,
+              },
+              {
+                Icono: "person-circle",
+                Texto: DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].Usuario,
+              },
+              {
+                Icono: "calendar",
+                Texto:
+                  DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].FechaCreacion,
+              },
+              {
+                Icono: "code-working",
+                Texto: DICCIONARIO_LISTA_SALIDAS_POR_FECHA[Idioma].Acciones,
+              },
+            ]}
+            FilasTabla={[
+              {
+                TextoUno: "idSalidaBodega",
+              },
+              {
+                TextoUno: "CantidadSalidas",
+              },
+              {
+                TextoUno: "Usuario",
+              },
+              {
+                TextoUno: "FechaCreacionSalida",
+                TextoDos: "HoraCreacionSalida",
+              },
+              {
+                Botones: [
+                  {
+                    FuncionBoton: EstablecerLosDetallesDeLaSalida,
+                    IconoBoton: "eye",
+                    TituloBoton: "Ver detalles",
+                    Completa: false,
+                    ColorBoton: "Negro",
+                  },
+                ],
+              },
+            ]}
+          />
         </>
       ) : (
         <MensajeGeneral

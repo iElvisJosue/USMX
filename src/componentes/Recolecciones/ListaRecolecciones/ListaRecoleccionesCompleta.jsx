@@ -6,11 +6,13 @@ import MensajeGeneral from "../../MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarRecoleccionesPorFiltro from "../../../hooks/Recolecciones/useBuscarRecoleccionesPorFiltro";
 
+// COMPONENTES A USAR
+import Tabla from "../../Tabla/Tabla";
+
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA,
   DICCIONARIO_RESULTADOS,
-  DICCIONARIO_BOTONES,
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -34,6 +36,16 @@ export default function ListaRecoleccionesCompleta({
     if (regex.test(valorIntroducido)) {
       establecerFiltro(valorIntroducido);
     }
+  };
+
+  const FormatearFechaDeLasRecolecciones = () => {
+    recolecciones.map(
+      (recoleccion) =>
+        (recoleccion.FechaCreacionRecoleccion = FormatearFecha(
+          recoleccion.FechaCreacionRecoleccion.slice(0, 10)
+        ))
+    );
+    return recolecciones;
   };
 
   if (cargando) return <Cargando />;
@@ -66,73 +78,62 @@ export default function ListaRecoleccionesCompleta({
             {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {recolecciones.length}{" "}
             {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
-          <div className="ListaRecoleccionesCompleta__Cuerpo">
-            <table className="ListaRecoleccionesCompleta__Cuerpo__Tabla">
-              <thead className="ListaRecoleccionesCompleta__Cuerpo__Tabla__Encabezado">
-                <tr>
-                  <th>
-                    <ion-icon name="document-text"></ion-icon>
-                    <br />
-                    {
-                      DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma]
-                        .idRecoleccion
-                    }
-                  </th>
-                  <th>
-                    <ion-icon name="apps"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].CPedidos}
-                  </th>
-                  <th>
-                    <ion-icon name="person-circle"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].Usuario}
-                  </th>
-                  <th>
-                    <ion-icon name="calendar"></ion-icon>
-                    <br />
-                    {
-                      DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma]
-                        .FechaCreacion
-                    }
-                  </th>
-                  <th>
-                    <ion-icon name="code-working"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].Acciones}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="ListaRecoleccionesCompleta__Cuerpo__Tabla__Cuerpo">
-                {recolecciones.map((recoleccion, index) => (
-                  <tr key={index}>
-                    <td>{recoleccion.idRecoleccion}</td>
-                    <td>{recoleccion.CantidadRecoleccion}</td>
-                    <td>{recoleccion.Usuario}</td>
-                    <td>
-                      {FormatearFecha(
-                        recoleccion.FechaCreacionRecoleccion.slice(0, 10)
-                      )}{" "}
-                      {recoleccion.HoraCreacionRecoleccion}
-                    </td>
-                    <td>
-                      <button
-                        className="ListaRecoleccionesCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles"
-                        onClick={() =>
-                          EstablecerLosDetallesDeLaRecoleccion(
-                            recoleccion,
-                            true
-                          )
-                        }
-                      >
-                        {DICCIONARIO_BOTONES[Idioma].Ver}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Tabla
+            ContenidoTabla={FormatearFechaDeLasRecolecciones()}
+            EncabezadoTabla={[
+              {
+                Icono: "document-text",
+                Texto:
+                  DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma]
+                    .idRecoleccion,
+              },
+              {
+                Icono: "apps",
+                Texto:
+                  DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].CPedidos,
+              },
+              {
+                Icono: "person-circle",
+                Texto: DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].Usuario,
+              },
+              {
+                Icono: "calendar",
+                Texto:
+                  DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma]
+                    .FechaCreacion,
+              },
+              {
+                Icono: "code-working",
+                Texto:
+                  DICCIONARIO_LISTA_RECOLECCIONES_COMPLETA[Idioma].Acciones,
+              },
+            ]}
+            FilasTabla={[
+              {
+                TextoUno: "idRecoleccion",
+              },
+              {
+                TextoUno: "CantidadRecoleccion",
+              },
+              {
+                TextoUno: "Usuario",
+              },
+              {
+                TextoUno: "FechaCreacionRecoleccion",
+                TextoDos: "HoraCreacionRecoleccion",
+              },
+              {
+                Botones: [
+                  {
+                    FuncionBoton: EstablecerLosDetallesDeLaRecoleccion,
+                    IconoBoton: "eye",
+                    TituloBoton: "Ver detalles",
+                    Completa: true,
+                  },
+                ],
+              },
+            ]}
+          />
         </>
       ) : (
         <MensajeGeneral

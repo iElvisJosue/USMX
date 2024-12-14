@@ -6,11 +6,13 @@ import MensajeGeneral from "../../../MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarEntradasABodegaPorFecha from "../../../../hooks/Bodega/Entradas/useBuscarEntradasABodegaPorFecha";
 
+// COMPONENTES A USAR
+import Tabla from "../../../Tabla/Tabla";
+
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_LISTA_ENTRADAS_POR_FECHA,
   DICCIONARIO_RESULTADOS,
-  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -37,6 +39,16 @@ export default function ListaEntradasPorFecha({
   };
   const ManejarSegundaFecha = (event) => {
     establecerSegundaFecha(event.target.value);
+  };
+
+  const FormatearFechaDeLasEntradas = () => {
+    entradasPorFecha.map(
+      (entrada) =>
+        (entrada.FechaCreacionEntrada = FormatearFecha(
+          entrada.FechaCreacionEntrada.slice(0, 10)
+        ))
+    );
+    return entradasPorFecha;
   };
 
   if (cargandoEntradasPorFecha) return <Cargando />;
@@ -74,64 +86,59 @@ export default function ListaEntradasPorFecha({
             {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {entradasPorFecha.length}{" "}
             {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
-          <div className="ListaEntradasPorFecha__Cuerpo">
-            <table className="ListaEntradasPorFecha__Cuerpo__Tabla">
-              <thead className="ListaEntradasPorFecha__Cuerpo__Tabla__Encabezado">
-                <tr>
-                  <th>
-                    <ion-icon name="document-text"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].idEntrada}
-                  </th>
-                  <th>
-                    <ion-icon name="apps"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].CPedidos}
-                  </th>
-                  <th>
-                    <ion-icon name="person-circle"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].Usuario}
-                  </th>
-                  <th>
-                    <ion-icon name="calendar"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].FechaCreacion}
-                  </th>
-                  <th>
-                    <ion-icon name="code-working"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].Acciones}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo">
-                {entradasPorFecha.map((infEntrada, index) => (
-                  <tr key={index}>
-                    <td>{infEntrada.idEntradaBodega}</td>
-                    <td>{infEntrada.CantidadEntradas}</td>
-                    <td>{infEntrada.Usuario}</td>
-                    <td>
-                      {FormatearFecha(
-                        infEntrada.FechaCreacionEntrada.slice(0, 10)
-                      )}{" "}
-                      {infEntrada.HoraCreacionEntrada}
-                    </td>
-                    <td>
-                      <button
-                        className="ListaEntradasPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles"
-                        onClick={() =>
-                          EstablecerLosDetallesDeLaEntrada(infEntrada, false)
-                        }
-                      >
-                        {DICCIONARIO_BOTONES[Idioma].Ver}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Tabla
+            ColorTabla="Negro"
+            ContenidoTabla={FormatearFechaDeLasEntradas()}
+            EncabezadoTabla={[
+              {
+                Icono: "document-text",
+                Texto: DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].idEntrada,
+              },
+              {
+                Icono: "apps",
+                Texto: DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].CPedidos,
+              },
+              {
+                Icono: "person-circle",
+                Texto: DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].Usuario,
+              },
+              {
+                Icono: "calendar",
+                Texto:
+                  DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].FechaCreacion,
+              },
+              {
+                Icono: "code-working",
+                Texto: DICCIONARIO_LISTA_ENTRADAS_POR_FECHA[Idioma].Acciones,
+              },
+            ]}
+            FilasTabla={[
+              {
+                TextoUno: "idEntradaBodega",
+              },
+              {
+                TextoUno: "CantidadEntradas",
+              },
+              {
+                TextoUno: "Usuario",
+              },
+              {
+                TextoUno: "FechaCreacionEntrada",
+                TextoDos: "HoraCreacionEntrada",
+              },
+              {
+                Botones: [
+                  {
+                    FuncionBoton: EstablecerLosDetallesDeLaEntrada,
+                    IconoBoton: "eye",
+                    TituloBoton: "Ver detalles",
+                    Completa: false,
+                    ColorBoton: "Negro",
+                  },
+                ],
+              },
+            ]}
+          />
         </>
       ) : (
         <MensajeGeneral

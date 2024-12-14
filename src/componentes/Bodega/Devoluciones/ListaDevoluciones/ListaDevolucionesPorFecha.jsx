@@ -6,11 +6,13 @@ import MensajeGeneral from "../../../MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarDevolucionesPorFecha from "../../../../hooks/Bodega/Devoluciones/useBuscarDevolucionesPorFecha";
 
+// COMPONENTES A USAR
+import Tabla from "../../../Tabla/Tabla";
+
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA,
   DICCIONARIO_RESULTADOS,
-  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -37,6 +39,16 @@ export default function ListaDevolucionesPorFecha({
   };
   const ManejarSegundaFecha = (event) => {
     establecerSegundaFecha(event.target.value);
+  };
+
+  const FormatearFechaDeLasDevoluciones = () => {
+    devolucionesPorFecha.map(
+      (devolucion) =>
+        (devolucion.FechaCreacionDevolucion = FormatearFecha(
+          devolucion.FechaCreacionDevolucion.slice(0, 10)
+        ))
+    );
+    return devolucionesPorFecha;
   };
 
   if (cargandoDevolucionesPorFecha) return <Cargando />;
@@ -78,70 +90,63 @@ export default function ListaDevolucionesPorFecha({
             {devolucionesPorFecha.length}{" "}
             {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
-          <div className="ListaDevolucionesPorFecha__Cuerpo">
-            <table className="ListaDevolucionesPorFecha__Cuerpo__Tabla">
-              <thead className="ListaDevolucionesPorFecha__Cuerpo__Tabla__Encabezado">
-                <tr>
-                  <th>
-                    <ion-icon name="document-text"></ion-icon>
-                    <br />
-                    {
-                      DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma]
-                        .idDevolucion
-                    }
-                  </th>
-                  <th>
-                    <ion-icon name="apps"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].CPedidos}
-                  </th>
-                  <th>
-                    <ion-icon name="person-circle"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].Usuario}
-                  </th>
-                  <th>
-                    <ion-icon name="calendar"></ion-icon>
-                    <br />
-                    {
-                      DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma]
-                        .FechaCreacion
-                    }
-                  </th>
-                  <th>
-                    <ion-icon name="code-working"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].Acciones}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="ListaDevolucionesPorFecha__Cuerpo__Tabla__Cuerpo">
-                {devolucionesPorFecha.map((devolucion, index) => (
-                  <tr key={index}>
-                    <td>{devolucion.idDevolucion}</td>
-                    <td>{devolucion.CantidadDevoluciones}</td>
-                    <td>{devolucion.Usuario}</td>
-                    <td>
-                      {FormatearFecha(
-                        devolucion.FechaCreacionDevolucion.slice(0, 10)
-                      )}{" "}
-                      {devolucion.HoraCreacionDevolucion}
-                    </td>
-                    <td>
-                      <button
-                        className="ListaDevolucionesPorFecha__Cuerpo__Tabla__Cuerpo__VerDetalles"
-                        onClick={() =>
-                          EstablecerLosDetallesDeLaDevolucion(devolucion, false)
-                        }
-                      >
-                        {DICCIONARIO_BOTONES[Idioma].Ver}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Tabla
+            ColorTabla="Rojo"
+            ContenidoTabla={FormatearFechaDeLasDevoluciones()}
+            EncabezadoTabla={[
+              {
+                Icono: "document-text",
+                Texto:
+                  DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].idDevolucion,
+              },
+              {
+                Icono: "apps",
+                Texto:
+                  DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].CPedidos,
+              },
+              {
+                Icono: "person-circle",
+                Texto: DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].Usuario,
+              },
+              {
+                Icono: "calendar",
+                Texto:
+                  DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma]
+                    .FechaCreacion,
+              },
+              {
+                Icono: "code-working",
+                Texto:
+                  DICCIONARIO_LISTA_DEVOLUCIONES_POR_FECHA[Idioma].Acciones,
+              },
+            ]}
+            FilasTabla={[
+              {
+                TextoUno: "idDevolucion",
+              },
+              {
+                TextoUno: "CantidadDevoluciones",
+              },
+              {
+                TextoUno: "Usuario",
+              },
+              {
+                TextoUno: "FechaCreacionDevolucion",
+                TextoDos: "HoraCreacionDevolucion",
+              },
+              {
+                Botones: [
+                  {
+                    FuncionBoton: EstablecerLosDetallesDeLaDevolucion,
+                    IconoBoton: "eye",
+                    TituloBoton: "Ver detalles",
+                    Completa: false,
+                    ColorBoton: "Rojo",
+                  },
+                ],
+              },
+            ]}
+          />
         </>
       ) : (
         <MensajeGeneral

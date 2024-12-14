@@ -6,11 +6,13 @@ import MensajeGeneral from "../../../MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarMovimientosBodegaPorFiltro from "../../../../hooks/Bodega/Movimientos/useBuscarMovimientosBodegaPorFiltro";
 
+// COMPONENTES A USAR
+import Tabla from "../../../Tabla/Tabla";
+
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA,
   DICCIONARIO_RESULTADOS,
-  DICCIONARIO_BOTONES,
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -34,6 +36,16 @@ export default function ListaDeMovimientosEnBodegaCompleta({
     if (regex.test(valorIntroducido)) {
       establecerFiltro(valorIntroducido);
     }
+  };
+
+  const FormatearFechaDeLosMovimientos = () => {
+    movimientosBodega.map(
+      (movimiento) =>
+        (movimiento.FechaCreacionMovimientoBodega = FormatearFecha(
+          movimiento.FechaCreacionMovimientoBodega.slice(0, 10)
+        ))
+    );
+    return movimientosBodega;
   };
 
   if (cargando) return <Cargando />;
@@ -67,70 +79,60 @@ export default function ListaDeMovimientosEnBodegaCompleta({
             {movimientosBodega.length}{" "}
             {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
-          <div className="ListaDeMovimientosEnBodegaCompleta__Cuerpo">
-            <table className="ListaDeMovimientosEnBodegaCompleta__Cuerpo__Tabla">
-              <thead className="ListaDeMovimientosEnBodegaCompleta__Cuerpo__Tabla__Encabezado">
-                <tr>
-                  <th>
-                    <ion-icon name="document-text"></ion-icon>
-                    <br />
-                    {
-                      DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma]
-                        .idMovimientoB
-                    }
-                  </th>
-                  <th>
-                    <ion-icon name="apps"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].CPedidos}
-                  </th>
-                  <th>
-                    <ion-icon name="person-circle"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].Usuario}
-                  </th>
-                  <th>
-                    <ion-icon name="calendar"></ion-icon>
-                    <br />
-                    {
-                      DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma]
-                        .FechaCreacion
-                    }
-                  </th>
-                  <th>
-                    <ion-icon name="code-working"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].Acciones}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="ListaDeMovimientosEnBodegaCompleta__Cuerpo__Tabla__Cuerpo">
-                {movimientosBodega.map((movBodega, index) => (
-                  <tr key={index}>
-                    <td>{movBodega.idMovimientoBodega}</td>
-                    <td>{movBodega.CantidadMovimientosEnBodega}</td>
-                    <td>{movBodega.Usuario}</td>
-                    <td>
-                      {FormatearFecha(
-                        movBodega.FechaCreacionMovimientoBodega.slice(0, 10)
-                      )}{" "}
-                      {movBodega.HoraCreacionMovimientoBodega}
-                    </td>
-                    <td>
-                      <button
-                        className="ListaDeMovimientosEnBodegaCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles"
-                        onClick={() =>
-                          EstablecerLosDetallesDelMovimiento(movBodega, true)
-                        }
-                      >
-                        {DICCIONARIO_BOTONES[Idioma].Ver}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Tabla
+            ColorTabla="Negro"
+            ContenidoTabla={FormatearFechaDeLosMovimientos()}
+            EncabezadoTabla={[
+              {
+                Icono: "document-text",
+                Texto:
+                  DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].idMovimientoB,
+              },
+              {
+                Icono: "apps",
+                Texto: DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].CPedidos,
+              },
+              {
+                Icono: "person-circle",
+                Texto: DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].Usuario,
+              },
+              {
+                Icono: "calendar",
+                Texto:
+                  DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].FechaCreacion,
+              },
+              {
+                Icono: "code-working",
+                Texto: DICCIONARIO_LISTA_MOVIMIENTOS_COMPLETA[Idioma].Acciones,
+              },
+            ]}
+            FilasTabla={[
+              {
+                TextoUno: "idMovimientoBodega",
+              },
+              {
+                TextoUno: "CantidadMovimientosEnBodega",
+              },
+              {
+                TextoUno: "Usuario",
+              },
+              {
+                TextoUno: "FechaCreacionMovimientoBodega",
+                TextoDos: "HoraCreacionMovimientoBodega",
+              },
+              {
+                Botones: [
+                  {
+                    FuncionBoton: EstablecerLosDetallesDelMovimiento,
+                    IconoBoton: "eye",
+                    TituloBoton: "Ver detalles",
+                    Completa: true,
+                    ColorBoton: "Negro",
+                  },
+                ],
+              },
+            ]}
+          />
         </>
       ) : (
         <MensajeGeneral

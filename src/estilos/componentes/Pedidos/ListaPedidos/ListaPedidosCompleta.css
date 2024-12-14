@@ -54,65 +54,6 @@
 .ListaPedidosCompleta__TextoResultados ion-icon {
   font-size: 20px;
 }
-.ListaPedidosCompleta__Cuerpo {
-  grid-column: 1 / -1;
-  overflow-x: auto;
-}
-.ListaPedidosCompleta__Cuerpo__Tabla {
-  width: 100%;
-  table-layout: auto;
-  border-collapse: collapse;
-}
-.ListaPedidosCompleta__Cuerpo__Tabla__Encabezado tr th {
-  background-color: var(--ColorAzul);
-  color: var(--ColorBlanco);
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 10px;
-  min-width: 200px;
-}
-.ListaPedidosCompleta__Cuerpo__Tabla__Encabezado tr th ion-icon {
-  font-size: 20px;
-}
-.ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo tr:nth-child(odd) {
-  background-color: var(--ColorSecundario);
-}
-.ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo {
-  background-color: var(--ColorBlanco);
-  text-align: center;
-}
-.ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo tr td {
-  padding: 10px;
-  font-size: 14px;
-  color: var(--ColorNegro);
-  font-weight: bold;
-  text-align: center;
-  border-right: 2px solid var(--ColorSecundario);
-  border-bottom: 2px solid var(--ColorSecundario);
-  border-left: 2px solid var(--ColorSecundario);
-}
-.ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo hr {
-  height: 2px;
-  background-color: var(--ColorSecundario);
-  border: none;
-}
-.ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles {
-  cursor: pointer;
-  background-color: var(--ColorAzul);
-  border: 2px solid var(--ColorAzul);
-  color: var(--ColorBlanco);
-  font-weight: bold;
-  border-radius: 10px;
-  font-size: 12px;
-  width: 50px;
-  height: 35px;
-  transition: 0.3s ease-in-out all;
-}
-.ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles:hover {
-  background-color: transparent;
-  color: var(--ColorAzul);
-}
 @media (max-width: 1000px) {
   .ListaPedidosCompleta__Buscar {
     grid-column: 1 / -1;
@@ -121,18 +62,6 @@
 @media (max-width: 500px) {
   .ListaPedidosCompleta__Titulo {
     font-size: 20px;
-  }
-  .ListaPedidosCompleta__Cuerpo__Tabla__Encabezado tr th ion-icon {
-    font-size: 16px;
-  }
-  .ListaPedidosCompleta__Cuerpo__Tabla__Encabezado tr th {
-    font-size: 14px;
-  }
-  .ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo tr td {
-    font-size: 12px;
-  }
-  .ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo tr td {
-    padding: 5px;
   }
   .ListaPedidosCompleta__TextoResultados {
     font-size: 12px;

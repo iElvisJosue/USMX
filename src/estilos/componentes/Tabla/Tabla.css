@@ -1,0 +1,9 @@
+.Tabla {
+  grid-column: 1 / -1;
+  overflow-x: auto;
+}
+.Tabla__Cuerpo {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}

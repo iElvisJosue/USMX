@@ -6,11 +6,13 @@ import MensajeGeneral from "../../MensajeGeneral";
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarPedidosPorFiltro from "../../../hooks/useBuscarPedidosPorFiltro";
 
+// COMPONENTES A USAR
+import Tabla from "../../Tabla/Tabla";
+
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
   DICCIONARIO_LISTA_PEDIDOS_COMPLETA,
   DICCIONARIO_RESULTADOS,
-  DICCIONARIO_BOTONES,
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LAS AYUDAS
@@ -34,6 +36,16 @@ export default function ListaDePedidosCompleta({
     if (regex.test(valorIntroducido)) {
       establecerFiltro(valorIntroducido);
     }
+  };
+
+  const FormatearFechaDeLosPedidos = () => {
+    pedidos.map(
+      (pedido) =>
+        (pedido.FechaCreacionPedido = FormatearFecha(
+          pedido.FechaCreacionPedido.slice(0, 10)
+        ))
+    );
+    return pedidos;
   };
 
   if (cargando) return <Cargando />;
@@ -61,76 +73,72 @@ export default function ListaDePedidosCompleta({
             {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {pedidos.length}{" "}
             {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
           </small>
-          <div className="ListaPedidosCompleta__Cuerpo">
-            <table className="ListaPedidosCompleta__Cuerpo__Tabla">
-              <thead className="ListaPedidosCompleta__Cuerpo__Tabla__Encabezado">
-                <tr>
-                  <th>
-                    <ion-icon name="document-text"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Guia}
-                  </th>
-                  <th>
-                    <ion-icon name="paper-plane"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Remitente}
-                  </th>
-                  <th>
-                    <ion-icon name="location"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Destinatario}
-                  </th>
-                  <th>
-                    <ion-icon name="business"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Agencia}
-                  </th>
-                  <th>
-                    <ion-icon name="person-circle"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Usuario}
-                  </th>
-                  <th>
-                    <ion-icon name="calendar"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].FechaCreacion}
-                  </th>
-                  <th>
-                    <ion-icon name="code-working"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Acciones}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo">
-                {pedidos.map((pedido) => (
-                  <tr key={pedido.idPedido}>
-                    <td>{pedido.GuiaPedido}</td>
-                    <td>
-                      {pedido.NombreRemitente} {pedido.ApellidosRemitente}
-                    </td>
-                    <td>
-                      {pedido.NombreDestinatario} {pedido.ApellidosDestinatario}
-                    </td>
-                    <td>{pedido.NombreAgencia}</td>
-                    <td>{pedido.Usuario}</td>
-                    <td>
-                      {FormatearFecha(pedido.FechaCreacionPedido.slice(0, 10))}{" "}
-                      {pedido.HoraCreacionPedido}
-                    </td>
-                    <td>
-                      <button
-                        className="ListaPedidosCompleta__Cuerpo__Tabla__Cuerpo__VerDetalles"
-                        onClick={() => EstablecerLosDetallesDelPedido(pedido)}
-                      >
-                        {DICCIONARIO_BOTONES[Idioma].Ver}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Tabla
+            ContenidoTabla={FormatearFechaDeLosPedidos()}
+            EncabezadoTabla={[
+              {
+                Icono: "document-text",
+                Texto: DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Guia,
+              },
+              {
+                Icono: "paper-plane",
+                Texto: DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Remitente,
+              },
+              {
+                Icono: "location",
+                Texto: DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Destinatario,
+              },
+              {
+                Icono: "business",
+                Texto: DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Agencia,
+              },
+              {
+                Icono: "person-circle",
+                Texto: DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Usuario,
+              },
+              {
+                Icono: "calendar",
+                Texto: DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].FechaCreacion,
+              },
+              {
+                Icono: "code-working",
+                Texto: DICCIONARIO_LISTA_PEDIDOS_COMPLETA[Idioma].Acciones,
+              },
+            ]}
+            FilasTabla={[
+              {
+                TextoUno: "GuiaPedido",
+              },
+              {
+                TextoUno: "NombreRemitente",
+                TextoDos: "ApellidosRemitente",
+              },
+              {
+                TextoUno: "NombreDestinatario",
+                TextoDos: "ApellidosDestinatario",
+              },
+              {
+                TextoUno: "NombreAgencia",
+              },
+              {
+                TextoUno: "Usuario",
+              },
+              {
+                TextoUno: "FechaCreacionPedido",
+                TextoDos: "HoraCreacionPedido",
+              },
+              {
+                Botones: [
+                  {
+                    FuncionBoton: EstablecerLosDetallesDelPedido,
+                    IconoBoton: "eye",
+                    TituloBoton: "Ver detalles",
+                    Completa: true,
+                  },
+                ],
+              },
+            ]}
+          />
         </>
       ) : (
         <MensajeGeneral
