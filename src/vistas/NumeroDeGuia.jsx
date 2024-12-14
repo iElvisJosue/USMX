@@ -1,4 +1,5 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
@@ -11,19 +12,41 @@ import Cargando from "../componentes/Cargando";
 import useBuscarPedidoPorNumeroDeGuia from "../hooks/useBuscarPedidoPorNumeroDeGuia";
 
 // IMPORTAMOS LAS AYUDAS
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 import { HOST, HOST_IMAGENES } from "../helpers/Urls";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/NumeroDeGuia.css";
 
 export default function NumeroDeGuia() {
-  const { cargandoInfSistema, infSistema } = useSistema();
+  const [cargando, establecerCargando] = useState(true);
+  const [logoNombreSistema, establecerLogoNombreSistema] = useState(null);
+  const { ObtenerNombreYLogoDelSistema } = useSistema();
   const { GuiaPedido } = useParams();
 
   const { informacionGuia, buscandoInformacionGuia } =
     useBuscarPedidoPorNumeroDeGuia(GuiaPedido);
 
-  if (buscandoInformacionGuia || cargandoInfSistema) return <Cargando />;
+  useEffect(() => {
+    const obtenerInformacionGuia = async () => {
+      try {
+        const res = await ObtenerNombreYLogoDelSistema();
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerLogoNombreSistema(res);
+        }
+        establecerCargando(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    obtenerInformacionGuia();
+  }, []);
+
+  if (buscandoInformacionGuia || cargando) return <Cargando />;
 
   const BuscarNuevaGuia = () => {
     const InputGuia = document.querySelector(
@@ -61,8 +84,8 @@ export default function NumeroDeGuia() {
           <>
             <img
               className="NumeroDeGuia__Ticket--Logo"
-              src={`${HOST_IMAGENES}/${infSistema.LogoSistema}`}
-              alt={infSistema.NombreSistema}
+              src={`${HOST_IMAGENES}/${logoNombreSistema.LogoSistema}`}
+              alt={logoNombreSistema.NombreSistema}
             />
             <p className="NumeroDeGuia__Ticket--Detalles">
               Número de guía <br /> <b>{GuiaPedido}</b>
