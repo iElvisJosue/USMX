@@ -65,11 +65,13 @@ export default function AdministrarRegistro({
       <span className="AdministrarRegistro__Detalles">
         <div className="AdministrarRegistro__Detalles--Contenido">
           {ImagenRegistro && (
-            <img
-              src={`${HOST_IMAGENES}/${ImagenRegistro}`}
-              alt={NombreRegistro}
-              className="AdministrarRegistro__Detalles--Imagen"
-            />
+            <picture className="AdministrarRegistro__Detalles--Contenido--Imagen">
+              <img
+                src={`${HOST_IMAGENES}/${ImagenRegistro}`}
+                alt={NombreRegistro}
+                className="AdministrarRegistro__Detalles--Imagen"
+              />
+            </picture>
           )}
           {Secciones.map(({ Icono, TextoUno, TextoDos }, index) => (
             <span key={index}>
