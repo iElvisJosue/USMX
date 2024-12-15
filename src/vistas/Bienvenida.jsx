@@ -39,8 +39,6 @@ export default function Bienvenida() {
     establecerObtenerResumenNuevamente,
   } = useObtenerResumenDiario();
 
-  if (cargandoUltimosDiezPedidos || cargandoResumen) return <Cargando />;
-
   const IconosPerfil = {
     Administrador: (
       <ion-icon name="shield-checkmark" class="IconoPermisos"></ion-icon>
@@ -101,112 +99,122 @@ export default function Bienvenida() {
           {DICCIONARIO_BIENVENIDA[Idioma].ResumenDeHoy}
           <small>{ObtenerFechaActual().split("-").reverse().join("/")}</small>
         </h1>
-        <section className="Secciones__Hoy Pedidos">
-          <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[Idioma].Pedidos}</p>
-          </span>
-          <div className="Secciones__Hoy--Cantidad">
-            <p>{resumen.PedidosDeHoy}</p>
-          </div>
-        </section>
-        <section className="Secciones__Hoy Recolecciones">
-          <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[Idioma].Recolecciones}</p>
-          </span>
-          <div className="Secciones__Hoy--Cantidad">
-            <p>{resumen.RecoleccionesDeHoy}</p>
-          </div>
-        </section>
-        <section className="Secciones__Hoy Entradas">
-          <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[Idioma].EntradasBodega}</p>
-          </span>
-          <div className="Secciones__Hoy--Cantidad">
-            <p>{resumen.EntradasDeHoy}</p>
-          </div>
-        </section>
-        <section className="Secciones__Hoy MovimientosBodega">
-          <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[Idioma].MovimientosBodega}</p>
-          </span>
-          <div className="Secciones__Hoy--Cantidad">
-            <p>{resumen.MovimientosDeHoy}</p>
-          </div>
-        </section>
-        <section className="Secciones__Hoy Salidas">
-          <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[Idioma].SalidasBodega}</p>
-          </span>
-          <div className="Secciones__Hoy--Cantidad">
-            <p>{resumen.SalidasDeHoy}</p>
-          </div>
-        </section>
-        <section className="Secciones__Hoy Devoluciones">
-          <span className="Secciones__Hoy--Texto">
-            <p>{DICCIONARIO_BIENVENIDA[Idioma].Devoluciones}</p>
-          </span>
-          <div className="Secciones__Hoy--Cantidad">
-            <p>{resumen.DevolucionesDeHoy}</p>
-          </div>
-        </section>
+        {cargandoResumen ? (
+          <Cargando ClaseCargando="Chico" />
+        ) : (
+          <>
+            <section className="Secciones__Hoy Pedidos">
+              <span className="Secciones__Hoy--Texto">
+                <p>{DICCIONARIO_BIENVENIDA[Idioma].Pedidos}</p>
+              </span>
+              <div className="Secciones__Hoy--Cantidad">
+                <p>{resumen.PedidosDeHoy}</p>
+              </div>
+            </section>
+            <section className="Secciones__Hoy Recolecciones">
+              <span className="Secciones__Hoy--Texto">
+                <p>{DICCIONARIO_BIENVENIDA[Idioma].Recolecciones}</p>
+              </span>
+              <div className="Secciones__Hoy--Cantidad">
+                <p>{resumen.RecoleccionesDeHoy}</p>
+              </div>
+            </section>
+            <section className="Secciones__Hoy Entradas">
+              <span className="Secciones__Hoy--Texto">
+                <p>{DICCIONARIO_BIENVENIDA[Idioma].EntradasBodega}</p>
+              </span>
+              <div className="Secciones__Hoy--Cantidad">
+                <p>{resumen.EntradasDeHoy}</p>
+              </div>
+            </section>
+            <section className="Secciones__Hoy MovimientosBodega">
+              <span className="Secciones__Hoy--Texto">
+                <p>{DICCIONARIO_BIENVENIDA[Idioma].MovimientosBodega}</p>
+              </span>
+              <div className="Secciones__Hoy--Cantidad">
+                <p>{resumen.MovimientosDeHoy}</p>
+              </div>
+            </section>
+            <section className="Secciones__Hoy Salidas">
+              <span className="Secciones__Hoy--Texto">
+                <p>{DICCIONARIO_BIENVENIDA[Idioma].SalidasBodega}</p>
+              </span>
+              <div className="Secciones__Hoy--Cantidad">
+                <p>{resumen.SalidasDeHoy}</p>
+              </div>
+            </section>
+            <section className="Secciones__Hoy Devoluciones">
+              <span className="Secciones__Hoy--Texto">
+                <p>{DICCIONARIO_BIENVENIDA[Idioma].Devoluciones}</p>
+              </span>
+              <div className="Secciones__Hoy--Cantidad">
+                <p>{resumen.DevolucionesDeHoy}</p>
+              </div>
+            </section>
+          </>
+        )}
         <h1 className="Bienvenida__Titulo">
           {DICCIONARIO_BIENVENIDA[Idioma].UltimosDiezPedidos}
           <small>{DICCIONARIO_BIENVENIDA[Idioma].General}</small>
         </h1>
-        <section className="Bienvenida__UltimasGuias">
-          <ul className="Bienvenida__UltimasGuias--Encabezado">
-            <p>{DICCIONARIO_BIENVENIDA[Idioma].ListaDePedidos}</p>
-            <button
-              onClick={() => (window.location.href = `${HOST}Pedidos`)}
-              title="Ver todos los pedidos"
-            >
-              <ion-icon name="add"></ion-icon>
-            </button>
-          </ul>
-          {ultimosDiezPedidos.length > 0 ? (
-            ultimosDiezPedidos.map(
-              (
-                {
-                  // CodigoRastreo
-                  GuiaPedido,
-                  NombreAgencia,
-                  FechaCreacionPedido,
-                  HoraCreacionPedido,
-                },
-                index
-              ) => (
-                <li className="Bienvenida__UltimasGuias--Cuerpo" key={index}>
-                  <span>
-                    <ion-icon name="document-text"></ion-icon>
-                    {GuiaPedido}
-                  </span>
-                  <span>
-                    <ion-icon name="business"></ion-icon>
-                    {NombreAgencia}
-                  </span>
-                  <span>
-                    <ion-icon name="calendar"></ion-icon>
-                    {FechaCreacionPedido.slice(0, 10)
-                      .split("-")
-                      .reverse()
-                      .join("/")}{" "}
-                    - {HoraCreacionPedido}
-                  </span>
-                </li>
+        {cargandoUltimosDiezPedidos ? (
+          <Cargando ClaseCargando="Chico" />
+        ) : (
+          <section className="Bienvenida__UltimasGuias">
+            <ul className="Bienvenida__UltimasGuias--Encabezado">
+              <p>{DICCIONARIO_BIENVENIDA[Idioma].ListaDePedidos}</p>
+              <button
+                onClick={() => (window.location.href = `${HOST}Pedidos`)}
+                title="Ver todos los pedidos"
+              >
+                <ion-icon name="add"></ion-icon>
+              </button>
+            </ul>
+            {ultimosDiezPedidos.length > 0 ? (
+              ultimosDiezPedidos.map(
+                (
+                  {
+                    // CodigoRastreo
+                    GuiaPedido,
+                    NombreAgencia,
+                    FechaCreacionPedido,
+                    HoraCreacionPedido,
+                  },
+                  index
+                ) => (
+                  <li className="Bienvenida__UltimasGuias--Cuerpo" key={index}>
+                    <span>
+                      <ion-icon name="document-text"></ion-icon>
+                      {GuiaPedido}
+                    </span>
+                    <span>
+                      <ion-icon name="business"></ion-icon>
+                      {NombreAgencia}
+                    </span>
+                    <span>
+                      <ion-icon name="calendar"></ion-icon>
+                      {FechaCreacionPedido.slice(0, 10)
+                        .split("-")
+                        .reverse()
+                        .join("/")}{" "}
+                      - {HoraCreacionPedido}
+                    </span>
+                  </li>
+                )
               )
-            )
-          ) : (
-            <div className="Bienvenida__UltimasGuias--Cuerpo SinResultados">
-              <img src="SinResultados.png" alt="No hay resultados" />
-              <small>
-                {DICCIONARIO_RESULTADOS[Idioma].NoResultadosPedidos}
-              </small>
-              <a href={`${HOST}Pedidos`}>
-                {DICCIONARIO_BIENVENIDA[Idioma].RealizarPedido}
-              </a>
-            </div>
-          )}
-        </section>
+            ) : (
+              <div className="Bienvenida__UltimasGuias--Cuerpo SinResultados">
+                <img src="SinResultados.png" alt="No hay resultados" />
+                <small>
+                  {DICCIONARIO_RESULTADOS[Idioma].NoResultadosPedidos}
+                </small>
+                <a href={`${HOST}Pedidos`}>
+                  {DICCIONARIO_BIENVENIDA[Idioma].RealizarPedido}
+                </a>
+              </div>
+            )}
+          </section>
+        )}
       </div>
     </main>
   );

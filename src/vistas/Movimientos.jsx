@@ -10,7 +10,6 @@ import { DICCIONARIO_MOVIMIENTOS } from "../diccionario/Diccionario";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
-import Cargando from "../componentes/Cargando";
 import RegistrarMovimientos from "../componentes/Movimientos/RegistrarMovimientos";
 import ListaDeMovimientos from "../componentes/Movimientos/ListaDeMovimientos";
 import EditarMovimiento from "../componentes/Movimientos/EditarMovimiento";
@@ -47,6 +46,7 @@ export default function Movimientos() {
     establecerInformacionDelMovimiento,
     filtro,
     establecerFiltro,
+    cargandoMovimientos,
   };
 
   const TituloSubseccion = {
@@ -64,9 +64,7 @@ export default function Movimientos() {
         subseccion={TituloSubseccion[vista]}
       />
       <div className="Movimientos">
-        {cargandoMovimientos ? (
-          <Cargando />
-        ) : vista === 0 ? (
+        {vista === 0 ? (
           <>
             <RegistrarMovimientos {...valoresParaLosComponentes} />
             <ListaDeMovimientos {...valoresParaLosComponentes} />

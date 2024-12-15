@@ -11,6 +11,7 @@ import {
 // IMPORTAMOS LOS COMPONENTES A USAR
 import ModalConfirmacionMovimientos from "./ModalConfirmacionMovimientos";
 import MensajeGeneral from "../MensajeGeneral";
+import Cargando from "../Cargando";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Movimientos/ListaDeMovimientos.css";
@@ -25,6 +26,7 @@ export default function ListaDeMovimientos({
   establecerObtenerMovimientosNuevamente,
   informacionDelMovimiento,
   establecerInformacionDelMovimiento,
+  cargandoMovimientos,
 }) {
   const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
     useState(false);
@@ -75,109 +77,117 @@ export default function ListaDeMovimientos({
       <h1 className="ListaDeMovimientos__Titulo">
         {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].ListaCompletaDeMovimientos}
       </h1>
-      <span className="ListaDeMovimientos__Buscar">
-        <input
-          value={filtro}
-          type="text"
-          placeholder={
-            DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].BuscarMovimientos
-          }
-          onChange={BuscarMovimientos}
-        />
-        <span className="ListaDeMovimientos__Buscar__Lupa">
-          <ion-icon name="search"></ion-icon>
-        </span>
-      </span>
-      {movimientos.length > 0 ? (
-        <>
-          <small className="ListaDeMovimientos__TextoResultados">
-            <ion-icon name="search-circle"></ion-icon>
-            {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {movimientos.length}{" "}
-            {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
-          </small>
-          <div className="ListaDeMovimientos__Cuerpo">
-            <table className="ListaDeMovimientos__Cuerpo__Tabla">
-              <thead className="ListaDeMovimientos__Cuerpo__Tabla__Encabezado">
-                <tr>
-                  <th>
-                    <ion-icon name="bag-check"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Estado}
-                  </th>
-                  <th>
-                    <ion-icon name="document-text"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Detalles}
-                  </th>
-                  <th>
-                    <ion-icon name="locate"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Origen}
-                  </th>
-                  <th>
-                    <ion-icon name="apps"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Categoria}
-                  </th>
-                  <th>
-                    <ion-icon name="code-working"></ion-icon>
-                    <br />
-                    {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Acciones}
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="ListaDeMovimientos__Cuerpo__Tabla__Cuerpo">
-                {movimientos.map((movimiento) => (
-                  <tr
-                    key={movimiento.idMovimiento}
-                    className={`ListaDeMovimientos__Cuerpo__Tabla__Cuerpo--TR ${
-                      movimiento.ActivoMovimiento === "Activo"
-                        ? ""
-                        : "Desactivado"
-                    }`}
-                  >
-                    <td>{movimiento.EstadoMovimiento.toUpperCase()}</td>
-                    <td>{movimiento.DetallesMovimiento}</td>
-                    <td>{movimiento.OrigenMovimiento}</td>
-                    <td>{movimiento.CategoriaMovimiento}</td>
-                    <td className="ListaDeMovimientos__Cuerpo__Tabla__Cuerpo__Acciones">
-                      {movimiento.ActivoMovimiento === "Activo" ? (
-                        <>
-                          <button
-                            onClick={() => EditarMovimiento(movimiento)}
-                            title="Editar Movimiento"
-                          >
-                            <ion-icon name="color-wand"></ion-icon>
-                          </button>
-                          <button>
-                            <ion-icon
-                              name="ban"
-                              onClick={() => MostrarModalDesactivar(movimiento)}
-                              title="Desactivar Movimiento"
-                            ></ion-icon>
-                          </button>
-                        </>
-                      ) : (
-                        <button>
-                          <ion-icon
-                            name="power"
-                            onClick={() => MostrarModalActivar(movimiento)}
-                            title="Activar Movimiento"
-                          ></ion-icon>
-                        </button>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
+      {cargandoMovimientos ? (
+        <Cargando ClaseCargando="Chico" />
       ) : (
-        <MensajeGeneral
-          Imagen={"SinResultados.png"}
-          Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
-        />
+        <>
+          <span className="ListaDeMovimientos__Buscar">
+            <input
+              value={filtro}
+              type="text"
+              placeholder={
+                DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].BuscarMovimientos
+              }
+              onChange={BuscarMovimientos}
+            />
+            <span className="ListaDeMovimientos__Buscar__Lupa">
+              <ion-icon name="search"></ion-icon>
+            </span>
+          </span>
+          {movimientos.length > 0 ? (
+            <>
+              <small className="ListaDeMovimientos__TextoResultados">
+                <ion-icon name="search-circle"></ion-icon>
+                {DICCIONARIO_RESULTADOS[Idioma].Obtuvimos} {movimientos.length}{" "}
+                {DICCIONARIO_RESULTADOS[Idioma].Resultados}{" "}
+              </small>
+              <div className="ListaDeMovimientos__Cuerpo">
+                <table className="ListaDeMovimientos__Cuerpo__Tabla">
+                  <thead className="ListaDeMovimientos__Cuerpo__Tabla__Encabezado">
+                    <tr>
+                      <th>
+                        <ion-icon name="bag-check"></ion-icon>
+                        <br />
+                        {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Estado}
+                      </th>
+                      <th>
+                        <ion-icon name="document-text"></ion-icon>
+                        <br />
+                        {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Detalles}
+                      </th>
+                      <th>
+                        <ion-icon name="locate"></ion-icon>
+                        <br />
+                        {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Origen}
+                      </th>
+                      <th>
+                        <ion-icon name="apps"></ion-icon>
+                        <br />
+                        {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Categoria}
+                      </th>
+                      <th>
+                        <ion-icon name="code-working"></ion-icon>
+                        <br />
+                        {DICCIONARIO_LISTA_DE_MOVIMIENTOS[Idioma].Acciones}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="ListaDeMovimientos__Cuerpo__Tabla__Cuerpo">
+                    {movimientos.map((movimiento) => (
+                      <tr
+                        key={movimiento.idMovimiento}
+                        className={`ListaDeMovimientos__Cuerpo__Tabla__Cuerpo--TR ${
+                          movimiento.ActivoMovimiento === "Activo"
+                            ? ""
+                            : "Desactivado"
+                        }`}
+                      >
+                        <td>{movimiento.EstadoMovimiento.toUpperCase()}</td>
+                        <td>{movimiento.DetallesMovimiento}</td>
+                        <td>{movimiento.OrigenMovimiento}</td>
+                        <td>{movimiento.CategoriaMovimiento}</td>
+                        <td className="ListaDeMovimientos__Cuerpo__Tabla__Cuerpo__Acciones">
+                          {movimiento.ActivoMovimiento === "Activo" ? (
+                            <>
+                              <button
+                                onClick={() => EditarMovimiento(movimiento)}
+                                title="Editar Movimiento"
+                              >
+                                <ion-icon name="color-wand"></ion-icon>
+                              </button>
+                              <button>
+                                <ion-icon
+                                  name="ban"
+                                  onClick={() =>
+                                    MostrarModalDesactivar(movimiento)
+                                  }
+                                  title="Desactivar Movimiento"
+                                ></ion-icon>
+                              </button>
+                            </>
+                          ) : (
+                            <button>
+                              <ion-icon
+                                name="power"
+                                onClick={() => MostrarModalActivar(movimiento)}
+                                title="Activar Movimiento"
+                              ></ion-icon>
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          ) : (
+            <MensajeGeneral
+              Imagen={"SinResultados.png"}
+              Texto={DICCIONARIO_RESULTADOS[Idioma].NoResultados}
+            />
+          )}
+        </>
       )}
     </div>
   );

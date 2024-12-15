@@ -13,6 +13,9 @@
   color: var(--ColorNegro);
   gap: 10px;
 }
+.Main__Cargando.Chico {
+  height: auto;
+}
 .Main__Cargando h1 {
   font-size: var(--NormalFontSize);
   font-weight: bold;
