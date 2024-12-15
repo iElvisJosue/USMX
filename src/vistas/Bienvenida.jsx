@@ -1,3 +1,5 @@
+// IMPORTAMOS LAS LIBRERÍAS A USAR
+import { useNavigate } from "react-router-dom";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
@@ -38,6 +40,7 @@ export default function Bienvenida() {
     obtenerResumenNuevamente,
     establecerObtenerResumenNuevamente,
   } = useObtenerResumenDiario();
+  const navigate = useNavigate();
 
   const IconosPerfil = {
     Administrador: (
@@ -80,7 +83,7 @@ export default function Bienvenida() {
             <p>{DICCIONARIO_BIENVENIDA[Idioma].Perfil}</p>
             <ion-icon
               name="open"
-              onClick={() => (window.location.href = `${HOST}Perfil`)}
+              onClick={() => navigate("/Perfil")}
             ></ion-icon>
           </span>
           <picture className="Bienvenida__Perfil--Icono">
@@ -164,7 +167,7 @@ export default function Bienvenida() {
             <ul className="Bienvenida__UltimasGuias--Encabezado">
               <p>{DICCIONARIO_BIENVENIDA[Idioma].ListaDePedidos}</p>
               <button
-                onClick={() => (window.location.href = `${HOST}Pedidos`)}
+                onClick={() => navigate("/Pedidos")}
                 title="Ver todos los pedidos"
               >
                 <ion-icon name="add"></ion-icon>
