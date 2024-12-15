@@ -168,7 +168,6 @@ export default function ListaDeUsuarios({
               Secciones={[
                 {
                   Icono: IconosPorTipoDeUsuario[infUsuario.Permisos],
-                  TextoUno: infUsuario.Permisos,
                   TextoDos: infUsuario.Usuario,
                 },
               ]}
