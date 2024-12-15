@@ -27,8 +27,6 @@
 .Bienvenida__Mensaje img {
   min-width: 150px;
   max-width: 150px;
-  min-height: 150px;
-  max-height: 150px;
 }
 .Bienvenida__Mensaje p {
   text-align: center;

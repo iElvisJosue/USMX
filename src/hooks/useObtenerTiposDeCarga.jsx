@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useOperaciones } from "../context/OperacionesContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerTiposDeCarga() {
-  const { ObtenerTiposDeCarga } = useConfiguracion();
+  const { ObtenerTiposDeCarga } = useOperaciones();
 
   const [cargas, establecerCargas] = useState([]);
   const [cargandoCargas, establecerCargandoCargas] = useState(true);

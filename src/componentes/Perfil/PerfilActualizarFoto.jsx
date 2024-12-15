@@ -96,41 +96,37 @@ export default function PerfilActualizarImagen({
 
   return (
     <form className="PerfilActualizarFoto" onSubmit={ValidarImagenDePerfil}>
-      <span className="PerfilActualizarFoto__Boton Izquierda">
+      <div className="PerfilActualizarFoto__Boton Izquierda">
         <button onClick={() => establecerVistaPerfil(0)}>
           <ion-icon name="arrow-back-outline"></ion-icon>
         </button>
-      </span>
+      </div>
       <h1 className="PerfilActualizarFoto__Titulo">
         📷 <br />
         {DICCIONARIO_PERFIL_FOTO[Idioma].ActualizarFotoDePerfil}
       </h1>
-      <span className="PerfilActualizarFoto__SeleccionarImagen">
-        <div
+      <div className="PerfilActualizarFoto__SeleccionarImagen">
+        <picture
           {...getRootProps()}
           className="PerfilActualizarFoto__SeleccionarImagen__Label"
         >
           <input {...getInputProps()} accept="image/*" multiple={false} />
           {isDragActive ? (
-            <picture className="PerfilActualizarFoto__SeleccionarImagen__Label--Imagen">
-              <img src="imagenes/AgregarImagen.png" alt="Agregar Imagen" />
-            </picture>
+            <img src="imagenes/AgregarImagen.png" alt="Agregar Imagen" />
           ) : (
-            <picture className="PerfilActualizarFoto__SeleccionarImagen__Label--Imagen">
-              <img src={ImagenDePerfil} alt="Foto de Perfil" />
-            </picture>
+            <img src={ImagenDePerfil} alt="Foto de Perfil" />
           )}
-        </div>
-      </span>
+        </picture>
+      </div>
       <small className="PerfilActualizarFoto__Texto">
         {DICCIONARIO_PERFIL_FOTO[Idioma].MensajeFotoDePerfilUno}
         <br />
         {DICCIONARIO_PERFIL_FOTO[Idioma].MensajeFotoDePerfilDos}
       </small>
       {imagenSeleccionada && (
-        <span className="PerfilActualizarFoto__Boton Centro">
+        <div className="PerfilActualizarFoto__Boton Centro">
           <button type="submit">{DICCIONARIO_BOTONES[Idioma].Guardar}</button>
-        </span>
+        </div>
       )}
     </form>
   );

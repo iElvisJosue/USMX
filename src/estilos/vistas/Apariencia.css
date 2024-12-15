@@ -66,10 +66,7 @@
   width: 50%;
   cursor: pointer;
 }
-/* .Apariencia__Cuerpo__Ejemplo--Imagen.Idioma img {
-  width: 50%;
-} */
-.Apariencia__Cuerpo__Ejemplo--Imagen:hover img {
+.Apariencia__Cuerpo__Ejemplo--Imagen img:hover {
   border-radius: 50%;
   border: 3px dashed var(--ColorAzul);
 }

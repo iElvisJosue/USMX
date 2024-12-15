@@ -15,14 +15,24 @@
   justify-content: center;
   gap: 10px;
 }
-.PerfilInformacion__Seccion img {
-  width: 120px;
-  height: 120px;
+.PerfilInformacion__Seccion--Foto {
+  width: 150px;
+  height: 150px;
+  padding: 5px;
+  border: 2px dashed var(--ColorAzul);
   border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.PerfilInformacion__Seccion--Foto img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: top;
-  border: 2px dashed var(--ColorAzul);
-  object-fit: cover;
+  background: white;
+  border-radius: 50%;
 }
 .PerfilInformacion__Seccion--ActualizarFoto {
   position: absolute;

@@ -23,10 +23,12 @@ export default function PerfilInformacion({
           {DICCIONARIO_PERFIL_INFORMACION[Idioma].FotoDePerfil} <br />
           📷
         </p>
-        <img
-          src={`${HOST_IMAGENES}/${infUsuario.Foto}`}
-          alt="Imagen de perfil"
-        />
+        <picture className="PerfilInformacion__Seccion--Foto">
+          <img
+            src={`${HOST_IMAGENES}/${infUsuario.Foto}`}
+            alt="Imagen de perfil"
+          />
+        </picture>
         <button
           className="PerfilInformacion__Seccion--ActualizarFoto"
           onClick={() => establecerVistaPerfil(1)}

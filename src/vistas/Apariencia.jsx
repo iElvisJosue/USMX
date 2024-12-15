@@ -30,6 +30,7 @@ export default function Apariencia() {
   } = useSistema();
 
   const ActualizarElModoOscuroDelUsuario = async (ValorModoOscuro) => {
+    if (infUsuario.ModoOscuro === ValorModoOscuro) return;
     // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
     if (peticionPediente) return MensajePeticionPendiente();
     establecerPeticionPendiente(true);
@@ -54,6 +55,7 @@ export default function Apariencia() {
     }
   };
   const ActualizarElIdiomaDelUsuario = async (valorIdioma) => {
+    if (infUsuario.Idioma === valorIdioma) return;
     // SI HAY UNA PETICION PENDIENTE, NO PERMITIMOS EL REGISTRO Y MOSTRAMOS UNA ALERTA
     if (peticionPediente) return MensajePeticionPendiente();
     establecerPeticionPendiente(true);
@@ -109,11 +111,7 @@ export default function Apariencia() {
               className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
                 infUsuario.Idioma === "es" && "Seleccionado"
               }`}
-              onClick={
-                infUsuario.Idioma === "es"
-                  ? undefined
-                  : () => ActualizarElIdiomaDelUsuario("es")
-              }
+              onClick={() => ActualizarElIdiomaDelUsuario("es")}
             >
               <img src="BanderaMexico.png" alt="Idioma español" />
               <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].IdiomaEspanol}</b>
@@ -122,11 +120,7 @@ export default function Apariencia() {
               className={`Apariencia__Cuerpo__Ejemplo--Imagen Idioma ${
                 infUsuario.Idioma === "en" && "Seleccionado"
               }`}
-              onClick={
-                infUsuario.Idioma === "en"
-                  ? undefined
-                  : () => ActualizarElIdiomaDelUsuario("en")
-              }
+              onClick={() => ActualizarElIdiomaDelUsuario("en")}
             >
               <img src="BanderaUSA.png" alt="Idioma inglés" />
               <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].IdiomaIngles}</b>
@@ -146,26 +140,24 @@ export default function Apariencia() {
               className={`Apariencia__Cuerpo__Ejemplo--Imagen ${
                 infUsuario.ModoOscuro === 0 && "Oscuro"
               }`}
-              onClick={
-                infUsuario.ModoOscuro === 0
-                  ? undefined
-                  : () => ActualizarElModoOscuroDelUsuario(false)
-              }
             >
-              <img src="TemaClaro.png" alt="Tema Claro" />
+              <img
+                src="TemaClaro.png"
+                alt="Tema Claro"
+                onClick={() => ActualizarElModoOscuroDelUsuario(0)}
+              />
               <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].TemaClaro}</b>
             </picture>
             <picture
               className={`Apariencia__Cuerpo__Ejemplo--Imagen ${
                 infUsuario.ModoOscuro === 1 && "Oscuro"
               }`}
-              onClick={
-                infUsuario.ModoOscuro === 1
-                  ? undefined
-                  : () => ActualizarElModoOscuroDelUsuario(true)
-              }
             >
-              <img src="TemaOscuro.png" alt="Tema Oscuro" />
+              <img
+                src="TemaOscuro.png"
+                alt="Tema Oscuro"
+                onClick={() => ActualizarElModoOscuroDelUsuario(1)}
+              />
               <b>{DICCIONARIO_APARIENCIA[infUsuario.Idioma].TemaOscuro}</b>
             </picture>
           </div>

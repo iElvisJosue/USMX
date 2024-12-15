@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useOperaciones } from "../context/OperacionesContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerTiposDeEnvio() {
-  const { ObtenerTiposDeEnvio } = useConfiguracion();
+  const { ObtenerTiposDeEnvio } = useOperaciones();
   const [envios, establecerEnvios] = useState([]);
   const [cargandoEnvios, establecerCargandoEnvios] = useState(true);
   const [obtenerEnviosNuevamente, establecerObtenerEnviosNuevamente] =

@@ -6,7 +6,7 @@ import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useSistema } from "../context/SistemaContext";
-import { useConfiguracion } from "../context/ConfiguracionContext";
+import { useOperaciones } from "../context/OperacionesContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../componentes/Cargando";
@@ -40,7 +40,7 @@ export default function Envios() {
   const [peticionPediente, establecerPeticionPendiente] = useState(false);
   const { infUsuario } = useSistema();
   const { Idioma } = infUsuario;
-  const { RegistrarTipoDeEnvio, EliminarTipoDeEnvio } = useConfiguracion();
+  const { RegistrarTipoDeEnvio, EliminarTipoDeEnvio } = useOperaciones();
   const {
     envios,
     cargandoEnvios,

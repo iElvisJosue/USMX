@@ -6,9 +6,6 @@ import GooglePlacesAutocomplete, {
   geocodeByAddress,
 } from "react-google-places-autocomplete";
 
-// IMPORTAMOS LOS HOOKS A USAR
-import useObtenerApiGoogleMapsAutoCompletado from "../hooks/useObtenerApiGoogleMapsAutoCompletado";
-
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useSistema } from "../context/SistemaContext";
 
@@ -28,9 +25,7 @@ export default function GoogleAPI({
   establecerDetallesDeLaDireccion,
   ciudadesPermitidas,
 }) {
-  const { apiGoogleMapsAutoCompletado } =
-    useObtenerApiGoogleMapsAutoCompletado();
-  const { infUsuario } = useSistema();
+  const { infSistema, infUsuario } = useSistema();
   const { Idioma } = infUsuario;
   const LIBRERIA = useMemo(() => ["places", "geometry"], []);
 
@@ -81,30 +76,28 @@ export default function GoogleAPI({
 
   return (
     <>
-      {apiGoogleMapsAutoCompletado && (
-        <span className="GoogleAPI__LoadScript">
-          <p>
-            <ion-icon name="search"></ion-icon>{" "}
-            {DICCIONARIO_GOOGLE_API[Idioma].BuscarDireccion}
-          </p>
-          <LoadScript
-            googleMapsApiKey={apiGoogleMapsAutoCompletado}
-            libraries={LIBRERIA}
-          >
-            <GooglePlacesAutocomplete
-              apiKey={apiGoogleMapsAutoCompletado}
-              autocompletionRequest={{
-                componentRestrictions: { country: ciudadesPermitidas },
-              }}
-              selectProps={{
-                value: direccion,
-                onChange: manejarDireccion,
-                placeholder: DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui,
-              }}
-            />
-          </LoadScript>
-        </span>
-      )}
+      <span className="GoogleAPI__LoadScript">
+        <p>
+          <ion-icon name="search"></ion-icon>{" "}
+          {DICCIONARIO_GOOGLE_API[Idioma].BuscarDireccion}
+        </p>
+        <LoadScript
+          googleMapsApiKey={infSistema.ApiKeyGoogleMapsAutocompletado}
+          libraries={LIBRERIA}
+        >
+          <GooglePlacesAutocomplete
+            apiKey={infSistema.ApiKeyGoogleMapsAutocompletado}
+            autocompletionRequest={{
+              componentRestrictions: { country: ciudadesPermitidas },
+            }}
+            selectProps={{
+              value: direccion,
+              onChange: manejarDireccion,
+              placeholder: DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui,
+            }}
+          />
+        </LoadScript>
+      </span>
       {detallesDeLaDireccion && (
         <div className="GoogleAPI__Detalles">
           <p className="GoogleAPI__Detalles--Titulo">

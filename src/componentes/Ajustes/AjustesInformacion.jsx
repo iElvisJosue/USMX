@@ -31,10 +31,12 @@ export default function PerfilInformacion({
           {DICCIONARIO_AJUSTES_INFORMACION[Idioma].LogoDelSistema} <br />
           🖼️
         </p>
-        <img
-          src={`${HOST_IMAGENES}/${infSistema.LogoSistema}`}
-          alt="Logo del sistema"
-        />
+        <picture className="AjustesInformacion__Seccion--Logo">
+          <img
+            src={`${HOST_IMAGENES}/${infSistema.LogoSistema}`}
+            alt="Logo del sistema"
+          />
+        </picture>
         <button
           className="AjustesInformacion__Seccion--ActualizarFoto"
           onClick={() => establecerVistaAjustes(1)}

@@ -105,21 +105,17 @@ export default function AjustesActualizarLogo({
         {DICCIONARIO_AJUSTES_LOGO[Idioma].ActualizarLogoDelSistema}
       </h1>
       <span className="AjustesActualizarLogo__SeleccionarImagen">
-        <div
+        <picture
           {...getRootProps()}
           className="AjustesActualizarLogo__SeleccionarImagen__Label"
         >
           <input {...getInputProps()} accept="image/*" multiple={false} />
           {isDragActive ? (
-            <picture className="AjustesActualizarLogo__SeleccionarImagen__Label--Imagen">
-              <img src="imagenes/AgregarImagen.png" alt="Agregar Imagen" />
-            </picture>
+            <img src="imagenes/AgregarImagen.png" alt="Agregar Imagen" />
           ) : (
-            <picture className="AjustesActualizarLogo__SeleccionarImagen__Label--Imagen">
-              <img src={LogoDelSistema} alt="Logo Del Sistema" />
-            </picture>
+            <img src={LogoDelSistema} alt="Logo Del Sistema" />
           )}
-        </div>
+        </picture>
       </span>
       <small className="AjustesActualizarLogo__Texto">
         {DICCIONARIO_AJUSTES_LOGO[Idioma].MensajeActualizarLogoUno}
