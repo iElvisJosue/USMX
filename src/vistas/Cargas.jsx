@@ -131,8 +131,6 @@ export default function Cargas() {
     );
   };
 
-  if (cargandoCargas) return <Cargando />;
-
   return (
     <main className="Main">
       <Menu />
@@ -147,7 +145,9 @@ export default function Cargas() {
           {DICCIONARIO_CARGAS[Idioma].DescripcionCargas}
         </h4>
         <hr className="Cargas__Separador" />
-        {cargas.length > 0 ? (
+        {cargandoCargas ? (
+          <Cargando />
+        ) : cargas.length > 0 ? (
           <div className="Cargas__Cuerpo">
             <section className="Cargas__Formulario">
               <b className="Cargas__Formulario--Titulo">

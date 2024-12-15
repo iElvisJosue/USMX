@@ -128,8 +128,6 @@ export default function Envios() {
     );
   };
 
-  if (cargandoEnvios) return <Cargando />;
-
   return (
     <main className="Main">
       <Menu />
@@ -144,7 +142,9 @@ export default function Envios() {
           {DICCIONARIO_ENVIOS[Idioma].DescripcionEnvios}
         </h4>
         <hr className="Envios__Separador" />
-        {envios.length > 0 ? (
+        {cargandoEnvios ? (
+          <Cargando />
+        ) : envios.length > 0 ? (
           <div className="Envios__Cuerpo">
             <section className="Envios__Formulario">
               <b className="Envios__Formulario--Titulo">

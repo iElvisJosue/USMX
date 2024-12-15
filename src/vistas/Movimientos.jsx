@@ -54,8 +54,6 @@ export default function Movimientos() {
     1: DICCIONARIO_MOVIMIENTOS[Idioma].EditarMovimiento,
   };
 
-  if (cargandoMovimientos) return <Cargando />;
-
   return (
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
     <main className="Main">
@@ -66,7 +64,9 @@ export default function Movimientos() {
         subseccion={TituloSubseccion[vista]}
       />
       <div className="Movimientos">
-        {vista === 0 ? (
+        {cargandoMovimientos ? (
+          <Cargando />
+        ) : vista === 0 ? (
           <>
             <RegistrarMovimientos {...valoresParaLosComponentes} />
             <ListaDeMovimientos {...valoresParaLosComponentes} />
