@@ -25,6 +25,7 @@ import Cargas from "./vistas/Cargas";
 import Envios from "./vistas/Envios";
 import Apariencia from "./vistas/Apariencia";
 import Ajustes from "./vistas/Ajustes";
+import NoExistente from "./vistas/NoExistente";
 
 // PROTECCIÓN DE RUTAS
 import ProteccionPorCookies from "./proteccion/ProteccionPorCookies";
@@ -40,6 +41,9 @@ export default function App() {
       <Toaster richColors position="top-right" />
       <BrowserRouter>
         <Routes>
+          {/* RUTAS NO EXISTENTES */}
+          <Route path="*" element={<NoExistente />} />
+          {/* TERMINAN LAS RUTAS NO EXISTENTES */}
           {/* RUTAS SIN PROTECCIÓN */}
           <Route path="/" element={<IniciarSesion />} />
           <Route path="/NumeroDeGuia/:GuiaPedido" element={<NumeroDeGuia />} />
