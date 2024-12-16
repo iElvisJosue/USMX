@@ -43,6 +43,10 @@ export default function AjustesActualizarInformacion({
     setValue("NombreSistema", infSistema.NombreSistema);
     setValue("CorreoSistema", infSistema.CorreoSistema);
     setValue("ContrasenaCorreoSistema", infSistema.ContrasenaCorreoSistema);
+    setValue(
+      "ApiKeyGoogleMapsAutocompletado",
+      infSistema.ApiKeyGoogleMapsAutocompletado
+    );
   }, []);
 
   const AjustesActualizarInformacion = handleSubmit(async (data) => {
@@ -51,6 +55,7 @@ export default function AjustesActualizarInformacion({
         NombreSistema: data.NombreSistema,
         CorreoSistema: data.CorreoSistema,
         ContrasenaCorreoSistema: data.ContrasenaCorreoSistema,
+        ApiKeyGoogleMapsAutocompletado: data.ApiKeyGoogleMapsAutocompletado,
       });
       if (res.response) {
         const { status, data } = res.response;
@@ -166,6 +171,28 @@ export default function AjustesActualizarInformacion({
           })}
         />
         {MensajeDeErrorInput("ContrasenaCorreoSistema")}
+      </span>
+      <span className="GrupoDeInputs Tres">
+        <p>
+          <ion-icon name="key"></ion-icon>{" "}
+          {
+            DICCIONARIO_AJUSTES_INFORMACION_SISTEMA[Idioma]
+              .ApiKeyGoogleMapsAutocompletado
+          }
+        </p>
+        <input
+          id="ApiKeyGoogleMapsAutocompletado"
+          type="text"
+          name="ApiKeyGoogleMapsAutocompletado"
+          placeholder={DICCIONARIO_PLACEHOLDERS[Idioma].EscribeAqui}
+          {...register("ApiKeyGoogleMapsAutocompletado", {
+            maxLength: {
+              value: 255,
+              message: DICCIONARIO_MENSAJES_DE_ERROR[Idioma].Max255,
+            },
+          })}
+        />
+        {MensajeDeErrorInput("ApiKeyGoogleMapsAutocompletado")}
       </span>
       <small className="AjustesActualizarInformacion__MensajeEncriptado">
         📣

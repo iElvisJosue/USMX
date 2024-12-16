@@ -15,13 +15,13 @@ export default function PerfilInformacion({
   infSistema,
   establecerVistaAjustes,
 }) {
-  const OcultarMitadDeLaContraseña = (Contraseña) => {
-    let ArrayContraseña = Contraseña.split("");
-    ArrayContraseña = ArrayContraseña.map((elemento, index) => {
-      if (index < ArrayContraseña.length / 2) return "*";
+  const OcultarMitadDelContenido = (Contenido) => {
+    let ArrayContenido = Contenido.split("");
+    ArrayContenido = ArrayContenido.map((elemento, index) => {
+      if (index < ArrayContenido.length / 2) return "*";
       return elemento;
     });
-    return ArrayContraseña.join("");
+    return ArrayContenido.join("");
   };
 
   return (
@@ -67,8 +67,15 @@ export default function PerfilInformacion({
             {DICCIONARIO_AJUSTES_INFORMACION[Idioma].ContrasenaCorreoDeContacto}
           </b>
           <br />
-          {OcultarMitadDeLaContraseña(infSistema.ContrasenaCorreoSistema) ||
+          {OcultarMitadDelContenido(infSistema.ContrasenaCorreoSistema) ||
             "N/A"}
+        </p>
+        <p className="AjustesInformacion__Seccion--Texto">
+          <b>{DICCIONARIO_AJUSTES_INFORMACION[Idioma].KeyApiGoogleMaps}</b>
+          <br />
+          {OcultarMitadDelContenido(
+            infSistema.ApiKeyGoogleMapsAutocompletado
+          ) || "N/A"}
         </p>
         <button
           className="AjustesInformacion__BotonActualizar"

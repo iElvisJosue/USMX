@@ -1901,6 +1901,7 @@ export const DICCIONARIO_AJUSTES_INFORMACION = {
     Nombre: "Nombre",
     CorreoDeContacto: "Correo de contacto",
     ContrasenaCorreoDeContacto: "Contraseña del correo de contacto",
+    KeyApiGoogleMaps: "Api KEY de Google Maps (Autocompletado de direcciones)",
   },
   en: {
     LogoDelSistema: "System logo",
@@ -1908,6 +1909,7 @@ export const DICCIONARIO_AJUSTES_INFORMACION = {
     Nombre: "Name",
     CorreoDeContacto: "Contact email",
     ContrasenaCorreoDeContacto: "Contact email password",
+    KeyApiGoogleMaps: "Google Maps API Key (Autocomplete address)",
   },
 };
 export const DICCIONARIO_AJUSTES_LOGO = {
@@ -1933,6 +1935,8 @@ export const DICCIONARIO_AJUSTES_INFORMACION_SISTEMA = {
     MensajeActualizarUno: "¡ATENCIÓN!",
     MensajeActualizarDos:
       "La información del sistema es muy sensible, por favor actualiza estos datos con mucho cuidado.",
+    ApiKeyGoogleMapsAutocompletado:
+      "Api KEY de Google Maps (Autocompletado de direcciones)",
   },
   en: {
     ActualizarInformacionDelSistema: "Update system information",
@@ -1942,6 +1946,8 @@ export const DICCIONARIO_AJUSTES_INFORMACION_SISTEMA = {
     MensajeActualizarUno: "ATTENTION!",
     MensajeActualizarDos:
       "The system information is very sensitive, please update these data carefully.",
+    ApiKeyGoogleMapsAutocompletado:
+      "Google Maps API Key (Autocomplete address)",
   },
 };
 /* TERMINA DICCIONARIO PARA LA VISTA DE APARIENCIA */
