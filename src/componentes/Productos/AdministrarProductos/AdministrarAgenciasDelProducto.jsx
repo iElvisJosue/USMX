@@ -14,13 +14,13 @@ import {
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import MensajeGeneral from "../../MensajeGeneral";
-import Cargando from "../../Cargando";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
 import ModalInformacionDeLaAgencia from "./ModalInformacionDeLaAgencia";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarAgenciasAsignadasYNoAsignadasPorProducto from "../../../hooks/useBuscarAgenciasAsignadasYNoAsignadasPorProducto";
-import usePaginacion from "../../../hooks/usePaginacion";
+import useBuscarAgenciasAsignadasYNoAsignadasPorProducto from "../../../hooks/Productos/useBuscarAgenciasAsignadasYNoAsignadasPorProducto";
+import usePaginacion from "../../../hooks/Globales/usePaginacion";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../Cargando";
-import MensajeGeneral from "../../MensajeGeneral";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarPedidosPorFiltro from "../../../hooks/useBuscarPedidosPorFiltro";
+import useBuscarPedidosPorFiltro from "../../../hooks/Pedidos/useBuscarPedidosPorFiltro";
 
 // COMPONENTES A USAR
 import Tabla from "../../Tabla/Tabla";

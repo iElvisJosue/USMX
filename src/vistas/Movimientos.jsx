@@ -9,13 +9,13 @@ import { DICCIONARIO_MOVIMIENTOS } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
+import Encabezado from "../componentes/Globales/Encabezado";
 import RegistrarMovimientos from "../componentes/Movimientos/RegistrarMovimientos";
 import ListaDeMovimientos from "../componentes/Movimientos/ListaDeMovimientos";
 import EditarMovimiento from "../componentes/Movimientos/EditarMovimiento";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useObtenerMovimientos from "../hooks/useObtenerMovimientos";
+import useObtenerMovimientos from "../hooks/Operaciones/Movimientos/useObtenerMovimientos";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/Movimientos.css";

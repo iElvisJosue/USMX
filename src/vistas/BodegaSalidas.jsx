@@ -9,8 +9,8 @@ import { DICCIONARIO_BODEGA_SALIDAS } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
-import SubMenu from "../componentes/SubMenu";
+import Encabezado from "../componentes/Globales/Encabezado";
+import SubMenu from "../componentes/Globales/SubMenu";
 import CrearSalida from "../componentes/Bodega/SalidasBodega/CrearSalida/CrearSalida";
 import ListaDeTodasLasSalidas from "../componentes/Bodega/SalidasBodega/ListaDeTodasLasSalidas/ListaDeTodasLasSalidas";
 

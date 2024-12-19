@@ -6,13 +6,13 @@ import { useEffect } from "react";
 import { useOcurre } from "../../../context/OcurreContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../Cargando";
-import MensajeGeneral from "../../MensajeGeneral";
-import AdministrarRegistro from "../../AdministrarRegistro";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
+import AdministrarRegistro from "../../Globales/AdministrarRegistro";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarOcurresPorFiltro from "../../../hooks/useBuscarOcurresPorFiltro";
-import usePaginacion from "../../../hooks/usePaginacion";
+import useBuscarOcurresPorFiltro from "../../../hooks/Ocurres/useBuscarOcurresPorFiltro";
+import usePaginacion from "../../../hooks/Globales/usePaginacion";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {

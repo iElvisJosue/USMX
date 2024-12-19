@@ -114,7 +114,7 @@ export default function EditarMovimiento({
       <h1 className="RegistrarMovimiento__Titulo">
         {DICCIONARIO_EDITAR_MOVIMIENTO[Idioma].EditarMovimiento}
       </h1>
-      <span className="RegistrarMovimiento__Titulo__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="bag-check"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_MOVIMIENTO[Idioma].EstadoDelMovimiento}
@@ -135,7 +135,7 @@ export default function EditarMovimiento({
         />
         {MensajeDeError("EstadoMovimiento")}
       </span>
-      <span className="RegistrarMovimiento__Titulo__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="locate"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_MOVIMIENTO[Idioma].OrigenDelMovimiento}
@@ -156,7 +156,7 @@ export default function EditarMovimiento({
         />
         {MensajeDeError("OrigenMovimiento")}
       </span>
-      <span className="RegistrarMovimiento__Titulo__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="apps"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_MOVIMIENTO[Idioma].MovimientoPorDefecto}
@@ -177,7 +177,7 @@ export default function EditarMovimiento({
         </select>
         {MensajeDeError("CategoriaMovimiento")}
       </span>
-      <span className="RegistrarMovimiento__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Completo">
         <p>
           <ion-icon name="document-text"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_MOVIMIENTO[Idioma].DetallesDelMovimiento}

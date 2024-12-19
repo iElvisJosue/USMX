@@ -9,8 +9,8 @@ import { DICCIONARIO_USUARIOS } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
-import SubMenu from "../componentes/SubMenu";
+import Encabezado from "../componentes/Globales/Encabezado";
+import SubMenu from "../componentes/Globales/SubMenu";
 import RegistrarUsuario from "../componentes/Usuarios/RegistrarUsuario/RegistrarUsuario";
 import AdministrarUsuarios from "../componentes/Usuarios/AdministrarUsuarios/AdministrarUsuarios";
 

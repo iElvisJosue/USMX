@@ -62,48 +62,6 @@
   text-transform: uppercase;
   margin-top: 20px;
 }
-.RegistrarOcurre__InformacionOcurre__Campo {
-  grid-column: span 1;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 10px;
-}
-.RegistrarOcurre__InformacionOcurre__Campo.Dos {
-  grid-column: span 2;
-}
-.RegistrarOcurre__InformacionOcurre__Campo.Tres {
-  grid-column: 1 / -1;
-}
-.RegistrarOcurre__InformacionOcurre__Campo p {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: var(--ColorNegro);
-  font-weight: bold;
-  gap: 5px;
-}
-.RegistrarOcurre__InformacionOcurre__Campo p ion-icon {
-  font-size: 20px;
-}
-.RegistrarOcurre__InformacionOcurre__Campo input,
-.RegistrarOcurre__InformacionOcurre__Campo select {
-  width: 100%;
-  min-height: 50px;
-  height: 50px;
-  max-height: 50px;
-  background-color: var(--ColorSecundario);
-  border: 1px solid var(--ColorSecundario);
-  border-radius: 5px;
-  padding: 0 10px;
-  color: var(--ColorNegro);
-  font-size: 16px;
-  font-weight: bold;
-}
-.RegistrarOcurre__InformacionOcurre__Campo input:focus {
-  border: 2px solid var(--ColorNegro);
-}
 .RegistrarOcurre__InformacionOcurre__Footer {
   grid-column: 1 / -1;
 
@@ -143,9 +101,6 @@
   .RegistrarOcurre__InformacionOcurre {
     grid-template-columns: repeat(2, 1fr);
   }
-  .RegistrarOcurre__InformacionOcurre__Campo.Dos {
-    grid-column: span 1;
-  }
   .RegistrarOcurre__InformacionOcurre__Opciones--Boton {
     font-size: 14px;
     gap: 2px;
@@ -161,9 +116,6 @@
   }
   .RegistrarOcurre__InformacionOcurre__Titulo {
     font-size: 20px;
-  }
-  .RegistrarOcurre__InformacionOcurre__Campo {
-    font-size: 16px;
   }
   .RegistrarOcurre__InformacionOcurre__Footer__Boton {
     width: 100%;

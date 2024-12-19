@@ -92,7 +92,7 @@ export default function RegistrarProducto({ Idioma }) {
         <h1 className="RegistrarProducto__InformacionDelProducto__Titulo">
           {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].RegistrarProducto}
         </h1>
-        <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="basket"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Nombre}
@@ -112,7 +112,7 @@ export default function RegistrarProducto({ Idioma }) {
           ></input>
           {MensajeError("NombreProducto")}
         </span>
-        <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="swap-horizontal"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Ancho}
@@ -131,7 +131,7 @@ export default function RegistrarProducto({ Idioma }) {
           ></input>
           {MensajeError("AnchoProducto")}
         </span>
-        <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="swap-vertical"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Largo}
@@ -150,7 +150,7 @@ export default function RegistrarProducto({ Idioma }) {
           ></input>
           {MensajeError("LargoProducto")}
         </span>
-        <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="arrow-up"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Alto}
@@ -169,7 +169,7 @@ export default function RegistrarProducto({ Idioma }) {
           ></input>
           {MensajeError("AltoProducto")}
         </span>
-        <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="cash"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Precio}
@@ -189,7 +189,7 @@ export default function RegistrarProducto({ Idioma }) {
           ></input>
           {MensajeError("PrecioProducto")}
         </span>
-        <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="scale"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].CostoLibraExtra}
@@ -209,7 +209,7 @@ export default function RegistrarProducto({ Idioma }) {
           ></input>
           {MensajeError("CostoLibraExtraProducto")}
         </span>
-        <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="thumbs-up"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].PesoSinCobro}
@@ -229,7 +229,7 @@ export default function RegistrarProducto({ Idioma }) {
           ></input>
           {MensajeError("PesoSinCobroProducto")}
         </span>
-        <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="warning"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].PesoMaximo}
@@ -249,7 +249,7 @@ export default function RegistrarProducto({ Idioma }) {
           ></input>
           {MensajeError("PesoMaximoProducto")}
         </span>
-        <span className="RegistrarProducto__InformacionDelProducto__Titulo__Campo Comision">
+        <span className="GrupoDeInputs Comision">
           <p>
             <ion-icon name="receipt"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_PRODUCTO[Idioma].Comision}

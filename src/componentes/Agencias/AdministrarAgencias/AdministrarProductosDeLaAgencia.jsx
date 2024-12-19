@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../Cargando";
-import MensajeGeneral from "../../MensajeGeneral";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
 import ModalInformacionDelProducto from "./ModalInformacionDelProducto";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
@@ -22,8 +22,8 @@ import {
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarProductosAsignadosYNoAsignadosPorAgencia from "../../../hooks/useBuscarProductosAsignadosYNoAsignadosPorAgencia";
-import usePaginacion from "../../../hooks/usePaginacion";
+import useBuscarProductosAsignadosYNoAsignadosPorAgencia from "../../../hooks/Agencias/useBuscarProductosAsignadosYNoAsignadosPorAgencia";
+import usePaginacion from "../../../hooks/Globales/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Agencias/AdministrarAgencias/AdministrarProductosDeLaAgencia.css";

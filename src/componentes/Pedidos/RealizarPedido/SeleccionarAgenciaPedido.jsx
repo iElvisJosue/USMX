@@ -11,12 +11,12 @@ import {
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import MensajeGeneral from "../../MensajeGeneral";
-import Cargando from "../../Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
+import Cargando from "../../Globales/Cargando";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarAgenciasPorFiltroYTipoDeUsuario from "../../../hooks/useBuscarAgenciasPorFiltroYTipoDeUsuario";
-import usePaginacion from "../../../hooks/usePaginacion";
+import useBuscarAgenciasPorFiltroYTipoDeUsuario from "../../../hooks/Pedidos/useBuscarAgenciasPorFiltroYTipoDeUsuario";
+import usePaginacion from "../../../hooks/Globales/usePaginacion";
 
 // IMPORTAMOS LAS AYUDAS
 import { ESTILOS_SUCCESS } from "../../../helpers/SonnerEstilos";

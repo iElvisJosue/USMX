@@ -6,7 +6,7 @@ import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
+import Encabezado from "../componentes/Globales/Encabezado";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";

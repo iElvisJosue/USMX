@@ -6,9 +6,9 @@ import { useEffect } from "react";
 import { useUsuarios } from "../../../context/UsuariosContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../Cargando";
-import MensajeGeneral from "../../MensajeGeneral";
-import AdministrarRegistro from "../../AdministrarRegistro";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
+import AdministrarRegistro from "../../Globales/AdministrarRegistro";
 
 // IMPORTAMOS LOS DICCIONARIOS A USAR
 import {
@@ -18,8 +18,8 @@ import {
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarUsuariosParaAdministrarPorFiltro from "../../../hooks/useBuscarUsuariosParaAdministrarPorFiltro";
-import usePaginacion from "../../../hooks/usePaginacion";
+import useBuscarUsuariosParaAdministrarPorFiltro from "../../../hooks/Usuarios/useBuscarUsuariosParaAdministrarPorFiltro";
+import usePaginacion from "../../../hooks/Globales/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/ListaDeUsuarios.css";

@@ -9,8 +9,8 @@ import { DICCIONARIO_OCURRES } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
-import SubMenu from "../componentes/SubMenu";
+import Encabezado from "../componentes/Globales/Encabezado";
+import SubMenu from "../componentes/Globales/SubMenu";
 import RegistrarOcurre from "../componentes/Ocurres/RegistrarOcurre/RegistrarOcurre.jsx";
 import AdministrarOcurres from "../componentes/Ocurres/AdministrarOcurres/AdministrarOcurres";
 

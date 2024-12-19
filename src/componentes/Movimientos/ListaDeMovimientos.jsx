@@ -10,8 +10,8 @@ import {
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import ModalConfirmacionMovimientos from "./ModalConfirmacionMovimientos";
-import MensajeGeneral from "../MensajeGeneral";
-import Cargando from "../Cargando";
+import MensajeGeneral from "../Globales/MensajeGeneral";
+import Cargando from "../Globales/Cargando";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/Movimientos/ListaDeMovimientos.css";

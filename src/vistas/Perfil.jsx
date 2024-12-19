@@ -6,7 +6,7 @@ import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS COMPONENTES
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
+import Encabezado from "../componentes/Globales/Encabezado";
 import PerfilInformacion from "../componentes/Perfil/PerfilInformacion";
 import PerfilActualizarFoto from "../componentes/Perfil/PerfilActualizarFoto";
 import PerfilActualizarInformacion from "../componentes/Perfil/PerfilActualizarInformacion";

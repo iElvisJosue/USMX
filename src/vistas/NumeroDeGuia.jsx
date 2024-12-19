@@ -6,10 +6,10 @@ import { useParams } from "react-router-dom";
 import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../componentes/Cargando";
+import Cargando from "../componentes/Globales/Cargando";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarPedidoPorNumeroDeGuia from "../hooks/useBuscarPedidoPorNumeroDeGuia";
+import useBuscarPedidoPorNumeroDeGuia from "../hooks/Pedidos/useBuscarPedidoPorNumeroDeGuia";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";

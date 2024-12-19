@@ -9,8 +9,8 @@ import { DICCIONARIO_RECOLECCIONES } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
-import SubMenu from "../componentes/SubMenu";
+import Encabezado from "../componentes/Globales/Encabezado";
+import SubMenu from "../componentes/Globales/SubMenu";
 import CrearRecoleccion from "../componentes/Recolecciones/CrearRecoleccion/CrearRecoleccion";
 import ListaRecolecciones from "../componentes/Recolecciones/ListaRecolecciones/ListaRecolecciones";
 

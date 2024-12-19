@@ -125,7 +125,7 @@ export default function InformacionDelUsuario({ Idioma }) {
         <h1 className="RegistrarUsuario__InformacionDelUsuario__Titulo">
           {DICCIONARIO_REGISTRAR_USUARIO[Idioma].RegistrarUsuario}
         </h1>
-        <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
+        <span className="GrupoDeInputs Dos">
           <p>
             <ion-icon name="person"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_USUARIO[Idioma].NombreDelUsuario}
@@ -146,7 +146,7 @@ export default function InformacionDelUsuario({ Idioma }) {
           />
           {MensajeError("Usuario")}
         </span>
-        <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
+        <span className="GrupoDeInputs Dos">
           <p>
             <ion-icon name="hand-left"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_USUARIO[Idioma].Permisos}
@@ -160,7 +160,7 @@ export default function InformacionDelUsuario({ Idioma }) {
           </select>
           {MensajeError("Permisos")}
         </span>
-        <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
+        <span className="GrupoDeInputs Dos">
           <p>
             <ion-icon name="lock-closed"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_USUARIO[Idioma].Contrasena}
@@ -184,7 +184,7 @@ export default function InformacionDelUsuario({ Idioma }) {
           />
           {MensajeError("Contraseña")}
         </span>
-        <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
+        <span className="GrupoDeInputs Dos">
           <p>
             <ion-icon name="checkmark-done-circle"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_USUARIO[Idioma].ConfirmarContrasena}

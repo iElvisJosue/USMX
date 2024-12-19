@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { useAgencias } from "../../../context/AgenciasContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import GoogleAPI from "../../GoogleAPI";
+import GoogleAPI from "../../Globales/GoogleAPI";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";

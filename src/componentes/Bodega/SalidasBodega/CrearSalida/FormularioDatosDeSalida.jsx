@@ -16,7 +16,7 @@ import {
 } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import GrupoDeBotonesInferior from "../../../GrupoDeBotonesInferior";
+import GrupoDeBotonesInferior from "../../../Globales/GrupoDeBotonesInferior";
 
 // IMPORTAMOS LAS AYUDAS
 import {

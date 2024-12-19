@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { useOcurre } from "../../../context/OcurreContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import GoogleAPI from "../../GoogleAPI";
+import GoogleAPI from "../../Globales/GoogleAPI";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -148,7 +148,7 @@ export default function EditarOcurre({
       <h1 className="EditarOcurre__Titulo">
         {DICCIONARIO_EDITAR_OCURRE[Idioma].EditarOcurre}
       </h1>
-      <span className="EditarOcurre__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="alert-circle"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_OCURRE[Idioma].NombreDelOcurre}
@@ -169,7 +169,7 @@ export default function EditarOcurre({
         />
         {MensajeError("NombreOcurre")}
       </span>
-      <span className="EditarOcurre__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="business"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_OCURRE[Idioma].OperadorLogistico}
@@ -188,7 +188,7 @@ export default function EditarOcurre({
           <option value="99 Minutos">99 Minutos</option>
         </select>
       </span>
-      <span className="EditarOcurre__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_OCURRE[Idioma].TelefonoUno}
@@ -212,7 +212,7 @@ export default function EditarOcurre({
         />
         {MensajeError("TelefonoUnoOcurre")}
       </span>
-      <span className="EditarOcurre__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_OCURRE[Idioma].TelefonoDos}
@@ -236,7 +236,7 @@ export default function EditarOcurre({
         />
         {MensajeError("TelefonoDosOcurre")}
       </span>
-      <span className="EditarOcurre__Campo Dos">
+      <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="mail"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_OCURRE[Idioma].CorreoElectronico}
@@ -257,7 +257,7 @@ export default function EditarOcurre({
         />
         {MensajeError("CorreoOcurre")}
       </span>
-      <span className="EditarOcurre__Campo Tres">
+      <span className="GrupoDeInputs Completo">
         <p>
           <ion-icon name="search"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_OCURRE[Idioma].Observaciones}

@@ -4,8 +4,8 @@
 import { useEffect, useState } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import MensajeGeneral from "../../MensajeGeneral";
-import Cargando from "../../Cargando";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
 import ModalInformacionDeLaAgencia from "./ModalInformacionDeLaAgencia";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
@@ -23,8 +23,8 @@ import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor"
 import { MensajePeticionPendiente } from "../../../helpers/FuncionesGenerales";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarAgenciasAsignadasYNoAsignadasPorUsuario from "../../../hooks/useBuscarAgenciasAsignadasYNoAsignadasPorUsuario";
-import usePaginacion from "../../../hooks/usePaginacion";
+import useBuscarAgenciasAsignadasYNoAsignadasPorUsuario from "../../../hooks/Usuarios/useBuscarAgenciasAsignadasYNoAsignadasPorUsuario";
+import usePaginacion from "../../../hooks/Globales/usePaginacion";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../../estilos/componentes/Usuarios/AdministrarUsuarios/AdministrarAgenciasDelUsuario.css";

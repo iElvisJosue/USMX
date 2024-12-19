@@ -5,7 +5,7 @@ import {
   // ESTILOS_INFO,
   ESTILOS_WARNING,
   ESTILOS_ERROR,
-} from "../helpers/SonnerEstilos";
+} from "./SonnerEstilos";
 
 export const ManejarMensajesDeRespuesta = ({ status, data: message }) => {
   switch (status) {

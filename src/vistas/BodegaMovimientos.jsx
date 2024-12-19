@@ -9,8 +9,8 @@ import { DICCIONARIO_BODEGA_MOVIMIENTOS } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
-import SubMenu from "../componentes/SubMenu";
+import Encabezado from "../componentes/Globales/Encabezado";
+import SubMenu from "../componentes/Globales/SubMenu";
 import CrearMovimientoEnBodega from "../componentes/Bodega/MovimientoEnBodega/CrearMovimientoEnBodega/CrearMovimientoEnBodega";
 import ListaDeMovimientosEnBodega from "../componentes/Bodega/MovimientoEnBodega/ListaDeMovimientosEnBodega/ListaDeMovimientosEnBodega";
 

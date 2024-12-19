@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { useOcurre } from "../../../context/OcurreContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import GoogleAPI from "../../GoogleAPI";
+import GoogleAPI from "../../Globales/GoogleAPI";
 
 // IMPORTAMOS LOS DICCIONARIOS A USAR
 import {
@@ -125,7 +125,7 @@ export default function RegistrarOcurre({ Idioma }) {
         <h1 className="RegistrarOcurre__InformacionOcurre__Titulo">
           {DICCIONARIO_REGISTRAR_OCURRE[Idioma].RegistrarOcurre}
         </h1>
-        <span className="RegistrarOcurre__InformacionOcurre__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="alert-circle"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_OCURRE[Idioma].NombreDelOcurre}
@@ -146,7 +146,7 @@ export default function RegistrarOcurre({ Idioma }) {
           />
           {MensajeError("NombreOcurre")}
         </span>
-        <span className="RegistrarOcurre__InformacionOcurre__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="business"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_OCURRE[Idioma].OperadorLogistico}
@@ -165,7 +165,7 @@ export default function RegistrarOcurre({ Idioma }) {
             <option value="99 Minutos">99 Minutos</option>
           </select>
         </span>
-        <span className="RegistrarOcurre__InformacionOcurre__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="call"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_OCURRE[Idioma].TelefonoUno}
@@ -189,7 +189,7 @@ export default function RegistrarOcurre({ Idioma }) {
           />
           {MensajeError("TelefonoUnoOcurre")}
         </span>
-        <span className="RegistrarOcurre__InformacionOcurre__Campo">
+        <span className="GrupoDeInputs">
           <p>
             <ion-icon name="call"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_OCURRE[Idioma].TelefonoDos}
@@ -213,7 +213,7 @@ export default function RegistrarOcurre({ Idioma }) {
           />
           {MensajeError("TelefonoDosOcurre")}
         </span>
-        <span className="RegistrarOcurre__InformacionOcurre__Campo Dos">
+        <span className="GrupoDeInputs Dos">
           <p>
             <ion-icon name="mail"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_OCURRE[Idioma].CorreoElectronico}
@@ -234,7 +234,7 @@ export default function RegistrarOcurre({ Idioma }) {
           />
           {MensajeError("CorreoOcurre")}
         </span>
-        <span className="RegistrarOcurre__InformacionOcurre__Campo Tres">
+        <span className="GrupoDeInputs Completo">
           <p>
             <ion-icon name="document-text"></ion-icon>{" "}
             {DICCIONARIO_REGISTRAR_OCURRE[Idioma].Observaciones}

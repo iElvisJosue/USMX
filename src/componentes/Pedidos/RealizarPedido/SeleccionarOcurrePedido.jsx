@@ -6,8 +6,8 @@ import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../Cargando";
-import MensajeGeneral from "../../MensajeGeneral";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
 import AgenciaSeleccionadaPedido from "./AgenciaSeleccionadaPedido";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
@@ -21,8 +21,8 @@ import {
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarOcurresActivosPorFiltro from "../../../hooks/useBuscarOcurresActivosPorFiltro";
-import usePaginacion from "../../../hooks/usePaginacion";
+import useBuscarOcurresActivosPorFiltro from "../../../hooks/Pedidos/useBuscarOcurresActivosPorFiltro";
+import usePaginacion from "../../../hooks/Globales/usePaginacion";
 
 // IMPORTAMOS LAS AYUDAS
 import { REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS } from "../../../helpers/Regexs";

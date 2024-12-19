@@ -7,14 +7,14 @@ import { toast } from "sonner";
 import { useAgencias } from "../../../context/AgenciasContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../Cargando";
-import MensajeGeneral from "../../MensajeGeneral";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
 import ModalSubirArchivo from "./ModalSubirArchivo";
-import AdministrarRegistro from "../../AdministrarRegistro";
+import AdministrarRegistro from "../../Globales/AdministrarRegistro";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarAgenciasPorFiltro from "../../../hooks/useBuscarAgenciasPorFiltro";
-import usePaginacion from "../../../hooks/usePaginacion";
+import useBuscarAgenciasPorFiltro from "../../../hooks/Agencias/useBuscarAgenciasPorFiltro";
+import usePaginacion from "../../../hooks/Globales/usePaginacion";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";

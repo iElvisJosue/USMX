@@ -48,6 +48,8 @@
   border: 2px solid var(--ColorNegro);
 }
 @media (max-width: 1000px) {
+  .GrupoDeInputs.AgenciaUno,
+  .GrupoDeInputs.Comision,
   .GrupoDeInputs.Tres {
     grid-column: span 2;
   }
@@ -55,7 +57,9 @@
 @media (max-width: 500px) {
   .GrupoDeInputs,
   .GrupoDeInputs.Dos,
-  .GrupoDeInputs.Tres {
+  .GrupoDeInputs.Tres,
+  .GrupoDeInputs.AgenciaUno,
+  .GrupoDeInputs.AgenciaDos {
     grid-column: 1 / -1;
   }
 }

@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../../Cargando";
-import MensajeGeneral from "../../../MensajeGeneral";
-import InputBuscarEnTabla from "../../../InputBuscarEnTabla";
+import Cargando from "../../../Globales/Cargando";
+import MensajeGeneral from "../../../Globales/MensajeGeneral";
+import InputBuscarEnTabla from "../../../Globales/InputBuscarEnTabla";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {

@@ -18,7 +18,7 @@ import InformacionDelPedido from "./InformacionDelPedido";
 import DetallesDelPedido from "./DetallesDelPedido";
 
 // IMPORTAMOS LAS AYUDAS
-import { LISTA_DE_PROGRESOS } from "../../../helpers/RealizarPedido/ListaDeProgreso";
+import { LISTA_DE_PROGRESOS } from "../../../helpers/ListaDeProgreso";
 import { ESTILOS_SUCCESS } from "../../../helpers/SonnerEstilos";
 
 // IMPORTAMOS LOS ESTILOS A USAR

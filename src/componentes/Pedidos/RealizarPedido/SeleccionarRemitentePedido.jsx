@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarRemitentesPorAgencia from "../../../hooks/useBuscarRemitentesPorAgencia";
-import usePaginacion from "../../../hooks/usePaginacion";
+import useBuscarRemitentesPorAgencia from "../../../hooks/Pedidos/useBuscarRemitentesPorAgencia";
+import usePaginacion from "../../../hooks/Globales/usePaginacion";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
@@ -15,8 +15,8 @@ import {
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../Cargando";
-import MensajeGeneral from "../../MensajeGeneral";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
 import AgenciaSeleccionadaPedido from "./AgenciaSeleccionadaPedido";
 
 // IMPORTAMOS LAS AYUDAS

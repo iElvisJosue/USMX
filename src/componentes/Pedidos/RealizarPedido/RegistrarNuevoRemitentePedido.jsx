@@ -15,7 +15,7 @@ import {
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import AgenciaSeleccionadaPedido from "./AgenciaSeleccionadaPedido";
-import GoogleAPI from "../../GoogleAPI";
+import GoogleAPI from "../../Globales/GoogleAPI";
 
 // IMPORTAMOS LAS AYUDAS
 import {

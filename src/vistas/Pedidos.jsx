@@ -9,8 +9,8 @@ import { DICCIONARIO_PEDIDOS } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
-import SubMenu from "../componentes/SubMenu";
+import Encabezado from "../componentes/Globales/Encabezado";
+import SubMenu from "../componentes/Globales/SubMenu";
 import RealizarPedido from "../componentes/Pedidos/RealizarPedido/RealizarPedido";
 import ListaPedidos from "../componentes/Pedidos/ListaPedidos/ListaPedidos";
 

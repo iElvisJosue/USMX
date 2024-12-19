@@ -2,14 +2,14 @@
 import { useNavigate } from "react-router-dom";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
-import Cargando from "../componentes/Cargando";
+import Encabezado from "../componentes/Globales/Encabezado";
+import Cargando from "../componentes/Globales/Cargando";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useSistema } from "../context/SistemaContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarUltimosDiezPedidos from "../hooks/useBuscarUltimosDiezPedidos";
+import useBuscarUltimosDiezPedidos from "../hooks/Bienvenida/useBuscarUltimosDiezPedidos";
 import useObtenerResumenDiario from "../hooks/Bienvenida/useObtenerResumenDiario";
 
 // IMPORTAMOS EL DICCIONARIO A USAR

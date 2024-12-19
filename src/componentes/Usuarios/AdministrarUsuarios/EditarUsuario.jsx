@@ -138,7 +138,7 @@ export default function EditarUsuario({
       <h1 className="EditarUsuario__Titulo">
         {DICCIONARIO_EDITAR_USUARIO[Idioma].EditarUsuario}
       </h1>
-      <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_USUARIO[Idioma].NombreDelUsuario}
@@ -159,7 +159,7 @@ export default function EditarUsuario({
         />
         {MensajeError("Usuario")}
       </span>
-      <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="hand-left"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_USUARIO[Idioma].Permisos}
@@ -173,7 +173,7 @@ export default function EditarUsuario({
         </select>
         {MensajeError("Permisos")}
       </span>
-      <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="lock-closed"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_USUARIO[Idioma].Contrasena}
@@ -197,7 +197,7 @@ export default function EditarUsuario({
         />
         {MensajeError("Contraseña")}
       </span>
-      <span className="RegistrarUsuario__InformacionDelUsuario__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="checkmark-done-circle"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_USUARIO[Idioma].ConfirmarContrasena}

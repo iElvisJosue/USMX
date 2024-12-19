@@ -93,7 +93,7 @@ export default function RegistrarMovimiento({
       <h1 className="RegistrarMovimiento__Titulo">
         {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].RegistrarMovimiento}
       </h1>
-      <span className="RegistrarMovimiento__Titulo__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="bag-check"></ion-icon>{" "}
           {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].EstadoDelMovimiento}
@@ -114,7 +114,7 @@ export default function RegistrarMovimiento({
         />
         {MensajeDeError("EstadoMovimiento")}
       </span>
-      <span className="RegistrarMovimiento__Titulo__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="locate"></ion-icon>{" "}
           {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].OrigenDelMovimiento}
@@ -135,7 +135,7 @@ export default function RegistrarMovimiento({
         />
         {MensajeDeError("OrigenMovimiento")}
       </span>
-      <span className="RegistrarMovimiento__Titulo__Campo">
+      <span className="GrupoDeInputs">
         <p>
           <ion-icon name="apps"></ion-icon>{" "}
           {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].CategoriaDelMovimiento}
@@ -156,7 +156,7 @@ export default function RegistrarMovimiento({
         </select>
         {MensajeDeError("CategoriaMovimiento")}
       </span>
-      <span className="RegistrarMovimiento__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Completo">
         <p>
           <ion-icon name="document-text"></ion-icon>{" "}
           {DICCIONARIO_REGISTRAR_MOVIMIENTO[Idioma].DetallesDelMovimiento}

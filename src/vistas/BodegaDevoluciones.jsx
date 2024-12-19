@@ -9,8 +9,8 @@ import { DICCIONARIO_BODEGA_DEVOLUCIONES } from "../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
-import SubMenu from "../componentes/SubMenu";
+import Encabezado from "../componentes/Globales/Encabezado";
+import SubMenu from "../componentes/Globales/SubMenu";
 import CrearDevolucion from "../componentes/Bodega/Devoluciones/CrearDevolucion/CrearDevolucion";
 import ListaDevoluciones from "../componentes/Bodega/Devoluciones/ListaDevoluciones/ListaDevoluciones";
 

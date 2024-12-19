@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../../Cargando";
-import MensajeGeneral from "../../../MensajeGeneral";
+import Cargando from "../../../Globales/Cargando";
+import MensajeGeneral from "../../../Globales/MensajeGeneral";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarDevolucionesPorFecha from "../../../../hooks/Bodega/Devoluciones/useBuscarDevolucionesPorFecha";

@@ -9,7 +9,7 @@ import MenuOpciones from "./MenuOpciones";
 import { useSistema } from "../../context/SistemaContext";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useCerrarSesion from "../../hooks/useCerrarSesion";
+import useCerrarSesion from "../../hooks/Sistema/useCerrarSesion";
 import OpcionesDelMenu from "../../helpers/OpcionesDelMenu";
 
 // IMPORTAMOS LAS AYUDAS

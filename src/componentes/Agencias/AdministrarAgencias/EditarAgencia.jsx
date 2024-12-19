@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { useAgencias } from "../../../context/AgenciasContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import GoogleAPI from "../../GoogleAPI";
+import GoogleAPI from "../../Globales/GoogleAPI";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -191,7 +191,7 @@ export default function EditarAgencia({
       <h1 className="EditarAgencia__Titulo">
         {DICCIONARIO_EDITAR_AGENCIA[Idioma].EditarAgencia}
       </h1>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="business"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreDeLaAgencia}
@@ -212,7 +212,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("NombreAgencia")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos">
         <p>
           <ion-icon name="briefcase"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreLegalDeLaAgencia}
@@ -232,7 +232,7 @@ export default function EditarAgencia({
         {MensajeError("NombreLegalAgencia")}
       </span>
       <GoogleAPI {...PropsGoogleAPI} />
-      <span className="EditarAgencia__Titulo__Campo">
+      <span className="GrupoDeInputs AgenciaUno">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].TelAgencia}
@@ -256,7 +256,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("TelefonoAgencia")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo">
+      <span className="GrupoDeInputs AgenciaUno">
         <p>
           <ion-icon name="print"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].Fax}
@@ -279,7 +279,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("FaxAgencia")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo">
+      <span className="GrupoDeInputs AgenciaUno">
         <p>
           <ion-icon name="mail"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].CorreoAgencia}
@@ -299,7 +299,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("CorreoAgencia")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo">
+      <span className="GrupoDeInputs AgenciaUno">
         <p>
           <ion-icon name="mail"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].CorreoAgencia2}
@@ -318,7 +318,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("CorreoAgenciaSecundario")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos AgenciaDos">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreRepresentanteVentas}
@@ -338,7 +338,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("RepresentanteVentas")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos AgenciaDos">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].TelRepresentante}
@@ -362,7 +362,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("TelefonoRepresentanteVentas")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos AgenciaDos">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreDelDueño}
@@ -381,7 +381,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("NombreDueno")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos AgenciaDos">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].TelDueño}
@@ -404,7 +404,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("TelefonoDueno")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos AgenciaDos">
         <p>
           <ion-icon name="person"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].NombreDelManager}
@@ -423,7 +423,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("NombreManager")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos AgenciaDos">
         <p>
           <ion-icon name="call"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].TelManager}
@@ -446,7 +446,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("TelefonoManager")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo">
+      <span className="GrupoDeInputs AgenciaUno">
         <p>
           <ion-icon name="reader"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].NoLicencia}
@@ -461,7 +461,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("NumeroLicenciaAgencia")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo">
+      <span className="GrupoDeInputs AgenciaUno">
         <p>
           <ion-icon name="reader"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].NoSalesTax}
@@ -476,7 +476,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("NumeroImpuestosVenta")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos AgenciaDos">
         <p>
           <ion-icon name="reader"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].SS}
@@ -491,7 +491,7 @@ export default function EditarAgencia({
         ></input>
         {MensajeError("SS")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo">
+      <span className="GrupoDeInputs AgenciaUno">
         <p>
           <ion-icon name="copy"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].CopiaID}
@@ -502,7 +502,7 @@ export default function EditarAgencia({
         </select>
         {MensajeError("CopiaID")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo Dos">
+      <span className="GrupoDeInputs Dos AgenciaDos">
         <p>
           <ion-icon name="copy"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].CopiaLicencia}
@@ -517,7 +517,7 @@ export default function EditarAgencia({
         </select>
         {MensajeError("CopiaLicenciaNegocio")}
       </span>
-      <span className="EditarAgencia__Titulo__Campo">
+      <span className="GrupoDeInputs AgenciaUno">
         <p>
           <ion-icon name="copy"></ion-icon>{" "}
           {DICCIONARIO_EDITAR_AGENCIA[Idioma].CopiaSalesTax}

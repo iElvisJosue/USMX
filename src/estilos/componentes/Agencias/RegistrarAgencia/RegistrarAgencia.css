@@ -61,11 +61,6 @@
   background-color: transparent;
   color: var(--ColorVerde);
 }
-@media (max-width: 1000px) {
-  .GrupoDeInputs.AgenciaUno {
-    grid-column: span 2;
-  }
-}
 @media (max-width: 500px) {
   .RegistrarAgencia__InformacionDeLaAgencia__Titulo {
     margin-top: 20px;
@@ -73,12 +68,6 @@
   }
   .RegistrarAgencia__InformacionDeLaAgencia {
     gap: 25px;
-  }
-  .GrupoDeInputs.AgenciaUno {
-    grid-column: 1 / -1;
-  }
-  .GrupoDeInputs.AgenciaDos {
-    grid-column: 1 / -1;
   }
   .RegistrarAgencia__InformacionDeLaAgencia__Footer__Boton {
     width: 100%;

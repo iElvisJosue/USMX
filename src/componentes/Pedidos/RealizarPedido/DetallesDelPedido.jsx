@@ -3,8 +3,8 @@
 import { useState } from "react";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../../Cargando";
-import MensajeGeneral from "../../MensajeGeneral";
+import Cargando from "../../Globales/Cargando";
+import MensajeGeneral from "../../Globales/MensajeGeneral";
 
 // IMPORTAMOS EL DICCIONARIO A USAR
 import {
@@ -13,8 +13,8 @@ import {
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useBuscarPedidosPorPaquete from "../../../hooks/useBuscarPedidosPorPaquete";
-import useBuscarMovimientosDeUnPedido from "../../../hooks/useBuscarMovimientosDeUnPedido";
+import useBuscarPedidosPorPaquete from "../../../hooks/Pedidos/useBuscarPedidosPorPaquete";
+import useBuscarMovimientosDeUnPedido from "../../../hooks/Pedidos/useBuscarMovimientosDeUnPedido";
 
 // IMPORTAMOS LAS AYUDAS
 import { FormatearFecha } from "../../../helpers/FuncionesGenerales";

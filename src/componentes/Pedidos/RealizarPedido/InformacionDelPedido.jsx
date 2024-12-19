@@ -21,9 +21,9 @@ import {
 } from "../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useObtenerProductosPorAgencia from "../../../hooks/useObtenerProductosPorAgencia";
-import useObtenerTiposDeCarga from "../../../hooks/useObtenerTiposDeCarga";
-import useObtenerTiposDeEnvio from "../../../hooks/useObtenerTiposDeEnvio";
+import useObtenerProductosPorAgencia from "../../../hooks/Pedidos/useObtenerProductosPorAgencia";
+import useObtenerTiposDeCarga from "../../../hooks/Operaciones/Cargas/useObtenerTiposDeCarga";
+import useObtenerTiposDeEnvio from "../../../hooks/Operaciones/Envios/useObtenerTiposDeEnvio";
 
 // IMPORTAMOS LAS AYUDAS A USAR
 import {
@@ -33,7 +33,7 @@ import {
   CalcularTotalPedido,
   CalcularTotalProducto,
   CalcularIdUnico,
-} from "../../../helpers/RealizarPedido/Calculos";
+} from "../../../helpers/Calculos";
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
 import {
   REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,

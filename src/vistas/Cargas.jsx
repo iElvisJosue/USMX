@@ -9,13 +9,13 @@ import { useSistema } from "../context/SistemaContext";
 import { useOperaciones } from "../context/OperacionesContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import Cargando from "../componentes/Cargando";
+import Cargando from "../componentes/Globales/Cargando";
 import Menu from "../componentes/Menu/Menu";
-import Encabezado from "../componentes/Encabezado";
-import MensajeGeneral from "../componentes/MensajeGeneral";
+import Encabezado from "../componentes/Globales/Encabezado";
+import MensajeGeneral from "../componentes/Globales/MensajeGeneral";
 
 // IMPORTAMOS LOS HOOKS A USAR
-import useObtenerTiposDeCarga from "../hooks/useObtenerTiposDeCarga";
+import useObtenerTiposDeCarga from "../hooks/Operaciones/Cargas/useObtenerTiposDeCarga";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";

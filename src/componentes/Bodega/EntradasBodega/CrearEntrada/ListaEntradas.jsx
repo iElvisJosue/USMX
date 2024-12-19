@@ -11,7 +11,7 @@ import { useBodega } from "../../../../context/BodegaContext";
 import { DICCIONARIO_LISTA_ENTRADAS } from "../../../../diccionario/Diccionario";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
-import GrupoDeBotonesInferior from "../../../../componentes/GrupoDeBotonesInferior";
+import GrupoDeBotonesInferior from "../../../../componentes/Globales/GrupoDeBotonesInferior";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../../helpers/RespuestasServidor";

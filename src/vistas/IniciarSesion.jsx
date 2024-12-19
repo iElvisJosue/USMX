@@ -8,11 +8,11 @@ import Cookies from "js-cookie";
 import { useUsuarios } from "../context/UsuariosContext";
 
 // COMPONENTES A USAR
-import Cargando from "../componentes/Cargando";
+import Cargando from "../componentes/Globales/Cargando";
 
 // HOOKS A USAR
 import useObtenerLogoYNombreDelSistema from "../hooks/IniciarSesion/useObtenerLogoYNombreDelSistema";
-import useContraseña from "../hooks/useContraseña";
+import useContraseña from "../hooks/IniciarSesion/useContraseña";
 
 // AYUDAS A USAR
 import { IniciarSesionCampos } from "../helpers/IniciarSesion";
